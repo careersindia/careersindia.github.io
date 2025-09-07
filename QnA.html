@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareersIndia Q&A Section</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Impact&display=swap" rel="stylesheet">
+
+    <style>
+        /* Basic Setup */
+        :root {
+            --primary-color: #40E0D0; /* Turquoise */
+            --secondary-color: #008080; /* Teal, a darker turquoise */
+            --bg-color: #f0f8ff; /* AliceBlue, a very light background */
+            --text-color: #333;
+            --white-color: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        /* Main Container */
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: var(--white-color);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Flamboyant 3D Title */
+        .title-box {
+            background: var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.3), 0 5px 10px rgba(0,0,0,0.2);
+            border: 3px solid var(--white-color);
+        }
+
+        .title-box h1 {
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            text-align: center;
+            font-size: 3.5rem;
+            color: var(--white-color);
+            letter-spacing: 2px;
+            text-shadow: 
+                -2px -2px 0 #006666,
+                 2px -2px 0 #006666,
+                -2px  2px 0 #006666,
+                 2px  2px 0 #006666,
+                 -3px 3px 5px rgba(0,0,0,0.5);
+        }
+
+        /* Q&A Section */
+        #qna-container {
+            margin-bottom: 2rem;
+        }
+
+        .qna-item {
+            background: var(--bg-color);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .qna-item:hover {
+            box-shadow: 0 8px 16px rgba(0, 128, 128, 0.2);
+        }
+
+        .question {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: var(--white-color);
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .question span {
+            padding-right: 1.5rem; /* Space for the icon */
+        }
+        
+        .question::after {
+            content: '\2795'; /* Heavy Plus Sign */
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .question.active::after {
+            content: '\2796'; /* Heavy Minus Sign */
+            transform: rotate(180deg);
+        }
+
+        .answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .answer-content {
+            padding: 1.5rem;
+            padding-top: 0;
+        }
+        .answer-content ul {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+
+
+        /* Navigation */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed var(--primary-color);
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--white-color);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 128, 128, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 128, 128, 0.4);
+        }
+
+        .nav-btn:active:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 128, 128, 0.3);
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+
+        #page-info {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+            .container {
+                padding: 1.5rem;
+            }
+            .title-box h1 {
+                font-size: 2.5rem;
+            }
+            .question {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+            .navigation {
+                flex-direction: column;
+            }
+            #page-info {
+                margin: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="title-box">
+            <h1>Q&A Section</h1>
+        </div>
+
+        <div id="qna-container">
+            <!-- Questions will be dynamically inserted here by JavaScript -->
+        </div>
+
+        <div class="navigation">
+            <button id="prev-btn" class="nav-btn">&larr; Previous</button>
+            <span id="page-info"></span>
+            <button id="next-btn" class="nav-btn">Next &rarr;</button>
+        </div>
+    </div>
+
+    <script>
+        // Data containing all 100 Questions and Answers
+        const qnaData = [
+            // --- QUESTIONS 1-50 ---
+            { question: `I've just finished my 10th standard. How do I choose between Science, Commerce, and Arts?`, answer: `This is a crucial first step in your career journey. Don't choose based on marks or peer pressure. Instead, use a three-pronged approach:<br><br><b>Interest:</b> What subjects do you genuinely enjoy studying? Do you like solving complex problems (Science), understanding systems and economies (Commerce), or exploring creativity and human behaviour (Arts)?<br><br><b>Aptitude:</b> What are you naturally good at? Are you strong in logic and math, or do you excel at communication and analysis? Take an aptitude test to get objective insights.<br><br><b>Career Goals:</b> What kind of work do you see yourself doing in the future? Research careers linked to each stream. Science opens doors to Engineering, Medicine, Research. Commerce leads to CA, Finance, Management. Arts leads to Civil Services, Design, Journalism, Law.` },
+            { question: `Are Arts/Humanities a viable career option in India?`, answer: `Absolutely! The perception of Arts being a "weaker" stream is outdated. An Arts degree develops critical thinking, communication, and analytical skills, which are highly valued everywhere. Career options are vast: Civil Services (UPSC), Law (after an integrated BA LLB), Journalism, Psychology, Design, Content Creation, Marketing, Academics, and many more.` },
+            { question: `What is the difference between PCM and PCB in Science? Which one should I choose?`, answer: `<b>PCM (Physics, Chemistry, Maths):</b> This is the "Engineering" stream. It's for careers in engineering, architecture, data science, computer applications, etc.<br><br><b>PCB (Physics, Chemistry, Biology):</b> This is the "Medical" stream. It's essential for careers like MBBS, Dentistry, Pharmacy, and Biotechnology.<br><br><b>PCMB (Physics, Chemistry, Maths, Biology):</b> This keeps both options open but is very demanding. The choice depends entirely on whether your interest lies in life sciences or applied mathematics and technology.` },
+            { question: `My parents want me to be an engineer, but I am interested in design. What should I do?`, answer: `This requires a balanced approach:<br><br><b>Do Your Research:</b> Prepare a detailed presentation for your parents on the scope and success of design careers (UI/UX, Product Design, Animation).<br><br><b>Find a Middle Path:</b> Explore fields that combine technology and design, like Product Design or UI/UX Engineering.<br><br><b>Seek Counselling:</b> An expert's opinion can provide a neutral perspective.<br><br><b>Communicate Respectfully:</b> Explain your passion with a clear plan. Your conviction will be persuasive.` },
+            { question: `What are some good "Plan B" options if I don't get into IIT or a top medical college?`, answer: `Not getting into your dream college isn't the end of the world.<br><br><b>For Engineering Aspirants:</b> Consider top NITs, IIITs, BITS, VIT, or a B.Sc in a related field followed by an M.Tech or MBA from a top institute.<br><br><b>For Medical Aspirants:</b> Besides MBBS, consider Dentistry (BDS), Veterinary Science (BVSc), Pharmacy (B.Pharm), Physiotherapy (BPT), or Biotechnology. These are all respected and well-paying professions.` },
+            { question: `How many hours should I study daily to crack JEE Main/NEET?`, answer: `Quality over quantity is key. A good benchmark is 6-8 hours of focused self-study per day, besides coaching. Break it down into sessions of 1.5-2 hours with short breaks. Consistency is more important than cramming.` },
+            { question: `Is it necessary to join a coaching institute for entrance exams like CAT or UPSC?`, answer: `It's not strictly necessary, but can be very helpful. Coaching provides structured guidance, experienced faculty, and a competitive peer group. However, self-study is possible if you are highly disciplined, using standard textbooks, online resources, and a rigorous mock test series. The choice depends on your learning style.` },
+            { question: `I am an average student. Can I crack a tough exam like CLAT or AIIMS?`, answer: `Yes, you can. Entrance exams are less about being a "brilliant" student and more about strategy, hard work, and consistency. Many "average" students outperform "toppers" because they start early, are consistent, focus on strategy, and believe in themselves.` },
+            { question: `How do I manage board exam preparation along with entrance exam studies?`, answer: `The key is integration. The syllabus for core science subjects is largely similar. When you study a chapter, prepare it for both exams. In the last 2-3 months before boards, shift your focus more towards the board exam pattern. A well-structured timetable is your best friend.` },
+            { question: `What is the role of mock tests in preparation?`, answer: `Mock tests are the most critical part of your preparation. They help you:<ul><li>Simulate Exam Conditions to manage time and pressure.</li><li>Identify Weak Areas for revision.</li><li>Develop a Strategy for attempting the paper.</li><li>Track Progress. Aim for at least 15-20 full-length mocks.</li></ul>` },
+            { question: `What is the difference between a B.Tech and a B.E. degree?`, answer: `Functionally and for employment purposes, there is no significant difference. The core curriculum and career opportunities are identical. The difference in name is mostly historical and depends on the university. Employers treat both degrees equally.` },
+            { question: `Is a degree from an IIT/IIM/AIIMS/NLU a guarantee for a successful career?`, answer: `A degree from a premier institute gives you a phenomenal head start with a strong brand name, a powerful alumni network, and access to the best recruiters. However, it is not a "guarantee." Long-term success depends on your continuous learning, soft skills, and work ethic.` },
+            { question: `How important is the college's NIRF ranking when choosing an institution?`, answer: `The NIRF ranking is a good starting point, but it shouldn't be the only factor. Also consider: the specific branch or department reputation, location for internship opportunities, and real student reviews about campus life and placement support.` },
+            { question: `How can I build a strong profile during my college years?`, answer: `Grades are important, but not everything. Build a strong profile through:<ul><li><b>Internships:</b> Do at least 2-3 relevant internships.</li><li><b>Projects:</b> Work on personal or academic projects that showcase your skills.</li><li><b>Extracurriculars:</b> Participate in college clubs and take leadership roles.</li><li><b>Learn New Skills:</b> Take online courses to learn skills not covered in your syllabus.</li><li><b>Networking:</b> Connect with seniors, alumni, and professors.</li></ul>` },
+            { question: `What is the difference between an MBA and a PGDM? Which is better?`, answer: `An MBA is a degree offered by universities, while a PGDM is a diploma offered by autonomous institutes (like IIMs). For all practical purposes, a PGDM from a top institute like an IIM is considered equivalent or even more valuable than an MBA from most universities. The reputation of the institute matters far more than the title.` },
+            { question: `Is studying abroad better than studying in India?`, answer: `It's not about "better," it's about "different."<br><br><b>Study in India (Pros):</b> Top institutes (IITs/IIMs) are world-class, significantly lower cost, strong local network for jobs in India.<br><br><b>Study Abroad (Pros):</b> Global exposure, access to cutting-edge research, curriculum flexibility, and better opportunities for an international career. The choice depends on your career goals and financial situation.` },
+            { question: `Which country is best for Indian students to study in?`, answer: `This depends on your course and budget. Popular destinations are:<ul><li><b>USA:</b> Best for STEM and MBA; expensive.</li><li><b>UK:</b> Shorter Master's programs; strong in finance and law.</li><li><b>Canada:</b> Welcoming immigration policies; strong in IT and business.</li><li><b>Australia:</b> Great for hospitality and IT.</li><li><b>Germany:</b> Top choice for engineering with low/zero tuition fees in public universities.</li></ul>` },
+            { question: `How do I apply for scholarships to study abroad?`, answer: `Start early! The process is competitive. Look for scholarships on university websites, government portals (like Fulbright, Chevening), and private trusts. A strong application requires a high GPA, good standardized test scores (GRE/GMAT/IELTS), a compelling Statement of Purpose (SOP), and strong Letters of Recommendation (LORs).` },
+            { question: `What are GRE, GMAT, IELTS, and TOEFL?`, answer: `These are standardized tests for admission to foreign universities.<ul><li><b>GRE:</b> For Master's/PhD programs, primarily in STEM and humanities.</li><li><b>GMAT:</b> For MBA and business school programs.</li><li><b>IELTS & TOEFL:</b> English proficiency tests required to prove you can handle a course taught in English.</li></ul>` },
+            { question: `What is a Statement of Purpose (SOP)? How do I write a good one?`, answer: `The SOP is a personal essay, a crucial part of your application. It's your chance to tell the admissions committee who you are beyond your grades. A good SOP should cover your background, why you want to study that specific course at that particular university, and your career goals. Be authentic, tell a story, and proofread meticulously.` },
+            { question: `What are the biggest government job exams in India after graduation?`, answer: `The most prestigious exams are:<ul><li><b>UPSC Civil Services Exam (CSE):</b> For IAS, IPS, IFS, etc.</li><li><b>SSC CGL:</b> For non-gazetted Group B and C posts.</li><li><b>IBPS PO / SBI PO:</b> For Probationary Officers in public sector banks.</li><li><b>RBI Grade B:</b> For manager-level posts in the Reserve Bank of India.</li><li><b>Defence Exams (CDS, AFCAT):</b> For officer roles in the Armed Forces.</li></ul>` },
+            { question: `Can I prepare for UPSC while working a full-time job?`, answer: `Yes, it is challenging but definitely possible. The key is immaculate time management. Utilize weekends for core syllabus and squeeze in 2-3 hours of focused study on weekdays. Your work experience can be a huge asset in the interview stage.` },
+            { question: `What is the difference between IAS and IPS?`, answer: `Both are recruited through the UPSC CSE.<br>• <b>IAS (Indian Administrative Service):</b> The premier administrative service responsible for policy formulation and implementation.<br>• <b>IPS (Indian Police Service):</b> Responsible for law and order, and internal security. IPS officers command the police forces.` },
+            { question: `Are government jobs better than private sector jobs?`, answer: `It depends on your priorities.<br>• <b>Government Jobs (Pros):</b> Job security, social respect, work-life balance.<br>• <b>Private Sector Jobs (Pros):</b> Faster career growth, higher salaries, opportunities for innovation.<br>If stability and social impact are your priorities, a government job is a great choice. If you are driven by fast growth and innovation, the private sector might be a better fit.` },
+            { question: `What is the eligibility criteria for most government jobs?`, answer: `General criteria include:<ul><li><b>Nationality:</b> Citizen of India.</li><li><b>Age Limit:</b> Usually between 21 to 30 years for the general category, with relaxations for reserved categories.</li><li><b>Educational Qualification:</b> A bachelor's degree in any discipline from a recognized university.</li></ul>` },
+            { question: `What is Data Science and is it a good career option in India?`, answer: `Data Science uses scientific methods to extract knowledge from data. It is one of the hottest career options in India. Roles include Data Analyst, Data Scientist, and Machine Learning Engineer, and they command very high salaries. A strong background in Math, Statistics, and Programming is required.` },
+            { question: `I want a career in Digital Marketing. Do I need a specific degree?`, answer: `No, you don't need a specific degree. What's more important are the skills: SEO, SEM, Social Media Marketing, Content Marketing, and Analytics. The best way to start is by taking up online certifications and working on internships or freelance projects to build a portfolio.` },
+            { question: `What is UI/UX Design? How is it different from Graphic Design?`, answer: `• <b>Graphic Design:</b> Focuses on visual aesthetics like logos and layouts (how things look).<br>• <b>UI (User Interface) Design:</b> A subset of graphic design for digital products, focusing on the look and feel of screens and buttons.<br>• <b>UX (User Experience) Design:</b> Much broader, focusing on the entire user journey to ensure a product is easy and enjoyable to use (how things work).` },
+            { question: `Is a career in Ethical Hacking/Cybersecurity good in India?`, answer: `It is an excellent and rapidly growing field. As more businesses move online, the need for cybersecurity professionals to protect data is skyrocketing. You need a strong foundation in computer networks. Certifications like CEH (Certified Ethical Hacker) can significantly boost your career.` },
+            { question: `What are some top "non-coding" jobs in the IT industry?`, answer: `The IT industry has many high-paying roles for non-coders:<ul><li><b>Business Analyst:</b> Bridges the gap between technical teams and clients.</li><li><b>Product Manager:</b> Defines the vision for a product.</li><li><b>Technical Writer:</b> Creates clear user manuals and documentation.</li><li><b>UI/UX Designer:</b> Designs the usability of software.</li><li><b>IT Project Manager:</b> Manages timelines and resources for tech projects.</li></ul>` },
+            { question: `My communication skills are weak. How can I improve them for interviews?`, answer: `This is a skill that can be developed with practice.<ul><li><b>Read Daily:</b> Read newspapers or books out loud for 15 minutes.</li><li><b>Practice Speaking:</b> Speak in English with friends or in front of a mirror.</li><li><b>Watch English Content:</b> Watch movies and interviews to understand intonation.</li><li><b>Prepare for Interviews:</b> Write down and practice answers to common HR questions until you sound confident.</li></ul>` },
+            { question: `How do I get an internship with no prior experience?`, answer: `It's a common problem. You can:<ul><li><b>Build Skills:</b> Take online courses and build small projects.</li><li><b>Start Small:</b> Apply to startups, as they are often more willing to hire interns with no formal experience.</li><li><b>Networking:</b> Use LinkedIn to connect with professionals and ask for advice.</li><li><b>Cold Emailing:</b> A well-crafted email to a specific person can be very effective.</li></ul>` },
+            { question: `What is the difference between a resume and a CV?`, answer: `• <b>Resume:</b> A concise, one-page summary of your skills and experience, tailored for a specific job. It's the standard for most private sector jobs in India.<br>• <b>CV (Curriculum Vitae):</b> A longer, more detailed document including your entire academic history, publications, and awards. It's primarily used for academic or research positions.` },
+            { question: `How can I use LinkedIn effectively for my job search?`, answer: `• <b>Optimize Your Profile:</b> Use a professional photo and a clear headline.<br>• <b>Connect Strategically:</b> Connect with HR managers, alumni, and professionals in your target industry.<br>• <b>Engage:</b> Like, comment, and share relevant industry posts to increase your visibility.<br>• <b>Use the Jobs Tab:</b> Set up job alerts for roles you are interested in.` },
+            { question: `What are the most in-demand skills in the job market today?`, answer: `The market demands a mix of technical (hard) and people (soft) skills.<br>• <b>Hard Skills:</b> Artificial Intelligence/Machine Learning, Cloud Computing, Data Analytics, Cybersecurity, UI/UX Design.<br>• <b>Soft Skills:</b> Critical Thinking, Communication, Collaboration, Creativity, Emotional Intelligence.` },
+            { question: `How much does it cost to do an MBA from an IIM? Is it worth it?`, answer: `The fee for a two-year MBA from a top IIM is typically between ₹23 to ₹25 lakhs. For most people, it's worth it. The Return on Investment (ROI) is excellent, with average starting salaries often in the same range as the fee, allowing you to pay back your education loan relatively quickly.` },
+            { question: `How can I fund my education if my family cannot afford it?`, answer: `Don't let finances stop you. Options include:<ul><li><b>Education Loans:</b> All major banks offer education loans. For premier institutes, they are often collateral-free.</li><li><b>Scholarships:</b> Actively apply for scholarships from the government, universities, and private trusts.</li><li><b>Part-time Work/Internships:</b> Many students work part-time to cover their living expenses.</li></ul>` },
+            { question: `What is the difference between a scholarship and a fellowship?`, answer: `• <b>Scholarship:</b> Generally awarded to undergraduate or postgraduate students to help pay for tuition, usually based on merit or need.<br>• <b>Fellowship:</b> Typically awarded at the graduate (Master's or PhD) level for students pursuing research. It often comes with a stipend and may require teaching or research assistance.` },
+            { question: `Are there any scholarships specifically for female students in India?`, answer: `Yes, many organizations offer scholarships to promote girls' education. Some prominent ones include the CBSE UDAAN scheme for engineering, the L'Oréal India for Young Women in Science Scholarship, and the Indira Gandhi Scholarship for Single Girl Child.` },
+            { question: `Is taking a large education loan a good idea?`, answer: `It can be a very smart investment if taken for a professional course (like MBA, B.Tech) from a top-tier institution with a proven track record of high placements. Be cautious about taking a large loan for a general degree from a lesser-known college with poor placement records.` },
+            { question: `What is the 'gap year' concept? Is it a good idea to take one?`, answer: `A gap year is a year-long break taken between school and college. It can be a good idea if you have a structured plan, such as preparing for entrance exams, volunteering, or learning a new skill. A productive gap year can strengthen your profile, but an idle one can be seen negatively.` },
+            { question: `My child is confused about their career. How can I help as a parent?`, answer: `Your support is crucial.<ul><li><b>Be a Facilitator, Not a Dictator:</b> Help them explore their own interests instead of imposing your dreams.</li><li><b>Listen:</b> Have open conversations about their aspirations and fears.</li><li><b>Expose Them:</b> Take them to career fairs and arrange talks with professionals.</li><li><b>Seek Professional Help:</b> A career counsellor can provide clarity for both of you.</li></ul>` },
+            { question: `Is a college's location (e.g., a big city vs. a small town) important?`, answer: `Yes, it can be.<br>• <b>Big City (Pros):</b> Better access to internships, industry events, and networking.<br>• <b>Small Town (Pros):</b> Fewer distractions, lower cost of living, stronger campus community.<br>For professional courses like an MBA, a college in a major city has a distinct advantage.` },
+            { question: `How to deal with exam stress and anxiety?`, answer: `It's important to manage stress.<ul><li><b>Stay Organized:</b> A proper study plan reduces anxiety.</li><li><b>Take Breaks:</b> Use techniques like the Pomodoro Technique.</li><li><b>Stay Healthy:</b> Get 7-8 hours of sleep, eat well, and exercise.</li><li><b>Practice Mindfulness:</b> Simple breathing exercises or meditation can help.</li><li><b>Talk to Someone:</b> Share your feelings with friends or family.</li></ul>` },
+            { question: `What is the National Education Policy (NEP) 2020? How will it affect me?`, answer: `The NEP 2020 is a major reform. Key changes for higher education include:<ul><li><b>Multi-disciplinary Education:</b> The rigid separation between streams will be blurred.</li><li><b>Multiple Entry/Exit System:</b> You can get a certificate after 1 year, a diploma after 2, or a degree after 3-4 years, providing flexibility.</li><li><b>Academic Bank of Credit:</b> Your credits will be digitally stored and can be transferred between institutions.</li></ul>` },
+            { question: `Is it better to be a specialist or a generalist in today's job market?`, answer: `The ideal is to be a "T-shaped" professional. The vertical bar of the 'T' represents deep expertise in one core area (specialist). The horizontal bar represents a broad knowledge of related fields and strong soft skills (generalist). This allows you to collaborate effectively.` },
+            { question: `How do I choose the right specialization in my MBA/B.Tech?`, answer: `Make this decision in the second year, not before.<ul><li><b>Explore in Year 1:</b> Use the first year to study foundational subjects and see what you enjoy.</li><li><b>Internship Experience:</b> Your summer internship is the best way to get a real-world feel for a specialization.</li><li><b>Talk to Seniors & Alumni:</b> Ask them about job prospects and skills required.</li><li><b>Check Market Trends:</b> See which specializations are currently in high demand.</li></ul>` },
+            { question: `Are online degrees from Indian universities valid?`, answer: `Yes, online degrees from universities recognized by the University Grants Commission (UGC) are completely valid and treated as equivalent to regular, on-campus degrees for jobs and higher education. However, always check for the UGC's "entitlement" status for the specific online program before enrolling.` },
+            { question: `What are the career prospects after a PhD in India?`, answer: `A PhD is the highest academic degree. The primary career paths are:<ul><li><b>Academia:</b> Becoming an Assistant Professor in a university.</li><li><b>Research & Development (R&D):</b> Working in R&D departments of large private companies or government organizations (like ISRO, DRDO).</li><li><b>Industry Consulting:</b> Working as a subject matter expert in consulting firms. A PhD is a long-term commitment for those passionate about research.</li></ul>` },
+            { question: `I failed in an exam / have a low score. Is my career over?`, answer: `Absolutely not. Failure is a part of the journey, not the final destination. Analyze what went wrong and learn from it. Compensate for low grades by building exceptional practical skills through projects and internships. Your resilience and attitude matter more than a single number on a certificate.` },
+            
+            // --- QUESTIONS 51-100 ---
+            { question: `I've worked for 3 years in IT, but I'm passionate about marketing. Is it too late to switch careers?`, answer: `Not at all! This is a "career pivot." Your IT experience is a huge asset. Leverage your analytical skills for roles in MarTech or Digital Marketing Analytics. Upskill with a certified course in Digital Marketing and network with professionals in the field. Highlight how your technical background makes you a better marketer.` },
+            { question: `Is freelancing a stable and viable career choice in India?`, answer: `Yes, the gig economy is booming, making freelancing very viable. <br><b>Pros:</b> Flexibility, being your own boss, higher income potential. <br><b>Cons:</b> Unpredictable income, no employee benefits, you must find your own work. To succeed, build a niche, create a strong portfolio, and master financial discipline.` },
+            { question: `I want to start my own business. Should I get an MBA first or just start?`, answer: `There's no single right answer. <br><b>Get an MBA first if:</b> You need a strong network, access to capital, or lack fundamental business skills. <br><b>Just start now if:</b> Your idea is in a fast-moving tech space, you already have the skills, and you are comfortable with higher risk.` },
+            { question: `I have a significant gap in my resume. How do I explain this to recruiters?`, answer: `Address it honestly, briefly, and confidently. In the interview, prepare a concise, positive statement. For example: "I took a planned one-year break for a family situation. During that time, I stayed updated with industry trends by completing online courses in [relevant skill]. I am now fully recharged and excited to return to the workforce."` },
+            { question: `Is it a good idea to join the armed forces as a soldier/jawan (Non-Officer Ranks)?`, answer: `It is a highly respectable and patriotic career choice. <br><b>Benefits:</b> Job security, early retirement with a pension, free medical care, housing, and other perks. <br><b>Career Progression:</b> Opportunities for internal promotion and you gain immense discipline and skills. <br><b>Considerations:</b> It involves a physically demanding lifestyle and long periods away from family.` },
+            { question: `What is the career path to become a lawyer in India?`, answer: `There are two primary routes: <br><b>1. 5-Year Integrated Course:</b> Pursued right after Class 12 (e.g., B.A. LL.B.). Admission is via entrance exams like CLAT. <br><b>2. 3-Year Course:</b> For students who have already completed a bachelor's degree. After getting your LLB, you must clear the All India Bar Examination (AIBE) to practice in Indian courts.` },
+            { question: `How do I get into premier design institutes like NID and NIFT?`, answer: `Admission is highly competitive and involves a two-stage exam process that tests your creativity, drawing skills, and general ability. To prepare, you need to build a strong portfolio, develop your sketching and visualization skills, and be aware of design trends.` },
+            { question: `I love science but don't want to be an engineer or a doctor. What are my career options after a B.Sc.?`, answer: `A B.Sc. degree opens up a world of scientific and analytical careers, including: <ul><li>Higher Studies (M.Sc./PhD) for a career in research or academics.</li><li>Government jobs as a scientific officer.</li><li>Data Analytics/Science.</li><li>MBA to combine technical knowledge with business skills.</li><li>Other options like Technical Writing, Environmental Science, and Food Technology.</li></ul>` },
+            { question: `What is the scope of Hotel Management in India?`, answer: `The hospitality industry is vast and offers diverse roles beyond just hotels, including Airline Cabin Crew, Cruise Ship Management, Event Management, and management in Quick Service Restaurants (QSRs). Strong communication skills and a service-oriented personality are key.` },
+            { question: `What does a career in Architecture involve and how do I pursue it?`, answer: `Architecture is a blend of art and science, involving the design of buildings. You need to pursue a 5-year Bachelor of Architecture (B.Arch) degree. Admission requires clearing entrance exams like NATA or JEE Main Paper 2, which test your drawing skills, observation, and critical thinking.` },
+            { question: `How do I negotiate my first salary as a fresher?`, answer: `While there's limited room, you can do it professionally. <br>1. <b>Research:</b> Know the average salary for the role. <br>2. <b>Don't state the first number:</b> Ask about the budget for the position. <br>3. <b>Justify Your Ask:</b> Use a special skill, a great internship, or a competing offer as leverage. <br>4. <b>Consider the Whole Package:</b> If the base salary is fixed, ask about a joining bonus or other benefits.` },
+            { question: `What is the difference between On-Campus and Off-Campus placements?`, answer: `<b>On-Campus:</b> The company visits your college. The process is streamlined, and you compete only with your college mates. This is the easiest way to get your first job. <br><b>Off-Campus:</b> You apply to companies on your own. You compete with a much larger pool of candidates, requiring more effort and a very strong resume.` },
+            { question: `How do I answer the "What is your greatest weakness?" interview question?`, answer: `The goal is to show self-awareness and improvement. Avoid clichés like "I'm a perfectionist." Instead, state a real, minor weakness, provide an example, and then explain the concrete steps you've taken to improve it. This turns a potential negative into a positive.` },
+            { question: `What are Applicant Tracking Systems (ATS) and how can I create a resume that beats them?`, answer: `ATS is software that scans resumes for keywords. To optimize your resume for ATS: <ul><li><b>Use Keywords:</b> Mirror keywords from the job description.</li><li><b>Keep Formatting Simple:</b> Avoid tables, columns, images, and fancy fonts.</li><li><b>Use Standard Headers:</b> "Work Experience," "Education," etc.</li><li><b>Submit as PDF or .docx.</b></li></ul>` },
+            { question: `How important is a cover letter? Do I need to write one if it's optional?`, answer: `Yes, always write one! A cover letter is your chance to stand out. A good cover letter is tailored to the specific job, shows enthusiasm for the company, and highlights how your key experiences make you a great fit for the role. It can be the tie-breaker.` },
+            { question: `All my friends are getting placed, and I'm not. How do I deal with this peer pressure?`, answer: `This is a common feeling. <ul><li><b>Stop Comparing:</b> Your journey is your own. Success is not a race.</li><li><b>Limit Social Media:</b> You're only seeing their highlight reel.</li><li><b>Focus on Your Process:</b> Celebrate small wins, like applying to 5 jobs today.</li><li><b>Talk About It:</b> Share your feelings with trusted friends or family.</li></ul>` },
+            { question: `What is "Imposter Syndrome" and how can I overcome it?`, answer: `Imposter Syndrome is the feeling of being a fraud and not deserving your accomplishments. To overcome it: <ul><li><b>Acknowledge Your Feelings:</b> Understand it's a normal psychological pattern.</li><li><b>Track Your Successes:</b> Keep a journal of your achievements.</li><li><b>Separate Feelings from Facts:</b> Focus on the factual evidence of your success.</li><li><b>Stop Chasing Perfection.</b></li></ul>` },
+            { question: `How can I build a strong personal brand online as a student?`, answer: `A personal brand is your professional reputation. <ul><li><b>Optimize LinkedIn:</b> Have a professional photo and a keyword-rich profile.</li><li><b>Share Your Work:</b> Use GitHub for code, Behance for design, or a blog for writing.</li><li><b>Engage Intelligently:</b> Share insightful articles and write thoughtful comments.</li><li><b>Clean Up Your Socials:</b> Ensure your public profiles are professional.</li></ul>` },
+            { question: `What is burnout, and how can I avoid it during long-term exam preparation?`, answer: `Burnout is a state of exhaustion caused by prolonged stress. To prevent it: <ul><li><b>Schedule Breaks:</b> Take one day off completely every week.</li><li><b>Non-Academic Hobbies:</b> Make time for hobbies you enjoy.</li><li><b>Set Realistic Goals:</b> Don't try to study 16 hours a day.</li><li><b>Prioritize Sleep:</b> Aim for 7-8 hours.</li></ul>` },
+            { question: `Is it more important to have a high IQ or high EQ (Emotional Intelligence) for career success?`, answer: `IQ might get you in the door, but EQ is what determines your success and leadership potential. EQ is the ability to understand and manage your emotions and recognize them in others. In the modern workplace, where teamwork and client management are key, a high EQ is often more valuable.` },
+            { question: `Is it better to pursue an M.Tech right after a B.Tech or after gaining work experience?`, answer: `Both have advantages. <br><b>M.Tech right after B.Tech:</b> Good if you are academically inclined and want to get into R&D or academia. <br><b>M.Tech after work experience:</b> Good if you want to specialize in a field you've found interesting at your job. Your practical experience will provide better context. For most industry jobs, gaining experience first is often the better choice.` },
+            { question: `What is the GATE exam, and what are its benefits?`, answer: `GATE (Graduate Aptitude Test in Engineering) is a national-level exam. Its benefits are: <ul><li><b>Admissions for M.Tech/PhD:</b> It is the primary criteria for admission to postgraduate programs at IITs, NITs, etc.</li><li><b>PSU Recruitment:</b> Many Public Sector Undertakings (PSUs) use GATE scores for direct recruitment.</li><li><b>Stipend:</b> Qualifying makes you eligible for a monthly stipend during your M.Tech studies.</li></ul>` },
+            { question: `I'm not from a Computer Science background. Can I pursue a Master's in Data Science or AI?`, answer: `Yes, but it requires dedicated effort. You will need a strong foundation in Linear Algebra, Calculus, Statistics, and programming (Python). Before applying, you must demonstrate your skills by taking online certification courses and building a portfolio of projects.` },
+            { question: `How do I prepare for PhD admissions in India (at an IIT or IISc)?`, answer: `The process is rigorous. You typically need a high score in a national exam like GATE or UGC-NET. You must identify a specific research area, find a supervisor whose work aligns with your interests, write a strong research proposal, and clear a technical interview.` },
+            { question: `What is the difference between an M.S. (Master of Science) and an M.Eng. (Master of Engineering)?`, answer: `This distinction is common in universities abroad. <br><b>M.S. (Master of Science):</b> A research-oriented, thesis-based degree. It's ideal if you want to pursue a PhD or work in R&D. <br><b>M.Eng. (Master of Engineering):</b> A professional, course-based degree designed to provide advanced practical skills for the industry. It's usually shorter.` },
+            { question: `What is CTC (Cost to Company) and how is it different from in-hand salary?`, answer: `<b>CTC:</b> The total amount a company spends on an employee in a year. It includes your gross salary PLUS hidden costs like the company's contribution to your Provident Fund (PF) and insurance. <br><b>In-Hand Salary:</b> The actual amount credited to your bank account monthly. It is calculated as: Gross Salary - (Employee's PF contribution + Taxes). Your in-hand salary will always be significantly lower than your CTC divided by 12.` },
+            { question: `What should I look for in a company's offer letter besides the salary?`, answer: `An offer letter is a legal document. Look for: <ul><li><b>Role & Responsibilities:</b> Does it match what was discussed?</li><li><b>Notice Period:</b> How many months' notice do you have to serve?</li><li><b>Non-compete Clause:</b> Does it restrict you from joining a competitor?</li><li><b>Leave Policy and Benefits.</b></li></ul>` },
+            { question: `How does an internship get converted into a PPO (Pre-Placement Offer)?`, answer: `A PPO is a job offer based on excellent internship performance. To secure one: <ul><li><b>Be Proactive:</b> Ask questions and volunteer for more responsibilities.</li><li><b>Network Internally:</b> Build good relationships with your manager and team.</li><li><b>Deliver High-Quality Work:</b> Ensure your project is well-executed and on time.</li><li><b>Be a Team Player:</b> Fit into the company culture.</li></ul>` },
+            { question: `Are certifications (from Coursera, edX, etc.) valuable for getting a job?`, answer: `Yes, but their value depends on how you use them. They show initiative and fill skill gaps. However, a certificate alone won't get you a job. You must apply the knowledge by building projects. A portfolio demonstrating your skills is far more valuable than the certificate itself.` },
+            { question: `Is it better to join a large, established MNC or a fast-growing startup for my first job?`, answer: `Both offer different experiences. <br><b>MNC:</b> Offers brand recognition, structured training, and job security, but growth can be slower. <br><b>Startup:</b> Offers fast-paced learning, high responsibility, and direct impact, but with less job security and structure. Choose an MNC for stability; choose a startup to learn quickly and embrace risk.` },
+            { question: `What is the H-1B visa (USA) and how does it affect job prospects after a Master's?`, answer: `The H-1B is a work visa allowing U.S. employers to hire foreign workers. The challenge is that demand far exceeds supply, and selection is done via a lottery system. There is no guarantee you will get an H-1B visa, even with a job offer from a top company. This uncertainty is a major factor to consider.` },
+            { question: `How important is my college's brand for study abroad applications?`, answer: `It helps, but it's not the most important factor. A degree from a top Indian college is a strong signal, but what matters more are your GPA, standardized test scores (GRE/GMAT), research/internship experience, and a compelling Statement of Purpose. A 9.0 GPA from a lesser-known college is often better than a 7.0 from an IIT.` },
+            { question: `What are Letters of Recommendation (LORs) and who should I ask to write them?`, answer: `An LOR is a letter attesting to your skills, written by a professor or manager. Ask someone who knows you well and in whose class/team you performed well. It's better to get a glowing LOR from an Assistant Professor who knows you than a generic one from the Head of the Department who doesn't. Ask them at least a month in advance.` },
+            { question: `What is the difference between a fully-funded PhD program and a regular one?`, answer: `<b>Regular Program:</b> You are responsible for paying the full tuition and living expenses. <br><b>Fully-Funded Program:</b> The university waives your tuition fees AND provides a monthly stipend to cover living expenses, in return for work as a Research or Teaching Assistant. Almost all reputable PhD programs in STEM fields in the USA are fully funded.` },
+            { question: `Is it better to study in a country that offers a Post-Study Work (PSW) visa?`, answer: `For most Indian students, yes. A PSW visa allows you to stay and work in the country for a period after you graduate. It's a game-changer as it lets you gain international work experience and recover education costs. Countries like Canada, the UK, Australia, and Germany have favorable PSW policies.` },
+            { question: `What is the role of Artificial Intelligence (AI) in the future of jobs? Should I be worried?`, answer: `AI will transform the job market, not destroy it. Repetitive, data-driven tasks are at risk of automation, but roles requiring creativity, critical thinking, and emotional intelligence will grow. The key is to learn how to use AI tools to become better and more efficient at your job.` },
+            { question: `What are some underrated but high-potential career fields for the next decade?`, answer: `Beyond CS and AI, consider these growing fields: <ul><li><b>Product Management:</b> The "mini-CEO" of a product in tech companies.</li><li><b>Renewable Energy:</b> High demand for engineers and policy experts.</li><li><b>Geriatric Care:</b> Huge need for healthcare professionals for the elderly.</li><li><b>Genomics & Biotechnology:</b> Personalized medicine and biotech research.</li><li><b>Technical Writing:</b> Growing need for people who can explain complex products clearly.</li></ul>` },
+            { question: `I'm in 12th standard. What are some unique integrated courses I can consider?`, answer: `Many universities now offer innovative 5-year integrated courses: <ul><li><b>Integrated M.Sc. in a basic science:</b> Offered by IISERs and some IITs for a research career.</li><li><b>Integrated M.A. in Humanities:</b> Offered by IIT Madras, a unique program in a technical environment.</li><li><b>B.Des + M.Des:</b> An integrated Master's in Design.</li><li><b>B.A. in Foreign Languages:</b> For careers in diplomacy and international business.</li></ul>` },
+            { question: `What is the real value of an alumni network from a top college?`, answer: `It is one of the most powerful, intangible assets you gain. It helps with job referrals, mentorship from senior alumni, finding co-founders or investors if you start a business, and provides a lifelong professional community you can rely on.` },
+            { question: `What are "Liberal Arts" education and its relevance in India?`, answer: `A Liberal Arts education focuses on developing broad knowledge and intellectual skills like critical thinking, communication, and problem-solving, rather than narrow vocational training. Premier private universities in India are pioneering this model. Graduates are highly sought after in fields like consulting, policy-making, journalism, and marketing.` },
+            { question: `How to choose between a better college with a non-preferred branch and a lower-ranked college with a preferred branch?`, answer: `This is a classic dilemma. The general advice is: <b>Branch over College</b>. If you are genuinely passionate about a specific field, you will be more motivated and likely perform better. However, if the difference in college brand is massive (e.g., an old IIT vs. a local private college), the top college provides a better peer group and network that can open more doors initially.` },
+            { question: `What is the difference between a Deemed, State, Central, and Private University?`, answer: `• <b>Central University:</b> Established and funded by the Central Government (e.g., Delhi University).<br>• <b>State University:</b> Established and funded by the State Government (e.g., Mumbai University).<br>• <b>Deemed University:</b> A high-performing institution granted university status by the MHRD (e.g., BITS Pilani).<br>• <b>Private University:</b> Established and self-financed by a private body (e.g., Ashoka University).` },
+            { question: `Can I appear for the UPSC Civil Services Exam in a regional language?`, answer: `Yes, absolutely. You have the option to write the Mains examination in any of the 22 languages listed in the Eighth Schedule of the Indian Constitution, as well as in English. You can also give your interview in the same language. Your choice of language has no bearing on your final score.` },
+            { question: `What are micro-internships and are they useful?`, answer: `Micro-internships are short-term, paid, professional assignments, typically project-based. They are a great way to gain professional experience and build your resume without committing to a full-time summer internship. They are particularly useful for exploring different industries quickly.` },
+            { question: `With remote work becoming common, does the city I live in still matter for my career?`, answer: `Yes, but in a different way. While you can work remotely, major hubs like Bangalore or Mumbai are still invaluable for networking, industry events, and the informal mentorship that happens in an office environment, especially in the initial stages of your career.` },
+            { question: `What is the scope of a career in sports management in India?`, answer: `It's a rapidly growing field, fueled by leagues like the IPL and ISL. Roles include Sports Marketing, Player Management, Sponsorship, and Event Operations. It requires a passion for sports combined with strong business acumen. Specialized Bachelor's or Master's programs are now available.` },
+            { question: `I'm interested in working for social impact. What are the career options beyond joining an NGO?`, answer: `The social impact space has evolved. Options include: <ul><li><b>Corporate Social Responsibility (CSR):</b> Managing social initiatives for large companies.</li><li><b>Social Enterprises:</b> Businesses designed to solve social problems.</li><li><b>Impact Investing:</b> Investing in companies that generate social and financial returns.</li><li><b>Policy & Governance:</b> Working with think tanks or government bodies.</li></ul>` },
+            { question: `Is a "dual degree" (B.Tech + M.Tech) program from an IIT a good option?`, answer: `It has pros and cons. <br><b>Pros:</b> You save one year and get a secure path to a Master's degree from a top institute. <br><b>Cons:</b> It lacks flexibility as you are locked into a specialization early on, and you miss the opportunity to gain work experience before your Master's, which many employers value.` },
+            { question: `What are the different career roles within the field of Artificial Intelligence?`, answer: `"AI" is a broad term with many specialized roles: <ul><li><b>AI/ML Engineer:</b> Builds and deploys machine learning models.</li><li><b>Data Scientist:</b> Focuses on analysis and extracting insights from data.</li><li><b>AI Research Scientist:</b> Works on creating new algorithms (usually requires a PhD).</li><li><b>AI Product Manager:</b> Defines the vision and strategy for an AI product.</li></ul>` },
+            { question: `I have many interests and can't pick just one career for life. What should I do?`, answer: `You don't have to! The idea of a single "job for life" is outdated. You might be a "multipotentialite." <ul><li><b>Embrace Portfolio Careers:</b> Have a mix of part-time roles and freelance projects.</li><li><b>Focus on Skills, Not Job Titles:</b> Build transferable skills like communication and data analysis.</li><li><b>Plan in Chapters:</b> Think of your career in 5-7 year chapters. The most important skill is the ability to learn and adapt.</li></ul>` },
+        ];
+
+
+        // JavaScript for functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof qnaData === 'undefined' || !Array.isArray(qnaData)) {
+                console.error('Q&A data not found or is not in the correct format.');
+                return;
+            }
+
+            const qnaContainer = document.getElementById('qna-container');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const pageInfo = document.getElementById('page-info');
+
+            let currentPage = 1;
+            const itemsPerPage = 10;
+            const totalPages = Math.ceil(qnaData.length / itemsPerPage);
+
+            function displayPage(page) {
+                qnaContainer.innerHTML = '';
+                currentPage = page;
+
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const pageItems = qnaData.slice(startIndex, endIndex);
+
+                pageItems.forEach((item, index) => {
+                    const qnaItem = document.createElement('div');
+                    qnaItem.className = 'qna-item';
+                    const questionNumber = startIndex + index + 1;
+
+                    qnaItem.innerHTML = `
+                        <button class="question">
+                            <span>${questionNumber}. ${item.question}</span>
+                        </button>
+                        <div class="answer">
+                            <div class="answer-content">${item.answer}</div>
+                        </div>
+                    `;
+                    qnaContainer.appendChild(qnaItem);
+                });
+                
+                addAccordionListeners();
+                updateNavigation();
+            }
+
+            function addAccordionListeners() {
+                const questions = qnaContainer.querySelectorAll('.question');
+                questions.forEach(question => {
+                    question.addEventListener('click', () => {
+                        const answer = question.nextElementSibling;
+                        const isActive = question.classList.contains('active');
+                        
+                        if (isActive) {
+                            question.classList.remove('active');
+                            answer.style.maxHeight = null;
+                        } else {
+                            question.classList.add('active');
+                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                        }
+                    });
+                });
+            }
+
+            function updateNavigation() {
+                pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+                prevBtn.disabled = currentPage === 1;
+                nextBtn.disabled = currentPage === totalPages;
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    displayPage(currentPage - 1);
+                    window.scrollTo(0, 0);
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    displayPage(currentPage + 1);
+                    window.scrollTo(0, 0);
+                }
+            });
+
+            // Initial display
+            displayPage(1);
+        });
+
+    </script>
+</body>
+</html>
