@@ -608,6 +608,65 @@ color: var(--icon-color-turquoise);
         }
     }
 .nav-link i { display: none !important; }
+/* === AI CAREER COUNSELOR STYLES === */
+.ai-counselor-container {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    padding: 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    box-shadow: var(--shadow-md);
+    text-align: left;
+    color: var(--text-dark);
+}
+.ai-input-wrapper {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+#aiUserInput {
+    flex-grow: 1;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+#aiUserInput:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(64, 224, 208, 0.4);
+}
+#aiCounselorButton {
+    flex-shrink: 0;
+    padding: 0 30px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+#aiCounselorButton:hover {
+    background-color: #40E0D0; /* A slightly darker turquoise */
+    transform: translateY(-2px);
+}
+#aiCounselorButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+#aiResponse {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: aquamarine;
+    border-radius: 8px;
+    white-space: pre-wrap; /* This preserves formatting like line breaks */
+    line-height: 1.6;
+    min-height: 50px;
+    transition: background-color 0.3s ease;
+}
 </style>
 </head>
 <body>
@@ -875,15 +934,17 @@ color: var(--icon-color-turquoise);
                 <!-- ROTATING LOGO IS HERE -->
                 <div id="rotating-logo"></div>
 <!-- INSERT THIS LINE FOR THE NEW IMAGE -->
-<img src="image107.jpg" alt="Career guidance illustration" class="hero-inserted-image">
+<img src="image203.png" alt="Career guidance illustration" class="hero-inserted-image">
                 
-                <div class="search-engine-container">
-                    <div class="search-box-wrapper">
-                        <input type="text" id="aiSearchInput" placeholder="Search for courses, colleges, or exams..." maxlength="300">
-                        <button id="aiSearchButton">Search</button>
-                    </div>
-                    <p id="aiSearchFeedback" class="search-feedback"></p>
-                </div>
+               <!-- START: NEW AI COUNSELOR SECTION -->
+<div class="ai-counselor-container">
+    <div class="ai-input-wrapper">
+        <input type="text" id="aiUserInput" placeholder="Ask me anything about careers...">
+        <button id="aiCounselorButton">Get Advice</button>
+    </div>
+    <div id="aiResponse">The AI's answer will appear here...</div>
+</div>
+<!-- END: NEW AI COUNSELOR SECTION -->
             </div>
         </section>
 
@@ -1163,85 +1224,7 @@ color: var(--icon-color-turquoise);
 </script>
 
 <!-- SEARCH ENGINE SCRIPT -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('aiSearchInput');
-    const searchButton = document.getElementById('aiSearchButton');
-    const searchFeedback = document.getElementById('aiSearchFeedback');
 
-    const keywordRules = [
-        // High Priority Exam matches
-        { keywords: ['cat'], url: 'cat.html', priority: 20 },
-        { keywords: ['gate'], url: 'gate.html', priority: 20 },
-        { keywords: ['jee main', 'jee'], url: 'jee_main.html', priority: 20 },
-        { keywords: ['jee advanced'], url: 'jee_advanced.html', priority: 20 },
-        { keywords: ['neet ug', 'neet'], url: 'neet_ug.html', priority: 20 },
-        { keywords: ['neet pg'], url: 'neet_pg.html', priority: 20 },
-        { keywords: ['upsc', 'civil services'], url: 'upsc_civil_services.html', priority: 20 },
-        { keywords: ['clat'], url: 'clat.html', priority: 20 },
-        { keywords: ['nda'], url: 'nda.html', priority: 20 },
-        
-        // High Priority pages
-        { keywords: ['hotel management', 'hotel course'], url: 'hsc.html#hsc-bachelor-of-hotel-management-bhm', priority: 10 },
-        { keywords: ['overseas consultant', 'abroad agency'], url: 'ra.html', priority: 10 },
-        { keywords: ['premier institute'], url: 'premierInstitutes.html', priority: 10 },
-        
-        // Main Categories
-        { keywords: ['ssc', '10th', 'matriculation', 'class 10'], url: 'ssc.html', priority: 5 },
-        { keywords: ['hsc', '12th', 'intermediate', 'class 12'], url: 'hsc.html', priority: 5 },
-        { keywords: ['graduation', 'bachelor', 'degree'], url: 'grad.html', priority: 5 },
-        { keywords: ['post graduation', 'master', 'pg'], url: 'pg.html', priority: 5 },
-        { keywords: ['government', 'sarkari', 'govt jobs'], url: 'govt.html', priority: 5 },
-        { keywords: ['abroad', 'overseas', 'foreign country'], url: 'abroad.html', priority: 5 },
-        
-        // Tools & Other
-        { keywords: ['udaan', 'psychometric test'], url: 'udaan_final.html', priority: 5 },
-        { keywords: ['compare', 'comparison'], url: 'coursecomparison.html', priority: 5 },
-        { keywords: ['emerging', 'trending courses'], url: 'emerging_careers.html', priority: 5 },
-        { keywords: ['ielts', 'toefl', 'gre', 'gmat', 'english test'], url: 'abroad.html', priority: 4 },
-        
-        // Generic (Low Priority)
-        { keywords: ['college', 'top colleges'], url: 'colleges.html', priority: 1 },
-        { keywords: ['university', 'top universities'], url: 'university.html', priority: 1 },
-        { keywords: ['exam', 'entrance exam'], url: 'afcat.html', priority: 1 }
-    ];
-
-    function handleSearch() {
-        const query = searchInput.value.trim().toLowerCase();
-        if (!query) return;
-
-        let bestMatch = { priority: -1, url: null };
-
-        for (const rule of keywordRules) {
-            const anyKeywordMatches = rule.keywords.some(kw => query.includes(kw));
-            if (anyKeywordMatches && rule.priority > bestMatch.priority) {
-                bestMatch = rule;
-            }
-        }
-
-        if (bestMatch.url) {
-            searchFeedback.textContent = 'Match found! Redirecting...';
-            setTimeout(() => {
-                if(bestMatch.url.includes('#')){
-                    window.location.href = bestMatch.url;
-                } else {
-                    window.open(bestMatch.url, '_blank');
-                }
-                searchFeedback.textContent = '';
-            }, 1000);
-        } else {
-            searchFeedback.textContent = 'Sorry, no specific match found. Try a broader term.';
-        }
-    }
-
-    searchButton.addEventListener('click', handleSearch);
-    searchInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-            handleSearch();
-        }
-    });
-});
-</script>
 <!-- SCRIPT FOR DYNAMIC COUNTER -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -1279,6 +1262,74 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<!-- START: AI COUNSELOR SCRIPT -->
+<script>
+    // =========================================================
+    // ===> PASTE YOUR GOOGLE AI API KEY HERE! <===
+    // =========================================================
+    const API_KEY = "AIzaSyB2ikJNjNVkLqSRW5N8_QKkuP1wq4jny1A"; 
+    // =========================================================
+    
 
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+
+    // Get the elements from the page
+    const aiUserInput = document.getElementById('aiUserInput');
+    const aiCounselorButton = document.getElementById('aiCounselorButton');
+    const aiResponseDiv = document.getElementById('aiResponse');
+
+    async function getAiResponse() {
+        const userInput = aiUserInput.value.trim();
+
+        if (!userInput) {
+            aiResponseDiv.innerText = "Please enter a question first.";
+            return;
+        }
+
+        aiResponseDiv.style.backgroundColor = '#e9ecef';
+        aiResponseDiv.innerText = "The AI is thinking...";
+        aiCounselorButton.disabled = true; // Disable button while loading
+
+        const system_prompt = "You are an expert career counselor for Careers India. Your goal is to provide helpful, encouraging, and accurate advice to students about careers, courses, colleges, and scholarships in India. Keep your answers clear, concise, and structured with bullet points if possible.";
+        const full_prompt = system_prompt + "\n\nUser Question: " + userInput;
+
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    "contents": [{ "parts": [{ "text": full_prompt }] }]
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`API error: ${errorData.error.message}`);
+            }
+
+            const data = await response.json();
+            const aiText = data.candidates[0].content.parts[0].text;
+            
+            aiResponseDiv.style.backgroundColor = '#f4f4f4'; // Reset color
+            aiResponseDiv.innerText = aiText;
+
+        } catch (error) {
+            console.error("Error:", error);
+            aiResponseDiv.style.backgroundColor = '#f8d7da'; // Error color
+            aiResponseDiv.innerText = `Sorry, there was an error: ${error.message}`;
+        } finally {
+            aiCounselorButton.disabled = false; // Re-enable button
+        }
+    }
+
+    // Add event listeners
+    aiCounselorButton.addEventListener('click', getAiResponse);
+    aiUserInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            getAiResponse();
+        }
+    });
+</script>
+<!-- END: AI COUNSELOR SCRIPT -->
 </body>
 </html>
