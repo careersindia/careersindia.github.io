@@ -76,12 +76,13 @@
     }
     
  .logo {
-    font-size: 1.3rem;
+    font-size: 0.7rem;
     font-weight: 700;
     color: #000000;
     text-decoration: none;
     line-height: 1; /* Add this line */
-    text-align: center; /* Add this line */
+   text-align: left; /* Keep this change */
+    margin-right: auto; /* <-- THIS IS THE GUARANTEED FIX */
 }
     .logo i { margin-right: 8px; }
 
@@ -89,6 +90,7 @@
         display: flex;
         list-style: none;
         align-items: center;
+margin-left: auto;
     }
 
     .nav-menu > li {
@@ -102,7 +104,7 @@
         padding: 8px 10px; /* Reduced side padding */
         text-decoration: none;
         color: #000000;
-        font-size: 0.70rem; /* A reasonable font size */
+        font-size: 0.75rem; /* A reasonable font size */
         font-weight: 500;
         transition: color 0.3s ease, background-color 0.3s ease;
         border-radius: 5px;
@@ -726,7 +728,7 @@ color: var(--icon-color-turquoise);
     <!-- ======== HEADER & NAVIGATION ======== -->
     <header class="main-header">
         <nav class="navbar container">
-     <a href="#" class="logo"><i class="fas fa-graduation-cap"></i> Careers<br>India</a>
+
             
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item dropdown">
@@ -956,7 +958,7 @@ color: var(--icon-color-turquoise);
 
 <!-- START: NEW COMMUNITY DROPDOWN -->
 <li class="nav-item dropdown">
-    <a href="#" class="nav-link">Community Hub <i class="fas fa-chevron-down fa-xs"></i></a>
+    <a href="#" class="nav-link">Online Forum <i class="fas fa-chevron-down fa-xs"></i></a>
     <div class="dropdown-content">
         <a href="iim_community.html">IIM Aspirants 2025</a>
       
