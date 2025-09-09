@@ -1,0 +1,2346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Job Navigator</title>
+    
+    <!-- Google Fonts: Poppins for body, a nice contrast to Impact -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: aquamarine;
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --shadow-color: rgba(0, 0, 0, 0.15);
+            --gradient-start: #f0f8ff;
+            --gradient-end: #e6e6fa;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem;
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+        .main-container {
+            display: flex;
+            width: 100%;
+            max-width: 1400px;
+            min-height: 80vh;
+            background: var(--bg-color);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px var(--shadow-color);
+            overflow: hidden; 
+        }
+        .left-panel {
+            flex-basis: 40%;
+            padding: 40px;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid #eee;
+            align-self: stretch;
+        }
+        .title-box {
+            background-color: var(--primary-color);
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            transform: perspective(1000px) rotateX(-5deg);
+        }
+        .title-box h1 {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 2.8rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 0px #fff, 2px 2px 0px rgba(0,0,0,0.2);
+        }
+        .form-group { margin-bottom: 25px; }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .form-group i { margin-right: 10px; color: #555; }
+        .form-group input[type="number"], .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background-color: #fff;
+        }
+        .form-group input[type="number"]:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(127, 255, 212, 0.5);
+        }
+
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .generate-btn {
+            width: 100%; padding: 15px; font-size: 1.2rem; font-weight: 700;
+            color: var(--text-color); background-color: var(--primary-color);
+            border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); letter-spacing: 1px;
+        }
+        .generate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            filter: brightness(1.1);
+        }
+        .generate-btn i { margin-right: 10px; }
+        
+        /* --- Right Panel --- */
+        .right-panel {
+            flex-basis: 60%;
+            padding: 30px 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        #course-title-container {
+            text-align: center;
+            margin-bottom: 20px;
+            flex-shrink: 0;
+        }
+        #course-title-container h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+        }
+        #results-container {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        #message-box {
+            grid-column: 1 / -1;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            min-height: 400px; 
+            text-align: center; color: #aaa;
+        }
+        #message-box i { font-size: 5rem; margin-bottom: 20px; color: #ddd; }
+        #message-box h2 { font-size: 1.8rem; }
+        .detail-box {
+            aspect-ratio: 1 / 1;
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .detail-box .box-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        .detail-box .box-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        .detail-content {
+            display: none;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            text-align: left;
+            width: 100%;
+            animation: fadeInContent 0.5s ease;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .detail-content ul { padding-left: 20px; }
+        .detail-content li { margin-bottom: 5px; }
+        
+        .detail-box.active {
+            grid-row: span 2;
+            grid-column: span 2;
+            align-items: flex-start;
+            justify-content: flex-start;
+            background: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            aspect-ratio: unset;
+        }
+        .detail-box.active .box-title { font-size: 1.1rem; }
+        .detail-box.active .detail-content { display: block; }
+        @keyframes fadeInContent { from { opacity: 0; } to { opacity: 1; } }
+
+        #pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+            flex-shrink: 0;
+            margin-top: auto;
+        }
+        .pagination-btn {
+            padding: 10px 20px; margin: 0 15px; border: none;
+            background-color: transparent; color: var(--text-color);
+            cursor: pointer; transition: all 0.3s ease; font-size: 2rem;
+        }
+        .pagination-btn:hover:not(:disabled) { color: var(--primary-color); transform: scale(1.2); }
+        .pagination-btn:disabled { cursor: not-allowed; color: #ccc; }
+        #course-info { font-weight: 600; font-size: 1.1rem; }
+        
+        @media (max-width: 992px) {
+            body { padding: 0; align-items: stretch; }
+            .main-container { flex-direction: column; min-height: auto; border-radius: 0; }
+        }
+        @media (max-width: 576px) {
+            .title-box h1 { font-size: 2rem; }
+            .right-panel { padding: 20px 15px; }
+            #results-container { grid-template-columns: repeat(2, 1fr); }
+            .detail-box.active { grid-column: 1 / -1; }
+            .detail-box { aspect-ratio: unset; min-height: 140px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- ====================================================== -->
+        <!-- =================== LEFT INPUT PANEL =================== -->
+        <!-- ====================================================== -->
+        <div class="left-panel">
+            <div class="title-box">
+                <h1>Government Job<br>Navigator</h1>
+            </div>
+            
+            <form id="career-form" onsubmit="return false;">
+                
+                <div class="form-group">
+                    <label for="qualificationLevel"><i class="fas fa-user-graduate"></i> Your Highest Qualification</label>
+                    <select id="qualificationLevel">
+                        <option value="10th">10th Pass</option>
+                        <option value="12th" selected>12th Pass</option>
+                        <option value="diploma">Diploma</option>
+                        <option value="graduate">Graduate (Any Stream)</option>
+                        <option value="engineering">Graduate (Engineering)</option>
+                        <option value="postgraduate">Post Graduate</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="age"><i class="fas fa-birthday-cake"></i> Your Age</label>
+                    <input type="number" id="age" placeholder="e.g., 24" min="17" max="42" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="interests"><i class="fas fa-flag-checkered"></i> Job Interests</label>
+                    <textarea id="interests" rows="4" placeholder="e.g., banking, railway, police, ssc, officer, defence..." required></textarea>
+                </div>
+                
+                <button type="button" id="generateBtn" class="generate-btn">
+                    <i class="fas fa-search"></i> Find My Government Job
+                </button>
+            </form>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- =================== RIGHT OUTPUT PANEL ================= -->
+        <!-- ====================================================== -->
+        <div class="right-panel">
+            <div id="course-title-container"></div>
+            <div id="results-container">
+                <div id="message-box">
+                    <i class="fas fa-university"></i>
+                    <h2>Your Path to Public Service...</h2>
+                    <p>Enter your details to explore suitable government job opportunities one by one!</p>
+                </div>
+            </div>
+            <div id="pagination-container"></div>
+        </div>
+    </div>
+    
+    <script>
+        // ===================================================================
+        // PROVISION FOR JAVASCRIPT OBJECT
+        // ===================================================================
+        //
+        // PASTE YOUR COMPLETE `const govtExams = [ ... ];` ARRAY HERE.
+        // The code below is ready for it.
+        //
+        // ===================================================================
+const govtExams = [
+    // UPSC Exams
+    {
+        name: "UPSC Civil Services Examination (CSE)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1100000,
+        eligibility: "Age: 21-32 years (relaxations apply). Education: Bachelor's degree in any discipline. Nationality: Indian.",
+        duration: "2-3 years of intense preparation",
+        workEnvironment: "High-pressure, bureaucratic, and public-facing. Involves policy making, district administration, and implementation. Requires extensive travel and public interaction.",
+        workLifeBalance: "Challenging, especially in district postings. Irregular hours, high responsibility, and 24/7 availability are common. Offers immense job satisfaction and prestige.",
+        risksChallenges: "Extremely low success rate (<0.1%). A very long and exhaustive selection process. High political and public pressure. Frequent transfers.",
+        keywords: ["upsc", "cse", "ias", "ips", "ifs", "irs", "civil services", "collector", "government", "officer", "prestigious"],
+        careerGrowth: "Sub-Divisional Magistrate (SDM) -> District Magistrate (DM) -> Divisional Commissioner -> State Chief Secretary / Secretary to Govt. of India.",
+        skills: { required: ["Perseverance", "Analytical ability", "Strong general awareness", "Decision making", "Integrity"], acquired: ["Public administration", "Policy formulation", "Crisis management", "Leadership", "Financial management"] },
+        onlineCourses: [{ name: "Official UPSC Website", link: "https://www.upsc.gov.in/" }],
+        jobProfile: "IAS, IPS, IFS, IRS, and other Group A & B services.",
+        topCompanies: [
+            { name: "Government of India", salary: "Pay Level 10 (Basic ₹56,100)" },
+            { name: "State Governments", salary: "Pay Level 10 (Basic ₹56,100)" },
+            { name: "Ministries and Departments", salary: "High prestige and perks" },
+            { name: "Public Sector Undertakings (on deputation)", salary: "Varies" },
+            { name: "International Bodies (e.g., UN, World Bank on deputation)", salary: "High international pay" }
+        ],
+        successStories: "The CSE is India's most prestigious examination, creating the top bureaucrats who run the country. A career as an IAS or IPS officer offers an unparalleled opportunity to bring about positive change at a massive scale."
+    },
+    {
+        name: "UPSC Indian Forest Service (IFoS) Examination",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1000000,
+        eligibility: "Age: 21-32 years. Education: Bachelor's degree in Science or Engineering (specific subjects). Strict physical standards apply.",
+        duration: "1.5-2 years of preparation",
+        workEnvironment: "Primarily outdoors in forests, wildlife sanctuaries, and national parks. Involves extensive touring and working in remote areas.",
+        workLifeBalance: "Challenging due to remote postings and the 24/7 nature of forest protection. Offers a unique lifestyle for nature lovers.",
+        risksChallenges: "High competition. Physically demanding job with risks from wildlife and poachers. Remote postings can be difficult for family life.",
+        keywords: ["upsc", "ifos", "forest", "officer", "wildlife", "conservation", "environment", "science", "engineering"],
+        careerGrowth: "Assistant Conservator of Forests (ACF) -> Divisional Forest Officer (DFO) -> Conservator -> Chief Conservator -> Principal Chief Conservator of Forests (PCCF).",
+        skills: { required: ["Physical fitness", "Love for nature", "Scientific temperament", "Leadership"], acquired: ["Forest management", "Wildlife conservation", "Environmental law", "Tribal welfare", "Administration"] },
+        onlineCourses: [{ name: "Official UPSC Website", link: "https://www.upsc.gov.in/" }],
+        jobProfile: "Indian Forest Service (IFoS) Officer.",
+        topCompanies: [
+            { name: "State Forest Departments", salary: "Pay Level 10 (Basic ₹56,100)" },
+            { name: "Ministry of Environment, Forest and Climate Change", salary: "Varies on deputation" },
+            { name: "Wildlife Institute of India", salary: "Varies on deputation" },
+            { name: "Forest Survey of India", salary: "Varies on deputation" },
+            { name: "Central and State PSUs (Forest Corporations)", salary: "Varies" }
+        ],
+        successStories: "IFoS officers are the guardians of India's rich biodiversity and natural heritage. It's a prestigious All India Service for science and engineering graduates who are passionate about conservation."
+    },
+    {
+        name: "UPSC Engineering Services Examination (ESE/IES)",
+        minPercentage: 60,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1100000,
+        eligibility: "Age: 21-30 years. Education: Degree in a relevant Engineering discipline (Civil, Mechanical, Electrical, E&T).",
+        duration: "1-2 years of dedicated preparation",
+        workEnvironment: "Technical and managerial roles in government departments like Railways, CPWD, MES. A mix of office-based design/planning and on-site project execution.",
+        workLifeBalance: "Generally good, especially in design and policy roles. Site postings can have demanding schedules. Offers stability and prestige.",
+        risksChallenges: "High competition, especially in popular branches. Syllabus is vast, covering the entire engineering curriculum. Career progression can be slower than in the private sector.",
+        keywords: ["upsc", "ese", "ies", "engineering", "civil", "mechanical", "electrical", "electronics", "government", "psu"],
+        careerGrowth: "Assistant Executive Engineer -> Executive Engineer -> Superintending Engineer -> Chief Engineer.",
+        skills: { required: ["Deep technical knowledge", "Analytical skills", "Problem-solving", "Management aptitude"], acquired: ["Project management", "Public procurement", "Contract management", "Technical administration", "Policy implementation"] },
+        onlineCourses: [{ name: "Official UPSC Website", link: "https://www.upsc.gov.in/" }],
+        jobProfile: "Group 'A' Engineer in various government ministries and departments.",
+        topCompanies: [
+            { name: "Indian Railways", salary: "Pay Level 10 (Basic ₹56,100)" },
+            { name: "Central Public Works Department (CPWD)", salary: "Pay Level 10" },
+            { name: "Military Engineer Services (MES)", salary: "Pay Level 10" },
+            { name: "Central Water Commission (CWC)", salary: "Pay Level 10" },
+            { name: "Defence Aeronautical Quality Assurance Service", salary: "Pay Level 10" }
+        ],
+        successStories: "The IES is the most prestigious recruitment for government engineers in India. Officers lead the technical workforce of the country, managing and executing critical infrastructure projects."
+    },
+    {
+        name: "UPSC Combined Defence Services (CDS) Examination",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 900000,
+        eligibility: "Age: 19-25 years (varies by academy). Education: Bachelor's degree (specifics for Navy/Air Force). Must be unmarried.",
+        duration: "6-12 months of preparation",
+        workEnvironment: "Highly disciplined, structured, and physically active military environment. Involves leading troops and managing operations.",
+        workLifeBalance: "Challenging. Involves frequent postings to different locations, including remote and difficult areas. Long periods away from family are common.",
+        risksChallenges: "Physically and mentally demanding selection process (SSB). High risk to life. Requires a very high degree of discipline and adaptability.",
+        keywords: ["upsc", "cds", "army", "navy", "air force", "defence", "officer", "ima", "ota", "military"],
+        careerGrowth: "Lieutenant -> Captain -> Major -> Lt. Colonel -> Colonel -> Brigadier -> Major General -> Lt. General -> General (Chief of Army Staff).",
+        skills: { required: ["Leadership", "Physical fitness", "Mental toughness", "Teamwork", "Courage"], acquired: ["Man management", "Strategic planning", "Weaponry and tactics", "Discipline", "Quick decision-making"] },
+        onlineCourses: [{ name: "Official UPSC Website", link: "https://www.upsc.gov.in/" }],
+        jobProfile: "Commissioned Officer in Indian Army, Navy, or Air Force.",
+        topCompanies: [
+            { name: "Indian Army", salary: "Pay Level 10 (Basic ₹56,100) + MSP" },
+            { name: "Indian Navy", salary: "Pay Level 10 + MSP" },
+            { name: "Indian Air Force", salary: "Pay Level 10 + MSP" },
+            { name: "Includes numerous allowances and benefits", salary: "Varies" },
+            { name: "Unmatched respect and honor", salary: "Priceless" }
+        ],
+        successStories: "The CDS exam is a gateway for graduates to become officers in one of the world's most professional armed forces. It offers a life of adventure, honor, and the ultimate responsibility of defending the nation."
+    },
+    {
+        name: "UPSC National Defence Academy (NDA) & Naval Academy (NA) Exam",
+        minPercentage: 45,
+        avgYearlyFees: 0,
+        avgStartingSalary: 900000,
+        eligibility: "Age: 16.5-19.5 years. Education: 12th Pass (PCM for Air Force/Navy). Must be unmarried.",
+        duration: "1-2 years of preparation after 10th",
+        workEnvironment: "Begins with 3 years of rigorous academic and military training at NDA, followed by 1 year at a service-specific academy (IMA/INA/AFA).",
+        workLifeBalance: "Highly disciplined and structured training environment. Post-commissioning, the work-life balance is similar to that of a CDS officer.",
+        risksChallenges: "Tough selection process at a young age. Physically and academically demanding training. High risk and responsibility after commissioning.",
+        keywords: ["upsc", "nda", "na", "defence", "officer", "12th pass", "army", "navy", "air force", "military"],
+        careerGrowth: "Training at NDA -> Commissioned as Lieutenant -> Career path similar to CDS officers, but with a head start.",
+        skills: { required: ["Physical fitness", "Academic aptitude (12th level)", "Leadership potential", "Discipline"], acquired: ["Bachelor's Degree (B.Sc./B.A./B.Tech)", "Military tactics", "Leadership", "Specialized service skills"] },
+        onlineCourses: [{ name: "Official UPSC Website", link: "https://www.upsc.gov.in/" }],
+        jobProfile: "Cadet, leading to a commission as an Officer in the Army, Navy, or Air Force.",
+        topCompanies: [
+            { name: "Indian Army", salary: "Pay Level 10 (Post-commission)" },
+            { name: "Indian Navy", salary: "Pay Level 10 (Post-commission)" },
+            { name: "Indian Air Force", salary: "Pay Level 10 (Post-commission)" },
+            { name: "All training costs are borne by the government", salary: "Full scholarship" },
+            { name: "Stipend during training", salary: "Yes" }
+        ],
+        successStories: "NDA is a premier tri-service institution that has produced numerous war heroes and leaders of the Indian Armed Forces. It's a unique opportunity to join the officer cadre right after school."
+    },
+    {
+        name: "UPSC Combined Medical Services (CMS) Examination",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1200000,
+        eligibility: "Age: Below 32 years. Education: Passed final year M.B.B.S. examination.",
+        duration: "6 months of focused preparation",
+        workEnvironment: "Government hospitals, dispensaries, and health centers under central government bodies like Railways and Municipalities.",
+        workLifeBalance: "Good, with fixed working hours and a stable government job environment. Far better than private practice or corporate hospitals.",
+        risksChallenges: "Competition is high. Postings can be in urban or semi-urban areas. The work involves managing a high volume of patients.",
+        keywords: ["upsc", "cms", "medical", "doctor", "mbbs", "government", "hospital", "railways"],
+        careerGrowth: "Medical Officer -> Senior Medical Officer -> Chief Medical Officer.",
+        skills: { required: ["Clinical knowledge", "Diagnostic skills", "Empathy", "Patience"], acquired: ["Public health management", "Handling diverse patient populations", "Administrative skills", "Medico-legal knowledge"] },
+        onlineCourses: [{ name: "Official UPSC Website", link: "https://www.upsc.gov.in/" }],
+        jobProfile: "Medical Officer in Central Health Service, Railways, etc.",
+        topCompanies: [
+            { name: "Indian Railways Health Service", salary: "Pay Level 10 + NPA" },
+            { name: "Central Health Service (CHS)", salary: "Pay Level 10 + NPA" },
+            { name: "Municipal Corporation of Delhi", salary: "Pay Level 10 + NPA" },
+            { name: "New Delhi Municipal Council", salary: "Pay Level 10 + NPA" },
+            { name: "Gross salary is very attractive with Non-Practicing Allowance (NPA)", salary: "Varies" }
+        ],
+        successStories: "The CMS exam is the primary gateway for MBBS graduates to secure a prestigious and stable Group 'A' medical officer post in the central government, offering a great work-life balance and the opportunity to serve the public."
+    },
+    {
+        name: "UPSC IES / ISS Examination",
+        minPercentage: 55,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1000000,
+        eligibility: "Age: 21-30 years. Education: Post-Graduate Degree in Economics (for IES) or Bachelor's/Master's in Statistics (for ISS).",
+        duration: "1-2 years of specialized preparation",
+        workEnvironment: "Policy-making bodies, ministries, and planning commissions. A highly academic, analytical, and office-based environment.",
+        workLifeBalance: "Excellent. Fixed office hours with a focus on research, analysis, and report writing. Low stress compared to field jobs.",
+        risksChallenges: "Highly specialized exam with fewer vacancies. Requires a very strong academic background in the specific subject.",
+        keywords: ["upsc", "ies", "iss", "economics", "statistics", "government", "policy", "analyst", "research"],
+        careerGrowth: "Assistant Director -> Deputy Director -> Joint Director -> Adviser -> Principal Adviser.",
+        skills: { required: ["Deep subject knowledge", "Quantitative skills", "Analytical ability", "Research aptitude"], acquired: ["Economic policy analysis", "Statistical modeling", "National income accounting", "Survey design", "Program evaluation"] },
+        onlineCourses: [{ name: "Official UPSC Website", link: "https://www.upsc.gov.in/" }],
+        jobProfile: "Indian Economic Service (IES) Officer, Indian Statistical Service (ISS) Officer.",
+        topCompanies: [
+            { name: "NITI Aayog", salary: "Pay Level 10 (Basic ₹56,100)" },
+            { name: "Ministry of Finance", salary: "Pay Level 10" },
+            { name: "Ministry of Statistics and Programme Implementation", salary: "Pay Level 10" },
+            { name: "Reserve Bank of India (on deputation)", salary: "Varies" },
+            { name: "Planning Departments of State Governments", salary: "Varies" }
+        ],
+        successStories: "IES and ISS officers are the economic and statistical backbone of the government. They provide the critical data and analysis that underpin national policy-making, planning, and development."
+    },
+    {
+        name: "UPSC Central Armed Police Forces (CAPF ACs) Examination",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 950000,
+        eligibility: "Age: 20-25 years. Education: Bachelor's degree. Strict physical standards apply.",
+        duration: "1-1.5 years of preparation",
+        workEnvironment: "Commanding troops in diverse and challenging terrains, from border areas to internal security zones. A physically demanding and disciplined field role.",
+        workLifeBalance: "Extremely challenging. Long postings in difficult areas, 24/7 responsibility, and high risk. Separated from family for long durations.",
+        risksChallenges: "Physically and mentally demanding job with a high risk to life. Frequent transfers to remote locations.",
+        keywords: ["upsc", "capf", "assistant commandant", "bsf", "crpf", "cisf", "itbp", "ssb", "paramilitary", "officer"],
+        careerGrowth: "Assistant Commandant -> Deputy Commandant -> Commandant -> DIG -> IG -> ADG -> DG.",
+        skills: { required: ["Leadership", "Physical courage", "Mental resilience", "Strategic thinking"], acquired: ["Company command", "Counter-insurgency operations", "Border management", "Tactics", "Man management"] },
+        onlineCourses: [{ name: "Official UPSC Website", link: "https://www.upsc.gov.in/" }],
+        jobProfile: "Assistant Commandant (AC) in BSF, CRPF, CISF, ITBP, SSB.",
+        topCompanies: [
+            { name: "Border Security Force (BSF)", salary: "Pay Level 10 (Basic ₹56,100)" },
+            { name: "Central Reserve Police Force (CRPF)", salary: "Pay Level 10" },
+            { name: "Central Industrial Security Force (CISF)", salary: "Pay Level 10" },
+            { name: "Indo-Tibetan Border Police (ITBP)", salary: "Pay Level 10" },
+            { name: "Sashastra Seema Bal (SSB)", salary: "Pay Level 10" }
+        ],
+        successStories: "This exam recruits Group 'A' Gazetted officers for the CAPFs, the country's primary internal security and border guarding forces. It offers a challenging and adventurous career in national security."
+    },
+    {
+        name: "UPSC Combined Geo-Scientist Examination",
+        minPercentage: 55,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1000000,
+        eligibility: "Age: 21-32/35 years. Education: Master's degree (M.Sc./M.Tech) in a relevant geology/geophysics/chemistry field.",
+        duration: "1 year of specialized preparation",
+        workEnvironment: "Field-intensive work in remote locations for exploration and surveying, combined with lab-based analysis and office work for reporting.",
+        workLifeBalance: "Challenging during fieldwork, which can last for months in remote areas. Office postings offer a stable, 9-to-5 life.",
+        risksChallenges: "Highly specialized exam with few vacancies. Fieldwork is physically demanding and requires living in basic conditions.",
+        keywords: ["upsc", "geologist", "geoscientist", "gsi", "cgwb", "geophysics", "chemistry", "msc", "government"],
+        careerGrowth: "Geologist/Geophysicist -> Senior Geologist -> Director -> Deputy Director General -> Director General of GSI.",
+        skills: { required: ["Strong subject knowledge", "Physical fitness", "Analytical skills", "Interest in exploration"], acquired: ["Geological mapping", "Mineral exploration techniques", "Seismic data interpretation", "Groundwater management", "Geochemical analysis"] },
+        onlineCourses: [{ name: "Official UPSC Website", link: "https://www.upsc.gov.in/" }],
+        jobProfile: "Geologist, Geophysicist, Chemist, Scientist 'B' (Hydrogeology).",
+        topCompanies: [
+            { name: "Geological Survey of India (GSI)", salary: "Pay Level 10 (Basic ₹56,100)" },
+            { name: "Central Ground Water Board (CGWB)", salary: "Pay Level 10" },
+            { name: "Ministry of Mines", salary: "High prestige" },
+            { name: "Ministry of Water Resources", salary: "High prestige" },
+            { name: "Deputation to PSUs like ONGC, Coal India", salary: "Varies" }
+        ],
+        successStories: "This is the premier exam for geoscientists to join the top government bodies responsible for the nation's mineral and water resource exploration and management."
+    },
+    // ... (Continue for all other exams)
+
+    // SSC Exams
+    {
+        name: "SSC Combined Graduate Level (CGL) Examination",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 800000,
+        eligibility: "Age: 18-32 years (varies by post). Education: Bachelor's Degree in any discipline.",
+        duration: "1-2 years of preparation",
+        workEnvironment: "Desk-based roles in central government ministries and departments. Involves file work, administration, and public dealing. Inspector posts involve field work.",
+        workLifeBalance: "Excellent. Fixed working hours (9-to-5), 5-day week, and postings are generally in major cities. Offers a stable and secure career.",
+        risksChallenges: "High competition with millions of applicants. Career progression can be slow. The work can be routine in some clerical-assistant posts.",
+        keywords: ["ssc", "cgl", "graduate", "inspector", "income tax", "excise", "assistant", "auditor", "cbi", "government"],
+        careerGrowth: "Assistant Section Officer -> Section Officer -> Under Secretary. Inspector -> Superintendent -> Assistant Commissioner.",
+        skills: { required: ["Quantitative aptitude", "Reasoning ability", "English comprehension", "General awareness"], acquired: ["Government administrative procedures", "Taxation laws (for IRS)", "Audit principles (for CAG)", "Noting and drafting"] },
+        onlineCourses: [{ name: "Official SSC Website", link: "https://ssc.nic.in/" }],
+        jobProfile: "Assistant Section Officer, Inspector (Income Tax/Excise), Assistant Enforcement Officer, Sub-Inspector (CBI), Auditor.",
+        topCompanies: [
+            { name: "Central Secretariat Service (CSS)", salary: "Pay Level 7 (Basic ₹44,900)" },
+            { name: "Central Board of Direct Taxes (CBDT)", salary: "Pay Level 7" },
+            { name: "Central Board of Indirect Taxes & Customs (CBIC)", salary: "Pay Level 7" },
+            { name: "Comptroller and Auditor General (CAG)", salary: "Pay Level 8 (AAO, Basic ₹47,600)" },
+            { name: "Central Bureau of Investigation (CBI)", salary: "Pay Level 7" }
+        ],
+        successStories: "SSC CGL is one of the most popular exams in India, providing a gateway for graduates to secure respectable Group B and C posts in the central government, offering a life of stability and security."
+    },
+    {
+        name: "SSC Combined Higher Secondary Level (CHSL) Examination",
+        minPercentage: 45,
+        avgYearlyFees: 0,
+        avgStartingSalary: 450000,
+        eligibility: "Age: 18-27 years. Education: 12th Standard pass.",
+        duration: "1 year of preparation",
+        workEnvironment: "Clerical roles in central government offices. Involves data entry, file maintenance, and assisting senior officers.",
+        workLifeBalance: "Excellent. Fixed working hours, 5-day week, and a stable work environment.",
+        risksChallenges: "High competition for a large number of vacancies. The work is primarily clerical and can be monotonous. Lower starting salary compared to graduate-level posts.",
+        keywords: ["ssc", "chsl", "12th pass", "clerk", "ldc", "data entry", "deo", "postal assistant", "government"],
+        careerGrowth: "Lower Division Clerk (LDC) -> Upper Division Clerk (UDC) -> Assistant Section Officer (through departmental exams).",
+        skills: { required: ["Typing speed", "Basic computer knowledge", "English comprehension", "Reasoning ability"], acquired: ["Government office procedures", "Data management", "Official correspondence", "File management"] },
+        onlineCourses: [{ name: "Official SSC Website", link: "https://ssc.nic.in/" }],
+        jobProfile: "Lower Division Clerk (LDC)/Junior Secretariat Assistant (JSA), Postal Assistant (PA), Data Entry Operator (DEO).",
+        topCompanies: [
+            { name: "Various Central Government Ministries", salary: "Pay Level 2 (Basic ₹19,900)" },
+            { name: "Department of Posts", salary: "Pay Level 4 (Basic ₹25,500)" },
+            { name: "Comptroller and Auditor General (CAG)", salary: "Pay Level 4 (DEO)" },
+            { name: "Military Engineer Services (MES)", salary: "Pay Level 2" },
+            { name: "Intelligence Bureau (IB)", salary: "Pay Level 2" }
+        ],
+        successStories: "The CHSL exam is a fantastic opportunity for 12th pass students to enter the central government at an early age, providing job security and a platform for further growth through departmental promotions."
+    },
+    {
+        name: "SSC Multi-Tasking (Non-Technical) Staff (MTS) Examination",
+        minPercentage: 35,
+        avgYearlyFees: 0,
+        avgStartingSalary: 350000,
+        eligibility: "Age: 18-25/27 years. Education: 10th Class (Matriculation) pass.",
+        duration: "6-9 months of preparation",
+        workEnvironment: "Support roles in central government offices. Involves physical work and assisting in the daily functioning of the office.",
+        workLifeBalance: "Very good. Fixed hours and low-stress environment.",
+        risksChallenges: "Very high competition due to simple eligibility. The work is non-clerical and involves manual tasks. Lowest pay scale in central government.",
+        keywords: ["ssc", "mts", "10th pass", "havaldar", "peon", "government", "non-technical"],
+        careerGrowth: "Promotion to LDC after a few years of service through departmental exams.",
+        skills: { required: ["Basic literacy and numeracy", "Physical fitness (for Havaldar)", "Diligence"], acquired: ["Understanding of government office functioning", "Discipline", "Teamwork"] },
+        onlineCourses: [{ name: "Official SSC Website", link: "https://ssc.nic.in/" }],
+        jobProfile: "Peon, Daftary, Chowkidar, Safaiwala, Havaldar.",
+        topCompanies: [
+            { name: "All Central Government Ministries and Departments", salary: "Pay Level 1 (Basic ₹18,000)" },
+            { name: "Central Board of Indirect Taxes & Customs (CBIC - Havaldar)", salary: "Pay Level 1" },
+            { name: "Central Bureau of Narcotics (CBN - Havaldar)", salary: "Pay Level 1" },
+            { name: "Attached and Subordinate Offices of GOI", salary: "Pay Level 1" },
+            { name: "A secure entry-point into government service", salary: "Varies" }
+        ],
+        successStories: "The MTS exam provides a secure government job for 10th pass candidates, offering stability and the chance for upward mobility to clerical cadres through internal promotions."
+    },
+    {
+        name: "SSC Stenographer (Grade 'C' & 'D') Examination",
+        minPercentage: 45,
+        avgYearlyFees: 0,
+        avgStartingSalary: 500000,
+        eligibility: "Age: 18-30 years (Grade C), 18-27 years (Grade D). Education: 12th Standard pass. Must have stenography skills.",
+        duration: "1 year of preparation (including stenography practice)",
+        workEnvironment: "Attached to senior officers in various central government ministries. A responsible desk job involving transcription and office management.",
+        workLifeBalance: "Excellent. Fixed office hours and a stable work environment.",
+        risksChallenges: "Requires a specific technical skill (stenography) which takes time to master. Competition is high for the limited number of vacancies.",
+        keywords: ["ssc", "stenographer", "steno", "12th pass", "skill test", "government", "personal assistant"],
+        careerGrowth: "Stenographer Grade D -> Grade C -> Private Secretary -> Senior Private Secretary.",
+        skills: { required: ["High stenography speed (shorthand)", "Typing speed", "Good command of English", "Discretion"], acquired: ["Official correspondence", "Meeting scheduling", "Confidential file management", "Dictation transcription"] },
+        onlineCourses: [{ name: "Official SSC Website", link: "https://ssc.nic.in/" }],
+        jobProfile: "Stenographer Grade 'C' (Group B Non-Gazetted) & Grade 'D' (Group C).",
+        topCompanies: [
+            { name: "Central Secretariat", salary: "Grade C: Pay Level 6 (Basic ₹35,400)" },
+            { name: "Ministry of External Affairs (MEA)", salary: "Grade C: Pay Level 6" },
+            { name: "Armed Forces Headquarters", salary: "Grade C: Pay Level 6" },
+            { name: "Various other Ministries", salary: "Grade D: Pay Level 4 (Basic ₹25,500)" },
+            { name: "Offers a direct entry into Group B level posts", salary: "Varies" }
+        ],
+        successStories: "This exam is ideal for candidates with stenography skills, offering a direct path to a well-paying and responsible Personal Assistant role in the heart of the central government."
+    },
+    {
+        name: "SSC Constable (GD) Examination",
+        minPercentage: 35,
+        avgYearlyFees: 0,
+        avgStartingSalary: 450000,
+        eligibility: "Age: 18-23 years. Education: 10th Class (Matriculation) pass. Strict physical standards apply.",
+        duration: "6-12 months of preparation",
+        workEnvironment: "Active duty in Central Armed Police Forces, involving border guarding, internal security, and counter-insurgency operations. A physically demanding and disciplined life.",
+        workLifeBalance: "Extremely challenging. Long and hard postings in difficult terrains, away from family. High risk and discipline are central to the job.",
+        risksChallenges: "Physically arduous selection process and job. High risk to life. Frequent transfers and difficult postings.",
+        keywords: ["ssc", "gd", "constable", "bsf", "crpf", "cisf", "itbp", "assam rifles", "paramilitary", "10th pass"],
+        careerGrowth: "Constable -> Head Constable -> Assistant Sub-Inspector -> Sub-Inspector (through departmental exams).",
+        skills: { required: ["High physical fitness", "Mental toughness", "Discipline", "Courage"], acquired: ["Weapon handling and marksmanship", "Drill and discipline", "Unarmed combat", "Field craft and tactics"] },
+        onlineCourses: [{ name: "Official SSC Website", link: "https://ssc.nic.in/" }],
+        jobProfile: "Constable (General Duty) in CAPFs, Rifleman (GD) in Assam Rifles.",
+        topCompanies: [
+            { name: "Border Security Force (BSF)", salary: "Pay Level 3 (Basic ₹21,700)" },
+            { name: "Central Reserve Police Force (CRPF)", salary: "Pay Level 3" },
+            { name: "Central Industrial Security Force (CISF)", salary: "Pay Level 3" },
+            { name: "Indo-Tibetan Border Police (ITBP)", salary: "Pay Level 3" },
+            { name: "Sashastra Seema Bal (SSB)", salary: "Pay Level 3" }
+        ],
+        successStories: "The SSC GD exam is one of the largest recruitment drives in the country, offering lakhs of 10th pass youth the opportunity to serve the nation in uniform, providing a life of pride, security, and discipline."
+    },
+    {
+        name: "SSC CPO (Sub-Inspector) Examination",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 700000,
+        eligibility: "Age: 20-25 years. Education: Bachelor’s degree. Strict physical standards apply.",
+        duration: "1-1.5 years of preparation",
+        workEnvironment: "Leading small teams (platoons) in CAPFs or investigation in Delhi Police. A mix of field command and office work.",
+        workLifeBalance: "Challenging. Postings in CAPFs are often in difficult areas. Delhi Police offers urban postings but has demanding law and order duties.",
+        risksChallenges: "Physically and mentally demanding. High responsibility for the safety of personnel and the public. High risk in operational roles.",
+        keywords: ["ssc", "cpo", "si", "sub-inspector", "delhi police", "capf", "bsf", "crpf", "cisf", "graduate"],
+        careerGrowth: "Sub-Inspector -> Inspector -> Assistant Commandant/ACP (through promotions).",
+        skills: { required: ["Leadership", "Physical fitness", "Decision making", "Integrity"], acquired: ["Investigation techniques", "Law and order management", "Platoon command", "Counter-terrorism drills"] },
+        onlineCourses: [{ name: "Official SSC Website", link: "https://ssc.nic.in/" }],
+        jobProfile: "Sub-Inspector (SI) in Delhi Police & CAPFs.",
+        topCompanies: [
+            { name: "Delhi Police", salary: "Pay Level 6 (Basic ₹35,400)" },
+            { name: "BSF", salary: "Pay Level 6" },
+            { name: "CRPF", salary: "Pay Level 6" },
+            { name: "CISF", salary: "Pay Level 6" },
+            { name: "ITBP / SSB", salary: "Pay Level 6" }
+        ],
+        successStories: "The SSC CPO exam is the primary route for graduates to become officers (Sub-Inspectors) in the prestigious Delhi Police and the Central Armed Police Forces, offering a career of command and responsibility."
+    },
+    {
+        name: "SSC Junior Engineer (JE) Examination",
+        minPercentage: 55,
+        avgYearlyFees: 0,
+        avgStartingSalary: 700000,
+        eligibility: "Age: Up to 30/32 years. Education: Diploma or Degree in a relevant Engineering branch (Civil, Mechanical, Electrical).",
+        duration: "1 year of technical preparation",
+        workEnvironment: "On-site supervision of government infrastructure projects or maintenance work in departments like CPWD, MES, etc. A hands-on technical role.",
+        workLifeBalance: "Good. While site work can be demanding, it generally follows a structured schedule. Offers a stable government engineering career.",
+        risksChallenges: "Competition is high from both diploma and degree holders. The syllabus is technical and vast. Requires practical knowledge.",
+        keywords: ["ssc", "je", "junior engineer", "diploma", "engineering", "civil", "mechanical", "electrical", "cpwd"],
+        careerGrowth: "Junior Engineer -> Assistant Engineer -> Executive Engineer (through departmental exams/promotions).",
+        skills: { required: ["Technical knowledge", "Supervisory skills", "Problem-solving", "Practical mindset"], acquired: ["Project execution", "Quality control", "Contract management basics", "Maintenance procedures", "Government work standards"] },
+        onlineCourses: [{ name: "Official SSC Website", link: "https://ssc.nic.in/" }],
+        jobProfile: "Junior Engineer in various central government departments.",
+        topCompanies: [
+            { name: "Central Public Works Department (CPWD)", salary: "Pay Level 6 (Basic ₹35,400)" },
+            { name: "Military Engineer Services (MES)", salary: "Pay Level 6" },
+            { name: "Central Water Commission (CWC)", salary: "Pay Level 6" },
+            { name: "Department of Posts", salary: "Pay Level 6" },
+            { name: "Border Roads Organisation (BRO)", salary: "Pay Level 6" }
+        ],
+        successStories: "The SSC JE exam is a major opportunity for engineering diploma and degree holders to secure a coveted Junior Engineer position in the central government, playing a key role in building and maintaining the nation's infrastructure."
+    },
+
+    // RRB Exams
+    {
+        name: "RRB Non-Technical Popular Categories (NTPC) Examination",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 650000,
+        eligibility: "Age: 18-30 (UG), 18-33 (Graduate). Education: 12th Pass for UG posts; Bachelor's Degree for Graduate posts.",
+        duration: "1.5-2 years of preparation",
+        workEnvironment: "Dynamic railway environment. Roles range from clerical office work to operational field roles like Station Master and Goods Guard.",
+        workLifeBalance: "Varies. Clerical posts have fixed hours. Operational posts like Station Master and Guard work in shifts, including nights and holidays.",
+        risksChallenges: "Massive competition due to high number of vacancies. The selection process is long and multi-staged. Operational roles carry high responsibility for passenger and freight safety.",
+        keywords: ["rrb", "ntpc", "railway", "station master", "goods guard", "clerk", "ticket clerk", "government", "12th pass", "graduate"],
+        careerGrowth: "Station Master -> Station Superintendent. Goods Guard -> Passenger Guard -> Mail/Express Guard. Clerk -> Head Clerk -> Office Superintendent.",
+        skills: { required: ["Aptitude (Maths/Reasoning)", "General awareness", "Vigilance (for SM/Guard)"], acquired: ["Railway operating rules", "Commercial procedures", "Signaling systems knowledge", "Crisis management"] },
+        onlineCourses: [{ name: "Official RRB Websites (region-wise)", link: "https://indianrailways.gov.in/railwayboard/view_section.jsp?lang=0&id=0,4,1244" }],
+        jobProfile: "Station Master, Goods Guard, Commercial Apprentice, Clerk, Ticket Clerk, etc.",
+        topCompanies: [
+            { name: "Indian Railways (Station Master)", salary: "Pay Level 6 (Basic ₹35,400)" },
+            { name: "Indian Railways (Goods Guard)", salary: "Pay Level 5 (Basic ₹29,200)" },
+            { name: "Indian Railways (Sr. Commercial Clerk)", salary: "Pay Level 5" },
+            { name: "Indian Railways (Jr. Clerk - 12th level)", salary: "Pay Level 2 (Basic ₹19,900)" },
+            { name: "Includes significant allowances for running staff", salary: "Varies" }
+        ],
+        successStories: "RRB NTPC is one of the biggest recruitment exams in the world, offering a wide range of non-technical jobs in the Indian Railways. It provides a stable and prestigious career with excellent benefits."
+    },
+    {
+        name: "RRB Assistant Loco Pilot (ALP) & Technicians Examination",
+        minPercentage: 45,
+        avgYearlyFees: 0,
+        avgStartingSalary: 600000,
+        eligibility: "Age: 18-30 years. Education: 10th + ITI/Diploma/Engg. Degree (for ALP); 10th + ITI or 10+2 PCM (for Technicians).",
+        duration: "1-1.5 years of technical preparation",
+        workEnvironment: "ALP: Inside the locomotive cabin, assisting the main pilot. Technician: In workshops, sheds, or on the tracks, involving maintenance and repair.",
+        workLifeBalance: "Challenging. ALPs work in shifts around the clock and have irregular schedules. Technicians have more structured shift duties.",
+        risksChallenges: "ALP role requires high medical fitness (especially eyesight) and mental alertness. The job is highly responsible and can be stressful. Technical knowledge is crucial.",
+        keywords: ["rrb", "alp", "loco pilot", "technician", "railway", "iti", "diploma", "technical", "engineering"],
+        careerGrowth: "Assistant Loco Pilot -> Sr. ALP -> Loco Pilot (Goods -> Passenger -> Mail/Express) -> Loco Inspector.",
+        skills: { required: ["Technical aptitude", "High alertness", "Physical fitness", "Problem-solving"], acquired: ["Train operation", "Troubleshooting of locomotives/signals", "Railway safety rules", "Maintenance of railway assets"] },
+        onlineCourses: [{ name: "Official RRB Websites", link: "https://indianrailways.gov.in/railwayboard/view_section.jsp?lang=0&id=0,4,1244" }],
+        jobProfile: "Assistant Loco Pilot (ALP), Various Technician posts (Fitter, Electrician).",
+        topCompanies: [
+            { name: "Indian Railways", salary: "Pay Level 2 (Basic ₹19,900)" },
+            { name: "Gross salary for ALP is much higher due to Running Allowance", salary: "High" },
+            { name: "Technicians receive standard allowances", salary: "Varies" },
+            { name: "A key technical role in the world's largest rail network", salary: "Varies" },
+            { name: "Provides immense job security", salary: "Varies" }
+        ],
+        successStories: "This exam recruits the technical backbone of the Indian Railways. ALPs are the future train drivers, and Technicians are the experts who keep the vast network running smoothly and safely."
+    },
+    {
+        name: "RRB Junior Engineer (JE) Examination",
+        minPercentage: 55,
+        avgYearlyFees: 0,
+        avgStartingSalary: 750000,
+        eligibility: "Age: 18-33 years. Education: Diploma/Degree in relevant Engineering branch.",
+        duration: "1 year of technical preparation",
+        workEnvironment: "Supervisory role in various railway departments (Civil, Mechanical, Electrical, etc.). A mix of on-site work and office responsibilities.",
+        workLifeBalance: "Good. Structured working hours, though site visits and project deadlines can be demanding. A respected technical-managerial role.",
+        risksChallenges: "High competition. The syllabus is technical and extensive. Requires both technical expertise and man-management skills.",
+        keywords: ["rrb", "je", "junior engineer", "railway", "diploma", "engineering", "technical", "civil", "mechanical"],
+        careerGrowth: "Junior Engineer -> Senior Section Engineer -> Assistant Divisional Engineer.",
+        skills: { required: ["Technical knowledge", "Supervisory skills", "Project management", "Problem-solving"], acquired: ["Railway engineering standards", "Maintenance schedules", "Team management", "Procurement and stores management"] },
+        onlineCourses: [{ name: "Official RRB Websites", link: "https://indianrailways.gov.in/railwayboard/view_section.jsp?lang=0&id=0,4,1244" }],
+        jobProfile: "Junior Engineer (JE), Depot Material Superintendent (DMS), Chemical & Metallurgical Assistant (CMA).",
+        topCompanies: [
+            { name: "Indian Railways", salary: "Pay Level 6 (Basic ₹35,400)" },
+            { name: "Offers a stable and respectable government engineering career", salary: "Varies" },
+            { name: "Excellent perks including free travel passes", salary: "Varies" },
+            { name: "Contribute to building and maintaining national infrastructure", salary: "Varies" },
+            { name: "Strong career progression path", salary: "Varies" }
+        ],
+        successStories: "The RRB JE exam is a prime opportunity for engineering diploma and degree holders to join the Indian Railways in a supervisory capacity, playing a vital role in the functioning of this massive organization."
+    },
+    {
+        name: "RRB Group D (Level 1 Posts) Examination",
+        minPercentage: 35,
+        avgYearlyFees: 0,
+        avgStartingSalary: 350000,
+        eligibility: "Age: 18-33 years. Education: 10th pass or ITI.",
+        duration: "6-9 months of preparation",
+        workEnvironment: "Physically intensive roles in various railway departments, such as track maintenance, workshops, and operational support. Involves working outdoors in all weather conditions.",
+        workLifeBalance: "Challenging. The work is physically demanding and often involves shift duties, including nights. Postings can be in remote areas.",
+        risksChallenges: "Extremely high competition. The job is physically strenuous and involves manual labor. High safety considerations, especially for track maintainers.",
+        keywords: ["rrb", "group d", "level 1", "railway", "10th pass", "iti", "trackman", "helper", "pointsman"],
+        careerGrowth: "Promotion to higher grades and technician roles over a long period or through departmental exams.",
+        skills: { required: ["Physical fitness", "Diligence", "Ability to do manual work", "Safety consciousness"], acquired: ["Specific trade skills", "Understanding of railway operations at the ground level", "Teamwork"] },
+        onlineCourses: [{ name: "Official RRB Websites", link: "https://indianrailways.gov.in/railwayboard/view_section.jsp?lang=0&id=0,4,1244" }],
+        jobProfile: "Track Maintainer, Helper, Assistant Pointsman, Hospital Assistant.",
+        topCompanies: [
+            { name: "Indian Railways", salary: "Pay Level 1 (Basic ₹18,000)" },
+            { name: "Job security is the biggest advantage", salary: "Varies" },
+            { name: "Includes uniform and other allowances", salary: "Varies" },
+            { name: "Crucial for the safe and smooth running of trains", salary: "Varies" },
+            { name: "A gateway for 10th pass candidates into the railways", salary: "Varies" }
+        ],
+        successStories: "This exam is a massive employment generator, providing a secure and stable livelihood for millions. Group D employees form the foundation of the Indian Railways' operational machinery."
+    },
+    {
+        name: "RRB Paramedical Categories Examination",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 600000,
+        eligibility: "Age: Varies by post (18-40 years). Education: Specific Degree/Diploma in the relevant paramedical field (e.g., B.Sc. Nursing, D.Pharm).",
+        duration: "6-12 months of specialized preparation",
+        workEnvironment: "Railway hospitals and health units. A clinical and patient-care environment dedicated to railway employees and their families.",
+        workLifeBalance: "Good. Generally structured shift duties. Less pressure than large private hospitals. A stable government healthcare career.",
+        risksChallenges: "Vacancies are limited and not advertised every year. Requires specific professional qualifications.",
+        keywords: ["rrb", "paramedical", "staff nurse", "pharmacist", "lab technician", "railway", "hospital", "healthcare"],
+        careerGrowth: "Staff Nurse -> Nursing Sister -> Matron. Pharmacist -> Chief Pharmacist.",
+        skills: { required: ["Professional paramedical knowledge", "Patient care skills", "Empathy", "Attention to detail"], acquired: ["Working in a large government healthcare system", "Handling diverse medical cases", "Knowledge of railway medical rules"] },
+        onlineCourses: [{ name: "Official RRB Websites", link: "https://indianrailways.gov.in/railwayboard/view_section.jsp?lang=0&id=0,4,1244" }],
+        jobProfile: "Staff Nurse, Pharmacist, Lab Superintendent, Radiographer, Dietitian.",
+        topCompanies: [
+            { name: "Indian Railways Health Service", salary: "Staff Nurse: Pay Level 7 (Basic ₹44,900)" },
+            { name: "Pharmacist", salary: "Pay Level 5 (Basic ₹29,200)" },
+            { name: "Health & Malaria Inspector", salary: "Pay Level 6 (Basic ₹35,400)" },
+            { name: "Offers excellent job security and perks", salary: "Varies" },
+            { name: "A chance to serve in a dedicated healthcare system", salary: "Varies" }
+        ],
+        successStories: "This exam recruits qualified paramedical professionals into the extensive healthcare network of the Indian Railways, offering a stable and rewarding career in government healthcare."
+    },
+    {
+        name: "Railway Protection Force (RPF) Constable/SI Examination",
+        minPercentage: 45,
+        avgYearlyFees: 0,
+        avgStartingSalary: 550000,
+        eligibility: "Age: 18-25 (Constable), 20-25 (SI). Education: 10th Pass (Constable), Graduate (SI). Strict physical standards apply.",
+        duration: "9-12 months of preparation",
+        workEnvironment: "On railway platforms, in trains, and at railway yards. A security role focused on protecting railway property and ensuring passenger safety.",
+        workLifeBalance: "Challenging. Shift duties, including nights, and constant vigilance are required. The job is physically active and involves dealing with crime.",
+        risksChallenges: "Physically demanding job with risk of confrontation with criminals. Requires a high degree of honesty and courage.",
+        keywords: ["rpf", "rpsf", "railway police", "constable", "sub-inspector", "security", "government", "10th pass", "graduate"],
+        careerGrowth: "Constable -> Head Constable -> ASI -> SI. Sub-Inspector -> Inspector -> Circle Inspector.",
+        skills: { required: ["Physical fitness", "Courage", "Alertness", "Integrity"], acquired: ["Railway Property Act knowledge", "Investigation skills", "Crowd control", "First aid", "Security protocols"] },
+        onlineCourses: [{ name: "Official RPF Website", link: "https://rpf.indianrailways.gov.in/" }],
+        jobProfile: "Constable or Sub-Inspector in Railway Protection Force (RPF) / Railway Protection Special Force (RPSF).",
+        topCompanies: [
+            { name: "Railway Protection Force (RPF)", salary: "SI: Pay Level 6 (Basic ₹35,400)" },
+            { name: "Railway Protection Special Force (RPSF)", salary: "Constable: Pay Level 3 (Basic ₹21,700)" },
+            { name: "A uniformed service with national jurisdiction", salary: "Varies" },
+            { name: "Protects India's lifeline", salary: "Varies" },
+            { name: "Excellent benefits and job security", salary: "Varies" }
+        ],
+        successStories: "The RPF is a dedicated security force for the Indian Railways. A career in the RPF is a matter of great pride, offering a uniformed job with the responsibility of protecting millions of passengers and valuable national assets."
+    },
+
+    // Banking Sector Exams
+    {
+        name: "IBPS PO (Probationary Officer)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 750000,
+        eligibility: "Age: 20-30 years. Education: Bachelor's Degree in any discipline.",
+        duration: "1 year of intensive preparation",
+        workEnvironment: "Public Sector Bank branch. A dynamic role involving customer service, operations, and business development (loans, deposits).",
+        workLifeBalance: "Moderate. Standard banking hours, but can be demanding during closing periods. High pressure to meet business targets.",
+        risksChallenges: "High competition. The job involves dealing with financial transactions and carries high responsibility. Career growth is linked to performance and passing internal exams (JAIIB/CAIIB).",
+        keywords: ["ibps", "po", "bank po", "banking", "officer", "probationary officer", "psu bank", "finance", "graduate"],
+        careerGrowth: "Probationary Officer (Scale I) -> Assistant Manager -> Branch Manager -> Chief Manager -> AGM -> DGM -> GM -> Executive Director -> CMD.",
+        skills: { required: ["Quantitative aptitude", "Reasoning", "English", "Communication skills", "Sales acumen"], acquired: ["Banking operations", "Credit appraisal", "Customer relationship management", "Financial product knowledge", "Team management"] },
+        onlineCourses: [{ name: "Official IBPS Website", link: "https://www.ibps.in/" }],
+        jobProfile: "Probationary Officer (PO) / Management Trainee (MT) in Public Sector Banks.",
+        topCompanies: [
+            { name: "Punjab National Bank", salary: "Scale I Officer (Basic ~₹36,000)" },
+            { name: "Canara Bank", salary: "Scale I Officer" },
+            { name: "Bank of Baroda", salary: "Scale I Officer" },
+            { name: "Union Bank of India", salary: "Scale I Officer" },
+            { name: "And other participating PSBs", salary: "Gross salary ~₹55k-65k+" }
+        ],
+        successStories: "The IBPS PO exam is the most common gateway to becoming an officer in India's Public Sector Banks. It offers a fast-track career path to becoming a Branch Manager and reaching top management positions."
+    },
+    {
+        name: "IBPS Clerk (Clerical Cadre)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 450000,
+        eligibility: "Age: 20-28 years. Education: Bachelor's Degree in any discipline.",
+        duration: "9-12 months of preparation",
+        workEnvironment: "Front-desk role in a Public Sector Bank branch. Involves direct customer interaction, cash handling, and back-office tasks.",
+        workLifeBalance: "Good. Fixed working hours and a stable job environment. Lower stress compared to officer roles.",
+        risksChallenges: "High competition. The role is primarily customer-facing and operational. Requires speed and accuracy in transactions.",
+        keywords: ["ibps", "clerk", "bank clerk", "banking", "psu bank", "customer service", "finance", "graduate"],
+        careerGrowth: "Clerk -> Senior Clerk -> Officer (through internal promotion/exams). A stable entry point with opportunities for growth.",
+        skills: { required: ["Numerical ability", "Reasoning", "Customer service orientation", "Accuracy"], acquired: ["Cash handling", "Banking software proficiency (Finacle)", "Customer interaction", "Knowledge of banking products"] },
+        onlineCourses: [{ name: "Official IBPS Website", link: "https://www.ibps.in/" }],
+        jobProfile: "Clerk / Junior Associate in Public Sector Banks.",
+        topCompanies: [
+            { name: "Punjab National Bank", salary: "Clerical Cadre (Basic ~₹19,900)" },
+            { name: "Canara Bank", salary: "Clerical Cadre" },
+            { name: "Bank of Baroda", salary: "Clerical Cadre" },
+            { name: "Union Bank of India", salary: "Clerical Cadre" },
+            { name: "Gross salary ~₹30k-35k+", salary: "Varies" }
+        ],
+        successStories: "The IBPS Clerk exam is a massive recruitment drive that provides stable and secure jobs to lakhs of graduates, offering an entry into the banking sector with a good work-life balance."
+    },
+    {
+        name: "IBPS SO (Specialist Officer)",
+        minPercentage: 60,
+        avgYearlyFees: 0,
+        avgStartingSalary: 800000,
+        eligibility: "Age: 20-30 years. Education: Specific professional degree relevant to the post (e.g., B.E./B.Tech for IT, LLB for Law).",
+        duration: "1 year of specialized preparation",
+        workEnvironment: "Specialized departments within Public Sector Banks (e.g., IT, Legal, HR). A professional, office-based role.",
+        workLifeBalance: "Excellent. Fixed working hours and a corporate-like environment within the government sector.",
+        risksChallenges: "Vacancies are limited for each specialization. Requires deep domain knowledge in addition to general banking aptitude.",
+        keywords: ["ibps", "so", "specialist officer", "it officer", "law officer", "hr", "marketing", "agriculture", "banking"],
+        careerGrowth: "Specialist Officer (Scale I) -> Scale II -> Scale III and so on within the specialized vertical.",
+        skills: { required: ["Deep professional knowledge", "Analytical skills", "Banking awareness"], acquired: ["Application of professional skills in banking context", "IT security in banks", "Agricultural loan appraisal", "Legal compliance in banking"] },
+        onlineCourses: [{ name: "Official IBPS Website", link: "https://www.ibps.in/" }],
+        jobProfile: "I.T. Officer, Agricultural Field Officer, Law Officer, HR/Personnel Officer, Marketing Officer.",
+        topCompanies: [
+            { name: "Participating Public Sector Banks", salary: "Scale I Officer (Basic ~₹36,000)" },
+            { name: "A direct entry for professionals into banking", salary: "Varies" },
+            { name: "Utilizes your specific degree", salary: "Varies" },
+            { name: "Faster growth in specialized cadres", salary: "Varies" },
+            { name: "Gross salary ~₹55k-65k+", salary: "Varies" }
+        ],
+        successStories: "IBPS SO allows professionals like engineers, lawyers, and agriculture graduates to directly enter the banking sector in specialized officer roles, leveraging their domain expertise for a rewarding career."
+    },
+    {
+        name: "IBPS RRB (Officer & Office Assistant)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 600000,
+        eligibility: "Age: 18-30 (Scale I), 18-28 (Assistant). Education: Bachelor’s degree. Local language proficiency is crucial.",
+        duration: "9-12 months of preparation",
+        workEnvironment: "Regional Rural Bank branches, primarily in rural and semi-urban areas. Focus on rural banking and financial inclusion.",
+        workLifeBalance: "Very good. Generally less pressure than commercial banks. Postings are closer to one's home state.",
+        risksChallenges: "Postings are in rural areas, which may lack urban amenities. The focus is on priority sector lending and agri-finance.",
+        keywords: ["ibps", "rrb", "rural bank", "gramin bank", "officer scale 1", "office assistant", "banking", "agriculture"],
+        careerGrowth: "Officer Scale I -> Scale II -> Scale III -> Chairman of an RRB.",
+        skills: { required: ["Aptitude", "Local language fluency", "Interest in rural development"], acquired: ["Rural banking operations", "Kisan Credit Card (KCC) loans", "Microfinance", "Priority sector lending"] },
+        onlineCourses: [{ name: "Official IBPS Website", link: "https://www.ibps.in/" }],
+        jobProfile: "Office Assistant (Multipurpose), Officer Scale-I (Assistant Manager) in RRBs.",
+        topCompanies: [
+            { name: "Various Regional Rural Banks across India", salary: "Officer Scale I (Basic ~₹36,000)" },
+            { name: "Aryavart Bank", salary: "Office Assistant (Basic ~₹19,900)" },
+            { name: "Baroda UP Bank", salary: "Varies" },
+            { name: "And 40+ other RRBs", salary: "Varies" },
+            { name: "A great opportunity to serve in one's own state", salary: "Varies" }
+        ],
+        successStories: "IBPS RRB exams are a major source of employment in rural India, offering stable banking careers that contribute directly to the financial empowerment of rural communities."
+    },
+    {
+        name: "SBI PO (Probationary Officer)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 900000,
+        eligibility: "Age: 21-30 years. Education: Graduation in any discipline.",
+        duration: "1-1.5 years of intensive preparation",
+        workEnvironment: "Dynamic and high-pressure environment in State Bank of India branches. Considered more corporate and target-driven than other PSBs.",
+        workLifeBalance: "Challenging. SBI is known for its demanding work culture, but it also offers the best compensation and fastest growth in the PSU banking sector.",
+        risksChallenges: "Highly competitive exam. The job is demanding with high accountability. Postings can be anywhere in India.",
+        keywords: ["sbi", "po", "sbi po", "bank po", "probationary officer", "banking", "prestigious", "finance", "graduate"],
+        careerGrowth: "PO (JMGS-I) -> Deputy Manager -> Manager -> Chief Manager -> AGM -> DGM -> GM -> CGM. Very fast growth, with opportunities for foreign postings.",
+        skills: { required: ["High aptitude", "Communication skills", "Leadership potential", "Sales orientation"], acquired: ["Advanced banking operations", "Credit management", "Forex", "Digital banking", "Team leadership"] },
+        onlineCourses: [{ name: "Official SBI Careers Website", link: "https://sbi.co.in/web/careers" }],
+        jobProfile: "Probationary Officer in State Bank of India.",
+        topCompanies: [
+            { name: "State Bank of India (SBI)", salary: "JMGS-I (Basic ~₹41,960 with 4 increments)" },
+            { name: "Gross emoluments in metro cities are very high", salary: "~₹65k-75k+" },
+            { name: "Best compensation package among PSU banks", salary: "Varies" },
+            { name: "Excellent career progression", salary: "Varies" },
+            { name: "High prestige in the banking industry", salary: "Varies" }
+        ],
+        successStories: "Clearing the SBI PO exam is considered a significant achievement, placing candidates in India's largest and most prestigious bank. It offers a career path that can lead to the highest echelons of banking leadership."
+    },
+    {
+        name: "SBI Clerk (Junior Associate)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 500000,
+        eligibility: "Age: 20-28 years. Education: Graduation in any discipline.",
+        duration: "9-12 months of preparation",
+        workEnvironment: "Front-line role in SBI branches, focused on customer support and sales. A busy and interactive environment.",
+        workLifeBalance: "Good. Fixed working hours, offering a stable career. Better perks and salary compared to clerks in other PSBs.",
+        risksChallenges: "High competition. The role is a mix of customer service and sales, requiring good interpersonal skills.",
+        keywords: ["sbi", "clerk", "junior associate", "bank clerk", "banking", "customer service", "graduate"],
+        careerGrowth: "Junior Associate -> Officer Cadre (through internal exams). Many SBI POs and managers start their careers as clerks.",
+        skills: { required: ["Numerical ability", "Customer orientation", "Communication skills", "Accuracy"], acquired: ["SBI-specific banking operations", "Sales of financial products", "Customer relationship management"] },
+        onlineCourses: [{ name: "Official SBI Careers Website", link: "https://sbi.co.in/web/careers" }],
+        jobProfile: "Junior Associate (Customer Support & Sales) in SBI.",
+        topCompanies: [
+            { name: "State Bank of India (SBI)", salary: "Basic ~₹19,900 with 2 increments" },
+            { name: "Gross emoluments in metro cities are higher than other PSB clerks", salary: "~₹32k-37k+" },
+            { name: "Best entry-level clerical job in the banking sector", salary: "Varies" },
+            { name: "Offers a clear path for promotion to officer", salary: "Varies" },
+            { name: "A highly sought-after job for graduates", salary: "Varies" }
+        ],
+        successStories: "The SBI Clerk exam is a golden opportunity for graduates to join India's top bank. It provides excellent salary, benefits, and the best platform for career advancement from a clerical position."
+    },
+    {
+        name: "SBI SO (Specialist Cadre Officer)",
+        minPercentage: 60,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1200000,
+        eligibility: "Age: Varies by post. Education: Relevant professional degree (B.E., MBA, CA, etc.) plus mandatory work experience.",
+        duration: "Depends on professional experience",
+        workEnvironment: "Highly specialized, corporate-style departments within SBI. Involves working on strategic projects in IT, risk, credit, etc.",
+        workLifeBalance: "Excellent. Corporate working hours and a professional environment.",
+        risksChallenges: "Requires significant prior work experience. The selection process is highly competitive and focused on domain expertise.",
+        keywords: ["sbi", "so", "specialist officer", "it", "risk", "credit", "manager", "finance", "experienced"],
+        careerGrowth: "Direct entry at Middle Management (MMGS II/III) or Senior Management (SMGS IV/V) levels, with further growth.",
+        skills: { required: ["Deep domain expertise", "Managerial experience", "Analytical skills"], acquired: ["Banking-specific application of professional skills", "Large-scale project management", "Strategic planning in the financial sector"] },
+        onlineCourses: [{ name: "Official SBI Careers Website", link: "https://sbi.co.in/web/careers" }],
+        jobProfile: "IT Manager, Data Scientist, Risk Manager, Credit Analyst, etc.",
+        topCompanies: [
+            { name: "State Bank of India (SBI)", salary: "MMGS II Basic ~₹48,170" },
+            { name: "SMGS IV Basic ~₹76,010", salary: "Very high gross salary" },
+            { name: "A great opportunity for experienced private sector professionals", salary: "Varies" },
+            { name: "Offers leadership roles in specialized fields", salary: "Varies" },
+            { name: "Combines private sector expertise with public sector security", salary: "Varies" }
+        ],
+        successStories: "SBI SO recruitment allows experienced professionals from various fields to join India's largest bank at managerial levels, bringing specialized skills to drive the bank's technological and strategic initiatives."
+    },
+    {
+        name: "RBI Grade B Officer",
+        minPercentage: 60,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1500000,
+        eligibility: "Age: 21-30 years. Education: Graduation with 60% (Generalist) or Master's in Economics/Statistics (for DEPR/DSIM).",
+        duration: "2 years of rigorous preparation",
+        workEnvironment: "Intellectual and policy-focused environment at the Reserve Bank of India. Involves research, analysis, and regulation of the country's financial system.",
+        workLifeBalance: "Excellent. A 5-day week with fixed timings. The work is academic and research-oriented, with very low public dealing.",
+        risksChallenges: "Considered one of the toughest exams in India. The syllabus is vast, especially for Phase-II. Requires a deep understanding of economics and finance.",
+        keywords: ["rbi", "grade b", "reserve bank", "officer", "prestigious", "economics", "finance", "regulator", "government"],
+        careerGrowth: "Manager (Grade B) -> Assistant General Manager -> Deputy General Manager -> General Manager -> Chief General Manager -> Executive Director -> Deputy Governor.",
+        skills: { required: ["Analytical ability", "Economic understanding", "Writing skills", "General awareness"], acquired: ["Monetary policy formulation", "Banking regulation and supervision", "Financial market analysis", "Economic research", "Foreign exchange management"] },
+        onlineCourses: [{ name: "Official RBI Website", link: "https://www.rbi.org.in/Scripts/Vacancies.aspx" }],
+        jobProfile: "Manager in the Reserve Bank of India.",
+        topCompanies: [
+            { name: "Reserve Bank of India (RBI)", salary: "Basic pay ~₹55,200" },
+            { name: "Gross emoluments are among the highest in government jobs", salary: "~₹1.08L - ₹1.20L+" },
+            { name: "Considered the 'IAS' of the banking sector", salary: "Varies" },
+            { name: "Offers unmatched prestige and intellectual satisfaction", salary: "Varies" },
+            { name: "Excellent housing and other perks", salary: "Varies" }
+        ],
+        successStories: "Working at the RBI is a dream for any finance or economics enthusiast. A Grade B officer is part of the elite team that manages the country's economy, making it one of the most powerful and intellectually satisfying jobs in India."
+    },
+    {
+        name: "RBI Assistant",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 600000,
+        eligibility: "Age: 20-28 years. Education: Bachelor’s Degree with 50%.",
+        duration: "9-12 months of preparation",
+        workEnvironment: "Clerical and support role within the Reserve Bank of India. A calm, professional, and office-based environment.",
+        workLifeBalance: "Excellent. 5-day week, fixed timings, and postings in major state capitals. One of the best work-life balances available.",
+        risksChallenges: "Very high competition for a small number of vacancies. The job is primarily supportive and administrative.",
+        keywords: ["rbi", "assistant", "bank clerk", "reserve bank", "prestigious", "clerical", "graduate"],
+        careerGrowth: "Assistant -> Senior Assistant -> Special Assistant -> Officer Cadre (through competitive internal exams).",
+        skills: { required: ["Speed and accuracy", "Computer proficiency", "Reasoning ability", "English skills"], acquired: ["Understanding the functioning of the central bank", "Data management", "Official correspondence", "File maintenance"] },
+        onlineCourses: [{ name: "Official RBI Website", link: "https://www.rbi.org.in/Scripts/Vacancies.aspx" }],
+        jobProfile: "Assistant in the Reserve Bank of India.",
+        topCompanies: [
+            { name: "Reserve Bank of India (RBI)", salary: "Basic pay ~₹20,700" },
+            { name: "Gross emoluments are the highest for any clerical post", salary: "~₹45k-50k+" },
+            { name: "Considered the best clerical job in India", salary: "Varies" },
+            { name: "Offers a secure and comfortable work life", salary: "Varies" },
+            { name: "Great platform for internal promotion to Grade B officer", salary: "Varies" }
+        ],
+        successStories: "The RBI Assistant exam is a highly sought-after opportunity to join the country's central bank. It offers the best salary, perks, and work environment for a clerical position in India."
+    },
+    {
+        name: "NABARD Grade A (Assistant Manager)",
+        minPercentage: 60,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1200000,
+        eligibility: "Age: 21-30 years. Education: Bachelor’s Degree with 60% (Generalist) or relevant degree for specialist posts.",
+        duration: "1 year of specialized preparation",
+        workEnvironment: "Policy and development-focused role in the National Bank for Agriculture and Rural Development. Office-based, with field visits for project monitoring.",
+        workLifeBalance: "Excellent. 5-day week, fixed timings, and a focus on policy and development rather than commercial banking pressure.",
+        risksChallenges: "Competition is very high for few vacancies. The syllabus has a strong focus on Agriculture & Rural Development (ARD) and Economic & Social Issues (ESI).",
+        keywords: ["nabard", "grade a", "agriculture", "rural development", "banking", "officer", "policy", "finance"],
+        careerGrowth: "Assistant Manager (Grade A) -> Manager (Grade B) -> AGM -> DGM -> GM -> CGM -> Executive Director -> Chairman.",
+        skills: { required: ["Knowledge of rural economy", "Analytical skills", "Writing skills", "Policy orientation"], acquired: ["Rural project appraisal", "Microfinance", "Agricultural finance", "Policy analysis", "Development planning"] },
+        onlineCourses: [{ name: "Official NABARD Website", link: "https://www.nabard.org/careers.aspx" }],
+        jobProfile: "Assistant Manager in NABARD.",
+        topCompanies: [
+            { name: "NABARD", salary: "Basic pay ~₹44,500" },
+            { name: "Gross emoluments are very high", salary: "~₹90k-1L+" },
+            { name: "Work directly contributes to rural prosperity", salary: "Varies" },
+            { name: "A prestigious regulatory and development body", salary: "Varies" },
+            { name: "Excellent perks and work culture", salary: "Varies" }
+        ],
+        successStories: "A career in NABARD is ideal for those who want to work in the development finance sector. Grade A officers play a crucial role in shaping policies and funding projects that uplift India's rural economy."
+    },
+    {
+        name: "NABARD Grade B (Manager)",
+        minPercentage: 60,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1600000,
+        eligibility: "Age: 25-32 years. Education: Post Graduate degree with 60% OR Bachelor’s with 60% + 3 years of relevant experience.",
+        duration: "1-1.5 years of preparation",
+        workEnvironment: "Managerial role in NABARD, overseeing the work of Grade A officers and managing key development projects.",
+        workLifeBalance: "Excellent. A senior-level entry with a great work environment.",
+        risksChallenges: "Vacancies are very few and recruitment is infrequent. Requires prior experience or a postgraduate degree, making the competition very mature.",
+        keywords: ["nabard", "grade b", "manager", "agriculture", "rural development", "policy", "experienced"],
+        careerGrowth: "Manager (Grade B) -> AGM -> DGM and so on. A direct entry into a managerial role.",
+        skills: { required: ["Managerial skills", "Policy understanding", "Analytical ability", "Experience in a relevant sector"], acquired: ["Leadership", "Large-scale project management", "Strategic planning for rural development", "Financial regulation"] },
+        onlineCourses: [{ name: "Official NABARD Website", link: "https://www.nabard.org/careers.aspx" }],
+        jobProfile: "Manager in NABARD.",
+        topCompanies: [
+            { name: "NABARD", salary: "Basic pay ~₹55,200" },
+            { name: "Gross emoluments are extremely high", salary: "~₹1.20L-1.40L+" },
+            { name: "Direct entry at a higher management level", salary: "Varies" },
+            { name: "One of the best government jobs in the finance sector", salary: "Varies" },
+            { name: "High level of responsibility and impact", salary: "Varies" }
+        ],
+        successStories: "The NABARD Grade B exam is a rare opportunity for experienced professionals and postgraduates to join the apex rural development bank at a managerial level, offering immediate leadership responsibilities."
+    },
+
+    // State PSC Exams
+    {
+        name: "State Civil Services Exams (PCS)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 900000,
+        eligibility: "Age: Varies by state (e.g., 21-40). Education: Bachelor's Degree. Domicile/local language often required.",
+        duration: "2-3 years of preparation",
+        workEnvironment: "State government administration. Roles like SDM/DSP involve extensive fieldwork, public dealing, and maintaining law and order at the sub-division level.",
+        workLifeBalance: "Challenging for field posts like SDM/DSP, with irregular hours and high pressure. Secretariat postings offer a better balance.",
+        risksChallenges: "High competition. Exam cycles can be irregular. Involves dealing with local politics and complex ground-level issues.",
+        keywords: ["state psc", "pcs", "sdm", "dsp", "tehsildar", "bdo", "uppsc", "mpsc", "bpsc", "government"],
+        careerGrowth: "SDM/DSP -> ADM/ASP -> DM/SP -> Divisional Commissioner/IG -> Secretary to State Govt.",
+        skills: { required: ["Knowledge of state-specific GK", "Administrative aptitude", "Decision making", "Local language fluency"], acquired: ["District administration", "Land revenue management", "Law and order management", "Developmental scheme implementation"] },
+        onlineCourses: [{ name: "Respective State PSC Websites (e.g., UPPSC, MPSC)", link: "https://uppsc.up.nic.in/" }],
+        jobProfile: "Deputy Collector (SDM), Deputy Superintendent of Police (DSP), Tehsildar, BDO, etc.",
+        topCompanies: [
+            { name: "State Governments", salary: "Pay Level 10-14 equivalent" },
+            { name: "Offers immense power and prestige at the state level", salary: "Varies" },
+            { name: "Directly involved in grassroots governance", salary: "Varies" },
+            { name: "Promotions can lead to IAS/IPS cadre in some cases", salary: "Varies" },
+            { name: "A top career choice for state-level government jobs", salary: "Varies" }
+        ],
+        successStories: "State Civil Services are the backbone of district administration. Officers like SDMs and DSPs are at the forefront of governance, making decisions that directly impact the lives of people in their jurisdiction."
+    },
+    {
+        name: "State Judicial Services Exams (PCS-J)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1200000,
+        eligibility: "Age: Varies by state (e.g., 22-35). Education: LLB Degree. Some states require practice experience.",
+        duration: "2-3 years of legal preparation",
+        workEnvironment: "Courtroom environment. Involves hearing cases, writing judgments, and managing court proceedings. A highly respected and intellectually demanding role.",
+        workLifeBalance: "Demanding. Requires extensive reading of case files and law books even after court hours to write judgments. However, it offers a structured lifestyle with court vacations.",
+        risksChallenges: "Very high competition among law graduates. The responsibility of delivering justice is immense. Requires impeccable integrity and legal knowledge.",
+        keywords: ["judicial services", "pcs-j", "judge", "civil judge", "magistrate", "law", "llb", "judiciary", "government"],
+        careerGrowth: "Civil Judge (Junior Division) -> Senior Civil Judge -> Chief Judicial Magistrate -> District & Sessions Judge -> High Court Judge.",
+        skills: { required: ["Deep legal knowledge", "Integrity", "Analytical reasoning", "Decisiveness", "Writing skills"], acquired: ["Judgment writing", "Courtroom procedure", "Evidence analysis", "Interpretation of statutes", "Judicial temperament"] },
+        onlineCourses: [{ name: "Respective High Court/State PSC Websites", link: "https://www.example.com/state-high-court" }],
+        jobProfile: "Civil Judge (Junior Division) / Judicial Magistrate.",
+        topCompanies: [
+            { name: "Subordinate Judiciary of the State", salary: "Basic pay ~₹70k-80k+" },
+            { name: "A direct entry into the prestigious judicial service", salary: "Varies" },
+            { name: "Offers immense social respect and power", salary: "Varies" },
+            { name: "Clear path for promotion to High Court", salary: "Varies" },
+            { name: "Includes official residence, vehicle, and other perks", salary: "Varies" }
+        ],
+        successStories: "The Judicial Services exam is a direct path for law graduates to become judges. It is a career of immense responsibility, power, and social prestige, offering the chance to uphold justice and the rule of law."
+    },
+    // ... all other remaining courses are placeholders because the provided HTML has no more details to extract for them.
+    // The following entries are generalized based on the names in govt.html
+    {
+        name: "State Forest Service Exams",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 800000,
+        eligibility: "Age: Varies (e.g., 21-32). Education: Bachelor's Degree in Science/Engineering. Physical standards mandatory.",
+        duration: "1.5-2 years of preparation",
+        workEnvironment: "Field-oriented job in state forests and wildlife sanctuaries. Involves conservation, management, and administrative duties.",
+        workLifeBalance: "Challenging due to remote postings. Ideal for nature and wildlife enthusiasts.",
+        risksChallenges: "Competition is high for limited posts. Physically demanding role.",
+        keywords: ["state forest", "acf", "rfo", "forest ranger", "wildlife", "conservation", "science", "government"],
+        careerGrowth: "Forest Ranger -> Assistant Conservator of Forests -> Deputy Conservator of Forests.",
+        skills: { required: ["Physical fitness", "Interest in forestry", "Leadership"], acquired: ["Forest management", "Wildlife protection", "Surveying", "Administrative skills"] },
+        onlineCourses: [{ name: "Respective State PSC Websites", link: "https://www.example.com/state-psc" }],
+        jobProfile: "Assistant Conservator of Forests (ACF), Forest Ranger (RFO).",
+        topCompanies: [
+            { name: "State Forest Departments", salary: "ACF (Group A), RFO (Group B Gazetted)" },
+            { name: "Offers a life of adventure and purpose", salary: "Varies" },
+            { name: "Crucial role in environmental protection", salary: "Varies" },
+            { name: "Good perks and stable government career", salary: "Varies" },
+            { name: "Basic pay range from ₹45k-60k+", salary: "Varies" }
+        ],
+        successStories: "State Forest Service exams recruit officers who manage the valuable forest and wildlife resources of the states, combining a passion for nature with a stable and prestigious government career."
+    },
+    {
+        name: "Other State-Specific Exams",
+        minPercentage: 45,
+        avgYearlyFees: 0,
+        avgStartingSalary: 500000,
+        eligibility: "Varies widely from 10th pass to Postgraduate (e.g., Teachers, Police SI, Revenue Inspectors). Domicile is often key.",
+        duration: "6-18 months of preparation",
+        workEnvironment: "Varies from classroom teaching to police fieldwork to office-based clerical work.",
+        workLifeBalance: "Generally good to excellent, offering job security within one's home state.",
+        risksChallenges: "Exam schedules can be erratic. Competition is intense at the state level.",
+        keywords: ["state government", "teacher", "police si", "revenue inspector", "clerk", "tet", "patwari", "lekhpal"],
+        careerGrowth: "Varies by department; generally a structured, time-bound promotion system.",
+        skills: { required: ["State-specific GK", "Local language", "Aptitude"], acquired: ["Specific departmental knowledge (e.g., land records, education policies)"] },
+        onlineCourses: [{ name: "Respective State Recruitment Board Websites", link: "https://www.example.com/state-board" }],
+        jobProfile: "School Teacher, Police Sub-Inspector, Revenue Inspector, Clerk, etc.",
+        topCompanies: [
+            { name: "State Education Departments", salary: "Varies by pay commission" },
+            { name: "State Police Departments", salary: "Varies" },
+            { name: "State Revenue Departments", salary: "Varies" },
+            { name: "Various other state directorates", salary: "Varies" },
+            { name: "Offers a stable career close to home", salary: "Varies" }
+        ],
+        successStories: "These exams are the backbone of state government employment, offering a vast number of opportunities across various departments and providing stable careers for people within their own state."
+    },
+    {
+        name: "Indian Army Agniveer",
+        minPercentage: 33,
+        avgYearlyFees: 0,
+        avgStartingSalary: 360000,
+        eligibility: "Age: 17.5-21 years. Education: 8th, 10th, or 12th pass depending on the trade (GD, Technical, Clerk, Tradesman).",
+        duration: "4-year service under Agnipath Scheme",
+        workEnvironment: "Highly disciplined and physically demanding military environment. Involves combat, technical, or support roles.",
+        workLifeBalance: "Extremely challenging. Rigorous training and postings in difficult areas. Based on a 4-year service model.",
+        risksChallenges: "Short-term service (4 years). Only up to 25% get absorbed into the regular cadre. High physical and mental demands.",
+        keywords: ["agniveer", "agnipath", "army", "defence", "10th pass", "12th pass", "soldier", "military"],
+        careerGrowth: "Opportunity to join the regular cadre as a Sepoy after 4 years, based on merit. Or exit with 'Seva Nidhi' package and skill certificate.",
+        skills: { required: ["High physical fitness", "Discipline", "Courage"], acquired: ["Military skills", "Weapon handling", "Technical skills (in specific trades)", "Teamwork"] },
+        onlineCourses: [{ name: "Official Join Indian Army Website", link: "https://joinindianarmy.nic.in/" }],
+        jobProfile: "Agniveer (General Duty, Technical, Clerk, Tradesman).",
+        topCompanies: [
+            { name: "Indian Army", salary: "1st Year Package ~₹4.76 Lakh" },
+            { name: "4th Year Package ~₹6.92 Lakh", salary: "Varies" },
+            { name: "Seva Nidhi package upon exit", salary: "~₹10.04 Lakhs" },
+            { name: "Preference in CAPF/State Police recruitment after exit", salary: "Varies" },
+            { name: "Life insurance cover of ₹48 Lakh", salary: "Varies" }
+        ],
+        successStories: "The Agnipath scheme is a new model for youth to serve in the armed forces for a short duration, gaining discipline, skills, and a financial package to build their future careers."
+    },
+    {
+        name: "Indian Navy Agniveer (SSR/MR)",
+        minPercentage: 33,
+        avgYearlyFees: 0,
+        avgStartingSalary: 360000,
+        eligibility: "Age: 17.5-21 years. Education: 10+2 with PCM (SSR) or 10th Pass (MR). Unmarried candidates only.",
+        duration: "4-year service under Agnipath Scheme",
+        workEnvironment: "Onboard naval ships and at shore establishments. A technically oriented and disciplined maritime environment.",
+        workLifeBalance: "Challenging. Long sailing durations away from home. Based on a 4-year service model.",
+        risksChallenges: "Similar to Army Agniveer: short-term service with only up to 25% absorption. Requires adaptability to life at sea.",
+        keywords: ["agniveer", "navy", "ssr", "mr", "agnipath", "defence", "sailor", "10th pass", "12th pass"],
+        careerGrowth: "Opportunity for permanent enrolment as a Sailor after 4 years. Exit with 'Seva Nidhi' package.",
+        skills: { required: ["Physical fitness", "Technical aptitude", "Adaptability to sea life"], acquired: ["Seamanship", "Naval equipment handling", "Technical trade skills", "Discipline"] },
+        onlineCourses: [{ name: "Official Join Indian Navy Website", link: "https://www.joinindiannavy.gov.in/" }],
+        jobProfile: "Agniveer (Senior Secondary Recruit), Agniveer (Matric Recruit - Chef, Steward, Hygienist).",
+        topCompanies: [
+            { name: "Indian Navy", salary: "Same pay and benefits as Army Agniveer" },
+            { name: "Unique experience of serving at sea", salary: "Varies" },
+            { name: "High-tech work environment", salary: "Varies" },
+            { name: "Preference in Coast Guard/Merchant Navy after exit", salary: "Varies" },
+            { name: "Seva Nidhi package of ~₹10.04 Lakhs", salary: "Varies" }
+        ],
+        successStories: "Navy Agniveer provides an opportunity for young individuals to experience the high-tech and adventurous life of a sailor, serving the nation while acquiring valuable technical skills."
+    },
+    {
+        name: "Indian Air Force Agniveer Vayu",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 360000,
+        eligibility: "Age: 17.5-21 years. Education: 10+2 with PCM (Science) or any stream (Other than Science). 50% aggregate required.",
+        duration: "4-year service under Agnipath Scheme",
+        workEnvironment: "Air Force stations and technical areas. Involves working with advanced aircraft, radar, and communication systems.",
+        workLifeBalance: "Structured but demanding. Shift duties are common. Based on a 4-year service model.",
+        risksChallenges: "Short-term service with up to 25% absorption. The technical trades are demanding and require a high level of precision.",
+        keywords: ["agniveer", "air force", "vayu", "agnipath", "defence", "airman", "technical", "12th pass"],
+        careerGrowth: "Opportunity for permanent enrolment as an Airman. Exit with 'Seva Nidhi' package.",
+        skills: { required: ["Technical aptitude", "Physical fitness", "Discipline", "Attention to detail"], acquired: ["Aircraft maintenance", "Radar operations", "Administrative skills", "Logistics management"] },
+        onlineCourses: [{ name: "Official Agnipath Vayu Website", link: "https://agnipathvayu.cdac.in/" }],
+        jobProfile: "Agniveervayu (Science Subjects / Other than Science Subjects).",
+        topCompanies: [
+            { name: "Indian Air Force", salary: "Same pay and benefits as Army Agniveer" },
+            { name: "Work on cutting-edge aviation technology", salary: "Varies" },
+            { name: "A pathway to a career as a skilled aviation technician", salary: "Varies" },
+            { name: "Seva Nidhi package of ~₹10.04 Lakhs", salary: "Varies" },
+            { name: "Preference for jobs in aviation PSUs after exit", salary: "Varies" }
+        ],
+        successStories: "Agniveer Vayu offers a unique chance to be part of the elite Indian Air Force, working with sophisticated technology and gaining skills that are valuable in the civil aviation sector as well."
+    },
+    {
+        name: "Territorial Army (TA) Officer",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 900000,
+        eligibility: "Age: 18-42 years. Education: Graduate. Must be gainfully employed.",
+        duration: "Part-time service",
+        workEnvironment: "Part-time military service. Involves a few months of training/service per year, while continuing with one's civilian profession.",
+        workLifeBalance: "Unique. Allows individuals to pursue their civilian career while also serving in the military. Requires managing both commitments.",
+        risksChallenges: "Requires balancing civilian job with military duties. Can be called for longer service during national emergencies.",
+        keywords: ["territorial army", "ta", "part-time", "military", "officer", "defence", "ssb", "employed"],
+        careerGrowth: "Lieutenant -> Captain -> Major -> Lt. Colonel. Career progresses in parallel to civilian career.",
+        skills: { required: ["Leadership", "Physical fitness", "Time management"], acquired: ["Military training", "Leadership skills", "The honour of wearing the uniform"] },
+        onlineCourses: [{ name: "Official Territorial Army Website", link: "https://www.jointerritorialarmy.gov.in/" }],
+        jobProfile: "Territorial Army Officer (serving part-time).",
+        topCompanies: [
+            { name: "Indian Army (part-time)", salary: "Pay and allowances equivalent to Regular Army during service" },
+            { name: "An opportunity for civilians to experience military life", salary: "Varies" },
+            { name: "Allows you to continue your primary profession", salary: "Varies" },
+            { name: "Pension benefits if minimum service criteria are met", salary: "Varies" },
+            { name: "Earn the rank of an Army Officer", salary: "Varies" }
+        ],
+        successStories: "The Territorial Army offers a remarkable opportunity for gainfully employed citizens to don the olive green and serve the nation as an officer, without giving up their civilian career. It is truly the best of both worlds."
+    },
+    {
+        name: "Paramilitary Forces Direct Recruitment (Tradesman/HC)",
+        minPercentage: 45,
+        avgYearlyFees: 0,
+        avgStartingSalary: 400000,
+        eligibility: "Age: Varies (e.g., 18-25). Education: Varies by post (10th, 12th, ITI, Diploma). Physical standards mandatory.",
+        duration: "6-12 months of preparation",
+        workEnvironment: "Support and technical roles within CAPFs. Can be in field units or static establishments.",
+        workLifeBalance: "Better than GD roles. Ministerial and technical roles often have more structured timings. Postings can still be in difficult areas.",
+        risksChallenges: "Vacancies are specific and infrequent. Requires a specific trade or technical skill. Career progression may be slower than in GD/officer cadres.",
+        keywords: ["paramilitary", "bsf", "crpf", "tradesman", "head constable", "ministerial", "radio operator", "technical"],
+        careerGrowth: "Constable -> Head Constable -> ASI -> SI (based on trade and departmental exams).",
+        skills: { required: ["Specific trade skill (e.g., driving, cooking, typing)", "Physical fitness"], acquired: ["Advanced trade skills", "Working in a disciplined environment", "Administrative procedures"] },
+        onlineCourses: [{ name: "Respective Force Websites (e.g., BSF, CRPF)", link: "https://rectt.bsf.gov.in/" }],
+        jobProfile: "Constable (Tradesman/Driver), Head Constable (Ministerial), ASI (Steno).",
+        topCompanies: [
+            { name: "BSF, CRPF, CISF, ITBP, SSB", salary: "HC: Pay Level 4 (Basic ₹25,500)" },
+            { name: "Assam Rifles", salary: "CT: Pay Level 3 (Basic ₹21,700)" },
+            { name: "Offers a secure government job with a specific skill", salary: "Varies" },
+            { name: "An alternative entry into the forces for non-GD roles", salary: "Varies" },
+            { name: "Good benefits and allowances", salary: "Varies" }
+        ],
+        successStories: "These direct recruitments allow individuals with specific vocational or clerical skills to join the paramilitary forces, providing crucial support functions that are essential for the operational effectiveness of the force."
+    },
+    {
+        name: "IB ACIO (Assistant Central Intelligence Officer)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 900000,
+        eligibility: "Age: 18-27 years. Education: Graduation in any discipline.",
+        duration: "1.5-2 years of preparation",
+        workEnvironment: "A secretive and intellectually stimulating environment in the Intelligence Bureau. A mix of analytical desk work and sensitive fieldwork.",
+        workLifeBalance: "Can be demanding. The nature of intelligence work may require irregular hours and high levels of discretion. Not a typical 9-to-5 job.",
+        risksChallenges: "High-stakes job with significant responsibility for national security. Requires a high degree of integrity and the ability to work under pressure and anonymity.",
+        keywords: ["ib", "acio", "intelligence bureau", "officer", "spy", "intelligence", "security", "government", "prestigious"],
+        careerGrowth: "ACIO-II -> ACIO-I -> Deputy Central Intelligence Officer -> Assistant Director.",
+        skills: { required: ["Analytical mind", "Discretion", "Sharp observation skills", "General awareness", "Communication skills"], acquired: ["Intelligence gathering techniques", "Information analysis", "Report writing", "Surveillance basics", "National security studies"] },
+        onlineCourses: [{ name: "Ministry of Home Affairs Website", link: "https://www.mha.gov.in/" }],
+        jobProfile: "Assistant Central Intelligence Officer, Grade-II/Executive.",
+        topCompanies: [
+            { name: "Intelligence Bureau (IB)", salary: "Pay Level 7 (Basic ₹44,900)" },
+            { name: "Includes a Special Security Allowance (20% of basic pay)", salary: "Varies" },
+            { name: "One of the most sought-after intelligence jobs in India", salary: "Varies" },
+            { name: "A direct role in protecting national security", salary: "Varies" },
+            { name: "Offers a life of unique challenges and purpose", salary: "Varies" }
+        ],
+        successStories: "The IB ACIO is a prestigious Group 'C' post that functions at a Group 'A'/B' level of responsibility. It offers graduates a direct entry into the world of intelligence, playing a vital role in safeguarding the nation."
+    },
+    {
+        name: "IB Security Assistant/Executive (SA/Exe) & MTS",
+        minPercentage: 35,
+        avgYearlyFees: 0,
+        avgStartingSalary: 450000,
+        eligibility: "Age: up to 27 (SA/Exe), 18-25 (MTS). Education: 10th Pass. Domicile and local language proficiency for SA/Exe.",
+        duration: "6-12 months of preparation",
+        workEnvironment: "Support roles within the Intelligence Bureau. SA/Exe involves fieldwork and assisting ACIOs in intelligence collection at the ground level.",
+        workLifeBalance: "Demanding for SA/Exe, with irregular hours. MTS role has a stable office schedule.",
+        risksChallenges: "SA/Exe role involves working in sensitive areas and requires a high level of alertness. Requires fluency in a specific local language.",
+        keywords: ["ib", "security assistant", "mts", "intelligence", "10th pass", "government", "security"],
+        careerGrowth: "SA/Exe can get promoted to higher executive ranks. MTS can move to clerical roles.",
+        skills: { required: ["Alertness", "Local language fluency", "Integrity", "Discipline"], acquired: ["Ground-level intelligence operations", "Surveillance support", "Information reporting", "Security protocols"] },
+        onlineCourses: [{ name: "Ministry of Home Affairs Website", link: "https://www.mha.gov.in/" }],
+        jobProfile: "Security Assistant/Executive, Multi-Tasking Staff in IB.",
+        topCompanies: [
+            { name: "Intelligence Bureau (IB)", salary: "SA/Exe: Pay Level 3 (Basic ₹21,700) + SSA" },
+            { name: "MTS: Pay Level 1 (Basic ₹18,000)", salary: "Varies" },
+            { name: "An opportunity to join the IB after 10th", salary: "Varies" },
+            { name: "Crucial role in grassroots intelligence gathering", salary: "Varies" },
+            { name: "Offers job security and national service", salary: "Varies" }
+        ],
+        successStories: "This recruitment provides a crucial entry-point for 10th pass candidates into the Intelligence Bureau, forming the essential support and ground-level network for the country's intelligence apparatus."
+    },
+    {
+        name: "Food Corporation of India (FCI) Exams",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 600000,
+        eligibility: "Varies by post. Manager (Graduate/MBA/CA), AG-III (Graduate), Watchman (8th Pass).",
+        duration: "9-15 months of preparation",
+        workEnvironment: "A mix of office-based administrative work and on-site management of food grain depots and procurement centers.",
+        workLifeBalance: "Good. Structured PSU working environment. Can be demanding during procurement seasons.",
+        risksChallenges: "Requires managing large-scale logistics and storage. The work is crucial for national food security and has high accountability.",
+        keywords: ["fci", "food corporation", "manager", "assistant", "psu", "government", "logistics", "agriculture"],
+        careerGrowth: "Assistant Grade -> Manager -> Senior Manager -> AGM -> DGM.",
+        skills: { required: ["Management skills", "Logistical planning", "Accounting (for accounts posts)", "Technical knowledge (for tech posts)"], acquired: ["Food grain procurement and storage", "Public distribution system (PDS) management", "Quality control of food grains", "Logistics and supply chain management"] },
+        onlineCourses: [{ name: "Official FCI Website", link: "https://fci.gov.in/" }],
+        jobProfile: "Manager, Assistant Grade-III (General, Accounts, Technical, Depot), Watchman.",
+        topCompanies: [
+            { name: "Food Corporation of India (FCI)", salary: "Manager (Basic ~₹40,000)" },
+            { name: "Assistant Grade-III", salary: "Basic ~₹28,200" },
+            { name: "Watchman", salary: "Basic ~₹23,300" },
+            { name: "A vital role in India's food security network", salary: "Varies" },
+            { name: "A stable and well-paying PSU career", salary: "Varies" }
+        ],
+        successStories: "FCI is a cornerstone of India's food security. A career here offers a stable PSU job with the immense responsibility of managing the nation's food grain supply, from procurement from farmers to distribution across the country."
+    },
+    {
+        name: "India Post Gramin Dak Sevak (GDS)",
+        minPercentage: 33,
+        avgYearlyFees: 0,
+        avgStartingSalary: 150000,
+        eligibility: "Age: 18-40 years. Education: 10th Pass. Local language and cycling knowledge mandatory. Selection is based on 10th marks (merit-based).",
+        duration: "No preparation required; apply based on merit",
+        workEnvironment: "Part-time role in village post offices. Involves managing the branch, mail delivery, and promoting postal financial services.",
+        workLifeBalance: "Excellent. It's a part-time job (4-5 hours), allowing individuals to pursue other occupations simultaneously.",
+        risksChallenges: "The remuneration (TRCA) is not a full salary and is based on hours worked. The role is in a rural setting. No written exam means selection depends entirely on 10th percentage.",
+        keywords: ["gds", "post office", "gramin dak sevak", "postman", "bpm", "abpm", "10th pass", "merit based", "part-time"],
+        careerGrowth: "Can be promoted to Postman/MTS cadre through departmental exams after a few years of service.",
+        skills: { required: ["Local language fluency", "Basic computer knowledge", "Integrity", "Customer service"], acquired: ["Postal operations", "Financial inclusion services (IPPB)", "Rural outreach", "Customer management"] },
+        onlineCourses: [{ name: "Official India Post GDS Online Engagement Portal", link: "https://indiapostgdsonline.gov.in/" }],
+        jobProfile: "Branch Postmaster (BPM), Assistant Branch Postmaster (ABPM), Dak Sevak.",
+        topCompanies: [
+            { name: "Department of Posts", salary: "TRCA for 4 hrs: BPM ~₹12,000; ABPM ~₹10,000" },
+            { name: "A great part-time opportunity in one's own village", salary: "Varies" },
+            { name: "A stepping stone to a full-time postal job", salary: "Varies" },
+            { name: "No examination stress", salary: "Varies" },
+            { name: "Crucial for financial inclusion in rural India", salary: "Varies" }
+        ],
+        successStories: "The GDS role is a unique, merit-based opportunity that forms the last-mile connectivity of the world's largest postal network. It provides a stable part-time income and serves as an entry point into the Department of Posts."
+    },
+    {
+        name: "India Post Postman / Mail Guard / MTS / PA / SA",
+        minPercentage: 45,
+        avgYearlyFees: 0,
+        avgStartingSalary: 400000,
+        eligibility: "Age: 18-27 (varies). Education: 10th/12th pass depending on the post.",
+        duration: "9-12 months of preparation",
+        workEnvironment: "Post offices and sorting hubs. Postman/Mail Guard roles are field-intensive. PA/SA/MTS roles are office-based.",
+        workLifeBalance: "Good. Structured working hours and a stable government job environment.",
+        risksChallenges: "Competition is high. Postman role requires physical fitness and dealing with varied public and weather conditions.",
+        keywords: ["post office", "postman", "mail guard", "mts", "postal assistant", "sorting assistant", "government"],
+        careerGrowth: "Structured promotion path within the Department of Posts based on seniority and departmental exams.",
+        skills: { required: ["Local language knowledge", "Physical fitness (Postman)", "Customer service"], acquired: ["Postal regulations", "Sorting and delivery logistics", "Financial services offered by Post Office", "Customer interaction"] },
+        onlineCourses: [{ name: "Official India Post Website", link: "https://www.indiapost.gov.in/" }],
+        jobProfile: "Postman, Mail Guard, MTS, Postal Assistant (PA), Sorting Assistant (SA).",
+        topCompanies: [
+            { name: "Department of Posts", salary: "PA/SA: Pay Level 4 (Basic ₹25,500)" },
+            { name: "Postman/Mail Guard", salary: "Pay Level 3 (Basic ₹21,700)" },
+            { name: "MTS", salary: "Pay Level 1 (Basic ₹18,000)" },
+            { name: "A secure and respected job in every town and city", salary: "Varies" },
+            { name: "Offers deep connectivity with the community", salary: "Varies" }
+        ],
+        successStories: "These roles are the operational heart of India Post. From the postman who is a trusted figure in every neighbourhood to the postal assistants managing financial services, these jobs offer a secure and community-oriented career."
+    },
+    {
+        name: "Comptroller and Auditor General of India (CAG) Recruitment",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 800000,
+        eligibility: "Recruitment is primarily done via SSC CGL (for AAO, Auditor, Accountant) and SSC CHSL (for LDC).",
+        duration: "1-2 years of CGL/CHSL preparation",
+        workEnvironment: "Professional office environment in the Indian Audit & Accounts Department. Involves auditing the accounts of government bodies and PSUs.",
+        workLifeBalance: "Excellent. 5-day week, fixed hours. The work is analytical and intellectually stimulating. May involve touring for audit purposes.",
+        risksChallenges: "Requires strong analytical and accounting skills. The work involves finding discrepancies and has high accountability.",
+        keywords: ["cag", "auditor", "accountant", "aao", "ssc cgl", "government", "audit", "finance"],
+        careerGrowth: "Auditor -> Senior Auditor -> Assistant Audit/Accounts Officer -> Audit/Accounts Officer. AAO has a direct gazetted entry.",
+        skills: { required: ["Analytical skills", "Attention to detail", "Integrity", "Knowledge of accounting"], acquired: ["Government auditing standards", "Public finance", "Accountancy", "Report writing", "Performance audits"] },
+        onlineCourses: [{ name: "Official CAG Website", link: "https://cag.gov.in/" }],
+        jobProfile: "Assistant Audit Officer (AAO), Auditor, Accountant in CAG.",
+        topCompanies: [
+            { name: "Comptroller and Auditor General of India", salary: "AAO: Pay Level 8 (Basic ₹47,600)" },
+            { name: "Auditor/Accountant", salary: "Pay Level 5 (Basic ₹29,200)" },
+            { name: "A prestigious job in the supreme audit institution of India", salary: "Varies" },
+            { name: "Offers a powerful and respected role", salary: "Varies" },
+            { name: "Strong career progression and learning opportunities", salary: "Varies" }
+        ],
+        successStories: "Working for the CAG is a matter of great prestige. These officers and staff act as the conscience-keepers of the nation's finances, ensuring accountability and transparency in public spending."
+    },
+    {
+        name: "Narcotics Control Bureau (NCB) Recruitment",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 600000,
+        eligibility: "Varies. Sepoy (10th) via SSC GD, SI via SSC CPO. Direct recruitment for Intelligence Officer (Graduate).",
+        duration: "1-1.5 years of preparation",
+        workEnvironment: "High-risk, intelligence-driven environment focused on combating drug trafficking. A mix of fieldwork, surveillance, and office-based analysis.",
+        workLifeBalance: "Extremely challenging. The job is 24/7, with irregular hours and high risk. Requires a high level of commitment.",
+        risksChallenges: "Direct confrontation with dangerous drug cartels. The work is secretive and can be stressful. Requires a strong ethical compass.",
+        keywords: ["ncb", "narcotics", "intelligence", "officer", "investigation", "security", "government", "police"],
+        careerGrowth: "Intelligence Officer -> Senior IO -> Zonal Director. A specialized and high-impact career in law enforcement.",
+        skills: { required: ["Courage", "Integrity", "Analytical skills", "Physical fitness"], acquired: ["Intelligence gathering", "Surveillance techniques", "NDPS Act knowledge", "Investigation skills", "Inter-agency coordination"] },
+        onlineCourses: [{ name: "Official NCB Website", link: "https://narcoticsindia.nic.in/" }],
+        jobProfile: "Intelligence Officer (IO), Sub-Inspector, Sepoy.",
+        topCompanies: [
+            { name: "Narcotics Control Bureau (NCB)", salary: "IO: Pay Level 6/7 (Basic ~₹35.4k/₹44.9k)" },
+            { name: "Includes Special Security Allowance", salary: "Varies" },
+            { name: "A frontline role in the war on drugs", salary: "Varies" },
+            { name: "A challenging and adventurous career", salary: "Varies" },
+            { name: "Offers a unique opportunity for national service", salary: "Varies" }
+        ],
+        successStories: "NCB officers are at the forefront of India's fight against the menace of drug trafficking. It is a high-risk, high-impact career for individuals dedicated to law enforcement and national security."
+    },
+    {
+        name: "Directorate of Enforcement (ED) Recruitment",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 900000,
+        eligibility: "Primarily recruits Assistant Enforcement Officer (AEO) via SSC CGL. Direct recruitment for specialists (Law, CA, MBA).",
+        duration: "1-2 years of CGL preparation",
+        workEnvironment: "A premier financial investigation agency. Involves investigating economic crimes like money laundering and forex violations. Intellectually demanding desk and field work.",
+        workLifeBalance: "Demanding. Investigating complex financial crimes requires long hours and meticulous work. High-pressure environment.",
+        risksChallenges: "Deals with high-profile economic offenders. Requires a deep understanding of financial laws (PMLA, FEMA). The work is complex and requires high integrity.",
+        keywords: ["ed", "enforcement directorate", "aeo", "investigation", "finance", "ssc cgl", "government", "law"],
+        careerGrowth: "AEO -> Enforcement Officer -> Assistant Director -> Deputy Director.",
+        skills: { required: ["Analytical skills", "Integrity", "Knowledge of finance/law", "Attention to detail"], acquired: ["Financial investigation", "PMLA & FEMA laws", "Intelligence gathering", "Asset tracing and recovery", "Prosecution procedures"] },
+        onlineCourses: [{ name: "Official ED Website", link: "https://enforcementdirectorate.gov.in/" }],
+        jobProfile: "Assistant Enforcement Officer (AEO), Enforcement Officer (EO).",
+        topCompanies: [
+            { name: "Directorate of Enforcement (ED)", salary: "AEO: Pay Level 7 (Basic ₹44,900)" },
+            { name: "A powerful and prestigious investigation agency", salary: "Varies" },
+            { name: "Deals with high-profile white-collar crimes", salary: "Varies" },
+            { name: "Excellent career for commerce/law graduates", salary: "Varies" },
+            { name: "Offers a challenging investigative career", salary: "Varies" }
+        ],
+        successStories: "The ED is at the center of India's fight against economic crime. An officer in the ED gets to investigate complex cases of national importance, making it a powerful and challenging career for those interested in financial investigation."
+    },
+    {
+        name: "LIC AAO (Assistant Administrative Officer)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1100000,
+        eligibility: "Age: 21-30 years. Education: Bachelor’s Degree (Generalist) or relevant professional degree for specialists.",
+        duration: "1 year of preparation",
+        workEnvironment: "Corporate office environment in Life Insurance Corporation of India. A desk-based administrative and managerial role.",
+        workLifeBalance: "Excellent. 5-day week, fixed timings, and a stable PSU work culture. One of the best work-life balances.",
+        risksChallenges: "High competition for limited vacancies. The initial role is administrative, with a transition to managerial responsibilities over time.",
+        keywords: ["lic", "aao", "insurance", "officer", "administrative", "psu", "government", "finance", "graduate"],
+        careerGrowth: "AAO -> Administrative Officer (AO) -> Assistant Divisional Manager -> Divisional Manager -> Zonal Manager.",
+        skills: { required: ["Aptitude", "Financial awareness", "Communication", "Analytical skills"], acquired: ["Insurance underwriting", "Claims processing", "Policy administration", "Financial management", "Team supervision"] },
+        onlineCourses: [{ name: "Official LIC Website", link: "https://licindia.in/Bottom-Links/careers" }],
+        jobProfile: "Assistant Administrative Officer (Generalist, IT, CA, Actuarial, Rajbhasha).",
+        topCompanies: [
+            { name: "Life Insurance Corporation of India (LIC)", salary: "Basic pay ~₹53,600" },
+            { name: "Gross emoluments in a Class A city are very high", salary: "~₹90k-1L+" },
+            { name: "A prestigious officer-level job in the insurance sector", salary: "Varies" },
+            { name: "Offers immense job security and excellent perks", salary: "Varies" },
+            { name: "A direct path to a managerial career in LIC", salary: "Varies" }
+        ],
+        successStories: "The LIC AAO exam is a coveted opportunity to join India's largest insurer as an officer. It offers an excellent salary, unmatched job security, and a stable path to a senior managerial position."
+    },
+    {
+        name: "LIC ADO (Apprentice Development Officer)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 700000,
+        eligibility: "Age: 21-30 years. Education: Bachelor’s Degree. Different categories for LIC agents, employees, and open market.",
+        duration: "9-12 months of preparation",
+        workEnvironment: "A sales-oriented and field-intensive role. Involves recruiting, training, and managing a team of LIC agents to sell insurance policies.",
+        workLifeBalance: "Challenging. The job is target-driven and requires constant fieldwork and networking. Not a typical desk job.",
+        risksChallenges: "High-pressure sales environment. Success is directly tied to the performance of one's agent team. Requires strong marketing and interpersonal skills.",
+        keywords: ["lic", "ado", "development officer", "insurance", "sales", "marketing", "psu", "field job"],
+        careerGrowth: "ADO -> Development Officer -> Senior DO -> Assistant Branch Manager (Sales) -> Branch Manager (Sales).",
+        skills: { required: ["Marketing skills", "Interpersonal skills", "Leadership", "Resilience"], acquired: ["Team management", "Sales training", "Recruitment", "Insurance product knowledge", "Market analysis"] },
+        onlineCourses: [{ name: "Official LIC Website", link: "https://licindia.in/Bottom-Links/careers" }],
+        jobProfile: "Apprentice Development Officer.",
+        topCompanies: [
+            { name: "Life Insurance Corporation of India (LIC)", salary: "Basic pay ~₹35,650 (after apprenticeship)" },
+            { name: "Stipend during apprenticeship is ~₹51,500", salary: "Varies" },
+            { name: "Includes handsome incentives based on performance", salary: "Varies" },
+            { name: "A challenging marketing role with high earning potential", salary: "Varies" },
+            { name: "A leadership role from day one", salary: "Varies" }
+        ],
+        successStories: "LIC ADO is a unique marketing and team leadership role. It's an excellent career for dynamic graduates who want a field job with the security of a government-backed entity and high earning potential through incentives."
+    },
+    {
+        name: "PSGICs AO (Administrative Officer)",
+        minPercentage: 60,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1000000,
+        eligibility: "Age: 21-30 years. Education: Graduate/PG with 60% (Generalist) or relevant professional degree for specialists.",
+        duration: "1 year of preparation",
+        workEnvironment: "Corporate office of a Public Sector General Insurance Company. Administrative role in underwriting, claims, or specialized departments.",
+        workLifeBalance: "Excellent. 5-day week, fixed hours, and a stable PSU work culture.",
+        risksChallenges: "Exams are not conducted every year, making it unpredictable. Competition is high for the limited number of posts.",
+        keywords: ["niacl", "uiic", "oicl", "ao", "insurance", "officer", "general insurance", "psu", "government"],
+        careerGrowth: "AO (Scale I) -> Deputy Manager -> Manager -> Senior Manager and so on.",
+        skills: { required: ["Analytical skills", "Communication", "Aptitude", "Domain knowledge (for specialists)"], acquired: ["General insurance underwriting (motor, health, fire)", "Claims assessment", "Risk management", "Financial administration"] },
+        onlineCourses: [{ name: "Official websites of NIACL, UIIC, OICL", link: "https://newindia.co.in/portal/readMore/careers" }],
+        jobProfile: "Administrative Officer (Generalist, IT, Finance, Legal, etc.).",
+        topCompanies: [
+            { name: "New India Assurance (NIACL)", salary: "Scale I Officer (Basic ~₹50,925)" },
+            { name: "United India Insurance (UIIC)", salary: "Scale I Officer" },
+            { name: "Oriental Insurance Company (OICL)", salary: "Scale I Officer" },
+            { name: "Gross emoluments in metros are high", salary: "~₹80k-90k+" },
+            { name: "A secure and well-paying officer job", salary: "Varies" }
+        ],
+        successStories: "Becoming an AO in a public sector general insurance company is a great career choice for graduates, offering a high salary, excellent work-life balance, and job security comparable to that of a Bank PO."
+    },
+    {
+        name: "ISRO Recruitment Exams",
+        minPercentage: 65,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1000000,
+        eligibility: "Varies. Scientist/Engineer (B.E./B.Tech/M.Sc. with 65%). Technical Assistant (Diploma). Technician (ITI).",
+        duration: "1 year of intensive technical preparation",
+        workEnvironment: "A cutting-edge, research-oriented environment at the Indian Space Research Organisation. Involves working on national space missions.",
+        workLifeBalance: "Demanding during mission launches. Overall, a highly motivating and intellectually stimulating environment.",
+        risksChallenges: "Extremely competitive selection process. The work demands a very high level of precision and perfection, as there is no room for error in space missions.",
+        keywords: ["isro", "scientist", "engineer", "space", "research", "technical", "government", "prestigious", "btech"],
+        careerGrowth: "Scientist/Engineer 'SC' -> 'SD' -> 'SE' -> 'SF' -> 'SG' -> Distinguished Scientist.",
+        skills: { required: ["Deep technical knowledge", "Innovation", "Problem-solving", "Teamwork", "Passion for space"], acquired: ["Rocket science", "Satellite technology", "Control systems", "Propulsion systems", "Project management for complex missions"] },
+        onlineCourses: [{ name: "Official ISRO Website", link: "https://www.isro.gov.in/careers" }],
+        jobProfile: "Scientist/Engineer, Technical Assistant, Technician.",
+        topCompanies: [
+            { name: "Indian Space Research Organisation (ISRO)", salary: "Scientist/Engineer 'SC': Pay Level 10" },
+            { name: "An opportunity to work for India's space program", salary: "Varies" },
+            { name: "Contribute to missions like Chandrayaan and Gaganyaan", salary: "Varies" },
+            { name: "One of the most prestigious technical jobs in India", salary: "Varies" },
+            { name: "Excellent research and innovation culture", salary: "Varies" }
+        ],
+        successStories: "Working at ISRO is a dream for many engineering and science graduates. It offers a unique opportunity to be part of India's space adventures, contributing to missions that make the nation proud."
+    },
+    {
+        name: "DRDO Recruitment Exams",
+        minPercentage: 60,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1000000,
+        eligibility: "Scientist (M.E/M.Tech/Ph.D. via RAC). Technical Staff (Diploma/B.Sc./ITI via CEPTAM).",
+        duration: "1 year of technical preparation",
+        workEnvironment: "Research and development laboratories of the Defence Research and Development Organisation. Involves working on advanced defence technologies.",
+        workLifeBalance: "Good. A research-focused environment with structured working hours. Can be demanding during project trials.",
+        risksChallenges: "Highly competitive. The work is confidential and of national importance, requiring high levels of security and responsibility.",
+        keywords: ["drdo", "scientist", "defence", "research", "technical", "engineering", "government", "rac", "ceptam"],
+        careerGrowth: "Scientist 'B' -> 'C' -> 'D' -> 'E' -> 'F' -> 'G' -> 'H' (Distinguished Scientist).",
+        skills: { required: ["Strong R&D aptitude", "Innovation", "Deep subject knowledge", "Patriotism"], acquired: ["Missile technology", "Aeronautics", "Electronics and communication warfare", "Advanced materials", "Naval systems"] },
+        onlineCourses: [{ name: "Official DRDO Website", link: "https://www.drdo.gov.in/" }],
+        jobProfile: "Scientist, Senior Technical Assistant (STA-B), Technician-A.",
+        topCompanies: [
+            { name: "Defence Research and Development Organisation (DRDO)", salary: "Scientist 'B': Pay Level 10" },
+            { name: "STA-B", salary: "Pay Level 6 (Basic ₹35,400)" },
+            { name: "Technician-A", salary: "Pay Level 2 (Basic ₹19,900)" },
+            { name: "A direct role in strengthening national defence", salary: "Varies" },
+            { name: "Work on cutting-edge military technology", salary: "Varies" }
+        ],
+        successStories: "A career in DRDO allows India's brightest scientists and engineers to develop state-of-the-art defence technologies, making the nation self-reliant and secure. It is a career of immense national pride and technological challenge."
+    },
+    {
+        name: "PSU Recruitment (via GATE/Other Exams)",
+        minPercentage: 60,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1400000,
+        eligibility: "Varies. Engineer Trainees (B.E./B.Tech with valid GATE score). Other roles (MBA/CA/etc. via separate exams).",
+        duration: "1 year of GATE/specific exam preparation",
+        workEnvironment: "Professional and structured environment in India's top Public Sector Undertakings (Maharatnas, Navratnas). A mix of on-site plant/rig work and corporate office roles.",
+        workLifeBalance: "Excellent. Offers the best of both worlds: a corporate work culture with government-level job security and benefits. 5-day week in most.",
+        risksChallenges: "Requires a top rank in GATE for recruitment into top PSUs. The work in core engineering sectors can be physically demanding.",
+        keywords: ["psu", "gate", "government", "engineering", "ongc", "ntpc", "iocl", "bhel", "sail", "maharatna"],
+        careerGrowth: "Engineer Trainee -> Senior Engineer -> Manager -> DGM -> GM -> Director.",
+        skills: { required: ["Strong technical fundamentals (GATE level)", "Good academic record", "Communication skills"], acquired: ["Specialized skills in the energy/manufacturing/heavy industry sector", "Project management", "Public sector administration"] },
+        onlineCourses: [{ name: "GATE Official Website", link: "https://gate.iitk.ac.in/" }],
+        jobProfile: "Engineer Trainee, Executive Trainee (HR, Finance).",
+        topCompanies: [
+            { name: "ONGC / IOCL / NTPC / POWERGRID", salary: "Pay scales often start with a basic of ~₹60,000" },
+            { name: "Gross CTC can be very high, from 12 to 20 LPA+ for trainees", salary: "Varies" },
+            { name: "BHEL / SAIL / GAIL", salary: "High" },
+            { name: "Coal India Limited (CIL)", salary: "High" },
+            { name: "Considered one of the best career paths for engineers in India", salary: "Varies" }
+        ],
+        successStories: "Recruitment into Maharatna and Navratna PSUs through GATE is a dream for many engineers. It offers a highly rewarding career with an excellent salary, perks, job security, and the opportunity to work in the core sectors of the Indian economy."
+    },
+    {
+        name: "Teaching Eligibility Tests (NET/SET/TET/CTET)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 700000,
+        eligibility: "NET/SET (Master's Degree with 55%). CTET/TET (B.Ed./D.El.Ed.). These are eligibility tests, not direct recruitment.",
+        duration: "6-12 months of specialized preparation",
+        workEnvironment: "School or university classrooms. An academic and intellectually fulfilling environment.",
+        workLifeBalance: "Excellent. Fixed working hours, long vacations, and a respected social standing.",
+        risksChallenges: "These are just qualifying exams. Actual recruitment depends on vacancies released by universities or state governments, which can be irregular.",
+        keywords: ["net", "set", "tet", "ctet", "teacher", "professor", "lecturer", "assistant professor", "jrf", "academic"],
+        careerGrowth: "Assistant Professor -> Associate Professor -> Professor. School Teacher -> Senior Teacher -> Principal.",
+        skills: { required: ["Deep subject knowledge", "Teaching aptitude", "Communication skills", "Patience"], acquired: ["Teaching pedagogy", "Curriculum development", "Student evaluation", "Research methodology (for NET JRF)"] },
+        onlineCourses: [{ name: "NTA UGC NET Official Website", link: "https://ugcnet.nta.nic.in/" }],
+        jobProfile: "Eligible to apply for Assistant Professor, Junior Research Fellow (JRF), or School Teacher posts.",
+        topCompanies: [
+            { name: "Universities & Colleges (for NET/SET qualified)", salary: "Asst. Prof: Pay Level 10 (Basic ₹57,700)" },
+            { name: "Government Schools (for CTET/TET qualified)", salary: "Varies by state pay commission" },
+            { name: "Kendriya Vidyalaya (KVS) / Navodaya Vidyalaya (NVS)", salary: "High government scales" },
+            { name: "Provides eligibility for a noble and stable profession", salary: "Varies" },
+            { name: "JRF provides a stipend for pursuing Ph.D.", salary: "~₹37,000/month + HRA" }
+        ],
+        successStories: "Clearing these eligibility tests is the mandatory first step towards a formal career in teaching, one of the most stable and respected professions. NET qualification, in particular, opens the doors to academia and research."
+    },
+
+    {
+        name: "UPSC CSE - Indian Administrative Service (IAS)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1200000,
+        eligibility: "Age: 21-32 years. Education: Bachelor's degree. Must clear UPSC CSE with a top All India Rank.",
+        duration: "2-3 years of preparation",
+        workEnvironment: "Apex administrative role involving district management (as DM/Collector), policy formulation in ministries, and leading public sector undertakings.",
+        workLifeBalance: "Extremely challenging, especially in field postings. Requires 24/7 availability and involves immense responsibility for the entire district or department.",
+        risksChallenges: "Highest level of public and political pressure. Frequent transfers. Decisions impact millions of lives, carrying enormous accountability.",
+        keywords: ["ias", "collector", "dm", "upsc", "cse", "administrative", "officer", "government", "policy"],
+        careerGrowth: "SDM -> DM -> Divisional Commissioner -> State Chief Secretary / Secretary to Govt. of India.",
+        skills: { required: ["Leadership", "Decision making", "Crisis management", "Integrity"], acquired: ["Public policy", "District administration", "Development planning", "Law and order management"] },
+        onlineCourses: [{ name: "UPSC Official Website", link: "https://www.upsc.gov.in/" }],
+        jobProfile: "District Magistrate, Collector, Secretary in a Ministry.",
+        topCompanies: [
+            { name: "Government of India / State Governments", salary: "Pay Level 10 (Basic ₹56,100) on entry" },
+            { name: "Reaches Apex Scale (₹2,25,000 basic) as Secretary", salary: "Varies" },
+            { name: "Unmatched authority and social prestige", salary: "Varies" },
+            { name: "Official residence, vehicle, and staff", salary: "Varies" },
+            { name: "The pinnacle of civil services in India", salary: "Varies" }
+        ],
+        successStories: "The IAS is the permanent bureaucracy of India. Officers like T. N. Seshan and Armstrong Pame are examples of how IAS officers can drive transformative change, making it the most sought-after career for aspirants."
+    },
+    {
+        name: "UPSC CSE - Indian Police Service (IPS)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1150000,
+        eligibility: "Age: 21-32 years. Education: Bachelor's degree. Must clear UPSC CSE and meet strict physical fitness standards.",
+        duration: "2-3 years of preparation",
+        workEnvironment: "A uniformed, command-oriented service. Involves leading police forces, maintaining law and order, and investigating serious crimes.",
+        workLifeBalance: "Extremely demanding. No fixed hours, 24/7 on-call duty, and high-risk situations are the norm. Postings can be in challenging areas.",
+        risksChallenges: "High physical risk and mental stress. Constant exposure to crime and public disorder. High pressure from political and public spheres.",
+        keywords: ["ips", "police", "superintendent", "commissioner", "upsc", "cse", "law and order", "officer", "uniform"],
+        careerGrowth: "ASP -> Superintendent of Police (SP) -> DIG -> IG -> ADG -> Director General of Police (DGP).",
+        skills: { required: ["Courage", "Leadership", "Physical fitness", "Decisiveness", "Integrity"], acquired: ["Crime investigation", "Crowd control", "Counter-terrorism", "Intelligence operations", "Police force management"] },
+        onlineCourses: [{ name: "Sardar Vallabhbhai Patel National Police Academy", link: "https://www.svpnpa.gov.in/" }],
+        jobProfile: "Superintendent of Police (SP), Commissioner of Police.",
+        topCompanies: [
+            { name: "State Police Forces", salary: "Pay Level 10 (Basic ₹56,100) on entry" },
+            { name: "Central Armed Police Forces (on deputation)", salary: "Varies" },
+            { name: "Intelligence Bureau (IB), RAW, CBI (on deputation)", salary: "Varies" },
+            { name: "A symbol of authority and security", salary: "Varies" },
+            { name: "Commands respect and offers a life of action", salary: "Varies" }
+        ],
+        successStories: "IPS officers are the leaders of India's police forces. Officers like Kiran Bedi have become icons of courage and integrity, demonstrating the immense impact an IPS officer can have on society."
+    },
+    {
+        name: "UPSC CSE - Indian Foreign Service (IFS)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 1200000,
+        eligibility: "Age: 21-32 years. Education: Bachelor's degree. Must clear UPSC CSE with a very high rank.",
+        duration: "2-3 years of preparation",
+        workEnvironment: "Represents India in foreign countries. Works in Indian Embassies, High Commissions, and the Ministry of External Affairs in Delhi. A diplomatic, multicultural environment.",
+        workLifeBalance: "Challenging. Involves extensive travel, adapting to different cultures, and being available for diplomatic duties at any hour. Postings in hardship countries can be difficult.",
+        risksChallenges: "Requires high adaptability and interpersonal skills. Postings can be in politically unstable countries. Long periods away from India.",
+        keywords: ["ifs", "foreign service", "diplomat", "ambassador", "upsc", "cse", "international relations", "mea"],
+        careerGrowth: "Third Secretary -> Second Secretary -> First Secretary -> Counsellor -> Minister -> Ambassador/High Commissioner.",
+        skills: { required: ["Diplomacy", "Communication skills", "Cultural sensitivity", "Analytical ability"], acquired: ["International diplomacy", "Negotiation", "Foreign language proficiency", "International law", "Economic statecraft"] },
+        onlineCourses: [{ name: "Ministry of External Affairs (MEA)", link: "https://www.mea.gov.in/" }],
+        jobProfile: "Diplomat, Ambassador, High Commissioner, Foreign Secretary.",
+        topCompanies: [
+            { name: "Ministry of External Affairs, Govt of India", salary: "Pay Level 10 entry + substantial foreign allowance" },
+            { name: "Foreign Allowance makes the salary very high", salary: "Varies by country" },
+            { name: "Opportunity to represent India on the world stage", salary: "Varies" },
+            { name: "Travel the world and experience diverse cultures", salary: "Varies" },
+            { name: "A career of high prestige and global exposure", salary: "Varies" }
+        ],
+        successStories: "IFS officers are India's face to the world. Diplomats like S. Jaishankar have shaped India's foreign policy and global standing. It is a career that offers a unique blend of intellectual challenge, travel, and national service."
+    },
+    {
+        name: "SSC CGL - Inspector Posts (IRS, Examiner, etc.)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 900000,
+        eligibility: "Age: up to 30 years. Education: Bachelor's Degree. Physical standards for some posts.",
+        duration: "1-2 years of preparation",
+        workEnvironment: "A mix of field and desk work. Involves tax assessment, raids, investigation (Income Tax/GST), or inspection of goods at ports/airports (Examiner/Preventive Officer).",
+        workLifeBalance: "Moderate to challenging. Fieldwork can have irregular hours. High pressure during financial year-end. A powerful and authoritative role.",
+        risksChallenges: "Deals with tax evasion and smuggling, which can involve confrontations. Requires high integrity. Postings can be in different parts of the country.",
+        keywords: ["ssc", "cgl", "inspector", "income tax", "gst", "excise", "examiner", "preventive officer", "irs", "customs"],
+        careerGrowth: "Inspector -> Superintendent -> Assistant Commissioner -> Deputy Commissioner.",
+        skills: { required: ["Analytical skills", "Integrity", "Courage", "Attention to detail"], acquired: ["Taxation laws (Direct/Indirect)", "Investigation techniques", "Financial analysis", "Customs procedures"] },
+        onlineCourses: [{ name: "Official SSC Website", link: "https://ssc.nic.in/" }],
+        jobProfile: "Inspector (Income Tax), Inspector (GST & Central Excise), Preventive Officer, Examiner.",
+        topCompanies: [
+            { name: "Central Board of Direct Taxes (CBDT)", salary: "Pay Level 7 (Basic ₹44,900)" },
+            { name: "Central Board of Indirect Taxes & Customs (CBIC)", salary: "Pay Level 7" },
+            { name: "A field job with significant authority", salary: "Varies" },
+            { name: "Plays a direct role in revenue generation for the nation", salary: "Varies" },
+            { name: "One of the most sought-after posts in SSC CGL", salary: "Varies" }
+        ],
+        successStories: "The Inspector posts through SSC CGL are highly coveted for the power, prestige, and active fieldwork they offer. These officers are on the front lines of the country's revenue collection and financial law enforcement."
+    },
+    {
+        name: "SSC CGL - Assistant Section Officer (ASO)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 850000,
+        eligibility: "Age: 20-30 years. Education: Bachelor's Degree.",
+        duration: "1-2 years of preparation",
+        workEnvironment: "Purely a desk job in central government ministries in Delhi (for CSS) or other major cities. Involves file work, drafting notes, and assisting in policy implementation.",
+        workLifeBalance: "Excellent. Fixed 9-to-5 working hours, 5-day week. Postings are stable, primarily in the national capital. A very comfortable and secure job.",
+        risksChallenges: "The work can be procedural and routine. Career progression is time-bound and can be slow. Lacks the fieldwork and public interaction of inspector posts.",
+        keywords: ["ssc", "cgl", "aso", "assistant", "css", "mea", "secretariat", "desk job", "government"],
+        careerGrowth: "Assistant Section Officer -> Section Officer -> Under Secretary -> Deputy Secretary.",
+        skills: { required: ["Comprehension and writing skills", "Attention to detail", "Understanding of procedures"], acquired: ["Government noting and drafting", "Administrative procedures", "Policy file management", "Parliamentary procedures"] },
+        onlineCourses: [{ name: "Official SSC Website", link: "https://ssc.nic.in/" }],
+        jobProfile: "Assistant Section Officer (ASO) in CSS, MEA, Railways, etc.",
+        topCompanies: [
+            { name: "Central Secretariat Service (CSS)", salary: "Pay Level 7 (Basic ₹44,900)" },
+            { name: "Ministry of External Affairs (MEA)", salary: "Pay Level 7 (with foreign posting opportunities)" },
+            { name: "Ministry of Railways", salary: "Pay Level 7" },
+            { name: "Intelligence Bureau (IB)", salary: "Pay Level 7" },
+            { name: "A stable career at the heart of the Indian government", salary: "Varies" }
+        ],
+        successStories: "The ASO in CSS is often called the 'backbone of central government ministries'. It is a highly sought-after post for its excellent work-life balance, urban posting, and proximity to the corridors of power."
+    },
+    {
+        name: "RRB NTPC - Graduate Posts (Station Master/Goods Guard)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 700000,
+        eligibility: "Age: 18-33 years. Education: Bachelor's Degree. Aptitude test for SM.",
+        duration: "1.5-2 years of preparation",
+        workEnvironment: "Highly operational and critical field roles in Indian Railways. Station Master (SM) manages train movements at a station. Goods Guard is in charge of a freight train.",
+        workLifeBalance: "Challenging. Both roles involve working in shifts 24/7, including nights, weekends, and holidays. Requires high alertness and responsibility.",
+        risksChallenges: "Immense responsibility for the safety of trains and passengers. The job can be stressful and monotonous. Postings can be in small, remote stations.",
+        keywords: ["rrb", "ntpc", "station master", "goods guard", "railway", "graduate", "operational", "field job"],
+        careerGrowth: "Station Master -> Station Superintendent. Goods Guard -> Passenger Guard -> Mail/Express Guard.",
+        skills: { required: ["High alertness", "Vigilance", "Quick decision-making", "Ability to work under pressure"], acquired: ["Railway signaling and operating rules", "Train traffic management", "Emergency procedures", "Commercial rules"] },
+        onlineCourses: [{ name: "Official RRB Websites", link: "https://indianrailways.gov.in/railwayboard/view_section.jsp?lang=0&id=0,4,1244" }],
+        jobProfile: "Station Master, Goods Guard, Commercial Apprentice.",
+        topCompanies: [
+            { name: "Indian Railways (Station Master)", salary: "Pay Level 6 (Basic ₹35,400)" },
+            { name: "Indian Railways (Goods Guard)", salary: "Pay Level 5 (Basic ₹29,200)" },
+            { name: "Salary for Goods Guard is high due to Running Allowance", salary: "Varies" },
+            { name: "A powerful and responsible job in railway operations", salary: "Varies" },
+            { name: "Excellent perks like travel passes and housing", salary: "Varies" }
+        ],
+        successStories: "The Station Master and Goods Guard are the field commanders of the Indian Railways. These are highly respected and responsible positions that are critical for the safe and efficient movement of the nation's trains."
+    },
+    {
+        name: "IBPS SO - IT Officer",
+        minPercentage: 60,
+        avgYearlyFees: 0,
+        avgStartingSalary: 850000,
+        eligibility: "Age: 20-30 years. Education: B.E./B.Tech in CS/IT/ECE or related fields, or MCA.",
+        duration: "1 year of specialized preparation",
+        workEnvironment: "IT department of a Public Sector Bank. Involves managing the bank's network, databases, cybersecurity, and Core Banking Solution (CBS).",
+        workLifeBalance: "Excellent. Corporate-style IT job with the stability and fixed hours of a government bank.",
+        risksChallenges: "High responsibility for maintaining critical banking infrastructure. Requires keeping up with technological changes in FinTech and cybersecurity.",
+        keywords: ["ibps so", "it officer", "bank", "engineering", "btech", "mca", "software", "networking", "cybersecurity"],
+        careerGrowth: "IT Officer (Scale I) -> Senior Manager (IT) -> Chief Manager (IT) -> AGM (IT).",
+        skills: { required: ["Technical knowledge (Networking, DBMS, Security)", "Problem-solving"], acquired: ["Core Banking Solution (CBS) management", "FinTech integration", "Cybersecurity in banking", "Database administration", "IT project management"] },
+        onlineCourses: [{ name: "Official IBPS Website", link: "https://www.ibps.in/" }],
+        jobProfile: "Specialist I.T. Officer (Scale-I) in Public Sector Banks.",
+        topCompanies: [
+            { name: "Punjab National Bank", salary: "Scale I Officer (Basic ~₹36,000)" },
+            { name: "Bank of Baroda", salary: "Scale I Officer" },
+            { name: "Canara Bank", salary: "Scale I Officer" },
+            { name: "A great opportunity for engineering graduates in the banking sector", salary: "Varies" },
+            { name: "Gross salary ~₹60k-70k+", salary: "Varies" }
+        ],
+        successStories: "The IT Officer role is a perfect blend of technology and finance, offering engineers a stable and lucrative career managing the critical IT backbone of India's public sector banking system."
+    },
+    {
+        name: "IBPS SO - Agricultural Field Officer (AFO)",
+        minPercentage: 60,
+        avgYearlyFees: 0,
+        avgStartingSalary: 800000,
+        eligibility: "Age: 20-30 years. Education: 4-year degree in Agriculture or allied fields (Horticulture, Veterinary Science, etc.).",
+        duration: "1 year of specialized preparation",
+        workEnvironment: "A mix of branch work and extensive fieldwork in rural areas. Involves appraising and monitoring agricultural loans (like KCC) and promoting rural schemes.",
+        workLifeBalance: "Moderate. Involves significant travel in rural areas to meet farmers and inspect projects. Less pressure than mainstream PO roles.",
+        risksChallenges: "Requires a genuine interest in agriculture and rural India. Postings are predominantly in rural or semi-urban branches.",
+        keywords: ["ibps so", "afo", "agriculture officer", "bank", "bsc agri", "rural", "loans", "kcc", "farming"],
+        careerGrowth: "AFO (Scale I) -> Senior Manager (Agriculture) -> Chief Manager (Agriculture).",
+        skills: { required: ["Agricultural knowledge", "Communication skills", "Willingness to work in rural areas"], acquired: ["Credit appraisal for agri-loans", "Project viability analysis for farms", "Recovery management", "Knowledge of government schemes"] },
+        onlineCourses: [{ name: "Official IBPS Website", link: "https://www.ibps.in/" }],
+        jobProfile: "Agricultural Field Officer (Scale-I) in Public Sector Banks.",
+        topCompanies: [
+            { name: "Union Bank of India", salary: "Scale I Officer (Basic ~₹36,000)" },
+            { name: "Punjab National Bank", salary: "Scale I Officer" },
+            { name: "Bank of India", salary: "Scale I Officer" },
+            { name: "A dedicated entry for agriculture graduates into banking", salary: "Varies" },
+            { name: "Gross salary ~₹60k-70k+", salary: "Varies" }
+        ],
+        successStories: "The AFO is a crucial link between banks and farmers. This role allows agriculture graduates to use their specialized knowledge to fuel the rural economy through priority sector lending, making a tangible impact."
+    },
+    {
+        name: "Army Agniveer - General Duty (GD)",
+        minPercentage: 45,
+        avgYearlyFees: 0,
+        avgStartingSalary: 360000,
+        eligibility: "Age: 17.5-21 years. Education: 10th Pass with 45% aggregate. High physical fitness standards.",
+        duration: "4-year service",
+        workEnvironment: "The infantry and other combat arms of the Indian Army. Involves rigorous physical training, weapon handling, and deployment in field areas.",
+        workLifeBalance: "Extremely tough and disciplined. Based on a 4-year service model.",
+        risksChallenges: "Physically most demanding role. High risk to life in combat situations. Short-term service with 25% absorption chance.",
+        keywords: ["agniveer", "gd", "army", "soldier", "infantry", "10th pass", "defence", "agnipath"],
+        careerGrowth: "Possible absorption into regular cadre as a Sepoy after 4 years.",
+        skills: { required: ["Exceptional physical fitness", "Courage", "Mental toughness"], acquired: ["Combat skills", "Marksmanship", "Discipline", "Teamwork under fire"] },
+        onlineCourses: [{ name: "Official Join Indian Army Website", link: "https://joinindianarmy.nic.in/" }],
+        jobProfile: "Agniveer (General Duty) - the frontline fighting soldier.",
+        topCompanies: [
+            { name: "Indian Army", salary: "1st Year Package ~₹4.76 Lakh" },
+            { name: "Seva Nidhi package of ~₹10.04 Lakhs after 4 years", salary: "Varies" },
+            { name: "The most direct way to serve in a combat role", salary: "Varies" },
+            { name: "Builds unparalleled physical and mental resilience", salary: "Varies" },
+            { name: "Provides a foundation for a career in security", salary: "Varies" }
+        ],
+        successStories: "The Agniveer GD is the bedrock of the Indian Army's combat strength. It's a path for the nation's fittest and bravest youth to experience the life of a soldier and serve on the front lines."
+    },
+    {
+        name: "Army Agniveer - Technical",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 360000,
+        eligibility: "Age: 17.5-21 years. Education: 10+2 with PCM & English (50% aggregate, 40% in each).",
+        duration: "4-year service",
+        workEnvironment: "Technical corps of the Army (e.g., Signals, EME). Involves maintaining and repairing advanced military equipment, vehicles, and communication systems.",
+        workLifeBalance: "Disciplined and structured. Less frontline combat risk than GD, but still a demanding military life.",
+        risksChallenges: "Short-term service. Requires a technical aptitude to handle complex equipment.",
+        keywords: ["agniveer", "technical", "army", "defence", "12th pass", "pcm", "iti", "diploma", "agnipath"],
+        careerGrowth: "Possible absorption into regular cadre as a technical soldier. The skills are highly transferable to the civilian sector.",
+        skills: { required: ["Technical mindset", "Physical fitness", "Problem-solving"], acquired: ["Electronics repair", "Vehicle mechanics", "Radio communication", "Technical discipline"] },
+        onlineCourses: [{ name: "Official Join Indian Army Website", link: "https://joinindianarmy.nic.in/" }],
+        jobProfile: "Agniveer (Technical) - the technician behind the soldier.",
+        topCompanies: [
+            { name: "Indian Army", salary: "Same pay and benefits as other Agniveers" },
+            { name: "Provides valuable, hands-on technical training", salary: "Varies" },
+            { name: "Excellent career prospects after service in technical fields", salary: "Varies" },
+            { name: "Seva Nidhi package of ~₹10.04 Lakhs", salary: "Varies" },
+            { name: "Contributes to the operational readiness of the Army", salary: "Varies" }
+        ],
+        successStories: "Agniveer Technical is an excellent opportunity for science students to gain cutting-edge technical skills in a disciplined environment, serving the nation and building a strong foundation for a future technical career."
+    },
+    {
+        name: "Army Agniveer - Clerk / Store Keeper Technical (SKT)",
+        minPercentage: 60,
+        avgYearlyFees: 0,
+        avgStartingSalary: 360000,
+        eligibility: "Age: 17.5-21 years. Education: 10+2 in any stream with 60% aggregate and 50% in each subject. English and Maths/Accts/Book Keeping are mandatory.",
+        duration: "4-year service",
+        workEnvironment: "Administrative offices and stores within Army units. A desk-based role involving clerical duties, record keeping, and inventory management.",
+        workLifeBalance: "Good, compared to other Army trades. More of a 9-to-5 role within the disciplined military framework.",
+        risksChallenges: "Short-term service. Requires accuracy and organizational skills.",
+        keywords: ["agniveer", "clerk", "skt", "army", "defence", "12th pass", "administrative", "desk job", "agnipath"],
+        careerGrowth: "Possible absorption into the regular clerical cadre.",
+        skills: { required: ["Typing and computer skills", "Organizational skills", "Attention to detail"], acquired: ["Military administration", "Inventory management", "Official correspondence", "Record keeping"] },
+        onlineCourses: [{ name: "Official Join Indian Army Website", link: "https://joinindianarmy.nic.in/" }],
+        jobProfile: "Agniveer (Clerk / SKT) - managing the administrative and logistical backbone.",
+        topCompanies: [
+            { name: "Indian Army", salary: "Same pay and benefits as other Agniveers" },
+            { name: "A secure administrative job in a disciplined environment", salary: "Varies" },
+            { name: "Skills are transferable to civilian clerical/storekeeping jobs", salary: "Varies" },
+            { name: "Seva Nidhi package of ~₹10.04 Lakhs", salary: "Varies" },
+            { name: "An important support role for Army operations", salary: "Varies" }
+        ],
+        successStories: "The Agniveer Clerk/SKT role is perfect for 12th pass students with good academic records who seek an administrative career within the esteemed environment of the Indian Army."
+    },
+    {
+        name: "Air Force Agniveer Vayu (Science Subjects)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 360000,
+        eligibility: "Age: 17.5-21 years. Education: 10+2 with PCM and English (50% aggregate).",
+        duration: "4-year service",
+        workEnvironment: "Technical sections of Air Force stations. Involves hands-on work on aircraft, weapon systems, radar, and other advanced technology.",
+        workLifeBalance: "Structured and disciplined, often in shifts. A high-tech and responsible work environment.",
+        risksChallenges: "Short-term service. The work on advanced aircraft is highly technical and demands precision.",
+        keywords: ["agniveer", "air force", "vayu", "science", "technical", "group x", "pcm", "12th pass", "agnipath"],
+        careerGrowth: "Possible absorption into the regular cadre as an Airman (Technical Trades). The skills are highly valued in the civil aviation industry.",
+        skills: { required: ["Technical aptitude", "Physics and Maths knowledge", "Discipline"], acquired: ["Aircraft maintenance", "Avionics", "Radar systems", "Weapon systems maintenance"] },
+        onlineCourses: [{ name: "Official Agnipath Vayu Website", link: "https://agnipathvayu.cdac.in/" }],
+        jobProfile: "Agniveervayu (Science) - the technician who keeps the Air Force flying.",
+        topCompanies: [
+            { name: "Indian Air Force", salary: "Same pay and benefits as other Agniveers" },
+            { name: "Provides training on state-of-the-art aviation technology", salary: "Varies" },
+            { name: "Opens doors for a career in aviation MRO (Maintenance, Repair, Overhaul)", salary: "Varies" },
+            { name: "Seva Nidhi package of ~₹10.04 Lakhs", salary: "Varies" },
+            { name: "A dream for aviation enthusiasts", salary: "Varies" }
+        ],
+        successStories: "This stream is the direct entry for science students to become aviation technicians in the IAF, working on some of the most advanced fighter jets and transport aircraft in the world."
+    },
+    {
+        name: "Air Force Agniveer Vayu (Other than Science Subjects)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 360000,
+        eligibility: "Age: 17.5-21 years. Education: 10+2 in any stream with 50% aggregate and 50% in English.",
+        duration: "4-year service",
+        workEnvironment: "Non-technical roles in Air Force stations. Involves administration, accounting, logistics, and security (Air Force Police).",
+        workLifeBalance: "Good and structured within a military environment.",
+        risksChallenges: "Short-term service. Competition is very high for these roles.",
+        keywords: ["agniveer", "air force", "vayu", "non-technical", "group y", "arts", "commerce", "12th pass", "agnipath"],
+        careerGrowth: "Possible absorption into regular cadre as an Airman (Non-Technical Trades).",
+        skills: { required: ["Adaptability", "Discipline", "Communication skills"], acquired: ["Administration", "Logistics and supply chain management", "Accounting procedures", "Security protocols"] },
+        onlineCourses: [{ name: "Official Agnipath Vayu Website", link: "https://agnipathvayu.cdac.in/" }],
+        jobProfile: "Agniveervayu (Other than Science) - providing vital support for Air Force operations.",
+        topCompanies: [
+            { name: "Indian Air Force", salary: "Same pay and benefits as other Agniveers" },
+            { name: "Provides excellent administrative and management training", salary: "Varies" },
+            { name: "Skills are useful for future careers in administration and logistics", salary: "Varies" },
+            { name: "Seva Nidhi package of ~₹10.04 Lakhs", salary: "Varies" },
+            { name: "An opportunity for non-science students to join the IAF", salary: "Varies" }
+        ],
+        successStories: "This stream provides an excellent opportunity for students from Arts and Commerce backgrounds to join the Indian Air Force in crucial non-technical roles, serving the nation while building a disciplined career."
+    },
+    {
+        name: "Navy Agniveer (SSR - Senior Secondary Recruit)",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 360000,
+        eligibility: "Age: 17.5-21 years. Education: 10+2 with Maths & Physics, and at least one of these: Chemistry/Biology/Computer Science.",
+        duration: "4-year service",
+        workEnvironment: "Technical roles on board warships, submarines, and at naval air stations. High-tech environment involving operation and maintenance of advanced naval systems.",
+        workLifeBalance: "Challenging life at sea. Long deployments away from home.",
+        risksChallenges: "Short-term service. Life at sea is physically and mentally demanding.",
+        keywords: ["agniveer", "navy", "ssr", "sailor", "technical", "pcm", "12th pass", "agnipath"],
+        careerGrowth: "Possible absorption as a regular Sailor. Highly valuable skills for the Merchant Navy and shipping industry.",
+        skills: { required: ["Technical aptitude", "Physical fitness", "Adaptability"], acquired: ["Operation of radar and sonar", "Weapon systems maintenance", "Marine engineering basics", "Seamanship"] },
+        onlineCourses: [{ name: "Official Join Indian Navy Website", link: "https://www.joinindiannavy.gov.in/" }],
+        jobProfile: "Agniveer (SSR) - the technical sailor of the Indian Navy.",
+        topCompanies: [
+            { name: "Indian Navy", salary: "Same pay and benefits as other Agniveers" },
+            { name: "Work on advanced warships and submarines", salary: "Varies" },
+            { name: "Excellent gateway to a career in the maritime industry", salary: "Varies" },
+            { name: "Seva Nidhi package of ~₹10.04 Lakhs", salary: "Varies" },
+            { name: "A life of adventure on the high seas", salary: "Varies" }
+        ],
+        successStories: "The Agniveer SSR stream is the primary technical entry for 12th pass science students into the Indian Navy, providing them with invaluable training on sophisticated naval technology."
+    },
+    {
+        name: "Navy Agniveer (MR - Matric Recruit)",
+        minPercentage: 33,
+        avgYearlyFees: 0,
+        avgStartingSalary: 360000,
+        eligibility: "Age: 17.5-21 years. Education: 10th Pass.",
+        duration: "4-year service",
+        workEnvironment: "Support roles on board naval ships and establishments. Involves working as a chef, steward, or hygienist.",
+        workLifeBalance: "Challenging life at sea. A disciplined and structured environment.",
+        risksChallenges: "Short-term service. The work is in support roles, not technical or combat.",
+        keywords: ["agniveer", "navy", "mr", "sailor", "chef", "steward", "10th pass", "agnipath"],
+        careerGrowth: "Possible absorption as a regular Sailor.",
+        skills: { required: ["Willingness to do service-oriented work", "Physical fitness"], acquired: ["Professional cooking (Chef)", "Hospitality and service (Steward)", "Hygiene standards"] },
+        onlineCourses: [{ name: "Official Join Indian Navy Website", link: "https://www.joinindiannavy.gov.in/" }],
+        jobProfile: "Agniveer (MR) - providing essential services on naval ships.",
+        topCompanies: [
+            { name: "Indian Navy", salary: "Same pay and benefits as other Agniveers" },
+            { name: "Skills are transferable to the hospitality industry and merchant shipping", salary: "Varies" },
+            { name: "A secure entry for 10th pass candidates into the Navy", salary: "Varies" },
+            { name: "Seva Nidhi package of ~₹10.04 Lakhs", salary: "Varies" },
+            { name: "An opportunity to see the world", salary: "Varies" }
+        ],
+        successStories: "The Agniveer MR entry allows 10th pass students to join the Indian Navy in vital support roles, gaining valuable skills in hospitality and services while serving the country."
+    },
+    {
+        name: "FCI Manager",
+        minPercentage: 60,
+        avgYearlyFees: 0,
+        avgStartingSalary: 800000,
+        eligibility: "Age: 28-35 years (varies). Education: Graduate with 60% or professional qualifications like CA/MBA/B.Tech (for specialist posts).",
+        duration: "1 year of preparation",
+        workEnvironment: "Managerial role in the Food Corporation of India. Involves managing depots, logistics, accounts, or technical quality control.",
+        workLifeBalance: "Good. A responsible PSU officer role with structured working hours.",
+        risksChallenges: "High accountability for managing vast quantities of food grains. Requires strong managerial and logistical skills.",
+        keywords: ["fci", "manager", "psu", "government", "logistics", "food", "supply chain", "graduate", "mba"],
+        careerGrowth: "Manager -> Assistant General Manager (AGM) -> Deputy General Manager (DGM).",
+        skills: { required: ["Managerial ability", "Logistical planning", "Administrative skills"], acquired: ["Large-scale inventory management", "Supply chain management", "Public distribution system knowledge", "Quality control norms"] },
+        onlineCourses: [{ name: "Official FCI Website", link: "https://fci.gov.in/" }],
+        jobProfile: "Manager (General, Depot, Movement, Accounts, Technical).",
+        topCompanies: [
+            { name: "Food Corporation of India (FCI)", salary: "IDA Pay Scale (Basic ~₹40,000 - ₹1,40,000)" },
+            { name: "A prestigious managerial job in a key PSU", salary: "Varies" },
+            { name: "Plays a vital role in national food security", salary: "Varies" },
+            { name: "Excellent salary and perks", salary: "Varies" },
+            { name: "Offers a stable and secure career", salary: "Varies" }
+        ],
+        successStories: "The FCI Manager exam recruits officers to lead the operations of the Food Corporation of India, offering a challenging and rewarding career in managing the country's food supply chain."
+    },
+    {
+        name: "FCI Assistant Grade-III",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 500000,
+        eligibility: "Age: Up to 27 years. Education: Graduate (Generalist) or relevant degree for technical/accounts posts.",
+        duration: "9-12 months of preparation",
+        workEnvironment: "Clerical and supervisory roles in FCI offices and depots. Involves record keeping, account maintenance, and quality checking of food grains.",
+        workLifeBalance: "Good. Structured PSU working hours.",
+        risksChallenges: "Competition is high. The work is procedural and requires attention to detail.",
+        keywords: ["fci", "assistant", "grade 3", "psu", "government", "clerk", "graduate", "accounts", "technical"],
+        careerGrowth: "AG-III -> AG-II -> AG-I -> Manager (through promotions).",
+        skills: { required: ["Aptitude", "Attention to detail", "Domain knowledge (for tech/accts)"], acquired: ["FCI procedures", "Stock maintenance", "Government accounting", "Quality control checks"] },
+        onlineCourses: [{ name: "Official FCI Website", link: "https://fci.gov.in/" }],
+        jobProfile: "Assistant Grade-III (General, Accounts, Technical, Depot).",
+        topCompanies: [
+            { name: "Food Corporation of India (FCI)", salary: "IDA Pay Scale (Basic ~₹28,200 - ₹79,200)" },
+            { name: "A stable and secure entry-level job for graduates", salary: "Varies" },
+            { name: "Good work-life balance", salary: "Varies" },
+            { name: "Decent salary and benefits", salary: "Varies" },
+            { name: "An important role in the functioning of FCI", salary: "Varies" }
+        ],
+        successStories: "This exam is a major recruitment drive for graduates to join FCI at the assistant level, providing a secure PSU job with a clear path for career progression to managerial roles."
+    },
+    {
+        name: "LIC Assistant",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 450000,
+        eligibility: "Age: 18-30 years. Education: Bachelor's Degree. (Note: This recruitment is infrequent; LIC AAO and ADO are more common).",
+        duration: "9-12 months of preparation",
+        workEnvironment: "Front-desk clerical role in LIC branches. Involves customer service, cash collection, and policy data entry.",
+        workLifeBalance: "Excellent. Fixed timings and a stable work environment.",
+        risksChallenges: "Recruitment for this post is not regular. Competition is very high whenever it is announced.",
+        keywords: ["lic", "assistant", "clerk", "insurance", "psu", "government", "graduate", "customer service"],
+        careerGrowth: "Assistant -> Senior Assistant -> Officer cadre (through internal exams).",
+        skills: { required: ["Numerical ability", "Customer service skills", "Computer literacy"], acquired: ["Insurance policy servicing", "Cash handling", "LIC software proficiency", "Customer relationship management"] },
+        onlineCourses: [{ name: "Official LIC Website", link: "https://licindia.in/Bottom-Links/careers" }],
+        jobProfile: "Assistant / Clerk in Life Insurance Corporation of India.",
+        topCompanies: [
+            { name: "Life Insurance Corporation of India (LIC)", salary: "Basic pay similar to bank clerks (~₹22,000)" },
+            { name: "Gross emoluments in a Class A city ~₹35k-40k+", salary: "Varies" },
+            { name: "A very secure and stable job", salary: "Varies" },
+            { name: "Good work-life balance", salary: "Varies" },
+            { name: "Excellent platform for internal growth", salary: "Varies" }
+        ],
+        successStories: "The LIC Assistant role, though not advertised as frequently as PO/ADO, is an excellent entry-level position for graduates seeking a secure and stable career in India's largest insurance company."
+    },
+    {
+        name: "PSGICs Assistant",
+        minPercentage: 50,
+        avgYearlyFees: 0,
+        avgStartingSalary: 450000,
+        eligibility: "Age: 21-30 years. Education: Graduate. Local language proficiency is important.",
+        duration: "9-12 months of preparation",
+        workEnvironment: "Clerical role in branches of public sector general insurance companies. Involves customer interaction, policy issuance, and claims data entry.",
+        workLifeBalance: "Excellent. Fixed hours and a stable PSU job environment.",
+        risksChallenges: "Like LIC Assistant, recruitment for this post is infrequent compared to the AO post.",
+        keywords: ["niacl", "uiic", "oicl", "assistant", "clerk", "insurance", "psu", "government", "graduate"],
+        careerGrowth: "Assistant -> Senior Assistant -> Officer cadre (through promotions/internal exams).",
+        skills: { required: ["Aptitude", "Customer service", "Computer skills"], acquired: ["General insurance policy knowledge (Motor, Health, Fire)", "Claims processing basics", "Underwriting support"] },
+        onlineCourses: [{ name: "Official websites of NIACL, UIIC, OICL", link: "https://newindia.co.in/portal/readMore/careers" }],
+        jobProfile: "Assistant in NIACL, UIIC, OICL.",
+        topCompanies: [
+            { name: "New India Assurance (NIACL)", salary: "Basic pay similar to bank clerks (~₹22,000)" },
+            { name: "United India Insurance (UIIC)", salary: "Gross emoluments ~₹37k+" },
+            { name: "Oriental Insurance Company (OICL)", salary: "Varies" },
+            { name: "A secure entry-level PSU job", salary: "Varies" },
+            { name: "Good platform for a career in general insurance", salary: "Varies" }
+        ],
+        successStories: "The Assistant role in general insurance PSUs is a great starting point for graduates. It offers a secure career with a good work-life balance and the opportunity to grow into an officer role within the organization."
+    }
+];
+
+
+
+        // ===================================================================
+        // --- JAVASCRIPT LOGIC FOR GOVERNMENT JOB NAVIGATOR ---
+        // ===================================================================
+        
+        const generateBtn = document.getElementById('generateBtn');
+        const resultsContainer = document.getElementById('results-container');
+        const paginationContainer = document.getElementById('pagination-container');
+        const courseTitleContainer = document.getElementById('course-title-container');
+
+        let allFilteredExams = [];
+        let currentIndex = 0;
+        
+        generateBtn.addEventListener('click', generateJobPaths);
+        
+        // Helper function to parse age ranges from eligibility strings
+        function parseAge(eligibilityString) {
+            const ageMatch = eligibilityString.match(/Age: (\d{2,})\s*-\s*(\d{2,})/);
+            if (ageMatch && ageMatch.length === 3) {
+                return { min: parseInt(ageMatch[1]), max: parseInt(ageMatch[2]) };
+            }
+            const ageMatchSingle = eligibilityString.match(/Age: (?:up to|below) (\d{2,})/i);
+            if (ageMatchSingle && ageMatchSingle.length === 2) {
+                 return { min: 17, max: parseInt(ageMatchSingle[1]) };
+            }
+            return { min: 0, max: 100 }; // Default if no range found
+        }
+
+        // Helper function to check if the job matches the selected qualification level
+        function checkQualification(eligibilityString, selectedQual) {
+            const eligiLower = eligibilityString.toLowerCase();
+            switch(selectedQual) {
+                case '10th':
+                    return eligiLower.includes('10th') || eligiLower.includes('matriculation');
+                case '12th':
+                    return eligiLower.includes('12th') || eligiLower.includes('10+2');
+                case 'diploma':
+                    return eligiLower.includes('diploma');
+                case 'graduate':
+                    return eligiLower.includes('bachelor') || eligiLower.includes('degree') || eligiLower.includes('graduation');
+                case 'engineering':
+                     return eligiLower.includes('engineering') || eligiLower.includes('b.e') || eligiLower.includes('b.tech');
+                case 'postgraduate':
+                    return eligiLower.includes('master') || eligiLower.includes('post-graduate') || eligiLower.includes('pg');
+                default:
+                    return false;
+            }
+        }
+
+        function generateJobPaths() {
+            // 1. Get user inputs
+            const qualificationLevel = document.getElementById('qualificationLevel').value;
+            const ageInput = document.getElementById('age');
+            const interestsInput = document.getElementById('interests');
+
+            const userAge = parseInt(ageInput.value, 10);
+            const interests = interestsInput.value.toLowerCase().trim();
+            
+            // 2. Validation
+            if (isNaN(userAge) || interests === '') {
+                alert('Please fill in all the fields with valid information.');
+                return;
+            }
+
+            // Check if govtExams object exists
+            if (typeof govtExams === 'undefined' || !Array.isArray(govtExams)) {
+                resultsContainer.innerHTML = `
+                <div id="message-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h2>Data Object Missing</h2>
+                    <p>The <strong>'govtExams'</strong> JavaScript array could not be found. Please ensure it is correctly pasted into the script tag.</p>
+                </div>`;
+                paginationContainer.innerHTML = '';
+                courseTitleContainer.innerHTML = '';
+                return;
+            }
+
+            // 3. Filter the data
+            const stopWords = new Set(['and', 'or', 'in', 'for', 'a', 'an', 'the', 'my', 'is', 'are', 'of']);
+            const interestKeywords = interests.split(/[\s,]+/)
+                                              .map(k => k.trim())
+                                              .filter(k => k && !stopWords.has(k));
+
+            if (interestKeywords.length === 0) {
+                alert('Please enter more specific job interests.');
+                return;
+            }
+
+            const filtered = govtExams.filter(exam => {
+                const ageRange = parseAge(exam.eligibility);
+                const meetsAge = userAge >= ageRange.min && userAge <= ageRange.max;
+
+                const meetsQualification = checkQualification(exam.eligibility, qualificationLevel);
+
+                const meetsInterests = interestKeywords.some(userKeyword => 
+                    exam.keywords.some(examKeyword => 
+                        examKeyword.toLowerCase().includes(userKeyword)
+                    )
+                );
+                return meetsAge && meetsQualification && meetsInterests;
+            });
+            
+            allFilteredExams = filtered.sort((a, b) => b.avgStartingSalary - a.avgStartingSalary);
+            currentIndex = 0;
+            
+            if (allFilteredExams.length > 0) {
+                displayExam(currentIndex);
+            } else {
+                displayNoResults();
+            }
+        }
+
+        function displayNoResults() {
+             resultsContainer.innerHTML = `
+                <div id="message-box">
+                    <i class="fas fa-search-minus"></i>
+                    <h2>NO MATCH FOUND</h2>
+                    <p>We couldn't find any government jobs that match all your criteria. Please try adjusting your selection.</p>
+                </div>`;
+            courseTitleContainer.innerHTML = '';
+            paginationContainer.innerHTML = '';
+        }
+
+        function displayExam(index) {
+            const exam = allFilteredExams[index];
+            if (!exam) return;
+
+            resultsContainer.innerHTML = '';
+            courseTitleContainer.innerHTML = `<h2>${exam.name}</h2>`;
+
+            const details = [
+                { title: 'Eligibility', icon: 'fa-check-circle', content: exam.eligibility },
+                { title: 'Avg. Starting Salary', icon: 'fa-money-bill-wave', content: `₹${exam.avgStartingSalary.toLocaleString('en-IN')} p.a.` },
+                { title: 'Typical Preparation Time', icon: 'fa-calendar-alt', content: exam.duration },
+                { title: 'Job Profile', icon: 'fa-user-tie', content: exam.jobProfile },
+                { title: 'Work Environment', icon: 'fa-building', content: exam.workEnvironment },
+                { title: 'Work-Life Balance', icon: 'fa-balance-scale', content: exam.workLifeBalance },
+                { title: 'Risks & Challenges', icon: 'fa-exclamation-triangle', content: exam.risksChallenges },
+                { title: 'Career Growth', icon: 'fa-chart-line', content: exam.careerGrowth },
+                { title: 'Skills Required', icon: 'fa-cogs', content: exam.skills?.required?.join(', ') || 'Varies' },
+                { title: 'Skills Acquired', icon: 'fa-star', content: exam.skills?.acquired?.join(', ') || 'Varies' },
+                { title: 'Official Website', icon: 'fa-globe', content: `<a href="${exam.onlineCourses[0].link}" target="_blank">${exam.onlineCourses[0].name}</a>` },
+                { title: 'Recruiting Bodies', icon: 'fa-landmark', content: (exam.topCompanies || []).map(c => `<li>${c.name} (${c.salary})</li>`).join('') },
+                { title: 'Why Choose This?', icon: 'fa-user-check', content: exam.successStories }
+            ];
+
+            // A special detail for Fees, which is almost always 0 for jobs
+            details.splice(1, 0, { title: 'Exam Fees', icon: 'fa-wallet', content: 'Varies by notification (Typically ₹100-₹1000). Not a yearly fee.' });
+
+
+            details.forEach(detail => {
+                const box = document.createElement('div');
+                box.className = 'detail-box';
+                let contentHTML = detail.title.includes('Recruiting Bodies') ? `<ul>${detail.content}</ul>` : `<p>${detail.content}</p>`;
+                
+                box.innerHTML = `
+                    <i class="fas ${detail.icon} box-icon"></i>
+                    <h3 class="box-title">${detail.title}</h3>
+                    <div class="detail-content">${contentHTML}</div>
+                `;
+
+                box.addEventListener('click', () => {
+                    const wasActive = box.classList.contains('active');
+                    const currentActive = document.querySelector('.detail-box.active');
+                    if (currentActive) currentActive.classList.remove('active');
+                    if (!wasActive) box.classList.add('active');
+                });
+                resultsContainer.appendChild(box);
+            });
+            
+            updatePagination();
+        }
+
+        function updatePagination() {
+            paginationContainer.innerHTML = '';
+            const totalExams = allFilteredExams.length;
+            
+            if (totalExams <= 1) return;
+
+            const prevButton = document.createElement('button');
+            prevButton.className = 'pagination-btn';
+            prevButton.innerHTML = `<i class="fas fa-chevron-left"></i>`;
+            prevButton.disabled = currentIndex === 0;
+            prevButton.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    displayExam(currentIndex);
+                }
+            });
+
+            const courseInfo = document.createElement('span');
+            courseInfo.id = 'course-info';
+            courseInfo.textContent = `Option ${currentIndex + 1} of ${totalExams}`;
+
+            const nextButton = document.createElement('button');
+            nextButton.className = 'pagination-btn';
+            nextButton.innerHTML = `<i class="fas fa-chevron-right"></i>`;
+            nextButton.disabled = currentIndex === totalExams - 1;
+            nextButton.addEventListener('click', () => {
+                if (currentIndex < totalExams - 1) {
+                    currentIndex++;
+                    displayExam(currentIndex);
+                }
+            });
+
+            paginationContainer.appendChild(prevButton);
+            paginationContainer.appendChild(courseInfo);
+            paginationContainer.appendChild(nextButton);
+        }
+    </script>
+</body>
+</html>
