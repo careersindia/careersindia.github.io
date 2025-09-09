@@ -667,6 +667,58 @@ color: var(--icon-color-turquoise);
     min-height: 50px;
     transition: background-color 0.3s ease;
 }
+/* Application Tracker Styles */
+.tracker-container {
+    max-width: 1000px; margin: 40px auto; padding: 25px;
+    background-color: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.tracker-container h2 { text-align: center; margin-bottom: 20px; }
+.tracker-notice { text-align: center; background-color: #eef7ff; padding: 10px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9em; }
+
+.add-form { display: flex; gap: 10px; margin-bottom: 20px; }
+.add-form input { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+.add-form button { padding: 10px 20px; background-color: var(--accent-color); border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+
+#appTable { width: 100%; border-collapse: collapse; }
+#appTable th, #appTable td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
+#appTable th { background-color: #f8f9fa; }
+
+/* Checklist and Status styling */
+.checklist input { margin-right: 5px; }
+.status-select { padding: 5px; border-radius: 5px; border: 1px solid #ccc; }
+.delete-btn { color: #dc3545; background: none; border: none; cursor: pointer; font-size: 1.1em; }
+/* === NEW Document Button Styles === */
+.doc-buttons-container {
+    display: flex;
+    gap: 5px; /* Adds a small space between buttons */
+}
+
+.doc-btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.8em;
+    font-weight: 500;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.doc-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Red "Pending" Button */
+.doc-btn-pending {
+    background-color: #dc3545; /* Bootstrap's danger red */
+}
+
+/* Green "Done" Button */
+.doc-btn-done {
+    background-color: #28a745; /* Bootstrap's success green */
+}
+#appTable thead th:nth-child(3) { text-align: center; }
 </style>
 </head>
 <body>
@@ -902,7 +954,16 @@ color: var(--icon-color-turquoise);
                     </div>
                 </li>
 
-
+<!-- START: NEW COMMUNITY DROPDOWN -->
+<li class="nav-item dropdown">
+    <a href="#" class="nav-link">Community Hub <i class="fas fa-chevron-down fa-xs"></i></a>
+    <div class="dropdown-content">
+        <a href="iim_community.html">IIM Aspirants 2025</a>
+      
+        <!-- Add more links here as you create more pages -->
+    </div>
+</li>
+<!-- END: NEW COMMUNITY DROPDOWN -->
 
 
                  <li class="nav-item dropdown">
@@ -947,6 +1008,38 @@ color: var(--icon-color-turquoise);
 <!-- END: NEW AI COUNSELOR SECTION -->
             </div>
         </section>
+
+
+<div class="tracker-container">
+    <h2>My College Application Tracker</h2>
+    <p class="tracker-notice">
+        <i class="fas fa-info-circle"></i> 
+        Your data is saved privately in this browser. It won't sync to other devices.
+    </p>
+
+    <!-- Form to Add a New Application -->
+    <div class="add-form">
+        <input type="text" id="collegeName" placeholder="University Name">
+        <input type="date" id="deadlineDate">
+        <button id="addAppBtn">Add Application</button>
+    </div>
+
+    <!-- The table where applications will be displayed -->
+    <table id="appTable">
+        <thead>
+            <tr>
+                <th>University</th>
+                <th>Deadline</th>
+                <th>Document Checklist</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="appTableBody">
+            <!-- Application rows will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+</div>
 
         <!-- ======== CATEGORY CARDS SECTION ======== -->
         <section class="section" id="explore">
@@ -1331,5 +1424,142 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 </script>
 <!-- END: AI COUNSELOR SCRIPT -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const addBtn = document.getElementById('addAppBtn');
+    const appTableBody = document.getElementById('appTableBody');
+    const collegeNameInput = document.getElementById('collegeName');
+    const deadlineDateInput = document.getElementById('deadlineDate');
+
+    // Load applications from localStorage or create an empty array
+    let applications = JSON.parse(localStorage.getItem('applications')) || [];
+
+    // Function to save the current list of applications to localStorage
+    const saveApplications = () => {
+        localStorage.setItem('applications', JSON.stringify(applications));
+    };
+
+    // Function to render the applications in the table
+    const renderApplications = () => {
+        appTableBody.innerHTML = ''; // Clear the table first
+
+        if (applications.length === 0) {
+            appTableBody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No applications added yet.</td></tr>';
+            return;
+        }
+
+        applications.forEach((app, index) => {
+            const row = document.createElement('tr');
+            
+            // This is how you create the interactive elements
+            row.innerHTML = `
+                <td>${app.name}</td>
+                <td>${app.deadline}</td>
+             
+<td>
+    <div class="doc-buttons-container">
+        <button class="doc-btn ${app.docs.sop ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="sop">SOP</button>
+        <button class="doc-btn ${app.docs.lor ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="lor">LORs</button>
+        <button class="doc-btn ${app.docs.transcript ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="transcript">Transcript</button>
+        
+        <!-- NEW BUTTONS ADDED BELOW -->
+        <button class="doc-btn ${app.docs.langTest ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="langTest">IELTS/TOEFL</button>
+        <button class="doc-btn ${app.docs.examScore ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="examScore">Exam Score</button>
+    </div>
+</td>
+                <td>
+                    <select class="status-select" data-index="${index}">
+                        <option value="Not Started" ${app.status === 'Not Started' ? 'selected' : ''}>Not Started</option>
+                        <option value="Submitted" ${app.status === 'Submitted' ? 'selected' : ''}>Submitted</option>
+                        <option value="Interview" ${app.status === 'Interview' ? 'selected' : ''}>Interview</option>
+                        <option value="Admitted" ${app.status === 'Admitted' ? 'selected' : ''}>Admitted</option>
+                        <option value="Rejected" ${app.status === 'Rejected' ? 'selected' : ''}>Rejected</option>
+                    </select>
+                </td>
+                <td><button class="delete-btn" data-index="${index}"><i class="fas fa-trash-alt"></i></button></td>
+            `;
+            appTableBody.appendChild(row);
+        });
+    };
+
+    // Function to handle adding a new application
+    addBtn.addEventListener('click', () => {
+        const name = collegeNameInput.value.trim();
+        const deadline = deadlineDateInput.value;
+
+        if (name === '' || deadline === '') {
+            alert('Please enter a university name and a deadline.');
+            return;
+        }
+
+      applications.push({
+    name: name,
+    deadline: deadline,
+    docs: { sop: false, lor: false, transcript: false, langTest: false, examScore: false }, // <-- ADDED HERE
+    status: 'Not Started'
+});
+
+        collegeNameInput.value = ''; // Clear inputs
+        deadlineDateInput.value = '';
+
+        saveApplications();
+        renderApplications();
+    });
+
+    // Event Delegation for handling clicks on dynamic elements (delete, checkbox, select)
+    // +++ NEW, COMBINED EVENT LISTENER +++
+appTableBody.addEventListener('click', (e) => {
+    // Handle clicks on our new Document Buttons
+    if (e.target.classList.contains('doc-btn')) {
+        const index = e.target.dataset.index;
+        const docType = e.target.dataset.doc;
+
+        // 1. Toggle the data (true -> false, false -> true)
+        applications[index].docs[docType] = !applications[index].docs[docType];
+        
+        // 2. Save the updated data to localStorage
+        saveApplications();
+
+        // 3. Visually update the button's class without redrawing the whole table
+        e.target.classList.toggle('doc-btn-pending');
+        e.target.classList.toggle('doc-btn-done');
+    }
+
+    // Handle clicks on the Delete Button (this part might already be in your code)
+    if (e.target.closest('.delete-btn')) {
+        const index = e.target.closest('.delete-btn').dataset.index;
+        if (confirm(`Are you sure you want to delete the application for ${applications[index].name}?`)) {
+            applications.splice(index, 1);
+            saveApplications();
+            renderApplications();
+        }
+    }
+});
+
+// We still need a SEPARATE listener for the 'change' event on the dropdown
+appTableBody.addEventListener('change', (e) => {
+    if (e.target.classList.contains('status-select')) {
+        const index = e.target.dataset.index;
+        applications[index].status = e.target.value;
+        saveApplications();
+    }
+});
+    
+    appTableBody.addEventListener('click', (e) => {
+        // Handle delete button clicks
+        if (e.target.closest('.delete-btn')) {
+            const index = e.target.closest('.delete-btn').dataset.index;
+            if (confirm(`Are you sure you want to delete the application for ${applications[index].name}?`)) {
+                applications.splice(index, 1); // Remove the item from the array
+                saveApplications();
+                renderApplications();
+            }
+        }
+    });
+
+    // Initial render of the applications when the page loads
+    renderApplications();
+});
+</script>
 </body>
 </html>
