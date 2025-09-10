@@ -162,7 +162,7 @@
         padding-right: 15px !important;
       }
     </style>
-</head>
+<link rel="stylesheet" href="fab.css">\r\n</head>
 <body>
 
 <div class="container">
@@ -880,5 +880,5 @@
     <p style="text-align:center; font-weight:bold; margin-top:40px;">End of Test</p>
 </div>
 
-</body>
+<script>fetch('fab.html').then(res=>res.text()).then(html=>{document.body.insertAdjacentHTML('beforeend',html)})</script>\r\n</body>
 </html>
