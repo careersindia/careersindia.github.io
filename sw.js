@@ -1,20 +1,21 @@
-// Choose a cache name. Increment the version number when you update the app shell.
-const staticCacheName = 'career-app-static-v1';  // For the app shell
-const dynamicCacheName = 'career-app-dynamic-v1'; // For the other 1000+ files
+// --- CONFIGURATION ---
+const staticCacheName = 'career-app-static-v2';  // For the app shell
+const dynamicCacheName = 'career-app-dynamic-v2'; // For dynamic content
 
-// --- APP SHELL ---
-// This is the small list of essential files to be cached immediately.
+// List of essential files for the app shell
 const filesToCache = [
   '/',
   'index.html',
   'mainnow.html',
-  'manifest.json', // It's good practice to cache the manifest
+  'manifest.json',
   'images/icon-192x192.png',
   'images/icon-512x512.png',
-  'cube.png', 
-'cube.mp4'// Add your most important logo or background image
-
+  'tap.png', // I saw this in your HTML, let's cache it
+'cube.png',
+'cube.mp4'
 ];
+
+// --- SERVICE WORKER LOGIC ---
 
 // 1. INSTALL: Cache the App Shell
 self.addEventListener('install', e => {
@@ -24,10 +25,10 @@ self.addEventListener('install', e => {
       return cache.addAll(filesToCache);
     })
   );
+  self.skipWaiting(); // Force the new service worker to activate
 });
 
 // 2. ACTIVATE: Clean up old caches
-// This helps when you update your cache version number
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys().then(keys => {
@@ -39,19 +40,31 @@ self.addEventListener('activate', e => {
   );
 });
 
-// 3. FETCH: The magic happens here! Serve from cache or fetch and cache.
+// 3. FETCH: The smart interceptor
 self.addEventListener('fetch', e => {
   e.respondWith(
     caches.match(e.request).then(cacheRes => {
-      // If the file is in any cache, serve it (super fast)
-      return cacheRes || fetch(e.request).then(fetchRes => {
-        // If the file is not in the cache, fetch it from the network
-        return caches.open(dynamicCacheName).then(cache => {
-          // IMPORTANT: Save a copy of the fetched file to our dynamic cache
-          cache.put(e.request.url, fetchRes.clone());
-          // Return the original fetched response to the browser
-          return fetchRes;
+      // Return from cache if found
+      if (cacheRes) {
+        return cacheRes;
+      }
+
+      // Not in cache, so fetch from network
+      return fetch(e.request).then(fetchRes => {
+        // --- THIS IS THE MAGIC PART ---
+        // Check if we received a valid, basic (same-origin) response
+        // If not, we don't cache it. This avoids the CORB error.
+        if (!fetchRes || fetchRes.status !== 200 || fetchRes.type !== 'basic') {
+          return fetchRes; // Return the problematic response without trying to cache it
+        }
+
+        // If it's a good, local response, we clone it and cache it.
+        const responseToCache = fetchRes.clone();
+        caches.open(dynamicCacheName).then(cache => {
+          cache.put(e.request.url, responseToCache);
         });
+
+        return fetchRes;
       });
     })
   );
