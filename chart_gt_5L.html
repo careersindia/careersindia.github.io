@@ -14,6 +14,30 @@
         .chart-container { width: 100%; max-width: 1200px; background-color: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         iframe { border: none; width: 100%; min-height: 700px; }
     </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
+    <style>
+      /* 1. A more natural box model */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      
+      /* 2. Make images responsive */
+      img, video, iframe {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* 3. Make main containers flexible */
+      /* Adjust these if your main container has a different name */
+      body, .container, #main-content, #wrapper {
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+    </style>
 </head>
 <body>
     <div class="title-container">

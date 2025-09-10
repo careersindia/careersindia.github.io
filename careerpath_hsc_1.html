@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Path Navigator | After 12th Grade</title>
+    
+    <!-- Google Fonts: Poppins for body, a nice contrast to Impact -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: aquamarine;
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --shadow-color: rgba(0, 0, 0, 0.15);
+            --gradient-start: #f0f8ff; /* A very light blue to complement aquamarine */
+            --gradient-end: #e6e6fa;   /* A light lavender for a flamboyant touch */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            color: var(--text-color);
+        }
+
+        .main-container {
+            display: flex;
+            width: 100%;
+            max-width: 1400px;
+            min-height: 80vh;
+            background: var(--bg-color);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px var(--shadow-color);
+            overflow: hidden;
+        }
+
+        /* --- Left Panel: The Input Form --- */
+        .left-panel {
+            flex-basis: 40%;
+            padding: 40px;
+            background-color: #f9f9f9; /* Slightly off-white for contrast */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid #eee;
+        }
+
+        .title-box {
+            background-color: var(--primary-color);
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            transform: perspective(1000px) rotateX(-5deg); /* Subtle 3D tilt */
+        }
+
+        .title-box h1 {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 2.8rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 
+                1px 1px 0px #fff, 
+                2px 2px 0px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .form-group i {
+            margin-right: 10px;
+            color: #555;
+        }
+
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23555' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-color: white;
+        }
+        
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(127, 255, 212, 0.5);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            filter: brightness(1.1);
+        }
+        
+        .generate-btn i {
+             margin-right: 10px;
+        }
+
+        /* --- Right Panel: The Results --- */
+        .right-panel {
+            flex-basis: 60%;
+            padding: 40px;
+            overflow-y: auto; 
+        }
+
+        #results-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        #message-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            color: #aaa;
+            padding: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        #message-box i {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+        
+        #message-box h2 {
+            font-size: 1.8rem;
+        }
+
+        /* --- Styling for the dynamically generated result cards --- */
+        .result-card {
+            background: var(--bg-color);
+            border: 1px solid #eee;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            animation: fadeIn 0.5s ease-in-out;
+            margin-bottom: 25px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .result-card h2 i {
+            margin-right: 10px;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .result-item {
+            padding: 10px;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+
+        .result-item strong {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .result-item i {
+            margin-right: 8px;
+            color: var(--primary-color);
+            width: 20px; /* Aligns the text nicely */
+            text-align: center;
+        }
+        
+        .result-item.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .result-item ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+        .result-item li {
+            margin-bottom: 4px;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            body {
+                padding: 1rem;
+                align-items: flex-start;
+            }
+            .main-container {
+                flex-direction: column;
+                min-height: auto;
+            }
+            .left-panel, .right-panel {
+                flex-basis: 100%;
+            }
+            .right-panel {
+                 min-height: 50vh;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            body {
+                padding: 0;
+            }
+            .main-container {
+                border-radius: 0;
+            }
+            .left-panel, .right-panel {
+                padding: 20px;
+            }
+            .title-box h1 {
+                font-size: 2rem;
+            }
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
+    <style>
+      /* 1. A more natural box model */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      
+      /* 2. Make images responsive */
+      img, video, iframe {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* 3. Make main containers flexible */
+      /* Adjust these if your main container has a different name */
+      body, .container, #main-content, #wrapper {
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- ====================================================== -->
+        <!-- =================== LEFT INPUT PANEL =================== -->
+        <!-- ====================================================== -->
+        <div class="left-panel">
+            <div class="title-box">
+                <h1>Career Path Navigator<br>After 12th Grade</h1>
+            </div>
+            
+            <form id="career-form" onsubmit="return false;">
+                <div class="form-group">
+                    <label for="percentage"><i class="fas fa-percentage"></i> Percentage/CGPA in 12th</label>
+                    <select id="percentage" required>
+                        <option value="" disabled selected>Select your percentage range</option>
+                        <option value="35-50">35% to 50%</option>
+                        <option value="50-60">50% to 60%</option>
+                        <option value="60-70">60% to 70%</option>
+                        <option value="70-80">70% to 80%</option>
+                        <option value="80-90">80% to 90%</option>
+                        <option value="90-101">Above 90%</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="budget"><i class="fas fa-rupee-sign"></i> Yearly Financial Budget</label>
+                    <select id="budget" required>
+                        <option value="" disabled selected>Select your budget range</option>
+                        <option value="0-25000">Less than ₹25,000</option>
+                        <option value="25000-50000">₹25,000 to ₹50,000</option>
+                        <option value="50000-100000">₹50,000 to ₹1,00,000</option>
+                        <option value="100000-200000">₹1,00,000 to ₹2,00,000</option>
+                        <option value="200000-500000">₹2,00,000 to ₹5,00,000</option>
+                        <option value="500000-750000">₹5,00,000 to ₹7,50,000</option>
+                        <option value="750000-1000000">₹7,50,000 to ₹10,00,000</option>
+                        <option value="1000000-999999999">Above ₹10,00,000</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="interests"><i class="fas fa-lightbulb"></i> Career Interests / Hobbies</label>
+                    <textarea id="interests" rows="4" placeholder="e.g., engineering, medical, computer, design, law..." required></textarea>
+                </div>
+                
+                <button type="button" id="generateBtn" class="generate-btn">
+                    <i class="fas fa-magic-wand-sparkles"></i> Generate My Career Path
+                </button>
+            </form>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- =================== RIGHT OUTPUT PANEL ================= -->
+        <!-- ====================================================== -->
+        <div class="right-panel">
+            <div id="results-container">
+                
+                <!-- Initial message shown before generating results -->
+                <div id="message-box">
+                    <i class="fas fa-compass-drafting"></i>
+                    <h2>Your Future Awaits...</h2>
+                    <p>Fill in your details on the left and click the button to discover your personalized career paths!</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // ===================================================================
+        // PROVISION FOR JAVASCRIPT OBJECT
+        // ===================================================================
+        //
+        // PASTE YOUR COMPLETE `const hscCourses = [ ... ];` ARRAY HERE.
+        // The code below is ready for it.
+        //
+        // ===================================================================
+ const hscCourses = [
+            {
+                name: "Bachelor of Medicine, Bachelor of Surgery (MBBS)",
+                minPercentage: 60,
+                avgYearlyFees: 1200000,
+                avgStartingSalary: 800000,
+                eligibility: "10+2 with Physics, Chemistry, Biology (PCB) and English. Must qualify NEET-UG entrance exam. Minimum 50% in 12th for general category.",
+                duration: "5.5 years (including 1-year mandatory internship)",
+                workEnvironment: "Hospitals, clinics, and private practice. A high-pressure, demanding, and emotionally charged environment requiring long hours.",
+                workLifeBalance: "Challenging. Long and irregular hours, including night shifts and on-call duties, are standard, especially in the early years. High stress levels.",
+                risksChallenges: "Extremely competitive entrance exam (NEET). Very long and expensive education path. High responsibility for patient lives. Risk of burnout and exposure to diseases.",
+                keywords: ["mbbs", "medical", "doctor", "surgery", "health", "hospital", "biology", "medicine", "neet", "clinic", "physician"],
+                careerGrowth: "Intern -> Junior Resident (during PG) -> Senior Resident -> Consultant / Specialist (after super-specialty) -> Head of Department or start own hospital.",
+                skills: {
+                    required: ["Strong scientific aptitude", "Empathy and compassion", "Excellent memory and concentration", "Stamina and resilience", "Ethical responsibility"],
+                    acquired: ["Clinical diagnosis", "Medical and surgical procedures", "Pharmacology", "Patient communication and counseling", "Emergency management", "Teamwork in a healthcare setting"]
+                },
+                onlineCourses: [{ name: "NEET-UG Preparation courses on platforms like Unacademy, BYJU's.", link: "https://unacademy.com/goal/neet-ug/YOTUH" }],
+                jobProfile: "Junior Doctor, Medical Intern, Resident Doctor.",
+                topCompanies: [
+                    { name: "AIIMS", salary: "Stipend, then Govt scales (₹12-15 LPA+)" },
+                    { name: "Apollo Hospitals", salary: "₹7 - 10 LPA" },
+                    { name: "Fortis Healthcare", salary: "₹7 - 10 LPA" },
+                    { name: "Max Healthcare", salary: "₹7 - 11 LPA" },
+                    { name: "Government Hospitals", salary: "Govt pay scales (₹8-12 LPA+)" },
+                    { name: "Manipal Hospitals", salary: "₹6 - 9 LPA" },
+                    { name: "Narayana Health", salary: "₹6 - 9 LPA" },
+                    { name: "Private Practice", salary: "Highly Variable, high potential" },
+                    { name: "Joining Armed Forces Medical Services", salary: "Govt pay scales + benefits" },
+                    { name: "Global opportunities (after USMLE/PLAB)", salary: "Extremely High" }
+                ],
+                successStories: "Renowned doctors like Dr. Devi Shetty (Narayana Health) or Dr. Naresh Trehan (Medanta) have not only excelled as surgeons but have also built world-class hospital chains, demonstrating the immense potential for impact and entrepreneurship in medicine."
+            },
+            {
+                name: "Bachelor of Dental Surgery (BDS)",
+                minPercentage: 60,
+                avgYearlyFees: 400000,
+                avgStartingSalary: 350000,
+                eligibility: "10+2 with PCB and English. Must qualify NEET-UG entrance exam. Minimum 50% in 12th for general category.",
+                duration: "5 years (including 1-year mandatory internship)",
+                workEnvironment: "Dental clinics, hospitals, and private practice. A clean, clinical environment requiring high precision and patient interaction.",
+                workLifeBalance: "Excellent compared to MBBS. Usually regular clinic hours with no night duties. Allows for a stable and predictable lifestyle.",
+                risksChallenges: "High initial investment to set up a private clinic. The field is competitive, especially in urban areas. The work can be physically straining on the back and neck. Requires continuous skill updates.",
+                keywords: ["bds", "dental", "dentist", "surgery", "teeth", "health", "clinic", "medical", "neet"],
+                careerGrowth: "Intern -> Junior Dentist in a clinic -> Start own private practice (most common path) or pursue MDS for specialization -> Consultant / Professor.",
+                skills: {
+                    required: ["Excellent manual dexterity and a steady hand", "Aesthetic sense", "Good communication skills", "Patience and attention to detail"],
+                    acquired: ["Dental procedures (fillings, root canals, extractions)", "Oral diagnosis", "Prosthodontics (crowns, bridges, dentures)", "Periodontics (gum treatment)", "Use of dental instruments and materials", "Patient management"]
+                },
+                onlineCourses: [{ name: "NEET-UG Preparation courses", link: "https://unacademy.com/goal/neet-ug/YOTUH" }],
+                jobProfile: "Dentist, Dental Surgeon, Associate Dentist.",
+                topCompanies: [
+                    { name: "Starting own Dental Clinic", salary: "High potential, varies" },
+                    { name: "Clove Dental / Axiss Dental", salary: "₹3.5 - 6.0 LPA" },
+                    { name: "Apollo White Dental", salary: "₹3.2 - 5.8 LPA" },
+                    { name: "Government Hospitals", salary: "Govt pay scales (₹6-9 LPA)" },
+                    { name: "Army Dental Corps", salary: "Govt pay scales + benefits" },
+                    { name: "Fortis / Max Hospitals (Dental Dept)", salary: "₹3.5 - 6.2 LPA" },
+                    { name: "Dental Colleges (as Tutor/Lecturer)", salary: "Academic scales" },
+                    { name: "International opportunities (after exams)", salary: "High potential" },
+                    { name: "Corporate dental clinics", salary: "₹3.0 - 5.5 LPA" },
+                    { name: "Smile Train (NGO)", salary: "Varies" }
+                ],
+                successStories: "Many successful dentists are entrepreneurs who have built chains of high-tech dental clinics. Specialists (MDS) in fields like orthodontics or implantology are highly sought-after and can have very lucrative careers."
+            },
+            {
+                name: "Bachelor of Ayurvedic Medicine and Surgery (BAMS)",
+                minPercentage: 50,
+                avgYearlyFees: 250000,
+                avgStartingSalary: 400000,
+                eligibility: "10+2 with PCB. Must qualify NEET-UG entrance exam.",
+                duration: "5.5 years (including 1-year internship)",
+                workEnvironment: "Ayurvedic hospitals, clinics, wellness centers, and research institutions. A calm, therapeutic environment focused on traditional medicine.",
+                workLifeBalance: "Generally very good, with regular clinic hours. Less stressful than allopathic medicine. Promotes a healthy and balanced lifestyle.",
+                risksChallenges: "Competition from allopathic medicine. The scientific validation and acceptance of some treatments can be a challenge. Lower earning potential in the initial years compared to MBBS.",
+                keywords: ["bams", "ayurveda", "ayurvedic", "medical", "doctor", "health", "wellness", "traditional", "herbal", "medicine"],
+                careerGrowth: "Intern -> Ayurvedic Doctor (Vaidya) in a clinic/hospital -> Start own practice or wellness center -> Pursue MD/MS in Ayurveda for specialization -> Professor / Researcher.",
+                skills: {
+                    required: ["A belief in holistic and traditional healing", "Good diagnostic skills (including pulse diagnosis)", "Patience and counseling ability", "Strong knowledge of herbs"],
+                    acquired: ["Principles of Ayurveda", "Panchakarma therapy", "Herbal pharmacology (Dravyaguna)", "Ayurvedic diagnosis and treatment", "Diet and lifestyle counseling", "Yoga and wellness practices"]
+                },
+                onlineCourses: [{ name: "Courses from the Ministry of AYUSH.", link: "https://www.ayush.gov.in/" }],
+                jobProfile: "Ayurvedic Doctor, Wellness Consultant, Panchakarma Specialist.",
+                topCompanies: [
+                    { name: "Patanjali / Divya Pharmacy", salary: "₹3.5 - 6.0 LPA" },
+                    { name: "Dabur / Baidyanath / Zandu", salary: "₹4.0 - 7.0 LPA" },
+                    { name: "Kottakkal Arya Vaidya Sala", salary: "₹3.8 - 6.5 LPA" },
+                    { name: "Government AYUSH Hospitals", salary: "Govt pay scales (₹6-9 LPA)" },
+                    { name: "Jiva Ayurveda", salary: "₹3.5 - 6.2 LPA" },
+                    { name: "High-end wellness resorts (e.g., Ananda, Somatheeram)", salary: "₹4.5 - 8.5 LPA" },
+                    { name: "Starting own Ayurvedic clinic", salary: "High potential, varies" },
+                    { name: "Himalaya Wellness Company", salary: "₹4.2 - 7.5 LPA" },
+                    { name: "Central Council for Research in Ayurvedic Sciences (CCRAS)", salary: "Research positions" },
+                    { name: "International opportunities (especially in Europe, USA)", salary: "High potential" }
+                ],
+                successStories: "Ayurveda is gaining immense global recognition. Doctors who have successfully integrated traditional wisdom with modern diagnostics, and entrepreneurs who have built successful wellness brands, are at the forefront of this global movement."
+            },
+            {
+                name: "Bachelor of Homeopathic Medicine and Surgery (BHMS)",
+                minPercentage: 50,
+                avgYearlyFees: 200000,
+                avgStartingSalary: 300000,
+                eligibility: "10+2 with PCB. Must qualify NEET-UG entrance exam.",
+                duration: "5.5 years (including 1-year internship)",
+                workEnvironment: "Homeopathic clinics, hospitals, and dispensaries. A patient-centric, consultation-based practice.",
+                workLifeBalance: "Excellent. Regular clinic hours and a low-stress environment. Allows for deep patient interaction and a good work-life balance.",
+                risksChallenges: "The scientific basis of homeopathy is often debated, which can be a professional challenge. Building a successful private practice takes a long time and depends on patient trust and word-of-mouth.",
+                keywords: ["bhms", "homeopathy", "homeopathic", "medical", "doctor", "health", "clinic", "alternative", "medicine"],
+                careerGrowth: "Intern -> Junior Doctor in a clinic -> Start own private practice -> Pursue MD in Homeopathy for specialization -> Consultant / Professor.",
+                skills: {
+                    required: ["Excellent listening and observation skills", "A patient and empathetic demeanor", "A methodical approach to case-taking", "A strong belief in the principles of homeopathy"],
+                    acquired: ["Homeopathic Materia Medica and Repertory", "Detailed patient case-taking and analysis", "Principles of homeopathic philosophy (Organon)", "Diagnosis of common ailments", "Patient counseling", "Pharmacy of homeopathic remedies"]
+                },
+                onlineCourses: [{ name: "Courses from the Central Council for Research in Homoeopathy (CCRH).", link: "https://www.ccrhindia.nic.in/" }],
+                jobProfile: "Homeopathic Doctor, Consultant, Lecturer.",
+                topCompanies: [
+                    { name: "Starting own private clinic", salary: "High potential, varies" },
+                    { name: "Dr. Batra's Positive Health Clinic", salary: "₹3.0 - 5.5 LPA" },
+                    { name: "SBL Homeopathy", salary: "₹3.2 - 5.8 LPA" },
+                    { name: "Dr. Willmar Schwabe India", salary: "₹3.5 - 6.0 LPA" },
+                    { name: "Government AYUSH/Homeopathic Hospitals", salary: "Govt pay scales (₹6-9 LPA)" },
+                    { name: "Homeopathic pharmaceutical companies", salary: "₹3.0 - 5.2 LPA" },
+                    { name: "Teaching in homeopathic medical colleges", salary: "Academic scales" },
+                    { name: "Research roles in CCRH", salary: "Govt scales" },
+                    { name: "Wellness centers", salary: "Varies" },
+                    { name: "International practice (in some countries)", salary: "High potential" }
+                ],
+                successStories: "Many renowned homeopathic practitioners have built large, loyal patient bases over decades of successful practice. They are respected for their ability to treat chronic ailments through a personalized and holistic approach."
+            },
+            {
+                name: "Bachelor of Unani Medicine and Surgery (BUMS)",
+                minPercentage: 50,
+                avgYearlyFees: 150000,
+                avgStartingSalary: 350000,
+                eligibility: "10+2 with PCB. Must qualify NEET-UG. Knowledge of Urdu/Arabic/Persian is often required.",
+                duration: "5.5 years (including 1-year internship)",
+                workEnvironment: "Unani hospitals, clinics, and dispensaries. A practice based on the traditional Greco-Arabic system of medicine.",
+                workLifeBalance: "Good, with regular clinic hours. Focuses on holistic wellness and lifestyle management.",
+                risksChallenges: "This is a niche field of traditional medicine with a more limited scope of practice compared to MBBS. Government jobs are the primary source of stable employment. Requires knowledge of Urdu.",
+                keywords: ["bums", "unani", "medical", "doctor", "health", "traditional", "medicine", "hakim"],
+                careerGrowth: "Intern -> Unani Doctor (Hakim) -> Start own practice or pursue MD (Unani) for specialization -> Professor / Researcher.",
+                skills: {
+                    required: ["Strong foundation in Unani principles", "Knowledge of classical languages (Urdu/Arabic)", "Good diagnostic skills", "Counseling skills"],
+                    acquired: ["Principles of Unani medicine", "Unani pharmacology (Ilmul Advia)", "Regimental Therapy (Ilaj-bil-Tadbeer)", "Diagnosis based on temperament (Mizaj)", "Unani surgery basics", "Patient counseling"]
+                },
+                onlineCourses: [{ name: "Central Council for Research in Unani Medicine (CCRUM) is the apex body.", link: "http://ccrum.res.in/" }],
+                jobProfile: "Unani Doctor (Hakim), Consultant, Lecturer.",
+                topCompanies: [
+                    { name: "Government AYUSH/Unani Hospitals", salary: "Govt pay scales (₹6-9 LPA)" },
+                    { name: "Hamdard (Wakf) Laboratories", salary: "₹4.0 - 7.0 LPA" },
+                    { name: "Private Unani clinics", salary: "Varies" },
+                    { name: "Central Council for Research in Unani Medicine (CCRUM)", salary: "Research positions" },
+                    { name: "Unani medical colleges", salary: "Academic scales" },
+                    { name: "Wellness centers focusing on Unani", salary: "Varies" },
+                    { name: "State health departments", salary: "Govt scales" },
+                    { name: "Rex Remedies", salary: "₹3.5 - 6.2 LPA" },
+                    { name: "New Shama Laboratories", salary: "₹3.2 - 5.8 LPA" },
+                    { name: "Tibbia College, Delhi", salary: "Academic/Clinical roles" }
+                ],
+                successStories: "Unani medicine is a rich and ancient tradition of healing. Experienced Hakims are respected for their deep knowledge and ability to treat various ailments. Researchers in this field are working to scientifically validate and standardize traditional Unani formulations."
+            },
+            {
+                name: "Bachelor of Veterinary Science & Animal Husbandry (BVSc & AH)",
+                minPercentage: 50,
+                avgYearlyFees: 100000,
+                avgStartingSalary: 600000,
+                eligibility: "10+2 with PCB. Must qualify NEET-UG or state-level veterinary entrance exams.",
+                duration: "5.5 years (including internship)",
+                workEnvironment: "Veterinary hospitals, clinics, zoos, dairy/poultry farms, and government animal husbandry departments. Can be physically and emotionally demanding.",
+                workLifeBalance: "Challenging. Involves being on-call for emergencies. The work can be physically strenuous and emotionally difficult when dealing with sick and suffering animals.",
+                risksChallenges: "Risk of injury from animals and exposure to zoonotic diseases. The work is physically demanding. Can be emotionally draining. Fewer colleges compared to MBBS.",
+                keywords: ["bvsc", "veterinary", "vet", "animal", "doctor", "pet", "livestock", "surgery", "husbandry", "medical"],
+                careerGrowth: "Veterinary Officer -> Senior Officer -> Pursue MVSc for specialization (e.g., Surgery, Gynaecology) -> Professor / Scientist / Specialist in private sector.",
+                skills: {
+                    required: ["Deep love and compassion for animals", "Courage and physical fitness", "Strong scientific and diagnostic skills", "Calmness under pressure"],
+                    acquired: ["Animal anatomy and surgery", "Veterinary medicine and pharmacology", "Gynaecology and obstetrics for animals", "Public health and epidemiology", "Animal nutrition", "Farm management"]
+                },
+                onlineCourses: [{ name: "The Veterinary Council of India (VCI) regulates the profession.", link: "https://vci.dadf.gov.in/default.aspx" }],
+                jobProfile: "Veterinary Doctor, Veterinary Surgeon, Animal Husbandry Officer.",
+                topCompanies: [
+                    { name: "State Animal Husbandry Departments", salary: "₹7 - 12 LPA (Govt)" },
+                    { name: "Indian Army (Remount Veterinary Corps)", salary: "Govt pay scales + benefits" },
+                    { name: "Private pet clinics in cities", salary: "High potential, varies" },
+                    { name: "Amul / State Milk Federations", salary: "₹6 - 10 LPA" },
+                    { name: "Nestlé / other food companies (for quality control)", salary: "₹7 - 11 LPA" },
+                    { name: "Zoological Parks and Wildlife Sanctuaries", salary: "Govt scales" },
+                    { name: "Suguna Foods / Venky's (Poultry)", salary: "₹6.5 - 10.5 LPA" },
+                    { name: "Pharmaceutical companies (e.g., Virbac, Zoetis)", salary: "₹8 - 15 LPA" },
+                    { name: "ICAR (Indian Council of Agricultural Research)", salary: "Scientist scales" },
+                    { name: "Race courses (as equine veterinarian)", salary: "Very high potential" }
+                ],
+                successStories: "Veterinarians are crucial for both animal welfare and human public health. Renowned vets who run multi-specialty pet hospitals or work as specialists for equine or wildlife conservation are highly respected professionals."
+            },
+            {
+                name: "Bachelor of Physiotherapy (BPT)",
+                minPercentage: 50,
+                avgYearlyFees: 150000,
+                avgStartingSalary: 300000,
+                eligibility: "10+2 with PCB. Admission is through state-level entrance exams or direct.",
+                duration: "4.5 years (including 6-month internship)",
+                workEnvironment: "Hospitals, private clinics, sports facilities, and rehabilitation centers. A hands-on, patient-facing role that is physically active.",
+                workLifeBalance: "Good. Clinic and hospital roles have regular hours. Sports physiotherapists have demanding schedules. The work is physically demanding but rewarding.",
+                risksChallenges: "The work can be physically straining on the practitioner. Requires strong motivational skills to help patients through long recovery processes. Private practice requires business acumen.",
+                keywords: ["bpt", "physiotherapy", "therapist", "health", "rehabilitation", "sports", "medical", "paramedical", "fitness"],
+                careerGrowth: "Junior Physiotherapist -> Physiotherapist -> Pursue MPT for specialization (Ortho, Neuro, Sports) -> Senior Physiotherapist / Start own clinic -> Consultant.",
+                skills: {
+                    required: ["Strong knowledge of human anatomy", "Empathy and motivational skills", "Physical stamina", "Excellent communication"],
+                    acquired: ["Therapeutic exercises", "Electrotherapy modalities", "Patient assessment and diagnosis", "Rehabilitation protocols for various conditions", "Manual therapy techniques", "Gait and posture analysis"]
+                },
+                onlineCourses: [{ name: "Physiotherapy courses on platforms like Physiopedia.", link: "https://www.physio-pedia.com/Courses" }],
+                jobProfile: "Physiotherapist, Physical Therapist, Sports Physiotherapist, Rehabilitation Specialist.",
+                topCompanies: [
+                    { name: "Apollo Hospitals / Fortis Healthcare", salary: "₹3.0 - 5.5 LPA" },
+                    { name: "Start own private clinic", salary: "High potential, varies" },
+                    { name: "Sports Authority of India (SAI) / Sports Teams", salary: "₹5.0 - 12.0 LPA" },
+                    { name: "Cult.fit / other fitness chains", salary: "₹3.5 - 6.5 LPA" },
+                    { name: "Government Hospitals", salary: "Govt pay scales (₹5-8 LPA)" },
+                    { name: "Rehabilitation centers (e.g., for stroke patients)", salary: "₹3.2 - 5.8 LPA" },
+                    { name: "Home healthcare providers (Portea)", salary: "₹3.5 - 6.0 LPA" },
+                    { name: "Corporate wellness programs", salary: "₹4.0 - 7.0 LPA" },
+                    { name: "Universities (as faculty)", salary: "Academic scales" },
+                    { name: "International opportunities (Canada, Australia)", salary: "High potential" }
+                ],
+                successStories: "Physiotherapists are movement specialists who help people recover function and live pain-free lives. Top sports physiotherapists who work with elite athletes and teams are highly sought-after and play a critical role in their success."
+            },
+            {
+                name: "Bachelor of Occupational Therapy (BOT)",
+                minPercentage: 50,
+                avgYearlyFees: 120000,
+                avgStartingSalary: 280000,
+                eligibility: "10+2 with PCB.",
+                duration: "4.5 years (including 6-month internship)",
+                workEnvironment: "Hospitals, rehabilitation centers, special schools, and mental health facilities. A creative, problem-solving, and patient-centered role.",
+                workLifeBalance: "Good, with regular working hours. The work is emotionally and mentally engaging, focusing on helping people regain independence in their daily lives.",
+                risksChallenges: "The profession is less understood than physiotherapy. Requires a high degree of creativity to design therapeutic activities. Progress with patients can be slow, requiring immense patience.",
+                keywords: ["bot", "occupational therapy", "therapist", "rehabilitation", "health", "medical", "special needs", "paramedical"],
+                careerGrowth: "Occupational Therapist -> Pursue MOT for specialization (Pediatrics, Neuro, Mental Health) -> Senior Therapist -> Head of Department / Start own center.",
+                skills: {
+                    required: ["Creativity and problem-solving", "Patience and empathy", "Strong communication skills", "Adaptability"],
+                    acquired: ["Therapeutic use of daily activities (ADLs)", "Assessment of cognitive and motor skills", "Design of adaptive equipment", "Sensory integration therapy", "Hand therapy", "Mental health interventions"]
+                },
+                onlineCourses: [{ name: "The All India Occupational Therapists' Association (AIOTA) is the regulatory body.", link: "https://aiota.org/" }],
+                jobProfile: "Occupational Therapist, Rehabilitation Therapist, Pediatric Therapist.",
+                topCompanies: [
+                    { name: "AIIMS / other Government Hospitals", salary: "Govt pay scales (₹5-8 LPA)" },
+                    { name: "Special schools for children with disabilities", salary: "₹3.0 - 5.5 LPA" },
+                    { name: "Private rehabilitation centers", salary: "₹2.8 - 5.2 LPA" },
+                    { name: "Hospitals (Apollo, Fortis)", salary: "₹2.9 - 5.4 LPA" },
+                    { name: "Mental health clinics (e.g., NIMHANS)", salary: "Govt scales" },
+                    { name: "Start own pediatric/neuro therapy center", salary: "High potential, varies" },
+                    { name: "NGOs working with disability", salary: "Varies" },
+                    { name: "Ergonomic consulting for corporates", salary: "High potential" },
+                    { name: "Geriatric care facilities", salary: "₹2.7 - 5.0 LPA" },
+                    { name: "Hand therapy clinics", salary: "Niche, higher pay" }
+                ],
+                successStories: "Occupational therapists are experts in helping people of all ages participate in the things they want and need to do through the therapeutic use of everyday activities. They are crucial in helping children with developmental delays or adults recovering from a stroke to regain their independence."
+            },
+            {
+                name: "Bachelor of Pharmacy (B.Pharm)",
+                minPercentage: 50,
+                avgYearlyFees: 150000,
+                avgStartingSalary: 350000,
+                eligibility: "10+2 with PCB or PCM. Admission is through state-level or national entrance exams (e.g., MHT-CET, NEET).",
+                duration: "4 years",
+                workEnvironment: "Pharmaceutical industry (R&D, manufacturing, QC, sales), hospitals, and retail pharmacies. A science-based, regulated, and diverse field.",
+                workLifeBalance: "Excellent in R&D and QC roles (standard lab hours). Manufacturing is shift-based. Medical sales (MR) is target-driven with extensive travel. Retail pharmacy has long hours.",
+                risksChallenges: "The industry is highly regulated (FDA, DCGI). A mistake in manufacturing or dispensing can have serious consequences. To grow in R&D, an M.Pharm or PhD is usually required.",
+                keywords: ["bpharm", "pharmacy", "pharmacist", "medicine", "drug", "pharmaceutical", "health", "industry", "chemist", "medical"],
+                careerGrowth: "Production/QC Chemist or Medical Rep -> Senior Officer (3-5 yrs) -> Manager. Another path is to become a Drug Inspector (govt job) or start one's own pharmacy.",
+                skills: {
+                    required: ["Strong knowledge of chemistry and biology", "Attention to detail and accuracy", "Ethical and responsible", "Analytical mindset"],
+                    acquired: ["Pharmacology (how drugs work)", "Pharmaceutics (drug formulation and manufacturing)", "Medicinal chemistry", "Pharmacognosy (drugs from natural sources)", "Quality control and analysis of drugs", "Regulatory affairs"]
+                },
+                onlineCourses: [{ name: "Drug Discovery by UC San Diego on Coursera", link: "https://www.coursera.org/learn/drug-discovery" }],
+                jobProfile: "Pharmacist, Drug Inspector, Medical Representative, Production/QC Chemist, Research Associate.",
+                topCompanies: [
+                    { name: "Sun Pharma / Cipla / Dr. Reddy's", salary: "₹3.5 - 6.0 LPA" },
+                    { name: "Pfizer / GlaxoSmithKline (GSK)", salary: "₹4.5 - 8.0 LPA" },
+                    { name: "Apollo Pharmacy / MedPlus", salary: "₹2.5 - 4.5 LPA" },
+                    { name: "Government Drug Inspector", salary: "High pay + prestige (Govt)" },
+                    { name: "Hospitals (as Hospital Pharmacist)", salary: "₹3.0 - 5.5 LPA" },
+                    { name: "Novartis / Johnson & Johnson", salary: "₹5.0 - 9.0 LPA" },
+                    { name: "Lupin / Aurobindo Pharma", salary: "₹3.2 - 5.8 LPA" },
+                    { name: "TCS / Cognizant (for Pharmacovigilance)", salary: "₹4.0 - 7.0 LPA" },
+                    { name: "Zydus Cadila", salary: "₹3.4 - 6.2 LPA" },
+                    { name: "Biocon", salary: "₹3.8 - 6.8 LPA" }
+                ],
+                successStories: "The pharmaceutical industry is a cornerstone of healthcare. The scientists who discover new drugs and the professionals who ensure their quality and safe production are vital. Many CEOs of major pharma companies in India have a pharmacy background."
+            },
+            {
+                name: "B.Sc. in Nursing",
+                minPercentage: 50,
+                avgYearlyFees: 100000,
+                avgStartingSalary: 300000,
+                eligibility: "10+2 with PCB. Admission through state or national entrance exams.",
+                duration: "4 years",
+                workEnvironment: "Hospitals, clinics, and nursing homes. A demanding, fast-paced, and emotionally charged environment at the heart of patient care.",
+                workLifeBalance: "Very challenging. Involves long shifts (8-12 hours), including nights, weekends, and holidays. The work is physically and emotionally draining. High stress levels are common.",
+                risksChallenges: "High risk of exposure to infections. The work is physically demanding. Dealing with patient suffering and death is emotionally taxing. High responsibility for patient well-being.",
+                keywords: ["nursing", "bsc nursing", "nurse", "hospital", "health", "patient care", "medical", "paramedical"],
+                careerGrowth: "Staff Nurse -> Nursing Supervisor -> Ward In-charge / Assistant Nursing Superintendent -> Nursing Superintendent -> Chief Nursing Officer.",
+                skills: {
+                    required: ["Deep compassion and empathy", "Physical and emotional resilience", "Strong communication skills", "Ability to work under extreme pressure"],
+                    acquired: ["Patient care and management", "Administering medications and injections", "Wound care", "Operation of medical equipment", "Critical care nursing (ICU)", "Infection control practices"]
+                },
+                onlineCourses: [{ name: "Vital Signs: Understanding What the Body Is Telling Us", link: "https://www.coursera.org/learn/vital-signs" }],
+                jobProfile: "Staff Nurse, Nursing Officer, Critical Care Nurse, Flight Nurse.",
+                topCompanies: [
+                    { name: "AIIMS / other top Govt Hospitals", salary: "₹7 - 12 LPA (as Nursing Officer)" },
+                    { name: "Apollo Hospitals / Fortis / Max", salary: "₹3.0 - 5.5 LPA" },
+                    { name: "Manipal Hospitals", salary: "₹2.8 - 5.2 LPA" },
+                    { name: "International opportunities (UK, Canada, Gulf)", salary: "₹25 - 50 LPA+" },
+                    { name: "Army / Military Nursing Service", salary: "Govt pay scales + benefits" },
+                    { name: "Railway Hospitals", salary: "Govt scales" },
+                    { name: "Corporate hospitals", salary: "₹3.5 - 6.0 LPA" },
+                    { name: "Teaching in Nursing Colleges (after M.Sc)", salary: "Academic scales" },
+                    { name: "Home healthcare companies", salary: "₹3.2 - 5.8 LPA" },
+                    { name: "Industrial Nurse (in large factories)", salary: "₹4.0 - 7.0 LPA" }
+                ],
+                successStories: "Nurses are the backbone of the healthcare system. A B.Sc. in Nursing opens up global career opportunities. Many Indian nurses hold senior positions in prestigious hospitals in the UK, USA, and the Middle East, and are renowned for their skill and compassion."
+            },
+            {
+                name: "Bachelor of Science (B.Sc.) in Agriculture",
+                minPercentage: 50,
+                avgYearlyFees: 50000,
+                avgStartingSalary: 400000,
+                eligibility: "10+2 with PCB/PCM or Agriculture stream. Admission via ICAR AIEEA or state-level exams.",
+                duration: "4 years",
+                workEnvironment: "A mix of field and office work. Roles in government, banks, agri-input companies (seeds, fertilizers), and food processing industries.",
+                workLifeBalance: "Good. Field roles involve travel in rural areas. Office roles have standard hours. The work is tied to a crucial sector and offers stability.",
+                risksChallenges: "The agriculture sector is influenced by climate and government policies. Rural postings are common. To get into high-end research (Scientist), an M.Sc. and PhD are required.",
+                keywords: ["agriculture", "bsc agriculture", "farming", "agri", "science", "rural", "icar", "bank", "horticulture"],
+                careerGrowth: "Agricultural Officer / Field Officer -> Manager (in private companies) or Scientist (in research) -> Senior positions in NABARD, FCI, or agri-business companies.",
+                skills: {
+                    required: ["Interest in agriculture and rural development", "Scientific temperament", "Good communication skills", "Willingness to work in rural areas"],
+                    acquired: ["Agronomy and crop science", "Soil science", "Plant pathology and entomology", "Agricultural economics and extension", "Genetics and plant breeding", "Horticulture"]
+                },
+                onlineCourses: [{ name: "ICAR e-courses", link: "https://ecourses.icar.gov.in/" }],
+                jobProfile: "Agricultural Officer, Bank Field Officer, Extension Officer, Farm Manager, Research Associate.",
+                topCompanies: [
+                    { name: "Bank Agricultural Field Officer (IBPS-AFO)", salary: "₹6 - 10 LPA (Govt)" },
+                    { name: "NABARD", salary: "₹8 - 14 LPA (Govt)" },
+                    { name: "ICAR (as Scientist after ARS exam)", salary: "High Govt scales" },
+                    { name: "Fertilizer companies (IFFCO, KRIBHCO)", salary: "₹5 - 9 LPA" },
+                    { name: "Seed companies (e.g., Mahyco, Kaveri)", salary: "₹4 - 7 LPA" },
+                    { name: "Pesticide companies (e.g., Bayer, UPL)", salary: "₹4.5 - 8 LPA" },
+                    { name: "Food Corporation of India (FCI)", salary: "Govt scales" },
+                    { name: "ITC (Agri-business Division)", salary: "₹6 - 11 LPA" },
+                    { name: "State Agriculture Departments", salary: "Govt scales" },
+                    { name: "Tractor companies (Mahindra, TAFE)", salary: "₹4.5 - 8.5 LPA" }
+                ],
+                successStories: "Dr. M.S. Swaminathan, the father of the Green Revolution in India, was an agricultural scientist. A B.Sc. in Agriculture is the gateway to a career that is fundamental to the nation's food security and rural economy."
+            },
+    {
+        name: "B.Sc. in Biochemistry",
+        minPercentage: 55,
+        avgYearlyFees: 60000,
+        avgStartingSalary: 350000,
+        eligibility: "10+2 with Physics, Chemistry, and Biology (PCB).",
+        duration: "3 years",
+        workEnvironment: "Research labs, pharmaceutical companies, food industry QC labs. A highly sterile and analytical environment.",
+        workLifeBalance: "Excellent. Primarily standard 9-to-5 lab hours. Research roles can have flexible but demanding schedules based on experiments.",
+        risksChallenges: "A Master's degree (M.Sc.) is almost essential for good career prospects. The work can be repetitive. Requires high precision and patience.",
+        keywords: ["bsc", "biochemistry", "science", "biology", "chemistry", "medical", "lab", "research", "pharma"],
+        careerGrowth: "Lab Technician -> Research Assistant (after M.Sc.) -> Scientist (after PhD) / Quality Control Manager in pharma/food industry.",
+        skills: {
+            required: ["Strong aptitude for biology and chemistry", "Analytical and research-oriented mindset", "Patience and precision", "Methodical approach"],
+            acquired: ["Clinical Biochemistry", "Molecular Biology", "Enzymology", "Immunology", "Laboratory instrumentation techniques (Spectrophotometry, Chromatography)", "Data analysis"]
+        },
+        onlineCourses: [{ name: "Biochemistry: Biomolecules, Methods, and Mechanisms on Coursera", link: "https://www.coursera.org/learn/biochemistry" }],
+        jobProfile: "Biochemist, Lab Technician, Clinical Research Associate, Quality Control Analyst.",
+        topCompanies: [
+            { name: "Cipla / Sun Pharma / Dr. Reddy's", salary: "₹3.0 - 5.5 LPA" },
+            { name: "Biocon", salary: "₹3.5 - 6.0 LPA" },
+            { name: "Nestlé / Britannia (Food QC)", salary: "₹3.8 - 6.5 LPA" },
+            { name: "CSIR / ICMR Labs (as JRF after exam)", salary: "Stipend + benefits" },
+            { name: "Diagnostic Labs (Dr. Lal PathLabs, SRL)", salary: "₹2.8 - 4.8 LPA" },
+            { name: "Hospitals (Clinical Biochemistry labs)", salary: "₹2.9 - 5.0 LPA" },
+            { name: "Serum Institute of India", salary: "₹4.0 - 7.0 LPA" },
+            { name: "Syngene International", salary: "₹3.2 - 5.8 LPA" },
+            { name: "Academic Research (in Universities)", salary: "Varies" },
+            { name: "Thermo Fisher Scientific", salary: "₹4.5 - 8.0 LPA" }
+        ],
+        successStories: "Biochemists are at the heart of medical research and diagnostics. The scientists developing new diagnostic tests for diseases or ensuring the quality of life-saving drugs often have a strong foundation in biochemistry."
+    },
+    {
+        name: "B.Sc. in Biology",
+        minPercentage: 50,
+        avgYearlyFees: 40000,
+        avgStartingSalary: 300000,
+        eligibility: "10+2 with Physics, Chemistry, and Biology (PCB).",
+        duration: "3 years",
+        workEnvironment: "Diverse: Research labs, environmental consultancies, zoos, botanical gardens, and educational institutions.",
+        workLifeBalance: "Good. Lab and teaching roles have regular hours. Fieldwork for environmental or zoological roles can be seasonal and demanding.",
+        risksChallenges: "This is a very broad, foundational degree. Specialization through a Master's degree (M.Sc.) is crucial for career progression into specific fields like genetics, marine biology, etc.",
+        keywords: ["bsc", "biology", "science", "botany", "zoology", "life science", "research", "environment", "teacher"],
+        careerGrowth: "Lab Assistant / Teacher -> M.Sc. in a specialization -> Research Fellow / Lecturer -> Scientist / Professor (after PhD).",
+        skills: {
+            required: ["A strong passion for the natural world", "Observational and analytical skills", "Patience for research", "Ethical approach to science"],
+            acquired: ["Cell Biology", "Genetics", "Ecology and Environmental Science", "Animal and Plant Physiology", "Microscopy and lab techniques", "Scientific writing and data presentation"]
+        },
+        onlineCourses: [{ name: "Introduction to Biology: The Secret of Life by MIT on edX", link: "https://www.edx.org/course/introduction-to-biology-the-secret-of-life" }],
+        jobProfile: "Research Assistant, Lab Technician, High School Teacher, Environmental Consultant Assistant.",
+        topCompanies: [
+            { name: "Educational Institutions (Schools, Colleges)", salary: "₹2.5 - 5.0 LPA" },
+            { name: "CSIR / ICMR / DBT Research Labs", salary: "Stipend/Project-based" },
+            { name: "Zoological Survey of India / Botanical Survey of India", salary: "Govt scales" },
+            { name: "Environmental NGOs (WWF, WTI)", salary: "Varies" },
+            { name: "Pharmaceutical companies (for pre-clinical research)", salary: "₹3.0 - 5.2 LPA" },
+            { name: "Aquariums and Zoos", salary: "Varies" },
+            { name: "Publishing houses (as scientific editor)", salary: "₹3.5 - 6.0 LPA" },
+            { name: "Forest Departments", salary: "Govt scales" },
+            { name: "Syngene International", salary: "₹3.0 - 5.5 LPA" },
+            { name: "Ed-tech companies (for content development)", salary: "₹3.2 - 6.2 LPA" }
+        ],
+        successStories: "A degree in biology is the gateway to understanding life itself. Famous naturalists like David Attenborough or conservationists like Jane Goodall built their life's work on a deep passion for biology, inspiring millions to appreciate and protect the natural world."
+    },
+    {
+        name: "B.Sc. in Biotechnology",
+        minPercentage: 60,
+        avgYearlyFees: 80000,
+        avgStartingSalary: 400000,
+        eligibility: "10+2 with PCB or PCM.",
+        duration: "3 years",
+        workEnvironment: "Biotech companies (pharma, agri), R&D labs, and manufacturing units. A sterile, high-tech lab or plant environment.",
+        workLifeBalance: "Excellent in R&D roles. Production roles can be shift-based. The work is intellectually stimulating and at the cutting edge of science.",
+        risksChallenges: "A highly research-oriented field where an M.Sc. or PhD is essential for core R&D roles. The B.Sc. degree often leads to technician or quality control roles. High competition.",
+        keywords: ["bsc", "biotechnology", "biotech", "science", "biology", "genetics", "pharma", "research", "lab"],
+        careerGrowth: "Lab Technician/QC Analyst -> Research Associate (after M.Sc.) -> Scientist (after PhD). A parallel path exists in production and quality assurance.",
+        skills: {
+            required: ["Strong analytical and research skills", "Interest in genetic engineering and molecular biology", "Precision and attention to detail", "Ethical mindset"],
+            acquired: ["Molecular Biology techniques (PCR, Electrophoresis)", "Genetic Engineering (Recombinant DNA technology)", "Immunology", "Cell culture and fermentation technology", "Bioinformatics basics", "Good Laboratory Practices (GLP)"]
+        },
+        onlineCourses: [{ name: "Biotechnology Specialization by Johns Hopkins University on Coursera", link: "https://www.coursera.org/specializations/biotechnology" }],
+        jobProfile: "Biotechnologist, Lab Technician, Quality Control Officer, Clinical Research Associate.",
+        topCompanies: [
+            { name: "Biocon / Syngene", salary: "₹3.8 - 6.5 LPA" },
+            { name: "Serum Institute of India / Bharat Biotech", salary: "₹4.0 - 7.5 LPA" },
+            { name: "Dr. Reddy's / Cipla / Sun Pharma", salary: "₹3.5 - 6.2 LPA" },
+            { name: "Novozymes", salary: "₹4.5 - 8.0 LPA" },
+            { name: "Panacea Biotec", salary: "₹3.2 - 5.8 LPA" },
+            { name: "CSIR / DBT research labs", salary: "Stipend-based" },
+            { name: "Monsanto / Bayer (Agri-biotech)", salary: "₹5.0 - 9.0 LPA" },
+            { name: "Thermo Fisher Scientific / Merck", salary: "₹4.8 - 8.5 LPA" },
+            { name: "IT Companies for Bioinformatics roles (TCS, Infosys)", salary: "₹4.2 - 7.8 LPA" },
+            { name: "Wockhardt", salary: "₹3.4 - 6.0 LPA" }
+        ],
+        successStories: "Biotechnology is revolutionizing medicine, agriculture, and industry. Kiran Mazumdar-Shaw, founder of Biocon, is a pioneering entrepreneur who built a global biotech powerhouse from India, demonstrating the immense potential of this field."
+    },
+    {
+        name: "B.Sc. in Botany",
+        minPercentage: 50,
+        avgYearlyFees: 30000,
+        avgStartingSalary: 280000,
+        eligibility: "10+2 with PCB.",
+        duration: "3 years",
+        workEnvironment: "Botanical gardens, research institutions, environmental agencies, and agri-biotech companies. A mix of lab, field, and office work.",
+        workLifeBalance: "Good. Lab and teaching roles have regular hours. Fieldwork can be demanding. A rewarding career for plant lovers.",
+        risksChallenges: "A specialized M.Sc. is needed for most good jobs. Traditional botany roles are limited, but opportunities are growing in plant biotechnology, conservation, and horticulture.",
+        keywords: ["bsc", "botany", "plant science", "biology", "science", "agriculture", "environment", "ecology", "research"],
+        careerGrowth: "Lab Assistant / Teacher -> M.Sc. in Botany/Plant Science -> Research Fellow / Plant Breeder -> Scientist / Professor.",
+        skills: {
+            required: ["A deep interest in plants", "Strong observational and classification skills", "Patience for fieldwork and research", "Analytical skills"],
+            acquired: ["Plant anatomy and physiology", "Taxonomy and classification", "Genetics and plant breeding", "Ecology and conservation", "Plant pathology", "Ethnobotany"]
+        },
+        onlineCourses: [{ name: "Fundamentals of Plant Biology on Coursera", link: "https://www.coursera.org/learn/plant-biology" }],
+        jobProfile: "Botanist, Plant Taxonomist, Ecologist, Nursery Manager, Plant Breeder Assistant.",
+        topCompanies: [
+            { name: "Botanical Survey of India (BSI)", salary: "Govt scales" },
+            { name: "Forest Departments / National Parks", salary: "Govt scales" },
+            { name: "Seed and agri-biotech companies (e.g., Mahyco)", salary: "₹3.0 - 5.5 LPA" },
+            { name: "Herbal pharmaceutical companies (e.g., Himalaya, Dabur)", salary: "₹3.2 - 6.0 LPA" },
+            { name: "Environmental consultancies", salary: "₹3.5 - 6.2 LPA" },
+            { name: "ICAR / CSIR research labs", salary: "Stipend/Project-based" },
+            { name: "Tea/Coffee/Rubber Plantations", salary: "₹4.0 - 7.0 LPA" },
+            { name: "Nurseries and landscaping companies", salary: "₹2.5 - 4.8 LPA" },
+            { name: "Educational institutions", salary: "Academic scales" },
+            { name: "Food processing industries", salary: "₹3.0 - 5.8 LPA" }
+        ],
+        successStories: "Botanists are crucial for discovering new plant species, developing new crop varieties, and conserving biodiversity. Their work is fundamental to agriculture, medicine, and environmental protection."
+    },
+    {
+        name: "B.Sc. in Chemistry",
+        minPercentage: 55,
+        avgYearlyFees: 40000,
+        avgStartingSalary: 320000,
+        eligibility: "10+2 with PCM or PCB.",
+        duration: "3 years",
+        workEnvironment: "Quality control labs, R&D centers in industries like pharma, chemical, food, and petroleum. A highly analytical, lab-based role.",
+        workLifeBalance: "Excellent. Follows standard lab/office hours. The work is methodical and intellectually stimulating.",
+        risksChallenges: "Working with chemicals requires strict safety protocols. A B.Sc. often leads to technician roles; an M.Sc. is essential for R&D chemist or senior analyst positions.",
+        keywords: ["bsc", "chemistry", "science", "lab", "chemical", "pharma", "research", "quality control", "analytical"],
+        careerGrowth: "QC Chemist / Lab Assistant -> M.Sc. in a specialization (Organic, Analytical) -> R&D Chemist / Senior Analyst -> Scientist / Lab Manager.",
+        skills: {
+            required: ["Strong aptitude for chemical sciences", "Analytical and problem-solving skills", "Precision and safety consciousness", "Methodical work habits"],
+            acquired: ["Organic, Inorganic, and Physical Chemistry", "Analytical chemistry techniques (Titration, Spectroscopy)", "Laboratory techniques and safety", "Instrumental methods of analysis (Chromatography, NMR basics)", "Industrial chemistry processes", "Research methodology"]
+        },
+        onlineCourses: [{ name: "Introduction to Chemistry: Reactions and Ratios on Coursera", link: "https://www.coursera.org/learn/introduction-to-chemistry" }],
+        jobProfile: "Chemist, Quality Control Analyst, Lab Technician, R&D Assistant.",
+        topCompanies: [
+            { name: "Pharmaceutical Companies (Cipla, Sun Pharma, Dr. Reddy's)", salary: "₹3.2 - 6.0 LPA" },
+            { name: "Chemical Companies (BASF, Tata Chemicals, UPL)", salary: "₹3.5 - 6.8 LPA" },
+            { name: "FMCG Companies (HUL, P&G, Nestlé - for QC)", salary: "₹4.0 - 7.5 LPA" },
+            { name: "Oil & Gas PSUs (ONGC, IOCL - as Chemist)", salary: "₹6.0 - 12.0 LPA (Govt)" },
+            { name: "Paint Companies (Asian Paints, Berger)", salary: "₹3.8 - 7.0 LPA" },
+            { name: "CSIR / DRDO / BARC Labs", salary: "Govt scales" },
+            { name: "Forensic Science Laboratories", salary: "Govt scales" },
+            { name: "Third-party testing labs (SGS, Intertek)", salary: "₹3.0 - 5.5 LPA" },
+            { name: "Agrochemical companies", salary: "₹3.4 - 6.5 LPA" },
+            { name: "Cement companies (for QC)", salary: "₹3.5 - 6.2 LPA" }
+        ],
+        successStories: "Chemistry is the 'central science' that underpins numerous industries. The R&D heads who formulate new drugs, advanced materials, or eco-friendly paints are master chemists. A B.Sc. in Chemistry is a versatile degree that opens doors to a wide range of scientific careers."
+    },
+    {
+        name: "B.Sc. in Computer Science",
+        minPercentage: 55,
+        avgYearlyFees: 60000,
+        avgStartingSalary: 400000,
+        eligibility: "10+2 with Physics, Chemistry, and Maths (PCM). Some universities also require Computer Science.",
+        duration: "3 years",
+        workEnvironment: "Primarily office-based in IT companies, tech startups. High potential for remote or hybrid work.",
+        workLifeBalance: "Generally good with standard hours. Can be demanding during project deadlines ('crunch time'). Low travel requirements.",
+        risksChallenges: "High competition from B.Tech graduates, who are often preferred by top product companies. The degree is sometimes perceived as more theoretical. Requires continuous self-learning to stay relevant.",
+        keywords: ["bsc", "computer science", "cs", "it", "software", "programming", "coding", "tech", "developer", "pcm"],
+        careerGrowth: "Software Trainee -> Software Developer (2-3 yrs) -> Senior Software Engineer. Pursuing an MCA or M.Sc. (CS) is highly recommended for career advancement and specialization.",
+        skills: {
+            required: ["Strong logical reasoning and problem-solving", "A passion for coding", "Self-motivated learner", "Attention to detail"],
+            acquired: ["Programming languages (C++, Java, Python)", "Data Structures and Algorithms", "Database Management Systems (DBMS)", "Operating Systems", "Computer Networks", "Web Development fundamentals"]
+        },
+        onlineCourses: [{ name: "Google IT Automation with Python Professional Certificate", link: "https://www.coursera.org/professional-certificates/google-it-automation" }],
+        jobProfile: "Software Developer, Web Developer, App Developer, Database Administrator, QA Engineer.",
+        topCompanies: [
+            { name: "Infosys / Wipro / HCL", salary: "₹3.5 - 5.5 LPA" },
+            { name: "TCS", salary: "₹3.6 - 6.0 LPA (Digital/Ninja)" },
+            { name: "Accenture / Capgemini", salary: "₹4.0 - 6.5 LPA" },
+            { name: "Mid-sized IT product/service companies", salary: "₹4.5 - 8.0 LPA" },
+            { name: "Tech Startups", salary: "₹5.0 - 10.0 LPA (+ equity)" },
+            { name: "Banks (IT department)", salary: "₹4.5 - 8.5 LPA" },
+            { name: "Zoho / Freshworks (with strong skills)", salary: "₹6.0 - 12.0 LPA" },
+            { name: "Public Sector (NIC, Banks, PSUs)", salary: "Govt scales" },
+            { name: "Freelance Developer", salary: "High potential, varies" },
+            { name: "Amazon / Microsoft (for specific roles)", salary: "High potential" }
+        ],
+        successStories: "Many successful tech leads, architects, and even VPs in major IT service companies hold B.Sc. (CS) + MCA degrees. This path proves that a strong foundation in computer science fundamentals, combined with practical skills, is a reliable route to a successful tech career."
+    },
+    {
+        name: "B.Sc. in Data Science",
+        minPercentage: 60,
+        avgYearlyFees: 120000,
+        avgStartingSalary: 600000,
+        eligibility: "10+2 with Maths as a compulsory subject. Some top institutes may require Physics/Computer Science.",
+        duration: "3 or 4 years",
+        workEnvironment: "Tech companies, financial firms, e-commerce, and consultancies. An analytical, data-driven, and collaborative office/remote role.",
+        workLifeBalance: "Excellent. Project-based work with a focus on analysis and model building. Can be intellectually demanding.",
+        risksChallenges: "A new and rapidly evolving field. Requires a very strong foundation in statistics, maths, and programming. The 'Data Scientist' title is often reserved for Master's/PhD holders; B.Sc. graduates usually start as analysts.",
+        keywords: ["bsc", "data science", "analytics", "machine learning", "ai", "statistics", "python", "data analyst"],
+        careerGrowth: "Data Analyst -> Data Scientist (often after Master's) -> Senior Data Scientist -> Lead Scientist / AI Specialist.",
+        skills: {
+            required: ["Exceptional analytical and quantitative skills", "A curious and problem-solving mindset", "Strong programming skills", "Good communication skills to explain findings"],
+            acquired: ["Statistics and Probability", "Programming in Python (Pandas, NumPy, Scikit-learn)", "Machine Learning algorithms", "Data Visualization tools (Tableau)", "Database querying (SQL)", "Big Data technologies basics"]
+        },
+        onlineCourses: [{ name: "IBM Data Science Professional Certificate", link: "https://www.coursera.org/professional-certificates/ibm-data-science" }],
+        jobProfile: "Data Analyst, Business Analyst, Machine Learning Engineer (Junior), Data Visualization Specialist.",
+        topCompanies: [
+            { name: "TCS / Infosys / Wipro (Analytics wings)", salary: "₹4.5 - 8.0 LPA" },
+            { name: "Fractal Analytics / Mu Sigma", salary: "₹5.5 - 9.0 LPA" },
+            { name: "Amazon / Flipkart / Myntra", salary: "₹7.0 - 15.0 LPA" },
+            { name: "Banks (HDFC, ICICI - for risk analytics)", salary: "₹6.0 - 12.0 LPA" },
+            { name: "Google / Microsoft", salary: "₹10.0 - 25.0 LPA+" },
+            { name: "Swiggy / Zomato", salary: "₹6.5 - 14.0 LPA" },
+            { name: "Accenture / Deloitte / EY (Consulting)", salary: "₹5.0 - 9.5 LPA" },
+            { name: "Walmart Labs / Target", salary: "₹8.0 - 18.0 LPA" },
+            { name: "Startups in AI/ML", salary: "Varies, with equity" },
+            { name: "Uber / Ola", salary: "₹7.5 - 16.0 LPA" }
+        ],
+        successStories: "Data science is one of the most lucrative and sought-after careers of the 21st century. Professionals in this field use data to solve complex business problems, from predicting customer behavior to developing AI-powered products. It's a career at the intersection of statistics, computer science, and business strategy."
+    },
+    {
+        name: "B.Sc. in Dietetics and Nutrition",
+        minPercentage: 50,
+        avgYearlyFees: 70000,
+        avgStartingSalary: 300000,
+        eligibility: "10+2 with PCB.",
+        duration: "3 years",
+        workEnvironment: "Hospitals, wellness clinics, gyms, and food companies. A science-based, patient/client-facing role.",
+        workLifeBalance: "Good. Regular clinic/hospital hours. As a consultant, hours can be flexible. A rewarding career for those passionate about health and food.",
+        risksChallenges: "To become a Registered Dietitian (RD) requires an M.Sc. and passing a competitive exam, which is crucial for clinical roles. The field is competitive, requiring strong counseling skills.",
+        keywords: ["bsc", "dietetics", "nutrition", "dietitian", "health", "wellness", "food", "hospital", "fitness"],
+        careerGrowth: "Junior Dietitian/Nutritionist -> Clinical Dietitian (after RD) / Sports Nutritionist -> Chief Dietitian / Start own consultancy.",
+        skills: {
+            required: ["Strong scientific knowledge (biology, chemistry)", "Excellent communication and counseling skills", "Empathy and a non-judgmental approach", "Analytical skills"],
+            acquired: ["Human nutrition", "Clinical and therapeutic dietetics", "Food science", "Menu planning and nutritional analysis", "Patient counseling", "Public health nutrition"]
+        },
+        onlineCourses: [{ name: "Stanford Introduction to Food and Health on Coursera", link: "https://www.coursera.org/learn/food-and-health" }],
+        jobProfile: "Dietitian, Nutritionist, Wellness Coach, Food Service Manager.",
+        topCompanies: [
+            { name: "Apollo Hospitals / Fortis Healthcare", salary: "₹3.0 - 5.5 LPA" },
+            { name: "Cult.fit", salary: "₹3.5 - 6.5 LPA" },
+            { name: "VLCC / other wellness clinics", salary: "₹2.8 - 5.0 LPA" },
+            { name: "Start own private consultancy", salary: "High potential, varies" },
+            { name: "Nestlé / Danone / HUL (as Nutrition Scientist)", salary: "₹5.0 - 9.0 LPA" },
+            { name: "Sodexo (for institutional diet planning)", salary: "₹3.2 - 5.8 LPA" },
+            { name: "Government Hospitals / National Institute of Nutrition (NIN)", salary: "Govt scales" },
+            { name: "HealthifyMe / other health-tech apps", salary: "₹3.8 - 7.0 LPA" },
+            { name: "Sports Authority of India (SAI)", salary: "₹4.5 - 8.5 LPA" },
+            { name: "Five-Star Hotels (as Nutritionist)", salary: "₹4.0 - 7.2 LPA" }
+        ],
+        successStories: "Celebrity nutritionists like Rujuta Diwekar have made nutrition a mainstream and respected profession. Clinical dietitians in hospitals play a critical role in patient recovery by designing therapeutic diets, making this a vital healthcare career."
+    },
+    {
+        name: "B.Sc. in Electronics",
+        minPercentage: 55,
+        avgYearlyFees: 50000,
+        avgStartingSalary: 380000,
+        eligibility: "10+2 with PCM.",
+        duration: "3 years",
+        workEnvironment: "Electronics, semiconductor, and telecommunication industries. R&D labs, testing facilities, and manufacturing plants.",
+        workLifeBalance: "Excellent in R&D and testing roles. Production roles can be shift-based. The work is intellectually demanding and requires precision.",
+        risksChallenges: "High competition from B.Tech (ECE/EEE) graduates. A B.Sc. degree often leads to technician or testing roles; an M.Sc. is needed for core R&D or design roles.",
+        keywords: ["bsc", "electronics", "science", "semiconductor", "vlsi", "embedded", "telecom", "hardware", "lab"],
+        careerGrowth: "Technician / Test Engineer -> M.Sc. in Electronics/VLSI -> Design/Verification Engineer -> Senior Engineer -> Architect.",
+        skills: {
+            required: ["Strong aptitude for physics and maths", "Analytical and problem-solving skills", "Patience for debugging circuits", "A methodical approach"],
+            acquired: ["Analog and Digital Electronics", "Semiconductor devices", "Microprocessors and Microcontrollers", "Communication systems", "PCB design basics", "Lab skills (CRO, Multimeter)"]
+        },
+        onlineCourses: [{ name: "Introduction to Electronics by Georgia Tech on Coursera", link: "https://www.coursera.org/learn/electronics" }],
+        jobProfile: "Electronics Technician, Test Engineer, Network Support Assistant, Embedded Systems Trainee.",
+        topCompanies: [
+            { name: "ISRO / DRDO / BARC (as Technical Assistant)", salary: "Govt scales" },
+            { name: "Bharat Electronics Limited (BEL)", salary: "₹4.0 - 7.0 LPA" },
+            { name: "Intel / Texas Instruments (for testing roles)", salary: "₹4.5 - 8.5 LPA" },
+            { name: "Samsung / LG R&D", salary: "₹4.2 - 7.8 LPA" },
+            { name: "Bosch", salary: "₹4.0 - 7.5 LPA" },
+            { name: "TCS / Wipro / HCL (for hardware/embedded services)", salary: "₹3.5 - 6.5 LPA" },
+            { name: "Telecom companies (Airtel, Jio - for network ops)", salary: "₹3.8 - 6.8 LPA" },
+            { name: "Siemens", salary: "₹4.5 - 8.2 LPA" },
+            { name: "National Instruments", salary: "₹5.0 - 9.0 LPA" },
+            { name: "CDAC", salary: "Govt scales" }
+        ],
+        successStories: "A B.Sc. in Electronics provides a deep theoretical foundation in the subject. Graduates who supplement this with an M.Sc. or practical certifications often excel in specialized roles in semiconductor testing, VLSI verification, and embedded systems, becoming key contributors in the high-tech industry."
+    },
+    {
+        name: "Bachelor of Computer Applications (BCA)",
+        minPercentage: 50,
+        avgYearlyFees: 80000,
+        avgStartingSalary: 350000,
+        eligibility: "10+2 from any stream, but having Maths/Computer Science is a major advantage.",
+        duration: "3 years",
+        workEnvironment: "Primarily in the IT services industry, web development agencies, and tech support roles. Office-based with high potential for remote work.",
+        workLifeBalance: "Good, follows standard IT industry norms. Can be demanding during project delivery phases.",
+        risksChallenges: "Seen as less rigorous than B.Tech (CSE) or B.Sc. (CS). An MCA is almost mandatory to compete for higher-level software development roles. The curriculum can sometimes be outdated depending on the university.",
+        keywords: ["bca", "computer applications", "it", "software", "programming", "web development", "tech", "developer", "mca"],
+        careerGrowth: "Software Trainee / Tech Support -> Web Developer / Junior Programmer (1-2 yrs) -> Software Engineer (after MCA) -> Senior Engineer / Team Lead.",
+        skills: {
+            required: ["Logical thinking", "Problem-solving attitude", "Interest in software and technology", "Self-learning ability"],
+            acquired: ["Programming languages (C, C++, Java)", "Web technologies (HTML, CSS, JavaScript)", "Database Management Systems (SQL)", "Software Engineering principles", "Operating Systems", "Computer Networks"]
+        },
+        onlineCourses: [{ name: "Meta Front-End Developer Professional Certificate", link: "https://www.coursera.org/professional-certificates/meta-front-end-developer" }],
+        jobProfile: "Junior Software Developer, Web Developer, Technical Support Engineer, System Administrator.",
+        topCompanies: [
+            { name: "Infosys / Wipro / HCL", salary: "₹3.0 - 5.0 LPA" },
+            { name: "TCS", salary: "₹3.3 - 5.2 LPA" },
+            { name: "Accenture / Capgemini", salary: "₹3.5 - 6.0 LPA" },
+            { name: "Cognizant", salary: "₹3.2 - 5.5 LPA" },
+            { name: "Tech Mahindra", salary: "₹3.0 - 5.0 LPA" },
+            { name: "Mid-sized IT service companies", salary: "₹3.8 - 6.5 LPA" },
+            { name: "Startups (especially for web development)", salary: "₹4.0 - 7.5 LPA" },
+            { name: "Banks (IT department)", salary: "₹4.2 - 7.8 LPA" },
+            { name: "Dell / HP (as Tech Support)", salary: "₹3.0 - 5.2 LPA" },
+            { name: "NIIT / Aptech", salary: "Varies" }
+        ],
+        successStories: "The BCA + MCA combination has been a hugely successful career path for millions in the Indian IT services industry. Many project managers, delivery heads, and senior leaders in companies like Infosys and TCS have followed this educational route."
+    }
+];
+
+const finalPendingHscCourses = [
+    {
+        name: "B.Tech./B.E. in Aeronautical Engineering",
+        minPercentage: 60,
+        avgYearlyFees: 250000,
+        avgStartingSalary: 600000,
+        eligibility: "10+2 with PCM. Admission through JEE Main/Advanced or state-level engineering entrance exams.",
+        duration: "4 years",
+        workEnvironment: "Airlines, MROs, aerospace manufacturing companies (HAL, DRDO), and space research organizations (ISRO). A high-tech, safety-critical, and intellectually demanding field.",
+        workLifeBalance: "Excellent in R&D and design roles. Maintenance roles (AME) are shift-based and high-pressure. The work is passion-driven for those who love aviation.",
+        risksChallenges: "Core jobs in aircraft design are limited and highly competitive. Many graduates work in allied IT or mechanical fields. To become a licensed Aircraft Maintenance Engineer (AME), one must pass difficult DGCA exams.",
+        keywords: ["btech", "aeronautical", "aerospace", "engineering", "aircraft", "aviation", "flight", "plane", "isro", "drdo", "maintenance"],
+        careerGrowth: "Graduate Engineer Trainee -> Design Engineer / Maintenance Engineer (2-3 yrs) -> Senior Engineer -> Lead Engineer / Scientist.",
+        skills: {
+            required: ["Exceptional aptitude for physics and maths", "Strong analytical and problem-solving skills", "A passion for aviation", "Meticulous attention to detail"],
+            acquired: ["Aerodynamics", "Flight Mechanics", "Aircraft Structures", "Propulsion Systems", "Aircraft Design", "Computational Fluid Dynamics (CFD)"]
+        },
+        onlineCourses: [{ name: "Introduction to Aeronautical Engineering by MIT on OpenCourseWare", link: "https://ocw.mit.edu/courses/16-00-introduction-to-aerospace-engineering-and-design-spring-2003/" }],
+        jobProfile: "Aerospace Engineer, Aircraft Maintenance Engineer, Design Engineer, Aerodynamicist.",
+        topCompanies: [
+            { name: "Hindustan Aeronautics Limited (HAL)", salary: "₹7 - 12 LPA (Govt)" },
+            { name: "ISRO / DRDO", salary: "High Govt scales (Scientist)" },
+            { name: "Airbus / Boeing (India R&D centers)", salary: "₹8 - 15 LPA" },
+            { name: "GE Aviation / Safran / Rolls-Royce", salary: "₹7.5 - 14 LPA" },
+            { name: "Airlines (IndiGo, Vistara - as AME)", salary: "₹6 - 11 LPA" },
+            { name: "Tata Advanced Systems", salary: "₹6.5 - 12 LPA" },
+            { name: "Air India Engineering Services (AIESL)", salary: "₹5.5 - 10 LPA" },
+            { name: "Collins Aerospace", salary: "₹7.0 - 13.5 LPA" },
+            { name: "MROs (GMR Aero Technic, Air Works)", salary: "₹5.0 - 9.5 LPA" },
+            { name: "Dassault Systèmes / ANSYS (Simulation)", salary: "₹8 - 16 LPA" }
+        ],
+        successStories: "The scientists at ISRO who lead missions like Chandrayaan and Mangalyaan are among India's finest aerospace engineers. This field offers the chance to work on cutting-edge technology that pushes the boundaries of human exploration."
+    },
+    {
+        name: "B.Tech./B.E. in Computer Science and Engineering (CSE)",
+        minPercentage: 60,
+        avgYearlyFees: 250000,
+        avgStartingSalary: 800000,
+        eligibility: "10+2 with PCM. Admission through JEE Main/Advanced, BITSAT, or state-level entrance exams.",
+        duration: "4 years",
+        workEnvironment: "Tech companies (product and services), startups, investment banks, and research labs. An office-based/remote role focused on problem-solving with code.",
+        workLifeBalance: "Varies greatly. Startups and top product companies can be demanding. IT services offer a better balance. The work is intellectually challenging and requires continuous learning.",
+        risksChallenges: "Extremely competitive field. The technology landscape changes very rapidly, requiring constant upskilling. High pressure to perform and innovate in top-tier companies.",
+        keywords: ["btech", "cse", "computer science", "engineering", "software", "programming", "coding", "it", "developer", "ai", "tech"],
+        careerGrowth: "Software Development Engineer (SDE-1) -> SDE-2 (2-3 yrs) -> SDE-3 / Senior Engineer (4-6 yrs) -> Staff Engineer / Engineering Manager.",
+        skills: {
+            required: ["Exceptional problem-solving and algorithmic thinking", "Strong programming skills", "A passion for building technology", "A quick learner"],
+            acquired: ["Data Structures and Algorithms (Advanced)", "Object-Oriented Design", "Operating Systems", "Database Management Systems", "Computer Networks", "System Design", "Artificial Intelligence & Machine Learning"]
+        },
+        onlineCourses: [{ name: "Algorithms Specialization by Stanford University on Coursera", link: "https://www.coursera.org/specializations/algorithms" }],
+        jobProfile: "Software Developer, Backend Engineer, Frontend Engineer, Full Stack Developer, Data Scientist, Machine Learning Engineer.",
+        topCompanies: [
+            { name: "Google / Microsoft / Amazon", salary: "₹18 - 45 LPA+" },
+            { name: "Flipkart / Uber / Swiggy", salary: "₹15 - 35 LPA+" },
+            { name: "Investment Banks (Goldman Sachs, Morgan Stanley)", salary: "₹20 - 40 LPA+" },
+            { name: "Adobe / Salesforce / Oracle", salary: "₹16 - 38 LPA+" },
+            { name: "TCS / Infosys (for top performers)", salary: "₹7 - 12 LPA" },
+            { name: "NVIDIA / Qualcomm", salary: "₹17 - 40 LPA+" },
+            { name: "Directi / Atlassian", salary: "₹20 - 42 LPA+" },
+            { name: "Well-funded Startups", salary: "Varies, with high equity" },
+            { name: "Zoho / Freshworks", salary: "₹8 - 20 LPA+" },
+            { name: "Samsung R&D", salary: "₹12 - 25 LPA" }
+        ],
+        successStories: "Sundar Pichai (CEO, Google) and Satya Nadella (CEO, Microsoft) are prime examples of Indian engineers who rose to lead the world's biggest tech companies. A CSE degree from a top institute is a gateway to a high-impact, high-reward global career in technology."
+    },
+    {
+        name: "Bachelor of Commerce (B.Com)",
+        minPercentage: 50,
+        avgYearlyFees: 20000,
+        avgStartingSalary: 350000,
+        eligibility: "10+2, usually from the Commerce stream. Open to other streams as well.",
+        duration: "3 years",
+        workEnvironment: "Finance, accounting, and audit departments of companies, banks, and CA firms. A structured, office-based role.",
+        workLifeBalance: "Excellent. Standard office hours, except during month-end/year-end closing and audit seasons, which can be demanding.",
+        risksChallenges: "A B.Com degree alone has limited career prospects. Its true value is unlocked when combined with professional qualifications like CA, CS, CMA, or an MBA in Finance.",
+        keywords: ["bcom", "commerce", "accounts", "finance", "tax", "audit", "banking", "ca", "business"],
+        careerGrowth: "Accounts Executive / Audit Assistant -> Pursue professional courses -> Chartered Accountant / Financial Analyst / Company Secretary -> CFO / Finance Manager.",
+        skills: {
+            required: ["Good with numbers", "A methodical and organized approach", "Integrity and ethical conduct", "Analytical skills"],
+            acquired: ["Financial Accounting", "Corporate Law", "Taxation (Income Tax, GST)", "Cost Accounting", "Auditing", "Business Economics"]
+        },
+        onlineCourses: [{ name: "Chartered Accountant (CA) course from The Institute of Chartered Accountants of India (ICAI).", link: "https://www.icai.org/" }],
+        jobProfile: "Accountant, Audit Assistant, Tax Assistant, Finance Executive.",
+        topCompanies: [
+            { name: "Big 4 Audit Firms (Deloitte, PwC, EY, KPMG)", salary: "₹3.5 - 6.0 LPA" },
+            { name: "Banks (HDFC, ICICI, SBI)", salary: "₹4.0 - 7.0 LPA (as PO/Clerk)" },
+            { name: "Large Corporates (Tata, Reliance - Finance Dept)", salary: "₹3.8 - 6.5 LPA" },
+            { name: "IT Companies (Infosys, Wipro - Finance)", salary: "₹3.5 - 6.2 LPA" },
+            { name: "Credit Rating Agencies (CRISIL, ICRA)", salary: "₹4.5 - 8.0 LPA" },
+            { name: "CA Firms", salary: "₹2.5 - 4.5 LPA" },
+            { name: "Mutual Fund companies", salary: "₹4.0 - 7.5 LPA" },
+            { name: "Insurance companies", salary: "₹3.8 - 6.8 LPA" },
+            { name: "Govt jobs (Accountant, Auditor)", salary: "Govt scales" },
+            { name: "Amazon / Flipkart (Finance)", salary: "₹5.0 - 9.0 LPA" }
+        ],
+        successStories: "The B.Com degree is the foundational step for a majority of India's top finance professionals. The nation's leading Chartered Accountants, CFOs, and investment bankers started their journey with this degree, building upon it with specialized professional qualifications."
+    },
+    {
+        name: "Bachelor of Business Administration (BBA)",
+        minPercentage: 50,
+        avgYearlyFees: 100000,
+        avgStartingSalary: 400000,
+        eligibility: "10+2 from any stream.",
+        duration: "3 years",
+        workEnvironment: "Entry-level management roles in sales, marketing, HR, and operations across various industries. A dynamic, often client-facing, office/field role.",
+        workLifeBalance: "Varies by specialization. Sales and marketing roles can be high-pressure and involve travel. HR and operations roles have more standard hours.",
+        risksChallenges: "A generalist degree. An MBA is almost always required for significant career progression into senior management. Competition is high from graduates of all streams.",
+        keywords: ["bba", "business", "management", "administration", "marketing", "sales", "hr", "finance", "commerce"],
+        careerGrowth: "Management Trainee / Sales Executive -> Assistant Manager (2-4 yrs) -> Pursue MBA -> Brand/Product/HR Manager -> Business Head.",
+        skills: {
+            required: ["Strong communication and interpersonal skills", "Leadership potential", "Problem-solving and decision-making skills", "A proactive attitude"],
+            acquired: ["Principles of Management", "Marketing Management", "Human Resource Management", "Financial Management", "Business Communication", "Entrepreneurship"]
+        },
+        onlineCourses: [{ name: "Business Foundations Specialization by University of Pennsylvania (Wharton)", link: "https://www.coursera.org/specializations/wharton-business-foundations" }],
+        jobProfile: "Management Trainee, Business Development Executive, Marketing Executive, HR Executive.",
+        topCompanies: [
+            { name: "Consulting Firms (Deloitte, EY - entry level)", salary: "₹4.0 - 7.0 LPA" },
+            { name: "Banks (HDFC, ICICI - as Relationship Manager)", salary: "₹3.5 - 6.5 LPA" },
+            { name: "FMCG Companies (HUL, ITC - Sales)", salary: "₹4.5 - 8.0 LPA" },
+            { name: "IT Companies (for business development roles)", salary: "₹4.0 - 7.5 LPA" },
+            { name: "Startups (in various roles)", salary: "₹3.8 - 7.2 LPA" },
+            { name: "Retail Companies (e.g., Reliance Retail, Aditya Birla)", salary: "₹3.2 - 6.0 LPA" },
+            { name: "E-commerce (Amazon, Flipkart)", salary: "₹4.5 - 8.5 LPA" },
+            { name: "Real Estate companies (Sales/Marketing)", salary: "₹3.5 - 7.0 LPA + incentives" },
+            { name: "Ed-tech companies (Sales)", salary: "₹4.0 - 10.0 LPA (target-based)" },
+            { name: "Market Research firms (e.g., Nielsen, Kantar)", salary: "₹3.8 - 6.8 LPA" }
+        ],
+        successStories: "The BBA program provides an early and strong foundation in business management. Many successful entrepreneurs and corporate leaders who later pursued an MBA from a top B-school started with a BBA, which gave them a head start in understanding the fundamentals of business."
+    },
+    {
+        name: "Integrated B.A. LLB (5-year)",
+        minPercentage: 50,
+        avgYearlyFees: 200000,
+        avgStartingSalary: 600000,
+        eligibility: "10+2 from any stream. Admission through competitive entrance exams like CLAT, AILET, LSAT.",
+        duration: "5 years",
+        workEnvironment: "Law firms, corporate legal departments, litigation chambers, and judiciary. An intellectually demanding, research-intensive, and high-pressure environment.",
+        workLifeBalance: "Challenging, especially in corporate law firms and litigation, known for extremely long working hours. Judiciary and in-house roles offer better balance.",
+        risksChallenges: "Very competitive entrance exams. The field requires excellent communication, analytical skills, and a tremendous amount of reading. Building a successful litigation practice takes many years.",
+        keywords: ["law", "llb", "ba llb", "lawyer", "advocate", "legal", "corporate law", "litigation", "judiciary", "clat"],
+        careerGrowth: "Junior Associate in a law firm -> Associate (2-3 yrs) -> Senior Associate (4-6 yrs) -> Partner. Alternative paths include judiciary, civil services, or becoming an in-house counsel.",
+        skills: {
+            required: ["Exceptional logical reasoning and analytical skills", "Excellent command of language (written and spoken)", "Strong research and argumentation skills", "Integrity and ethics"],
+            acquired: ["Constitutional Law, Criminal Law, Corporate Law", "Legal research and writing", "Drafting contracts", "Mooting and advocacy skills", "Understanding of legal procedures", "Critical thinking"]
+        },
+        onlineCourses: [{ name: "Introduction to English Common Law by University of London", link: "https://www.coursera.org/learn/common-law" }],
+        jobProfile: "Lawyer, Advocate, Legal Associate, Corporate Counsel, Judicial Officer.",
+        topCompanies: [
+            { name: "Top Law Firms (e.g., Cyril Amarchand Mangaldas, AZB & Partners)", salary: "₹12 - 18 LPA" },
+            { name: "Corporate Legal Departments (e.g., Tata, Reliance, HUL)", salary: "₹7 - 12 LPA" },
+            { name: "Judicial Services (as a Judge, after exam)", salary: "High Govt scales + prestige" },
+            { name: "Public Sector Undertakings (PSUs)", salary: "₹8 - 14 LPA (Govt)" },
+            { name: "Big 4 Firms (Legal/Tax advisory)", salary: "₹6 - 10 LPA" },
+            { name: "LPOs (Legal Process Outsourcing)", salary: "₹4 - 7 LPA" },
+            { name: "Intellectual Property (IP) Law Firms", salary: "₹6.5 - 11 LPA" },
+            { name: "Litigation under a Senior Advocate", salary: "Varies, stipend-based" },
+            { name: "SEBI, RBI, Competition Commission of India", salary: "High Govt scales" },
+            { name: "Banks (as Law Officer)", salary: "₹7 - 13 LPA" }
+        ],
+        successStories: "Legal luminaries like Harish Salve or the late Ram Jethmalani are legends of the Indian legal profession. A law degree from a top National Law University (NLU) is a gateway to a powerful and influential career shaping policy, business, and justice in the country."
+    },
+    {
+        name: "Bachelor of Design (B.Des)",
+        minPercentage: 50,
+        avgYearlyFees: 350000,
+        avgStartingSalary: 600000,
+        eligibility: "10+2 from any stream. Admission through rigorous design entrance exams like NID DAT, UCEED, NIFT.",
+        duration: "4 years",
+        workEnvironment: "Design studios, corporate R&D departments, and startups. A highly creative, collaborative, and project-driven environment.",
+        workLifeBalance: "Project-based with intense periods of work before deadlines. It's a passion-driven field where personal and professional interests often overlap.",
+        risksChallenges: "Extremely competitive entrance exams and industry. A strong, creative portfolio is more important than marks. The work is subjective and requires handling client feedback effectively.",
+        keywords: ["bdes", "design", "fashion", "product design", "graphic design", "ui/ux", "animation", "creative", "art", "nid", "nift", "uceed"],
+        careerGrowth: "Junior Designer -> Designer (2-3 yrs) -> Senior Designer (4-6 yrs) -> Design Lead / Art Director -> Head of Design / Creative Director.",
+        skills: {
+            required: ["Exceptional creativity and originality", "Strong visualization and sketching skills", "Problem-solving and empathetic mindset", "A keen eye for aesthetics"],
+            acquired: ["Design thinking process", "Specialization skills (e.g., Fashion, Product, Graphic, UI/UX)", "CAD and design software proficiency", "Prototyping and model making", "Design research", "Presentation and communication"]
+        },
+        onlineCourses: [{ name: "Google UX Design Professional Certificate", link: "https://www.coursera.org/professional-certificates/google-ux-design" }],
+        jobProfile: "Fashion Designer, Product Designer, Graphic Designer, UI/UX Designer, Animator.",
+        topCompanies: [
+            { name: "Tata Elxsi / TCS (Design Studios)", salary: "₹6 - 12 LPA" },
+            { name: "Microsoft / Google / Amazon (UI/UX)", salary: "₹12 - 25 LPA+" },
+            { name: "Myntra / Aditya Birla Fashion / Reliance Brands", salary: "₹5 - 10 LPA" },
+            { name: "Automobile companies (Tata, Mahindra - for car design)", salary: "₹7 - 15 LPA" },
+            { name: "Titan Company (for product/jewellery design)", salary: "₹6 - 14 LPA" },
+            { name: "Godrej & Boyce (Innovation & Design Centre)", salary: "₹5.5 - 11 LPA" },
+            { name: "Design Consultancies (e.g., IDEO, Frog)", salary: "₹7 - 16 LPA" },
+            { name: "Leading Designers (as an assistant)", salary: "Varies" },
+            { name: "Infosys", salary: "₹5 - 10 LPA" },
+            { name: "Startups", salary: "Varies, often with equity" }
+        ],
+        successStories: "Design is a key driver of innovation and business success. The alumni of NID and NIFT are leading the design teams of major global corporations, launching successful startups, and shaping the visual and functional world around us."
+    },
+    {
+        name: "Bachelor of Fine Arts (BFA)",
+        minPercentage: 45,
+        avgYearlyFees: 80000,
+        avgStartingSalary: 300000,
+        eligibility: "10+2 from any stream. Requires passing an aptitude test and portfolio review.",
+        duration: "4 years",
+        workEnvironment: "Art studios, advertising agencies, publishing houses, animation studios, and as freelance artists. A creative, self-driven, and studio-based career.",
+        workLifeBalance: "Highly flexible, especially for freelancers. However, income is not steady. Can involve intense periods of work to meet exhibition or project deadlines.",
+        risksChallenges: "Highly competitive field with no guarantee of stable income. Success is subjective and depends on talent, networking, and marketing one's work. It's a passion-driven field with high financial risk.",
+        keywords: ["bfa", "fine arts", "art", "painting", "sculpture", "design", "creative", "artist", "visual arts", "drawing"],
+        careerGrowth: "Freelance Artist / Junior Designer -> Exhibiting Artist / Graphic Designer (3-5 yrs) -> Established Artist / Art Director. The path is highly individual.",
+        skills: {
+            required: ["Exceptional artistic talent and creativity", "Strong technical skills in a chosen medium", "Self-discipline and motivation", "Resilience to criticism"],
+            acquired: ["Advanced Painting/Sculpture/Printmaking techniques", "Art History and Theory", "Aesthetics", "Digital Art tools (Photoshop, Illustrator)", "Portfolio Development", "Exhibition Curation"]
+        },
+        onlineCourses: [{ name: "Modern and Contemporary Art and Design Specialization by MoMA", link: "https://www.coursera.org/specializations/modern-art-ideas" }],
+        jobProfile: "Artist, Illustrator, Graphic Designer, Animator, Art Teacher, Art Director.",
+        topCompanies: [
+            { name: "Freelance Artist / Self-Employed", salary: "Highly Variable" },
+            { name: "Advertising Agencies (Ogilvy, Leo Burnett)", salary: "₹3.5 - 6.5 LPA" },
+            { name: "Animation/Gaming Studios", salary: "₹4.0 - 8.0 LPA" },
+            { name: "Publishing Houses (for illustrations)", salary: "₹3.2 - 6.0 LPA" },
+            { name: "Art Galleries / Museums", salary: "₹2.8 - 5.5 LPA" },
+            { name: "Educational Institutions (as Art Teacher)", salary: "₹3.0 - 6.2 LPA" },
+            { name: "Media and Entertainment companies", salary: "₹3.5 - 7.0 LPA" },
+            { name: "Design Studios", salary: "₹4.2 - 8.5 LPA" },
+            { name: "Film Production (as concept artist)", salary: "Project-based" },
+            { name: "Fashion Brands (as print designer)", salary: "₹4.0 - 7.8 LPA" }
+        ],
+        successStories: "Artists like Subodh Gupta or Anish Kapoor are global icons whose works fetch millions. A BFA degree hones the technical and conceptual skills required to pursue a career as a professional artist, a path that requires immense talent and dedication but offers the reward of creative fulfillment."
+    },
+    {
+        name: "Bachelor of Hotel Management (BHM)",
+        minPercentage: 50,
+        avgYearlyFees: 150000,
+        avgStartingSalary: 350000,
+        eligibility: "10+2 from any stream. Admission through entrance exams like NCHM JEE.",
+        duration: "3 or 4 years",
+        workEnvironment: "Hotels, resorts, cruise lines, airlines, and restaurants. A fast-paced, customer-facing, and physically demanding service environment.",
+        workLifeBalance: "Very challenging. The industry operates 24/7, requiring long hours, shift work, and working on weekends and holidays. High-pressure but dynamic and social.",
+        risksChallenges: "Physically demanding roles with low initial pay. High staff turnover. Requires a very strong service attitude and the ability to handle difficult customers and situations with a smile.",
+        keywords: ["bhm", "hotel management", "hospitality", "chef", "hotel", "restaurant", "service", "tourism", "kitchen"],
+        careerGrowth: "Management Trainee -> Assistant Manager -> Department Head (e.g., F&B Manager) -> Executive Assistant Manager -> General Manager of a hotel.",
+        skills: {
+            required: ["Excellent communication and interpersonal skills", "A strong passion for service and hospitality", "Stamina and resilience", "Leadership and teamwork"],
+            acquired: ["Food Production (Culinary)", "Food & Beverage Service", "Front Office Operations", "Housekeeping Management", "Hotel Accounting and Law", "Sales and Marketing"]
+        },
+        onlineCourses: [{ name: "NCHM JEE preparation courses.", link: "https://nchmjee.nta.nic.in/" }],
+        jobProfile: "Hotel Management Trainee, Chef Trainee, Front Office Executive, F&B Service Executive.",
+        topCompanies: [
+            { name: "The Oberoi Group (OCLD/STEP)", salary: "Stipend, leads to ₹6-8 LPA+" },
+            { name: "Taj Hotels (IHCL)", salary: "₹4.0 - 7.0 LPA" },
+            { name: "ITC Hotels", salary: "₹4.2 - 7.5 LPA" },
+            { name: "Marriott / Hyatt / Hilton", salary: "₹4.5 - 8.0 LPA" },
+            { name: "Cruise Lines", salary: "High, tax-free income" },
+            { name: "Airlines (as Cabin Crew)", salary: "₹5.0 - 9.0 LPA" },
+            { name: "Quick Service Restaurants (QSRs) like McDonald's, Domino's (Managerial)", salary: "₹4.0 - 7.2 LPA" },
+            { name: "Retail Management (e.g., Reliance Retail)", salary: "₹3.8 - 6.8 LPA" },
+            { name: "Hospitality consultancies", salary: "Varies" },
+            { name: "Facilities Management (e.g., JLL, Sodexo)", salary: "₹4.5 - 8.2 LPA" }
+        ],
+        successStories: "The General Managers of the world's most luxurious hotels are masters of hospitality. Many started their careers through a BHM degree from institutes like IHM. Celebrity chefs like Sanjeev Kapoor are also notable alumni of this stream."
+    },
+    {
+        name: "Bachelor of Journalism and Mass Communication (BJMC)",
+        minPercentage: 50,
+        avgYearlyFees: 100000,
+        avgStartingSalary: 350000,
+        eligibility: "10+2 from any stream.",
+        duration: "3 years",
+        workEnvironment: "Newsrooms, PR agencies, advertising agencies, and corporate communication departments. A fast-paced, deadline-driven, and communication-intensive field.",
+        workLifeBalance: "Challenging. Journalism is a 24/7 job. PR and advertising are known for long hours. The work is exciting but can be high-stress.",
+        risksChallenges: "The media industry is undergoing a massive digital transformation. The field is highly competitive with modest starting salaries. Requires strong ethics, resilience, and adaptability.",
+        keywords: ["bjmc", "journalism", "mass communication", "media", "reporting", "pr", "advertising", "writing", "news"],
+        careerGrowth: "Trainee Reporter/Sub-Editor -> Senior Correspondent / PR Executive -> Editor / PR Manager -> Head of Communications.",
+        skills: {
+            required: ["Excellent writing and communication skills", "Curiosity and a 'nose for news'", "Ability to work under pressure", "Strong ethics and networking skills"],
+            acquired: ["News reporting and editing", "Public Relations", "Advertising", "Film and TV production basics", "Media law and ethics", "Digital media"]
+        },
+        onlineCourses: [{ name: "English for Journalism by University of Pennsylvania on Coursera", link: "https://www.coursera.org/learn/journalism" }],
+        jobProfile: "Journalist, Reporter, Content Writer, PR Executive, Advertising Executive, Corporate Communication Executive.",
+        topCompanies: [
+            { name: "The Times of India / NDTV / India Today Group", salary: "₹3.5 - 6.0 LPA" },
+            { name: "Top PR Agencies (Adfactors, Edelman)", salary: "₹3.8 - 6.5 LPA" },
+            { name: "Top Ad Agencies (Ogilvy, McCann)", salary: "₹4.0 - 7.0 LPA" },
+            { name: "Corporate Communication Depts (Tata, Reliance)", salary: "₹5.0 - 9.0 LPA" },
+            { name: "Digital Media outlets (The Quint, The Wire)", salary: "₹4.2 - 7.5 LPA" },
+            { name: "BBC / Reuters / ANI", salary: "₹4.5 - 8.5 LPA" },
+            { name: "Google / Facebook (Content/Policy roles)", salary: "High potential" },
+            { name: "Netflix / Amazon Prime (Content/PR)", salary: "High potential" },
+            { name: "Hindustan Times", salary: "₹3.5 - 6.2 LPA" },
+            { name: "Radio Stations (RJ, production)", salary: "Varies" }
+        ],
+        successStories: "Prominent journalists like Rajdeep Sardesai or Barkha Dutt are BJMC alumni. This degree is a launchpad for a powerful career in the 'fourth estate', with the ability to inform public opinion and hold power accountable."
+    },
+    {
+        name: "Bachelor of Social Work (BSW)",
+        minPercentage: 45,
+        avgYearlyFees: 15000,
+        avgStartingSalary: 250000,
+        eligibility: "10+2 from any stream.",
+        duration: "3 years",
+        workEnvironment: "NGOs, hospitals, schools, and CSR departments. A field-based, community-centric role focused on helping individuals and communities.",
+        workLifeBalance: "Can be emotionally demanding and often involves working beyond office hours to address crises. The work is driven by a strong sense of purpose.",
+        risksChallenges: "The pay is often low. The work involves dealing with complex and distressing human problems, which can lead to burnout. An MSW is generally required for professional recognition and better jobs.",
+        keywords: ["bsw", "social work", "ngo", "counseling", "community", "development", "social", "human rights", "csr"],
+        careerGrowth: "Field Worker -> Social Worker (after MSW) -> Project Coordinator -> Program Manager -> Director of an NGO.",
+        skills: {
+            required: ["Deep empathy and a non-judgmental attitude", "Strong interpersonal and counseling skills", "Emotional resilience", "A passion for social justice"],
+            acquired: ["Casework and group work", "Community organization", "Counseling basics", "Advocacy and social action", "Social research methods", "Project management for social sector"]
+        },
+        onlineCourses: [{ name: "The Tata Institute of Social Sciences (TISS) is the premier institution for social work education.", link: "https://www.tiss.edu/" }],
+        jobProfile: "Social Worker, Community Development Officer, NGO Coordinator, CSR Executive.",
+        topCompanies: [
+            { name: "CRY / Save the Children / Oxfam", salary: "Varies, often modest" },
+            { name: "Tata Trusts / Reliance Foundation / Azim Premji Foundation", salary: "₹4.0 - 8.0 LPA" },
+            { name: "Hospitals (as Medical Social Worker)", salary: "₹3.0 - 5.5 LPA" },
+            { name: "Schools (as School Counselor)", salary: "₹2.8 - 5.2 LPA" },
+            { name: "Government (Women & Child Development Dept)", salary: "Govt scales" },
+            { name: "UNICEF / WHO / World Bank (for project roles)", salary: "High potential" },
+            { name: "HelpAge India", salary: "Varies" },
+            { name: "PRADAN", salary: "₹3.5 - 6.5 LPA" },
+            { name: "Teach for India", salary: "Fellowship stipend" },
+            { name: "Corporate CSR Departments", salary: "₹4.5 - 9.0 LPA" }
+        ],
+        successStories: "Nobel Laureate Kailash Satyarthi is a powerful example of a social activist who has brought global attention to child rights. A career in social work, especially from an institution like TISS, provides the skills to create meaningful, large-scale social change."
+    },
+    {
+        name: "Bachelor of Education (B.Ed)",
+        minPercentage: 50,
+        avgYearlyFees: 40000,
+        avgStartingSalary: 300000,
+        eligibility: "Bachelor's degree (B.A./B.Sc./B.Com.) with minimum 50% marks. This is a post-graduation course.",
+        duration: "2 years",
+        workEnvironment: "Secondary and higher secondary schools. A classroom-based, respectable, and socially impactful role.",
+        workLifeBalance: "Excellent. Follows school timings with long summer and winter vacations. A stable and predictable career.",
+        risksChallenges: "Requires passing the Teacher Eligibility Test (TET/CTET) for government jobs. The salary in many private schools can be low. The role requires immense patience and dedication.",
+        keywords: ["bed", "education", "teacher", "teaching", "school", "pedagogy", "ctet", "academic"],
+        careerGrowth: "Teacher (TGT/PGT) -> Senior Teacher -> Head of Department / Vice-Principal -> Principal.",
+        skills: {
+            required: ["A passion for teaching and the subject matter", "Patience and strong communication skills", "Ability to manage a classroom", "A nurturing and inspiring personality"],
+            acquired: ["Teaching methodologies and pedagogy", "Educational psychology", "Curriculum development", "Student assessment and evaluation", "Classroom management", "Use of educational technology"]
+        },
+        onlineCourses: [{ name: "The National Council for Teacher Education (NCTE) regulates B.Ed programs.", link: "https://ncte.gov.in/" }],
+        jobProfile: "School Teacher (Trained Graduate Teacher - TGT, or Post Graduate Teacher - PGT).",
+        topCompanies: [
+            { name: "Government Schools (after clearing TET/State exams)", salary: "₹6 - 10 LPA (Govt)" },
+            { name: "Kendriya Vidyalaya (KVS) / Navodaya Vidyalaya (NVS)", salary: "₹7 - 12 LPA (Govt)" },
+            { name: "Top-tier Private Schools (e.g., DPS, Amity)", salary: "₹4 - 8 LPA" },
+            { name: "International Schools (IB/IGCSE)", salary: "₹6 - 15 LPA" },
+            { name: "Army Public Schools", salary: "Varies" },
+            { name: "Ed-tech companies (for content/curriculum development)", salary: "₹4.5 - 9.0 LPA" },
+            { name: "Private coaching centers", salary: "High potential, varies" },
+            { name: "Sainik Schools", salary: "Govt scales" },
+            { name: "Online tutoring platforms", salary: "Varies, per hour" },
+            { name: "Publishing houses (as subject matter expert)", salary: "Varies" }
+        ],
+        successStories: "A B.Ed degree is the professional license to teach. A great teacher can shape thousands of lives. Many inspiring school principals and educational leaders, who have built institutions of excellence, are passionate educators with a B.Ed as their foundational teaching qualification."
+    },
+    {
+        name: "Bachelor of Physical Education (B.P.Ed)",
+        minPercentage: 50,
+        avgYearlyFees: 30000,
+        avgStartingSalary: 320000,
+        eligibility: "Bachelor's degree. Some universities require participation in sports at a certain level.",
+        duration: "2 years",
+        workEnvironment: "Schools, colleges, sports academies, and fitness centers. A physically active, on-field/in-gym, and instruction-based role.",
+        workLifeBalance: "Good. Follows institutional timings. As a coach, hours can be early mornings/evenings. Promotes a healthy and active lifestyle.",
+        risksChallenges: "Risk of sports-related injuries. A career in professional coaching is extremely competitive. Requires maintaining a high level of personal fitness.",
+        keywords: ["bped", "physical education", "sports", "coach", "teacher", "fitness", "trainer", "gym", "health"],
+        careerGrowth: "Physical Education Teacher (PET) -> Head of Sports Department -> Coach for professional teams -> Director of a sports academy.",
+        skills: {
+            required: ["High level of physical fitness", "Deep knowledge of sports", "Leadership and motivational skills", "Good communication"],
+            acquired: ["Sports science and training principles", "Anatomy and Kinesiology", "Sports psychology", "Coaching techniques for various sports", "Sports management and administration", "First aid for sports injuries"]
+        },
+        onlineCourses: [{ name: "National Council for Teacher Education (NCTE) regulates B.P.Ed programs.", link: "https://ncte.gov.in/" }],
+        jobProfile: "Physical Education Teacher, Sports Coach, Fitness Trainer, Gym Instructor.",
+        topCompanies: [
+            { name: "Government Schools (as PET)", salary: "₹6 - 10 LPA (Govt)" },
+            { name: "Sports Authority of India (SAI) (as Coach)", salary: "₹7 - 14 LPA (Govt)" },
+            { name: "KVS / NVS", salary: "₹7 - 12 LPA (Govt)" },
+            { name: "Top Private and International Schools", salary: "₹4.5 - 9.0 LPA" },
+            { name: "Private Sports Academies (e.g., cricket, football)", salary: "₹3.5 - 8.0 LPA" },
+            { name: "Cult.fit / Gold's Gym", salary: "₹3.0 - 6.5 LPA" },
+            { name: "Police / Armed Forces (as Physical Training Instructor)", salary: "Govt scales" },
+            { name: "Decathlon (as Sport Leader)", salary: "₹3.2 - 5.8 LPA" },
+            { name: "Corporate Wellness programs", salary: "₹4.0 - 7.5 LPA" },
+            { name: "IPL / ISL Franchises (as support staff)", salary: "Varies" }
+        ],
+        successStories: "Coaches like Pullela Gopichand have created world champions through their dedication and expertise. A B.P.Ed is the formal qualification for a career dedicated to promoting sports and fitness, a field of growing importance and opportunity in India."
+    },
+   {
+        name: "B.Sc. in Environmental Science",
+        minPercentage: 50,
+        avgYearlyFees: 50000,
+        avgStartingSalary: 400000,
+        eligibility: "10+2 with Science stream (PCB or PCM).",
+        duration: "3 years",
+        workEnvironment: "Environmental consultancies, pollution control boards, NGOs, and corporate EHS departments. A mix of fieldwork, lab analysis, and office-based reporting.",
+        workLifeBalance: "Good. Fieldwork can be demanding, but the career is driven by a strong sense of purpose. Office and lab roles have standard hours.",
+        risksChallenges: "Requires an M.Sc. for senior roles and specialization. Fieldwork can be in polluted or remote areas. The work is heavily influenced by government policy and regulations.",
+        keywords: ["bsc", "environmental science", "environment", "science", "ecology", "pollution", "sustainability", "conservation", "ehs"],
+        careerGrowth: "Environmental Trainee -> Environmental Analyst/Officer (2-3 yrs, after M.Sc.) -> Senior Consultant / EHS Manager -> Head of Sustainability.",
+        skills: {
+            required: ["Passion for environmental protection", "Strong analytical and scientific skills", "Research and data analysis abilities", "Ethical and responsible"],
+            acquired: ["Environmental monitoring and sampling", "Pollution control technologies", "Environmental Impact Assessment (EIA)", "Waste management", "Conservation biology", "GIS and remote sensing basics"]
+        },
+        onlineCourses: [{ name: "Introduction to Environmental Science by Dartmouth on edX", link: "https://www.edx.org/learn/environmental-science/dartmouth-college-introduction-to-environmental-science" }],
+        jobProfile: "Environmental Scientist, Conservationist, Environmental Consultant, Pollution Control Officer.",
+        topCompanies: [
+            { name: "Central / State Pollution Control Boards", salary: "Govt scales (₹6-10 LPA)" },
+            { name: "Environmental Consultancies (ERM, AECOM, WSP)", salary: "₹4.0 - 7.5 LPA" },
+            { name: "Tata Steel / Reliance / L&T (EHS Dept)", salary: "₹5.0 - 9.0 LPA" },
+            { name: "NGOs (WWF, CSE, Greenpeace)", salary: "Varies" },
+            { name: "Suez / Veolia (Water Treatment)", salary: "₹4.5 - 8.0 LPA" },
+            { name: "Ramky Enviro Engineers", salary: "₹4.2 - 7.8 LPA" },
+            { name: "UNEP / World Bank (Project roles)", salary: "High potential" },
+            { name: "ITC (Sustainability Division)", salary: "₹6.0 - 11.0 LPA" },
+            { name: "Ministry of Environment, Forest and Climate Change (MoEFCC)", salary: "Govt scales" },
+            { name: "Mahindra Group (Sustainability)", salary: "₹5.5 - 10.0 LPA" }
+        ],
+        successStories: "Environmental scientists like Sunita Narain (Director General, CSE) are powerful advocates for policy change and sustainable development. This field is at the forefront of tackling the world's most pressing challenges like climate change and pollution."
+    },
+    {
+        name: "B.Sc. in Food Technology",
+        minPercentage: 55,
+        avgYearlyFees: 70000,
+        avgStartingSalary: 450000,
+        eligibility: "10+2 with PCM or PCB.",
+        duration: "3 or 4 years",
+        workEnvironment: "Food processing industries, R&D labs, and quality assurance departments of FMCG companies. A clean, hygienic, and process-driven factory or lab environment.",
+        workLifeBalance: "Excellent in R&D and QA roles. Production roles are shift-based. The work is scientific and crucial for public health.",
+        risksChallenges: "The industry is highly regulated by FSSAI and international standards. A mistake in quality can lead to massive product recalls. Requires a strong understanding of chemistry, biology, and engineering principles.",
+        keywords: ["bsc", "food technology", "food science", "food processing", "fmcg", "quality", "production", "dairy", "nutrition"],
+        careerGrowth: "Production/QC Trainee -> Food Technologist (2-3 yrs) -> R&D Scientist / QA Manager (after M.Sc.) -> Plant Head / Head of R&D.",
+        skills: {
+            required: ["A scientific and analytical mindset", "High standards of hygiene", "Interest in food and chemistry", "Problem-solving skills"],
+            acquired: ["Food processing and preservation techniques", "Food chemistry and microbiology", "Quality control and assurance (HACCP, ISO 22000)", "Product development and sensory evaluation", "Food packaging", "Food laws and regulations"]
+        },
+        onlineCourses: [{ name: "Central Food Technological Research Institute (CFTRI) offers various advanced courses.", link: "https://www.cftri.res.in/" }],
+        jobProfile: "Food Technologist, Quality Assurance Officer, Production Manager, R&D Scientist.",
+        topCompanies: [
+            { name: "Nestlé", salary: "₹5.0 - 9.0 LPA" },
+            { name: "ITC Limited (Foods Division)", salary: "₹6.0 - 11.0 LPA" },
+            { name: "Hindustan Unilever (HUL)", salary: "₹5.5 - 10.0 LPA" },
+            { name: "Britannia / Parle", salary: "₹4.5 - 8.0 LPA" },
+            { name: "PepsiCo / Coca-Cola", salary: "₹6.2 - 12.0 LPA" },
+            { name: "Cadbury (Mondelez)", salary: "₹6.5 - 13.0 LPA" },
+            { name: "Amul / Mother Dairy", salary: "₹4.8 - 8.5 LPA" },
+            { name: "FSSAI / Food Safety Officer", salary: "High Govt scales" },
+            { name: "Jubilant FoodWorks", salary: "₹4.0 - 7.5 LPA" },
+            { name: "MTR Foods", salary: "₹4.2 - 7.8 LPA" }
+        ],
+        successStories: "Food technologists ensure that the food we eat is safe, nutritious, and appealing. The heads of R&D at major food companies are the innovators who create the iconic brands and products that line our supermarket shelves."
+    },
+    {
+        name: "B.Sc. in Forensic Science",
+        minPercentage: 60,
+        avgYearlyFees: 80000,
+        avgStartingSalary: 450000,
+        eligibility: "10+2 with PCB or PCM.",
+        duration: "3 years",
+        workEnvironment: "Government and private forensic laboratories, police departments, and detective agencies. A highly analytical and methodical lab-based role.",
+        workLifeBalance: "Generally good with standard lab hours. However, can involve being on-call to visit crime scenes at any hour. The work can be mentally taxing due to the nature of the cases.",
+        risksChallenges: "Government jobs are limited and highly competitive. The work requires emotional resilience to deal with disturbing evidence. Requires absolute precision and integrity, as your findings can decide the fate of a legal case.",
+        keywords: ["bsc", "forensic science", "forensics", "crime", "investigation", "lab", "dna", "police", "science", "law"],
+        careerGrowth: "Lab Assistant -> Forensic Scientist (after M.Sc. and clearing exams) -> Senior Scientist -> Director of a forensic lab.",
+        skills: {
+            required: ["An investigative and analytical mindset", "Exceptional attention to detail", "High ethical standards and integrity", "Emotional resilience"],
+            acquired: ["Crime scene investigation", "Fingerprinting", "DNA analysis basics", "Ballistics", "Forensic chemistry and toxicology", "Questioned document examination", "Cyber forensics basics"]
+        },
+        onlineCourses: [{ name: "Introduction to Forensic Science by Nanyang Technological University, Singapore", link: "https://www.coursera.org/learn/forensic-science" }],
+        jobProfile: "Forensic Scientist, Crime Scene Investigator, Forensic Lab Technician, Forensic Document Examiner.",
+        topCompanies: [
+            { name: "Central / State Forensic Science Laboratories (CFSL/SFSL)", salary: "High Govt scales (₹7-12 LPA)" },
+            { name: "Central Bureau of Investigation (CBI) / Intelligence Bureau (IB)", salary: "Govt scales" },
+            { name: "Police Departments", salary: "Govt scales" },
+            { name: "Private Forensic Labs", salary: "₹3.5 - 6.5 LPA" },
+            { name: "Big 4 Firms (EY, Deloitte - for forensic accounting)", salary: "₹6.0 - 11.0 LPA" },
+            { name: "Cybersecurity firms (for digital forensics)", salary: "₹5.0 - 10.0 LPA" },
+            { name: "Hospitals (for medico-legal cases)", salary: "Varies" },
+            { name: "Universities (as faculty)", salary: "Academic scales" },
+            { name: "Insurance companies (for fraud investigation)", salary: "₹4.5 - 8.0 LPA" },
+            { name: "Law firms (as expert consultants)", salary: "Varies" }
+        ],
+        successStories: "Forensic scientists are the 'scientists of the justice system'. Their objective analysis of evidence is critical for solving complex crimes. It is a fascinating career for those with a passion for science and a desire to see justice served."
+    },
+    {
+        name: "B.Sc. in Geology",
+        minPercentage: 55,
+        avgYearlyFees: 40000,
+        avgStartingSalary: 550000,
+        eligibility: "10+2 with PCM or PCB. Maths is highly recommended.",
+        duration: "3 years",
+        workEnvironment: "Oil & gas companies, mining corporations, and government survey departments. Involves extensive fieldwork in remote and rugged terrains, as well as lab and office work.",
+        workLifeBalance: "Challenging. Fieldwork (exploration) involves long stints away from home in difficult conditions. The work is physically demanding but offers adventure and discovery.",
+        risksChallenges: "The work is physically demanding and in remote locations. The industries (oil, mining) are cyclical and dependent on commodity prices. An M.Sc./M.Tech is essential for becoming a professional geologist.",
+        keywords: ["bsc", "geology", "earth science", "science", "mining", "oil", "gas", "exploration", "rocks", "geophysics"],
+        careerGrowth: "Junior Geologist -> Geologist (after M.Sc.) -> Senior Geologist -> Exploration Manager / Head of Mining Operations.",
+        skills: {
+            required: ["A passion for the outdoors and adventure", "Strong physical fitness", "Excellent observational and analytical skills", "3D visualization ability"],
+            acquired: ["Mineralogy and Petrology", "Structural Geology", "Stratigraphy", "Geological mapping and surveying", "Remote sensing and GIS", "Hydrogeology", "Exploration techniques"]
+        },
+        onlineCourses: [{ name: "Geological Survey of India (GSI) conducts specialized training.", link: "https://www.gsi.gov.in/" }],
+        jobProfile: "Geologist, Hydrogeologist, Mining Geologist, Petroleum Geologist.",
+        topCompanies: [
+            { name: "ONGC / Oil India Limited", salary: "₹10 - 20 LPA+ (Govt)" },
+            { name: "Coal India Limited / NMDC", salary: "₹8 - 15 LPA (Govt)" },
+            { name: "Geological Survey of India (GSI)", salary: "High Govt scales" },
+            { name: "Vedanta (Cairn, Hindustan Zinc)", salary: "₹7 - 14 LPA" },
+            { name: "Tata Steel / Rio Tinto / BHP (Mining)", salary: "₹6.5 - 13 LPA" },
+            { name: "Schlumberger / Halliburton", salary: "High international pay" },
+            { name: "Central Ground Water Board (CGWB)", salary: "Govt scales" },
+            { name: "Reliance Industries (E&P)", salary: "₹8 - 16 LPA" },
+            { name: "Infrastructure companies (for geotechnical analysis)", salary: "₹5 - 9 LPA" },
+            { name: "Shell", salary: "High international pay" }
+        ],
+        successStories: "Geologists are the explorers who find the natural resources that power our civilization. It is a high-adventure, high-reward career for those who love science and the great outdoors."
+    },
+    {
+        name: "B.Sc. in Horticulture",
+        minPercentage: 50,
+        avgYearlyFees: 40000,
+        avgStartingSalary: 380000,
+        eligibility: "10+2 with PCB or Agriculture stream.",
+        duration: "4 years",
+        workEnvironment: "Government horticulture departments, large farms, nurseries, food processing units, and landscaping companies. A mix of field, lab, and office work.",
+        workLifeBalance: "Good. The work is seasonal and connected with nature. Field roles can be demanding, but it's a relatively low-stress and rewarding career.",
+        risksChallenges: "The work is dependent on climate and weather. Requires a blend of scientific knowledge and practical farming skills. An M.Sc. is often needed for research and higher-level government jobs.",
+        keywords: ["bsc", "horticulture", "agriculture", "farming", "plants", "fruits", "vegetables", "gardening", "landscaping", "science"],
+        careerGrowth: "Horticulture Officer -> Senior Officer / Farm Manager -> Scientist (after M.Sc./PhD) / Landscape Consultant.",
+        skills: {
+            required: ["A passion for plants and farming", "Scientific temperament", "Patience and observation skills", "Willingness to work outdoors"],
+            acquired: ["Fruit and vegetable cultivation", "Floriculture and landscape gardening", "Plant propagation and nursery management", "Post-harvest technology", "Plant protection (pests and diseases)", "Soil and nutrient management"]
+        },
+        onlineCourses: [{ name: "Courses from Indian Agricultural Research Institute (IARI).", link: "https://www.iari.res.in/" }],
+        jobProfile: "Horticulturist, Landscape Designer, Farm Manager, Floriculturist, Pomologist.",
+        topCompanies: [
+            { name: "State Horticulture Departments (as Officer)", salary: "₹6 - 10 LPA (Govt)" },
+            { name: "ICAR Research Institutes", salary: "High Govt scales (Scientist)" },
+            { name: "Food Processing companies (e.g., Jain Irrigation, ITC)", salary: "₹4 - 7.5 LPA" },
+            { name: "Seed and planting material companies", salary: "₹3.8 - 7.0 LPA" },
+            { name: "Large landscaping companies", salary: "₹3.5 - 6.8 LPA" },
+            { name: "Reliance Greens (Jamnagar)", salary: "₹5.0 - 9.0 LPA" },
+            { name: "Tea/Coffee/Spice Plantations", salary: "₹4.5 - 8.5 LPA" },
+            { name: "Agri-input companies (fertilizers, pesticides)", salary: "₹4.2 - 8.0 LPA" },
+            { name: "Starting own high-tech nursery or farm", salary: "High potential, profit-based" },
+            { name: "NABARD", salary: "High Govt scales" }
+        ],
+        successStories: "Horticulture is a science and an art that deals with garden crops. Professionals in this field are responsible for the fruits, vegetables, and flowers we consume, as well as creating the beautiful green spaces in our cities."
+    },
+    {
+        name: "B.Sc. in Information Technology (IT)",
+        minPercentage: 50,
+        avgYearlyFees: 60000,
+        avgStartingSalary: 380000,
+        eligibility: "10+2 with Maths. Some universities prefer PCM.",
+        duration: "3 years",
+        workEnvironment: "IT service companies, tech support departments, and web development agencies. An office-based/remote role focused on the application and management of technology.",
+        workLifeBalance: "Good. Standard IT industry hours, with pressure during project deadlines. High potential for remote work.",
+        risksChallenges: "Often seen as less technical than CSE/B.Tech. An MCA or M.Sc. IT is highly recommended for career growth. The curriculum needs to be constantly updated to keep up with industry trends.",
+        keywords: ["bsc", "it", "information technology", "software", "networking", "web", "tech", "database", "computer"],
+        careerGrowth: "IT Support / Trainee -> Software Developer / System Admin (1-2 yrs) -> Senior Engineer (after MCA) -> Project Lead.",
+        skills: {
+            required: ["Logical thinking", "Problem-solving skills", "A passion for technology", "Good communication skills"],
+            acquired: ["Web Development (HTML, CSS, JS, PHP/Java)", "Database Management (SQL)", "Networking fundamentals", "Software Engineering", "Object-Oriented Programming", "IT Infrastructure Management"]
+        },
+        onlineCourses: [{ name: "Google IT Support Professional Certificate on Coursera", link: "https://www.coursera.org/professional-certificates/google-it-support" }],
+        jobProfile: "Software Developer, IT Support Specialist, Web Developer, Network Administrator, Database Administrator.",
+        topCompanies: [
+            { name: "TCS / Infosys / Wipro / HCL", salary: "₹3.5 - 6.0 LPA" },
+            { name: "Accenture / Capgemini / Cognizant", salary: "₹4.0 - 6.5 LPA" },
+            { name: "Mid-sized IT service companies", salary: "₹4.2 - 7.0 LPA" },
+            { name: "Banks (IT department)", salary: "₹4.5 - 8.0 LPA" },
+            { name: "Tech Support (Dell, HP)", salary: "₹3.2 - 5.5 LPA" },
+            { name: "Startups", salary: "₹4.5 - 8.5 LPA" },
+            { name: "L&T Infotech / Mindtree", salary: "₹3.8 - 6.8 LPA" },
+            { name: "Public Sector (NIC, PSUs)", salary: "Govt scales" },
+            { name: "Cisco / Microsoft (Technical Support)", salary: "₹6.0 - 12.0 LPA" },
+            { name: "Managed IT service providers", salary: "₹3.0 - 5.8 LPA" }
+        ],
+        successStories: "B.Sc. IT provides a strong foundation in the application of computer technology. Combined with an MCA, it has been a very popular and successful route to a stable and growing career in the massive Indian IT services sector."
+    },
+    {
+        name: "B.Sc. in Mathematics",
+        minPercentage: 60,
+        avgYearlyFees: 20000,
+        avgStartingSalary: 500000,
+        eligibility: "10+2 with PCM.",
+        duration: "3 years",
+        workEnvironment: "Diverse roles in IT, finance, data science, research, and teaching. An analytical, problem-solving-focused career path.",
+        workLifeBalance: "Excellent. Most roles are office-based with standard working hours.",
+        risksChallenges: "A pure B.Sc. in Maths has few direct jobs. Its immense value is realized by combining it with skills in computer science, statistics, or finance, and often a Master's degree (M.Sc./MCA/MBA).",
+        keywords: ["bsc", "mathematics", "maths", "science", "statistics", "data science", "analytics", "finance", "research", "teacher"],
+        careerGrowth: "Data Analyst / Teacher -> M.Sc./MCA -> Software Developer / Data Scientist / Actuarial Analyst -> Lead roles.",
+        skills: {
+            required: ["Exceptional abstract and logical thinking", "Strong problem-solving abilities", "A love for numbers and patterns", "Perseverance"],
+            acquired: ["Calculus", "Linear Algebra", "Abstract Algebra", "Differential Equations", "Numerical Analysis", "Mathematical Modeling", "Logical Reasoning"]
+        },
+        onlineCourses: [{ name: "Mathematics for Machine Learning Specialization by Imperial College London", link: "https://www.coursera.org/specializations/mathematics-machine-learning" }],
+        jobProfile: "Data Analyst, Quantitative Analyst, Actuarial Trainee, Teacher, Operations Research Analyst.",
+        topCompanies: [
+            { name: "IT Companies (TCS, Infosys - with coding skills)", salary: "₹4.0 - 7.5 LPA" },
+            { name: "Ed-tech companies (BYJU's, Unacademy - as content expert)", salary: "₹5.0 - 9.0 LPA" },
+            { name: "Banks and Financial Firms (for quantitative roles)", salary: "₹6.0 - 12.0 LPA" },
+            { name: "Data Science and Analytics firms (Mu Sigma, Fractal)", salary: "₹5.5 - 10.0 LPA" },
+            { name: "ISRO / DRDO (as Scientist, after exams)", salary: "High Govt scales" },
+            { name: "Insurance companies (for actuarial roles)", salary: "₹7.0 - 15.0 LPA (with exams)" },
+            { name: "Market Research companies (Nielsen, Kantar)", salary: "₹4.5 - 8.0 LPA" },
+            { name: "Educational Institutions", salary: "Academic scales" },
+            { name: "Think tanks and research institutions", salary: "Varies" },
+            { name: "Civil Services (UPSC)", salary: "High Govt prestige and pay" }
+        ],
+        successStories: "Mathematics is the language of the universe and the foundation of all technology and finance. Many of the world's top AI scientists, financial quants, and cryptographers have a background in mathematics. It is a degree that trains the mind for powerful problem-solving."
+    },
+    {
+        name: "B.Sc. in Medical Laboratory Technology (MLT)",
+        minPercentage: 50,
+        avgYearlyFees: 80000,
+        avgStartingSalary: 300000,
+        eligibility: "10+2 with PCB.",
+        duration: "3 years",
+        workEnvironment: "Hospital labs, diagnostic centers, and blood banks. A clean, sterile, and highly regulated lab environment.",
+        workLifeBalance: "Diagnostic labs have regular hours. Hospital labs require 24/7 coverage, so shift work is common. The role has high responsibility but is generally low-stress compared to clinical roles.",
+        risksChallenges: "Handling infectious biological samples requires extreme care. High degree of accuracy is critical as test results directly impact patient diagnosis. Career growth to Lab Manager often requires an M.Sc.",
+        keywords: ["bsc", "mlt", "medical lab", "lab technician", "diagnostics", "pathology", "health", "medical", "paramedical"],
+        careerGrowth: "Lab Technician -> Senior Lab Technologist (3-4 yrs) -> Technical Supervisor -> Laboratory Manager.",
+        skills: {
+            required: ["Meticulous attention to detail", "Good concentration", "Ethical responsibility", "Technical aptitude"],
+            acquired: ["Clinical Pathology", "Hematology", "Microbiology", "Biochemistry analysis", "Operation of advanced lab equipment", "Quality control in laboratories"]
+        },
+        onlineCourses: [{ name: "Courses from the Indian Medical Association (IMA) can be beneficial.", link: "https://www.ima-india.org/" }],
+        jobProfile: "Medical Lab Technologist, Pathology Lab Technician, Blood Bank Technician, Clinical Lab Scientist.",
+        topCompanies: [
+            { name: "Dr. Lal PathLabs / SRL Diagnostics", salary: "₹3.0 - 5.0 LPA" },
+            { name: "Metropolis Healthcare / Thyrocare", salary: "₹2.8 - 4.8 LPA" },
+            { name: "Apollo Hospitals / Fortis Healthcare", salary: "₹3.2 - 5.5 LPA" },
+            { name: "Government Hospitals (AIIMS, etc.)", salary: "Govt scales (₹5-8 LPA)" },
+            { name: "Pharmaceutical companies (for QC labs)", salary: "₹3.5 - 6.0 LPA" },
+            { name: "Medical equipment companies (as Application Specialist)", salary: "₹4.5 - 8.0 LPA" },
+            { name: "Max Healthcare", salary: "₹3.1 - 5.4 LPA" },
+            { name: "Research Institutes (ICMR)", salary: "Project-based" },
+            { name: "Blood Banks", salary: "Varies" },
+            { name: "Public health laboratories", salary: "Govt scales" }
+        ],
+        successStories: "Medical lab technologists are the detectives of the medical world, providing the crucial data that doctors use for diagnosis. The managers of large, automated diagnostic labs are key healthcare professionals ensuring accuracy and efficiency."
+    },
+    {
+        name: "B.Sc. in Microbiology",
+        minPercentage: 55,
+        avgYearlyFees: 50000,
+        avgStartingSalary: 320000,
+        eligibility: "10+2 with PCB.",
+        duration: "3 years",
+        workEnvironment: "Pharmaceutical, food, and biotech industries; hospitals; and research labs. A sterile, lab-based role focused on the study of microorganisms.",
+        workLifeBalance: "Excellent. Standard lab hours. Research roles can have flexible schedules. A fascinating field for those interested in the invisible world.",
+        risksChallenges: "Working with pathogenic microorganisms requires strict bio-safety protocols. An M.Sc. is essential for good career prospects in R&D or as a clinical microbiologist.",
+        keywords: ["bsc", "microbiology", "science", "biology", "lab", "bacteria", "virus", "pharma", "food", "research"],
+        careerGrowth: "QC Microbiologist / Lab Technician -> M.Sc. -> Research Scientist / Clinical Microbiologist -> Lab Manager.",
+        skills: {
+            required: ["A strong interest in biology", "Meticulous lab skills", "Patience and precision", "High safety consciousness"],
+            acquired: ["Bacteriology, Virology, Mycology", "Microbial genetics", "Immunology", "Industrial and Food Microbiology", "Aseptic techniques and sterilization", "Microscopy"]
+        },
+        onlineCourses: [{ name: "Introduction to Microbiology on Coursera", link: "https://www.coursera.org/learn/microbiology" }],
+        jobProfile: "Microbiologist, Quality Control Analyst, Lab Technician, Clinical Research Associate.",
+        topCompanies: [
+            { name: "Cipla / Sun Pharma / Dr. Reddy's (for sterile manufacturing)", salary: "₹3.5 - 6.5 LPA" },
+            { name: "Nestlé / Cadbury / Britannia (for food safety)", salary: "₹4.0 - 7.5 LPA" },
+            { name: "Serum Institute / Biocon", salary: "₹4.2 - 8.0 LPA" },
+            { name: "Hospitals (as Clinical Microbiologist)", salary: "₹3.8 - 7.0 LPA" },
+            { name: "Diagnostic Labs (Dr. Lal PathLabs, SRL)", salary: "₹3.0 - 5.5 LPA" },
+            { name: "Water treatment and environmental agencies", salary: "₹3.2 - 6.0 LPA" },
+            { name: "CSIR / ICMR research labs", salary: "Stipend-based" },
+            { name: "Hindustan Unilever (HUL)", salary: "₹4.5 - 8.5 LPA" },
+            { name: "Danone (for probiotics)", salary: "₹4.8 - 8.8 LPA" },
+            { name: "Syngene International", salary: "₹3.6 - 6.8 LPA" }
+        ],
+        successStories: "From developing life-saving vaccines and antibiotics to ensuring the safety of our food supply, microbiologists are at the forefront of public health. This degree is a stepping stone to a vital scientific career."
+    },
+    {
+        name: "B.Sc. in Nautical Science",
+        minPercentage: 60,
+        avgYearlyFees: 300000,
+        avgStartingSalary: 700000,
+        eligibility: "10+2 with PCM, minimum 60%. Strict medical and eyesight standards (6/6) are mandatory. Must be unmarried.",
+        duration: "3 years",
+        workEnvironment: "On the bridge and deck of commercial ships (cargo, tanker, etc.). A highly disciplined, hierarchical, and high-risk environment at sea.",
+        workLifeBalance: "Extremely challenging. Involves being at sea for 4-6 months at a stretch, followed by a few months of leave. 24/7 responsibility while on board. Disconnected from social life.",
+        risksChallenges: "Physically and mentally demanding. Long periods of isolation. The career progression requires passing a series of difficult competency exams (2nd Mate, Chief Mate, Master). High responsibility for the ship, cargo, and crew.",
+        keywords: ["bsc", "nautical science", "merchant navy", "ship", "captain", "deck officer", "sailing", "maritime", "marine"],
+        careerGrowth: "Deck Cadet -> 3rd Officer -> 2nd Officer (after exams) -> Chief Officer -> Captain/Master (pinnacle of the career).",
+        skills: {
+            required: ["High physical and mental toughness", "Leadership and decision-making skills", "Discipline and teamwork", "Ability to live in isolation"],
+            acquired: ["Navigation and Chart Work", "Ship Operations and Seamanship", "Cargo Handling and Stowage", "Maritime Law and Conventions (SOLAS, MARPOL)", "Bridge Watchkeeping", "Emergency procedures"]
+        },
+        onlineCourses: [{ name: "Directorate General of Shipping, India is the regulatory body.", link: "https://www.dgshipping.gov.in/" }],
+        jobProfile: "Deck Cadet, Navigating Officer, Junior Officer.",
+        topCompanies: [
+            { name: "Maersk Line / MSC / CMA CGM", salary: "$500-800/month (Cadet), rising to $10000+/month (Captain)" },
+            { name: "Anglo-Eastern / Fleet Management / Synergy", salary: "Similar to above" },
+            { name: "Shipping Corporation of India (SCI)", salary: "Govt scales" },
+            { name: "Great Eastern Shipping", salary: "Varies" },
+            { name: "Chevron / Shell / BP (for tanker fleet)", salary: "Higher pay" },
+            { name: "BW Group / Teekay", salary: "Varies" },
+            { name: "V.Ships", salary: "Varies" },
+            { name: "Dockendale Ship Management", salary: "Varies" },
+            { name: "Indian Navy (after exams)", salary: "Officer scales" },
+            { name: "Port operations (as Pilot, after experience)", salary: "Very high" }
+        ],
+        successStories: "The Captain of a large merchant ship is the absolute authority on board, responsible for a multi-million dollar asset and its crew. The Merchant Navy offers one of the most adventurous, responsible, and financially rewarding careers for young science graduates."
+    },
+    {
+        name: "B.Sc. in Optometry",
+        minPercentage: 50,
+        avgYearlyFees: 100000,
+        avgStartingSalary: 350000,
+        eligibility: "10+2 with PCB.",
+        duration: "4 years (including internship)",
+        workEnvironment: "Eye hospitals, ophthalmologist's clinics, and high-end optical retail chains. A clean, clinical, and patient-facing primary eye care role.",
+        workLifeBalance: "Excellent. Regular clinic hours, low stress, and no emergencies. A very respectable and stable healthcare profession.",
+        risksChallenges: "This is a primary healthcare provider role, not a medical doctor (Ophthalmologist). The scope of practice is focused on vision testing and correction, not surgery. Requires high precision and good patient communication.",
+        keywords: ["bsc", "optometry", "optometrist", "eye", "vision", "clinic", "spectacles", "contact lens", "health", "paramedical"],
+        careerGrowth: "Junior Optometrist -> Optometrist -> Senior Optometrist / Clinic Manager -> Start own practice / Specialize in areas like contact lenses or low vision aids.",
+        skills: {
+            required: ["Strong scientific foundation", "Excellent interpersonal skills", "Precision and attention to detail", "A caring demeanor"],
+            acquired: ["Refraction and prescribing spectacles", "Contact lens fitting", "Dispensing of optical aids", "Diagnosis and management of common eye conditions", "Low vision assessment", "Use of advanced diagnostic eye equipment"]
+        },
+        onlineCourses: [{ name: "The Optometry Council of India is the regulatory body.", link: "https://optometrycouncilofindia.org/" }],
+        jobProfile: "Optometrist, Refractionist, Contact Lens Specialist, Vision Therapist.",
+        topCompanies: [
+            { name: "Lenskart", salary: "₹4.0 - 7.5 LPA" },
+            { name: "Titan Eyeplus", salary: "₹3.8 - 7.0 LPA" },
+            { name: "L.V. Prasad Eye Institute / Sankara Nethralaya", salary: "₹3.5 - 6.5 LPA" },
+            { name: "Dr. Agarwal's / Vasan Eye Care", salary: "₹3.2 - 6.0 LPA" },
+            { name: "Start own optometry clinic", salary: "High potential, varies" },
+            { name: "Johnson & Johnson Vision / Alcon / Bausch & Lomb (as Professional Affairs Exec)", salary: "₹6.0 - 11.0 LPA" },
+            { name: "Essilor / Zeiss (as consultant)", salary: "₹5.5 - 10.0 LPA" },
+            { name: "Reliance Vision Express", salary: "₹3.6 - 6.8 LPA" },
+            { name: "Government Hospitals", salary: "Govt scales" },
+            { name: "Working with Ophthalmologists in private practice", salary: "₹3.0 - 5.8 LPA" }
+        ],
+        successStories: "Optometrists are the primary eye care providers, playing a critical role in detecting vision problems and eye diseases early. Successful optometrists run chains of high-tech clinics or become key opinion leaders for major optical companies."
+    },
+    {
+        name: "B.Sc. in Perfusion Technology",
+        minPercentage: 55,
+        avgYearlyFees: 120000,
+        avgStartingSalary: 450000,
+        eligibility: "10+2 with PCB.",
+        duration: "3 years",
+        workEnvironment: "Cardiac operation theaters of super-specialty hospitals. A very high-pressure, high-stakes role working as part of the heart surgery team.",
+        workLifeBalance: "Challenging. Open-heart surgeries are long and complex. Requires being on-call for emergency surgeries at any hour. Extremely high-stress and demanding.",
+        risksChallenges: "Immense responsibility, as the patient's life is literally in your hands while they are on the heart-lung machine. The work is mentally and physically exhausting. A highly specialized and niche field.",
+        keywords: ["bsc", "perfusion technology", "perfusionist", "cardiac", "heart surgery", "operation theater", "medical", "hospital", "paramedical"],
+        careerGrowth: "Trainee Perfusionist -> Junior Perfusionist -> Senior Perfusionist -> Chief Perfusionist / Head of Department.",
+        skills: {
+            required: ["Exceptional calmness under extreme pressure", "Meticulous and detail-oriented", "Ability to concentrate for long hours", "Strong team player"],
+            acquired: ["Operating the heart-lung machine during cardiac surgery", "Cardiopulmonary bypass techniques", "Monitoring patient's physiological status", "Blood conservation techniques", "Operating other cardiac support devices (e.g., IABP, ECMO)", "Maintaining sterility and safety in the OT"]
+        },
+        onlineCourses: [{ name: "The Indian Society of Extracorporeal Technology provides professional guidance.", link: "https://isect.org/" }],
+        jobProfile: "Perfusionist, Cardiac Perfusionist, ECMO Technician.",
+        topCompanies: [
+            { name: "Narayana Health", salary: "₹4.5 - 8.5 LPA" },
+            { name: "Apollo Hospitals", salary: "₹4.8 - 9.0 LPA" },
+            { name: "Fortis Escorts Heart Institute", salary: "₹5.0 - 9.5 LPA" },
+            { name: "Medanta - The Medicity", salary: "₹5.2 - 10.0 LPA" },
+            { name: "AIIMS / other top Govt cardiac centers", salary: "Govt scales" },
+            { name: "Max Healthcare", salary: "₹4.6 - 8.8 LPA" },
+            { name: "Manipal Hospitals", salary: "₹4.4 - 8.2 LPA" },
+            { name: "Asian Heart Institute", salary: "₹5.5 - 11.0 LPA" },
+            { name: "Medical equipment companies (e.g., Medtronic, LivaNova)", salary: "₹7.0 - 15.0 LPA" },
+            { name: "Global Hospital", salary: "₹4.5 - 8.5 LPA" }
+        ],
+        successStories: "Perfusionists are the unsung heroes of the cardiac surgery team. They operate the technology that keeps the patient alive while the surgeon operates on a still heart. It is one of the most responsible and technically demanding allied health professions."
+    },
+    {
+        name: "B.Sc. in Physics",
+        minPercentage: 60,
+        avgYearlyFees: 20000,
+        avgStartingSalary: 500000,
+        eligibility: "10+2 with PCM.",
+        duration: "3 years",
+        workEnvironment: "Research labs, tech companies, educational institutions, and data science roles. An intellectually demanding, analytical, and problem-solving career.",
+        workLifeBalance: "Excellent. Most roles are office or lab-based with standard hours. Research can have flexible but intense periods.",
+        risksChallenges: "A pure B.Sc. in Physics has very few direct jobs. Its true potential is unlocked after a Master's or PhD, which allows entry into high-end research (Scientist) or teaching (Professor) roles. Requires a high level of abstract thinking.",
+        keywords: ["bsc", "physics", "science", "research", "scientist", "isro", "barc", "drdo", "analytics", "teacher"],
+        careerGrowth: "Teacher / Lab Assistant -> M.Sc. in Physics/Astrophysics etc. -> Research Fellow (JRF/SRF) -> Scientist (after PhD) / Professor.",
+        skills: {
+            required: ["A deep curiosity about how the universe works", "Exceptional mathematical and analytical skills", "Strong problem-solving abilities", "Abstract thinking"],
+            acquired: ["Classical Mechanics", "Quantum Mechanics", "Electromagnetism", "Thermodynamics", "Mathematical Physics", "Experimental techniques and data analysis", "Computational Physics (programming basics)"]
+        },
+        onlineCourses: [{ name: "Understanding the Universe: An Introduction to Astronomy on Coursera", link: "https://www.coursera.org/learn/astro" }],
+        jobProfile: "Research Scientist, Physicist, Data Analyst, Teacher, Technical Writer.",
+        topCompanies: [
+            { name: "ISRO / BARC / DRDO (as Scientist)", salary: "Very High Govt scales" },
+            { name: "CSIR Labs (e.g., NPL, CEERI)", salary: "Govt scales" },
+            { name: "TIFR / Saha Institute of Nuclear Physics", salary: "Academic/Research scales" },
+            { name: "Educational Institutions (IITs, Universities)", salary: "As Professor (after PhD)" },
+            { name: "Data Science and Analytics firms (with coding skills)", salary: "₹6.0 - 12.0 LPA" },
+            { name: "Semiconductor industry (e.g., Intel, TI)", salary: "₹7.0 - 15.0 LPA (with specialization)" },
+            { name: "Ed-tech companies (as content expert)", salary: "₹5.5 - 10.0 LPA" },
+            { name: "Quantitative Finance (Hedge Funds, Banks)", salary: "Extremely high" },
+            { name: "Medical Physics (in hospitals, after specialization)", salary: "₹6.5 - 13.0 LPA" },
+            { name: "Civil Services (UPSC)", salary: "High prestige and pay" }
+        ],
+        successStories: "Physicists are the ultimate problem solvers, from Nobel laureates like C.V. Raman to the scientists at ISRO. A degree in physics trains the mind to tackle the most fundamental questions and provides a skill set applicable to a vast range of high-tech and analytical fields."
+    },
+    {
+        name: "B.Sc. in Radiography and Imaging Technology",
+        minPercentage: 50,
+        avgYearlyFees: 90000,
+        avgStartingSalary: 320000,
+        eligibility: "10+2 with PCB.",
+        duration: "3 years",
+        workEnvironment: "Radiology departments of hospitals and diagnostic centers. A technical, patient-facing role working with advanced imaging equipment.",
+        workLifeBalance: "Diagnostic centers have regular hours. Hospitals require 24/7 coverage through shifts for emergency cases. The work requires physical effort to position patients.",
+        risksChallenges: "Occupational hazard of radiation exposure requires strict adherence to safety protocols. The technology (MRI, CT) is complex and constantly evolving. High responsibility for producing clear, diagnostic-quality images.",
+        keywords: ["bsc", "radiography", "radiology", "imaging", "x-ray", "mri", "ct scan", "technologist", "medical", "paramedical"],
+        careerGrowth: "Radiographer -> Senior Radiographer / CT/MRI Technologist -> Application Specialist (for companies) / Chief Technologist -> Radiology Department Manager.",
+        skills: {
+            required: ["Technical aptitude", "Attention to detail", "Good interpersonal skills to comfort patients", "A strong sense of responsibility"],
+            acquired: ["Operating X-ray, CT, and MRI machines", "Patient positioning techniques", "Radiation physics and safety", "Image processing and quality control", "Contrast media administration", "Anatomy and physiology"]
+        },
+        onlineCourses: [{ name: "Introduction to Medical Imaging by University of British Columbia", link: "https://www.coursera.org/learn/medical-imaging" }],
+        jobProfile: "Radiologic Technologist, MRI Technologist, CT Technologist, X-ray Technician.",
+        topCompanies: [
+            { name: "Apollo Hospitals / Fortis / Max", salary: "₹3.2 - 6.0 LPA" },
+            { name: "Dr. Lal PathLabs / SRL Diagnostics", salary: "₹3.0 - 5.5 LPA" },
+            { name: "GE Healthcare / Philips / Siemens Healthineers (as Application Specialist)", salary: "₹6.0 - 12.0 LPA" },
+            { name: "Government Hospitals (AIIMS, etc.)", salary: "Govt scales (₹5-9 LPA)" },
+            { name: "Medanta / Narayana Health", salary: "₹3.4 - 6.2 LPA" },
+            { name: "Starting own diagnostic center (high investment)", salary: "High potential" },
+            { name: "Manipal Hospitals", salary: "₹3.1 - 5.8 LPA" },
+            { name: "Vijaya Diagnostics Centre", salary: "₹3.0 - 5.6 LPA" },
+            { name: "Canon Medical Systems / Hitachi", salary: "₹5.5 - 11.0 LPA" },
+            { name: "Teleradiology Solutions", salary: "Varies" }
+        ],
+        successStories: "Radiologic technologists are the 'eyes' of modern medicine, providing the images that allow for accurate diagnosis without invasive surgery. Application specialists who train doctors on how to use multi-crore MRI machines are among the highest-paid professionals in the allied health field."
+    },
+    {
+        name: "B.Sc. in Statistics",
+        minPercentage: 60,
+        avgYearlyFees: 20000,
+        avgStartingSalary: 550000,
+        eligibility: "10+2 with Maths. Some top colleges have a high cutoff.",
+        duration: "3 years",
+        workEnvironment: "Data science teams, financial firms, market research companies, and government statistical offices. A highly analytical and quantitative office-based role.",
+        workLifeBalance: "Excellent. Standard office hours with a focus on data analysis, modeling, and interpretation.",
+        risksChallenges: "A pure B.Sc. in Statistics needs to be supplemented with strong programming skills (Python/R) and domain knowledge. The best roles in data science or actuarial science require a Master's degree and professional certifications.",
+        keywords: ["bsc", "statistics", "stats", "data science", "analytics", "data analyst", "maths", "finance", "research"],
+        careerGrowth: "Data Analyst -> M.Sc. Statistics/Data Science -> Data Scientist / Actuarial Analyst -> Lead roles.",
+        skills: {
+            required: ["Exceptional quantitative and analytical skills", "Logical reasoning", "Attention to detail", "An inquisitive mindset"],
+            acquired: ["Probability Theory", "Statistical Inference", "Regression Analysis", "Experimental Design", "Programming in R/Python", "Data analysis and interpretation"]
+        },
+        onlineCourses: [{ name: "Statistics with R Specialization by Duke University on Coursera", link: "https://www.coursera.org/specializations/statistics" }],
+        jobProfile: "Statistician, Data Analyst, Business Analyst, Actuarial Trainee, Market Research Analyst.",
+        topCompanies: [
+            { name: "Data Science & Analytics Firms (Mu Sigma, Fractal)", salary: "₹6.0 - 11.0 LPA" },
+            { name: "Banks & Financial Services (for risk modeling)", salary: "₹6.5 - 14.0 LPA" },
+            { name: "Market Research (Nielsen, Kantar, IPSOS)", salary: "₹4.5 - 8.5 LPA" },
+            { name: "Insurance Companies (for Actuarial roles, with exams)", salary: "₹7.0 - 16.0 LPA" },
+            { name: "Indian Statistical Service (ISS - UPSC Exam)", salary: "High Govt scales" },
+            { name: "TCS / Infosys (Analytics)", salary: "₹4.8 - 8.2 LPA" },
+            { name: "Amazon / Flipkart", salary: "₹7.5 - 16.0 LPA" },
+            { name: "Google / Microsoft", salary: "₹12.0 - 25.0 LPA+" },
+            { name: "Pharmaceutical companies (for clinical trials analysis)", salary: "₹5.5 - 10.0 LPA" },
+            { name: "Reserve Bank of India (RBI)", salary: "High Govt scales" }
+        ],
+        successStories: "Statistics is the grammar of science. In the age of big data, statisticians are more in demand than ever. The Chief Data Scientists of major tech companies and the Chief Actuaries of insurance giants are master statisticians who make sense of uncertainty and drive strategic decisions."
+    },
+    {
+        name: "B.Sc. in Zoology",
+        minPercentage: 50,
+        avgYearlyFees: 30000,
+        avgStartingSalary: 300000,
+        eligibility: "10+2 with PCB.",
+        duration: "3 years",
+        workEnvironment: "Zoos, wildlife conservation NGOs, research labs, and educational institutions. A mix of fieldwork, lab work, and teaching.",
+        workLifeBalance: "Good. Lab and teaching roles have regular hours. Fieldwork for conservation projects can be physically demanding and in remote locations.",
+        risksChallenges: "A specialized M.Sc. is crucial for most career paths. Jobs in wildlife conservation are highly competitive and may not be well-paid initially. Requires a deep passion for animals and conservation.",
+        keywords: ["bsc", "zoology", "animal science", "biology", "science", "wildlife", "conservation", "environment", "research"],
+        careerGrowth: "Lab Assistant / Teacher -> M.Sc. in Zoology/Wildlife Biology -> Research Fellow / Conservation Officer -> Scientist / Professor.",
+        skills: {
+            required: ["A passion for animals and wildlife", "Strong observational and analytical skills", "Patience for research and fieldwork", "Physical fitness for field roles"],
+            acquired: ["Animal Anatomy and Physiology", "Taxonomy and Systematics", "Ecology and Animal Behavior", "Genetics and Evolution", "Wildlife Conservation", "Lab and field techniques"]
+        },
+        onlineCourses: [{ name: "Animal Behaviour and Welfare on Coursera", link: "https://www.coursera.org/learn/animal-welfare" }],
+        jobProfile: "Zoologist, Wildlife Biologist, Conservationist, Zookeeper, Research Assistant.",
+        topCompanies: [
+            { name: "Zoological Survey of India (ZSI)", salary: "Govt scales" },
+            { name: "Wildlife Institute of India (WII)", salary: "Govt scales" },
+            { name: "Forest Departments / National Parks", salary: "Govt scales" },
+            { name: "WWF / WTI / BNHS (Conservation NGOs)", salary: "Varies" },
+            { name: "Central Zoo Authority (CZA)", salary: "Govt scales" },
+            { name: "Animal Planet / National Geographic (as researcher)", salary: "Project-based" },
+            { name: "Educational Institutions", salary: "Academic scales" },
+            { name: "Fisheries and Aquaculture sector", salary: "₹3.5 - 6.5 LPA" },
+            { name: "Pest control companies (as entomologist)", salary: "₹3.8 - 7.0 LPA" },
+            { name: "Pharmaceuticals (for animal testing labs)", salary: "₹3.2 - 6.0 LPA" }
+        ],
+        successStories: "Zoologists are the guardians and storytellers of the animal kingdom. Wildlife biologists like Ullas Karanth who have dedicated their lives to tiger conservation are national heroes. This degree is for those who wish to understand and protect our planet's incredible animal diversity."
+    },
+    {
+        name: "Bachelor of Fashion Technology (B.F.Tech)",
+        minPercentage: 55,
+        avgYearlyFees: 300000,
+        avgStartingSalary: 550000,
+        eligibility: "10+2 with PCM. Admission through NIFT entrance exam.",
+        duration: "4 years",
+        workEnvironment: "Garment export houses, large retail brands, and textile mills. A technical and managerial role focused on the production side of fashion.",
+        workLifeBalance: "Challenging. The fashion industry is extremely fast-paced and deadline-driven. The role is high-pressure to ensure quality and timely production of large orders.",
+        risksChallenges: "This is a highly specialized, technical degree, different from fashion design. The work is more about process engineering and management than pure creativity. High competition for jobs in top brands.",
+        keywords: ["bftech", "fashion technology", "apparel production", "textile", "garment", "nift", "manufacturing", "merchandising", "fashion"],
+        careerGrowth: "Management Trainee -> Merchandiser / Production Executive -> Senior Merchandiser / Production Manager -> Factory Head / Sourcing Head.",
+        skills: {
+            required: ["Strong technical and analytical skills", "Process-oriented mindset", "Good project management skills", "An interest in the business of fashion"],
+            acquired: ["Apparel Production Management", "Garment Construction and Pattern Making", "Textile Science", "Quality Control in Apparel", "Supply Chain Management", "Merchandising"]
+        },
+        onlineCourses: [{ name: "National Institute of Fashion Technology (NIFT) is the premier institute for this degree.", link: "https://www.nift.ac.in/" }],
+        jobProfile: "Apparel Production Manager, Merchandiser, Quality Controller, Fashion Technologist.",
+        topCompanies: [
+            { name: "Shahi Exports / Orient Craft / Gokaldas Exports", salary: "₹4.5 - 8.0 LPA" },
+            { name: "Aditya Birla Fashion and Retail (Madura, Pantaloons)", salary: "₹5.5 - 10.0 LPA" },
+            { name: "Reliance Brands", salary: "₹5.8 - 11.0 LPA" },
+            { name: "Myntra / Ajio (Private labels)", salary: "₹6.0 - 12.0 LPA" },
+            { name: "Arvind Limited", salary: "₹5.2 - 9.5 LPA" },
+            { name: "Benetton / Zara / H&M (India sourcing offices)", salary: "₹7.0 - 15.0 LPA" },
+            { name: "Decathlon", salary: "₹6.5 - 13.0 LPA" },
+            { name: "Page Industries (Jockey)", salary: "₹6.0 - 11.5 LPA" },
+            { name: "Raymond", salary: "₹5.8 - 10.5 LPA" },
+            { name: "Texport Industries", salary: "₹4.8 - 8.5 LPA" }
+        ],
+        successStories: "While fashion designers create the vision, it's the fashion technologists who turn that vision into a mass-produced reality. The sourcing and production heads of major global fashion brands are B.F.Tech graduates who are experts in the complex science and logistics of apparel manufacturing."
+    },
+    {
+        name: "BA in Psychology",
+        minPercentage: 50,
+        avgYearlyFees: 30000,
+        avgStartingSalary: 350000,
+        eligibility: "10+2 from any stream. Arts/Humanities background is common.",
+        duration: "3 years",
+        workEnvironment: "Hospitals, schools, NGOs, corporate HR/Marketing departments, and clinics. A people-centric field focused on understanding human behavior.",
+        workLifeBalance: "Good. Counseling and academic roles offer regular hours. Corporate roles are more demanding. Can be emotionally draining.",
+        risksChallenges: "A BA in Psychology is a foundational degree with very few direct job prospects. A Master's (MA/M.Sc.) is absolutely essential to practice as a counselor or psychologist. Requires high emotional intelligence.",
+        keywords: ["ba", "psychology", "counseling", "arts", "humanities", "mental health", "hr", "social", "therapist"],
+        careerGrowth: "Trainee -> MA in Psychology (Clinical/Counseling/Industrial) -> Counselor / HR Executive -> Licensed Clinical Psychologist (with M.Phil) / HR Manager.",
+        skills: {
+            required: ["High empathy and strong listening skills", "An analytical and observant mind", "Emotional maturity and stability", "Strong ethical boundaries"],
+            acquired: ["Foundations of Psychology (Cognitive, Social, Developmental)", "Psychological testing basics", "Counseling theories", "Research methods in psychology", "Abnormal Psychology", "Organizational Behavior"]
+        },
+        onlineCourses: [{ name: "Introduction to Psychology by Yale University on Coursera", link: "https://www.coursera.org/learn/introduction-to-psychology" }],
+        jobProfile: "Counseling Intern, HR Trainee, Social Work Assistant, Market Research Trainee.",
+        topCompanies: [
+            { name: "Hospitals (as Counselor, after MA)", salary: "₹3.5 - 6.5 LPA" },
+            { name: "Schools (as School Counselor, after MA)", salary: "₹3.0 - 6.0 LPA" },
+            { name: "Corporate HR Departments (TCS, Infosys, HUL)", salary: "₹4.5 - 8.5 LPA" },
+            { name: "Market Research companies (Nielsen, Kantar)", salary: "₹4.0 - 7.5 LPA" },
+            { name: "Mental Health startups (e.g., YourDOST, Wysa)", salary: "₹4.2 - 8.0 LPA" },
+            { name: "Advertising agencies (for consumer insights)", salary: "₹4.5 - 8.2 LPA" },
+            { name: "NGOs", salary: "Varies" },
+            { name: "Private practice (as a therapist, after M.Phil)", salary: "High potential" },
+            { name: "Rehabilitation Centers", salary: "₹3.2 - 5.8 LPA" },
+            { name: "User Experience (UX) Research roles (Google, Microsoft)", salary: "Very high potential" }
+        ],
+        successStories: "Psychology is the science of the mind and behavior. Professionals in this field, from clinical psychologists who treat mental illness to industrial psychologists who improve workplace culture, make a profound impact on human well-being and organizational effectiveness."
+    },
+    {
+        name: "Integrated MBA",
+        minPercentage: 60,
+        avgYearlyFees: 400000,
+        avgStartingSalary: 700000,
+        eligibility: "10+2 from any stream. Admission through rigorous entrance exams like IPMAT (for IIM Indore/Rohtak), JIPMAT.",
+        duration: "5 years (BBA + MBA)",
+        workEnvironment: "High-pressure corporate roles in finance, marketing, consulting, and operations in top-tier companies.",
+        workLifeBalance: "Challenging. These are demanding, high-stakes careers that often require long hours and extensive travel, especially in consulting and finance.",
+        risksChallenges: "Extremely competitive entrance exams and a very rigorous curriculum. The financial investment is significant. High pressure to perform from day one of the job.",
+        keywords: ["integrated mba", "mba", "bba", "management", "business", "iim", "ipmat", "finance", "marketing", "commerce"],
+        careerGrowth: "Management Trainee -> Assistant Manager (1-2 yrs) -> Manager (3-4 yrs) -> Senior Manager -> AVP/VP -> CXO. A fast-track leadership path.",
+        skills: {
+            required: ["Strong aptitude and analytical skills", "Excellent communication and leadership potential", "High ambition and drive", "Ability to handle pressure"],
+            acquired: ["Deep knowledge in a chosen specialization (Finance, Marketing, etc.)", "Strategic thinking and business acumen", "Advanced financial modeling", "Marketing strategy", "Operations and supply chain management", "Leadership and negotiation"]
+        },
+        onlineCourses: [{ name: "IIM Indore Integrated Programme in Management (IPM)", link: "https://www.iimidr.ac.in/academic-programmes/five-year-integrated-programme-in-management-ipm/" }],
+        jobProfile: "Management Consultant, Investment Banking Analyst, Brand Manager, Product Manager, Operations Manager.",
+        topCompanies: [
+            { name: "Consulting (McKinsey, BCG, Bain)", salary: "₹20 - 35 LPA+" },
+            { name: "Investment Banking (Goldman Sachs, J.P. Morgan)", salary: "₹18 - 30 LPA+" },
+            { name: "FMCG (HUL, P&G, ITC)", salary: "₹15 - 25 LPA" },
+            { name: "Tech (Google, Microsoft, Amazon)", salary: "₹16 - 30 LPA" },
+            { name: "Private Equity / Venture Capital", salary: "Very High" },
+            { name: "Tata Administrative Service (TAS)", salary: "High prestige + pay" },
+            { name: "Mahindra Group / Aditya Birla Group (Leadership Programs)", salary: "₹14 - 22 LPA" },
+            { name: "Top Banks (for leadership roles)", salary: "₹12 - 20 LPA" },
+            { name: "E-commerce (Flipkart, Myntra)", salary: "₹15 - 28 LPA" },
+            { name: "Asian Paints", salary: "₹14 - 24 LPA" }
+        ],
+        successStories: "This 5-year program from premier institutions like IIM Indore is designed to create future business leaders. The alumni of these programs are fast-tracked into high-responsibility roles in the world's top companies, often reaching senior management positions at a very young age."
+    },
+    {
+        name: "Bachelor of Computer Applications (BCA)",
+        minPercentage: 50,
+        avgYearlyFees: 80000,
+        avgStartingSalary: 350000,
+        eligibility: "10+2 from any stream, but having Maths/Computer Science is a major advantage.",
+        duration: "3 years",
+        workEnvironment: "Primarily in the IT services industry, web development agencies, and tech support roles. Office-based with high potential for remote work.",
+        workLifeBalance: "Good, follows standard IT industry norms. Can be demanding during project delivery phases.",
+        risksChallenges: "Seen as less rigorous than B.Tech (CSE) or B.Sc. (CS). An MCA is almost mandatory to compete for higher-level software development roles. The curriculum can sometimes be outdated depending on the university.",
+        keywords: ["bca", "computer applications", "it", "software", "programming", "web development", "tech", "developer", "mca"],
+        careerGrowth: "Software Trainee / Tech Support -> Web Developer / Junior Programmer (1-2 yrs) -> Software Engineer (after MCA) -> Senior Engineer / Team Lead.",
+        skills: {
+            required: ["Logical thinking", "Problem-solving attitude", "Interest in software and technology", "Self-learning ability"],
+            acquired: ["Programming languages (C, C++, Java)", "Web technologies (HTML, CSS, JavaScript)", "Database Management Systems (SQL)", "Software Engineering principles", "Operating Systems", "Computer Networks"]
+        },
+        onlineCourses: [{ name: "Meta Front-End Developer Professional Certificate", link: "https://www.coursera.org/professional-certificates/meta-front-end-developer" }],
+        jobProfile: "Junior Software Developer, Web Developer, Technical Support Engineer, System Administrator.",
+        topCompanies: [
+            { name: "Infosys / Wipro / HCL", salary: "₹3.0 - 5.0 LPA" },
+            { name: "TCS", salary: "₹3.3 - 5.2 LPA" },
+            { name: "Accenture / Capgemini / Cognizant", salary: "₹3.5 - 6.0 LPA" },
+            { name: "Tech Mahindra", salary: "₹3.0 - 5.0 LPA" },
+            { name: "Mid-sized IT service companies", salary: "₹3.8 - 6.5 LPA" },
+            { name: "Startups (especially for web development)", salary: "₹4.0 - 7.5 LPA" },
+            { name: "Banks (IT department)", salary: "₹4.2 - 7.8 LPA" },
+            { name: "Dell / HP (as Tech Support)", salary: "₹3.0 - 5.2 LPA" },
+            { name: "NIIT / Aptech", salary: "Varies" },
+            { name: "Public Sector Banks (as IT Officer)", salary: "Govt scales" }
+        ],
+        successStories: "The BCA + MCA combination has been a hugely successful career path for millions in the Indian IT services industry. Many project managers, delivery heads, and senior leaders in companies like Infosys and TCS have followed this educational route."
+    },
+    {
+        name: "Bachelor of Vocational Studies (B.Voc)",
+        minPercentage: 45,
+        avgYearlyFees: 30000,
+        avgStartingSalary: 280000,
+        eligibility: "10+2 from any stream, or ITI/Diploma.",
+        duration: "3 years (with multiple exit points - Diploma, Advanced Diploma)",
+        workEnvironment: "Varies greatly based on specialization (e.g., IT, Automotive, Healthcare, Tourism). A highly practical, skill-based role.",
+        workLifeBalance: "Depends on the industry of specialization. Generally focuses on making candidates job-ready from day one.",
+        risksChallenges: "This is a relatively new degree, and its industry acceptance can vary. The quality of programs differs significantly between institutions. The focus is on a specific job role, which might limit broad career mobility initially.",
+        keywords: ["bvoc", "vocational", "skill development", "training", "job-oriented", "technical", "professional"],
+        careerGrowth: "Highly dependent on the chosen specialization. For e.g., in IT, it would be Trainee -> Developer. In Automotive, Technician -> Supervisor.",
+        skills: {
+            required: ["A practical, hands-on mindset", "Willingness to learn a specific trade or skill", "Adaptability"],
+            acquired: ["Deep practical skills in one specific vocation (e.g., Software Development, Automotive Servicing, Medical Lab Technology)", "Industry-specific knowledge", "Soft skills and communication", "Entrepreneurship basics"]
+        },
+        onlineCourses: [{ name: "Programs are regulated by the UGC and Sector Skill Councils.", link: "https://www.ugc.ac.in/skill/index.html" }],
+        jobProfile: "Depends on specialization: e.g., Software Developer, Automobile Technician, Medical Lab Technician, Retail Manager.",
+        topCompanies: [
+            { name: "Companies aligned with the specific B.Voc stream", salary: "Varies" },
+            { name: "Tata STRIVE partners", salary: "Varies" },
+            { name: "Sector Skill Council placement partners", salary: "Varies" },
+            { name: "Automobile dealerships (for B.Voc in Automotive)", salary: "₹2.5 - 4.5 LPA" },
+            { name: "IT Companies (for B.Voc in Software Dev)", salary: "₹3.0 - 5.5 LPA" },
+            { name: "Hospitals (for B.Voc in Healthcare)", salary: "₹2.8 - 5.0 LPA" },
+            { name: "Logistics companies", salary: "₹2.9 - 5.2 LPA" },
+            { name: "Retail chains", salary: "₹2.7 - 5.0 LPA" },
+            { name: "Tourism and Hospitality industry", salary: "₹2.6 - 4.8 LPA" },
+            { name: "Self-employment / Entrepreneurship", salary: "High potential" }
+        ],
+        successStories: "B.Voc is a key initiative to bridge the gap between education and industry. It creates skilled professionals who are employable from day one. Successful B.Voc graduates are those who use their strong practical skills to excel in their chosen vocation and grow into managerial roles."
+    }
+        ];       
+
+
+        // ===================================================================
+        // --- FINAL, ROBUST, AND CORRECTED JAVASCRIPT LOGIC ---
+        // ===================================================================
+        
+        const generateBtn = document.getElementById('generateBtn');
+        const resultsContainer = document.getElementById('results-container');
+        
+        // Check if the hscCourses object exists before adding the event listener
+        if (typeof hscCourses !== 'undefined' && Array.isArray(hscCourses) && hscCourses.length > 0) {
+            generateBtn.addEventListener('click', generateCareerPaths);
+        } else {
+            // Handle the case where no data is found
+            generateBtn.addEventListener('click', () => {
+                resultsContainer.innerHTML = `
+                    <div id="message-box">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h2>Data Object Missing</h2>
+                        <p>No course data found. Please paste the 'hscCourses' JavaScript array in the script tag.</p>
+                    </div>`;
+            });
+        }
+
+        function generateCareerPaths() {
+            // 1. Get user inputs from dropdowns and textarea
+            const percentageSelect = document.getElementById('percentage');
+            const budgetSelect = document.getElementById('budget');
+            const interestsInput = document.getElementById('interests');
+
+            const percentageRange = percentageSelect.value;
+            const budgetRange = budgetSelect.value;
+            const interests = interestsInput.value.toLowerCase().trim();
+            
+            // Basic validation
+            if (percentageRange === '' || budgetRange === '' || interests === '') {
+                alert('Please fill in all the fields.');
+                return;
+            }
+
+            // 2. Parse the selected ranges into min/max values
+            const [minPercent, maxPercent] = percentageRange.split('-').map(Number);
+            const [minBudget, maxBudget] = budgetRange.split('-').map(Number);
+
+            const stopWords = new Set(['and', 'or', 'in', 'for', 'a', 'an', 'the', 'my', 'is', 'are']);
+            const interestKeywords = interests.split(/[\s,]+/)
+                                              .map(k => k.trim())
+                                              .filter(k => k && !stopWords.has(k));
+
+            if (interestKeywords.length === 0) {
+                alert('Please enter more specific career interests.');
+                return;
+            }
+
+            // 3. Filter courses with a strict, multi-step process
+            const filteredCourses = hscCourses.filter(course => {
+                // Condition 1: Check if the course's minimum percentage is within the user's eligibility.
+                // A user with an 80-90% score is eligible for a course requiring 60%.
+                const meetsPercentage = course.minPercentage < maxPercent;
+
+                // Condition 2: Check if the course's fee falls within the user's selected budget range.
+                const meetsBudget = course.avgYearlyFees >= minBudget && course.avgYearlyFees <= maxBudget;
+                
+                // Condition 3: Check if at least one interest keyword matches.
+                const meetsInterests = interestKeywords.some(userKeyword => 
+                    course.keywords.some(courseKeyword => 
+                        courseKeyword.toLowerCase() === userKeyword || courseKeyword.toLowerCase().startsWith(userKeyword)
+                    )
+                );
+                
+                // A course is only included if ALL THREE conditions are true.
+                return meetsPercentage && meetsBudget && meetsInterests;
+            });
+            
+            // 4. Display the results
+            displayResults(filteredCourses);
+        }
+        
+        function displayResults(courses) {
+            resultsContainer.innerHTML = ''; 
+
+            if (courses.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div id="message-box">
+                        <i class="fas fa-search-minus"></i>
+                        <h2>NO MATCH FOUND</h2>
+                        <p>We couldn't find any courses that match all your criteria. Please try adjusting your selection, like choosing a different budget or using broader interest keywords.</p>
+                    </div>`;
+                return;
+            }
+
+            courses.forEach(course => {
+                const card = document.createElement('div');
+                card.className = 'result-card';
+                
+                const requiredSkills = course.skills?.required?.join(', ') || 'Varies by specialization.';
+                const acquiredSkills = course.skills?.acquired?.join(', ') || 'Varies by specialization.';
+                const onlineCourseLink = course.onlineCourses && course.onlineCourses[0] ? `<a href="${course.onlineCourses[0].link}" target="_blank">${course.onlineCourses[0].name}</a>` : 'General search on platforms like Coursera/Udemy recommended.';
+
+                let companiesHtml = '<ul>';
+                if (course.topCompanies && Array.isArray(course.topCompanies)) {
+                    course.topCompanies.forEach(company => {
+                        companiesHtml += `<li>${company.name} (${company.salary})</li>`;
+                    });
+                }
+                companiesHtml += '</ul>';
+
+                card.innerHTML = `
+                    <h2><i class="fas fa-graduation-cap"></i> ${course.name}</h2>
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <strong><i class="fas fa-check-circle"></i> Eligibility & Percentage</strong>
+                            <p>${course.eligibility} (Min. ${course.minPercentage}%)</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-wallet"></i> Avg. Yearly Fees</strong>
+                            <p>₹${course.avgYearlyFees.toLocaleString('en-IN')}</p>
+                        </div>
+                         <div class="result-item">
+                            <strong><i class="fas fa-money-bill-wave"></i> Avg. Starting Salary</strong>
+                            <p>₹${course.avgStartingSalary.toLocaleString('en-IN')} p.a.</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-calendar-alt"></i> Duration</strong>
+                            <p>${course.duration}</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-user-tie"></i> Job Profile at Joining</strong>
+                            <p>${course.jobProfile}</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-map-marker-alt"></i> Work Environment</strong>
+                            <p>${course.workEnvironment}</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-balance-scale"></i> Work-Life Balance</strong>
+                            <p>${course.workLifeBalance}</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-exclamation-triangle"></i> Risks & Challenges</strong>
+                            <p>${course.risksChallenges}</p>
+                        </div>
+                        <div class="result-item full-width">
+                            <strong><i class="fas fa-chart-line"></i> Recommended Career Growth</strong>
+                            <p>${course.careerGrowth}</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-cogs"></i> Skills Required</strong>
+                            <p>${requiredSkills}</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-star"></i> Skills Acquired</strong>
+                            <p>${acquiredSkills}</p>
+                        </div>
+                        <div class="result-item full-width">
+                            <strong><i class="fas fa-laptop-code"></i> Recommended Online Course</strong>
+                            <p>${onlineCourseLink}</p>
+                        </div>
+                         <div class="result-item full-width">
+                            <strong><i class="fas fa-building"></i> Top 10 Companies & Salaries</strong>
+                            ${companiesHtml}
+                        </div>
+                        <div class="result-item full-width">
+                            <strong><i class="fas fa-user-check"></i> Success Stories / Real-life Examples</strong>
+                            <p>${course.successStories}</p>
+                        </div>
+                    </div>
+                `;
+                resultsContainer.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>

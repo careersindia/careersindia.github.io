@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Career Path Navigator | After 10th Grade</title>
+    <title>Career Path Navigator | After 12th Grade</title>
     
     <!-- Google Fonts: Poppins for body, a nice contrast to Impact -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,46 +14,54 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-         :root {
+        :root {
             --primary-color: aquamarine;
             --bg-color: #ffffff;
             --text-color: #000000;
             --shadow-color: rgba(0, 0, 0, 0.15);
-            --gradient-start: #f0f8ff;
-            --gradient-end: #e6e6fa;
+            --gradient-start: #f0f8ff; /* A very light blue to complement aquamarine */
+            --gradient-end: #e6e6fa;   /* A light lavender for a flamboyant touch */
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-image: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* IMPORTANT: Changed to flex-start to align container to the top */
+            align-items: center;
+            min-height: 100vh;
             padding: 2rem;
             color: var(--text-color);
-            min-height: 100vh; /* Ensure body takes at least full height */
         }
+
         .main-container {
             display: flex;
             width: 100%;
             max-width: 1400px;
-            min-height: 80vh; /* IMPORTANT: Removed fixed height, uses min-height to allow growth */
+            min-height: 80vh;
             background: var(--bg-color);
             border-radius: 20px;
             box-shadow: 0 15px 40px var(--shadow-color);
-            overflow: hidden; 
+            overflow: hidden;
         }
+
+        /* --- Left Panel: The Input Form --- */
         .left-panel {
             flex-basis: 40%;
             padding: 40px;
-            background-color: #f9f9f9;
+            background-color: #f9f9f9; /* Slightly off-white for contrast */
             display: flex;
             flex-direction: column;
             justify-content: center;
             border-right: 1px solid #eee;
-            align-self: stretch; /* Make left panel match right panel height */
         }
+
         .title-box {
             background-color: var(--primary-color);
             padding: 20px;
@@ -61,25 +69,38 @@
             border-radius: 12px;
             text-align: center;
             box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-            transform: perspective(1000px) rotateX(-5deg);
+            transform: perspective(1000px) rotateX(-5deg); /* Subtle 3D tilt */
         }
+
         .title-box h1 {
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             font-size: 2.8rem;
             color: var(--text-color);
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 1px 1px 0px #fff, 2px 2px 0px rgba(0,0,0,0.2);
+            text-shadow: 
+                1px 1px 0px #fff, 
+                2px 2px 0px rgba(0,0,0,0.2);
         }
-        .form-group { margin-bottom: 25px; }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
         .form-group label {
             display: block;
             font-weight: 600;
             margin-bottom: 8px;
             font-size: 1.1rem;
         }
-        .form-group i { margin-right: 10px; color: #555; }
-        .form-group input[type="number"], .form-group textarea {
+        
+        .form-group i {
+            margin-right: 10px;
+            color: #555;
+        }
+
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 12px 15px;
             border: 2px solid #ddd;
@@ -87,145 +108,186 @@
             font-size: 1rem;
             font-family: 'Poppins', sans-serif;
             transition: all 0.3s ease;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23555' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-color: white;
         }
-        .form-group input[type="number"]:focus, .form-group textarea:focus {
+        
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 10px rgba(127, 255, 212, 0.5);
         }
-        .form-group textarea { resize: vertical; min-height: 100px; }
-        .generate-btn {
-            width: 100%; padding: 15px; font-size: 1.2rem; font-weight: 700;
-            color: var(--text-color); background-color: var(--primary-color);
-            border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); letter-spacing: 1px;
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
         }
+
+        .generate-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
+        }
+
         .generate-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.2);
             filter: brightness(1.1);
         }
-        .generate-btn i { margin-right: 10px; }
         
-        /* --- Right Panel --- */
+        .generate-btn i {
+             margin-right: 10px;
+        }
+
+        /* --- Right Panel: The Results --- */
         .right-panel {
             flex-basis: 60%;
-            padding: 30px 40px;
-            display: flex;
-            flex-direction: column;
-            /* IMPORTANT: Removed overflow-y: auto. The page body will scroll if needed. */
+            padding: 40px;
+            overflow-y: auto; 
         }
-        #course-title-container {
-            text-align: center;
-            margin-bottom: 20px;
-            flex-shrink: 0;
-        }
-        #course-title-container h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #333;
-        }
-        #results-container {
-            flex-grow: 1;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 15px;
-        }
-        #message-box {
-            grid-column: 1 / -1;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            min-height: 400px; /* Give it some height so it's centered */
-            text-align: center; color: #aaa;
-        }
-        #message-box i { font-size: 5rem; margin-bottom: 20px; color: #ddd; }
-        #message-box h2 { font-size: 1.8rem; }
-        .detail-box {
-            aspect-ratio: 1 / 1;
-            background: #f9f9f9;
-            border: 1px solid #eee;
-            border-radius: 12px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            overflow: hidden;
-        }
-        .detail-box .box-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            transition: all 0.3s ease;
-        }
-        .detail-box .box-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #333;
-            transition: all 0.3s ease;
-        }
-        .detail-content {
-            display: none;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            text-align: left;
-            width: 100%;
-            animation: fadeInContent 0.5s ease;
-            max-height: 200px; /* Give content a max-height and scroll if it's super long */
-            overflow-y: auto;
-        }
-        .detail-content ul { padding-left: 20px; }
-        .detail-content li { margin-bottom: 5px; }
-        
-        /* --- Active (Clicked) Box State --- */
-        .detail-box.active {
-            grid-row: span 2;
-            grid-column: span 2;
-            align-items: flex-start;
-            justify-content: flex-start;
-            background: white;
-            border-color: var(--primary-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            aspect-ratio: unset; /* Remove square constraint when active */
-        }
-        .detail-box.active .box-title { font-size: 1.1rem; }
-        .detail-box.active .detail-content { display: block; }
-        @keyframes fadeInContent { from { opacity: 0; } to { opacity: 1; } }
 
-        /* --- Pagination --- */
-        #pagination-container {
+        #results-container {
             display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        #message-box {
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding-top: 20px;
-            flex-shrink: 0;
-            margin-top: auto;
+            height: 100%;
+            text-align: center;
+            color: #aaa;
+            padding: 20px;
+            animation: fadeIn 0.5s ease;
         }
-        .pagination-btn {
-            padding: 10px 20px; margin: 0 15px; border: none;
-            background-color: transparent; color: var(--text-color);
-            cursor: pointer; transition: all 0.3s ease; font-size: 2rem;
-        }
-        .pagination-btn:hover:not(:disabled) { color: var(--primary-color); transform: scale(1.2); }
-        .pagination-btn:disabled { cursor: not-allowed; color: #ccc; }
-        #course-info { font-weight: 600; font-size: 1.1rem; }
         
+        #message-box i {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+        
+        #message-box h2 {
+            font-size: 1.8rem;
+        }
+
+        /* --- Styling for the dynamically generated result cards --- */
+        .result-card {
+            background: var(--bg-color);
+            border: 1px solid #eee;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            animation: fadeIn 0.5s ease-in-out;
+            margin-bottom: 25px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .result-card h2 i {
+            margin-right: 10px;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .result-item {
+            padding: 10px;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+
+        .result-item strong {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .result-item i {
+            margin-right: 8px;
+            color: var(--primary-color);
+            width: 20px; /* Aligns the text nicely */
+            text-align: center;
+        }
+        
+        .result-item.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .result-item ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+        .result-item li {
+            margin-bottom: 4px;
+        }
+
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
-            body { padding: 0; align-items: stretch; }
-            .main-container { flex-direction: column; height: auto; max-height: none; border-radius: 0; }
-            .left-panel { flex-basis: auto; overflow-y: visible; }
-            .right-panel { flex-basis: auto; min-height: 60vh; padding: 20px; }
+            body {
+                padding: 1rem;
+                align-items: flex-start;
+            }
+            .main-container {
+                flex-direction: column;
+                min-height: auto;
+            }
+            .left-panel, .right-panel {
+                flex-basis: 100%;
+            }
+            .right-panel {
+                 min-height: 50vh;
+            }
         }
+        
         @media (max-width: 576px) {
-            .title-box h1 { font-size: 2rem; }
-            .right-panel { padding: 20px 15px; }
-            #results-container { grid-template-columns: repeat(2, 1fr); }
-            .detail-box.active { grid-column: 1 / -1; }
-            .detail-box { aspect-ratio: unset; min-height: 140px; }
+            body {
+                padding: 0;
+            }
+            .main-container {
+                border-radius: 0;
+            }
+            .left-panel, .right-panel {
+                padding: 20px;
+            }
+            .title-box h1 {
+                font-size: 2rem;
+            }
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
@@ -264,20 +326,20 @@
                 <h1>Career Path Navigator<br>After 10th Grade</h1>
             </div>
             
-            <form id="career-form" onsubmit="return false;">
+                      <form id="career-form" onsubmit="return false;">
                 <div class="form-group">
                     <label for="percentage"><i class="fas fa-percentage"></i> Your Percentage in 10th</label>
-                    <input type="number" id="percentage" placeholder="e.g., 75" min="35" max="100" required>
+                    <input type="number" id="percentage" placeholder="e.g., 75" min="35" max="100" style="width: 100%; padding: 12px 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; font-family: 'Poppins', sans-serif;" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="budget"><i class="fas fa-rupee-sign"></i> Your Yearly Financial Budget (INR)</label>
-                    <input type="number" id="budget" placeholder="e.g., 50000" min="0" required>
+                    <input type="number" id="budget" placeholder="e.g., 50000" min="0" style="width: 100%; padding: 12px 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; font-family: 'Poppins', sans-serif;" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="interests"><i class="fas fa-lightbulb"></i> Career Interests / Hobbies</label>
-                    <textarea id="interests" rows="4" placeholder="e.g. diploma, vocational, engineering..." required></textarea>
+                    <textarea id="interests" rows="4" placeholder="e.g.diploma,vocational..." required></textarea>
                 </div>
                 
                 <button type="button" id="generateBtn" class="generate-btn">
@@ -290,18 +352,18 @@
         <!-- =================== RIGHT OUTPUT PANEL ================= -->
         <!-- ====================================================== -->
         <div class="right-panel">
-            <div id="course-title-container"></div>
             <div id="results-container">
+                
+                <!-- Initial message shown before generating results -->
                 <div id="message-box">
                     <i class="fas fa-compass-drafting"></i>
                     <h2>Your Future Awaits...</h2>
-                    <p>Fill in your details, click the button, and explore your career options one by one!</p>
+                    <p>Fill in your details on the left and click the button to discover your personalized career paths!</p>
                 </div>
+                
             </div>
-            <div id="pagination-container"></div>
         </div>
     </div>
-    
     
     <script>
         // ===================================================================
@@ -9353,36 +9415,31 @@ const sscCourses = [
         // --- LOGIC FOR HSC CAREER PATH NAVIGATOR ---
         // ===================================================================
         
-           const generateBtn = document.getElementById('generateBtn');
+        const generateBtn = document.getElementById('generateBtn');
         const resultsContainer = document.getElementById('results-container');
-        const paginationContainer = document.getElementById('pagination-container');
-        const courseTitleContainer = document.getElementById('course-title-container');
-
-        let allFilteredCourses = [];
-        let currentIndex = 0;
-
-        // Check if the sscCourses object exists before adding the event listener
+        
+        // Check if the hscCourses object exists and is not empty
         if (typeof sscCourses !== 'undefined' && Array.isArray(sscCourses) && sscCourses.length > 0) {
             generateBtn.addEventListener('click', generateCareerPaths);
         } else {
+            // Handle the case where the data object is missing or empty
             generateBtn.addEventListener('click', () => {
                 resultsContainer.innerHTML = `
                     <div id="message-box">
                         <i class="fas fa-exclamation-triangle"></i>
                         <h2>Data Object Missing</h2>
-                        <p>No course data found. Please ensure the 'sscCourses' JavaScript array is correctly placed in the script tag.</p>
+                        <p>The 'sscCourses' JavaScript array is not defined or is empty. Please paste the data object in the script tag.</p>
                     </div>`;
-                paginationContainer.innerHTML = '';
-                courseTitleContainer.innerHTML = '';
             });
         }
-        
-           function generateCareerPaths() {
-            // 1. Get user inputs
+
+              function generateCareerPaths() {
+            // 1. Get user inputs from the new input fields and textarea
             const percentageInput = document.getElementById('percentage');
             const budgetInput = document.getElementById('budget');
             const interestsInput = document.getElementById('interests');
 
+            // Convert input values to numbers, handle potential empty strings
             const userPercent = parseFloat(percentageInput.value);
             const userBudget = parseFloat(budgetInput.value);
             const interests = interestsInput.value.toLowerCase().trim();
@@ -9392,6 +9449,10 @@ const sscCourses = [
                 alert('Please fill in all the fields with valid numbers and interests.');
                 return;
             }
+
+            // 2. Define the flexible ranges for filtering
+            const budgetLowerBound = userBudget - 10000;
+            const budgetUpperBound = userBudget + 10000;
 
             const stopWords = new Set(['and', 'or', 'in', 'for', 'a', 'an', 'the', 'my', 'is', 'are', 'of']);
             const interestKeywords = interests.split(/[\s,]+/)
@@ -9403,15 +9464,17 @@ const sscCourses = [
                 return;
             }
 
-            // 3. Filter courses with the CORRECTED logic
-            const filtered = sscCourses.filter(course => {
-                // Condition 1: Percentage check (Corrected)
-                // Show only if the user's percentage is greater than or equal to the course's minimum requirement.
-                const meetsPercentage = userPercent >= course.minPercentage;
+            // 3. Filter courses with the new flexible logic
+            const filteredCourses = sscCourses.filter(course => {
+                // Condition 1: Percentage check (+-10 logic)
+                // The user is either eligible, OR the course is an "aspirational" goal (requires up to 10% more marks).
+                const isEligible = userPercent >= course.minPercentage;
+                const isAspirational = (course.minPercentage > userPercent) && (course.minPercentage <= userPercent + 10);
+                const meetsPercentage = isEligible || isAspirational;
 
-                // Condition 2: Budget check (Corrected)
-                // Show only if the course fee is less than or equal to the user's budget.
-                const meetsBudget = course.avgYearlyFees <= userBudget;
+                // Condition 2: Budget check (+-10,000 INR logic)
+                // The course fee should be within a +/- 10,000 range of the user's budget.
+                const meetsBudget = course.avgYearlyFees >= budgetLowerBound && course.avgYearlyFees <= budgetUpperBound;
                 
                 // Condition 3: Interest keyword check.
                 const meetsInterests = interestKeywords.some(userKeyword => 
@@ -9420,131 +9483,110 @@ const sscCourses = [
                     )
                 );
                 
-                // A course is included only if ALL three conditions are true.
+                // A course is included if all three conditions are true.
                 return meetsPercentage && meetsBudget && meetsInterests;
             });
             
-            allFilteredCourses = filtered.sort((a, b) => b.avgStartingSalary - a.avgStartingSalary);
-            currentIndex = 0;
-            
-            if (allFilteredCourses.length > 0) {
-                displayCourse(currentIndex);
-            } else {
-                displayNoResults();
+            // 4. Display the results
+            displayResults(filteredCourses);
+        }
+        
+        function displayResults(courses) {
+            resultsContainer.innerHTML = ''; 
+
+            if (courses.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div id="message-box">
+                        <i class="fas fa-search-minus"></i>
+                        <h2>NO MATCH FOUND</h2>
+                        <p>We couldn't find any courses that match all your criteria. Please try adjusting your selection, like choosing a different budget or using broader interest keywords.</p>
+                    </div>`;
+                return;
             }
-        }
 
-        function displayNoResults() {
-             resultsContainer.innerHTML = `
-                <div id="message-box">
-                    <i class="fas fa-search-minus"></i>
-                    <h2>NO MATCH FOUND</h2>
-                    <p>We couldn't find any courses that match all your criteria. Please try adjusting your selection.</p>
-                </div>`;
-            courseTitleContainer.innerHTML = '';
-            paginationContainer.innerHTML = '';
-        }
+            // Sort results by average starting salary (descending) as a default ranking
+            courses.sort((a, b) => b.avgStartingSalary - a.avgStartingSalary);
 
-        function displayCourse(index) {
-            const course = allFilteredCourses[index];
-            if (!course) return;
-
-            // Clear previous content
-            resultsContainer.innerHTML = '';
-            
-            // Set the main title
-            courseTitleContainer.innerHTML = `<h2>${course.name}</h2>`;
-
-            // Define the details to be displayed in boxes
-            const details = [
-                { title: 'Eligibility', icon: 'fa-check-circle', content: `${course.eligibility} (Min. ${course.minPercentage}%)` },
-                { title: 'Avg. Yearly Fees', icon: 'fa-wallet', content: `₹${course.avgYearlyFees.toLocaleString('en-IN')}` },
-                { title: 'Avg. Starting Salary', icon: 'fa-money-bill-wave', content: `₹${course.avgStartingSalary.toLocaleString('en-IN')} p.a.` },
-                { title: 'Duration', icon: 'fa-calendar-alt', content: course.duration },
-                { title: 'Job Profile', icon: 'fa-user-tie', content: course.jobProfile },
-                { title: 'Work Environment', icon: 'fa-map-marker-alt', content: course.workEnvironment },
-                { title: 'Work-Life Balance', icon: 'fa-balance-scale', content: course.workLifeBalance },
-                { title: 'Risks & Challenges', icon: 'fa-exclamation-triangle', content: course.risksChallenges },
-                { title: 'Career Growth', icon: 'fa-chart-line', content: course.careerGrowth },
-                { title: 'Skills Required', icon: 'fa-cogs', content: course.skills?.required?.join(', ') || 'Varies' },
-                { title: 'Skills Acquired', icon: 'fa-star', content: course.skills?.acquired?.join(', ') || 'Varies' },
-                { title: 'Online Course', icon: 'fa-laptop-code', content: course.onlineCourses && course.onlineCourses[0] ? `<a href="${course.onlineCourses[0].link}" target="_blank">${course.onlineCourses[0].name}</a>` : 'N/A' },
-                { title: 'Top Companies', icon: 'fa-building', content: (course.topCompanies || []).map(c => `<li>${c.name} (${c.salary})</li>`).join('') },
-                { title: 'Success Stories', icon: 'fa-user-check', content: course.successStories }
-            ];
-
-            // Create and append each detail box
-            details.forEach(detail => {
-                const box = document.createElement('div');
-                box.className = 'detail-box';
-                let contentHTML = detail.title === 'Top Companies' ? `<ul>${detail.content}</ul>` : `<p>${detail.content}</p>`;
+            courses.forEach(course => {
+                const card = document.createElement('div');
+                card.className = 'result-card';
                 
-                box.innerHTML = `
-                    <i class="fas ${detail.icon} box-icon"></i>
-                    <h3 class="box-title">${detail.title}</h3>
-                    <div class="detail-content">${contentHTML}</div>
+                const requiredSkills = course.skills?.required?.join(', ') || 'Varies by specialization.';
+                const acquiredSkills = course.skills?.acquired?.join(', ') || 'Varies by specialization.';
+                const onlineCourseLink = course.onlineCourses && course.onlineCourses[0] ? `<a href="${course.onlineCourses[0].link}" target="_blank">${course.onlineCourses[0].name}</a>` : 'General search on platforms like Coursera/Udemy recommended.';
+
+                let companiesHtml = '<ul>';
+                if (course.topCompanies && Array.isArray(course.topCompanies)) {
+                    course.topCompanies.forEach(company => {
+                        companiesHtml += `<li>${company.name} (${company.salary})</li>`;
+                    });
+                }
+                companiesHtml += '</ul>';
+
+                card.innerHTML = `
+                    <h2><i class="fas fa-graduation-cap"></i> ${course.name}</h2>
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <strong><i class="fas fa-check-circle"></i> Eligibility & Percentage</strong>
+                            <p>${course.eligibility} (Min. ${course.minPercentage}%)</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-wallet"></i> Avg. Yearly Fees</strong>
+                            <p>₹${course.avgYearlyFees.toLocaleString('en-IN')}</p>
+                        </div>
+                         <div class="result-item">
+                            <strong><i class="fas fa-money-bill-wave"></i> Avg. Starting Salary</strong>
+                            <p>₹${course.avgStartingSalary.toLocaleString('en-IN')} p.a.</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-calendar-alt"></i> Duration</strong>
+                            <p>${course.duration}</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-user-tie"></i> Job Profile at Joining</strong>
+                            <p>${course.jobProfile}</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-map-marker-alt"></i> Work Environment</strong>
+                            <p>${course.workEnvironment}</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-balance-scale"></i> Work-Life Balance</strong>
+                            <p>${course.workLifeBalance}</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-exclamation-triangle"></i> Risks & Challenges</strong>
+                            <p>${course.risksChallenges}</p>
+                        </div>
+                        <div class="result-item full-width">
+                            <strong><i class="fas fa-chart-line"></i> Recommended Career Growth</strong>
+                            <p>${course.careerGrowth}</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-cogs"></i> Skills Required</strong>
+                            <p>${requiredSkills}</p>
+                        </div>
+                        <div class="result-item">
+                            <strong><i class="fas fa-star"></i> Skills Acquired</strong>
+                            <p>${acquiredSkills}</p>
+                        </div>
+                        <div class="result-item full-width">
+                            <strong><i class="fas fa-laptop-code"></i> Recommended Online Course</strong>
+                            <p>${onlineCourseLink}</p>
+                        </div>
+                         <div class="result-item full-width">
+                            <strong><i class="fas fa-building"></i> Top 10 Companies & Salaries</strong>
+                            ${companiesHtml}
+                        </div>
+                        <div class="result-item full-width">
+                            <strong><i class="fas fa-user-check"></i> Success Stories / Real-life Examples</strong>
+                            <p>${course.successStories}</p>
+                        </div>
+                    </div>
                 `;
-
-                box.addEventListener('click', () => {
-                    // If this box is already active, deactivate it
-                    if (box.classList.contains('active')) {
-                        box.classList.remove('active');
-                    } else {
-                        // Deactivate any other active box first
-                        const currentActive = document.querySelector('.detail-box.active');
-                        if (currentActive) {
-                            currentActive.classList.remove('active');
-                        }
-                        // Activate the clicked box
-                        box.classList.add('active');
-                    }
-                });
-
-                resultsContainer.appendChild(box);
+                resultsContainer.appendChild(card);
             });
-            
-            updatePagination();
         }
-
-        function updatePagination() {
-            paginationContainer.innerHTML = '';
-            const totalCourses = allFilteredCourses.length;
-            
-            if (totalCourses <= 1) {
-                return; // No need for pagination if 0 or 1 result
-            }
-
-            const prevButton = document.createElement('button');
-            prevButton.className = 'pagination-btn';
-            prevButton.innerHTML = `<i class="fas fa-chevron-left"></i>`;
-            prevButton.disabled = currentIndex === 0;
-            prevButton.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    displayCourse(currentIndex);
-                }
-            });
-
-            const courseInfo = document.createElement('span');
-            courseInfo.id = 'course-info';
-            courseInfo.textContent = `Course ${currentIndex + 1} of ${totalCourses}`;
-
-            const nextButton = document.createElement('button');
-            nextButton.className = 'pagination-btn';
-            nextButton.innerHTML = `<i class="fas fa-chevron-right"></i>`;
-            nextButton.disabled = currentIndex === totalCourses - 1;
-            nextButton.addEventListener('click', () => {
-                if (currentIndex < totalCourses - 1) {
-                    currentIndex++;
-                    displayCourse(currentIndex);
-                }
-            });
-
-            paginationContainer.appendChild(prevButton);
-            paginationContainer.appendChild(courseInfo);
-            paginationContainer.appendChild(nextButton);
-        }
-
     </script>
 </body>
 </html>
