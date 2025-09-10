@@ -12,7 +12,8 @@ const filesToCache = [
   'images/icon-512x512.png',
   'tap.png', // I saw this in your HTML, let's cache it
 'cube.png',
-'cube.mp4'
+'cube.mp4',
+'image203.png'
 ];
 
 // --- SERVICE WORKER LOGIC ---
