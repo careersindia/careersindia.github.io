@@ -1,0 +1,24 @@
+/* --- FLOATING ACTION BUTTON STYLES --- */
+.floating-home-button {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background-color: #007bff; /* A nice blue color */
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out;
+}
+.floating-home-button:hover {
+    transform: scale(1.1);
+}
+.floating-home-button img {
+  width: 32px;
+  height: 32px;
+}
