@@ -1,0 +1,31 @@
+/* --- UNIVERSAL RESPONSIVE OVERHAUL --- */
+
+/* Rule 1: Use a better, more predictable box model for all elements. */
+* {
+  box-sizing: border-box;
+}
+
+/* Rule 2: Make all images and media flexible. They will never overflow their container. */
+img, video, iframe, picture {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Rule 3: Set a maximum width for the main content body for readability on large screens,
+           but allow it to be flexible and fill the screen on small screens. */
+body {
+  max-width: 1200px; /* Adjust this if your design is wider or narrower */
+  margin: 0 auto;    /* This centers the content on large screens */
+  padding: 0 15px;   /* Adds a little space on the sides on mobile */
+}
+
+/* Rule 4: A simple media query to stack elements on mobile.
+           This is a guess. You may need to change '.column' or '.flex-container'
+           to match the class names used in your layout for multi-column sections. */
+@media (max-width: 768px) {
+  .column, .flex-container, .grid-container {
+    flex-direction: column; /* Stacks flex items vertically */
+    grid-template-columns: 1fr; /* Makes grid items full-width */
+    width: 100%;
+  }
+}
