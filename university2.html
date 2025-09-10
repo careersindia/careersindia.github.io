@@ -261,7 +261,7 @@
         padding-right: 15px !important;
       }
     </style>
-</head>
+<link rel="stylesheet" href="fab.css">\r\n</head>
 <body>
 
     <div class="page-container">
@@ -2099,5 +2099,5 @@
 
     initialize();
 </script>
-</body>
+<script>fetch('fab.html').then(res=>res.text()).then(html=>{document.body.insertAdjacentHTML('beforeend',html)})</script>\r\n</body>
 </html>

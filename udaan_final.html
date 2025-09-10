@@ -407,7 +407,7 @@
         padding-right: 15px !important;
       }
     </style>
-</head>
+<link rel="stylesheet" href="fab.css">\r\n</head>
 <body>
 
 <div class="container">
@@ -1533,7 +1533,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 </script>
-<!-- === POP-UP FOR DETAILED SCORES (ADD BEFORE </body> TAG) === -->
+<!-- === POP-UP FOR DETAILED SCORES (ADD BEFORE <script>fetch('fab.html').then(res=>res.text()).then(html=>{document.body.insertAdjacentHTML('beforeend',html)})</script>\r\n</body> TAG) === -->
 <div id="popup-overlay" style="display: none;">
     <div id="popup-content">
         <h3>Your Detailed Profile Breakdown</h3>
@@ -1544,5 +1544,5 @@ document.addEventListener('DOMContentLoaded', () => {
         <button id="close-popup-btn">Close</button>
     </div>
 </div>
-</body>
+<script>fetch('fab.html').then(res=>res.text()).then(html=>{document.body.insertAdjacentHTML('beforeend',html)})</script>\r\n</body>
 </html>
