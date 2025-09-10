@@ -11,8 +11,9 @@ const filesToCache = [
   'manifest.json', // It's good practice to cache the manifest
   'images/icon-192x192.png',
   'images/icon-512x512.png',
-  'cube.png', // Add your most important logo or background image
-'cube.mp4'
+  'cube.png', 
+'cube.mp4'// Add your most important logo or background image
+
 ];
 
 // 1. INSTALL: Cache the App Shell
