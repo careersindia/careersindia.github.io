@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Counselor</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; }
+        h1 { color: #333; }
+        p { color: #555; }
+        input { font-size: 16px; width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { font-size: 16px; padding: 12px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        #response { margin-top: 20px; padding: 15px; background-color: #f4f4f4; border-radius: 5px; white-space: pre-wrap; line-height: 1.6; }
+    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
+    <style>
+      /* 1. A more natural box model */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      
+      /* 2. Make images responsive */
+      img, video, iframe {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* 3. Make main containers flexible */
+      /* Adjust these if your main container has a different name */
+      body, .container, #main-content, #wrapper {
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+    </style>
+</head>
+<body>
+
+    <h1>AI Career Counselor</h1>
+    <p>Ask a question about careers, colleges, or courses.</p>
+
+    <input type="text" id="userInput" placeholder="e.g., I love creative writing and technology...">
+    <button onclick="getAiResponse()">Get Advice</button>
+
+    <div id="response">The AI's answer will appear here...</div>
+
+    <script>
+        // =========================================================
+        // ===> STEP 3: PASTE YOUR GOOGLE AI API KEY HERE! <===
+        // =========================================================
+        const API_KEY = "AIzaSyB2ikJNjNVkLqSRW5N8_QKkuP1wq4jny1A"; 
+        // =========================================================
+        
+
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+
+        async function getAiResponse() {
+            const userInput = document.getElementById('userInput').value;
+            const responseDiv = document.getElementById('response');
+            const button = document.querySelector('button');
+
+            if (!userInput) {
+                responseDiv.innerText = "Please enter a question first.";
+                return;
+            }
+
+            responseDiv.innerText = "The AI is thinking...";
+            button.disabled = true; // Disable button while loading
+
+            const system_prompt = "You are an expert career and college counselor. Your goal is to provide helpful, encouraging, and accurate advice to students. Keep your answers clear, concise, and structured with bullet points if possible.";
+            const full_prompt = system_prompt + "\n\nUser Question: " + userInput;
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        "contents": [{
+                            "parts": [{ "text": full_prompt }]
+                        }]
+                    })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(`API error: ${errorData.error.message}`);
+                }
+
+                const data = await response.json();
+                const aiText = data.candidates[0].content.parts[0].text;
+                responseDiv.innerText = aiText;
+
+            } catch (error) {
+                console.error("Error:", error);
+                responseDiv.innerText = `Sorry, there was an error: ${error.message}`;
+            } finally {
+                button.disabled = false; // Re-enable button
+            }
+        }
+    </script>
+
+</body>
+</html>
