@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Study Abroad Consultants in India</title>
+
+    <!-- Link to manifest for PWA features -->
+    <link rel="manifest" href="manifest.json">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Russo+One&display=swap" rel="stylesheet">
@@ -170,6 +174,35 @@
     }
     
     .nav-button, #state-select { background-color: var(--white); color: var(--dark-text); }
+  /* --- NEW: Previous/Next Arrow Navigation --- */
+        .navigation-arrows {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px auto;
+            padding: 0 15px; /* Added padding for smaller screens */
+            max-width: 900px;
+        }
+        .nav-arrow {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .nav-arrow:hover {
+            background-color: var(--secondary-color);
+        }
+        .nav-arrow i {
+            font-size: 1.2em;
+        }
+        .nav-arrow span {
+            margin: 0 10px;
+        }
 </style>
 
 <!-- FINAL MOBILE OVERRIDE & SCROLL FIX ("Sledgehammer" code) -->
@@ -205,7 +238,7 @@
     }
   }
 </style>
-/head>
+</head>
 <body>
 
     <div class="container">
@@ -245,7 +278,20 @@
             </main>
         </div>
     </div>
-
+<!-- NEW: NAVIGATION ARROWS -->
+<div class="navigation-arrows container">
+    <!-- !!! IMPORTANT: CHANGE this link to the correct previous page !!! -->
+    <a href="mainnow.html" class="nav-arrow prev">
+        <i class="fas fa-arrow-left"></i>
+        <span>Previous</span>
+    </a>
+    
+    <!-- !!! IMPORTANT: CHANGE this link to the correct next page !!! -->
+    <a href="ra.html" class="nav-arrow next">
+        <span>Next</span>
+        <i class="fas fa-arrow-right"></i>
+    </a>
+</div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const cityButtons = document.querySelectorAll('.nav-button[data-location]');
@@ -351,5 +397,5 @@
             top20Button.addEventListener('click', displayTop20);
         });
     </script>
-\r\n/body>
+</body>
 </html>

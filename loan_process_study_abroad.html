@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loan Process for Studying Abroad</title>
+
+    <!-- Link to manifest for PWA features -->
+    <link rel="manifest" href="manifest.json">
 <style>
     @import url('https://fonts.cdnfonts.com/css/impact');
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
@@ -193,9 +196,37 @@
         opacity: 0.7;
         cursor: not-allowed;
     }
-
+ /* --- NEW: Previous/Next Arrow Navigation --- */
+        .navigation-arrows {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px auto;
+            padding: 0 15px; /* Added padding for smaller screens */
+            max-width: 900px;
+        }
+        .nav-arrow {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .nav-arrow:hover {
+            background-color: var(--secondary-color);
+        }
+        .nav-arrow i {
+            font-size: 1.2em;
+        }
+        .nav-arrow span {
+            margin: 0 10px;
+        }
 </style>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
+
     <style>
       /* 1. A more natural box model */
       *, *::before, *::after {
@@ -220,7 +251,7 @@
       }
     </style>
 
-/head>
+</head>
 <body>
 <div id="toast-message" class="toast-message"></div>
     <div class="main-container">
@@ -359,7 +390,20 @@
             </div>
         </div>
     </div>
-
+<!-- NEW: NAVIGATION ARROWS -->
+<div class="navigation-arrows container">
+    <!-- !!! IMPORTANT: CHANGE this link to the correct previous page !!! -->
+    <a href="mainnow.html" class="nav-arrow prev">
+        <i class="fas fa-arrow-left"></i>
+        <span>Previous</span>
+    </a>
+    
+    <!-- !!! IMPORTANT: CHANGE this link to the correct next page !!! -->
+    <a href="living_and_learning_abroad.html" class="nav-arrow next">
+        <span>Next</span>
+        <i class="fas fa-arrow-right"></i>
+    </a>
+</div>
     <script>
         // This is the final, complete, and verified master data object with all 41 lenders, all necessary commas, and min/max loan amounts.
                // This is the final, complete, and verified master data object with the latest Study Abroad interest rates.
@@ -830,5 +874,5 @@
         });
     </script>
 
-\r\n/body>
+</body>
 </html>

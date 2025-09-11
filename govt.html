@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>SSC Course Details (All)</title>
+<!-- Link to manifest for PWA features -->
+    <link rel="manifest" href="manifest.json">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
   body {
@@ -102,7 +104,7 @@
 
 
   </style>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
+
     <style>
       /* 1. A more natural box model */
       *, *::before, *::after {
@@ -125,9 +127,38 @@
         padding-left: 15px !important;
         padding-right: 15px !important;
       }
+   /* --- NEW: Previous/Next Arrow Navigation --- */
+        .navigation-arrows {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px auto;
+            padding: 0 15px; /* Added padding for smaller screens */
+            max-width: 900px;
+        }
+        .nav-arrow {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .nav-arrow:hover {
+            background-color: var(--secondary-color);
+        }
+        .nav-arrow i {
+            font-size: 1.2em;
+        }
+        .nav-arrow span {
+            margin: 0 10px;
+        }
     </style>
 
-/head>
+</head>
 <body>
 
 
@@ -1599,13 +1630,20 @@
         </div>
 
     </div> <!-- END OF #government-exam-details-container -->
-<!-- Floating Home Button -->
-<a href="/mainnow.html" class="home-button" aria-label="Go to Home Page">
-  <!-- Using an inline SVG for the home icon - no extra files needed! -->
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="28px" height="28px">
-    <path d="M0 0h24v24H0z" fill="none"/>
-    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-  </svg>
-</a>/body>
+<!-- NEW: NAVIGATION ARROWS -->
+<div class="navigation-arrows container">
+    <!-- !!! IMPORTANT: CHANGE this link to the correct previous page !!! -->
+    <a href="mainnow.html" class="nav-arrow prev">
+        <i class="fas fa-arrow-left"></i>
+        <span>Previous</span>
+    </a>
+    
+    <!-- !!! IMPORTANT: CHANGE this link to the correct next page !!! -->
+    <a href="calendar1.html" class="nav-arrow next">
+        <span>Next</span>
+        <i class="fas fa-arrow-right"></i>
+    </a>
+</div>
+</body>
 </html>
      

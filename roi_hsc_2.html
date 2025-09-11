@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HSC Course Financial Calculator</title>
-
+<!-- Link to manifest for PWA features -->
+    <link rel="manifest" href="manifest.json">
     <!-- Using the same fonts for consistency -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -169,8 +170,37 @@
     .explanation-box p:last-child {
         margin-bottom: 0;
     }
+ /* --- NEW: Previous/Next Arrow Navigation --- */
+        .navigation-arrows {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px auto;
+            padding: 0 15px; /* Added padding for smaller screens */
+            max-width: 900px;
+        }
+        .nav-arrow {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .nav-arrow:hover {
+            background-color: var(--secondary-color);
+        }
+        .nav-arrow i {
+            font-size: 1.2em;
+        }
+        .nav-arrow span {
+            margin: 0 10px;
+        }
 </style>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
+
     <style>
       /* 1. A more natural box model */
       *, *::before, *::after {
@@ -195,7 +225,7 @@
       }
     </style>
 
-/head>
+</head>
 <body>
 
 <div class="roi-calculator-container">
@@ -255,7 +285,20 @@
     </div>
 </div>
 
-
+<!-- NEW: NAVIGATION ARROWS -->
+<div class="navigation-arrows container">
+    <!-- !!! IMPORTANT: CHANGE this link to the correct previous page !!! -->
+    <a href="mainnow.html" class="nav-arrow prev">
+        <i class="fas fa-arrow-left"></i>
+        <span>Previous</span>
+    </a>
+    
+    <!-- !!! IMPORTANT: CHANGE this link to the correct next page !!! -->
+    <a href="roi_grad_1.html" class="nav-arrow next">
+        <span>Next</span>
+        <i class="fas fa-arrow-right"></i>
+    </a>
+</div>
 <script>
     // --- DATA SOURCE ---
     // In a real application, this data would come from a database.
@@ -495,5 +538,5 @@
 
 </script>
 
-\r\n/body>
+</body>
 </html>
