@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses After Graduation - Careers India</title>
     
+<!-- Link to manifest for PWA features -->
+    <link rel="manifest" href="manifest.json">
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -157,6 +159,26 @@
         box-shadow: var(--shadow-md);
         z-index: 1000;
     }
+/* --- Floating Home Button --- */
+        .home-button {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background-color: #000000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: transform 0.2s ease-in-out;
+        }
+        .home-button:hover {
+            transform: scale(1.1);
+        }
+
 
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
@@ -184,7 +206,7 @@
       }
     </style>
 
-</head>
+/head>
 <body>
 
 <div class="container">
@@ -660,5 +682,5 @@ IGNORE_WHEN_COPYING_END
     <path d="M0 0h24v24H0z" fill="none"/>
     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
   </svg>
-</a></body>
+</a>/body>
 </html>
