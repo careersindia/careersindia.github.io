@@ -383,7 +383,32 @@
 }
 
 </style>
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
+    <style>
+      /* 1. A more natural box model */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      
+      /* 2. Make images responsive */
+      img, video, iframe {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* 3. Make main containers flexible */
+      /* Adjust these if your main container has a different name */
+      body, .container, #main-content, #wrapper {
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+    </style>
+
+/head>
 <body>
 
 <div class="container">
@@ -1509,7 +1534,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 </script>
-<!-- === POP-UP FOR DETAILED SCORES (ADD BEFORE </body> TAG) === -->
+<!-- === POP-UP FOR DETAILED SCORES (ADD BEFORE \r\n/body> TAG) === -->
 <div id="popup-overlay" style="display: none;">
     <div id="popup-content">
         <h3>Your Detailed Profile Breakdown</h3>
@@ -1520,5 +1545,5 @@ document.addEventListener('DOMContentLoaded', () => {
         <button id="close-popup-btn">Close</button>
     </div>
 </div>
-</body>
+\r\n/body>
 </html>
