@@ -18,11 +18,12 @@
 
 <style>
     @import url('https://fonts.cdnfonts.com/css/impact');
+    /* === MODERN CAREER PORTAL THEME === */
 
     :root {
-        --primary-color:#7FFFD4;
-        --secondary-color: #7FFFD4;
-        --accent-color: #7FFFD4;
+        --primary-color:#7FFFD4; /* light turquoise */
+        --secondary-color: #7FFFD4; /* light turquoise for accents */
+        --accent-color: #7FFFD4;   /* light turquoise for CTAs */
         --icon-color-turquoise: #7FFFD4;
         --text-dark: #000000;
         --text-light: #6c757d;
@@ -34,27 +35,113 @@
     }
 
     /* --- General & Reset --- */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
-    .container { max-width: 1200px; margin: 0 auto; }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
 
     /* --- Header & Navigation --- */
-    .main-header { position: fixed; top: 0; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); box-shadow: var(--shadow-sm); z-index: 1000; transition: background-color 0.3s ease; }
-    .navbar { display: flex; justify-content: space-between; align-items: center; height: 70px; padding: 0 20px; }
-    .logo { font-size: 0.7rem; font-weight: 700; color: #000000; text-decoration: none; line-height: 1; text-align: left; margin-right: auto; }
+    .main-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color:#ffffff;
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-sm);
+        z-index: 1000;
+        transition: background-color 0.3s ease;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+        padding: 0 20px;
+    }
+    
+    .logo {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #000000;
+        text-decoration: none;
+        line-height: 1;
+        text-align: left;
+        margin-right: auto;
+    }
     .logo i { margin-right: 8px; }
-    .nav-menu { display: flex; list-style: none; align-items: center; margin-left: auto; }
-    .nav-menu > li { position: relative; margin: 0 1px; }
-    .nav-link { display: block; padding: 8px 10px; text-decoration: none; color: #000000; font-size: 0.75rem; font-weight: 500; transition: color 0.3s ease, background-color 0.3s ease; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); height: 45px; min-width: 70px; text-align: center; }
-    .nav-link:hover { color: #40E0D0; background-color: rgba(0, 86, 179, 0.05); }
-    .dropdown-content { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background-color: #7FFFD4; box-shadow: var(--shadow-md); border-radius: 8px; padding: 10px; min-width: 250px; max-height: 400px; overflow-y: auto; z-index: 1001; border: 1px solid var(--border-color); }
+
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        margin-left: auto;
+    }
+
+    .nav-menu > li {
+        position: relative;
+        margin: 0 1px;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 8px 10px;
+        text-decoration: none;
+        color: #000000;
+        font-size: 0.75rem;
+        font-weight: 500;
+        transition: color 0.3s ease, background-color 0.3s ease;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        height: 45px;
+        min-width: 70px;
+        text-align: center;
+    }
+    
+    .nav-link:hover {
+        color: #40E0D0;
+        background-color: rgba(0, 86, 179, 0.05);
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #7FFFD4;
+        box-shadow: var(--shadow-md);
+        border-radius: 8px;
+        padding: 10px;
+        min-width: 250px;
+        max-height: 400px;
+        overflow-y: auto;
+        z-index: 1001;
+        border: 1px solid var(--border-color);
+    }
+
     .nav-menu > li:hover .dropdown-content { display: block; }
     .dropdown-content a { display: block; padding: 10px 15px; color: #000000; text-decoration: none; font-size: 0.9rem; border-radius: 5px; transition: background-color 0.2s ease; }
     .dropdown-content a:hover { background-color: var(--bg-light); }
     .menu-toggle { display: none; }
     
     /* --- Hero Section --- */
-    .hero { position: relative; min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; color: #000000; padding: 140px 20px 50px 20px; }
+    .hero { position: relative; min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; color: #000000; padding: 100px 20px 50px 20px; }
     .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #7FFFD4; }
     .hero-content { position: relative; z-index: 2; max-width: 800px; }
     .hero-title { font-family: 'Impact', sans-serif; font-size: 4.5rem; font-weight: 700; margin-bottom: 15px; line-height: 1.2; color:#000000; display: inline-block; background-color:#ffffff; padding: 15px 30px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.1); text-shadow: 1px 1px 0 #bbb, 2px 2px 0 #aaa, 3px 3px 0 #999, 4px 4px 0 #888, 5px 5px 15px rgba(0, 0, 0, 0.5); }
@@ -69,7 +156,7 @@
     #aiSearchInput { flex-grow: 1; padding: 15px 20px; border-radius: 8px; border: 1px solid transparent; font-size: 1.1rem; }
     #aiSearchButton { flex-shrink: 0; padding: 0 30px; border: none; border-radius: 8px; background-color: #ffffff; color: #000000; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
     #aiSearchFeedback { margin-top: 10px; color: white; font-weight: 500; min-height: 20px; }
-    .section { padding: 80px 20px; }
+    .section { padding: 80px 0; }
     .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 10px; }
     .section-subtitle { text-align: center; font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto 50px auto; }
     .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
@@ -96,13 +183,27 @@
     .footer-bottom { border-top: 1px solid #444; padding-top: 20px; text-align: center; font-size: 0.9rem; }
     .nav-menu > li:nth-last-child(-n+3) .dropdown-content { left: auto; right: 0; transform: translateX(0); }
     .nav-link i { display: none !important; }
+    .ai-counselor-container { width: 100%; background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 12px; backdrop-filter: blur(5px); box-shadow: var(--shadow-md); text-align: left; color: var(--text-dark); }
+    .ai-input-wrapper { display: flex; gap: 10px; margin-bottom: 15px; }
+    #aiUserInput { flex-grow: 1; padding: 15px 20px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 1.1rem; }
+    #aiCounselorButton { flex-shrink: 0; padding: 0 30px; border: none; border-radius: 8px; background-color: var(--primary-color); color: var(--text-dark); font-size: 1.1rem; font-weight: 600; cursor: pointer; }
+    #aiResponse { margin-top: 15px; padding: 15px; background-color: aquamarine; border-radius: 8px; white-space: pre-wrap; line-height: 1.6; min-height: 50px; }
+    .tracker-container { max-width: 1000px; margin: 40px auto; padding: 25px; background-color: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .tracker-container h2 { text-align: center; margin-bottom: 20px; }
+    .tracker-notice { text-align: center; background-color: #eef7ff; padding: 10px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9em; }
+    .add-form { display: flex; gap: 10px; margin-bottom: 20px; }
+    .add-form input { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+    .add-form button { padding: 10px 20px; background-color: var(--accent-color); border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #appTable { width: 100%; border-collapse: collapse; }
+    #appTable th, #appTable td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
+    #appTable th { background-color: #f8f9fa; }
+    .delete-btn { color: #dc3545; background: none; border: none; cursor: pointer; font-size: 1.1em; }
 
-    /* --- THE NEW, COMPLETE RESPONSIVE FIX --- */
+    /* --- THE FINAL, CORRECTED RESPONSIVE CODE --- */
     @media (max-width: 992px) { /* A wider breakpoint for tablets and phones */
         /* --- General Layout & Font Sizes --- */
         .hero-title { font-size: 2.8rem; padding: 10px 20px; }
         .hero-tagline { font-size: 1.2rem; }
-        .section-title { font-size: 2rem; }
         .search-box-wrapper { flex-direction: column; }
         .nav-link { display: none; } /* Hide the desktop links */
 
@@ -127,8 +228,9 @@
             background-color: var(--bg-white);
             box-shadow: var(--shadow-md);
             padding: 10px 0;
-overflow-y: auto;
-max-height: calc(100vh - 70px);
+            /* The two critical fixes for menu scrolling */
+            overflow-y: auto; 
+            max-height: calc(100vh - 70px); 
         }
 
         .nav-menu.active {
@@ -140,21 +242,21 @@ max-height: calc(100vh - 70px);
             text-align: center;
         }
         
-        /* This is the NEW part that fixes the long bars */
+        /* This styles the links inside the mobile menu */
         .nav-menu .nav-link {
-            display: block; /* Make them visible again inside the mobile menu */
-            width: 90%; /* Make them less than full-width */
-            max-width: 300px; /* Set a max width */
-            margin: 5px auto; /* Center them and add vertical space */
+            display: block; 
+            width: 90%; 
+            max-width: 300px; 
+            margin: 5px auto; 
             padding: 15px;
-            border-bottom: none; /* Remove bottom border */
-            border: 1px solid var(--border-color); /* Add a nice border */
+            border-bottom: none; 
+            border: 1px solid var(--border-color);
             background-color: var(--bg-light);
-            height: auto; /* Let height be automatic */
+            height: auto; 
         }
 
         .dropdown-content {
-            position: static; /* No absolute positioning on mobile */
+            position: static;
             transform: none;
             box-shadow: none;
             border: none;
@@ -162,20 +264,6 @@ max-height: calc(100vh - 70px);
             min-width: 100%;
         }
     }
-
-<!-- FINAL, DIRECT FIX for AI Bot & Tracker -->
-<style>
-  @media (max-width: 992px) {
-    .ai-counselor-container,
-    .tracker-container {
-      /* This is the magic: a negative margin cancels out the parent's padding */
-      margin-left: -20px !important;
-      margin-right: -20px !important;
-      
-      /* This ensures the corners are square, which looks better for full-width sections */
-      border-radius: 0 !important;
-    }
-  }
 </style>
 </head>
 <body>
