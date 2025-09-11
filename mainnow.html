@@ -163,15 +163,21 @@ max-height: calc(100vh - 70px);
         }
     }
 
-</style>
-<!-- AI COUNSELOR & TRACKER WIDTH FIX -->
+<!-- AI & TRACKER FULL-WIDTH MOBILE FIX -->
 <style>
   @media (max-width: 992px) {
-    /* Find the containers by their class names and override the padding */
-    .ai-counselor-container, 
-    .tracker-container {
+    /* Target the parent sections of the AI bot and Tracker */
+    .section {
       padding-left: 0 !important;
       padding-right: 0 !important;
+    }
+
+    /* Target the containers themselves to remove internal constraints */
+    .ai-counselor-container,
+    .tracker-container {
+      max-width: none !important; /* Remove the max-width limit */
+      width: 100% !important;     /* Force it to be full-width */
+      border-radius: 0 !important; /* Remove rounded corners for an edge-to-edge feel */
     }
   }
 </style>
