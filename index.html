@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="manifest" href="manifest.json">
+
+
+<meta name="theme-color" content="#000000"/> <!-- Make this match your manifest theme_color -->
   <title>Career Video</title>
   <style>
     body, html {
@@ -34,6 +39,31 @@
       cursor: pointer;
     }
   </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
+    <style>
+      /* 1. A more natural box model */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      
+      /* 2. Make images responsive */
+      img, video, iframe {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* 3. Make main containers flexible */
+      /* Adjust these if your main container has a different name */
+      body, .container, #main-content, #wrapper {
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+    </style>
+
 </head>
 <body>
 
@@ -46,21 +76,32 @@
     Your browser does not support the video tag.
   </video>
 
-  <script>
-    const video = document.getElementById('video');
-    const tapIcon = document.getElementById('tap-icon');
+<!-- PASTE THIS SCRIPT RIGHT AFTER YOUR <video> TAG IN index.html -->
 
-    tapIcon.addEventListener('click', function () {
-      video.muted = false;
-      video.play();
-      tapIcon.style.display = 'none'; // Hide icon after tap
-    });
+<script>
+  // Find the video element on the page
+  const introVideo = document.querySelector('video');
 
-    // Redirect to mainnow.html after video ends
-    video.addEventListener('ended', function () {
-      window.location.href = 'mainnow.html';
-    });
-  </script>
+  // Create a function that will change the page
+  function loadMainPage() {
+    window.location.href = 'mainnow.html'; // This line tells the browser to go to mainnow.html
+  }
 
+  // Tell the browser: when the video has finished playing ('ended'), run our function
+  introVideo.addEventListener('ended', loadMainPage);
+
+  // As a backup, if the video takes too long (e.g., 8 seconds), load the main page anyway
+  setTimeout(loadMainPage, 8000); 
+</script>
+
+  <!-- ADD THIS RIGHT BEFORE </body> IN index.html -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('Service worker registered'))
+      .catch(err => console.log('Service worker registration failed', err));
+  }
+</script>
+  
 </body>
 </html>

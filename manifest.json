@@ -1,0 +1,21 @@
+{
+  "name": "Careers India",
+  "short_name": "careersindia",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#7FFFD4",
+  "theme_color": "#000000",
+  "description": "Discover your future with our all-in-one Career & Education Navigator. From exploring courses after SSC, HSC, graduation, and post-graduation to finding the perfect Plan B when your first choice doesn’t work out, this app is your trusted guide. Dive into detailed insights on studying in India and abroad, including admissions, scholarships, tests like IELTS, TOEFL, GRE, GMAT, and practical living-abroad guides. Enhance your journey with tools like Udaan, a psychometric test that helps you identify the right career path, and EduCalc, which calculates cost–income ratios and payback periods of different courses. Stay ahead with emerging careers, explore top colleges, schools, and coaching institutes, and sharpen your edge with resources on math tricks, grammar, reasoning, and skill-gap analysis. Interactive charts, comprehensive scholarship directories, and a smart AI Chatbot make this app not just informative but truly transformative—empowering you to make confident choices for your academic and professional future.",
+  "icons": [
+    {
+      "src": "images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
