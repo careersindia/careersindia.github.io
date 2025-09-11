@@ -265,7 +265,8 @@
         }
     }
 /* --- PREVENT BODY SCROLL WHEN MENU IS OPEN --- */
-body.no-scroll {
+/* --- LOCK BODY SCROLL WHEN MENU IS ACTIVE (PURE CSS) --- */
+body:has(.nav-menu.active) {
     overflow: hidden;
 }
 </style>
@@ -813,7 +814,7 @@ body.no-scroll {
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-document.body.classList.toggle('no-scroll');
+
         });
     }
 
