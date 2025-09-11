@@ -157,6 +157,40 @@
         box-shadow: var(--shadow-md);
         z-index: 1000;
     }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSC Page 1</title>
+    
+    <!-- Link to manifest for PWA features on this page too -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- ADD YOUR STYLES HERE -->
+    <style>
+        /* You might have other styles here for the ssc1.html page */
+
+        /* CSS for the Floating Home Button */
+        .home-button {
+          position: fixed;
+          bottom: 25px;
+          right: 25px;
+          width: 60px;
+          height: 60px;
+          background-color: #000000;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+          z-index: 1000;
+          transition: transform 0.2s ease-in-out;
+        }
+
+        .home-button:hover {
+          transform: scale(1.1);
+        }
+    </style>
+</head>
 
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
