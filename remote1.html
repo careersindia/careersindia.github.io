@@ -15,7 +15,7 @@
             margin: 0;
             background-color: #f4f6f9;
             color: #333;
-            overflow: hidden; /* Prevent body scroll on DESKTOP */
+            overflow: hidden; /* Prevent body scroll */
         }
 
         /* --- Header and Filter --- */
@@ -46,7 +46,7 @@
         /* --- Main Two-Column Container --- */
         .container {
             display: flex;
-            height: calc(100vh - 75px); /* Full height minus header on DESKTOP */
+            height: calc(100vh - 75px); /* Full height minus header */
         }
 
         /* --- Left Pane (Platform List) --- */
@@ -98,16 +98,62 @@
             display: block;
         }
         
-        .platform-details h2 { margin-top: 0; border-bottom: 2px solid #007bff; padding-bottom: 10px; color: #1a253c; }
-        .platform-details h4 { color: #555; margin-bottom: 5px; margin-top: 20px; font-size: 1em; }
-        .platform-details p, .platform-details ul { margin-top: 5px; line-height: 1.6; }
-        .platform-details ul { padding-left: 20px; }
-        .platform-details .website-link { display: inline-block; margin-top: 10px; padding: 10px 15px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px; transition: background-color 0.2s; }
-        .platform-details .website-link:hover { background-color: #0056b3; }
-        .hidden { display: none !important; }
+        .platform-details h2 {
+            margin-top: 0;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            color: #1a253c;
+        }
+
+        .platform-details h4 {
+            color: #555;
+            margin-bottom: 5px;
+            margin-top: 20px;
+            font-size: 1em;
+        }
+
+        .platform-details p, .platform-details ul {
+            margin-top: 5px;
+            line-height: 1.6;
+        }
         
-        /* --- Original Responsive Design (We will override this for phones) --- */
+        .platform-details ul {
+            padding-left: 20px;
+        }
+        
+        .platform-details .website-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .platform-details .website-link:hover {
+            background-color: #0056b3;
+        }
+        
+        /* Utility class for filtering */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* --- Responsive Design for Mobile --- */
         @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+            .left-pane {
+                flex: 0 0 auto;
+                max-height: 35vh;
+            }
+            .right-pane {
+                max-height: 65vh;
+            }
             .header {
                 flex-direction: column;
                 padding-bottom: 10px;
@@ -117,32 +163,7 @@
             }
         }
     </style>
-
-<!-- FINAL MOBILE OVERRIDE & SCROLL FIX ("Sledgehammer" code) -->
-<style>
-  @media (max-width: 768px) { /* This targets only phones */
-    html, body {
-      height: auto !important;
-      overflow: auto !important; /* Allow the entire page to scroll */
-      -webkit-overflow-scrolling: touch;
-    }
-    .container {
-      display: block !important; /* Stack the panes vertically */
-      height: auto !important;
-    }
-    .left-pane, .right-pane {
-      width: 100% !important;
-      height: auto !important;
-      max-height: none !important; /* CRITICAL: Remove the height restriction */
-      overflow: visible !important; /* Panes don't need their own scrollbars */
-      border-right: none !important;
-    }
-    .right-pane {
-        padding: 20px 15px !important; /* Adjust padding for mobile */
-    }
-  }
-</style>
-/head>
+</head>
 <body>
 
     <div class="header">
@@ -380,5 +401,5 @@
         // Initial load
         filterPlatforms();
     </script>
-\r\n/body>
+</body>
 </html>
