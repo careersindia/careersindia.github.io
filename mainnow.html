@@ -220,18 +220,16 @@
 .nav-menu {
     display: none; 
     flex-direction: column;
-    position: fixed;
+    position: fixed; /* Fixes it to the screen */
     top: 0;
     left: 0;
     width: 100%;
-  bottom: 0; /* Make it stick to the bottom of the screen */
-    height: auto; /* Let its height be determined by its content */
-    /* --- THE FIX IS HERE --- */
-    background-color: #ffffff; /* A solid, non-transparent white */
-    z-index: 2000;                            /* CRITICAL: Puts the menu ON TOP of everything */
-    /* --- END OF FIX --- */
-    padding: 20px 0; /* Simpler padding now that it covers the header */
-    overflow-y: auto; 
+    height: 100%; /* Covers the full screen height */
+    background-color: white; /* The solid white background you wanted */
+    z-index: 2000; /* Puts it on top of everything */
+    overflow-y: auto; /* Allows scrolling if needed */
+    padding-top: 50px; /* Pushes content down from the top */
+    padding-bottom: 50px;
 }
 
         .nav-menu.active {
@@ -244,17 +242,19 @@
         }
         
         /* This styles the links inside the mobile menu */
-        .nav-menu .nav-link {
-            display: block; 
-            width: 80%; 
-            max-width: 300px; 
-            margin: 5px auto; 
-            padding: 15px;
-            border-bottom: none; 
-            border: 1px solid var(--border-color);
-            background-color: var(--bg-light);
-            height: auto; 
-        }
+    .nav-menu .nav-link {
+    display: block; 
+    width: 90%; 
+    max-width: 400px; 
+    margin: 10px auto; /* More space between items */
+    padding: 20px; /* Taller buttons */
+    border: 2px solid var(--border-color); /* A stronger border */
+    background-color: var(--bg-light);
+    height: auto;
+    font-size: 1.2rem; /* The bigger font size you wanted */
+    font-weight: 600; /* Bolder text */
+    color: var(--text-dark); /* Dark text for readability on white */
+}
 
         .dropdown-content {
             position: static;
