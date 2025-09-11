@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="manifest" href="manifest.json">
+
 <meta name="theme-color" content="#000000"/> <!-- Make this match your manifest theme_color -->
   <title>Career Video</title>
   <style>
@@ -60,6 +60,7 @@
         padding-right: 15px !important;
       }
     </style>
+
 <link rel="stylesheet" href="fab.css">\r\n</head>
 <body>
 
@@ -88,17 +89,7 @@
     });
   </script>
   
-  <script>
-    // Register the service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js')
-        .then(registration => {
-          console.log('Service Worker successfully registered with scope:', registration.scope);
-        }).catch(error => {
-          console.error('Service Worker registration failed:', error);
-        });
-    }
-  </script>
+ 
   
-<script>fetch('fab.html').then(res=>res.text()).then(html=>{document.body.insertAdjacentHTML('beforeend',html)})</script>\r\n</body>
+</body>
 </html>
