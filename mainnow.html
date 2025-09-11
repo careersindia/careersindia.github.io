@@ -218,24 +218,21 @@
             z-index: 1001; /* Ensure it's on top */
         }
 /* === THIS IS THE CORRECTED CODE FOR THE MOBILE MENU === */
-/* === THIS IS THE CORRECTED SNIPPET === */
 .nav-menu {
     display: none;
     flex-direction: column;
     position: fixed;
-    /* Start from the very top-left corner */
-    top: 0;
+    /* CHANGE 1: Start the menu exactly below your 70px header */
+    top: 70px; 
     left: 0;
-    /* Cover the entire screen */
     width: 100%;
-    height: 100%;
+    /* CHANGE 2: Make its height fill the REST of the screen */
+    height: calc(100vh - 70px); 
     background-color: white;
-    /* Ensure it's on top of everything, including the header */
-    z-index: 10000; 
-    overflow-y: auto; /* Allow scrolling for many menu items */
-    /* Add padding to push the items down from the top edge */
-    padding: 70px 20px 30px 20px;
-    box-sizing: border-box; /* Include padding in height calculation */
+    z-index: 999; /* Place it just behind the header (which is z-index: 1000) */
+    overflow-y: auto;
+    /* CHANGE 3: Use simple padding now that the position is correct */
+    padding: 20px 0; 
 }
 
         .nav-menu.active {
