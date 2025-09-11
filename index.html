@@ -45,6 +45,17 @@
             cursor: pointer;
             z-index: 2; /* Overlay is on top */
         }
+
+    /* ... your other styles for body, video, overlay, etc. ... */
+    
+    #start-overlay p {
+        font-size: 1.2em;
+        margin-top: 0;
+    }
+#tap-icon {
+        width: 80px; /* You can change this size */
+        margin: 20px 0; /* Adds space above and below the icon */
+    }
         
         #start-overlay h1 {
             font-size: 2.5em;
@@ -69,6 +80,7 @@
     <!-- The "Tap to Start" overlay that covers the screen -->
     <div id="start-overlay">
         <h1>Welcome to Careers India</h1>
+<img id="tap-icon" src="tap.png" alt="Tap to start">
         <p>Tap anywhere to begin</p>
     </div>
 
