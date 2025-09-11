@@ -163,21 +163,17 @@ max-height: calc(100vh - 70px);
         }
     }
 
-<!-- AI & TRACKER FULL-WIDTH MOBILE FIX -->
+<!-- FINAL, DIRECT FIX for AI Bot & Tracker -->
 <style>
   @media (max-width: 992px) {
-    /* Target the parent sections of the AI bot and Tracker */
-    .section {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-    }
-
-    /* Target the containers themselves to remove internal constraints */
     .ai-counselor-container,
     .tracker-container {
-      max-width: none !important; /* Remove the max-width limit */
-      width: 100% !important;     /* Force it to be full-width */
-      border-radius: 0 !important; /* Remove rounded corners for an edge-to-edge feel */
+      /* This is the magic: a negative margin cancels out the parent's padding */
+      margin-left: -20px !important;
+      margin-right: -20px !important;
+      
+      /* This ensures the corners are square, which looks better for full-width sections */
+      border-radius: 0 !important;
     }
   }
 </style>
