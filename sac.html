@@ -14,7 +14,7 @@
     :root {
         --white: #ffffff;
         --light-turquoise: #7FFFD4;
-        --light-turquoise-dark: #004d00; /* For 3D shadow and borders */
+        --light-turquoise-dark: #004d00;
         --dark-text: #212529;
         --light-gray: #f8f9fa;
         --border-color: #dee2e6;
@@ -29,12 +29,11 @@
 
     body {
         font-family: 'Poppins', sans-serif;
-        background-color: var(--white); /* MODIFIED: White background */
-        color: var(--dark-text); /* MODIFIED: Black font */
-        background-image: none;
+        background-color: var(--white);
+        color: var(--dark-text);
         padding: 2rem;
         min-height: 100vh;
-        overflow: hidden;
+        overflow: hidden; /* This is OK for desktop view */
     }
 
     .container {
@@ -45,36 +44,29 @@
         height: calc(100vh - 4rem);
     }
 
-    /* MODIFIED: Title box is light turquoise */
     .title-box {
         border: none;
         padding: 1.5rem 2rem;
         margin-bottom: 2rem;
         background-color: var(--light-turquoise);
-        backdrop-filter: none;
         border-radius: 15px;
         text-align: center;
         box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        perspective: none;
     }
 
-    /* MODIFIED: The Intense 3D Impact Font Title */
     .title-3d {
         font-family: 'Impact', sans-serif;
         font-size: 4rem;
         font-weight: normal;
         line-height: 1.1;
-        color: var(--white); /* MODIFIED: White font */
+        color: var(--white);
         text-transform: uppercase;
         letter-spacing: 2px;
-        
-        /* The Intense, Layered 3D Text Shadow */
         text-shadow: 
             1px 1px 0px var(--light-turquoise-dark), 
             2px 2px 0px var(--light-turquoise-dark), 
             3px 3px 0px var(--light-turquoise-dark),
             4px 4px 8px rgba(0,0,0,0.2);
-        animation: none;
     }
 
     .main-layout {
@@ -83,13 +75,12 @@
         gap: 2rem;
         flex-grow: 1;
         height: 100%;
-        overflow: hidden;
+        overflow: hidden; /* This is OK for desktop view */
     }
 
-    /* MODIFIED: Left sidebar is light turquoise */
     #sidebar {
         background-color: var(--light-turquoise);
-        color: var(--white); /* Font inside is white */
+        color: var(--white);
         border: 1px solid var(--light-turquoise-dark);
         border-radius: 15px;
         padding: 1.5rem;
@@ -122,7 +113,6 @@
         cursor: pointer;
         transition: all 0.3s ease;
         box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-        transform: none;
     }
     .nav-button:hover {
         background-color: var(--light-turquoise-dark);
@@ -152,7 +142,6 @@
         cursor: pointer;
     }
 
-    /* MODIFIED: Right content area is white */
     #content-area {
         position: relative;
         height: 100%;
@@ -163,65 +152,58 @@
         box-shadow: var(--shadow);
     }
 
-    #placeholder {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        text-align: center;
-        font-size: 1.5rem;
-        color: #aaa;
-    }
+    #placeholder { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; font-size: 1.5rem; color: #aaa; }
     #placeholder svg { width: 80px; height: 80px; margin-bottom: 1rem; opacity: 0.5; color: #ccc; }
-
-    #content-iframe, #top-20-content {
-        width: 100%;
-        height: 100%;
-        border: none;
-        border-radius: 15px;
-        display: none;
-    }
-    
-    #top-20-content {
-        overflow-y: auto;
-        padding: 2rem;
-        color: var(--dark-text);
-    }
-    
-    .top-consultant-card {
-        background-color: var(--white);
-        border-left: 5px solid var(--light-turquoise);
-        border-radius: 10px;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--border-color);
-        display: grid;
-        grid-template-columns: 50px 1fr;
-        gap: 1.5rem;
-        align-items: center;
-    }
-    .rank {
-        font-family: 'Russo One', sans-serif;
-        font-size: 2.5rem;
-        color: var(--light-turquoise);
-        text-align: center;
-    }
+    #content-iframe, #top-20-content { width: 100%; height: 100%; border: none; border-radius: 15px; display: none; }
+    #top-20-content { overflow-y: auto; padding: 2rem; color: var(--dark-text); }
+    .top-consultant-card { background-color: var(--white); border-left: 5px solid var(--light-turquoise); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); border: 1px solid var(--border-color); display: grid; grid-template-columns: 50px 1fr; gap: 1.5rem; align-items: center; }
+    .rank { font-family: 'Russo One', sans-serif; font-size: 2.5rem; color: var(--light-turquoise); text-align: center; }
     .consultant-details h3 { color: var(--dark-text); margin-bottom: 0.5rem; }
     .consultant-details p { font-size: 0.9rem; line-height: 1.6; color: #555; }
-
+    
+    /* Original Media Query (Kept for tablets and smaller adjustments) */
     @media (max-width: 900px) {
         .main-layout { grid-template-columns: 1fr; height: auto; }
         #sidebar { margin-bottom: 2rem; }
         #content-area { height: 80vh; }
         .title-3d { font-size: 3rem; }
     }
-/* Makes the city buttons and the state dropdown white with black text */
-.nav-button, #state-select {
-    background-color: var(--white);
-    color: var(--dark-text);
-}
+    
+    .nav-button, #state-select { background-color: var(--white); color: var(--dark-text); }
+</style>
+
+<!-- FINAL MOBILE OVERRIDE & SCROLL FIX ("Sledgehammer" code) -->
+<style>
+  @media (max-width: 768px) { /* This targets only phones */
+    html, body {
+      height: auto !important;
+      overflow: auto !important; /* Allow the whole page to scroll */
+      -webkit-overflow-scrolling: touch;
+      padding: 0 !important; /* Remove body padding for edge-to-edge layout */
+    }
+    .container {
+      height: auto !important; /* Let the main container grow */
+      padding: 1rem !important;
+    }
+    .main-layout {
+      display: block !important; /* Stack the sidebar and content */
+      height: auto !important;
+      overflow: visible !important;
+    }
+    #sidebar, #content-area {
+      width: 100% !important;
+      height: auto !important;
+      overflow: visible !important; /* No internal scrolling needed */
+    }
+    #content-area {
+      padding: 0;
+      border: none;
+      box-shadow: none;
+    }
+    .title-3d {
+      font-size: 2.5rem; /* Smaller title for mobile */
+    }
+  }
 </style>
 </head>
 <body>
@@ -369,5 +351,5 @@
             top20Button.addEventListener('click', displayTop20);
         });
     </script>
-</body>
+\r\n</body>
 </html>
