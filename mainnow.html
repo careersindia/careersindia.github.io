@@ -220,19 +220,21 @@
 .nav-menu {
     display: none; 
     flex-direction: column;
+justify-content: center;
+align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    height: 100vh;
     /* --- THE FIX IS HERE --- */
-    bottom: 0; /* Make it stick to the bottom of the screen */
-    height: auto; /* Let its height be determined by its content */
+    background-color: #ffffff; /* A solid, non-transparent white */
+    z-index: 2000;                            /* CRITICAL: Puts the menu ON TOP of everything */
     /* --- END OF FIX --- */
-    background-color: white; /* Solid white background */
-    z-index: 2000;
-    padding: 20px 0;
+    padding: 20px 0; /* Simpler padding now that it covers the header */
     overflow-y: auto; 
 }
+
         .nav-menu.active {
             display: flex; /* Show the menu when active */
         }
@@ -246,8 +248,8 @@
         .nav-menu .nav-link {
             display: block; 
             width: 90%; 
-            max-width: 300px; 
-            margin: 5px auto; 
+            max-width: 320px; 
+            margin: 10px auto; 
             padding: 15px;
             border-bottom: none; 
             border: 1px solid var(--border-color);
