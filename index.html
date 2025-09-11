@@ -1,106 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link rel="manifest" href="manifest.json">
-
-<!-- ADD THIS TO THE <head> OF index.html -->
-<style>
-  body { margin: 0; background-color: black; }
-  video { width: 100%; height: 100vh; object-fit: cover; }
-  #unmute-button {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    border: 1px solid white;
-    border-radius: 8px;
-    z-index: 10;
-  }
-</style>
-<meta name="theme-color" content="#000000"/> <!-- Make this match your manifest theme_color -->
-  <title>Career Video</title>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    #video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: translate(-50%, -50%);
-      z-index: -1;
-    }
-
-    #tap-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100px; /* Adjust size here */
-      height: auto;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      cursor: pointer;
-    }
-  </style>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
-    <style>
-      /* 1. A more natural box model */
-      *, *::before, *::after {
-        box-sizing: border-box;
-      }
-      
-      /* 2. Make images responsive */
-      img, video, iframe {
-        max-width: 100%;
-        height: auto;
-      }
-
-      /* 3. Make main containers flexible */
-      /* Adjust these if your main container has a different name */
-      body, .container, #main-content, #wrapper {
-        width: 100% !important;
-        max-width: 1200px !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-      }
-    </style>
-
-</head>
-<!-- REPLACE THE ENTIRE <body> OF index.html WITH THIS CODE -->
-<body>
-
-    <!-- This is the video player -->
-    <video id="intro-video" playsinline>
-        <source src="cube.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <!-- This is the "Tap to Start" overlay -->
-    <div id="start-overlay">
-        <h1>Welcome to Careers India</h1>
-        <p>Tap anywhere to begin</p>
-    </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers India - Welcome</title>
+    
+    <!-- PWA Manifest and Theme Color -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
 
     <style>
-        /* This CSS makes the video and overlay fill the screen */
-        body { margin: 0; font-family: sans-serif; }
+        /* This is the ONLY style block needed. */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: sans-serif;
+            background-color: black;
+        }
+
         #intro-video {
             position: fixed;
             top: 0;
@@ -108,8 +27,9 @@
             width: 100vw;
             height: 100vh;
             object-fit: cover;
-            z-index: 1;
+            z-index: 1; /* Video is in the back */
         }
+
         #start-overlay {
             position: fixed;
             top: 0;
@@ -123,38 +43,74 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            z-index: 2;
+            z-index: 2; /* Overlay is on top */
         }
-        #start-overlay h1 { font-size: 2.5em; }
-        #start-overlay p { font-size: 1.2em; margin-top: 0; }
-    </style>
+        
+        #start-overlay h1 {
+            font-size: 2.5em;
+            text-align: center;
+        }
 
+        #start-overlay p {
+            font-size: 1.2em;
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- The video player. No autoplay, no muted. The script will handle it. -->
+    <video id="intro-video" playsinline>
+        <source src="cube.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- The "Tap to Start" overlay that covers the screen -->
+    <div id="start-overlay">
+        <h1>Welcome to Careers India</h1>
+        <p>Tap anywhere to begin</p>
+    </div>
+
+    <!-- The ONE script that controls everything -->
     <script>
         const video = document.getElementById('intro-video');
         const startOverlay = document.getElementById('start-overlay');
 
-        // This function starts the video WITH sound
-        function playVideo() {
+        function startExperience() {
+            // This is the 'permission' from the user
             startOverlay.style.display = 'none'; // Hide the overlay
-            video.muted = false; // Make sure sound is ON
-            video.play(); // Play the video
+            
+            // Now we can play with sound
+            video.muted = false; 
+            const promise = video.play();
+
+            if (promise !== undefined) {
+                promise.catch(error => {
+                    // Autoplay was prevented. This can happen.
+                    // We will just redirect immediately in this case.
+                    console.error("Video play failed:", error);
+                    loadMainPage();
+                });
+            }
         }
         
-        // This function redirects to the main page
         function loadMainPage() {
             window.location.href = 'mainnow.html';
         }
 
         // --- Event Listeners ---
-        // 1. When the user taps the overlay, play the video
-        startOverlay.addEventListener('click', playVideo);
+        // 1. When the user taps the overlay, start the experience
+        startOverlay.addEventListener('click', startExperience);
 
         // 2. When the video finishes playing, go to the main page
         video.addEventListener('ended', loadMainPage);
-
-        // 3. Keep the old service worker script
+        
+        // 3. Register the service worker for the PWA
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js');
+            navigator.serviceWorker.register('/sw.js')
+              .then(reg => console.log('Service worker registered'))
+              .catch(err => console.log('Service worker registration failed', err));
         }
     </script>
 
