@@ -159,6 +159,31 @@
     }
 
 </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
+    <style>
+      /* 1. A more natural box model */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      
+      /* 2. Make images responsive */
+      img, video, iframe {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* 3. Make main containers flexible */
+      /* Adjust these if your main container has a different name */
+      body, .container, #main-content, #wrapper {
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+    </style>
+
 </head>
 <body>
 
@@ -399,5 +424,12 @@
     };
 </script>
 
-</body>
+<!-- Floating Home Button -->
+<a href="/mainnow.html" class="home-button" aria-label="Go to Home Page">
+  <!-- Using an inline SVG for the home icon - no extra files needed! -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="28px" height="28px">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+  </svg>
+</a></body>
 </html>

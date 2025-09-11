@@ -10,6 +10,7 @@ const filesToCache = [
   'manifest.json',
   'images/icon-192x192.png',
   'images/icon-512x512.png',
+'images/qr-code.png',
   'tap.png', // I saw this in your HTML, let's cache it
 'cube.png',
 'cube.mp4',
