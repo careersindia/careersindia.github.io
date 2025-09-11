@@ -15,7 +15,32 @@
   .salary-table th, .salary-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
   .salary-table th { background-color: #f2f2f2; }
 </style>
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
+    <style>
+      /* 1. A more natural box model */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      
+      /* 2. Make images responsive */
+      img, video, iframe {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* 3. Make main containers flexible */
+      /* Adjust these if your main container has a different name */
+      body, .container, #main-content, #wrapper {
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+    </style>
+
+/head>
 <body>
 
 <h1>Ph.D. Programs and MD Degrees Overview</h1>
@@ -2590,5 +2615,5 @@
 </div>
 
 
-</body>
+\r\n/body>
 </html>
