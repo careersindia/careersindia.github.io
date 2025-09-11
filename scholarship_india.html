@@ -17,10 +17,9 @@
         --border-color: #e1e8ed;
         --dark-text: #2c3e50;
         --shadow-color: rgba(44, 62, 80, 0.1);
-        --shadow-color-darker: rgba(0, 0, 0, 0.15); /* For the new 3D text */
+        --shadow-color-darker: rgba(0, 0, 0, 0.15);
     }
 
-    /* --- Pro-Tip Banner Styles (Unchanged) --- */
     .pro-tip-banner {
         position: fixed;
         top: 0;
@@ -39,25 +38,10 @@
         animation: fadeInDown 0.8s ease-out;
     }
 
-    .pro-tip-banner svg {
-        flex-shrink: 0;
-        margin-right: 15px;
-        color: var(--dark-text);
-    }
-
-    .banner-text {
-        text-align: left;
-    }
-
-    .banner-text strong {
-        font-weight: 600;
-        color: var(--dark-text);
-    }
-
-    .banner-text .keywords {
-        color: #333;
-        font-style: italic;
-    }
+    .pro-tip-banner svg { flex-shrink: 0; margin-right: 15px; color: var(--dark-text); }
+    .banner-text { text-align: left; }
+    .banner-text strong { font-weight: 600; color: var(--dark-text); }
+    .banner-text .keywords { color: #333; font-style: italic; }
 
     @keyframes fadeInDown {
         from { opacity: 0; transform: translateY(-20px); }
@@ -71,7 +55,7 @@
         margin: 0;
         padding: 0;
         height: 100vh;
-        overflow: hidden;
+        overflow: hidden; /* OK for desktop */
     }
 
     .main-container {
@@ -93,32 +77,24 @@
         overflow-y: auto;
     }
 
-    .title-container::after, .title-container h1::after { 
-        display: none; 
-    }
-
-    /* MODIFIED: Title container now has a turquoise background */
     .title-container {
         position: relative;
         padding: 25px;
         margin-bottom: 40px;
-        background: black; /* CHANGED to turquoise */
+        background: black;
         border-radius: 20px;
         text-align: center;
-        border: none; /* Removed border */
-        box-shadow: 0 8px 25px rgba(64, 224, 208, 0.4); /* Shadow tinted with turquoise */
+        border: none;
+        box-shadow: 0 8px 25px rgba(64, 224, 208, 0.4);
     }
 
-    /* MODIFIED: Title text is now 3D White */
     .title-container h1 {
         margin: 0;
         font-family: 'Orbitron', sans-serif;
         font-size: 1.80em;
         line-height: 1.1;
         font-weight: 900;
-        color: var(--white); /* CHANGED to white */
-
-        /* A new 3D effect for white text on a turquoise background */
+        color: var(--white);
         text-shadow:
             1px 1px 0px var(--shadow-color-darker),
             2px 2px 0px var(--shadow-color-darker),
@@ -126,41 +102,11 @@
             4px 4px 8px rgba(0,0,0,0.2);
     }
 
-    .selector-container label {
-        display: block;
-        font-size: 1.1em;
-        margin-bottom: 10px;
-        color: var(--dark-text);
-        font-weight: 600;
-    }
-
-    /* MODIFIED: Dropdown is now turquoise */
-    #state-selector {
-        width: 100%;
-        padding: 12px;
-        font-family: 'Poppins', sans-serif;
-        font-size: 1em;
-       background-color: black; /* CHANGED to turquoise */
-        color: var(--white); /* CHANGED text to white */
-        border: 1px solid var(--turquoise-dark); /* Darker turquoise border */
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-    }
-    #state-selector:focus {
-        outline: none;
-        box-shadow: 0 0 0 3px rgba(64, 224, 208, 0.4);
-    }
-    #state-selector optgroup {
-        font-weight: bold;
-        background-color: var(--light-gray); /* Light bg for readability */
-        color: #555;
-    }
-    #state-selector option {
-        padding: 10px;
-        background-color: var(--white); /* White bg for readability */
-        color: var(--dark-text); /* Dark text for readability */
-    }
+    .selector-container label { display: block; font-size: 1.1em; margin-bottom: 10px; color: var(--dark-text); font-weight: 600; }
+    #state-selector { width: 100%; padding: 12px; font-family: 'Poppins', sans-serif; font-size: 1em; background-color: black; color: var(--white); border: 1px solid var(--turquoise-dark); border-radius: 8px; cursor: pointer; transition: background-color 0.2s ease; }
+    #state-selector:focus { outline: none; box-shadow: 0 0 0 3px rgba(64, 224, 208, 0.4); }
+    #state-selector optgroup { font-weight: bold; background-color: var(--light-gray); color: #555; }
+    #state-selector option { padding: 10px; background-color: var(--white); color: var(--dark-text); }
 
     /* --- Right Content Pane --- */
     .content-pane {
@@ -172,16 +118,8 @@
         align-items: center;
     }
 
-    .welcome-message {
-        text-align: center;
-        color: #777;
-    }
-    
-    .welcome-message h2 {
-        font-size: 2.5em;
-        color: var(--dark-text);
-        text-shadow: none;
-    }
+    .welcome-message { text-align: center; color: #777; }
+    .welcome-message h2 { font-size: 2.5em; color: var(--dark-text); text-shadow: none; }
 
     #content-frame {
         width: 100%;
@@ -189,6 +127,42 @@
         border: none;
         display: none;
     }
+</style>
+
+<!-- FINAL MOBILE OVERRIDE & SCROLL FIX ("Sledgehammer" code) -->
+<style>
+  @media (max-width: 768px) { /* This targets only phones */
+    html, body {
+      height: auto !important;
+      overflow: auto !important; /* Allow the entire page to scroll */
+      -webkit-overflow-scrolling: touch;
+    }
+    .main-container {
+      display: block !important; /* Stack sidebar and content */
+      height: auto !important;
+      padding-top: 70px !important; /* Make space for the banner */
+    }
+    .sidebar, .content-pane {
+      width: 100% !important;
+      height: auto !important;
+      flex: none !important; /* Remove flex sizing */
+      overflow: visible !important;
+      border-right: none !important;
+    }
+    .sidebar {
+        padding: 20px 15px !important;
+    }
+    .content-pane {
+      padding: 0 15px !important;
+      min-height: 80vh; /* CRITICAL: Give the iframe a reasonable minimum height */
+    }
+    #content-frame {
+      min-height: 80vh; /* CRITICAL: Ensure the iframe itself has height */
+    }
+    .pro-tip-banner {
+        position: absolute !important; /* Stop banner from being fixed on mobile */
+    }
+  }
 </style>
 </head>
 <body>
@@ -298,5 +272,5 @@
         });
     </script>
 
-</body>
+\r\n</body>
 </html>
