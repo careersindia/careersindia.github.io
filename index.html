@@ -83,61 +83,80 @@
     </style>
 
 </head>
+<!-- REPLACE THE ENTIRE <body> OF index.html WITH THIS CODE -->
 <body>
 
-  <!-- Tap Icon -->
-  <img id="tap-icon" src="tap.png" alt="Tap to enable sound">
+    <!-- This is the video player -->
+    <video id="intro-video" playsinline>
+        <source src="cube.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
-  <!-- Video element -->
-  <video id="video" autoplay muted playsinline>
-    <source src="cube.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-<button id="unmute-button">🔊 Unmute</button>
+    <!-- This is the "Tap to Start" overlay -->
+    <div id="start-overlay">
+        <h1>Welcome to Careers India</h1>
+        <p>Tap anywhere to begin</p>
+    </div>
 
-<!-- PASTE THIS SCRIPT RIGHT AFTER YOUR <video> TAG IN index.html -->
+    <style>
+        /* This CSS makes the video and overlay fill the screen */
+        body { margin: 0; font-family: sans-serif; }
+        #intro-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: 1;
+        }
+        #start-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 2;
+        }
+        #start-overlay h1 { font-size: 2.5em; }
+        #start-overlay p { font-size: 1.2em; margin-top: 0; }
+    </style>
 
-<script>
-  // Find the video element on the page
-  const introVideo = document.querySelector('video');
-
-  // Create a function that will change the page
-  function loadMainPage() {
-    window.location.href = 'mainnow.html'; // This line tells the browser to go to mainnow.html
-  }
-
-  // Tell the browser: when the video has finished playing ('ended'), run our function
-  introVideo.addEventListener('ended', loadMainPage);
-
-  // As a backup, if the video takes too long (e.g., 8 seconds), load the main page anyway
-  setTimeout(loadMainPage, 8000); 
-</script>
-
-    <!-- ... your video redirect script is here ... -->
-
-    <!-- ADD THIS NEW UNMUTE SCRIPT -->
     <script>
         const video = document.getElementById('intro-video');
-        const unmuteButton = document.getElementById('unmute-button');
+        const startOverlay = document.getElementById('start-overlay');
 
-        unmuteButton.addEventListener('click', () => {
-            video.muted = false;
-            unmuteButton.style.display = 'none'; // Hide button after click
-        });
+        // This function starts the video WITH sound
+        function playVideo() {
+            startOverlay.style.display = 'none'; // Hide the overlay
+            video.muted = false; // Make sure sound is ON
+            video.play(); // Play the video
+        }
+        
+        // This function redirects to the main page
+        function loadMainPage() {
+            window.location.href = 'mainnow.html';
+        }
+
+        // --- Event Listeners ---
+        // 1. When the user taps the overlay, play the video
+        startOverlay.addEventListener('click', playVideo);
+
+        // 2. When the video finishes playing, go to the main page
+        video.addEventListener('ended', loadMainPage);
+
+        // 3. Keep the old service worker script
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
     </script>
 
-    <!-- ... your service worker script is here ... -->
-</body>
-
-
-  <!-- ADD THIS RIGHT BEFORE </body> IN index.html -->
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-      .then(reg => console.log('Service worker registered'))
-      .catch(err => console.log('Service worker registration failed', err));
-  }
-</script>
-  
 </body>
 </html>
