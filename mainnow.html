@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers India - Find Your Path to Success</title>
+
+<link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000"/>
     
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,14 +20,14 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
 
 <style>
-    @import url('https://fonts.cdnfonts.com/css/impact');
+ @import url('https://fonts.cdnfonts.com/css/impact');
     /* === MODERN CAREER PORTAL THEME === */
 
     :root {
         --primary-color:#7FFFD4; /* light turquoise */
         --secondary-color: #7FFFD4; /* light turquoise for accents */
         --accent-color: #7FFFD4;   /* light turquoise for CTAs */
-        --icon-color-turquoise: #7FFFD4;
+--icon-color-turquoise: #7FFFD4;
         --text-dark: #000000;
         --text-light: #6c757d;
         --bg-light: #f8f9fa;
@@ -75,22 +78,22 @@
         padding: 0 20px;
     }
     
-    .logo {
-        font-size: 0.7rem;
-        font-weight: 700;
-        color: #000000;
-        text-decoration: none;
-        line-height: 1;
-        text-align: left;
-        margin-right: auto;
-    }
+ .logo {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #000000;
+    text-decoration: none;
+    line-height: 1; /* Add this line */
+   text-align: left; /* Keep this change */
+    margin-right: auto; /* <-- THIS IS THE GUARANTEED FIX */
+}
     .logo i { margin-right: 8px; }
 
     .nav-menu {
         display: flex;
         list-style: none;
         align-items: center;
-        margin-left: auto;
+margin-left: auto;
     }
 
     .nav-menu > li {
@@ -98,19 +101,20 @@
         margin: 0 1px;
     }
 
+    /* --- UPDATED FOR BETTER FIT --- */
     .nav-link {
         display: block;
-        padding: 8px 10px;
+        padding: 8px 10px; /* Reduced side padding */
         text-decoration: none;
         color: #000000;
-        font-size: 0.75rem;
+        font-size: 0.75rem; /* A reasonable font size */
         font-weight: 500;
         transition: color 0.3s ease, background-color 0.3s ease;
         border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        height: 45px;
-        min-width: 70px;
-        text-align: center;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+ height: 45px;   /* <-- ADD THIS LINE */
+min-width: 70px;
+    text-align: center; /* <-- AND THIS LINE */
     }
     
     .nav-link:hover {
@@ -118,6 +122,7 @@
         background-color: rgba(0, 86, 179, 0.05);
     }
     
+    /* Dropdown Styling */
     .dropdown-content {
         display: none;
         position: absolute;
@@ -135,79 +140,460 @@
         border: 1px solid var(--border-color);
     }
 
-    .nav-menu > li:hover .dropdown-content { display: block; }
-    .dropdown-content a { display: block; padding: 10px 15px; color: #000000; text-decoration: none; font-size: 0.9rem; border-radius: 5px; transition: background-color 0.2s ease; }
-    .dropdown-content a:hover { background-color: var(--bg-light); }
+    .nav-menu > li:hover .dropdown-content {
+        display: block;
+    }
+    
+    .dropdown-content a {
+        display: block;
+        padding: 10px 15px;
+        color: #000000;
+        text-decoration: none;
+        font-size: 0.9rem;
+        border-radius: 5px;
+        transition: background-color 0.2s ease;
+    }
+
+    .dropdown-content a:hover {
+        background-color: var(--bg-light);
+      
+    }
+    
+    /* Hamburger Menu for Mobile */
     .menu-toggle { display: none; }
     
-    /* --- Hero Section --- */
-    .hero { position: relative; min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; color: #000000; padding: 100px 20px 50px 20px; }
-    .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #7FFFD4; }
-    .hero-content { position: relative; z-index: 2; max-width: 800px; }
-    .hero-title { font-family: 'Impact', sans-serif; font-size: 4.5rem; font-weight: 700; margin-bottom: 15px; line-height: 1.2; color:#000000; display: inline-block; background-color:#ffffff; padding: 15px 30px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.1); text-shadow: 1px 1px 0 #bbb, 2px 2px 0 #aaa, 3px 3px 0 #999, 4px 4px 0 #888, 5px 5px 15px rgba(0, 0, 0, 0.5); }
-    .hero-tagline { font-size: 1.5rem; font-weight: 300; margin-bottom: 30px; opacity: 0.9; }
+    /* --- Hero Section (WOW Factor) --- */
+    .hero {
+        position: relative;
+        height: auto; /* Changed to auto to fit content */
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #000000;
+       /* background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop');*/
+        background-size: cover;
+        background-position: center;
+        padding: 100px 20px 50px 20px; /* Adjusted padding */
+    }
 
-    /* --- Other Sections (Shortened for brevity) --- */
-    #rotating-logo { width: 100px; height: 100px; margin: 0 auto 30px auto; background-image: url('cube.png'); background-size: cover; border-radius: 12px; animation: rotateMove 8s linear infinite; box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
-    @keyframes rotateMove { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    .hero-inserted-image { max-width: 90%; height: auto; margin-top: 25px; margin-bottom: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
-    .search-engine-container { width: 100%; background:#7FFFD4; padding: 15px; border-radius: 12px; }
-    .search-box-wrapper { display: flex; gap: 10px; }
-    #aiSearchInput { flex-grow: 1; padding: 15px 20px; border-radius: 8px; border: 1px solid transparent; font-size: 1.1rem; }
-    #aiSearchButton { flex-shrink: 0; padding: 0 30px; border: none; border-radius: 8px; background-color: #ffffff; color: #000000; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
-    #aiSearchFeedback { margin-top: 10px; color: white; font-weight: 500; min-height: 20px; }
-    .section { padding: 80px 0; }
-    .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 10px; }
-    .section-subtitle { text-align: center; font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto 50px auto; }
-    .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-    .category-card { background-color: var(--bg-white); border-radius: 12px; box-shadow: var(--shadow-sm); padding: 30px; text-align: center; text-decoration: none; color: var(--text-dark); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .category-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-md); }
-    .category-card .icon { font-size: 3rem; color: var(--primary-color); margin-bottom: 20px; display: inline-block; }
-    .category-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
-    .category-card p { font-size: 0.9rem; color: var(--text-light); }
-    .counter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-    .counter-item { background-color: var(--bg-white); padding: 30px 20px; text-align: center; border-radius: 12px; box-shadow: var(--shadow-sm); border-top: 4px solid var(--accent-color); }
-    .counter-number { font-size: 3rem; font-weight: 700; color: var(--text-dark); display: block; line-height: 1.2; }
-    .counter-label { font-size: 1rem; font-weight: 500; color: var(--text-light); }
-    .featured-section { background-color: var(--bg-white); }
-    .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; align-items: center; }
-    .featured-card { background: #ffffff; color: black; padding: 40px; border-radius: 15px; text-align: center; box-shadow: var(--shadow-md); }
-    .featured-card .icon { font-size: 3.5rem; margin-bottom: 15px; color: var(--icon-color-turquoise); }
-    .featured-card h3 { font-size: 1.8rem; margin-bottom: 15px; }
-    .featured-card .btn-featured { display: inline-block; background-color: var(--accent-color); color: black; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; }
-    .main-footer { background-color: #212529; color: var(--text-light); padding: 60px 0 20px 0; }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
-    .footer-col h4 { color: white; margin-bottom: 20px; font-size: 1.1rem; position: relative; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li a { color: var(--text-light); text-decoration: none; display: block; padding: 5px 0; }
-    .footer-bottom { border-top: 1px solid #444; padding-top: 20px; text-align: center; font-size: 0.9rem; }
-    .nav-menu > li:nth-last-child(-n+3) .dropdown-content { left: auto; right: 0; transform: translateX(0); }
-    .nav-link i { display: none !important; }
-    .ai-counselor-container { width: 100%; background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 12px; backdrop-filter: blur(5px); box-shadow: var(--shadow-md); text-align: left; color: var(--text-dark); }
-    .ai-input-wrapper { display: flex; gap: 10px; margin-bottom: 15px; }
-    #aiUserInput { flex-grow: 1; padding: 15px 20px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 1.1rem; }
-    #aiCounselorButton { flex-shrink: 0; padding: 0 30px; border: none; border-radius: 8px; background-color: var(--primary-color); color: var(--text-dark); font-size: 1.1rem; font-weight: 600; cursor: pointer; }
-    #aiResponse { margin-top: 15px; padding: 15px; background-color: aquamarine; border-radius: 8px; white-space: pre-wrap; line-height: 1.6; min-height: 50px; }
-    .tracker-container { max-width: 1000px; margin: 40px auto; padding: 25px; background-color: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .tracker-container h2 { text-align: center; margin-bottom: 20px; }
-    .tracker-notice { text-align: center; background-color: #eef7ff; padding: 10px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9em; }
-    .add-form { display: flex; gap: 10px; margin-bottom: 20px; }
-    .add-form input { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
-    .add-form button { padding: 10px 20px; background-color: var(--accent-color); border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
-    #appTable { width: 100%; border-collapse: collapse; }
-    #appTable th, #appTable td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
-    #appTable th { background-color: #f8f9fa; }
-    .delete-btn { color: #dc3545; background: none; border: none; cursor: pointer; font-size: 1.1em; }
+    .hero::after { /* Dark overlay for text readability */
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: #7FFFD4;
+    }
 
-    /* --- THE FINAL, CORRECTED RESPONSIVE CODE --- */
-    @media (max-width: 992px) { /* A wider breakpoint for tablets and phones */
-        /* --- General Layout & Font Sizes --- */
-        .hero-title { font-size: 2.8rem; padding: 10px 20px; }
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+    }
+
+ .hero-title {
+font-family: 'Impact', sans-serif; 
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    color:#000000; /* Ensures text is white */
+    
+    /* This creates the semi-transparent "box" */
+    display: inline-block; /* Allows padding and background to contain the text */
+    background-color:#ffffff;
+    padding: 15px 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* This is the new, stronger 3D block effect for the text */
+    text-shadow: 
+        1px 1px 0 #bbb,
+        2px 2px 0 #aaa,
+        3px 3px 0 #999,
+        4px 4px 0 #888,
+        5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+    .hero-tagline {
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-bottom: 30px; /* Adjusted margin */
+        opacity: 0.9;
+    }
+
+    /* --- Rotating Logo in Hero Section --- */
+    #rotating-logo {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 30px auto; /* Centered, with margin below */
+        background-image: url('cube.png'); /* IMPORTANT: 'cube.png' must be in the same folder */
+        background-size: cover;
+        background-position: center;
+        border-radius: 12px; /* Makes the rotating element circular */
+        animation: rotateMove 8s linear infinite;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); /* Adds a subtle glow */
+    }
+
+/* --- Style for the newly inserted image --- */
+.hero-inserted-image {
+    max-width: 90%; /* Make it responsive */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 25px; /* Space from the logo above */
+    margin-bottom: 25px; /* Space to the search box below */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Add some depth */
+}
+
+    @keyframes rotateMove {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+
+    /* --- Search Box in Hero --- */
+    .search-engine-container {
+        width: 100%;
+        background:#7FFFD4;
+        padding: 15px;
+        border-radius: 12px;
+        backdrop-filter: blur(5px);
+    }
+    
+    .search-box-wrapper {
+        display: flex;
+        gap: 10px;
+    }
+
+    #aiSearchInput {
+        flex-grow: 1;
+        padding: 15px 20px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        font-size: 1.1rem;
+        color: var(--text-dark);
+    }
+    #aiSearchInput:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px rgba(255, 111, 97, 0.4);
+    }
+    
+    #aiSearchButton {
+        flex-shrink: 0;
+        padding: 0 30px;
+        border: none;
+        border-radius: 8px;
+        background-color: #ffffff;
+        color: #000000;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    #aiSearchButton:hover {
+        background-color: #40E0D0;
+        transform: translateY(-2px);
+    }
+    #aiSearchFeedback {
+        margin-top: 10px;
+        color: white;
+        font-weight: 500;
+        min-height: 20px;
+    }
+
+    /* --- Category Cards Section --- */
+    .section {
+        padding: 80px 0;
+    }
+    
+    .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+        text-align: center;
+        font-size: 1.1rem;
+        color: var(--text-light);
+        max-width: 600px;
+        margin: 0 auto 50px auto;
+    }
+
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
+
+    .category-card {
+        background-color: var(--bg-white);
+        border-radius: 12px;
+        box-shadow: var(--shadow-sm);
+        padding: 30px;
+        text-align: center;
+        text-decoration: none;
+        color: var(--text-dark);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .category-card .icon {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        display: inline-block;
+    }
+
+    .category-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
+    .category-card p {
+        font-size: 0.9rem;
+        color: var(--text-light);
+    }
+
+    /* ======================================= */
+    /* === NEW: Impact Stats Counter Section === */
+    /* ======================================= */
+    .counter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .counter-item {
+        background-color: var(--bg-white);
+        padding: 30px 20px;
+        text-align: center;
+        border-radius: 12px;
+        box-shadow: var(--shadow-sm);
+        border-top: 4px solid var(--accent-color);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .counter-item:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .counter-item .icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+    }
+
+    .counter-number {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        display: block;
+        line-height: 1.2;
+    }
+
+    .counter-label {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text-light);
+    }
+
+
+    
+    /* --- Featured Tools Section --- */
+    .featured-section {
+        background-color: var(--bg-white);
+    }
+    
+    .featured-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        align-items: center;
+    }
+    
+    .featured-card {
+        background: #ffffff;
+        color: black;
+        padding: 40px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: var(--shadow-md);
+    }
+    
+    .featured-card .icon {
+        font-size: 3.5rem;
+        margin-bottom: 15px;
+color: var(--icon-color-turquoise); 
+    }
+    
+    .featured-card h3 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+    
+    .featured-card p {
+        opacity: 0.9;
+        margin-bottom: 25px;
+    }
+    
+    .featured-card .btn-featured {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: black;
+        padding: 12px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    
+    .featured-card .btn-featured:hover {
+        background-color: #40E0D0;
+        transform: scale(1.05);
+    }
+
+
+
+    /* --- News Ticker Section --- */
+    #edu-news-container {
+        background-color: var(--primary-color);
+        color: black;
+        padding: 15px 0;
+        text-align: center;
+    }
+    #edu-news {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    #edu-news-container strong {
+        background-color: var(--accent-color);
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-right: 15px;
+    }
+    #edu-news a {
+        color: black;
+        text-decoration: none;
+        transition: text-decoration 0.2s;
+    }
+    #edu-news a:hover {
+        text-decoration: underline;
+
+    }
+
+    /* --- Footer --- */
+    .main-footer {
+        background-color: #212529;
+        color: var(--text-light);
+        padding: 60px 0 20px 0;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+        color: white;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+        position: relative;
+    }
+    .footer-col h4::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 40px;
+        height: 2px;
+        background-color: var(--accent-color);
+    }
+    
+    .footer-col ul {
+        list-style: none;
+    }
+    
+    .footer-col ul li a {
+        color: var(--text-light);
+        text-decoration: none;
+        display: block;
+        padding: 5px 0;
+        transition: color 0.3s ease, padding-left 0.3s ease;
+    }
+    .footer-col ul li a:hover {
+        color: white;
+        padding-left: 5px;
+    }
+
+    .footer-bottom {
+        border-top: 1px solid #444;
+        padding-top: 20px;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    .social-icons {
+        margin-top: 20px;
+    }
+    .social-icons a {
+        color: var(--text-light);
+        font-size: 1.5rem;
+        margin: 0 10px;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .social-icons a:hover {
+        color: var(--accent-color);
+        transform: translateY(-3px);
+    }
+    
+    /* Dropdown Alignment Fix */
+    .nav-menu > li:nth-last-child(-n+3) .dropdown-content {
+        left: auto;
+        right: 0;
+        transform: translateX(0);
+    }
+
+    .nav-menu > li:nth-last-child(-n+3) .dropdown-content::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        right: 20px;
+        border: 5px solid transparent;
+        border-bottom-color: var(--bg-white);
+    }
+    
+    /* --- Responsive Design --- */
+    /* MODIFIED: Changed breakpoint from 992px to 768px */
+    @media (max-width: 768px) {
+        .hero-title { font-size: 2.8rem; }
         .hero-tagline { font-size: 1.2rem; }
-        .search-box-wrapper { flex-direction: column; }
-        .nav-link { display: none; } /* Hide the desktop links */
+        
+        .nav-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow-md);
+        }
+        .nav-menu.active {
+            display: flex;
+        }
+        .nav-menu li { width: 100%; text-align: center; }
+        .nav-link { padding: 15px; border-bottom: 1px solid var(--border-color); }
+        .dropdown-content { position: static; transform: none; box-shadow: none; border: none; background-color: #fdfdfd; }
 
-        /* --- Hamburger Menu Logic --- */
         .menu-toggle {
             display: block;
             font-size: 1.8rem;
@@ -215,61 +601,129 @@
             background: none;
             border: none;
             color: var(--primary-color);
-            z-index: 1001; /* Ensure it's on top */
-        }
-.nav-menu {
-    display: none; 
-    flex-direction: column;
-    position: fixed; /* Fixes it to the screen */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; /* Covers the full screen height */
-    background-color: white; /* The solid white background you wanted */
-    z-index: 2000; /* Puts it on top of everything */
-    overflow-y: auto; /* Allows scrolling if needed */
-    padding-top: 50px; /* Pushes content down from the top */
-    padding-bottom: 50px;
-}
-
-        .nav-menu.active {
-            display: flex; /* Show the menu when active */
-        }
-        
-        .nav-menu li {
-            width: 100%;
-            text-align: center;
-        }
-        
-        /* This styles the links inside the mobile menu */
-    .nav-menu .nav-link {
-    display: block; 
-    width: 90%; 
-    max-width: 400px; 
-    margin: 10px auto; /* More space between items */
-    padding: 20px; /* Taller buttons */
-    border: 2px solid var(--border-color); /* A stronger border */
-    background-color: var(--bg-light);
-    height: auto;
-    font-size: 1.2rem; /* The bigger font size you wanted */
-    font-weight: 600; /* Bolder text */
-    color: var(--text-dark); /* Dark text for readability on white */
-}
-
-        .dropdown-content {
-            position: static;
-            transform: none;
-            box-shadow: none;
-            border: none;
-            background-color: #fdfdfd;
-            min-width: 100%;
         }
     }
-/* --- PREVENT BODY SCROLL WHEN MENU IS OPEN --- */
-/* --- LOCK BODY SCROLL WHEN MENU IS ACTIVE (PURE CSS) --- */
-body:has(.nav-menu.active) {
-    overflow: hidden;
+    
+    @media (max-width: 768px) { /* This second 768px block can be merged but is fine as is */
+        .hero-title { font-size: 2.2rem; }
+        .search-box-wrapper { flex-direction: column; }
+        #rotating-logo {
+            width: 80px;
+            height: 80px;
+        }
+    }
+.nav-link i { display: none !important; }
+/* === AI CAREER COUNSELOR STYLES === */
+.ai-counselor-container {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    padding: 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    box-shadow: var(--shadow-md);
+    text-align: left;
+    color: var(--text-dark);
 }
+.ai-input-wrapper {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+#aiUserInput {
+    flex-grow: 1;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+#aiUserInput:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(64, 224, 208, 0.4);
+}
+#aiCounselorButton {
+    flex-shrink: 0;
+    padding: 0 30px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+#aiCounselorButton:hover {
+    background-color: #40E0D0; /* A slightly darker turquoise */
+    transform: translateY(-2px);
+}
+#aiCounselorButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+#aiResponse {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: aquamarine;
+    border-radius: 8px;
+    white-space: pre-wrap; /* This preserves formatting like line breaks */
+    line-height: 1.6;
+    min-height: 50px;
+    transition: background-color 0.3s ease;
+}
+/* Application Tracker Styles */
+.tracker-container {
+    max-width: 1000px; margin: 40px auto; padding: 25px;
+    background-color: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.tracker-container h2 { text-align: center; margin-bottom: 20px; }
+.tracker-notice { text-align: center; background-color: #eef7ff; padding: 10px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9em; }
+
+.add-form { display: flex; gap: 10px; margin-bottom: 20px; }
+.add-form input { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+.add-form button { padding: 10px 20px; background-color: var(--accent-color); border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+
+#appTable { width: 100%; border-collapse: collapse; }
+#appTable th, #appTable td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
+#appTable th { background-color: #f8f9fa; }
+
+/* Checklist and Status styling */
+.checklist input { margin-right: 5px; }
+.status-select { padding: 5px; border-radius: 5px; border: 1px solid #ccc; }
+.delete-btn { color: #dc3545; background: none; border: none; cursor: pointer; font-size: 1.1em; }
+/* === NEW Document Button Styles === */
+.doc-buttons-container {
+    display: flex;
+    gap: 5px; /* Adds a small space between buttons */
+}
+
+.doc-btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.8em;
+    font-weight: 500;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.doc-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Red "Pending" Button */
+.doc-btn-pending {
+    background-color: #dc3545; /* Bootstrap's danger red */
+}
+
+/* Green "Done" Button */
+.doc-btn-done {
+    background-color: #28a745; /* Bootstrap's success green */
+}
+#appTable thead th:nth-child(3) { text-align: center; }
 </style>
 </head>
 <body>
@@ -815,7 +1269,6 @@ body:has(.nav-menu.active) {
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-
         });
     }
 
