@@ -270,6 +270,10 @@
 body:has(.nav-menu.active) {
     overflow: hidden;
 }
+/* --- FINAL FIX: Elevate the entire header when the menu is active --- */
+.main-header:has(.nav-menu.active) {
+    z-index: 9999;
+}
 </style>
 </head>
 <body>
