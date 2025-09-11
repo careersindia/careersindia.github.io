@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers India - Find Your Path to Success</title>
+<link rel="manifest" href="/manifest.json">
     
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -282,6 +283,91 @@ body:has(.nav-menu.active) {
 #edu-news {
     text-align: center;
 }
+
+/* ============================================= */
+/* ========= INSTALL APP FEATURE STYLES ======== */
+/* ============================================= */
+.install-feature-box {
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 400px;
+  text-align: center;
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+}
+
+.install-feature-box h3 {
+  margin-top: 0;
+}
+
+.install-feature-box img {
+  max-width: 150px;
+  height: auto;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.save-qr-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 15px;
+  background-color: #6c757d;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.save-qr-button:hover {
+  background-color: #5a6268;
+}
+
+.install-desktop {
+  margin-top: 20px;
+}
+
+/* The Blue Install Button for Laptops */
+.install-button {
+  background-color: #007bff; /* A nice blue color */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.install-button:hover {
+  background-color: #0056b3;
+}
+
+
+/* ============================================= */
+/* ============ HOME BUTTON STYLES ============= */
+/* ============================================= */
+.home-button-container {
+  position: fixed; /* This makes it float on top of other content */
+  bottom: 25px;
+  right: 25px;
+  z-index: 1000; /* Ensures it's above other elements */
+}
+
+.home-button-container a img {
+  width: 50px; /* Adjust size as needed */
+  height: 50px;
+  border-radius: 50%; /* Makes it a circle */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.home-button-container a:hover img {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
 </style>
 </head>
 <body>
@@ -549,6 +635,38 @@ body:has(.nav-menu.active) {
     </header>
 
     <main>
+
+<!-- ============================================= -->
+<!-- ========= INSTALL APP FEATURE START ========= -->
+<!-- ============================================= -->
+<div class="install-feature-box">
+  <h3>Get Our App!</h3>
+  <p>For quick access on any device, install our app.</p>
+
+  <!-- Part 1: For Mobile Users -->
+  <div class="install-mobile">
+    <p><strong>On your phone?</strong> Scan this QR code:</p>
+    <img src="images/qr-code.png" alt="QR Code to install the app" id="qrCodeImage">
+    
+    <!-- Part 2: Save QR Code button -->
+    <a href="images/my-qr-code.png" download="CareerApp-QRCode.png" class="save-qr-button">
+      Save QR Code
+    </a>
+  </div>
+  
+  <!-- Part 1: For Laptop/Desktop Users -->
+  <div class="install-desktop">
+    <p><strong>On your laptop?</strong> Click here:</p>
+    
+    <!-- This button will be hidden by default and shown only if the app is installable -->
+    <button id="installAppButton" class="install-button" hidden>
+      Install App
+    </button>
+  </div>
+</div>
+<!-- ============================================= -->
+<!-- ========= INSTALL APP FEATURE END =========== -->
+<!-- ============================================= -->
         <!-- ======== HERO SECTION ======== -->
         <section class="hero">
             <div class="hero-content">
@@ -1126,6 +1244,73 @@ appTableBody.addEventListener('change', (e) => {
     // Initial render of the applications when the page loads
     renderApplications();
 });
+</script>
+
+<script>
+  // Wait for the entire page to load before running the script
+  window.addEventListener('load', () => {
+
+    const installButton = document.getElementById('installAppButton');
+    let deferredPrompt; // This variable will hold the install event
+
+    // Listen for the 'beforeinstallprompt' event, which browsers fire
+    // when the PWA is recognized as installable.
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+      
+      // Show our custom install button
+      if (installButton) {
+        installButton.hidden = false;
+        console.log('PWA is ready to be installed.');
+      }
+    });
+
+    // Add a click event listener to our custom install button
+    if (installButton) {
+      installButton.addEventListener('click', async () => {
+        // Hide our button since it's about to be used
+        installButton.hidden = true;
+        
+        // Show the browser's install prompt
+        deferredPrompt.prompt();
+        
+        // Wait for the user to respond to the prompt
+        const { outcome } = await deferredPrompt.userChoice;
+        
+        console.log(`User response to the install prompt: ${outcome}`);
+        
+        // We've used the prompt, so we can't use it again. Clear it.
+        deferredPrompt = null;
+      });
+    }
+
+    // You can also listen for when the app is successfully installed
+    window.addEventListener('appinstalled', () => {
+      // Hide the install button for good
+      if (installButton) {
+        installButton.hidden = true;
+      }
+      deferredPrompt = null;
+      console.log('PWA was installed successfully!');
+    });
+  });
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
 </script>
 </body>
 </html>
