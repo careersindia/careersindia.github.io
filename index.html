@@ -6,7 +6,25 @@
 
 <link rel="manifest" href="manifest.json">
 
-
+<!-- ADD THIS TO THE <head> OF index.html -->
+<style>
+  body { margin: 0; background-color: black; }
+  video { width: 100%; height: 100vh; object-fit: cover; }
+  #unmute-button {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: 1px solid white;
+    border-radius: 8px;
+    z-index: 10;
+  }
+</style>
 <meta name="theme-color" content="#000000"/> <!-- Make this match your manifest theme_color -->
   <title>Career Video</title>
   <style>
@@ -94,6 +112,23 @@
   // As a backup, if the video takes too long (e.g., 8 seconds), load the main page anyway
   setTimeout(loadMainPage, 8000); 
 </script>
+
+    <!-- ... your video redirect script is here ... -->
+
+    <!-- ADD THIS NEW UNMUTE SCRIPT -->
+    <script>
+        const video = document.getElementById('intro-video');
+        const unmuteButton = document.getElementById('unmute-button');
+
+        unmuteButton.addEventListener('click', () => {
+            video.muted = false;
+            unmuteButton.style.display = 'none'; // Hide button after click
+        });
+    </script>
+
+    <!-- ... your service worker script is here ... -->
+</body>
+
 
   <!-- ADD THIS RIGHT BEFORE </body> IN index.html -->
 <script>
