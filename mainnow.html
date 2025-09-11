@@ -56,16 +56,16 @@
 
     /* --- Header & Navigation --- */
     .main-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color:#ffffff;
-        backdrop-filter: blur(10px);
-        box-shadow: var(--shadow-sm);
-        z-index: 1000;
-        transition: background-color 0.3s ease;
-    }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color:#ffffff;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    z-index: 1000; /* Ensure header is above the menu */
+    transition: background-color 0.3s ease;
+}
 
     .navbar {
         display: flex;
@@ -209,30 +209,31 @@
 
         /* --- Hamburger Menu Logic --- */
         .menu-toggle {
-            display: block;
-            font-size: 1.8rem;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: var(--primary-color);
-            z-index: 1001; /* Ensure it's on top */
-        }
+    display: block;
+    font-size: 1.8rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    z-index: 1001; /* Ensure it's on top of both header and menu */
+}
 /* === THIS IS THE CORRECTED CODE FOR THE MOBILE MENU === */
 .nav-menu {
     display: none;
     flex-direction: column;
     position: fixed;
-    /* CHANGE 1: Start the menu exactly below your 70px header */
-    top: 70px; 
+    top: 0; /* Changed from 70px to 0 */
     left: 0;
     width: 100%;
-    /* CHANGE 2: Make its height fill the REST of the screen */
-    height: calc(100vh - 70px); 
+    height: 100vh; /* Changed from calc(100vh - 70px) to 100vh */
     background-color: white;
-    z-index: 999; /* Place it just behind the header (which is z-index: 1000) */
+    z-index: 999; 
     overflow-y: auto;
-    /* CHANGE 3: Use simple padding now that the position is correct */
     padding: 20px 0; 
+}
+
+body.menu-open > *:not(.main-header):not(.nav-menu) {
+    display: none;
 }
 
         .nav-menu.active {
@@ -820,13 +821,15 @@ body:has(.nav-menu.active) {
 
 <script>
     // --- SCRIPT FOR MOBILE MENU TOGGLE ---
+        // --- SCRIPT FOR MOBILE MENU TOGGLE ---
     const menuToggle = document.getElementById('menu-toggle');
     const navMenu = document.getElementById('nav-menu');
+    const body = document.body; // Get the body element
 
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-
+            body.classList.toggle('menu-open'); // Toggle a class on the body
         });
     }
 
