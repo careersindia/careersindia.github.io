@@ -287,7 +287,7 @@ body:has(.nav-menu.active) {
   background-color: #7FFFD4; /* Aquamarine */
   color: #000000; /* Black text for contrast */
   padding: 20px;
-  margin: 80px auto;
+  margin: 120px auto;
   max-width: 400px;
   text-align: center;
   border-radius: 10px;
@@ -322,9 +322,30 @@ body:has(.nav-menu.active) {
 .home-button:hover {
   transform: scale(1.1); /* Slight zoom effect on hover */
 }
+/* ADD THIS CSS TO YOUR <style> SECTION */
+#install-button {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background-color: #007bff; /* A nice blue color */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 2000; /* Make sure it's on top of everything */
+}
 </style>
 </head>
 <body>
+
+    <!-- ADD THIS BUTTON RIGHT AT THE TOP OF THE BODY -->
+    <button id="install-button" style="display: none;">Install App</button>
+
+    <!-- ... The rest of your page content ... -->
 
     <!-- ======== HEADER & NAVIGATION ======== -->
     <header class="main-header">
@@ -1187,5 +1208,41 @@ appTableBody.addEventListener('change', (e) => {
       .catch(err => console.log('Service worker registration failed', err));
   }
 </script>
+    <!-- ... your floating home button and service worker script are here ... -->
+
+    <!-- ADD THIS NEW SCRIPT BLOCK BEFORE THE </body> TAG -->
+    <script>
+      let deferredPrompt; // This will hold the "install" event
+      const installButton = document.getElementById('install-button');
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        deferredPrompt = e;
+        // Show our custom install button
+        installButton.style.display = 'block';
+      });
+
+      installButton.addEventListener('click', async () => {
+        // Hide our button, it's not needed anymore
+        installButton.style.display = 'none';
+        // Show the browser's install prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User response to the install prompt: ${outcome}`);
+        // We no longer need the prompt. Clear it.
+        deferredPrompt = null;
+      });
+
+      window.addEventListener('appinstalled', () => {
+        // Hide the install button if the app is installed
+        installButton.style.display = 'none';
+        deferredPrompt = null;
+        console.log('PWA was installed');
+      });
+    </script>
+</body>
 </body>
 </html>
