@@ -97,7 +97,32 @@
             line-height: 1.5;
         }
     </style>
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
+    <style>
+      /* 1. A more natural box model */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      
+      /* 2. Make images responsive */
+      img, video, iframe {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* 3. Make main containers flexible */
+      /* Adjust these if your main container has a different name */
+      body, .container, #main-content, #wrapper {
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+    </style>
+
+/head>
 <body>
 
     <div class="container">
@@ -441,5 +466,5 @@
         <div class="institute-card"><h3><span class="counter">99</span>Atharva College of Hotel Management</h3><p><strong>Location:</strong> Malad</p><p><strong>Accreditation:</strong> NAPS/NATS applicable</p><p><strong>USP:</strong> Modern infrastructure and practical kitchen labs for hospitality training.</p></div>
         <div class="institute-card"><h3><span class="counter">100</span>Shri Ramdeo Baba Pvt ITI, Thane</h3><p><strong>Accreditation:</strong> NCVT</p><p><strong>USP:</strong> Private ITI offering NCVT-approved trades with good infrastructure.</p></div>
     </div>
-</body>
+\r\n/body>
 </html>
