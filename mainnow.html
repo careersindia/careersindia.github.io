@@ -221,17 +221,18 @@
 .nav-menu {
     display: none;
     flex-direction: column;
-    align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
     position: fixed;
-    top: 0;
+    /* CHANGE 1: Start the menu exactly below your 70px header */
+    top: 70px; 
     left: 0;
     width: 100%;
-    height: 100%; /* Cover the entire screen */
-    background-color: var(--bg-white);
-    z-index: 9998; /* High z-index to cover everything */
-    overflow-y: auto; /* Allow scrolling if many items */
-    padding: 20px;
+    /* CHANGE 2: Make its height fill the REST of the screen */
+    height: calc(100vh - 70px); 
+    background-color: white;
+    z-index: 999; /* Place it just behind the header (which is z-index: 1000) */
+    overflow-y: auto;
+    /* CHANGE 3: Use simple padding now that the position is correct */
+    padding: 20px 0; 
 }
 
         .nav-menu.active {
@@ -244,20 +245,17 @@
         }
         
         /* This styles the links inside the mobile menu */
-.nav-menu .nav-link {
-    display: block; 
-    width: 100%;
-    margin: 10px 0; /* Increase space between items */
-    padding: 15px;
-    font-size: 1.5rem; /* Make the font much larger */
-    text-align: center;
-    color: var(--text-dark);
-    /* Remove the boxy look */
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    height: auto;
-}
+        .nav-menu .nav-link {
+            display: block; 
+            width: 80%; 
+            max-width: 300px; 
+            margin: 5px auto; 
+            padding: 15px;
+            border-bottom: none; 
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-light);
+            height: auto; 
+        }
 
         .dropdown-content {
             position: static;
@@ -821,27 +819,16 @@ body:has(.nav-menu.active) {
 
 
 <script>
-// --- SCRIPT FOR MOBILE MENU TOGGLE ---
-const menuToggle = document.getElementById('menu-toggle');
-const navMenu = document.getElementById('nav-menu');
-const menuIcon = menuToggle.querySelector('i'); // Get the icon element
+    // --- SCRIPT FOR MOBILE MENU TOGGLE ---
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
 
-if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
 
-        // Change the icon and z-index based on the menu state
-        if (navMenu.classList.contains('active')) {
-            menuIcon.classList.remove('fa-bars');
-            menuIcon.classList.add('fa-times'); // 'X' icon
-            menuToggle.style.zIndex = '9999'; // Ensure toggle is on top of menu
-        } else {
-            menuIcon.classList.remove('fa-times');
-            menuIcon.classList.add('fa-bars'); // Hamburger icon
-            menuToggle.style.zIndex = '1001'; // Reset z-index
-        }
-    });
-}
+        });
+    }
 
     // --- SCRIPT FOR NEWS TICKER ---
     const rssFeeds = [
