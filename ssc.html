@@ -87,7 +87,32 @@
       font-size: 0.9em;
     }
   </style>
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
+    <style>
+      /* 1. A more natural box model */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      
+      /* 2. Make images responsive */
+      img, video, iframe {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* 3. Make main containers flexible */
+      /* Adjust these if your main container has a different name */
+      body, .container, #main-content, #wrapper {
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+    </style>
+
+/head>
 <body>
 
 
@@ -3602,7 +3627,7 @@ Let's get this correct and provide the **full HTML content for SSC courses 151 t
 
 ---
 **Continuation for SSC Course Details (Courses 151-210) - Corrected and Complete**
-*(This code block should be appended to the HTML content that ended with course 150, inside the same `<body>` tag, right before the closing `</body>` tag.)*
+*(This code block should be appended to the HTML content that ended with course 150, inside the same `<body>` tag, right before the closing `\r\n/body>` tag.)*
 
 ```html
     <!-- Course 151: Certificate in Embedded Systems -->
@@ -6157,7 +6182,7 @@ Let's get this correct and provide the **full HTML content for SSC courses 151 t
         <p class="syllabus-note">This information is for general guidance only.</p>
     </div>
 
-</body>
+\r\n/body>
 </html>
      
 
@@ -6165,5 +6190,5 @@ Let's get this correct and provide the **full HTML content for SSC courses 151 t
 
   </div>
 
-</body>
+\r\n/body>
 </html>
