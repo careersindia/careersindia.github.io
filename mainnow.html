@@ -379,6 +379,22 @@ margin-top: 20px;
   align-items: center;   /* Centers items horizontally */
   gap: 15px;             /* This creates 15px of space BETWEEN each item */
 }
+
+/* Add this CSS to your existing <style> block */
+
+/* This hides the "On your laptop?" text when viewed on a mobile device */
+@media (max-width: 768px) {
+  .install-desktop p {
+    display: none;
+  }
+}
+
+/* Style for the new mobile install button to make it stand out */
+#installAppButtonMobile {
+  margin-top: 15px;
+  width: 80%;
+  max-width: 300px;
+}
 </style>
 </head>
 <body>
@@ -886,6 +902,19 @@ margin-top: 20px;
     <a href="images/qr-code.png" download="qr-code.png" class="save-qr-button">
       Save QR Code
     </a>
+
+
+
+
+
+<!-- START: NEW MOBILE INSTALL BUTTON (Add this) -->
+    <button id="installAppButtonMobile" class="install-button" hidden>
+      Install App on this Phone
+    </button>
+
+
+    <!-- END: NEW MOBILE INSTALL BUTTON -->
+  
   </div>
   
   <!-- Part 1: For Laptop/Desktop Users -->
@@ -1260,56 +1289,87 @@ appTableBody.addEventListener('change', (e) => {
 </script>
 
 <!-- START: CORRECTED INSTALL APP SCRIPT -->
+<!-- START: CORRECTED INSTALL APP SCRIPT (Replace your old one with this) -->
 <script>
-  // Wait for the entire page to load before running the script
   window.addEventListener('load', () => {
+    // Get references to BOTH install buttons
+    const installButtonDesktop = document.getElementById('installAppButton');
+    const installButtonMobile = document.getElementById('installAppButtonMobile');
+    let deferredPrompt; 
 
-    const installButton = document.getElementById('installAppButton');
-    let deferredPrompt; // This variable will hold the install event
+    // If the app is already running standalone, hide both install boxes
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      console.log('App is already installed.');
+      const installBox = document.querySelector('.install-feature-box');
+      if (installBox) {
+        installBox.style.display = 'none';
+      }
+      return;
+    }
 
-    // Listen for the 'beforeinstallprompt' event, which browsers fire
-    // when the PWA is recognized as installable.
+    // Default state: Desktop button is disabled
+    if (installButtonDesktop) {
+        installButtonDesktop.disabled = true;
+        installButtonDesktop.textContent = 'Checking compatibility...';
+    }
+
+    // This event fires when the browser determines the PWA is installable
     window.addEventListener('beforeinstallprompt', (e) => {
-      // Prevent the mini-infobar from appearing on mobile
+      // Prevent the mini-infobar from appearing automatically
       e.preventDefault();
       
       // Stash the event so it can be triggered later.
       deferredPrompt = e;
       
-      // Show our custom install button
-      if (installButton) {
-        installButton.hidden = false;
-        console.log('PWA is ready to be installed.');
+      // Now, show and enable the correct buttons
+      if (installButtonDesktop) {
+        installButtonDesktop.hidden = false;
+        installButtonDesktop.disabled = false;
+        installButtonDesktop.textContent = 'Install App';
       }
+      if (installButtonMobile) {
+        installButtonMobile.hidden = false; // <-- This makes the mobile button appear!
+      }
+      console.log('PWA is ready to be installed.');
     });
 
-    // Add a click event listener to our custom install button
-    if (installButton) {
-      installButton.addEventListener('click', async () => {
-        // Hide our button since it's about to be used
-        installButton.hidden = true;
-        
-        // Show the browser's install prompt
-        deferredPrompt.prompt();
-        
-        // Wait for the user to respond to the prompt
-        const { outcome } = await deferredPrompt.userChoice;
-        
-        console.log(`User response to the install prompt: ${outcome}`);
-        
-        // We've used the prompt, so we can't use it again. Clear it.
-        deferredPrompt = null;
-      });
+    // This is the function that shows the install prompt
+    async function handleInstallClick() {
+      if (!deferredPrompt) {
+        console.log('Install prompt not available.');
+        return;
+      }
+      
+      // Show the browser's install prompt
+      deferredPrompt.prompt();
+      
+      // Wait for the user to respond
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`User response to the install prompt: ${outcome}`);
+      
+      // We've used the prompt, so clear it
+      deferredPrompt = null;
+
+      // After the prompt, hide the buttons
+      if (installButtonDesktop) installButtonDesktop.hidden = true;
+      if (installButtonMobile) installButtonMobile.hidden = true;
     }
 
-    // You can also listen for when the app is successfully installed
+    // Add click listeners to BOTH buttons
+    if (installButtonDesktop) {
+      installButtonDesktop.addEventListener('click', handleInstallClick);
+    }
+    if (installButtonMobile) {
+      installButtonMobile.addEventListener('click', handleInstallClick);
+    }
+
+    // When the app is successfully installed
     window.addEventListener('appinstalled', () => {
-      // Hide the install button for good
-      if (installButton) {
-        installButton.hidden = true;
-      }
       deferredPrompt = null;
       console.log('PWA was installed successfully!');
+      // Hide the buttons for good
+      if (installButtonDesktop) installButtonDesktop.hidden = true;
+      if (installButtonMobile) installButtonMobile.hidden = true;
     });
   });
 </script>
