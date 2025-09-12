@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disclaimer</title>
+<link rel="manifest" href="/manifest.json">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,6 +32,27 @@
             margin-bottom: 15px;
             text-align: justify;
         }
+/* ============================================= */
+/* ============ HOME BUTTON STYLES ============= */
+/* ============================================= */
+.home-button-container {
+  position: fixed; /* This makes it float on top of other content */
+  top: 20px;       /* Position 20px from the top edge */
+  right: 25px;     /* Position 25px from the right edge */
+  z-index: 1000;   /* Ensures it's above other elements */
+}
+
+.home-button-container a img {
+  width: 50px; /* Adjust size as needed */
+  height: 50px;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.home-button-container a:hover img {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
     </style>
 </head>
 <body>
@@ -39,5 +62,24 @@
             The information provided in this app is for general guidance and educational purposes only. While we strive to keep the content accurate and up to date, we do not guarantee the completeness, reliability, or accuracy of the data related to courses, colleges, job platforms, or overseas agencies. Users are advised to independently verify the information before making any career, educational, or employment-related decisions. We are not affiliated with any of the listed institutions, agencies, or job platforms.
         </p>
     </div>
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+
 </body>
 </html>
