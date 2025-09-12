@@ -4,7 +4,6 @@ const dynamicCacheName = 'career-app-dynamic-v2'; // For dynamic content
 
 // List of essential files for the app shell
 const filesToCache = [
-  '/',
   'index.html',
   'mainnow.html',
   'manifest.json',
