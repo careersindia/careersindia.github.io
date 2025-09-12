@@ -302,7 +302,7 @@ body:has(.nav-menu.active) {
   margin-top: 0;
 }
 .install-mobile p {
-  margin-bottom: 55px; /* Pushes everything below this text down */
+  margin-bottom: 15px; /* Pushes everything below this text down */
 }
 
 .install-feature-box img {
@@ -311,7 +311,7 @@ body:has(.nav-menu.active) {
   border: 1px solid #ccc;
   padding: 5px;
   border-radius: 5px;
-margin-top: 50px;
+margin-top: 20px;
 }
 
 .save-qr-button {
@@ -356,7 +356,7 @@ margin-top: 50px;
 /* ============================================= */
 .home-button-container {
   position: fixed; /* This makes it float on top of other content */
-  bottom: 25px;
+  top: 25px;
   right: 25px;
   z-index: 1000; /* Ensures it's above other elements */
 }
@@ -371,6 +371,13 @@ margin-top: 50px;
 
 .home-button-container a:hover img {
   transform: scale(1.1); /* Slightly enlarge on hover */
+}
+/* Add this new rule to your CSS file */
+.install-mobile {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically */
+  align-items: center;   /* Centers items horizontally */
+  gap: 15px;             /* This creates 15px of space BETWEEN each item */
 }
 </style>
 </head>
