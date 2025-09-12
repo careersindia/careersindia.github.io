@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers India - Find Your Path to Success</title>
+<link rel="manifest" href="/manifest.json">
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- A simple Favicon for a professional look -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+
+<style>
+    @import url('https://fonts.cdnfonts.com/css/impact');
+    /* === MODERN CAREER PORTAL THEME === */
+
+    :root {
+        --primary-color:#7FFFD4; /* light turquoise */
+        --secondary-color: #7FFFD4; /* light turquoise for accents */
+        --accent-color: #7FFFD4;   /* light turquoise for CTAs */
+        --icon-color-turquoise: #7FFFD4;
+        --text-dark: #000000;
+        --text-light: #6c757d;
+        --bg-light: #f8f9fa;
+        --bg-white: #ffffff;
+        --border-color: #dee2e6;
+        --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+        --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* --- General & Reset --- */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* --- Header & Navigation --- */
+    .main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color:#ffffff;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    z-index: 1000; /* Ensure header is above the menu */
+    transition: background-color 0.3s ease;
+}
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+        padding: 0 20px;
+    }
+    
+    .logo {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #000000;
+        text-decoration: none;
+        line-height: 1;
+        text-align: left;
+        margin-right: auto;
+    }
+    .logo i { margin-right: 8px; }
+
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        margin-left: auto;
+    }
+
+    .nav-menu > li {
+        position: relative;
+        margin: 0 1px;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 8px 10px;
+        text-decoration: none;
+        color: #000000;
+        font-size: 0.75rem;
+        font-weight: 500;
+        transition: color 0.3s ease, background-color 0.3s ease;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        height: 45px;
+        min-width: 70px;
+        text-align: center;
+    }
+    
+    .nav-link:hover {
+        color: #40E0D0;
+        background-color: rgba(0, 86, 179, 0.05);
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #7FFFD4;
+        box-shadow: var(--shadow-md);
+        border-radius: 8px;
+        padding: 10px;
+        min-width: 250px;
+        max-height: 400px;
+        overflow-y: auto;
+        z-index: 1001;
+        border: 1px solid var(--border-color);
+    }
+
+    .nav-menu > li:hover .dropdown-content { display: block; }
+    .dropdown-content a { display: block; padding: 10px 15px; color: #000000; text-decoration: none; font-size: 0.9rem; border-radius: 5px; transition: background-color 0.2s ease; }
+    .dropdown-content a:hover { background-color: var(--bg-light); }
+    .menu-toggle { display: none; }
+    
+    /* --- Hero Section --- */
+    .hero { position: relative; min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; color: #000000; padding: 100px 20px 50px 20px; }
+    .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #7FFFD4; }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; }
+    .hero-title { font-family: 'Impact', sans-serif; font-size: 4.5rem; font-weight: 700; margin-bottom: 15px; line-height: 1.2; color:#000000; display: inline-block; background-color:#ffffff; padding: 15px 30px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.1); text-shadow: 1px 1px 0 #bbb, 2px 2px 0 #aaa, 3px 3px 0 #999, 4px 4px 0 #888, 5px 5px 15px rgba(0, 0, 0, 0.5); }
+    .hero-tagline { font-size: 1.5rem; font-weight: 300; margin-bottom: 30px; opacity: 0.9; }
+
+    /* --- Other Sections (Shortened for brevity) --- */
+    #rotating-logo { width: 100px; height: 100px; margin: 0 auto 30px auto; background-image: url('cube.png'); background-size: cover; border-radius: 12px; animation: rotateMove 8s linear infinite; box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+    @keyframes rotateMove { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .hero-inserted-image { max-width: 90%; height: auto; margin-top: 25px; margin-bottom: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+    .search-engine-container { width: 100%; background:#7FFFD4; padding: 15px; border-radius: 12px; }
+    .search-box-wrapper { display: flex; gap: 10px; }
+    #aiSearchInput { flex-grow: 1; padding: 15px 20px; border-radius: 8px; border: 1px solid transparent; font-size: 1.1rem; }
+    #aiSearchButton { flex-shrink: 0; padding: 0 30px; border: none; border-radius: 8px; background-color: #ffffff; color: #000000; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
+    #aiSearchFeedback { margin-top: 10px; color: white; font-weight: 500; min-height: 20px; }
+    .section { padding: 80px 0; }
+    .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 10px; }
+    .section-subtitle { text-align: center; font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto 50px auto; }
+    .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    .category-card { background-color: var(--bg-white); border-radius: 12px; box-shadow: var(--shadow-sm); padding: 30px; text-align: center; text-decoration: none; color: var(--text-dark); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .category-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-md); }
+    .category-card .icon { font-size: 3rem; color: var(--primary-color); margin-bottom: 20px; display: inline-block; }
+    .category-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+    .category-card p { font-size: 0.9rem; color: var(--text-light); }
+    .counter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+    .counter-item { background-color: var(--bg-white); padding: 30px 20px; text-align: center; border-radius: 12px; box-shadow: var(--shadow-sm); border-top: 4px solid var(--accent-color); }
+    .counter-number { font-size: 3rem; font-weight: 700; color: var(--text-dark); display: block; line-height: 1.2; }
+    .counter-label { font-size: 1rem; font-weight: 500; color: var(--text-light); }
+    .featured-section { background-color: var(--bg-white); }
+    .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; align-items: center; }
+    .featured-card { background: #ffffff; color: black; padding: 40px; border-radius: 15px; text-align: center; box-shadow: var(--shadow-md); }
+    .featured-card .icon { font-size: 3.5rem; margin-bottom: 15px; color: var(--icon-color-turquoise); }
+    .featured-card h3 { font-size: 1.8rem; margin-bottom: 15px; }
+    .featured-card .btn-featured { display: inline-block; background-color: var(--accent-color); color: black; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; }
+    .main-footer { background-color: #212529; color: var(--text-light); padding: 60px 0 20px 0; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h4 { color: white; margin-bottom: 20px; font-size: 1.1rem; position: relative; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li a { color: var(--text-light); text-decoration: none; display: block; padding: 5px 0; }
+    .footer-bottom { border-top: 1px solid #444; padding-top: 20px; text-align: center; font-size: 0.9rem; }
+    .nav-menu > li:nth-last-child(-n+3) .dropdown-content { left: auto; right: 0; transform: translateX(0); }
+    .nav-link i { display: none !important; }
+    .ai-counselor-container { width: 100%; background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 12px; backdrop-filter: blur(5px); box-shadow: var(--shadow-md); text-align: left; color: var(--text-dark); }
+    .ai-input-wrapper { display: flex; gap: 10px; margin-bottom: 15px; }
+    #aiUserInput { flex-grow: 1; padding: 15px 20px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 1.1rem; }
+    #aiCounselorButton { flex-shrink: 0; padding: 0 30px; border: none; border-radius: 8px; background-color: var(--primary-color); color: var(--text-dark); font-size: 1.1rem; font-weight: 600; cursor: pointer; }
+    #aiResponse { margin-top: 15px; padding: 15px; background-color: aquamarine; border-radius: 8px; white-space: pre-wrap; line-height: 1.6; min-height: 50px; }
+    .tracker-container { max-width: 1000px; margin: 40px auto; padding: 25px; background-color: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .tracker-container h2 { text-align: center; margin-bottom: 20px; }
+    .tracker-notice { text-align: center; background-color: #eef7ff; padding: 10px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9em; }
+    .add-form { display: flex; gap: 10px; margin-bottom: 20px; }
+    .add-form input { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+    .add-form button { padding: 10px 20px; background-color: var(--accent-color); border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #appTable { width: 100%; border-collapse: collapse; }
+    #appTable th, #appTable td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
+    #appTable th { background-color: #f8f9fa; }
+    .delete-btn { color: #dc3545; background: none; border: none; cursor: pointer; font-size: 1.1em; }
+
+    /* --- THE FINAL, CORRECTED RESPONSIVE CODE --- */
+    @media (max-width: 992px) { /* A wider breakpoint for tablets and phones */
+        /* --- General Layout & Font Sizes --- */
+        .hero-title { font-size: 2.8rem; padding: 10px 20px; }
+        .hero-tagline { font-size: 1.2rem; }
+        .search-box-wrapper { flex-direction: column; }
+        .nav-link { display: none; } /* Hide the desktop links */
+
+        /* --- Hamburger Menu Logic --- */
+        .menu-toggle {
+    display: block;
+    font-size: 1.8rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    z-index: 1001; /* Ensure it's on top of both header and menu */
+}
+/* === THIS IS THE CORRECTED CODE FOR THE MOBILE MENU === */
+.nav-menu {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0; /* Changed from 70px to 0 */
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Changed from calc(100vh - 70px) to 100vh */
+    background-color: white;
+    z-index: 999; 
+    overflow-y: auto;
+    padding: 20px 0; 
+}
+
+body.menu-open > *:not(.main-header):not(.nav-menu) {
+    display: none;
+}
+
+        .nav-menu.active {
+            display: flex; /* Show the menu when active */
+        }
+        
+        .nav-menu li {
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* This styles the links inside the mobile menu */
+        .nav-menu .nav-link {
+            display: block; 
+            width: 80%; 
+            max-width: 300px; 
+            margin: 5px auto; 
+            padding: 15px;
+            border-bottom: none; 
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-light);
+            height: auto; 
+        }
+
+        .dropdown-content {
+            position: static;
+            transform: none;
+            box-shadow: none;
+            border: none;
+            background-color: #fdfdfd;
+            min-width: 100%;
+        }
+    }
+/* --- PREVENT BODY SCROLL WHEN MENU IS OPEN --- */
+/* --- LOCK BODY SCROLL WHEN MENU IS ACTIVE (PURE CSS) --- */
+body:has(.nav-menu.active) {
+    overflow: hidden;
+}
+/* --- FINAL FIX: Elevate the entire header when the menu is active --- */
+.main-header:has(.nav-menu.active) {
+    z-index: 9999;
+}
+.social-icons a {
+    margin: 0 10px;
+}
+#edu-news {
+    text-align: center;
+}
+
+/* ============================================= */
+/* ========= INSTALL APP FEATURE STYLES ======== */
+/* ============================================= */
+.install-feature-box {
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 400px;
+  text-align: center;
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+}
+
+.install-feature-box h3 {
+  margin-top: 0;
+}
+.install-mobile p {
+  margin-bottom: 15px; /* Pushes everything below this text down */
+}
+
+.install-feature-box img {
+  max-width: 150px;
+  height: auto;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+margin-top: 20px;
+}
+
+.save-qr-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 15px;
+  background-color: #6c757d;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.save-qr-button:hover {
+  background-color: #5a6268;
+}
+
+.install-desktop {
+  margin-top: 20px;
+}
+
+/* The Blue Install Button for Laptops */
+.install-button {
+  background-color: #007bff; /* A nice blue color */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.install-button:hover {
+  background-color: #0056b3;
+}
+
+
+/* ============================================= */
+/* ============ HOME BUTTON STYLES ============= */
+/* ============================================= */
+.home-button-container {
+  position: fixed; /* This makes it float on top of other content */
+  top: 100px;
+  right: 25px;
+  z-index: 1000; /* Ensures it's above other elements */
+}
+
+.home-button-container a img {
+  width: 50px; /* Adjust size as needed */
+  height: 50px;
+  border-radius: 50%; /* Makes it a circle */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.home-button-container a:hover img {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+/* Add this new rule to your CSS file */
+.install-mobile {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically */
+  align-items: center;   /* Centers items horizontally */
+  gap: 15px;             /* This creates 15px of space BETWEEN each item */
+}
+</style>
+</head>
+<body>
+
+    <!-- ======== HEADER & NAVIGATION ======== -->
+    <header class="main-header">
+        <nav class="navbar container">
+
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Academic Paths <i class="fas fa-chevron-down fa-xs"></i></a>
+                    <div class="dropdown-content">
+                        <a href="ssc1.html">After 10th Grade</a>
+                        <a href="hsc1.html">After 12th Grade</a>
+                        <a href="grad1.html">After Graduation</a>
+                        <a href="pg1.html">After Post Graduation</a>
+                    </div>
+                </li>
+
+                <!-- ==== NEW "ALTERNATIVE CAREERS" TAB ==== -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Plan B<i class="fas fa-chevron-down fa-xs"></i></a>
+                    <div class="dropdown-content">
+                        <a href="alternative_ssc.html">After 10th Grade</a>
+                        <a href="alternative_hsc.html">After 12th Grade</a>
+                        <a href="alternative_grad.html">After Graduation</a>
+                        <a href="alternative_pg.html">After Post Graduation</a>
+                    </div>
+                </li>
+
+  <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">EduCalc<i class="fas fa-chevron-down fa-xs"></i></a>
+                    <div class="dropdown-content">
+                        <a href="roi_ssc_1.html">After 10th Grade</a>
+                        <a href="roi_hsc_2.html">After 12th Grade</a>
+                        <a href="roi_grad_1.html">After Graduation</a>
+                        <a href="roi_pg_1.html">After Post Graduation</a>
+                    </div>
+                </li>
+
+  <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">PrepCheck<i class="fas fa-chevron-down fa-xs"></i></a>
+                    <div class="dropdown-content">
+                        <a href="skill_gap_ssc.html">After 10th Grade</a>
+                        <a href="skill_gap_hsc.html">After 12th Grade</a>
+                        <a href="skill_gap_grad.html">After Graduation</a>
+                        <a href="skill_gap_pg.html">After Post Graduation</a>
+                    </div>
+                </li>
+
+
+
+ <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Career Path<i class="fas fa-chevron-down fa-xs"></i></a>
+                    <div class="dropdown-content">
+                        <a href="careerpath_ssc_2.html">After 10th Grade</a>
+                        <a href="careerpath_hsc_2.html">After 12th Grade</a>
+                        <a href="careerpath_grad_2.html">After Graduation</a>
+                        <a href="careerpath_pg_2.html">After Post Graduation</a>
+ <a href="careerpath_govt_2.html">Government exams</a>
+                    </div>
+                </li>
+
+
+                <li class="nav-item">
+                    <a href="govt.html" class="nav-link">Government Jobs</a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Entrance Exams <i class="fas fa-chevron-down fa-xs"></i></a>
+                    <div class="dropdown-content">
+
+ <a href="calendar1.html" target="_blank">Interactive exam calendar</a>
+
+                        <a href="afcat.html" target="_blank">AFCAT</a>
+                        <a href="aiims_mbbs.html" target="_blank">AIIMS MBBS (merged with NEET UG)</a>
+                        <a href="ailet.html" target="_blank">AILET – All India Law Entrance Test</a>
+                        <a href="aissee.html" target="_blank">AISSEE</a>
+                        <a href="bitsat.html" target="_blank">BITSAT</a>
+                        <a href="ca_final.html" target="_blank">CA Final</a>
+                        <a href="ca_foundation.html" target="_blank">CA Foundation</a>
+                        <a href="ca_intermediate.html" target="_blank">CA Intermediate</a>
+                        <a href="cat.html" target="_blank">CAT – Common Admission Test</a>
+                        <a href="cds.html" target="_blank">CDS</a>
+                        <a href="ceed.html" target="_blank">CEED</a>
+                        <a href="clat.html" target="_blank">CLAT – Common Law Admission Test</a>
+                        <a href="cma_final.html" target="_blank">CMA Final</a>
+                        <a href="cma_foundation.html" target="_blank">CMA Foundation</a>
+                        <a href="cma_intermediate.html" target="_blank">CMA Intermediate</a>
+                        <a href="cmat.html" target="_blank">CMAT – Common Management Admission Test</a>
+                        <a href="cmi_entrance_exam.html" target="_blank">CMI Entrance Exam</a>
+                        <a href="cs_executive.html" target="_blank">CS Executive</a>
+                        <a href="cs_professional.html" target="_blank">CS Professional</a>
+                        <a href="cseet.html" target="_blank">CSEET</a>
+                        <a href="csir_ugc_net.html" target="_blank">CSIR UGC NET</a>
+                        <a href="ctet.html" target="_blank">CTET</a>
+                        <a href="cuet_pg.html" target="_blank">CUET PG</a>
+                        <a href="cuet_ug.html" target="_blank">CUET UG</a>
+                        <a href="dbt_jrf.html" target="_blank">DBT JRF</a>
+                        <a href="epfo_eo_ao.html" target="_blank">EPFO EO/AO</a>
+                        <a href="epfo_ssa.html" target="_blank">EPFO SSA</a>
+                        <a href="esic_exam.html" target="_blank">ESIC Exam</a>
+                        <a href="fci_exam.html" target="_blank">FCI Exam</a>
+                        <a href="fmge.html" target="_blank">FMGE</a>
+                        <a href="ftii_jet.html" target="_blank">FTII JET</a>
+                        <a href="gate.html" target="_blank">GATE</a>
+                        <a href="ibps_clerk.html" target="_blank">IBPS Clerk</a>
+                        <a href="ibps_po.html" target="_blank">IBPS PO</a>
+                        <a href="ibps_so.html" target="_blank">IBPS SO</a>
+                        <a href="icar_aieea.html" target="_blank">ICAR AIEEA (UG/PG)</a>
+                        <a href="icmr_jrf.html" target="_blank">ICMR JRF</a>
+                        <a href="iiith_pgee.html" target="_blank">IIITH PGEE</a>
+                        <a href="iiser_aptitude_test_iat.html" target="_blank">IISER Aptitude Test (IAT)</a>
+                        <a href="ini_cet.html" target="_blank">INI-CET</a>
+                        <a href="isi_admission_test.html" target="_blank">ISI Admission Test</a>
+                        <a href="jee_advanced.html" target="_blank">JEE Advanced</a>
+                        <a href="jee_main.html" target="_blank">JEE Main</a>
+                        <a href="jest.html" target="_blank">JEST</a>
+                        <a href="jipmer_mbbs.html" target="_blank">JIPMER MBBS (merged with NEET UG)</a>
+                        <a href="jnvst.html" target="_blank">JNVST</a>
+                        <a href="kvpy.html" target="_blank">KVPY (Kishore Vaigyanik Protsahan Yojana)</a>
+                        <a href="lic_aao.html" target="_blank">LIC AAO</a>
+                        <a href="lsat_india.html" target="_blank">LSAT India – Law School Admission Test India</a>
+                        <a href="mat.html" target="_blank">MAT – Management Aptitude Test</a>
+                        <a href="nata.html" target="_blank">NATA</a>
+                        <a href="nchmct_jee.html" target="_blank">NCHMCT JEE</a>
+                        <a href="nda.html" target="_blank">NDA</a>
+                        <a href="neet_pg.html" target="_blank">NEET PG</a>
+                        <a href="neet_ug.html" target="_blank">NEET UG</a>
+                        <a href="nest.html" target="_blank">NEST (National Entrance Screening Test)</a>
+                        <a href="nid_dat.html" target="_blank">NID DAT</a>
+                        <a href="nift_entrance_exam.html" target="_blank">NIFT Entrance Exam</a>
+                        <a href="nmat.html" target="_blank">NMAT – NMIMS Management Aptitude Test</a>
+                        <a href="rbi_grade_b.html" target="_blank">RBI Grade B</a>
+                        <a href="rrb_alp.html" target="_blank">RRB ALP</a>
+                        <a href="rrb_je.html" target="_blank">RRB JE</a>
+                        <a href="rrb_ntpc.html" target="_blank">RRB NTPC</a>
+                        <a href="slat.html" target="_blank">SLAT – Symbiosis Law Admission Test</a>
+                        <a href="snap.html" target="_blank">SNAP – Symbiosis National Aptitude Test</a>
+                        <a href="srfti_jet.html" target="_blank">SRFTI JET</a>
+                        <a href="srmjeee.html" target="_blank">SRMJEEE</a>
+                        <a href="ssb_interview.html" target="_blank">SSB Interview</a>
+                        <a href="ssc_cgl.html" target="_blank">SSC CGL</a>
+                        <a href="ssc_chsl.html" target="_blank">SSC CHSL</a>
+                        <a href="ssc_mts.html" target="_blank">SSC MTS</a>
+                        <a href="tissnet.html" target="_blank">TISSNET – Tata Institute of Social Sciences National Entrance Test</a>
+                        <a href="uceed.html" target="_blank">UCEED</a>
+                        <a href="ugc_net.html" target="_blank">UGC NET</a>
+                        <a href="upsc_civil_services.html" target="_blank">UPSC Civil Services</a>
+                        <a href="viteee.html" target="_blank">VITEEE</a>
+                        <a href="xat.html" target="_blank">XAT – Xavier Aptitude Test</a>
+                    </div>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Study Abroad <i class="fas fa-chevron-down fa-xs"></i></a>
+                    <div class="dropdown-content">
+<a href="verification.html">Study Abroad Process</a>
+<a href="loan_process_study_abroad.html">Loan Process</a>
+                        <a href="living_and_learning_abroad.html">Living and Learning Abroad</a>
+<a href="scholarships_revised.html">Scholarships Info</a>
+                        <a href="sac.html">Find Consultants</a>
+                        <a href="ra.html">Overseas Agencies</a>
+                        <a href="ielts.html">IELTS</a>
+                        <a href="toefl.html">TOEFL</a>
+                        <a href="gre.html">GRE</a>
+  <a href="pte.html">PTE</a>
+                    <a href="sat.html" >SAT</a>
+                    <a href="act.html">ACT</a>
+                    <a href="duolingo.html">DUOLINGO</a>                  
+                    <a href="gmat.html">GMAT</a>
+                    </div>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Top Titans<i class="fas fa-chevron-down fa-xs"></i></a>
+                     <div class="dropdown-content">
+                        <a href="premierInstitutes.html">Premier Institutes</a>
+                        <a href="top_schools.html">Top Schools</a>
+                        <a href="top_universities.html">Top Universities</a>
+                        <a href="top_colleges.html">Top Colleges (HSC)</a>
+                        <a href="diploma_revised_1.html">Top Diploma Colleges</a>
+                        <a href="top_graduation_colleges.html">Top Colleges (Grad)</a>
+                        <a href="top_vocational2.html">Top Vocational Colleges</a>
+  <a href="coaching1.html">Top Coaching institutes</a>
+                       
+                    </div>
+                </li>
+
+<!-- ==== THIS IS THE NEW DEDICATED CHARTS SECTION ==== -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link"> Charts <i class="fas fa-chevron-down fa-xs"></i></a>
+                     <div class="dropdown-content">
+  <a href="chart_govt_exams.html" target="_blank">Analysis of Government exams statistics</a>                     
+ <a href="chart_graduates.html" target="_blank">Analysis of Graduates Statistics</a>
+ <a href="after_ssc_chart.html" target="_blank">Analysis of Courses after SSC</a>
+ <a href="after_hsc_chart.html" target="_blank">Analysis of Courses after HSC</a>
+ <a href="after_graduation_chart.html" target="_blank">Analysis of Courses after graduation</a>
+ <a href="after_pg_chart.html" target="_blank">Analysis of Courses after Post Graduation</a>
+ <a href="after_govt_chart.html" target="_blank">Analysis of Government related courses</a>
+
+
+
+
+
+                    </div>
+                </li>
+
+
+<!-- ==== THIS IS THE NEW PERCEPTION RATING SECTION ==== -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Course Vibe<i class="fas fa-chevron-down fa-xs"></i></a>
+                    <div class="dropdown-content">
+                        <a href="perception_ssc.html">Perception Rating for SSC courses</a>
+   <a href="perception_hsc.html">Perception Rating for HSC courses</a>
+ <a href="perception_graduation.html">Perception Rating for Graduation Courses</a>
+ <a href="perception_post_graduation.html">Perception Rating for Post Graduation courses</a>
+ <a href="perception_govt.html">Perception Rating for Government courses</a>
+                    </div>
+                </li>
+<!-- ==== THIS IS THE NEW RESOURCE SECTION ==== -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Resources<i class="fas fa-chevron-down fa-xs"></i></a>
+                    <div class="dropdown-content">
+                      
+                        <a href="maths_tricks.html">Maths shortcut tricks</a>
+                        <a href="english_grammar.html">English Grammar made easy</a>
+                        <a href="vr.html">Verbal Reasoning Tricks</a>
+                        <a href="nvr.html">Non-Verbal Reasoning Page</a>
+                       
+                    </div>
+                </li>
+
+<!-- START: NEW COMMUNITY DROPDOWN -->
+<li class="nav-item dropdown">
+    <a href="#" class="nav-link">Online Forum <i class="fas fa-chevron-down fa-xs"></i></a>
+    <div class="dropdown-content">
+        <a href="iim_community.html">IIM Aspirants 2025</a>
+      
+        <!-- Add more links here as you create more pages -->
+    </div>
+</li>
+<!-- END: NEW COMMUNITY DROPDOWN -->
+
+
+                 <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">More <i class="fas fa-chevron-down fa-xs"></i></a>
+                     <div class="dropdown-content">
+                        <a href="emerging_careers.html">Emerging Courses</a>
+                        <a href="category.html">Job Apps (Category-wise)</a>
+ <a href="scholarship_india.html">Various scholarship schemes in India</a>
+ <a href="campuscount.html">Campus Count</a>
+ <a href="QnA.html">QnA section</a>
+ <a href="glossary.html">Glossary</a>
+
+                    </div>
+                </li>
+            </ul>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Open Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+
+
+        <!-- ======== HERO SECTION ======== -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">WELCOME TO CAREERS INDIA</h1>
+                <p class="hero-tagline">Endless courses, Infinite possibilities. Your future starts now.</p>
+                
+                <!-- ROTATING LOGO IS HERE -->
+                <div id="rotating-logo"></div>
+<!-- INSERT THIS LINE FOR THE NEW IMAGE -->
+<img src="image203.png" alt="Career guidance illustration" class="hero-inserted-image">
+                
+               <!-- START: NEW AI COUNSELOR SECTION -->
+<div class="ai-counselor-container">
+    <div class="ai-input-wrapper">
+        <input type="text" id="aiUserInput" placeholder="Ask me anything about careers...">
+        <button id="aiCounselorButton">Get Advice</button>
+    </div>
+    <div id="aiResponse">The AI's answer will appear here...</div>
+</div>
+<!-- END: NEW AI COUNSELOR SECTION -->
+            </div>
+        </section>
+
+
+<div class="tracker-container">
+    <h2>My College Application Tracker</h2>
+    <p class="tracker-notice">
+        <i class="fas fa-info-circle"></i> 
+        Your data is saved privately in this browser. It won't sync to other devices.
+    </p>
+
+    <!-- Form to Add a New Application -->
+    <div class="add-form">
+        <input type="text" id="collegeName" placeholder="University Name">
+        <input type="date" id="deadlineDate">
+        <button id="addAppBtn">Add Application</button>
+    </div>
+
+    <!-- The table where applications will be displayed -->
+    <table id="appTable">
+        <thead>
+            <tr>
+                <th>University</th>
+                <th>Deadline</th>
+                <th>Document Checklist</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="appTableBody">
+            <!-- Application rows will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+        <!-- ======== CATEGORY CARDS SECTION ======== -->
+        <section class="section" id="explore">
+            <div class="container">
+                <h2 class="section-title">Explore Your Options</h2>
+                <p class="section-subtitle">Your journey to a successful career starts here. Select a stage to discover detailed information on courses, scope, and opportunities.</p>
+                
+                <div class="category-grid">
+                    <a href="ssc1.html" class="category-card">
+                        <i class="fas fa-school icon"></i>
+                        <h3>After SSC (10th)</h3>
+                        <p>Explore diplomas, vocational training, and the first steps toward your career.</p>
+                    </a>
+                    <a href="hsc1.html" class="category-card">
+                        <i class="fas fa-book-open-reader icon"></i>
+                        <h3>After HSC (12th)</h3>
+                        <p>Find the right undergraduate degree from thousands of options in science, arts, & commerce.</p>
+                    </a>
+                    <a href="grad1.html" class="category-card">
+                        <i class="fas fa-user-graduate icon"></i>
+                        <h3>After Graduation</h3>
+                        <p>Specialize with Master's degrees, PG Diplomas, and professional certifications.</p>
+                    </a>
+                     <a href="pg1.html" class="category-card">
+                        <i class="fas fa-microscope icon"></i>
+                        <h3>After Post Graduation</h3>
+                        <p>Reach the pinnacle of academics with Doctoral programs (Ph.D.) and research.</p>
+                    </a>
+                     <a href="govt.html" class="category-card">
+                        <i class="fas fa-landmark icon"></i>
+                        <h3>Government Jobs</h3>
+                        <p>Prepare for a stable and prestigious career with exams like UPSC, SSC, Banking, and Railways.</p>
+                    </a>
+                    <a href="living_and_learning_abroad.html" class="category-card">
+                        <i class="fas fa-plane-departure icon"></i>
+                        <h3>Study Abroad</h3>
+                        <p>Discover global opportunities, top universities, and the process to study overseas.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+          <!-- ======== IMPACT STATS COUNTER SECTION ======== -->
+        <section class="section" id="impact-stats">
+            <div class="container">
+                <h2 class="section-title">Our Platform at a Glance</h2>
+                <p class="section-subtitle">We've compiled a vast repository of information to empower your career decisions. See our impact in numbers.</p>
+                
+                <div class="counter-grid">
+                    <!-- Stat Item 1: Courses -->
+                    <div class="counter-item">
+                        <i class="fas fa-book-open icon"></i>
+                        <!-- 
+                            UPDATE THIS NUMBER MANUALLY: 
+                            Count the major courses/streams you have detailed across all pages. 
+                        -->
+                        <span class="counter-number" data-target="800">0</span>
+                        <p class="counter-label">Courses Covered+</p>
+                    </div>
+
+
+
+ <!-- Stat Item 1: Courses -->
+                    <div class="counter-item">
+                        <i class="fas fa-school icon"></i>
+                        <!-- 
+                            UPDATE THIS NUMBER MANUALLY: 
+                            Count the major courses/streams you have detailed across all pages. 
+                        -->
+                        <span class="counter-number" data-target="700">0</span>
+                        <p class="counter-label">Schools Covered+</p>
+                    </div>
+
+
+
+
+                    <!-- Stat Item 2: Institutions -->
+                    <div class="counter-item">
+                        <i class="fas fa-university icon"></i>
+                        <!-- 
+                            UPDATE THIS NUMBER MANUALLY: 
+                            Count the total number of unique colleges and universities listed on your site.
+                        -->
+                        <span class="counter-number" data-target="5000">0</span>
+                        <p class="counter-label">Colleges & Universities+</p>
+                    </div>
+
+ <!-- Stat Item 1: Vocational institutes -->
+                    <div class="counter-item">
+                        <i class="fas fa-tools icon"></i>
+                        <!-- 
+                            UPDATE THIS NUMBER MANUALLY: 
+                            Count the major courses/streams you have detailed across all pages. 
+                        -->
+                        <span class="counter-number" data-target="6000">0</span>
+                        <p class="counter-label">Vocational & Diploma Institutes Covered+</p>
+                    </div>
+
+                    <!-- Stat Item 3: Exams -->
+                    <div class="counter-item">
+                        <i class="fas fa-file-signature icon"></i>
+                        <!-- 
+                            UPDATE THIS NUMBER MANUALLY: 
+                            Count the number of exams you have pages/information for.
+                        -->
+                        <span class="counter-number" data-target="60">0</span>
+                        <p class="counter-label">Govt. & Entrance Exams+</p>
+                    </div>
+
+
+
+
+
+                    <!-- Stat Item 4: Scholarships -->
+                    <div class="counter-item">
+                        <i class="fas fa-award icon"></i>
+                        <!-- 
+                            UPDATE THIS NUMBER MANUALLY: 
+                            Count the number of scholarship schemes you have listed.
+                        -->
+                        <span class="counter-number" data-target="1200">0</span>
+                        <p class="counter-label">Scholarships Listed+</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ======== FEATURED TOOLS SECTION ======== -->
+        <section class="section featured-section" id="tools">
+             <div class="container">
+                <h2 class="section-title" style="color: var(--text-dark);">Powerful Career Tools</h2>
+                <p class="section-subtitle">Use our specially designed tools to make informed decisions about your future.</p>
+                <div class="featured-grid">
+                     <div class="featured-card">
+                        <i class="fas fa-compass icon"></i>
+                        <h3>UDAAN</h3>
+                        <p>Don't know where to start? Take our psychometric test to discover careers that match your personality.</p>
+                        <a href="udaan_revised_1.html" class="btn-featured">Take the Test</a>
+                    </div>
+                     <div class="featured-card">
+                        <i class="fas fa-balance-scale icon"></i>
+                        <h3>Course Comparison</h3>
+                        <p>Confused between two courses? Compare them side-by-side on curriculum, scope, and career outcomes.</p>
+                        <a href="coursecomparison.html" class="btn-featured">Compare Now</a>
+                    </div>
+                     <div class="featured-card">
+                        <i class="fas fa-lightbulb icon"></i>
+                        <h3>Emerging Careers</h3>
+                        <p>Stay ahead of the curve. Explore the most in-demand courses and careers of the future.</p>
+                        <a href="emerging_careers.html" class="btn-featured">Discover Trends</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+      
+
+        <!-- ======== NEWS TICKER ======== -->
+        <div id="edu-news-container">
+            <div class="container">
+                <div id="edu-news">
+                    <strong>NEWS:</strong>
+                    <span id="news-item">Loading latest educational news...</span>
+                </div>
+            </div>
+        </div>
+
+<!-- ============================================= -->
+<!-- ========= INSTALL APP FEATURE START ========= -->
+<!-- ============================================= -->
+<div class="install-feature-box">
+  <h3>Get Our App!</h3>
+  <p>For quick access on any device, install our app.</p>
+
+  <!-- Part 1: For Mobile Users -->
+  <div class="install-mobile">
+    <p><strong>On your phone?</strong> Scan this QR code:</p>
+    <img src="images/qr-code.png" alt="QR Code to install the app" id="qrCodeImage">
+    
+    <!-- Part 2: Save QR Code button -->
+    <a href="images/my-qr-code.png" download="CareerApp-QRCode.png" class="save-qr-button">
+      Save QR Code
+    </a>
+  </div>
+  
+  <!-- Part 1: For Laptop/Desktop Users -->
+  <div class="install-desktop">
+    <p><strong>On your laptop?</strong> Click here:</p>
+    
+    <!-- This button will be hidden by default and shown only if the app is installable -->
+    <button id="installAppButton" class="install-button">
+      Install App
+    </button>
+  </div>
+</div>
+<!-- ============================================= -->
+<!-- ========= INSTALL APP FEATURE END =========== -->
+<!-- ============================================= -->
+
+    </main>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Careers India</h4>
+                    <p>Your one-stop destination for navigating the world of education and careers. We provide comprehensive information to help you make the best choice for your future.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="ssc1.html">After 10th</a></li>
+                        <li><a href="hsc1.html">After 12th</a></li>
+                        <li><a href="grad1.html">After Graduation</a></li>
+                        <li><a href="govt.html">Government Jobs</a></li>
+                        <li><a href="living_and_learning_abroad.html">Study Abroad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Statement</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+  <li><a href="credibility_report_1.html">Behind the Numbers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <p>Stay connected for the latest updates.</p>
+                     <div class="social-icons">
+                        <a href="https://www.linkedin.com/company/wellspokn-spoken-english-studio" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://m.youtube.com/channel/UCG8HokCKSj8RnaGA_BR31vg/videos" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/share/1FcoyX9bfB/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/wellspokn1975?igsh=NnE1cml3emVpcXc1" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Careers India. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+
+<script>
+    // --- SCRIPT FOR MOBILE MENU TOGGLE ---
+        // --- SCRIPT FOR MOBILE MENU TOGGLE ---
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const body = document.body; // Get the body element
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            body.classList.toggle('menu-open'); // Toggle a class on the body
+        });
+    }
+
+    // --- SCRIPT FOR NEWS TICKER ---
+    const rssFeeds = [
+        'https://api.rss2json.com/v1/api.json?rss_url=https://timesofindia.indiatimes.com/rssfeeds/913168846.cms',
+        'https://api.rss2json.com/v1/api.json?rss_url=https://www.theguardian.com/education/rss'
+    ];
+    let newsItems = [];
+    let currentIndex = 0;
+
+    async function fetchNews() {
+        try {
+            const responses = await Promise.all(rssFeeds.map(url => fetch(url).then(res => res.json())));
+            responses.forEach(response => {
+                if (response && response.items) {
+                    newsItems.push(...response.items.map(item => ({
+                        title: item.title,
+                        link: item.link
+                    })));
+                }
+            });
+        } catch (error) {
+            console.error("Failed to fetch news:", error);
+            document.getElementById("news-item").innerText = "Could not load news feeds.";
+        } finally {
+            startNewsRotation();
+        }
+    }
+
+    function startNewsRotation() {
+        const newsSpan = document.getElementById("news-item");
+        if (newsItems.length === 0) {
+            if (newsSpan) newsSpan.innerText = "No news available at the moment.";
+            return;
+        }
+        
+        const displayNextNews = () => {
+            const item = newsItems[currentIndex];
+            if (item && newsSpan) {
+                newsSpan.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a>`;
+                currentIndex = (currentIndex + 1) % newsItems.length;
+            }
+        };
+        
+        displayNextNews();
+        setInterval(displayNextNews, 10000);
+    }
+    
+    document.addEventListener('DOMContentLoaded', fetchNews);
+</script>
+
+<!-- SEARCH ENGINE SCRIPT -->
+
+<!-- SCRIPT FOR DYNAMIC COUNTER -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const counters = document.querySelectorAll('.counter-number');
+    const speed = 200; // The lower the number, the faster the count
+
+    const animateCounter = (counter) => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+
+        const increment = target / speed;
+
+        if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(() => animateCounter(counter), 1);
+        } else {
+            counter.innerText = target.toLocaleString('en-IN'); // Format with commas
+        }
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target); // Stop observing after animation starts
+            }
+        });
+    }, {
+        threshold: 0.5 // Start animation when 50% of the element is visible
+    });
+
+    counters.forEach(counter => {
+        observer.observe(counter);
+    });
+});
+</script>
+
+<!-- START: AI COUNSELOR SCRIPT -->
+<script>
+    // =========================================================
+    // ===> PASTE YOUR GOOGLE AI API KEY HERE! <===
+    // =========================================================
+    const API_KEY = "AIzaSyB2ikJNjNVkLqSRW5N8_QKkuP1wq4jny1A"; 
+    // =========================================================
+    
+
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+
+    // Get the elements from the page
+    const aiUserInput = document.getElementById('aiUserInput');
+    const aiCounselorButton = document.getElementById('aiCounselorButton');
+    const aiResponseDiv = document.getElementById('aiResponse');
+
+    async function getAiResponse() {
+        const userInput = aiUserInput.value.trim();
+
+        if (!userInput) {
+            aiResponseDiv.innerText = "Please enter a question first.";
+            return;
+        }
+
+        aiResponseDiv.style.backgroundColor = '#e9ecef';
+        aiResponseDiv.innerText = "The AI is thinking...";
+        aiCounselorButton.disabled = true; // Disable button while loading
+
+        const system_prompt = "You are an expert career counselor for Careers India. Your goal is to provide helpful, encouraging, and accurate advice to students about careers, courses, colleges, and scholarships in India. Keep your answers clear, concise, and structured with bullet points if possible.";
+        const full_prompt = system_prompt + "\n\nUser Question: " + userInput;
+
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    "contents": [{ "parts": [{ "text": full_prompt }] }]
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`API error: ${errorData.error.message}`);
+            }
+
+            const data = await response.json();
+            const aiText = data.candidates[0].content.parts[0].text;
+            
+            aiResponseDiv.style.backgroundColor = '#f4f4f4'; // Reset color
+            aiResponseDiv.innerText = aiText;
+
+        } catch (error) {
+            console.error("Error:", error);
+            aiResponseDiv.style.backgroundColor = '#f8d7da'; // Error color
+            aiResponseDiv.innerText = `Sorry, there was an error: ${error.message}`;
+        } finally {
+            aiCounselorButton.disabled = false; // Re-enable button
+        }
+    }
+
+    // Add event listeners
+    aiCounselorButton.addEventListener('click', getAiResponse);
+    aiUserInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            getAiResponse();
+        }
+    });
+</script>
+<!-- END: AI COUNSELOR SCRIPT -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const addBtn = document.getElementById('addAppBtn');
+    const appTableBody = document.getElementById('appTableBody');
+    const collegeNameInput = document.getElementById('collegeName');
+    const deadlineDateInput = document.getElementById('deadlineDate');
+
+    // Load applications from localStorage or create an empty array
+    let applications = JSON.parse(localStorage.getItem('applications')) || [];
+
+    // Function to save the current list of applications to localStorage
+    const saveApplications = () => {
+        localStorage.setItem('applications', JSON.stringify(applications));
+    };
+
+    // Function to render the applications in the table
+    const renderApplications = () => {
+        appTableBody.innerHTML = ''; // Clear the table first
+
+        if (applications.length === 0) {
+            appTableBody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No applications added yet.</td></tr>';
+            return;
+        }
+
+        applications.forEach((app, index) => {
+            const row = document.createElement('tr');
+            
+            // This is how you create the interactive elements
+            row.innerHTML = `
+                <td>${app.name}</td>
+                <td>${app.deadline}</td>
+             
+<td>
+    <div class="doc-buttons-container">
+        <button class="doc-btn ${app.docs.sop ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="sop">SOP</button>
+        <button class="doc-btn ${app.docs.lor ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="lor">LORs</button>
+        <button class="doc-btn ${app.docs.transcript ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="transcript">Transcript</button>
+        
+        <!-- NEW BUTTONS ADDED BELOW -->
+        <button class="doc-btn ${app.docs.langTest ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="langTest">IELTS/TOEFL</button>
+        <button class="doc-btn ${app.docs.examScore ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="examScore">Exam Score</button>
+    </div>
+</td>
+                <td>
+                    <select class="status-select" data-index="${index}">
+                        <option value="Not Started" ${app.status === 'Not Started' ? 'selected' : ''}>Not Started</option>
+                        <option value="Submitted" ${app.status === 'Submitted' ? 'selected' : ''}>Submitted</option>
+                        <option value="Interview" ${app.status === 'Interview' ? 'selected' : ''}>Interview</option>
+                        <option value="Admitted" ${app.status === 'Admitted' ? 'selected' : ''}>Admitted</option>
+                        <option value="Rejected" ${app.status === 'Rejected' ? 'selected' : ''}>Rejected</option>
+                    </select>
+                </td>
+                <td><button class="delete-btn" data-index="${index}"><i class="fas fa-trash-alt"></i></button></td>
+            `;
+            appTableBody.appendChild(row);
+        });
+    };
+
+    // Function to handle adding a new application
+    addBtn.addEventListener('click', () => {
+        const name = collegeNameInput.value.trim();
+        const deadline = deadlineDateInput.value;
+
+        if (name === '' || deadline === '') {
+            alert('Please enter a university name and a deadline.');
+            return;
+        }
+
+      applications.push({
+    name: name,
+    deadline: deadline,
+    docs: { sop: false, lor: false, transcript: false, langTest: false, examScore: false }, // <-- ADDED HERE
+    status: 'Not Started'
+});
+
+        collegeNameInput.value = ''; // Clear inputs
+        deadlineDateInput.value = '';
+
+        saveApplications();
+        renderApplications();
+    });
+
+    // Event Delegation for handling clicks on dynamic elements (delete, checkbox, select)
+    // +++ NEW, COMBINED EVENT LISTENER +++
+appTableBody.addEventListener('click', (e) => {
+    // Handle clicks on our new Document Buttons
+    if (e.target.classList.contains('doc-btn')) {
+        const index = e.target.dataset.index;
+        const docType = e.target.dataset.doc;
+
+        // 1. Toggle the data (true -> false, false -> true)
+        applications[index].docs[docType] = !applications[index].docs[docType];
+        
+        // 2. Save the updated data to localStorage
+        saveApplications();
+
+        // 3. Visually update the button's class without redrawing the whole table
+        e.target.classList.toggle('doc-btn-pending');
+        e.target.classList.toggle('doc-btn-done');
+    }
+
+    // Handle clicks on the Delete Button (this part might already be in your code)
+    if (e.target.closest('.delete-btn')) {
+        const index = e.target.closest('.delete-btn').dataset.index;
+        if (confirm(`Are you sure you want to delete the application for ${applications[index].name}?`)) {
+            applications.splice(index, 1);
+            saveApplications();
+            renderApplications();
+        }
+    }
+});
+
+// We still need a SEPARATE listener for the 'change' event on the dropdown
+appTableBody.addEventListener('change', (e) => {
+    if (e.target.classList.contains('status-select')) {
+        const index = e.target.dataset.index;
+        applications[index].status = e.target.value;
+        saveApplications();
+    }
+});
+    
+    appTableBody.addEventListener('click', (e) => {
+        // Handle delete button clicks
+        if (e.target.closest('.delete-btn')) {
+            const index = e.target.closest('.delete-btn').dataset.index;
+            if (confirm(`Are you sure you want to delete the application for ${applications[index].name}?`)) {
+                applications.splice(index, 1); // Remove the item from the array
+                saveApplications();
+                renderApplications();
+            }
+        }
+    });
+
+    // Initial render of the applications when the page loads
+    renderApplications();
+});
+</script>
+
+<!-- START: CORRECTED INSTALL APP SCRIPT -->
+<script>
+  window.addEventListener('load', () => {
+    const installButton = document.getElementById('installAppButton');
+    let deferredPrompt; 
+
+    // This part is crucial for the best user experience.
+    // If the app is already installed and running in its own window, hide the button completely.
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      console.log('App is already installed.');
+      if (installButton) {
+        installButton.style.display = 'none';
+      }
+      return; // Stop the rest of the script from running
+    }
+
+    // By default, the button is visible but disabled.
+    // We'll tell the user it's checking for compatibility.
+    if (installButton) {
+        installButton.disabled = true;
+        installButton.textContent = 'Checking compatibility...';
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent the default mini-infobar from appearing on mobile
+      e.preventDefault();
+      
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+      
+      // Now that we know the app is installable, enable the button!
+      if (installButton) {
+        installButton.disabled = false;
+        installButton.textContent = 'Install App';
+        console.log('PWA is ready to be installed.');
+      }
+    });
+
+    if (installButton) {
+      installButton.addEventListener('click', async () => {
+        // The button should only be clickable if deferredPrompt is available
+        if (!deferredPrompt) {
+          console.log('Install prompt not available.');
+          return;
+        }
+        
+        // Show the browser's install prompt
+        deferredPrompt.prompt();
+        
+        // Wait for the user to respond
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User response to the install prompt: ${outcome}`);
+        
+        // We've used the prompt, so clear it
+        deferredPrompt = null;
+
+        // After the prompt, disable the button again
+        installButton.disabled = true;
+        installButton.textContent = 'Installed!';
+      });
+    }
+
+    window.addEventListener('appinstalled', () => {
+      deferredPrompt = null;
+      console.log('PWA was installed successfully!');
+      if(installButton) {
+          installButton.textContent = 'Installed!';
+          installButton.disabled = true;
+      }
+    });
+  });
+</script>
+<!-- END: CORRECTED INSTALL APP SCRIPT -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+</body>
+</html>
