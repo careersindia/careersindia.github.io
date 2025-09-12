@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Career Path Navigator | After 12th Grade</title>
+<link rel="manifest" href="/manifest.json">
+
     
     <!-- Google Fonts: Poppins for body, a nice contrast to Impact -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -4416,5 +4418,24 @@
         }
 
     </script>
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+
 </body>
 </html>

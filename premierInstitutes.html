@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premier Institutes of India</title>
+<link rel="manifest" href="/manifest.json">
+
+
  <style>
     @import url('https://fonts.cdnfonts.com/css/impact');
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap');
@@ -223,32 +226,7 @@
     }
 
 </style>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <!-- UNIVERSAL RESPONSIVE FIX -->
-    <style>
-      /* 1. A more natural box model */
-      *, *::before, *::after {
-        box-sizing: border-box;
-      }
-      
-      /* 2. Make images responsive */
-      img, video, iframe {
-        max-width: 100%;
-        height: auto;
-      }
-
-      /* 3. Make main containers flexible */
-      /* Adjust these if your main container has a different name */
-      body, .container, #main-content, #wrapper {
-        width: 100% !important;
-        max-width: 1200px !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-      }
-    </style>
-
-/head>
+</head>
 <body>
 
     <header>
@@ -990,6 +968,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 </script>
-
-\r\n/body>
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+</body>
 </html>

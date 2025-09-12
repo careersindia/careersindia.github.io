@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Gre </title>
+<link rel="manifest" href="/manifest.json">
  <style>
     body { font-family: Arial, sans-serif; padding: 20px; background-color: white !important; }
     h1 { color: #006400; /* Bottle Green */ }
@@ -88,5 +89,24 @@ Official scores, including Analytical Writing, are available in your ETS account
 
 
 </pre>
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+
 </body>
 </html>

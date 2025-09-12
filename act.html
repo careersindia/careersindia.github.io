@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Act </title>
+<link rel="manifest" href="/manifest.json">
+
 <style>
     body { font-family: Arial, sans-serif; padding: 20px; background-color: white !important; }
     h1 { color: #006400; /* Bottle Green */ }
@@ -112,5 +114,24 @@ Writing scores (if taken): Usually available 2-3 weeks after multiple-choice sco
 
 
 </pre>
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+
 </body>
 </html>
