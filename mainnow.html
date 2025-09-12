@@ -890,6 +890,7 @@ margin-top: 20px;
 <!-- ========= INSTALL APP FEATURE START ========= -->
 <!-- ============================================= -->
 <!-- ============================================= -->
+<!-- ============================================= -->
 <!-- ========= INSTALL APP FEATURE (FINAL VERSION) ========= -->
 <!-- ============================================= -->
 <div class="install-feature-box">
@@ -921,9 +922,6 @@ margin-top: 20px;
     </button>
   </div>
 </div>
-<!-- ============================================= -->
-<!-- ========= INSTALL APP FEATURE END =========== -->
-<!-- ============================================= -->
 <!-- ============================================= -->
 <!-- ========= INSTALL APP FEATURE END =========== -->
 <!-- ============================================= -->
@@ -1285,9 +1283,6 @@ appTableBody.addEventListener('change', (e) => {
 });
 </script>
 
-<!-- START: CORRECTED INSTALL APP SCRIPT -->
-<!-- START: CORRECTED INSTALL APP SCRIPT (Replace your old one with this) -->
-<!-- START: FINAL CORRECTED INSTALL APP SCRIPT -->
 <!-- START: FINAL CORRECTED INSTALL APP SCRIPT -->
 <script>
   window.addEventListener('load', () => {
@@ -1298,10 +1293,10 @@ appTableBody.addEventListener('change', (e) => {
     const mobileInstallBox = document.getElementById('mobileInstallBox');
     let deferredPrompt; 
 
-    // --- Device Detection ---
+    // --- This checks if the user is on a phone ---
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    // --- Logic for showing the correct box based on device ---
+    // --- This shows the correct box based on the device ---
     if (isMobile) {
       // If on mobile, hide the desktop/QR code box and show the mobile install box.
       desktopInstallBox.hidden = true;
@@ -1327,7 +1322,7 @@ appTableBody.addEventListener('change', (e) => {
         installButtonDesktop.textContent = 'Checking compatibility...';
     }
     if (installButtonMobile) {
-        installButtonMobile.hidden = true; // Mobile button is hidden until the browser confirms it can be installed.
+        installButtonMobile.hidden = true; // Mobile button is hidden until browser says it's ready.
     }
 
     // This event fires when the browser says the app is ready to install.
@@ -1335,37 +1330,26 @@ appTableBody.addEventListener('change', (e) => {
       e.preventDefault();
       deferredPrompt = e;
       
-      // Make the RELEVANT button visible and active.
+      // Make the RELEVANT button visible.
       if (isMobile && installButtonMobile) {
-        installButtonMobile.hidden = false;
+        installButtonMobile.hidden = false; // <-- THIS MAKES THE BUTTON APPEAR ON MOBILE
       }
       
       if (!isMobile && installButtonDesktop) {
         installButtonDesktop.disabled = false;
         installButtonDesktop.textContent = 'Install App';
       }
-      console.log('PWA is ready to be installed.');
     });
 
-    // This function runs when EITHER button is clicked.
-    // It is the function that triggers the "Do you want to install the app?" message.
+    // This function runs when the user taps our button.
     async function handleInstallClick() {
-      if (!deferredPrompt) {
-        console.log('Install prompt is not available.');
-        return;
-      }
+      if (!deferredPrompt) return;
       
-      // THIS IS THE LINE THAT SHOWS THE MESSAGE YOU WANT
+      // THIS IS THE LINE THAT SHOWS THE "DO YOU WANT TO INSTALL THE APP" MESSAGE
       deferredPrompt.prompt();
       
       const { outcome } = await deferredPrompt.userChoice;
-      console.log(`User response to the install prompt: ${outcome}`);
-      
       deferredPrompt = null;
-
-      // Hide both boxes after the user makes a choice.
-      desktopInstallBox.hidden = true;
-      mobileInstallBox.hidden = true;
     }
 
     // Add click listeners to both buttons.
@@ -1375,14 +1359,8 @@ appTableBody.addEventListener('change', (e) => {
     if (installButtonMobile) {
       installButtonMobile.addEventListener('click', handleInstallClick);
     }
-
-    window.addEventListener('appinstalled', () => {
-      deferredPrompt = null;
-      console.log('PWA was installed successfully!');
-    });
   });
 </script>
-<!-- END: FINAL CORRECTED INSTALL APP SCRIPT -->
 <!-- END: FINAL CORRECTED INSTALL APP SCRIPT -->
 <script>
   if ('serviceWorker' in navigator) {
