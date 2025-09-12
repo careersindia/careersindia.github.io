@@ -889,34 +889,31 @@ margin-top: 20px;
 <!-- ============================================= -->
 <!-- ========= INSTALL APP FEATURE START ========= -->
 <!-- ============================================= -->
+<!-- ============================================= -->
+<!-- ========= INSTALL APP FEATURE (FINAL VERSION) ========= -->
+<!-- ============================================= -->
 <div class="install-feature-box">
   <h3>Get Our App!</h3>
   <p>For quick access on any device, install our app.</p>
-<div id="desktopInstallBox">
-  <!-- Part 1: For Mobile Users -->
-  <div class="install-mobile">
-    <p><strong>On your phone?</strong> Scan this QR code:</p>
-    <img src="images/qr-code.png" alt="QR Code to install the app" id="qrCodeImage">
-    
-    <!-- Part 2: Save QR Code button -->
-    <a href="images/qr-code.png" download="qr-code.png" class="save-qr-button">
-      Save QR Code
-    </a>
-  
-  </div>
-  
-  <!-- Part 1: For Laptop/Desktop Users -->
-  <div class="install-desktop">
-    <p><strong>On your laptop?</strong> Click here:</p>
-    
-    <!-- This button will be hidden by default and shown only if the app is installable -->
-    <button id="installAppButton" class="install-button">
-      Install App
-    </button>
-  </div>
-</div>
 
-<!-- CHANGE 2: ADD THIS COMPLETELY NEW SECTION FOR MOBILE -->
+  <!-- This box is for DESKTOP users. It shows the QR code. -->
+  <div id="desktopInstallBox">
+    <p><strong>On your phone?</strong> Scan this QR code:</p>
+    <div class="install-mobile">
+      <img src="images/qr-code.png" alt="QR Code to install the app" id="qrCodeImage">
+      <a href="images/qr-code.png" download="CareerApp-QRCode.png" class="save-qr-button">
+        Save QR Code
+      </a>
+    </div>
+    <div class="install-desktop">
+      <p><strong>On your laptop?</strong> Click here:</p>
+      <button id="installAppButton" class="install-button">
+        Install App
+      </button>
+    </div>
+  </div>
+
+  <!-- This box is for MOBILE users. It shows a simple install button. -->
   <div id="mobileInstallBox" hidden>
     <p><strong>Install the app on this phone for quick access!</strong></p>
     <button id="installAppButtonMobile" class="install-button">
@@ -924,6 +921,9 @@ margin-top: 20px;
     </button>
   </div>
 </div>
+<!-- ============================================= -->
+<!-- ========= INSTALL APP FEATURE END =========== -->
+<!-- ============================================= -->
 <!-- ============================================= -->
 <!-- ========= INSTALL APP FEATURE END =========== -->
 <!-- ============================================= -->
@@ -1288,6 +1288,7 @@ appTableBody.addEventListener('change', (e) => {
 <!-- START: CORRECTED INSTALL APP SCRIPT -->
 <!-- START: CORRECTED INSTALL APP SCRIPT (Replace your old one with this) -->
 <!-- START: FINAL CORRECTED INSTALL APP SCRIPT -->
+<!-- START: FINAL CORRECTED INSTALL APP SCRIPT -->
 <script>
   window.addEventListener('load', () => {
     // --- Get references to all elements ---
@@ -1298,64 +1299,63 @@ appTableBody.addEventListener('change', (e) => {
     let deferredPrompt; 
 
     // --- Device Detection ---
-    // A simple way to check if the user is likely on a mobile device
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    // --- Logic for showing the correct box ---
+    // --- Logic for showing the correct box based on device ---
     if (isMobile) {
-      // If on mobile, hide the desktop/QR code box and show the mobile install box
+      // If on mobile, hide the desktop/QR code box and show the mobile install box.
       desktopInstallBox.hidden = true;
       mobileInstallBox.hidden = false;
     } else {
-      // If on desktop, hide the mobile box and show the desktop/QR code box
+      // If on desktop, hide the mobile box and show the desktop/QR code box.
       desktopInstallBox.hidden = false;
       mobileInstallBox.hidden = true;
     }
 
     // --- PWA Installation Logic ---
 
-    // If the app is already running standalone, hide the entire feature box
+    // If the app is already installed, hide the entire feature box.
     if (window.matchMedia('(display-mode: standalone)').matches) {
       const featureBox = document.querySelector('.install-feature-box');
       if (featureBox) featureBox.style.display = 'none';
       return; 
     }
 
-    // Default state for the desktop button
+    // Set default state for buttons
     if (installButtonDesktop) {
         installButtonDesktop.disabled = true;
         installButtonDesktop.textContent = 'Checking compatibility...';
     }
-     // Default state for the mobile button (it's already hidden, but we'll prepare it)
     if (installButtonMobile) {
-        installButtonMobile.hidden = true;
+        installButtonMobile.hidden = true; // Mobile button is hidden until the browser confirms it can be installed.
     }
 
-    // The 'beforeinstallprompt' event fires when the browser says the app is ready
+    // This event fires when the browser says the app is ready to install.
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
       
-      // Now, make the relevant button visible and active
+      // Make the RELEVANT button visible and active.
       if (isMobile && installButtonMobile) {
-        installButtonMobile.hidden = false; // Make the mobile button visible
+        installButtonMobile.hidden = false;
       }
       
       if (!isMobile && installButtonDesktop) {
-        installButtonDesktop.disabled = false; // Enable the desktop button
+        installButtonDesktop.disabled = false;
         installButtonDesktop.textContent = 'Install App';
       }
-
       console.log('PWA is ready to be installed.');
     });
 
-    // This single function will handle the install click from either button
+    // This function runs when EITHER button is clicked.
+    // It is the function that triggers the "Do you want to install the app?" message.
     async function handleInstallClick() {
       if (!deferredPrompt) {
         console.log('Install prompt is not available.');
         return;
       }
       
+      // THIS IS THE LINE THAT SHOWS THE MESSAGE YOU WANT
       deferredPrompt.prompt();
       
       const { outcome } = await deferredPrompt.userChoice;
@@ -1363,12 +1363,12 @@ appTableBody.addEventListener('change', (e) => {
       
       deferredPrompt = null;
 
-      // Hide both boxes after the prompt is shown
+      // Hide both boxes after the user makes a choice.
       desktopInstallBox.hidden = true;
       mobileInstallBox.hidden = true;
     }
 
-    // Add click listeners to both buttons
+    // Add click listeners to both buttons.
     if (installButtonDesktop) {
       installButtonDesktop.addEventListener('click', handleInstallClick);
     }
@@ -1382,6 +1382,7 @@ appTableBody.addEventListener('change', (e) => {
     });
   });
 </script>
+<!-- END: FINAL CORRECTED INSTALL APP SCRIPT -->
 <!-- END: FINAL CORRECTED INSTALL APP SCRIPT -->
 <script>
   if ('serviceWorker' in navigator) {
