@@ -887,10 +887,6 @@ margin-top: 20px;
         </div>
 
 <!-- ============================================= -->
-<!-- ========= INSTALL APP FEATURE START ========= -->
-<!-- ============================================= -->
-<!-- ============================================= -->
-<!-- ============================================= -->
 <!-- ========= INSTALL APP FEATURE (FINAL VERSION) ========= -->
 <!-- ============================================= -->
 <div class="install-feature-box">
@@ -914,7 +910,7 @@ margin-top: 20px;
     </div>
   </div>
 
-  <!-- This box is for MOBILE users. It shows a simple install button. -->
+  <!-- This box is for MOBILE users. It shows the button that triggers the message you want. -->
   <div id="mobileInstallBox" hidden>
     <p><strong>Install the app on this phone for quick access!</strong></p>
     <button id="installAppButtonMobile" class="install-button">
@@ -1330,7 +1326,7 @@ appTableBody.addEventListener('change', (e) => {
       e.preventDefault();
       deferredPrompt = e;
       
-      // Make the RELEVANT button visible.
+      // Make the RELEVANT button visible and active.
       if (isMobile && installButtonMobile) {
         installButtonMobile.hidden = false; // <-- THIS MAKES THE BUTTON APPEAR ON MOBILE
       }
