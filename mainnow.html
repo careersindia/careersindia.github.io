@@ -893,7 +893,7 @@ margin-top: 20px;
     <p><strong>On your laptop?</strong> Click here:</p>
     
     <!-- This button will be hidden by default and shown only if the app is installable -->
-    <button id="installAppButton" class="install-button">
+    <button id="installAppButton" class="install-button" hidden>
       Install App
     </button>
   </div>
@@ -1261,73 +1261,55 @@ appTableBody.addEventListener('change', (e) => {
 
 <!-- START: CORRECTED INSTALL APP SCRIPT -->
 <script>
+  // Wait for the entire page to load before running the script
   window.addEventListener('load', () => {
+
     const installButton = document.getElementById('installAppButton');
-    let deferredPrompt; 
+    let deferredPrompt; // This variable will hold the install event
 
-    // This part is crucial for the best user experience.
-    // If the app is already installed and running in its own window, hide the button completely.
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      console.log('App is already installed.');
-      if (installButton) {
-        installButton.style.display = 'none';
-      }
-      return; // Stop the rest of the script from running
-    }
-
-    // By default, the button is visible but disabled.
-    // We'll tell the user it's checking for compatibility.
-    if (installButton) {
-        installButton.disabled = true;
-        installButton.textContent = 'Checking compatibility...';
-    }
-
+    // Listen for the 'beforeinstallprompt' event, which browsers fire
+    // when the PWA is recognized as installable.
     window.addEventListener('beforeinstallprompt', (e) => {
-      // Prevent the default mini-infobar from appearing on mobile
+      // Prevent the mini-infobar from appearing on mobile
       e.preventDefault();
       
       // Stash the event so it can be triggered later.
       deferredPrompt = e;
       
-      // Now that we know the app is installable, enable the button!
+      // Show our custom install button
       if (installButton) {
-        installButton.disabled = false;
-        installButton.textContent = 'Install App';
+        installButton.hidden = false;
         console.log('PWA is ready to be installed.');
       }
     });
 
+    // Add a click event listener to our custom install button
     if (installButton) {
       installButton.addEventListener('click', async () => {
-        // The button should only be clickable if deferredPrompt is available
-        if (!deferredPrompt) {
-          console.log('Install prompt not available.');
-          return;
-        }
+        // Hide our button since it's about to be used
+        installButton.hidden = true;
         
         // Show the browser's install prompt
         deferredPrompt.prompt();
         
-        // Wait for the user to respond
+        // Wait for the user to respond to the prompt
         const { outcome } = await deferredPrompt.userChoice;
+        
         console.log(`User response to the install prompt: ${outcome}`);
         
-        // We've used the prompt, so clear it
+        // We've used the prompt, so we can't use it again. Clear it.
         deferredPrompt = null;
-
-        // After the prompt, disable the button again
-        installButton.disabled = true;
-        installButton.textContent = 'Installed!';
       });
     }
 
+    // You can also listen for when the app is successfully installed
     window.addEventListener('appinstalled', () => {
+      // Hide the install button for good
+      if (installButton) {
+        installButton.hidden = true;
+      }
       deferredPrompt = null;
       console.log('PWA was installed successfully!');
-      if(installButton) {
-          installButton.textContent = 'Installed!';
-          installButton.disabled = true;
-      }
     });
   });
 </script>
