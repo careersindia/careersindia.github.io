@@ -331,9 +331,11 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: "NCHMCT JEE", fullName: "National Council for Hotel Management and Catering Technology JEE", website:  "https://nchm.gov.in", time: "May", scope: "Admission to B.Sc. in Hospitality & Hotel Administration in IHMs." },
         { name: "NDA", fullName: "National Defence Academy", website: "upsconline.nic.in", time: "April & Sept", scope: "Entry into NDA (Army, Navy, Air Force)" },
         { name: "NEET UG", fullName: "National Eligibility cum Entrance Test (Undergraduate)", website: "https://neet.nta.nic.in", time: "May", scope: "Admission to MBBS, BDS, BAMS, BHMS, etc." },
+ { name: "NEET-PG", fullName: "National Eligibility cum Entrance Test (Postgraduate)", website: "https://nbe.edu.in/", time: "First half of the year", scope: "Admission to MD/MS/PG Diploma courses in Indian medical colleges" },
         { name: "NEST", fullName: "National Entrance Screening Test", website: "nestexam.in", time: "June", scope: "Admission to integrated M.Sc. programs at NISER and UM-DAE CEBS." },
         { name: "NID DAT", fullName: "National Institute of Design – Design Aptitude Test", website: "admissions.nid.edu", time: "Prelims: Jan, Mains: April", scope: "Admission to B.Des & M.Des programs at NID campuses." },
         { name: "NIFT", fullName: "National Institute of Fashion Technology Entrance Exam", website: "nift.ac.in", time: "February", scope: "Admission to UG & PG programs at NIFT campuses." },
+{ name: "NMAT", fullName: "NMIMS Management Aptitude Test", website: "https://www.nmat.org/", time: "October - December", scope: "Admission to MBA programs at NMIMS and other B-schools" },
         { name: "RBI Grade B", fullName: "Reserve Bank of India Grade B Officer", website: "rbi.org.in", time: "July–Sept", scope: "Officer in RBI (General, DEPR, DSIM)" },
         { name: "RRB ALP", fullName: "Assistant Loco Pilot (Railway Recruitment Board)", website: "https://www.rrbcdg.gov.in/", time: "May–June", scope: "Railways ALP posts" },
         { name: "RRB JE", fullName: "Junior Engineer (Railway Recruitment Board)", website: "https://www.rrbcdg.gov.in/", time: "Variable", scope: "Railways technical posts" },
@@ -347,6 +349,8 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: "SSC CHSL", fullName: "Combined Higher Secondary Level", website: "https://ssc.nic.in/", time: "March–May", scope: "Clerical jobs in govt. ministries" },
         { name: "SSC MTS", fullName: "Multi Tasking Staff", website: "https://ssc.nic.in/", time: "April–June", scope: "Group C non-gazetted posts" },
         { name: "TISSNET", fullName: "Tata Institute of Social Sciences National Entrance Test", website: "https://tiss.edu/", time: "January/February", scope: "Admission to MA programs at TISS campuses", disclaimer: "Note: As of 2025, TISSNET has been discontinued. Admissions are based on CAT or CUET PG scores." },
+{ name: "UCEED", fullName: "Undergraduate Common Entrance Exam for Design", website: "https://www.uceed.iitb.ac.in/", time: "January", scope: "Admission to B.Des programs at IITs and other design institutes" },
+ { name: "UGC NET", fullName: "University Grants Commission National Eligibility Test", website: "https://ugcnet.nta.nic.in/", time: "June & December", scope: "Eligibility for Assistant Professor & JRF in Indian universities" },
         { name: "VITEEE", fullName: "Vellore Institute of Technology Engineering Entrance Examination", website: "https://viteee.vit.ac.in", time: "April", scope: "Admission to VIT campuses" },
         { name: "XAT", fullName: "Xavier Aptitude Test", website: "https://xatonline.in/", time: "January", scope: "Admission to XLRI and over 250 B-schools in India." }
     ];
@@ -377,12 +381,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // 1. User-specified corrections / Hardcoded rules
         if (name === 'jest' || name === 'nest') return "Other";
         if (name.startsWith('ca ') || name.startsWith('cma ') || name.startsWith('cs ') || name === 'cseet') return "Commerce & Finance";
-        if (name === 'ceed') return "Design & Arts";
+        if (name === 'ceed' || name === 'uceed') return "Design & Arts";
         
         // 2. Clear Categories
         if (name.includes('jee') || name.includes('bitsat') || name.includes('viteee') || name.includes('srmjeee') || name === 'gate' || fullName.includes('engineering') || scope.includes('iit') || scope.includes('nit')) return "Engineering";
         if (name.includes('neet') || name.includes('aiims') || name.includes('jipmer') || name.includes('fmge') || fullName.includes('medical') || scope.includes('mbbs') || scope.includes('bds')) return "Medical";
-        if (name === 'cat' || name === 'xat' || name === 'mat' || name === 'snap' || name === 'cmat' || name === 'gmat' || scope.includes('management') || scope.includes('mba')) return "Management";
+        if (name === 'cat' || name === 'xat' || name === 'nmat' || name === 'mat' || name === 'snap' || name === 'cmat' || name === 'gmat' || scope.includes('management') || scope.includes('mba')) return "Management";
         if (name.includes('clat') || name.includes('ailet') || name.includes('slat') || name.includes('lsat') || scope.includes('law')) return "Law";
         if (name.includes('nda') || name.includes('cds') || name.includes('afcat') || name.includes('ssb') || scope.includes('defence') || scope.includes('army') || scope.includes('air force')) return "Defence";
         if (name.includes('nata') || name.includes('nid') || name.includes('nift') || name.includes('ftii') || name.includes('srfti') || scope.includes('design') || scope.includes('fashion') || scope.includes('film') || scope.includes('architecture')) return "Design & Arts";
