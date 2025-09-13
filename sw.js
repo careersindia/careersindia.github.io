@@ -1,7 +1,7 @@
 // --- CONFIGURATION ---
 // v3 is a new version number to ensure the browser updates it.
-const staticCacheName = 'career-app-static-v3';
-const dynamicCacheName = 'career-app-dynamic-v3';
+const staticCacheName = 'career-app-static-v4';
+const dynamicCacheName = 'career-app-dynamic-v4';
 
 // A smaller, more robust list of essential files.
 // Make sure these files all exist at the root of your project!
@@ -41,16 +41,24 @@ self.addEventListener('activate', e => {
   );
 });
 
-// 3. FETCH: Cache-first, then network fallback, with dynamic caching.
+// 3. FETCH: Smart interceptor that handles partial content
 self.addEventListener('fetch', e => {
   e.respondWith(
     caches.match(e.request).then(cacheRes => {
+      // Return from cache if found
       return cacheRes || fetch(e.request).then(fetchRes => {
+        // Open the dynamic cache
         return caches.open(dynamicCacheName).then(cache => {
-          // IMPORTANT: Only cache GET requests.
-          if (e.request.method === 'GET') {
-            cache.put(e.request.url, fetchRes.clone());
+          // --- THIS IS THE FIX ---
+          // Only cache successful, complete responses (status 200).
+          // This will ignore partial (206) and other responses.
+          if (fetchRes.status === 200) {
+            // IMPORTANT: Only try to cache GET requests.
+            if (e.request.method === 'GET') {
+              cache.put(e.request.url, fetchRes.clone());
+            }
           }
+          // Always return the response from the network, regardless of whether we cached it.
           return fetchRes;
         });
       });
