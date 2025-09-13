@@ -30,144 +30,31 @@
 
 <style>
     @import url('https://fonts.cdnfonts.com/css/impact');
-    /* === MODERN CAREER PORTAL THEME === */
-
-    :root {
-        --primary-color:#7FFFD4; /* light turquoise */
-        --secondary-color: #7FFFD4; /* light turquoise for accents */
-        --accent-color: #7FFFD4;   /* light turquoise for CTAs */
-        --icon-color-turquoise: #7FFFD4;
-        --text-dark: #000000;
-        --text-light: #6c757d;
-        --bg-light: #f8f9fa;
-        --bg-white: #ffffff;
-        --border-color: #dee2e6;
-        --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-        --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    /* --- General & Reset --- */
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        font-family: 'Poppins', sans-serif;
-        background-color: var(--bg-light);
-        color: var(--text-dark);
-        line-height: 1.6;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    /* --- Header & Navigation --- */
-    .main-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color:#ffffff;
-    backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-sm);
-    z-index: 1000; /* Ensure header is above the menu */
-    transition: background-color 0.3s ease;
-}
-
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 70px;
-        padding: 0 20px;
-    }
-    
-    .logo {
-        font-size: 0.7rem;
-        font-weight: 700;
-        color: #000000;
-        text-decoration: none;
-        line-height: 1;
-        text-align: left;
-        margin-right: auto;
-    }
+    :root { --primary-color:#7FFFD4; --secondary-color: #7FFFD4; --accent-color: #7FFFD4; --icon-color-turquoise: #7FFFD4; --text-dark: #000000; --text-light: #6c757d; --bg-light: #f8f9fa; --bg-white: #ffffff; --border-color: #dee2e6; --shadow-sm: 0 1px 3px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .main-header { position: fixed; top: 0; left: 0; width: 100%; background-color:#ffffff; backdrop-filter: blur(10px); box-shadow: var(--shadow-sm); z-index: 1000; transition: background-color 0.3s ease; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; height: 70px; padding: 0 20px; }
+    .logo { font-size: 0.7rem; font-weight: 700; color: #000000; text-decoration: none; line-height: 1; text-align: left; margin-right: auto; }
     .logo i { margin-right: 8px; }
-
-    .nav-menu {
-        display: flex;
-        list-style: none;
-        align-items: center;
-        margin-left: auto;
-    }
-
-    .nav-menu > li {
-        position: relative;
-        margin: 0 1px;
-    }
-
-    .nav-link {
-        display: block;
-        padding: 8px 10px;
-        text-decoration: none;
-        color: #000000;
-        font-size: 0.75rem;
-        font-weight: 500;
-        transition: color 0.3s ease, background-color 0.3s ease;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        height: 45px;
-        min-width: 70px;
-        text-align: center;
-    }
-    
-    .nav-link:hover {
-        color: #40E0D0;
-        background-color: rgba(0, 86, 179, 0.05);
-    }
-    
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #7FFFD4;
-        box-shadow: var(--shadow-md);
-        border-radius: 8px;
-        padding: 10px;
-        min-width: 250px;
-        max-height: 400px;
-        overflow-y: auto;
-        z-index: 1001;
-        border: 1px solid var(--border-color);
-    }
-
+    .nav-menu { display: flex; list-style: none; align-items: center; margin-left: auto; }
+    .nav-menu > li { position: relative; margin: 0 1px; }
+    .nav-link { display: block; padding: 8px 10px; text-decoration: none; color: #000000; font-size: 0.75rem; font-weight: 500; transition: color 0.3s ease, background-color 0.3s ease; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); height: 45px; min-width: 70px; text-align: center; }
+    .nav-link:hover { color: #40E0D0; background-color: rgba(0, 86, 179, 0.05); }
+    .dropdown-content { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background-color: #7FFFD4; box-shadow: var(--shadow-md); border-radius: 8px; padding: 10px; min-width: 250px; max-height: 400px; overflow-y: auto; z-index: 1001; border: 1px solid var(--border-color); }
     .nav-menu > li:hover .dropdown-content { display: block; }
     .dropdown-content a { display: block; padding: 10px 15px; color: #000000; text-decoration: none; font-size: 0.9rem; border-radius: 5px; transition: background-color 0.2s ease; }
     .dropdown-content a:hover { background-color: var(--bg-light); }
     .menu-toggle { display: none; }
-    
-    /* --- Hero Section --- */
     .hero { position: relative; min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; color: #000000; padding: 100px 20px 50px 20px; }
     .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #7FFFD4; }
     .hero-content { position: relative; z-index: 2; max-width: 800px; }
     .hero-title { font-family: 'Impact', sans-serif; font-size: 4.5rem; font-weight: 700; margin-bottom: 15px; line-height: 1.2; color:#000000; display: inline-block; background-color:#ffffff; padding: 15px 30px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.1); text-shadow: 1px 1px 0 #bbb, 2px 2px 0 #aaa, 3px 3px 0 #999, 4px 4px 0 #888, 5px 5px 15px rgba(0, 0, 0, 0.5); }
     .hero-tagline { font-size: 1.5rem; font-weight: 300; margin-bottom: 30px; opacity: 0.9; }
-
-    /* --- Other Sections (Shortened for brevity) --- */
     #rotating-logo { width: 100px; height: 100px; margin: 0 auto 30px auto; background-image: url('cube.png'); background-size: cover; border-radius: 12px; animation: rotateMove 8s linear infinite; box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
     @keyframes rotateMove { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     .hero-inserted-image { max-width: 90%; height: auto; margin-top: 25px; margin-bottom: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
-    .search-engine-container { width: 100%; background:#7FFFD4; padding: 15px; border-radius: 12px; }
-    .search-box-wrapper { display: flex; gap: 10px; }
-    #aiSearchInput { flex-grow: 1; padding: 15px 20px; border-radius: 8px; border: 1px solid transparent; font-size: 1.1rem; }
-    #aiSearchButton { flex-shrink: 0; padding: 0 30px; border: none; border-radius: 8px; background-color: #ffffff; color: #000000; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
-    #aiSearchFeedback { margin-top: 10px; color: white; font-weight: 500; min-height: 20px; }
     .section { padding: 80px 0; }
     .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 10px; }
     .section-subtitle { text-align: center; font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto 50px auto; }
@@ -193,8 +80,6 @@
     .footer-col ul { list-style: none; }
     .footer-col ul li a { color: var(--text-light); text-decoration: none; display: block; padding: 5px 0; }
     .footer-bottom { border-top: 1px solid #444; padding-top: 20px; text-align: center; font-size: 0.9rem; }
-    .nav-menu > li:nth-last-child(-n+3) .dropdown-content { left: auto; right: 0; transform: translateX(0); }
-    .nav-link i { display: none !important; }
     .ai-counselor-container { width: 100%; background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 12px; backdrop-filter: blur(5px); box-shadow: var(--shadow-md); text-align: left; color: var(--text-dark); }
     .ai-input-wrapper { display: flex; gap: 10px; margin-bottom: 15px; }
     #aiUserInput { flex-grow: 1; padding: 15px 20px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 1.1rem; }
@@ -210,213 +95,33 @@
     #appTable th, #appTable td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
     #appTable th { background-color: #f8f9fa; }
     .delete-btn { color: #dc3545; background: none; border: none; cursor: pointer; font-size: 1.1em; }
-
-    /* --- THE FINAL, CORRECTED RESPONSIVE CODE --- */
-    @media (max-width: 992px) { /* A wider breakpoint for tablets and phones */
-        /* --- General Layout & Font Sizes --- */
-        .hero-title { font-size: 2.8rem; padding: 10px 20px; }
-        .hero-tagline { font-size: 1.2rem; }
-        .search-box-wrapper { flex-direction: column; }
-        .nav-link { display: none; } /* Hide the desktop links */
-
-        /* --- Hamburger Menu Logic --- */
-        .menu-toggle {
-    display: block;
-    font-size: 1.8rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: var(--primary-color);
-    z-index: 1001; /* Ensure it's on top of both header and menu */
-}
-/* === THIS IS THE CORRECTED CODE FOR THE MOBILE MENU === */
-.nav-menu {
-    display: none;
-    flex-direction: column;
-    position: fixed;
-    top: 0; /* Changed from 70px to 0 */
-    left: 0;
-    width: 100%;
-    height: 100vh; /* Changed from calc(100vh - 70px) to 100vh */
-    background-color: white;
-    z-index: 999; 
-    overflow-y: auto;
-    padding: 20px 0; 
-}
-
-body.menu-open > *:not(.main-header):not(.nav-menu) {
-    display: none;
-}
-
-        .nav-menu.active {
-            display: flex; /* Show the menu when active */
-        }
-        
-        .nav-menu li {
-            width: 100%;
-            text-align: center;
-        }
-        
-        /* This styles the links inside the mobile menu */
-        .nav-menu .nav-link {
-            display: block; 
-            width: 80%; 
-            max-width: 300px; 
-            margin: 5px auto; 
-            padding: 15px;
-            border-bottom: none; 
-            border: 1px solid var(--border-color);
-            background-color: var(--bg-light);
-            height: auto; 
-        }
-
-        .dropdown-content {
-            position: static;
-            transform: none;
-            box-shadow: none;
-            border: none;
-            background-color: #fdfdfd;
-            min-width: 100%;
-        }
-    }
-/* --- PREVENT BODY SCROLL WHEN MENU IS OPEN --- */
-/* --- LOCK BODY SCROLL WHEN MENU IS ACTIVE (PURE CSS) --- */
-body:has(.nav-menu.active) {
-    overflow: hidden;
-}
-/* --- FINAL FIX: Elevate the entire header when the menu is active --- */
-.main-header:has(.nav-menu.active) {
-    z-index: 9999;
-}
-.social-icons a {
-    margin: 0 10px;
-}
-#edu-news {
-    text-align: center;
-}
-
-/* ============================================= */
-/* ========= INSTALL APP FEATURE STYLES ======== */
-/* ============================================= */
-.install-feature-box {
-  border: 2px solid #007bff;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 30px auto;
-  max-width: 400px;
-  text-align: center;
-  font-family: sans-serif;
-  background-color: #f9f9f9;
-}
-
-.install-feature-box h3 {
-  margin-top: 0;
-}
-.install-mobile p {
-  margin-bottom: 15px; /* Pushes everything below this text down */
-}
-
-.install-feature-box img {
-  max-width: 150px;
-  height: auto;
-  border: 1px solid #ccc;
-  padding: 5px;
-  border-radius: 5px;
-margin-top: 20px;
-}
-
-.save-qr-button {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 8px 15px;
-  background-color: #6c757d;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-.save-qr-button:hover {
-  background-color: #5a6268;
-}
-
-.install-desktop {
-  margin-top: 20px;
-}
-
-/* The Blue Install Button for Laptops */
-.install-button {
-  background-color: #007bff; /* A nice blue color */
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.install-button:hover {
-  background-color: #0056b3;
-}
-
-
-/* ============================================= */
-/* ============ HOME BUTTON STYLES ============= */
-/* ============================================= */
-.home-button-container {
-  position: fixed; /* This makes it float on top of other content */
-  top: 100px;
-  right: 25px;
-  z-index: 1000; /* Ensures it's above other elements */
-}
-
-.home-button-container a img {
-  width: 50px; /* Adjust size as needed */
-  height: 50px;
-  border-radius: 50%; /* Makes it a circle */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  transition: transform 0.2s;
-}
-
-.home-button-container a:hover img {
-  transform: scale(1.1); /* Slightly enlarge on hover */
-}
-/* Add this new rule to your CSS file */
-.install-mobile {
-  display: flex;
-  flex-direction: column; /* Stacks items vertically */
-  align-items: center;   /* Centers items horizontally */
-  gap: 15px;             /* This creates 15px of space BETWEEN each item */
-}
-
-/* Add this CSS to your existing <style> block */
-
-/* This hides the "On your laptop?" text when viewed on a mobile device */
-@media (max-width: 768px) {
-  .install-desktop p {
-    display: none;
-  }
-}
-
-/* Style for the new mobile install button to make it stand out */
-#installAppButtonMobile {
-  margin-top: 15px;
-  width: 80%;
-  max-width: 300px;
-}
+    #edu-news { text-align: center; }
+    .install-feature-box { border: 2px solid #007bff; border-radius: 10px; padding: 20px; margin: 30px auto; max-width: 400px; text-align: center; font-family: sans-serif; background-color: #f9f9f9; }
+    .install-feature-box h3 { margin-top: 0; }
+    .install-mobile p { margin-bottom: 15px; }
+    .install-feature-box img { max-width: 150px; height: auto; border: 1px solid #ccc; padding: 5px; border-radius: 5px; margin-top: 20px; }
+    .save-qr-button { display: inline-block; margin-top: 15px; padding: 8px 15px; background-color: #6c757d; color: white; text-decoration: none; border-radius: 5px; font-size: 14px; }
+    .save-qr-button:hover { background-color: #5a6268; }
+    .install-desktop { margin-top: 20px; }
+    .install-button { background-color: #007bff; color: white; border: none; padding: 12px 25px; font-size: 16px; font-weight: bold; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
+    .install-button:hover { background-color: #0056b3; }
+    .home-button-container { position: fixed; top: 100px; right: 25px; z-index: 1000; }
+    .home-button-container a img { width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: transform 0.2s; }
+    .home-button-container a:hover img { transform: scale(1.1); }
+    .install-mobile { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+    @media (max-width: 768px) { .install-desktop p { display: none; } }
+    #installAppButtonMobile { margin-top: 15px; width: 80%; max-width: 300px; }
+    @media (max-width: 992px) { .hero-title { font-size: 2.8rem; padding: 10px 20px; } .hero-tagline { font-size: 1.2rem; } .nav-link { display: none; } .menu-toggle { display: block; font-size: 1.8rem; cursor: pointer; background: none; border: none; color: var(--primary-color); z-index: 1001; } .nav-menu { display: none; flex-direction: column; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: white; z-index: 999; overflow-y: auto; padding: 20px 0; } body.menu-open > *:not(.main-header):not(.nav-menu) { display: none; } .nav-menu.active { display: flex; } .nav-menu li { width: 100%; text-align: center; } .nav-menu .nav-link { display: block; width: 80%; max-width: 300px; margin: 5px auto; padding: 15px; border-bottom: none; border: 1px solid var(--border-color); background-color: var(--bg-light); height: auto; } .dropdown-content { position: static; transform: none; box-shadow: none; border: none; background-color: #fdfdfd; min-width: 100%; } }
+    body:has(.nav-menu.active) { overflow: hidden; }
+    .main-header:has(.nav-menu.active) { z-index: 9999; }
+    .social-icons a { margin: 0 10px; }
 </style>
 </head>
 <body>
 
-    <!-- This is the loader message that shows first -->
     <div id="loader-message" style="display: block; text-align: center; padding: 50px; font-size: 1.5em;">CHECKING COMPATABILITY</div>
 
-    <!-- This contains all your real content, and it is hidden at first -->
     <div id="main-content" style="display: none;">
-
-        <!-- ======== HEADER & NAVIGATION ======== -->
         <header class="main-header">
             <nav class="navbar container">
                 <ul class="nav-menu" id="nav-menu">
@@ -466,9 +171,7 @@ margin-top: 20px;
                             <a href="careerpath_govt_2.html">Government exams</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a href="govt.html" class="nav-link">Government Jobs</a>
-                    </li>
+                    <li class="nav-item"><a href="govt.html" class="nav-link">Government Jobs</a></li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link">Entrance Exams <i class="fas fa-chevron-down fa-xs"></i></a>
                         <div class="dropdown-content">
@@ -634,12 +337,9 @@ margin-top: 20px;
                         </div>
                     </li>
                 </ul>
-                <button class="menu-toggle" id="menu-toggle" aria-label="Open Menu">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Open Menu"><i class="fas fa-bars"></i></button>
             </nav>
         </header>
-
         <main>
             <section class="hero">
                 <div class="hero-content">
@@ -658,208 +358,75 @@ margin-top: 20px;
             </section>
             <div class="tracker-container">
                 <h2>My College Application Tracker</h2>
-                <p class="tracker-notice">
-                    <i class="fas fa-info-circle"></i> 
-                    Your data is saved privately in this browser. It won't sync to other devices.
-                </p>
+                <p class="tracker-notice"><i class="fas fa-info-circle"></i> Your data is saved privately in this browser. It won't sync to other devices.</p>
                 <div class="add-form">
-                    <input type="text" id="collegeName" placeholder="University Name">
-                    <input type="date" id="deadlineDate">
-                    <button id="addAppBtn">Add Application</button>
+                    <input type="text" id="collegeName" placeholder="University Name"><input type="date" id="deadlineDate"><button id="addAppBtn">Add Application</button>
                 </div>
-                <table id="appTable">
-                    <thead>
-                        <tr>
-                            <th>University</th>
-                            <th>Deadline</th>
-                            <th>Document Checklist</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="appTableBody">
-                    </tbody>
-                </table>
+                <table id="appTable"><thead><tr><th>University</th><th>Deadline</th><th>Document Checklist</th><th>Status</th><th>Action</th></tr></thead><tbody id="appTableBody"></tbody></table>
             </div>
             <section class="section" id="explore">
                 <div class="container">
                     <h2 class="section-title">Explore Your Options</h2>
-                    <p class="section-subtitle">Your journey to a successful career starts here. Select a stage to discover detailed information on courses, scope, and opportunities.</p>
+                    <p class="section-subtitle">Your journey to a successful career starts here...</p>
                     <div class="category-grid">
-                        <a href="ssc1.html" class="category-card">
-                            <i class="fas fa-school icon"></i>
-                            <h3>After SSC (10th)</h3>
-                            <p>Explore diplomas, vocational training, and the first steps toward your career.</p>
-                        </a>
-                        <a href="hsc1.html" class="category-card">
-                            <i class="fas fa-book-open-reader icon"></i>
-                            <h3>After HSC (12th)</h3>
-                            <p>Find the right undergraduate degree from thousands of options in science, arts, & commerce.</p>
-                        </a>
-                        <a href="grad1.html" class="category-card">
-                            <i class="fas fa-user-graduate icon"></i>
-                            <h3>After Graduation</h3>
-                            <p>Specialize with Master's degrees, PG Diplomas, and professional certifications.</p>
-                        </a>
-                        <a href="pg1.html" class="category-card">
-                            <i class="fas fa-microscope icon"></i>
-                            <h3>After Post Graduation</h3>
-                            <p>Reach the pinnacle of academics with Doctoral programs (Ph.D.) and research.</p>
-                        </a>
-                        <a href="govt.html" class="category-card">
-                            <i class="fas fa-landmark icon"></i>
-                            <h3>Government Jobs</h3>
-                            <p>Prepare for a stable and prestigious career with exams like UPSC, SSC, Banking, and Railways.</p>
-                        </a>
-                        <a href="living_and_learning_abroad.html" class="category-card">
-                            <i class="fas fa-plane-departure icon"></i>
-                            <h3>Study Abroad</h3>
-                            <p>Discover global opportunities, top universities, and the process to study overseas.</p>
-                        </a>
+                        <a href="ssc1.html" class="category-card"><i class="fas fa-school icon"></i><h3>After SSC (10th)</h3><p>Explore diplomas...</p></a>
+                        <a href="hsc1.html" class="category-card"><i class="fas fa-book-open-reader icon"></i><h3>After HSC (12th)</h3><p>Find the right degree...</p></a>
+                        <a href="grad1.html" class="category-card"><i class="fas fa-user-graduate icon"></i><h3>After Graduation</h3><p>Specialize with Master's...</p></a>
+                        <a href="pg1.html" class="category-card"><i class="fas fa-microscope icon"></i><h3>After Post Graduation</h3><p>Reach the pinnacle...</p></a>
+                        <a href="govt.html" class="category-card"><i class="fas fa-landmark icon"></i><h3>Government Jobs</h3><p>Prepare for a stable career...</p></a>
+                        <a href="living_and_learning_abroad.html" class="category-card"><i class="fas fa-plane-departure icon"></i><h3>Study Abroad</h3><p>Discover global opportunities...</p></a>
                     </div>
                 </div>
             </section>
             <section class="section" id="impact-stats">
                 <div class="container">
                     <h2 class="section-title">Our Platform at a Glance</h2>
-                    <p class="section-subtitle">We've compiled a vast repository of information to empower your career decisions. See our impact in numbers.</p>
+                    <p class="section-subtitle">We've compiled a vast repository of information...</p>
                     <div class="counter-grid">
-                        <div class="counter-item">
-                            <i class="fas fa-book-open icon"></i>
-                            <span class="counter-number" data-target="800">0</span>
-                            <p class="counter-label">Courses Covered+</p>
-                        </div>
-                        <div class="counter-item">
-                            <i class="fas fa-school icon"></i>
-                            <span class="counter-number" data-target="700">0</span>
-                            <p class="counter-label">Schools Covered+</p>
-                        </div>
-                        <div class="counter-item">
-                            <i class="fas fa-university icon"></i>
-                            <span class="counter-number" data-target="5000">0</span>
-                            <p class="counter-label">Colleges & Universities+</p>
-                        </div>
-                        <div class="counter-item">
-                            <i class="fas fa-tools icon"></i>
-                            <span class="counter-number" data-target="6000">0</span>
-                            <p class="counter-label">Vocational & Diploma Institutes Covered+</p>
-                        </div>
-                        <div class="counter-item">
-                            <i class="fas fa-file-signature icon"></i>
-                            <span class="counter-number" data-target="60">0</span>
-                            <p class="counter-label">Govt. & Entrance Exams+</p>
-                        </div>
-                        <div class="counter-item">
-                            <i class="fas fa-award icon"></i>
-                            <span class="counter-number" data-target="1200">0</span>
-                            <p class="counter-label">Scholarships Listed+</p>
-                        </div>
+                        <div class="counter-item"><i class="fas fa-book-open icon"></i><span class="counter-number" data-target="800">0</span><p class="counter-label">Courses Covered+</p></div>
+                        <div class="counter-item"><i class="fas fa-school icon"></i><span class="counter-number" data-target="700">0</span><p class="counter-label">Schools Covered+</p></div>
+                        <div class="counter-item"><i class="fas fa-university icon"></i><span class="counter-number" data-target="5000">0</span><p class="counter-label">Colleges & Universities+</p></div>
+                        <div class="counter-item"><i class="fas fa-tools icon"></i><span class="counter-number" data-target="6000">0</span><p class="counter-label">Vocational & Diploma Institutes Covered+</p></div>
+                        <div class="counter-item"><i class="fas fa-file-signature icon"></i><span class="counter-number" data-target="60">0</span><p class="counter-label">Govt. & Entrance Exams+</p></div>
+                        <div class="counter-item"><i class="fas fa-award icon"></i><span class="counter-number" data-target="1200">0</span><p class="counter-label">Scholarships Listed+</p></div>
                     </div>
                 </div>
             </section>
             <section class="section featured-section" id="tools">
                 <div class="container">
                     <h2 class="section-title" style="color: var(--text-dark);">Powerful Career Tools</h2>
-                    <p class="section-subtitle">Use our specially designed tools to make informed decisions about your future.</p>
+                    <p class="section-subtitle">Use our specially designed tools to make informed decisions...</p>
                     <div class="featured-grid">
-                        <div class="featured-card">
-                            <i class="fas fa-compass icon"></i>
-                            <h3>UDAAN</h3>
-                            <p>Don't know where to start? Take our psychometric test to discover careers that match your personality.</p>
-                            <a href="udaan_revised_1.html" class="btn-featured">Take the Test</a>
-                        </div>
-                        <div class="featured-card">
-                            <i class="fas fa-balance-scale icon"></i>
-                            <h3>Course Comparison</h3>
-                            <p>Confused between two courses? Compare them side-by-side on curriculum, scope, and career outcomes.</p>
-                            <a href="coursecomparison.html" class="btn-featured">Compare Now</a>
-                        </div>
-                        <div class="featured-card">
-                            <i class="fas fa-lightbulb icon"></i>
-                            <h3>Emerging Careers</h3>
-                            <p>Stay ahead of the curve. Explore the most in-demand courses and careers of the future.</p>
-                            <a href="emerging_careers.html" class="btn-featured">Discover Trends</a>
-                        </div>
+                        <div class="featured-card"><i class="fas fa-compass icon"></i><h3>UDAAN</h3><p>Take our psychometric test...</p><a href="udaan_revised_1.html" class="btn-featured">Take the Test</a></div>
+                        <div class="featured-card"><i class="fas fa-balance-scale icon"></i><h3>Course Comparison</h3><p>Compare them side-by-side...</p><a href="coursecomparison.html" class="btn-featured">Compare Now</a></div>
+                        <div class="featured-card"><i class="fas fa-lightbulb icon"></i><h3>Emerging Careers</h3><p>Explore the most in-demand courses...</p><a href="emerging_careers.html" class="btn-featured">Discover Trends</a></div>
                     </div>
                 </div>
             </section>
-            <div id="edu-news-container">
-                <div class="container">
-                    <div id="edu-news">
-                        <strong>NEWS:</strong>
-                        <span id="news-item">Loading latest educational news...</span>
-                    </div>
-                </div>
-            </div>
+            <div id="edu-news-container"><div class="container"><div id="edu-news"><strong>NEWS:</strong><span id="news-item">Loading latest educational news...</span></div></div></div>
             <div class="install-feature-box">
-                <h3>Get Our App!</h3>
-                <p>For quick access on any device, install our app.</p>
-                <div id="desktopInstallBox">
-                    <p><strong>On your phone?</strong> Scan this QR code:</p>
-                    <div class="install-mobile">
-                        <img src="images/qr-code.png" alt="QR Code to install the app" id="qrCodeImage">
-                        <a href="images/qr-code.png" download="CareerApp-QRCode.png" class="save-qr-button">Save QR Code</a>
-                    </div>
-                    <div class="install-desktop">
-                        <p><strong>On your laptop?</strong> Click here:</p>
-                        <button id="installAppButton" class="install-button">Install App</button>
-                    </div>
-                </div>
-                <div id="mobileInstallBox" hidden>
-                    <p><strong>Install the app on this phone for quick access!</strong></p>
-                    <button id="installAppButtonMobile" class="install-button">Install App on this Phone</button>
-                </div>
+              <h3>Get Our App!</h3>
+              <p>For quick access on any device, install our app.</p>
+              <div id="desktopInstallBox"><p><strong>On your phone?</strong> Scan this QR code:</p><div class="install-mobile"><img src="images/qr-code.png" alt="QR Code to install the app" id="qrCodeImage"><a href="images/qr-code.png" download="CareerApp-QRCode.png" class="save-qr-button">Save QR Code</a></div><div class="install-desktop"><p><strong>On your laptop?</strong> Click here:</p><button id="installAppButton" class="install-button">Install App</button></div></div>
+              <div id="mobileInstallBox" hidden><p><strong>Install the app on this phone for quick access!</strong></p><button id="installAppButtonMobile" class="install-button">Install App on this Phone</button></div>
             </div>
         </main>
-
         <footer class="main-footer">
             <div class="container">
                 <div class="footer-grid">
-                    <div class="footer-col">
-                        <h4>Careers India</h4>
-                        <p>Your one-stop destination for navigating the world of education and careers. We provide comprehensive information to help you make the best choice for your future.</p>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="ssc1.html">After 10th</a></li>
-                            <li><a href="hsc1.html">After 12th</a></li>
-                            <li><a href="grad1.html">After Graduation</a></li>
-                            <li><a href="govt.html">Government Jobs</a></li>
-                            <li><a href="living_and_learning_abroad.html">Study Abroad</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                            <li><a href="privacy.html">Privacy Statement</a></li>
-                            <li><a href="disclaimer.html">Disclaimer</a></li>
-                            <li><a href="credibility_report_1.html">Behind the Numbers</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Follow Us</h4>
-                        <p>Stay connected for the latest updates.</p>
-                        <div class="social-icons">
-                            <a href="https://www.linkedin.com/company/wellspokn-spoken-english-studio" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://m.youtube.com/channel/UCG8HokCKSj8RnaGA_BR31vg/videos" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                            <a href="https://www.facebook.com/share/1FcoyX9bfB/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-                            <a href="https://www.instagram.com/wellspokn1975?igsh=NnE1cml3emVpcXc1" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
+                    <div class="footer-col"><h4>Careers India</h4><p>Your one-stop destination for navigating the world of education and careers. We provide comprehensive information to help you make the best choice for your future.</p></div>
+                    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="ssc1.html">After 10th</a></li><li><a href="hsc1.html">After 12th</a></li><li><a href="grad1.html">After Graduation</a></li><li><a href="govt.html">Government Jobs</a></li><li><a href="living_and_learning_abroad.html">Study Abroad</a></li></ul></div>
+                    <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="privacy.html">Privacy Statement</a></li><li><a href="disclaimer.html">Disclaimer</a></li><li><a href="credibility_report_1.html">Behind the Numbers</a></li></ul></div>
+                    <div class="footer-col"><h4>Follow Us</h4><p>Stay connected for the latest updates.</p><div class="social-icons"><a href="https://www.linkedin.com/company/wellspokn-spoken-english-studio" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a href="https://m.youtube.com/channel/UCG8HokCKSj8RnaGA_BR31vg/videos" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a><a href="https://www.facebook.com/share/1FcoyX9bfB/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a><a href="https://www.instagram.com/wellspokn1975?igsh=NnE1cml3emVpcXc1" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></div></div>
                 </div>
-                <div class="footer-bottom">
-                    &copy; 2025 Careers India. All Rights Reserved.
-                </div>
+                <div class="footer-bottom">&copy; 2025 Careers India. All Rights Reserved.</div>
             </div>
         </footer>
-    </div> <!-- This closes the #main-content div -->
+    </div> 
 
-    <!-- ALL SCRIPTS ARE PLACED AT THE END -->
+    <!-- ALL SCRIPTS ARE NOW ACTIVE -->
     <script>
-        // --- SCRIPT FOR MOBILE MENU TOGGLE ---
+        // --- SCRIPT 1: MOBILE MENU TOGGLE ---
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
         const body = document.body;
@@ -869,76 +436,30 @@ margin-top: 20px;
                 body.classList.toggle('menu-open');
             });
         }
-
-        // --- SCRIPT FOR NEWS TICKER ---
-        const rssFeeds = [
-            'https://api.rss2json.com/v1/api.json?rss_url=https://timesofindia.indiatimes.com/rssfeeds/913168846.cms',
-            'https://api.rss2json.com/v1/api.json?rss_url=https://www.theguardian.com/education/rss'
-        ];
-        let newsItems = [];
-        let currentIndex = 0;
-        async function fetchNews() {
-            try {
-                const responses = await Promise.all(rssFeeds.map(url => fetch(url).then(res => res.json())));
-                responses.forEach(response => {
-                    if (response && response.items) {
-                        newsItems.push(...response.items.map(item => ({ title: item.title, link: item.link })));
-                    }
-                });
-            } catch (error) {
-                console.error("Failed to fetch news:", error);
-                document.getElementById("news-item").innerText = "Could not load news feeds.";
-            } finally {
-                startNewsRotation();
-            }
-        }
-        function startNewsRotation() {
-            const newsSpan = document.getElementById("news-item");
-            if (newsItems.length === 0) {
-                if (newsSpan) newsSpan.innerText = "No news available at the moment.";
-                return;
-            }
-            const displayNextNews = () => {
-                const item = newsItems[currentIndex];
-                if (item && newsSpan) {
-                    newsSpan.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a>`;
-                    currentIndex = (currentIndex + 1) % newsItems.length;
-                }
-            };
-            displayNextNews();
-            setInterval(displayNextNews, 10000);
-        }
+    </script>
+    
+    <script>
+        // --- SCRIPT 2: NEWS TICKER ---
+        const rssFeeds = ['https://api.rss2json.com/v1/api.json?rss_url=https://timesofindia.indiatimes.com/rssfeeds/913168846.cms','https://api.rss2json.com/v1/api.json?rss_url=https://www.theguardian.com/education/rss'];
+        let newsItems = [], currentIndex = 0;
+        async function fetchNews() { try { const responses = await Promise.all(rssFeeds.map(url => fetch(url).then(res => res.json()))); responses.forEach(response => { if (response && response.items) { newsItems.push(...response.items.map(item => ({ title: item.title, link: item.link }))); } }); } catch (error) { console.error("Failed to fetch news:", error); document.getElementById("news-item").innerText = "Could not load news feeds."; } finally { startNewsRotation(); } }
+        function startNewsRotation() { const newsSpan = document.getElementById("news-item"); if (newsItems.length === 0) { if (newsSpan) newsSpan.innerText = "No news available."; return; } const displayNextNews = () => { const item = newsItems[currentIndex]; if (item && newsSpan) { newsSpan.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a>`; currentIndex = (currentIndex + 1) % newsItems.length; } }; displayNextNews(); setInterval(displayNextNews, 10000); }
         document.addEventListener('DOMContentLoaded', fetchNews);
+    </script>
 
-        // --- SCRIPT FOR DYNAMIC COUNTER ---
+    <script>
+        // --- SCRIPT 3: DYNAMIC COUNTER ---
         document.addEventListener('DOMContentLoaded', function() {
             const counters = document.querySelectorAll('.counter-number');
             const speed = 200;
-            const animateCounter = (counter) => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const increment = target / speed;
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(() => animateCounter(counter), 1);
-                } else {
-                    counter.innerText = target.toLocaleString('en-IN');
-                }
-            };
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounter(entry.target);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            counters.forEach(counter => {
-                observer.observe(counter);
-            });
+            const animateCounter = (counter) => { const target = +counter.getAttribute('data-target'); const count = +counter.innerText; const increment = target / speed; if (count < target) { counter.innerText = Math.ceil(count + increment); setTimeout(() => animateCounter(counter), 1); } else { counter.innerText = target.toLocaleString('en-IN'); } };
+            const observer = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { animateCounter(entry.target); observer.unobserve(entry.target); } }); }, { threshold: 0.5 });
+            counters.forEach(counter => { observer.observe(counter); });
         });
-
-        // --- AI COUNSELOR SCRIPT ---
+    </script>
+    
+    <script>
+        // --- SCRIPT 4: AI COUNSELOR (CORRECTED VERSION) ---
         const API_KEY = "AIzaSyB2ikJNjNVkLqSRW5N8_QKkuP1wq4jny1A"; 
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
         const aiUserInput = document.getElementById('aiUserInput');
@@ -946,43 +467,27 @@ margin-top: 20px;
         const aiResponseDiv = document.getElementById('aiResponse');
         async function getAiResponse() {
             const userInput = aiUserInput.value.trim();
-            if (!userInput) {
-                aiResponseDiv.innerText = "Please enter a question first.";
-                return;
-            }
+            if (!userInput) { aiResponseDiv.innerText = "Please enter a question first."; return; }
             aiResponseDiv.style.backgroundColor = '#e9ecef';
             aiResponseDiv.innerText = "The AI is thinking...";
             aiCounselorButton.disabled = true;
             const system_prompt = "You are an expert career counselor for Careers India. Your goal is to provide helpful, encouraging, and accurate advice to students about careers, courses, colleges, and scholarships in India. Keep your answers clear, concise, and structured with bullet points if possible.";
             const full_prompt = system_prompt + "\n\nUser Question: " + userInput;
             try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ "contents": [{ "parts": [{ "text": full_prompt }] }] })
-                });
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(`API error: ${errorData.error.message}`);
-                }
+                const response = await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ "contents": [{ "parts": [{ "text": full_prompt }] }] }) });
+                if (!response.ok) { const errorData = await response.json(); throw new Error(`API error: ${errorData.error.message}`); }
                 const data = await response.json();
                 const aiText = data.candidates[0].content.parts[0].text;
                 aiResponseDiv.style.backgroundColor = '#f4f4f4';
                 aiResponseDiv.innerText = aiText;
-            } catch (error) {
-                console.error("Error:", error);
-                aiResponseDiv.style.backgroundColor = '#f8d7da';
-                aiResponseDiv.innerText = `Sorry, there was an error: ${error.message}`;
-            } finally {
-                aiCounselorButton.disabled = false;
-            }
+            } catch (error) { console.error("Error from AI Counselor Script:", error); aiResponseDiv.style.backgroundColor = '#f8d7da'; aiResponseDiv.innerText = `Sorry, there was an error: ${error.message}`; } finally { aiCounselorButton.disabled = false; }
         }
-        aiCounselorButton.addEventListener('click', getAiResponse);
-        aiUserInput.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') { getAiResponse(); }
-        });
-
-        // --- COLLEGE APPLICATION TRACKER SCRIPT ---
+        if (aiCounselorButton) { aiCounselorButton.addEventListener('click', getAiResponse); }
+        if (aiUserInput) { aiUserInput.addEventListener('keydown', (event) => { if (event.key === 'Enter') { getAiResponse(); } }); }
+    </script>
+    
+    <script>
+        // --- SCRIPT 5: COLLEGE APPLICATION TRACKER ---
         document.addEventListener('DOMContentLoaded', () => {
             const addBtn = document.getElementById('addAppBtn');
             const appTableBody = document.getElementById('appTableBody');
@@ -991,6 +496,7 @@ margin-top: 20px;
             let applications = JSON.parse(localStorage.getItem('applications')) || [];
             const saveApplications = () => { localStorage.setItem('applications', JSON.stringify(applications)); };
             const renderApplications = () => {
+                if (!appTableBody) return;
                 appTableBody.innerHTML = '';
                 if (applications.length === 0) {
                     appTableBody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No applications added yet.</td></tr>';
@@ -998,152 +504,55 @@ margin-top: 20px;
                 }
                 applications.forEach((app, index) => {
                     const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${app.name}</td>
-                        <td>${app.deadline}</td>
-                        <td>
-                            <div class="doc-buttons-container">
-                                <button class="doc-btn ${app.docs.sop ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="sop">SOP</button>
-                                <button class="doc-btn ${app.docs.lor ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="lor">LORs</button>
-                                <button class="doc-btn ${app.docs.transcript ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="transcript">Transcript</button>
-                                <button class="doc-btn ${app.docs.langTest ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="langTest">IELTS/TOEFL</button>
-                                <button class="doc-btn ${app.docs.examScore ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="examScore">Exam Score</button>
-                            </div>
-                        </td>
-                        <td>
-                            <select class="status-select" data-index="${index}">
-                                <option value="Not Started" ${app.status === 'Not Started' ? 'selected' : ''}>Not Started</option>
-                                <option value="Submitted" ${app.status === 'Submitted' ? 'selected' : ''}>Submitted</option>
-                                <option value="Interview" ${app.status === 'Interview' ? 'selected' : ''}>Interview</option>
-                                <option value="Admitted" ${app.status === 'Admitted' ? 'selected' : ''}>Admitted</option>
-                                <option value="Rejected" ${app.status === 'Rejected' ? 'selected' : ''}>Rejected</option>
-                            </select>
-                        </td>
-                        <td><button class="delete-btn" data-index="${index}"><i class="fas fa-trash-alt"></i></button></td>
-                    `;
+                    row.innerHTML = `<td>${app.name}</td><td>${app.deadline}</td><td><div class="doc-buttons-container"><button class="doc-btn ${app.docs.sop ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="sop">SOP</button><button class="doc-btn ${app.docs.lor ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="lor">LORs</button><button class="doc-btn ${app.docs.transcript ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="transcript">Transcript</button><button class="doc-btn ${app.docs.langTest ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="langTest">IELTS/TOEFL</button><button class="doc-btn ${app.docs.examScore ? 'doc-btn-done' : 'doc-btn-pending'}" data-index="${index}" data-doc="examScore">Exam Score</button></div></td><td><select class="status-select" data-index="${index}"><option value="Not Started" ${app.status === 'Not Started' ? 'selected' : ''}>Not Started</option><option value="Submitted" ${app.status === 'Submitted' ? 'selected' : ''}>Submitted</option><option value="Interview" ${app.status === 'Interview' ? 'selected' : ''}>Interview</option><option value="Admitted" ${app.status === 'Admitted' ? 'selected' : ''}>Admitted</option><option value="Rejected" ${app.status === 'Rejected' ? 'selected' : ''}>Rejected</option></select></td><td><button class="delete-btn" data-index="${index}"><i class="fas fa-trash-alt"></i></button></td>`;
                     appTableBody.appendChild(row);
                 });
             };
-            addBtn.addEventListener('click', () => {
-                const name = collegeNameInput.value.trim();
-                const deadline = deadlineDateInput.value;
-                if (name === '' || deadline === '') {
-                    alert('Please enter a university name and a deadline.');
-                    return;
-                }
-                applications.push({
-                    name: name,
-                    deadline: deadline,
-                    docs: { sop: false, lor: false, transcript: false, langTest: false, examScore: false },
-                    status: 'Not Started'
-                });
-                collegeNameInput.value = '';
-                deadlineDateInput.value = '';
-                saveApplications();
-                renderApplications();
-            });
-            appTableBody.addEventListener('click', (e) => {
-                if (e.target.classList.contains('doc-btn')) {
-                    const index = e.target.dataset.index;
-                    const docType = e.target.dataset.doc;
-                    applications[index].docs[docType] = !applications[index].docs[docType];
-                    saveApplications();
-                    e.target.classList.toggle('doc-btn-pending');
-                    e.target.classList.toggle('doc-btn-done');
-                }
-                if (e.target.closest('.delete-btn')) {
-                    const index = e.target.closest('.delete-btn').dataset.index;
-                    if (confirm(`Are you sure you want to delete the application for ${applications[index].name}?`)) {
-                        applications.splice(index, 1);
-                        saveApplications();
-                        renderApplications();
-                    }
-                }
-            });
-            appTableBody.addEventListener('change', (e) => {
-                if (e.target.classList.contains('status-select')) {
-                    const index = e.target.dataset.index;
-                    applications[index].status = e.target.value;
-                    saveApplications();
-                }
-            });
+            if(addBtn){ addBtn.addEventListener('click', () => { const name = collegeNameInput.value.trim(); const deadline = deadlineDateInput.value; if (name === '' || deadline === '') return; applications.push({ name: name, deadline: deadline, docs: { sop: false, lor: false, transcript: false, langTest: false, examScore: false }, status: 'Not Started' }); collegeNameInput.value = ''; deadlineDateInput.value = ''; saveApplications(); renderApplications(); }); }
+            if(appTableBody){
+                appTableBody.addEventListener('click', (e) => { if (e.target.classList.contains('doc-btn')) { const index = e.target.dataset.index; const docType = e.target.dataset.doc; applications[index].docs[docType] = !applications[index].docs[docType]; saveApplications(); e.target.classList.toggle('doc-btn-pending'); e.target.classList.toggle('doc-btn-done'); } if (e.target.closest('.delete-btn')) { const index = e.target.closest('.delete-btn').dataset.index; if (confirm(`Delete ${applications[index].name}?`)) { applications.splice(index, 1); saveApplications(); renderApplications(); } } });
+                appTableBody.addEventListener('change', (e) => { if (e.target.classList.contains('status-select')) { const index = e.target.dataset.index; applications[index].status = e.target.value; saveApplications(); } });
+            }
             renderApplications();
         });
-
-        // --- PWA INSTALL APP SCRIPT ---
+    </script>
+    
+    <script>
+        // --- SCRIPT 6: PWA INSTALL ---
         window.addEventListener('load', () => {
             const installButtonDesktop = document.getElementById('installAppButton');
             const installButtonMobile = document.getElementById('installAppButtonMobile');
-            const desktopInstallBox = document.getElementById('desktopInstallBox');
-            const mobileInstallBox = document.getElementById('mobileInstallBox');
             let deferredPrompt;
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            if (isMobile) {
-                desktopInstallBox.hidden = true;
-                mobileInstallBox.hidden = false;
-            } else {
-                desktopInstallBox.hidden = false;
-                mobileInstallBox.hidden = true;
-            }
-            if (window.matchMedia('(display-mode: standalone)').matches) {
-                const featureBox = document.querySelector('.install-feature-box');
-                if (featureBox) featureBox.style.display = 'none';
-                return;
-            }
-            if (installButtonDesktop) {
-                installButtonDesktop.disabled = true;
-                installButtonDesktop.textContent = 'Checking compatibility...';
-            }
-            if (installButtonMobile) {
-                installButtonMobile.hidden = true;
-            }
+            if (installButtonDesktop) { installButtonDesktop.disabled = true; installButtonDesktop.textContent = 'Checking...'; }
+            if (installButtonMobile) installButtonMobile.hidden = true;
             window.addEventListener('beforeinstallprompt', (e) => {
                 e.preventDefault();
                 deferredPrompt = e;
-                if (isMobile && installButtonMobile) {
-                    installButtonMobile.hidden = false;
-                }
-                if (!isMobile && installButtonDesktop) {
-                    installButtonDesktop.disabled = false;
-                    installButtonDesktop.textContent = 'Install App';
-                }
+                if (installButtonDesktop) { installButtonDesktop.disabled = false; installButtonDesktop.textContent = 'Install App'; }
+                if (installButtonMobile) installButtonMobile.hidden = false;
             });
-            async function handleInstallClick() {
-                if (!deferredPrompt) return;
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                deferredPrompt = null;
-            }
-            if (installButtonDesktop) {
-                installButtonDesktop.addEventListener('click', handleInstallClick);
-            }
-            if (installButtonMobile) {
-                installButtonMobile.addEventListener('click', handleInstallClick);
-            }
+            async function handleInstallClick() { if (!deferredPrompt) return; deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null; }
+            if (installButtonDesktop) installButtonDesktop.addEventListener('click', handleInstallClick);
+            if (installButtonMobile) installButtonMobile.addEventListener('click', handleInstallClick);
         });
-
-        // --- SERVICE WORKER REGISTRATION ---
+    </script>
+    
+    <script>
+        // --- SCRIPT 7: SERVICE WORKER ---
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => { console.log('Service Worker registered successfully:', registration); })
-                    .catch(error => { console.log('Service Worker registration failed:', error); });
+                navigator.serviceWorker.register('/sw.js').then(reg => console.log('SW registered.')).catch(err => console.log('SW registration failed:', err));
             });
         }
-
-        // --- PWA ANALYTICS TRACKING ---
+    </script>
+    
+    <script>
+        // --- SCRIPT 8: PWA ANALYTICS ---
         function trackPWAAnalytics() {
-            console.log('PWA Analytics Tracker Initialized.');
-            window.addEventListener('appinstalled', (e) => {
-                console.log('SUCCESS: PWA was installed! Sending event to GA.');
-                gtag('event', 'pwa_install_success', { 'event_category': 'PWA', 'event_label': 'User installed the PWA' });
-            });
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('utm_source') === 'pwa') {
-                console.log('INFO: App launched from home screen (PWA mode). Sending event to GA.');
-                gtag('event', 'pwa_launched', { 'event_category': 'PWA', 'event_label': 'Launched from Home Screen' });
-            } else {
-                console.log('INFO: Visited from a regular browser tab.');
+            console.log('PWA Analytics Initialized.');
+            window.addEventListener('appinstalled', () => gtag('event', 'pwa_install_success'));
+            if (new URLSearchParams(window.location.search).get('utm_source') === 'pwa') {
+                gtag('event', 'pwa_launched');
             }
         }
         if (typeof gtag === 'function') {
@@ -1151,27 +560,19 @@ margin-top: 20px;
         } else {
             window.addEventListener('load', trackPWAAnalytics);
         }
-
     </script>
     
-    <!-- This is the third-party script from Skimlinks -->
     <script type="text/javascript" src="https://s.skimresources.com/js/291720X1778810.skimlinks.js"></script>
 
-    <!-- THIS IS THE FINAL, ROBUST SCRIPT TO SHOW THE PAGE -->
     <script>
-        // This small script runs at the very end. Its only job is to show the main content.
+        // --- FINAL SCRIPT: SHOW THE PAGE ---
         window.addEventListener('load', function() {
             var loader = document.getElementById('loader-message');
             var content = document.getElementById('main-content');
-            
-            // Hide the loader and show the content.
-            if (loader) {
-                loader.style.display = 'none';
-            }
-            if (content) {
-                content.style.display = 'block';
-            }
+            if (loader) { loader.style.display = 'none'; }
+            if (content) { content.style.display = 'block'; }
         });
     </script>
+
 </body>
 </html>
