@@ -517,59 +517,57 @@
         });
     </script>
     
-     <script>
-        // --- SCRIPT 6: PWA INSTALL (NEW, ROBUST VERSION) ---
+        <script>
+        // --- SCRIPT 6: PWA INSTALL (DIRECT ACTION & DEBUG VERSION) ---
         window.addEventListener('load', () => {
             const installButtonDesktop = document.getElementById('installAppButton');
             const installButtonMobile = document.getElementById('installAppButtonMobile');
             let deferredPrompt = null;
 
-            // Listen for the browser's install prompt and save it for later.
-            window.addEventListener('beforeinstallprompt', (e) => {
-                // Prevent the mini-infobar from appearing on mobile
-                e.preventDefault();
-                // Stash the event so it can be triggered later.
-                deferredPrompt = e;
-                console.log('`beforeinstallprompt` event was fired.');
-
-                // Now that we know it's installable, make the buttons visible and active.
-                if (installButtonDesktop) {
-                    installButtonDesktop.hidden = false;
-                    installButtonDesktop.disabled = false;
-                    installButtonDesktop.textContent = 'Install App';
-                }
-                if (installButtonMobile) {
-                    installButtonMobile.hidden = false;
-                }
-            });
-
-            // This is the function that our buttons will call.
+            // This function will be called when the button is clicked.
             async function handleInstallClick() {
-                // If we don't have a saved prompt, we can't do anything.
-                if (!deferredPrompt) {
-                    alert('This app cannot be installed. Your browser may not be supported.');
+                // SCENARIO 1: The browser approved us! We have the prompt.
+                if (deferredPrompt) {
+                    // Show the browser's installation prompt.
+                    deferredPrompt.prompt();
+                    
+                    const { outcome } = await deferredPrompt.userChoice;
+                    console.log(`User response to the install prompt: ${outcome}`);
+                    
+                    deferredPrompt = null;
+                    if (installButtonDesktop) installButtonDesktop.hidden = true;
+                    if (installButtonMobile) installButtonMobile.hidden = true;
                     return;
                 }
-                
-                // Show the browser's installation prompt.
-                deferredPrompt.prompt();
-                
-                // Wait for the user to respond to the prompt.
-                const { outcome } = await deferredPrompt.userChoice;
-                console.log(`User response to the install prompt: ${outcome}`);
-                
-                // We've used the prompt, so we can't use it again.
-                deferredPrompt = null;
 
-                // Hide the install buttons after the user has made a choice.
-                if (installButtonDesktop) installButtonDesktop.hidden = true;
-                if (installButtonMobile) installButtonMobile.hidden = true;
+                // SCENARIO 2: The browser did NOT approve us. The button is now a debug tool.
+                alert('This app is not currently installable. Opening a diagnostic tool to find the reason...');
+                const diagnosticUrl = `https://www.pwabuilder.com/reportcard?site=${window.location.href}`;
+                window.open(diagnosticUrl, '_blank');
             }
 
-            // Initially, hide the install buttons. They will be shown only if the browser
-            // confirms the app is installable by firing the 'beforeinstallprompt' event.
-            if (installButtonDesktop) installButtonDesktop.hidden = true;
-            if (installButtonMobile) installButtonMobile.hidden = true;
+            // Listen for the browser's approval signal.
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e; // Save the approval letter!
+                console.log('`beforeinstallprompt` event fired! App is installable.');
+
+                // The app is ready! Change the button text to show it's ready.
+                if (installButtonDesktop) installButtonDesktop.textContent = 'Install App';
+                if (installButtonMobile) installButtonMobile.textContent = 'Install App';
+            });
+
+            // Make sure the buttons are visible and set their initial text.
+            if (installButtonDesktop) {
+                installButtonDesktop.hidden = false;
+                installButtonDesktop.disabled = false;
+                installButtonDesktop.textContent = 'Check PWA Status / Install';
+            }
+            if (installButtonMobile) {
+                installButtonMobile.hidden = false;
+                installButtonMobile.disabled = false;
+                installButtonMobile.textContent = 'Check PWA Status / Install';
+            }
 
             // Add the click listeners to our buttons.
             if (installButtonDesktop) installButtonDesktop.addEventListener('click', handleInstallClick);
@@ -582,7 +580,6 @@
             }
         });
     </script>
-    
     <script>
         // --- SCRIPT 7: SERVICE WORKER ---
         if ('serviceWorker' in navigator) {
