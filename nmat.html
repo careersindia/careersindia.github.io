@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NMAT – NMIMS Management Aptitude Test Details</title>
+<link rel="manifest" href="/manifest.json">
+    <style>
+        body { background-color: white; color: green; font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1 { border-bottom: 2px solid green; padding-bottom: 10px; }
+        dl { margin-bottom: 15px; }
+        dt { font-weight: bold; float: left; width: 200px; clear: left; padding-right: 10px; }
+        dd { margin-left: 210px; margin-bottom: 8px; overflow: hidden; }
+.home-button-container {
+  position: fixed; /* This makes it float on top of other content */
+  top: 20px;       /* Position 20px from the top edge */
+  right: 25px;     /* Position 25px from the right edge */
+  z-index: 1000;   /* Ensures it's above other elements */
+}
+
+.home-button-container a img {
+  width: 50px; /* Adjust size as needed */
+  height: 50px;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.home-button-container a:hover img {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+    </style>
+</head>
+<body>
+    <h1>NMAT – NMIMS Management Aptitude Test</h1>
+    <dl>
+        <dt>Eligibility</dt><dd>Candidates must have a bachelor's degree (10+2+3 or 4 years) in any discipline from a recognized university with a minimum of 50% aggregate marks.</dd>
+        <dt>Scope</dt><dd>Admission to MBA and other postgraduate management programs at NMIMS University and other leading business schools in India and abroad that accept NMAT scores.</dd>
+        <dt>How to Apply</dt><dd>Online registration through the official NMAT by GMAC website.</dd>
+        <dt>Exam Structure</dt><dd>Computer-adaptive test with three sections: Language Skills, Quantitative Skills, and Logical Reasoning. Total of 108 questions to be answered in 120 minutes, with individual time limits for each section.</dd>
+        <dt>Score Pattern</dt><dd>No negative marking for incorrect answers. Scores are scaled for each section and totaled.</dd>
+        <dt>Fees</dt><dd>Approximately ₹2,800 + taxes. Additional fees for retakes and applying to schools.</dd>
+        <dt>Exam Timing</dt><dd>Conducted over a 70-75 day testing window, typically from October to December. Candidates can schedule their own test date and attempt the exam up to three times.</dd>
+        <dt>Results</dt><dd>Score reports are typically available within 48 hours of the exam attempt.</dd>
+    </dl>
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCEED – Undergraduate Common Entrance Exam for Design Details</title>
+<link rel="manifest" href="/manifest.json">
+    <style>
+        body { background-color: white; color: green; font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1 { border-bottom: 2px solid green; padding-bottom: 10px; }
+        dl { margin-bottom: 15px; }
+        dt { font-weight: bold; float: left; width: 200px; clear: left; padding-right: 10px; }
+        dd { margin-left: 210px; margin-bottom: 8px; overflow: hidden; }
+.home-button-container {
+  position: fixed; /* This makes it float on top of other content */
+  top: 20px;       /* Position 20px from the top edge */
+  right: 25px;     /* Position 25px from the right edge */
+  z-index: 1000;   /* Ensures it's above other elements */
+}
+
+.home-button-container a img {
+  width: 50px; /* Adjust size as needed */
+  height: 50px;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.home-button-container a:hover img {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+    </style>
+</head>
+<body>
+    <h1>UCEED – Undergraduate Common Entrance Exam for Design</h1>
+    <dl>
+        <dt>Eligibility</dt><dd>Candidates must have passed the Class 12 (or equivalent) examination in any stream (Science, Commerce, or Arts). An age limit also applies.</dd>
+        <dt>Scope</dt><dd>Admission to the Bachelor of Design (B.Des) programs at IIT Bombay, IIT Delhi, IIT Guwahati, IIT Hyderabad, IIITDM Jabalpur, and other result-sharing institutes.</dd>
+        <dt>How to Apply</dt><dd>Online registration via the official UCEED website hosted by IIT Bombay.</dd>
+        <dt>Exam Structure</dt><dd>A 3-hour exam with two parts. Part-A is a Computer-Based Test (NAT, MSQ, MCQ). Part-B is an offline drawing and sketching test.</dd>
+        <dt>Score Pattern</dt><dd>Part-A has varied marking, with negative marking for MCQs only. Part-B is evaluated for drawing skills. Final merit is based on the total score.</dd>
+        <dt>Fees</dt><dd>Approximately ₹3,800 for General/OBC Male candidates; ₹1,900 for SC/ST/PwD and all Female candidates.</dd>
+        <dt>Exam Timing</dt><dd>Conducted once a year, typically on a Sunday in the third or fourth week of January.</dd>
+        <dt>Results</dt><dd>Announced on the official UCEED website, usually in the second week of March.</dd>
+    </dl>
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+</body>
+</html>
