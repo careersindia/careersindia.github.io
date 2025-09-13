@@ -1,18 +1,17 @@
 // --- CONFIGURATION ---
-const staticCacheName = 'career-app-static-v2';  // For the app shell
-const dynamicCacheName = 'career-app-dynamic-v2'; // For dynamic content
+// v3 is a new version number to ensure the browser updates it.
+const staticCacheName = 'career-app-static-v3';
+const dynamicCacheName = 'career-app-dynamic-v3';
 
-// List of essential files for the app shell
+// A smaller, more robust list of essential files.
+// Make sure these files all exist at the root of your project!
 const filesToCache = [
-  'index.html',
+  '/', // This caches the root of your site
   'mainnow.html',
   'manifest.json',
   'images/icon-192x192.png',
-  'images/icon-512x512.png',
-  'tap.png', // I saw this in your HTML, let's cache it
-'cube.png',
-'cube.mp4',
-'image203.png'
+  'images/icon-512x512.png'
+  // We will let other images like image203.png be cached dynamically.
 ];
 
 // --- SERVICE WORKER LOGIC ---
@@ -22,14 +21,16 @@ self.addEventListener('install', e => {
   console.log('Attempting to install service worker and cache static assets');
   e.waitUntil(
     caches.open(staticCacheName).then(cache => {
+      console.log('Caching app shell');
       return cache.addAll(filesToCache);
     })
   );
-  self.skipWaiting(); // Force the new service worker to activate
+  self.skipWaiting();
 });
 
 // 2. ACTIVATE: Clean up old caches
 self.addEventListener('activate', e => {
+  console.log('Service worker activating...');
   e.waitUntil(
     caches.keys().then(keys => {
       return Promise.all(keys
@@ -40,31 +41,18 @@ self.addEventListener('activate', e => {
   );
 });
 
-// 3. FETCH: The smart interceptor
+// 3. FETCH: Cache-first, then network fallback, with dynamic caching.
 self.addEventListener('fetch', e => {
   e.respondWith(
     caches.match(e.request).then(cacheRes => {
-      // Return from cache if found
-      if (cacheRes) {
-        return cacheRes;
-      }
-
-      // Not in cache, so fetch from network
-      return fetch(e.request).then(fetchRes => {
-        // --- THIS IS THE MAGIC PART ---
-        // Check if we received a valid, basic (same-origin) response
-        // If not, we don't cache it. This avoids the CORB error.
-        if (!fetchRes || fetchRes.status !== 200 || fetchRes.type !== 'basic') {
-          return fetchRes; // Return the problematic response without trying to cache it
-        }
-
-        // If it's a good, local response, we clone it and cache it.
-        const responseToCache = fetchRes.clone();
-        caches.open(dynamicCacheName).then(cache => {
-          cache.put(e.request.url, responseToCache);
+      return cacheRes || fetch(e.request).then(fetchRes => {
+        return caches.open(dynamicCacheName).then(cache => {
+          // IMPORTANT: Only cache GET requests.
+          if (e.request.method === 'GET') {
+            cache.put(e.request.url, fetchRes.clone());
+          }
+          return fetchRes;
         });
-
-        return fetchRes;
       });
     })
   );
