@@ -21,7 +21,7 @@
 "screenshots": [
 {
  "src": "images/screenshot-mobile.jpg",
-      "sizes": "1080x1920",
+      "sizes": "1080x2340",
       "type": "image/jpeg",
       "form_factor": "narrow"
     }
