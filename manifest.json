@@ -2,6 +2,7 @@
   "name": "Careers India",
   "short_name": "careersindia",
   "start_url":"/mainnow.html?utm_source=pwa",
+"id": "/mainnow.html",
   "display": "standalone",
   "background_color": "#7FFFD4",
   "theme_color": "#000000",
