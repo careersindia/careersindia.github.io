@@ -13,9 +13,6 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- PWA: Link to the Manifest File -->
-<link rel="manifest" href="manifest_7.json">
-<meta name="theme-color" content="#000000"/>
     <title>Careers India - Find Your Path to Success</title>
     
     <!-- Google Fonts: Poppins -->
@@ -360,83 +357,6 @@ body:has(.nav-menu.active) {
 .home-button-container a:hover img {
   transform: scale(1.1); /* Slightly enlarge on hover */
 }
-/* =================================================== */
-/* =========== PWA INSTALL BUTTON STYLES ============= */
-/* =================================================== */
-
-/* The main install button */
-.pwa-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--primary-color); /* Uses your site's theme color */
-    color: var(--text-dark);
-    border: none;
-    border-radius: 50px;
-    padding: 15px 25px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    cursor: pointer;
-    z-index: 9999;
-    transition: transform 0.2s ease-in-out;
-}
-
-.pwa-button:hover {
-    transform: scale(1.05);
-}
-
-.pwa-button i {
-    margin-right: 8px;
-}
-
-/* The QR Code Modal Styles */
-.pwa-modal {
-    position: fixed;
-    z-index: 10000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.pwa-modal-content {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    position: relative;
-}
-
-.pwa-modal-content img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 15px;
-    border: 1px solid #ddd;
-}
-
-.pwa-modal-close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.pwa-modal-close:hover {
-    color: #333;
-}
 </style>
 </head>
 <body>
@@ -741,35 +661,11 @@ body:has(.nav-menu.active) {
         </div>
     </main>
 
-<!-- =================================================== -->
-<!-- =========== PWA INSTALL BUTTON & QR MODAL ========= -->
-<!-- =================================================== -->
-
-<button id="install-button" class="pwa-button">
-    <i class="fas fa-download"></i> Install App
-</button>
-
-<!-- This is the hidden modal for the QR code -->
-<div id="qr-modal" class="pwa-modal" style="display: none;">
-    <div class="pwa-modal-content">
-        <span id="qr-modal-close" class="pwa-modal-close">&times;</span>
-        <h2>Install on Your Phone</h2>
-        <p>Scan this QR code with your phone's camera to open this app and install it.</p>
-        <img src="qr-code.png" alt="Install QR Code">
-    </div>
-</div>
-
-<!-- We can add a simple link in the footer to open the QR code modal -->
-<!-- Find your footer and add this inside one of the columns -->
-<!-- Example for the "Quick Links" column in your footer -->
-<!-- <li><a href="#" id="open-qr-modal">Get on Mobile</a></li> -->
-
     <footer class="main-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col"><h4>Careers India</h4><p>Your one-stop destination for navigating the world of education and careers...</p></div>
-                <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="ssc1.html">After 10th</a></li><li><a href="hsc1.html">After 12th</a></li><li><a href="grad1.html">After Graduation</a></li><li><a href="govt.html">Government Jobs</a></li><li><a href="living_and_learning_abroad.html">Study Abroad</a></li> <!-- THIS IS THE NEW LINK -->
-        <li><a href="#" id="open-qr-modal"><strong>Get on Mobile</strong></a></li></ul></div>
+                <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="ssc1.html">After 10th</a></li><li><a href="hsc1.html">After 12th</a></li><li><a href="grad1.html">After Graduation</a></li><li><a href="govt.html">Government Jobs</a></li><li><a href="living_and_learning_abroad.html">Study Abroad</a></li></ul></div>
                 <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="privacy.html">Privacy Statement</a></li><li><a href="disclaimer.html">Disclaimer</a></li><li><a href="credibility_report_1.html">Behind the Numbers</a></li></ul></div>
                 <div class="footer-col"><h4>Follow Us</h4><p>Stay connected for the latest updates.</p><div class="social-icons"><a href="https://..." target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a href="https://..." target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a><a href="https://..." target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a><a href="https://..." target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></div></div>
             </div>
@@ -866,100 +762,8 @@ body:has(.nav-menu.active) {
             renderApplications();
         });
     </script>
- <script type="text/javascript" src="https://s.skimresources.com/js/291720X1778810.skimlinks.js"></script>    
-
-  
-<!-- PWA: Register the Workbox Service Worker -->
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('sw-workbox.js')
-                .then(registration => {
-                    console.log('Workbox service worker registered successfully:', registration);
-                })
-                .catch(error => {
-                    console.error('Workbox service worker registration FAILED:', error);
-                });
-        });
-    }
-</script>
-
-<!-- =================================================== -->
-<!-- ======== NEW PROACTIVE PWA INSTALL SCRIPT ========= -->
-<!-- =================================================== -->
-<script>
-    const installButton = document.getElementById('install-button');
-    let deferredPrompt = null; // This variable will hold the install event
-
-    // 1. Listen for the 'beforeinstallprompt' event and capture it.
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault(); // Stop the browser from showing its own prompt
-        deferredPrompt = e; // Save the event
-        console.log('PWA prompt event captured. The custom button is now fully active.');
-        // Optional: You could add a class to the button to show it's "ready"
-        if (installButton) {
-            installButton.textContent = 'Install App'; // Make sure text is right
-        }
-    });
-
-    // 2. Add the powerful new click handler for our always-visible button.
-    if (installButton) {
-        installButton.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                // IDEAL CASE: We have the prompt, so we show it.
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    console.log('User accepted the install prompt.');
-                    installButton.style.display = 'none'; // Hide button after install
-                }
-                deferredPrompt = null; // The prompt can only be used once.
-            } else {
-                // FALLBACK CASE: The browser is withholding the prompt.
-                // We will inform the user and show the QR code.
-                console.log('Browser has not provided an install prompt. Showing QR fallback.');
-                alert('To install, please use the install icon in your browser address bar.');
-                const qrModal = document.getElementById('qr-modal');
-                if (qrModal) {
-                    qrModal.style.display = 'flex';
-                }
-            }
-        });
-    }
-
-    // 3. Listen for when the app is successfully installed.
-    window.addEventListener('appinstalled', () => {
-        console.log('PWA was installed successfully.');
-        if (installButton) {
-            installButton.style.display = 'none'; // Hide the button for good.
-        }
-        deferredPrompt = null;
-    });
-
-    // --- QR Code Modal Logic (no changes needed here) ---
-    const qrModal = document.getElementById('qr-modal');
-    const openQrModalLink = document.getElementById('open-qr-modal');
-    const closeQrModalButton = document.getElementById('qr-modal-close');
-
-    if (openQrModalLink) {
-        openQrModalLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (qrModal) qrModal.style.display = 'flex';
-        });
-    }
-    if (closeQrModalButton) {
-        closeQrModalButton.addEventListener('click', () => {
-            if (qrModal) qrModal.style.display = 'none';
-        });
-    }
-    if (qrModal) {
-        qrModal.addEventListener('click', (e) => {
-            if (e.target === qrModal) {
-                qrModal.style.display = 'none';
-            }
-        });
-    }
-</script>
+    
+    <script type="text/javascript" src="https://s.skimresources.com/js/291720X1778810.skimlinks.js"></script>
 
 </body>
 </html>

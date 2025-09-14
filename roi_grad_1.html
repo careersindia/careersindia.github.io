@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post-Graduation Course Financial Calculator</title>
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/manifest_7.json">
 
     <!-- Using the same fonts for consistency -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -713,7 +713,7 @@
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
+      navigator.serviceWorker.register('/sw-workbox.js')
         .then(registration => {
           console.log('Service Worker registered successfully:', registration);
         })
