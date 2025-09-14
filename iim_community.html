@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>IIM Aspirants 2025 - Community Hub</title>
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/manifest_7.json">
     
     <!-- Optional: Link to your main stylesheet to keep the look consistent -->
     <!-- <link rel="stylesheet" href="your-main-styles.css"> -->
@@ -62,7 +62,7 @@
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
+      navigator.serviceWorker.register('/sw-workbox.js')
         .then(registration => {
           console.log('Service Worker registered successfully:', registration);
         })

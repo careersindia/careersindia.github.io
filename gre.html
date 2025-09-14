@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Gre </title>
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/manifest_7.json">
 
 
  <style>
@@ -117,7 +117,7 @@ Official scores, including Analytical Writing, are available in your ETS account
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
+      navigator.serviceWorker.register('/sw-workbox.js')
         .then(registration => {
           console.log('Service Worker registered successfully:', registration);
         })
