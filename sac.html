@@ -35,7 +35,7 @@
         background-image: none;
         padding: 2rem;
         min-height: 100vh;
-        overflow: hidden;
+    
     }
 
     .container {
@@ -43,7 +43,7 @@
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        height: calc(100vh - 4rem);
+        min-height: calc(100vh - 4rem);
     }
 
     /* MODIFIED: Title box is light turquoise */
@@ -83,8 +83,7 @@
         grid-template-columns: 300px 1fr;
         gap: 2rem;
         flex-grow: 1;
-        height: 100%;
-        overflow: hidden;
+       
     }
 
     /* MODIFIED: Left sidebar is light turquoise */
@@ -98,6 +97,7 @@
         flex-direction: column;
         gap: 1rem;
         overflow-y: auto;
+max-height: calc(100vh - 12rem); 
     }
 
     #sidebar h2 {
@@ -156,7 +156,7 @@
     /* MODIFIED: Right content area is white */
     #content-area {
         position: relative;
-        height: 100%;
+        min-height: calc(100vh - 12rem);
         border-radius: 15px;
         overflow: hidden;
         background-color: var(--white);
@@ -214,9 +214,9 @@
 
     @media (max-width: 900px) {
         .main-layout { grid-template-columns: 1fr; height: auto; }
-        #sidebar { margin-bottom: 2rem; }
+        #sidebar { margin-bottom: 1.5rem; max-height: none; }
         #content-area { height: 80vh; }
-        .title-3d { font-size: 3rem; }
+        .title-3d { font-size: 2.5rem; }
     }
 /* Makes the city buttons and the state dropdown white with black text */
 .nav-button, #state-select {
