@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Grammar made easy</title>
 <link rel="manifest" href="/manifest.json">
-  <style>
+<style>
     @import url('https://fonts.cdnfonts.com/css/impact');
 
     /* Basic Styles */
@@ -64,7 +64,7 @@
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         border-radius: 10px;
         border: 1px solid rgba(255, 255, 255, 0.18);
-        height: 75vh;
+        min-height: 75vh; /* CHANGED: height to min-height for flexibility */
     }
 
     /* Side Navigation Columns */
@@ -160,27 +160,74 @@
         display: inline-block;
         width: 300px;
     }
-/* ============================================= */
-/* ============ HOME BUTTON STYLES ============= */
-/* ============================================= */
-.home-button-container {
-  position: fixed; /* This makes it float on top of other content */
-  top: 20px;       /* Position 20px from the top edge */
-  right: 25px;     /* Position 25px from the right edge */
-  z-index: 1000;   /* Ensures it's above other elements */
-}
 
-.home-button-container a img {
-  width: 50px; /* Adjust size as needed */
-  height: 50px;
+    /* ======================================================= */
+    /* === ADDED: STYLES FOR MOBILE RESPONSIVENESS AND SCROLLING FIX === */
+    /* ======================================================= */
+    @media (max-width: 900px) {
+        header h1 {
+            font-size: 2.5em; /* Make title smaller */
+            padding: 15px 25px;
+        }
 
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  transition: transform 0.2s;
-}
+        .main-container {
+            flex-direction: column; /* Stack columns vertically */
+            height: auto; /* Allow container to grow, enabling scroll */
+            margin: 10px; /* Add some space from screen edges */
+        }
+        
+        .side-column, .middle-column {
+            flex: 1 1 auto; /* Allow columns to size naturally */
+            width: 100%; /* Make each column take full width */
+            border: none; /* Remove vertical borders */
+            overflow-y: visible; /* Let the main page scroll handle everything */
+        }
 
-.home-button-container a:hover img {
-  transform: scale(1.1); /* Slightly enlarge on hover */
-}
+        .side-column.left, .middle-column {
+            border-bottom: 2px solid #eee; /* Add horizontal separators */
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .middle-column {
+            min-height: 200px; /* Ensure middle section has some space */
+        }
+
+        .bottom-container .dash-button {
+            width: 90%; /* Use percentage width for flexibility */
+            max-width: 300px;
+        }
+
+        .tabs-container {
+            gap: 10px; /* Reduce gap between tab buttons */
+        }
+
+        .tab-link {
+            padding: 12px 20px; /* Smaller tab buttons */
+        }
+    }
+
+    /* ============================================= */
+    /* ============ HOME BUTTON STYLES ============= */
+    /* ============================================= */
+    .home-button-container {
+      position: fixed; /* This makes it float on top of other content */
+      top: 20px;       /* Position 20px from the top edge */
+      right: 25px;     /* Position 25px from the right edge */
+      z-index: 1000;   /* Ensures it's above other elements */
+    }
+
+    .home-button-container a img {
+      width: 50px; /* Adjust size as needed */
+      height: 50px;
+
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+
+    .home-button-container a:hover img {
+      transform: scale(1.1); /* Slightly enlarge on hover */
+    }
 </style>
 </head>
 <body>
