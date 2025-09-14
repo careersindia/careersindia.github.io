@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Act </title>
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/manifest_7.json">
 
 
 <style>
@@ -141,7 +141,7 @@ Writing scores (if taken): Usually available 2-3 weeks after multiple-choice sco
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
+      navigator.serviceWorker.register('/sw-workbox.js')
         .then(registration => {
           console.log('Service Worker registered successfully:', registration);
         })

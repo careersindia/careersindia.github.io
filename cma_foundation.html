@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMA Foundation Details</title>
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/manifest_7.json">
     <style>
         body { background-color: white; color: green; font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
         h1 { border-bottom: 2px solid green; padding-bottom: 10px; }
@@ -54,7 +54,7 @@
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
+      navigator.serviceWorker.register('/sw-workbox.js')
         .then(registration => {
           console.log('Service Worker registered successfully:', registration);
         })

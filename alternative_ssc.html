@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alternative Career Explorer</title>
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/manifest_7.json">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1459,7 +1459,7 @@ function displayResults(selectedCourse, alternatives) {
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
+      navigator.serviceWorker.register('/sw-workbox.js')
         .then(registration => {
           console.log('Service Worker registered successfully:', registration);
         })
