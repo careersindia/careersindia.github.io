@@ -1,7 +1,7 @@
 {
   "name": "Careers India",
   "short_name": "careersindia",
-  "start_url": "main.html?utm_source=pwa",
+  "start_url": "mainnow.html?utm_source=pwa",
   "id": "/main.html?v=7",
   "display": "standalone",
   "background_color": "#7FFFD4",
