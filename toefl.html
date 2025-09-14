@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Toefl </title>
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/manifest_7.json">
   <style>
     body { font-family: Arial, sans-serif; padding: 20px; background-color: white !important; }
     h1 { color: #006400; /* Bottle Green */ }
@@ -122,7 +122,7 @@ Official score reports are sent to designated institutions about 11 days after t
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
+      navigator.serviceWorker.register('/sw-workbox.js')
         .then(registration => {
           console.log('Service Worker registered successfully:', registration);
         })

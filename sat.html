@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Sat </title>
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/manifest_7.json">
 
 <style>
     body { font-family: Arial, sans-serif; padding: 20px; background-color: white !important; }
@@ -131,7 +131,7 @@ Time for Results to be Out: Typically within a few days to two weeks.
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
+      navigator.serviceWorker.register('/sw-workbox.js')
         .then(registration => {
           console.log('Service Worker registered successfully:', registration);
         })
