@@ -23,23 +23,23 @@
     body {
         font-family: var(--font-body);
         margin: 0;
-        height: 100vh;
+        min-height: 100vh; /* CORRECTED: Use min-height to allow page to grow */
         color: var(--dark-text); 
         background-color: var(--light-gray-bg);
-        overflow: hidden; 
+        /* CORRECTED: Removed 'overflow: hidden' which was disabling all scrolling */
     }
 
     /* --- Split Page Layout --- */
     .split-container {
         display: flex;
         width: 100%;
-        height: 100%;
+        /* CORRECTED: Use min-height to ensure it fills the screen but can also grow */
+        min-height: 100vh; 
     }
 
     /* THE FLAMBOYANT LEFT SIDE */
     .left-panel {
         width: 45%;
-        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -51,7 +51,6 @@
     /* THE CLEAN & STYLISH RIGHT SIDE */
     .right-panel {
         width: 55%;
-        height: 100%;
         overflow-y: auto; 
         background: var(--light-gray-bg);
         padding: 50px;
@@ -211,11 +210,12 @@
         text-decoration: underline;
     }
     
-    /* Responsive Design */
+    /* Responsive Design - No changes needed here, it was already correct */
     @media (max-width: 1024px) {
         .split-container {
             flex-direction: column;
             height: auto;
+            min-height: 0; /* Unset min-height for column layout */
             overflow: visible;
         }
         .left-panel, .right-panel {
@@ -232,30 +232,50 @@
             text-align: center;
         }
         .right-panel {
-            overflow-y: visible;
+            overflow-y: visible; /* Let the main body handle scrolling */
+            height: auto; /* Allow the panel to grow with its content */
         }
     }
-/* ============================================= */
-/* ============ HOME BUTTON STYLES ============= */
-/* ============================================= */
-.home-button-container {
-  position: fixed; /* This makes it float on top of other content */
-  top: 20px;       /* Position 20px from the top edge */
-  right: 25px;     /* Position 25px from the right edge */
-  z-index: 1000;   /* Ensures it's above other elements */
-}
+    
+    @media (max-width: 600px) {
+        .main-title {
+            font-size: 3.5em;
+        }
+        .right-panel {
+            padding: 25px;
+        }
+        .course-selector-group label {
+            font-size: 1.8em;
+        }
+        .detail-card {
+            padding: 20px;
+        }
+        .detail-card h2 {
+            font-size: 2em;
+        }
+    }
 
-.home-button-container a img {
-  width: 50px; /* Adjust size as needed */
-  height: 50px;
+    /* ============================================= */
+    /* ============ HOME BUTTON STYLES ============= */
+    /* ============================================= */
+    .home-button-container {
+      position: fixed; /* This makes it float on top of other content */
+      top: 20px;       /* Position 20px from the top edge */
+      right: 25px;     /* Position 25px from the right edge */
+      z-index: 1000;   /* Ensures it's above other elements */
+    }
 
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  transition: transform 0.2s;
-}
+    .home-button-container a img {
+      width: 50px; /* Adjust size as needed */
+      height: 50px;
 
-.home-button-container a:hover img {
-  transform: scale(1.1); /* Slightly enlarge on hover */
-}
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+
+    .home-button-container a:hover img {
+      transform: scale(1.1); /* Slightly enlarge on hover */
+    }
 </style>
 </head>
 <body>
