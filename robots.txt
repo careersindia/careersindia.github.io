@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://careersindia.github.io/sitemap-v2.xml
