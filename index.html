@@ -36,9 +36,16 @@
       z-index: 2;
       cursor: pointer;
     }
+/* ADD THIS NEW CSS CLASS */
+  .crawler-link {
+    position: absolute;
+    left: -9999px; /* This moves the link thousands of pixels off-screen */
+  }
+
   </style>
 </head>
 <body>
+<a href="mainnow.html" class="crawler-link">Enter Main Site</a>
 
   <!-- Tap Icon -->
   <img id="tap-icon" src="tap.png" alt="Tap to enable sound">
@@ -48,6 +55,8 @@
     <source src="cube.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
+
+
 
   <script>
     const video = document.getElementById('video');
