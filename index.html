@@ -3,116 +3,143 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Career Video</title>
-<link rel="manifest" href="/manifest_7.json">
+  <meta name="google-site-verification" content="D8Ga8CEcXLqs4a3WQIvHrphNDdoQa0JzlJkKJBJ2EPk" />
+  <link rel="manifest" href="manifest_7.json">
+  <title>Welcome to Careers India</title>
+  
   <style>
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
       overflow: hidden;
-
+      font-family: sans-serif;
     }
 
-    #video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
+    #intro-container {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transform: translate(-50%, -50%);
-      z-index: -1;
-    }
-
-    #tap-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100px; /* Adjust size here */
-      height: auto;
-      transform: translate(-50%, -50%);
-      z-index: 2;
+      background-color: aquamarine;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
+      z-index: 1;
+      opacity: 0; /* Start invisible for the fade-in */
+      animation: fadeInScreen 1s 0.5s ease-in forwards; /* Fade in the whole screen */
     }
-/* ADD THIS NEW CSS CLASS */
 
+    /* --- ANIMATION CHANGES START HERE --- */
+    #rotating-cube {
+      width: 150px;
+      height: 150px;
+      opacity: 0; /* Start invisible for its own animation */
+      /* Apply the INTENSE arrival animation, then the continuous spin */
+      animation: intenseArrival 2s ease-out forwards,
+                 continuousSpin 8s linear 2s infinite;
+    }
 
+    @keyframes fadeInScreen {
+      to { opacity: 1; }
+    }
+
+    /* New, more intense arrival animation */
+    @keyframes intenseArrival {
+      0% {
+        transform: scale(0.1) rotate(-360deg);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    /* Renamed for clarity - this is the continuous rotation */
+    @keyframes continuousSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    /* --- ANIMATION CHANGES END HERE --- */
+
+    .crawler-link {
+      position: absolute;
+      left: -9999px;
+    }
   </style>
 </head>
 <body>
-<div style="position: absolute; bottom: 40px; width: 100%; text-align: center; z-index: 10;">
-    <a href="mainnow.html" 
-       style="
-         /* Font and Text Styling */
-         font-family: 'Impact', sans-serif;
-         font-size: 1.5rem; /* 24px */
-         color: #000000;
-         text-decoration: none;
-         letter-spacing: 1px;
-         
-         /* Button Shape and Color */
-         background-color: aquamarine;
-         padding: 15px 35px;
-         border-radius: 10px;
-         border: 1px solid #00c2a2; /* A slightly darker aquamarine for depth */
-         
-         /* The 3D Effect */
-         box-shadow: 0 6px 0 #008f77, /* This is the dark "bottom edge" */
-                     0 8px 15px rgba(0, 0, 0, 0.4); /* A subtle drop shadow */
-         
-         /* Smooth Transition for the click effect */
-         transition: all 0.1s ease-in-out;
-       "
-       
-       /* This changes the style when the button is being clicked */
+
+  <a href="mainnow.html" class="crawler-link">Enter Main Site</a>
+
+  <!-- The audio element is now MUTED by default -->
+  <audio id="background-audio" src="audio1.m4a" loop muted playsinline></audio>
+
+  <div id="intro-container">
+    <img id="rotating-cube" src="cube.png" alt="Rotating Cube Logo">
+  </div>
+
+  <div style="position: absolute; bottom: 40px; width: 100%; text-align: center; z-index: 10;">
+    <a id="enter-button" href="mainnow.html" 
+       style="font-family: 'Impact', sans-serif; font-size: 1.5rem; color: #000000; text-decoration: none; letter-spacing: 1px; background-color: white; padding: 15px 35px; border-radius: 10px; border: 1px solid #00c2a2; box-shadow: 0 6px 0 #008f77, 0 8px 15px rgba(0, 0, 0, 0.4); transition: all 0.1s ease-in-out; display: inline-block; transform: translateY(0);"
        onmousedown="this.style.transform='translateY(4px)'; this.style.boxShadow='0 2px 0 #008f77';"
        onmouseup="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 0 #008f77, 0 8px 15px rgba(0, 0, 0, 0.4)';"
     >
         ENTER SITE
     </a>
-</div>
-
-  <!-- Tap Icon -->
-  <img id="tap-icon" src="tap.png" alt="Tap to enable sound">
-
-  <!-- Video element -->
-  <video id="video" autoplay muted playsinline>
-    <source src="cube.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-
+  </div>
 
   <script>
-    const video = document.getElementById('video');
-    const tapIcon = document.getElementById('tap-icon');
+    const introContainer = document.getElementById('intro-container');
+    const enterButton = document.getElementById('enter-button');
+    const audio = document.getElementById('background-audio');
+    let hasInteracted = false; // Flag to check if user has clicked
 
-    tapIcon.addEventListener('click', function () {
-      video.muted = false;
-      video.play();
-      tapIcon.style.display = 'none'; // Hide icon after tap
-    });
+    // --- AUDIO FIX START HERE ---
+    // A function to handle the first user interaction
+    function onFirstInteraction() {
+      if (hasInteracted) return; // Only run this once
+      hasInteracted = true;
+      
+      // Unmute and play the audio
+      if (audio) {
+        audio.muted = false;
+        audio.play().catch(error => console.log("Audio play failed:", error));
+      }
+    }
 
-    // Redirect to mainnow.html after video ends
-    video.addEventListener('ended', function () {
+    // Add this listener to the whole document for the first click/tap
+    document.body.addEventListener('click', onFirstInteraction, { once: true });
+    // --- AUDIO FIX END HERE ---
+
+    // Function to stop audio and navigate
+    function enterSite() {
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
       window.location.href = 'mainnow.html';
+    }
+
+    // Add listeners to both the container and the button
+    introContainer.addEventListener('click', enterSite);
+    enterButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      enterSite();
     });
   </script>
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw-workbox.js')
-        .then(registration => {
-          console.log('Service Worker registered successfully:', registration);
-        })
-        .catch(error => {
-          console.log('Service Worker registration failed:', error);
-        });
-    });
-  }
-</script>
+
+  <!-- PWA Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw-workbox.js').then(reg => console.log('SW Reg OK')).catch(err => console.error('SW Reg FAIL', err));
+      });
+    }
+  </script>
 
 </body>
 </html>
