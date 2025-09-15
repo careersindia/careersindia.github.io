@@ -14,6 +14,7 @@
       height: 100%;
       overflow: hidden;
       font-family: sans-serif;
+      background-color: aquamarine; /* Parrot Green Background */
     }
 
     #intro-container {
@@ -22,48 +23,43 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: aquamarine;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       z-index: 1;
-      opacity: 0; /* Start invisible for the fade-in */
-      animation: fadeInScreen 1s 0.5s ease-in forwards; /* Fade in the whole screen */
     }
 
-    /* --- ANIMATION CHANGES START HERE --- */
+    /* The play button overlay will hide after the first tap */
+    #play-overlay {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      text-align: center;
+    }
+    #play-overlay img {
+      width: 100px; /* Tap icon size */
+    }
+    #play-overlay p {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    /* The cube is hidden initially */
     #rotating-cube {
       width: 150px;
       height: 150px;
-      opacity: 0; /* Start invisible for its own animation */
-      /* Apply the INTENSE arrival animation, then the continuous spin */
-      animation: intenseArrival 2s ease-out forwards,
-                 continuousSpin 8s linear 2s infinite;
+      display: none; /* Hidden until the user taps play */
+      animation: continuousSpin 8s linear infinite;
     }
 
-    @keyframes fadeInScreen {
-      to { opacity: 1; }
-    }
-
-    /* New, more intense arrival animation */
-    @keyframes intenseArrival {
-      0% {
-        transform: scale(0.1) rotate(-360deg);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-      }
-    }
-
-    /* Renamed for clarity - this is the continuous rotation */
     @keyframes continuousSpin {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
-    /* --- ANIMATION CHANGES END HERE --- */
 
     .crawler-link {
       position: absolute;
@@ -74,18 +70,23 @@
 <body>
 
   <a href="mainnow.html" class="crawler-link">Enter Main Site</a>
-
-  <!-- The audio element is now MUTED by default -->
-  <audio id="background-audio" src="audio1.m4a" loop muted playsinline></audio>
+  <audio id="background-audio" src="audio1.m4a" loop></audio>
 
   <div id="intro-container">
+    <!-- This is the initial "Play" button screen -->
+    <div id="play-overlay">
+        <img src="tap.png" alt="Tap to start">
+        <p>Tap to Begin</p>
+    </div>
+    <!-- The cube is now inside the container but hidden -->
     <img id="rotating-cube" src="cube.png" alt="Rotating Cube Logo">
   </div>
 
-  <div style="position: absolute; bottom: 40px; width: 100%; text-align: center; z-index: 10;">
-    <a id="enter-button" href="mainnow.html" 
+  <!-- The 3D "ENTER SITE" Button is now also hidden initially -->
+  <div id="enter-button-container" style="position: absolute; bottom: 40px; width: 100%; text-align: center; z-index: 10; display: none;">
+    <a href="mainnow.html" 
        style="font-family: 'Impact', sans-serif; font-size: 1.5rem; color: #000000; text-decoration: none; letter-spacing: 1px; background-color: white; padding: 15px 35px; border-radius: 10px; border: 1px solid #00c2a2; box-shadow: 0 6px 0 #008f77, 0 8px 15px rgba(0, 0, 0, 0.4); transition: all 0.1s ease-in-out; display: inline-block; transform: translateY(0);"
-       onmousedown="this.style.transform='translateY(4px)'; this.style.boxShadow='0 2px 0 #008f77';"
+       onmousedown="this.style.transform='translateY(4px)'; this.style.boxShadow='0 2px 0 #008f7_7';"
        onmouseup="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 0 #008f77, 0 8px 15px rgba(0, 0, 0, 0.4)';"
     >
         ENTER SITE
@@ -94,49 +95,49 @@
 
   <script>
     const introContainer = document.getElementById('intro-container');
-    const enterButton = document.getElementById('enter-button');
+    const playOverlay = document.getElementById('play-overlay');
+    const rotatingCube = document.getElementById('rotating-cube');
+    const enterButtonContainer = document.getElementById('enter-button-container');
     const audio = document.getElementById('background-audio');
-    let hasInteracted = false; // Flag to check if user has clicked
 
-    // --- AUDIO FIX START HERE ---
-    // A function to handle the first user interaction
-    function onFirstInteraction() {
-      if (hasInteracted) return; // Only run this once
-      hasInteracted = true;
-      
-      // Unmute and play the audio
-      if (audio) {
-        audio.muted = false;
-        audio.play().catch(error => console.log("Audio play failed:", error));
-      }
+    // This function runs ONLY on the first tap
+    function startExperience() {
+        // Try to play the audio directly in response to the user's tap
+        if (audio) {
+            audio.play().catch(error => {
+                // This catch is important for debugging on mobile
+                console.error("Audio play was prevented by browser:", error);
+            });
+        }
+        
+        // Hide the "Tap to Begin" overlay
+        playOverlay.style.display = 'none';
+
+        // Show the rotating cube and the "ENTER SITE" button
+        rotatingCube.style.display = 'block';
+        enterButtonContainer.style.display = 'block';
+
+        // Now, add a new event listener for the second click to enter the site
+        introContainer.addEventListener('click', enterSite);
     }
 
-    // Add this listener to the whole document for the first click/tap
-    document.body.addEventListener('click', onFirstInteraction, { once: true });
-    // --- AUDIO FIX END HERE ---
-
-    // Function to stop audio and navigate
+    // Function to navigate to the main page
     function enterSite() {
-      if (audio) {
-        audio.pause();
-        audio.currentTime = 0;
-      }
-      window.location.href = 'mainnow.html';
+        if (audio) {
+            audio.pause();
+        }
+        window.location.href = 'mainnow.html';
     }
 
-    // Add listeners to both the container and the button
-    introContainer.addEventListener('click', enterSite);
-    enterButton.addEventListener('click', function(event) {
-      event.preventDefault();
-      enterSite();
-    });
+    // Listen for the very first tap on the intro container
+    introContainer.addEventListener('click', startExperience, { once: true });
   </script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw-workbox.js').then(reg => console.log('SW Reg OK')).catch(err => console.error('SW Reg FAIL', err));
+        navigator.serviceWorker.register('sw-workbox.js');
       });
     }
   </script>
