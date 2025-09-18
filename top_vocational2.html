@@ -30,8 +30,8 @@
 
     body {
         font-family: Arial, sans-serif;
-        background-color: var(--modern-blue); /* MODIFIED: Blue page background */
-        color: var(--white); /* Default font is white */
+        background-color: var(--modern-blue);
+        color: var(--white);
         line-height: 1.6;
     }
 
@@ -41,12 +41,11 @@
         min-height: 100vh;
     }
 
-    /* MODIFIED: Left pane is white */
     .left-pane {
         width: 450px;
         flex-shrink: 0;
         background: var(--white);
-        color: var(--dark-text); /* Font on this panel is black */
+        color: var(--dark-text);
         padding: 30px;
         display: flex;
         flex-direction: column;
@@ -55,13 +54,12 @@
         box-shadow: 5px 0 25px rgba(0, 0, 0, 0.2);
     }
 
-    /* MODIFIED: Right pane is white */
     .right-pane {
         flex-grow: 1;
         padding: 40px;
         overflow-y: auto;
         background-color: var(--white);
-        color: var(--dark-text); /* Font on this panel is black */
+        color: var(--dark-text);
     }
     
     #resultsContainer {
@@ -69,40 +67,41 @@
         grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
         gap: 30px;
     }
-/* --- ACCREDITATION NOTE BOX --- */
-.accreditation-note {
-    margin-top: 25px;
-    padding: 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    background-color: var(--light-gray);
-}
-.accreditation-note h4 {
-    text-align: center;
-    margin-bottom: 15px;
-    color: var(--modern-blue);
-    font-size: 1.1em;
-}
-.accreditation-note ul {
-    list-style: none;
-    padding-left: 0;
-    font-size: 0.85em;
-    color: #333;
-}
-.accreditation-note li {
-    margin-bottom: 12px;
-    line-height: 1.4;
-}
-.accreditation-note p {
-    font-size: 0.95em;
-    color: #555;
-    margin-top: 4px;
-    padding-left: 10px;
-}
+
+    /* --- ACCREDITATION NOTE BOX --- */
+    .accreditation-note {
+        margin-top: 25px;
+        padding: 15px;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        background-color: var(--light-gray);
+    }
+    .accreditation-note h4 {
+        text-align: center;
+        margin-bottom: 15px;
+        color: var(--modern-blue);
+        font-size: 1.1em;
+    }
+    .accreditation-note ul {
+        list-style: none;
+        padding-left: 0;
+        font-size: 0.85em;
+        color: #333;
+    }
+    .accreditation-note li {
+        margin-bottom: 12px;
+        line-height: 1.4;
+    }
+    .accreditation-note p {
+        font-size: 0.95em;
+        color: #555;
+        margin-top: 4px;
+        padding-left: 10px;
+    }
+
     /* --- LEFT PANE ELEMENTS --- */
-    /* MODIFIED: Title box is white */
-  .title-box {
-    background-color: var(--modern-blue);
+    .title-box {
+        background-color: var(--modern-blue);
         border-radius: 15px;
         padding: 20px;
         text-align: center;
@@ -110,19 +109,18 @@
         box-shadow: var(--shadow);
     }
 
-    /* MODIFIED: The Intense 3D Impact Font Title (Blue Text) */
     h1 {
         font-family: 'Impact', sans-serif;
         font-size: 3.5em;
         font-weight: normal;
         line-height: 1.0;
-        color: var(--white); /* MODIFIED: Blue font */
-      text-shadow: 
-        1px 1px 0px var(--modern-blue-dark), 
-        2px 2px 0px var(--modern-blue-dark), 
-        3px 3px 0px var(--modern-blue-dark),
-        4px 4px 8px rgba(0,0,0,0.2);
-}
+        color: var(--white);
+        text-shadow: 
+            1px 1px 0px var(--modern-blue-dark), 
+            2px 2px 0px var(--modern-blue-dark), 
+            3px 3px 0px var(--modern-blue-dark),
+            4px 4px 8px rgba(0,0,0,0.2);
+    }
 
     .main-city-bar {
         display: grid;
@@ -130,12 +128,11 @@
         gap: 20px;
     }
     
-    /* MODIFIED: Buttons are blue boxes with white font */
     .main-city-link,
     #searchButton,
     #top50Button {
         color: var(--white);
-       background-color: var(--modern-blue);
+        background-color: var(--modern-blue);
         border: 1px solid var(--modern-blue-dark);
         box-shadow: var(--shadow);
         text-decoration: none;
@@ -165,11 +162,9 @@
         box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
     }
     
-    #top50Button { grid-column: 1 / -1; margin-bottom: 20px; }
     #searchButton { width: 100%; padding: 15px; font-size: 1.2em; }
     .main-city-link { font-size: 0.9em; padding: 10px; }
 
-    /* MODIFIED: Dropdown area is blue */
     .search-area { position: relative; }
     .search-options {
         display: none;
@@ -191,7 +186,6 @@
     .control-group:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
     .control-group label { text-align: center; font-weight: bold; color: var(--white); margin-bottom: 5px; }
     
-    /* MODIFIED: Dropdown box is blue with white font */
     .control-group select {
         width: 100%;
         padding: 12px;
@@ -209,7 +203,6 @@
         width: fit-content; margin-left: auto; margin-right: auto;
     }
 
-    /* MODIFIED: Right pane content cards are blue with white font */
     .institute-card {
         background: var(--modern-blue);
         color: var(--white);
@@ -253,31 +246,80 @@
         grid-column: 1 / -1;
         text-align: center;
         font-size: 2em;
-        color: #aaa; /* Text on white background is grey */
+        color: #aaa;
         padding: 50px;
     }
 
-#top50Button {
-    background-color: var(--modern-blue) !important;
-}
-.home-button-container {
-  position: fixed; /* This makes it float on top of other content */
-  top: 20px;       /* Position 20px from the top edge */
-  right: 25px;     /* Position 25px from the right edge */
-  z-index: 1000;   /* Ensures it's above other elements */
-}
+    #top50Button {
+        background-color: var(--modern-blue) !important;
+    }
+    .home-button-container {
+      position: fixed;
+      top: 20px;
+      right: 25px;
+      z-index: 1000;
+    }
 
-.home-button-container a img {
-  width: 50px; /* Adjust size as needed */
-  height: 50px;
+    .home-button-container a img {
+      width: 50px;
+      height: 50px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
 
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  transition: transform 0.2s;
-}
+    .home-button-container a:hover img {
+      transform: scale(1.1);
+    }
 
-.home-button-container a:hover img {
-  transform: scale(1.1); /* Slightly enlarge on hover */
-}
+    /* --- ADDED: MOBILE RESPONSIVENESS --- */
+    @media (max-width: 992px) {
+        .split-container {
+            flex-direction: column; /* Stack the panes vertically */
+        }
+
+        .left-pane {
+            width: 100%; /* Make left pane full width */
+            border-right: none; /* Remove side border */
+            border-bottom: 2px solid var(--modern-blue); /* Add bottom separator */
+            box-shadow: none; /* Remove side shadow */
+            padding: 20px;
+        }
+
+        .right-pane {
+            overflow-y: visible; /* Use main page scroll, not internal scroll */
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 10vw, 3rem); /* Responsive heading size */
+        }
+
+        #resultsContainer {
+            /* Adjust grid for smaller screens, allowing cards to be narrower */
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .main-city-bar {
+            gap: 10px; /* Reduce gap between city buttons */
+        }
+
+        .home-button-container {
+             top: 15px;
+             right: 15px;
+        }
+        .home-button-container a img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #resultsContainer {
+            /* On very small screens, force a single column layout */
+            grid-template-columns: 1fr;
+        }
+    }
 </style>
 </head>
 <body>
