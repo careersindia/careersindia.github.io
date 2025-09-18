@@ -926,12 +926,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const name = lines[0].replace('---', '').replace('---', '').trim();
             const detailsText = lines.slice(1).join('\n');
             
-            // ** THE FIX IS HERE **
             // Escape the rankKey to handle special characters like parentheses
             const escapedRankKey = escapeRegExp(rankKey);
             const rankRegex = new RegExp(`${escapedRankKey}: (\\d+|Not Ranked)`);
             const rankMatch = detailsText.match(rankRegex);
-            // ** END OF FIX **
             
             let ranking = 999; // Default for sorting unranked items to the end
             let rankDisplay = 'N/A';
@@ -960,9 +958,11 @@ document.addEventListener('DOMContentLoaded', function() {
             createInstituteCard(inst.name, inst.rankDisplay, rankKey.split(' (')[0], inst.details)
         ).join('');
     }
+    
     // Render IIMs and IITs
-    renderSection('IIMs', '--- IIM', 'NIRF 2023 Ranking');
-    renderSection('IITs', '--- IIT', 'NIRF 2023 Ranking (Engineering)');
+    // --- FIX WAS HERE --- Changed "2023" to "2025"
+    renderSection('IIMs', '--- IIM', 'NIRF 2025 Ranking');
+    renderSection('IITs', '--- IIT', 'NIRF 2025 Ranking (Engineering)');
 
     // Special handling for IISc (single entity)
     function renderIISc() {
@@ -975,34 +975,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const name = lines[0].replace(/---/g, '').trim();
         const detailsText = lines.slice(1).join('\n');
         
-        const rankMatch = detailsText.match(/NIRF 2023 Ranking: (.*?)\n/);
+        // --- FIX WAS HERE --- Changed regex from "2023" to "2025"
+        const rankMatch = detailsText.match(/NIRF 2025 Ranking: (.*?)\n/);
         const rank = rankMatch ? rankMatch[1] : 'N/A';
         const details = parseDetails(detailsText);
         
         const container = document.getElementById('iisc-content');
-        container.innerHTML = createInstituteCard(name, rank, 'NIRF 2023 Ranking', details);
+        // --- FIX WAS HERE --- Changed text from "2023" to "2025"
+        container.innerHTML = createInstituteCard(name, rank, 'NIRF 2025 Ranking', details);
     }
     renderIISc();
 
 });
-</script>
-<div class="home-button-container">
-  <a href="/mainnow.html" title="Go to Home">
-    <img src="images/home-icon.png" alt="Home">
-  </a>
-</div>
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw-workbox.js')
-        .then(registration => {
-          console.log('Service Worker registered successfully:', registration);
-        })
-        .catch(error => {
-          console.log('Service Worker registration failed:', error);
-        });
-    });
-  }
 </script>
 </body>
 </html>
