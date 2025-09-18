@@ -442,6 +442,12 @@ body:has(.nav-menu.active) {
 .pwa-modal-close:hover {
     color: #333;
 }
+/* === MOBILE-ONLY FIX FOR INSTALL BUTTON === */
+@media (max-width: 768px) {
+    .pwa-button {
+        right: 115px !important; /* Moves it further left from the edge on mobile */
+    }
+}
 </style>
 </head>
 <body>
