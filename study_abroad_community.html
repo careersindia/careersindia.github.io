@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Study Abroad Aspirants 2025 - Community Hub</title>
-<link rel="manifest" href="/manifest.json">
+  <title>Study Abroad Forum for Indian Students |Australia, USA, UK, Canada, etc  Q&A | Careers India</title>
+<meta name="description" content="Have questions about studying abroad? Join our community of Indian aspirants. Get answers on university selection, the application process, student visas, scholarships, IELTS/GRE prep, and life in the USA, UK, Canada,Australia,etc. Connect and plan your journey!">
+<link rel="manifest" href="/manifest_7.json">
     
     <!-- Optional: Link to your main stylesheet to keep the look consistent -->
     <!-- <link rel="stylesheet" href="your-main-styles.css"> -->
@@ -37,23 +38,20 @@
 </head>
 <body>
 
-    <h1>Study Abroad Aspirants 2025 - Community Hub</h1>
+   <h1>STUDY ABROAD ASPIRANTS - COMMUNITY FORUM</h1>
     <p>Welcome! This is the place to discuss plans and process for studying abroad, advanced preparation for english proficiency exams like IELTS/TOEFL/PTE, etc and connect with fellow study abroad applicants. Ask questions and share your knowledge below.</p>
     
-    <hr>
+   <hr>
 
-    <!-- The Hyvor Talk comment section will appear exactly here -->
-    <div id="hyvor-talk-view"></div>
+<div id="cusdis_thread"
+  data-host="https://cusdis.com"
+  data-app-id="f34a3005-1724-490d-9939-4288df831eed"
+  data-page-id="{{ PAGE_ID }}"
+  data-page-url="{{ PAGE_URL }}"
+  data-page-title="{{ PAGE_TITLE }}"
+></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
-
-    <!-- ============================================= -->
-    <!-- === PASTE YOUR HYVOR TALK CODE SNIPPET HERE === -->
-    <!-- ============================================= -->
-<script async src="https://talk.hyvor.com/embed/embed.js" type="module"></script>
-<hyvor-talk-comments
-	website-id="14083"
-	page-id=""
-></hyvor-talk-comments>
 <div class="home-button-container">
   <a href="/mainnow.html" title="Go to Home">
     <img src="images/home-icon.png" alt="Home">
@@ -62,7 +60,7 @@
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
+      navigator.serviceWorker.register('/sw-workbox.js')
         .then(registration => {
           console.log('Service Worker registered successfully:', registration);
         })
