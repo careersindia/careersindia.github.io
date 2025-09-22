@@ -218,6 +218,42 @@
 .home-button-container a:hover img {
   transform: scale(1.1); /* Slightly enlarge on hover */
 }
+/* ======================================================= */
+/* ============ MOBILE RECOMMENDATION PAGE FIXES ============= */
+/* ======================================================= */
+@media (max-width: 768px) {
+
+  /* --- FIX 1: PREVENT CONTENT FROM GETTING CUT OFF --- */
+  body {
+    /* This is the most important fix. It prevents any element from
+       forcing a horizontal scroll, which causes the "cut off" effect. */
+    overflow-x: hidden;
+  }
+
+  /* --- FIX 2: MAKE THE SCROLLBAR WIDER & MORE VISIBLE --- */
+  /* This targets the scrollbar in WebKit browsers (Chrome, Safari, Edge) */
+  
+  ::-webkit-scrollbar {
+    /* Increase the width of the scrollbar */
+    width: 12px; 
+  }
+
+  ::-webkit-scrollbar-track {
+    /* Style the background of the scrollbar track */
+    background: #f1f1f1; 
+  }
+
+  ::-webkit-scrollbar-thumb {
+    /* Style the draggable handle of the scrollbar */
+    background: #888; 
+    border-radius: 6px; /* Give it rounded corners */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    /* Make the handle darker when you hover over it */
+    background: #555; 
+  }
+}
     </style>
 </head>
 <body>
