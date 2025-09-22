@@ -221,37 +221,63 @@
 /* ======================================================= */
 /* ============ MOBILE RECOMMENDATION PAGE FIXES ============= */
 /* ======================================================= */
+/* ======================================================= */
+/* ============ MOBILE PAGE & RECOMMENDATION FIXES ============= */
+/* ======================================================= */
 @media (max-width: 768px) {
 
-  /* --- FIX 1: PREVENT CONTENT FROM GETTING CUT OFF --- */
+  /* --- FIX 1: A MORE POWERFUL RESET FOR MOBILE LAYOUT --- */
+  
+  /* This is a crucial rule for responsive design. It ensures that
+     padding and borders are included in the element's total width,
+     preventing them from causing overflow. */
+  * {
+    box-sizing: border-box;
+  }
+  
   body {
-    /* This is the most important fix. It prevents any element from
-       forcing a horizontal scroll, which causes the "cut off" effect. */
+    /* We still hide overflow as a final safety net, but the rules
+       below should prevent it from happening in the first place. */
     overflow-x: hidden;
   }
-
-  /* --- FIX 2: MAKE THE SCROLLBAR WIDER & MORE VISIBLE --- */
-  /* This targets the scrollbar in WebKit browsers (Chrome, Safari, Edge) */
   
+  /* --- FIX 2: FORCE ALL COMMON PROBLEM ELEMENTS TO BEHAVE --- */
+
+  /* Fix for wide images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Fix for wide tables (This makes them scrollable horizontally) */
+  .table-container, /* Add this class to a div wrapping your table */
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto; /* This adds a horizontal scrollbar ONLY to the table */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+
+  /* Fix for long, unbreakable text in <pre> or other blocks */
+  pre, code, div, p {
+    word-wrap: break-word; /* Old property for older browsers */
+    overflow-wrap: break-word; /* Standard property */
+    max-width: 100%; /* Ensure the container itself doesn't overflow */
+  }
+  
+  /* --- FIX 3: WIDER SCROLLBAR (Your existing fix) --- */
   ::-webkit-scrollbar {
-    /* Increase the width of the scrollbar */
-    width: 12px; 
+    width: 18px;
   }
-
   ::-webkit-scrollbar-track {
-    /* Style the background of the scrollbar track */
-    background: #f1f1f1; 
+    background: #f1f1f1;
   }
-
   ::-webkit-scrollbar-thumb {
-    /* Style the draggable handle of the scrollbar */
-    background: #888; 
-    border-radius: 6px; /* Give it rounded corners */
+    background: #888;
+    border-radius: 6px;
   }
-
   ::-webkit-scrollbar-thumb:hover {
-    /* Make the handle darker when you hover over it */
-    background: #555; 
+    background: #555;
   }
 }
     </style>
