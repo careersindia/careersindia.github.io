@@ -1,14 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="google-site-verification" content="lWRsIhWT1lpasOBA9nNslekCwZOiccys-ceO9gtuTTI" />
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="manifest" href="manifest_7.json">
   <title>Welcome to Careers India</title>
-  <!-- Paste your Google Site Verification meta tag here if you have it -->
-  <meta name="google-site-verification" content="lWRsIhWT1lpasOBA9nNslekCwZOiccys-ceO9gtuTTI" />
-  <link rel="canonical" href="https://careersindia.github.io/mainnow.html" />
+
+<link rel="canonical" href="https://careersindia.github.io/mainnow.html" />
+  
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
+      background-color: aquamarine; /* Parrot Green Background */
+    }
+
+    #intro-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    /* The play button overlay will hide after the first tap */
+    #play-overlay {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      text-align: center;
+    }
+    #play-overlay img {
+      width: 100px; /* Tap icon size */
+    }
+    #play-overlay p {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    /* The cube is hidden initially */
+    #rotating-cube {
+      width: 150px;
+      height: 150px;
+      display: none; /* Hidden until the user taps play */
+      animation: continuousSpin 8s linear infinite;
+    }
+
+    @keyframes continuousSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .crawler-link {
+      position: absolute;
+      left: -9999px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to Careers India</h1>
-  <p>If you are not redirected, please <a href="mainnow.html">click here to enter the main site</a>.</p>
+
+  <a href="mainnow.html" class="crawler-link">Enter Main Site</a>
+  <audio id="background-audio" src="audio1.m4a" loop></audio>
+
+  <div id="intro-container">
+    <!-- This is the initial "Play" button screen -->
+    <div id="play-overlay">
+        <img src="tap.png" alt="Tap to start">
+        <p>Tap to Begin</p>
+    </div>
+    <!-- The cube is now inside the container but hidden -->
+    <img id="rotating-cube" src="cube.png" alt="Rotating Cube Logo">
+  </div>
+
+  <!-- The 3D "ENTER SITE" Button is now also hidden initially -->
+  <div id="enter-button-container" style="position: absolute; bottom: 40px; width: 100%; text-align: center; z-index: 10; display: none;">
+    <a href="mainnow.html" 
+       style="font-family: 'Impact', sans-serif; font-size: 1.5rem; color: #000000; text-decoration: none; letter-spacing: 1px; background-color: white; padding: 15px 35px; border-radius: 10px; border: 1px solid #00c2a2; box-shadow: 0 6px 0 #008f77, 0 8px 15px rgba(0, 0, 0, 0.4); transition: all 0.1s ease-in-out; display: inline-block; transform: translateY(0);"
+       onmousedown="this.style.transform='translateY(4px)'; this.style.boxShadow='0 2px 0 #008f7_7';"
+       onmouseup="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 0 #008f77, 0 8px 15px rgba(0, 0, 0, 0.4)';"
+    >
+        ENTER SITE
+    </a>
+  </div>
+
+  <script>
+    const introContainer = document.getElementById('intro-container');
+    const playOverlay = document.getElementById('play-overlay');
+    const rotatingCube = document.getElementById('rotating-cube');
+    const enterButtonContainer = document.getElementById('enter-button-container');
+    const audio = document.getElementById('background-audio');
+
+    // This function runs ONLY on the first tap
+    function startExperience() {
+        // Try to play the audio directly in response to the user's tap
+        if (audio) {
+            audio.play().catch(error => {
+                // This catch is important for debugging on mobile
+                console.error("Audio play was prevented by browser:", error);
+            });
+        }
+        
+        // Hide the "Tap to Begin" overlay
+        playOverlay.style.display = 'none';
+
+        // Show the rotating cube and the "ENTER SITE" button
+        rotatingCube.style.display = 'block';
+        enterButtonContainer.style.display = 'block';
+
+        // Now, add a new event listener for the second click to enter the site
+        introContainer.addEventListener('click', enterSite);
+    }
+
+    // Function to navigate to the main page
+    function enterSite() {
+        if (audio) {
+            audio.pause();
+        }
+        window.location.href = 'mainnow.html';
+    }
+
+    // Listen for the very first tap on the intro container
+    introContainer.addEventListener('click', startExperience, { once: true });
+  </script>
+
+  <!-- PWA Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw-workbox.js');
+      });
+    }
+  </script>
+
 </body>
 </html>
