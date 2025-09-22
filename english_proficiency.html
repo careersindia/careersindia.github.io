@@ -160,6 +160,200 @@
     scroll-margin-top: 20px; 
   }
 }
+/* ============================================= */
+/* ============ MODAL STYLES ===================== */
+/* ============================================= */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 2000; /* Sit on top of everything */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* 5% from the top and centered */
+  padding: 20px 30px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  max-width: 800px;
+  border-radius: 10px;
+  position: relative;
+  max-height: 85vh; /* Limit height to 85% of viewport */
+  overflow-y: auto; /* Add scrollbar to the modal content */
+}
+
+.close-button {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.resource-section {
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+.resource-section:last-child {
+  border-bottom: none;
+}
+.resource-section h3 {
+  color: #006400;
+}
+.resource-section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+.resource-section li {
+  margin-bottom: 10px;
+}
+.resource-section a {
+  font-weight: bold;
+  color: #0056b3;
+  text-decoration: none;
+}
+.resource-section a:hover {
+  text-decoration: underline;
+}
+/* ============================================= */
+/* ============ QUIZ STYLES ====================== */
+/* ============================================= */
+.quiz-link-container {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid black;
+
+}
+.quiz-link-container a {
+  display: inline-block;
+  padding: 12px 20px;
+ background-color: white; /* Change button background to white */ /* A bright, attention-grabbing color */
+  color: black;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.2s ease-in-out;
+}
+.quiz-link-container a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+
+/* Quiz Modal Specifics */
+.quiz-question {
+  margin-bottom: 20px;
+}
+.quiz-question label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+.quiz-question .options {
+  padding-left: 10px;
+}
+.quiz-question .options label {
+  font-weight: normal;
+  display: inline;
+  margin-left: 5px;
+}
+#submitQuizBtn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: white;
+  background-color: #28a745;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+#submitQuizBtn:hover {
+  background-color: #218838;
+}
+
+#quizResult {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #e0f7fa;
+  border: 2px solid #007bff;
+}
+#quizResult h3 {
+  margin-top: 0;
+  color: #0056b3;
+}
+#quizResult .primary-rec {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+#quizResult .secondary-rec {
+  font-size: 1.1em;
+  font-style: italic;
+  margin-top: 15px;
+}
+
+
+
+
+/* START: Replace the old .rec-item and .priority-label styles with this */
+.rec-item {
+  position: relative; /* THIS IS THE CRITICAL FIX */
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  border-left: 5px solid #007bff; /* A thicker, more prominent border */
+  padding: 15px 15px 15px 20px; /* Add more left padding */
+  margin-top: 25px; /* Increase space between items */
+  border-radius: 0 5px 5px 0;
+}
+.rec-item .primary-rec {
+    margin-top: 5px; /* Add a little space above the title */
+}
+.priority-label {
+  position: absolute;
+  top: -12px;      /* Position it slightly above the top edge */
+  left: -5px;      /* Align it with the thick border on the left */
+  padding: 4px 10px;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: white;
+  border-radius: 15px; /* Pill shape */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.priority-label.p1 {
+  background-color: #007bff; /* Blue for Priority 1 */
+  border-left-color: #0056b3;
+}
+.priority-label.p2 {
+  background-color: #6c757d; /* Gray for Priority 2 */
+  border-left-color: #495057;
+}
+
+/* Make the second priority item's border gray */
+.rec-item:has(.p2) {
+    border-left-color: #6c757d;
+}
+/* END: Replacement */
+
   </style>
 </head>
 <body>
@@ -174,13 +368,26 @@
     <aside class="left-column">
       <!-- MOVED SECTION -->
       <div class="bottom-links">
-        <h2>Score Tools</h2>
+        <h2>University Finder</h2>
         <ul>
-          <li><a href="recommendation_masters.html">Grad Scores</a></li>
-          <li><a href="recommendation_undergraduates.html">UG Scores</a></li>
+          <li><a href="recommendation_masters.html">Find your Grad school</a></li>
+          <li><a href="recommendation_undergraduates.html">Find your College</a></li>
         </ul>
+
+ <ul>
+          <li><a href="#" id="openResourcesBtn">Online Resources</a></li>
+        </ul>
+
+
       </div>
       <!-- END MOVED SECTION -->
+
+
+<!-- START: ADD THE NEW QUIZ LINK HERE -->
+      <div class="quiz-link-container">
+        <a href="#" id="openQuizBtn">Right Exam for me !!!</a>
+      </div>
+      <!-- END: NEW QUIZ LINK -->
 
       <h2>Select an Exam</h2>
       <ul>
@@ -710,6 +917,398 @@ Official Websites: The official websites are the definitive sources for all test
         });
     });
   }
+</script>
+
+<!-- ============================================= -->
+<!-- ============ QUIZ MODAL ======================= -->
+<!-- ============================================= -->
+<div id="quizModal" class="modal">
+  <div class="modal-content">
+    <span class="close-quiz-button">&times;</span>
+    <h2>Which Study Abroad Test is Right For You?</h2>
+    <p>Answer these questions to get a personalized recommendation.</p>
+    
+    <form id="quizForm">
+      <!-- === PART 1: GOAL & BACKGROUND === -->
+      <div class="quiz-question">
+        <label>1. What is your primary study goal?</label>
+        <div class="options">
+          <input type="radio" id="q1_ug" name="goal" value="ug" required><label for="q1_ug">Undergraduate Degree (Bachelor's)</label><br>
+          <input type="radio" id="q1_grad" name="goal" value="grad"><label for="q1_grad">Graduate Degree (Master's/PhD)</label><br>
+          <input type="radio" id="q1_mba" name="goal" value="mba"><label for="q1_mba">MBA / Business School</label><br>
+        </div>
+      </div>
+      
+      <div class="quiz-question">
+        <label for="english_level">2. [NEW] What is your current estimated English level?</label>
+        <select id="english_level" name="english_level" required style="padding: 5px; width: 100%;">
+          <option value="" disabled selected>-- Select your level --</option>
+          <option value="c1">C1/C2 (Advanced/Proficient)</option>
+          <option value="b2">B2 (Upper-Intermediate)</option>
+          <option value="b1">B1 (Intermediate)</option>
+          <option value="a1">A1/A2 (Beginner/Elementary)</option>
+        </select>
+      </div>
+      
+      <!-- === PART 2: ENGLISH TEST PREFERENCES === -->
+      <div class="quiz-question">
+        <label>3. Which country are you primarily targeting?</label>
+        <div class="options">
+          <input type="radio" id="q2_usa" name="country" value="usa" required><label for="q2_usa">USA</label><br>
+          <input type="radio" id="q2_uk_can_aus" name="country" value="uk_can_aus"><label for="q2_uk_can_aus">UK, Canada, or Australia</label><br>
+          <input type="radio" id="q2_any" name="country" value="any"><label for="q2_any">I'm flexible / Applying globally</label><br>
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <label>4. For a speaking test, you would prefer to:</label>
+        <div class="options">
+          <input type="radio" id="q3_human" name="speaking" value="human" required><label for="q3_human">Talk to a real person face-to-face.</label><br>
+          <input type="radio" id="q3_computer" name="speaking" value="computer"><label for="q3_computer">Speak into a computer/microphone.</label><br>
+        </div>
+      </div>
+      
+      <div class="quiz-question">
+        <label>5. How quickly do you need your test results?</label>
+        <div class="options">
+          <input type="radio" id="q4_asap" name="timeline" value="asap" required><label for="q4_asap">As fast as possible (within 2-3 days)</label><br>
+          <input type="radio" id="q4_normal" name="timeline" value="normal"><label for="q4_normal">Standard time is fine (1-2 weeks)</label><br>
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <label>6. What is your budget for the test fee?</label>
+        <div class="options">
+          <input type="radio" id="q5_low" name="budget" value="low" required><label for="q5_low">Lower cost is a high priority (around ₹5,000)</label><br>
+          <input type="radio" id="q5_standard" name="budget" value="standard"><label for="q5_standard">Standard cost is acceptable (₹15,000+)</label><br>
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <label>7. Where would you prefer to take the test?</label>
+        <div class="options">
+          <input type="radio" id="q6_home" name="location" value="home" required><label for="q6_home">From the comfort of my own home.</label><br>
+          <input type="radio" id="q6_center" name="location" value="center"><label for="q6_center">At an official, proctored test center.</label><br>
+        </div>
+      </div>
+      
+      <div class="quiz-question">
+        <label>8. Are you comfortable with tasks that combine skills (e.g., read, listen, then write)?</label>
+        <div class="options">
+          <input type="radio" id="q8_yes" name="integrated" value="yes" required><label for="q8_yes">Yes, I like connecting ideas.</label><br>
+          <input type="radio" id="q8_no" name="integrated" value="no"><label for="q8_no">I prefer tasks testing one skill at a time.</label><br>
+        </div>
+      </div>
+      
+      <!-- === PART 3: ACADEMIC SKILLS ASSESSMENT === -->
+      <div class="quiz-question">
+        <label>9. [NEW] How would you rate your Maths / Quantitative skills?</label>
+        <div class="options">
+          <input type="radio" id="q_math_b" name="maths_level" value="beginner" required><label for="q_math_b">Beginner</label><br>
+          <input type="radio" id="q_math_i" name="maths_level" value="intermediate"><label for="q_math_i">Intermediate</label><br>
+          <input type="radio" id="q_math_a" name="maths_level" value="advanced"><label for="q_math_a">Advanced</label><br>
+        </div>
+      </div>
+      
+      <div class="quiz-question">
+        <label>10. [NEW] How would you rate your Verbal Reasoning skills (complex reading, vocabulary, logic)?</label>
+        <div class="options">
+          <input type="radio" id="q_verbal_b" name="verbal_level" value="beginner" required><label for="q_verbal_b">Beginner</label><br>
+          <input type="radio" id="q_verbal_i" name="verbal_level" value="intermediate"><label for="q_verbal_i">Intermediate</label><br>
+          <input type="radio" id="q_verbal_a" name="verbal_level" value="advanced"><label for="q_verbal_a">Advanced</label><br>
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <label>11. [NEW] How would you rate your Non-Verbal Reasoning skills (pattern recognition, logic puzzles)?</label>
+        <div class="options">
+          <input type="radio" id="q_nonverbal_b" name="nonverbal_level" value="beginner" required><label for="q_nonverbal_b">Beginner</label><br>
+          <input type="radio" id="q_nonverbal_i" name="nonverbal_level" value="intermediate"><label for="q_nonverbal_i">Intermediate</label><br>
+          <input type="radio" id="q_nonverbal_a" name="nonverbal_level" value="advanced"><label for="q_nonverbal_a">Advanced</label><br>
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <label>12. Overall, which area is your stronger academic skill?</label>
+        <div class="options">
+          <input type="radio" id="q7_math" name="strength" value="math" required><label for="q7_math">Math & Data Analysis</label><br>
+          <input type="radio" id="q7_verbal" name="strength" value="verbal"><label for="q7_verbal">English Reading & Writing</label><br>
+        </div>
+      </div>
+
+      <button type="button" id="submitQuizBtn">Find My Perfect Test</button>
+    </form>
+    
+    <div id="quizResult" style="display:none;">
+      <!-- Result will be injected here by JavaScript -->
+    </div>
+  </div>
+</div>
+<!-- ============================================= -->
+<!-- ============ RESOURCES MODAL ================== -->
+<!-- ============================================= -->
+<div id="resourcesModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Top 5 Free Online Resources for Each Test</h2>
+    
+    <!-- IELTS -->
+    <div class="resource-section">
+      <h3>IELTS</h3>
+      <ul>
+        <li><a href="https://www.youtube.com/@E2IELTS" target="_blank">E2 IELTS (YouTube)</a> - Comprehensive lessons and live classes for all sections.</li>
+        <li><a href="https://www.ieltsliz.com/" target="_blank">IELTS Liz (Website & YouTube)</a> - Famous for clear, simple explanations and model answers. A student favorite.</li>
+        <li><a href="https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-practice-tests" target="_blank">Official Free Practice Tests</a> - Essential practice from the official test-makers (British Council).</li>
+        <li><a href="https://www.ielts-exam.net/" target="_blank">IELTS-Exam.net</a> - A massive library of free practice tests for all modules.</li>
+        <li><a href="https://ieltsonlinetests.com/" target="_blank">IELTS Online Tests</a> - Simulates the computer-based test format with hundreds of practice questions.</li>
+      </ul>
+    </div>
+
+    <!-- TOEFL -->
+    <div class="resource-section">
+      <h3>TOEFL</h3>
+      <ul>
+        <li><a href="https://www.ets.org/toefl/test-takers/ibt/prepare/free-practice-test.html" target="_blank">Official ETS Free Practice Test</a> - The most authentic practice you can get, from the creators of the TOEFL.</li>
+        <li><a href="https://www.youtube.com/@TSTPrep" target="_blank">TST Prep (YouTube)</a> - High-quality strategy videos and full-length practice tests with analysis.</li>
+        <li><a href="https://toefl.magoosh.com/flashcards/vocabulary" target="_blank">Magoosh TOEFL Vocabulary Flashcards</a> - Excellent free tool to boost your academic vocabulary.</li>
+        <li><a href="https://www.toeflresources.com/" target="_blank">TOEFL Resources</a> - In-depth guides, sample essays, and speaking responses.</li>
+        <li><a href="https://www.youtube.com/@NoteFullTOEFLMastery" target="_blank">NoteFull TOEFL Mastery (YouTube)</a> - Proven strategies, especially for the Speaking and Writing sections.</li>
+      </ul>
+    </div>
+
+    <!-- PTE -->
+    <div class="resource-section">
+      <h3>PTE Academic</h3>
+      <ul>
+        <li><a href="https://www.youtube.com/@E2PTE" target="_blank">E2 PTE Academic (YouTube)</a> - The go-to channel for PTE strategies, methods, and question breakdowns.</li>
+        <li><a href="https://www.pearsonpte.com/preparation/practice-tests" target="_blank">Official PTE Practice Resources</a> - Free scored practice tests and question banks from Pearson.</li>
+     <li><a href="https://www.youtube.com/@LanguageAcademyPTE" target="_blank">Language Academy PTE (YouTube)</a> - A top-rated channel for strategies, predictions, and tutorials.</li>
+        <li><a href="https://pte.tools/" target="_blank">PTE Tools</a> - A popular third-party platform with a lot of free practice material.</li>
+        <li><a href="https://www.romanptemelbourne.com.au/free-pte-mock-test" target="_blank">Roman PTE Free Mock Test</a> - Offers a good simulation of the real test with scoring.</li>
+      </ul>
+    </div>
+    
+    <!-- Duolingo -->
+    <div class="resource-section">
+      <h3>Duolingo English Test (DET)</h3>
+      <ul>
+        <li><a href="https://englishtest.duolingo.com/readiness" target="_blank">Official Duolingo Practice Test</a> - Unlimited free practice tests on the official site to get used to the format.</li>
+        <li><a href="https://www.youtube.com/@TeacherLuke-DET" target="_blank">Teacher Luke (YouTube)</a> - One of the most popular channels dedicated to DET strategies and sample answers.</li>
+        <li><a href="https://blog.duolingo.com/english-test/" target="_blank">Official DET Blog</a> - Contains important updates, tips, and explanations about the test.</li>
+        <li><a href="https://detready.com/" target="_blank">DET Ready</a> - Provides practice questions and tips for all the new interactive question types.</li>
+     <li><a href="https://www.youtube.com/c/DuolingoEnglishTest" target="_blank">Duolingo English Test Official Channel</a> - A top-rated platform offering a full, free practice test with official tips, question breakdowns, and preparation strategies.</li>
+
+      </ul>
+    </div>
+
+    <!-- ACT -->
+    <div class="resource-section">
+      <h3>ACT</h3>
+      <ul>
+        <li><a href="https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/free-act-test-prep.html" target="_blank">Official ACT Free Practice Tests</a> - Full-length PDF practice tests with answer keys. The best starting point.</li>
+        <li><a href="https://academy.act.org/" target="_blank">ACT Academy</a> - A free, personalized online learning tool from the makers of the ACT.</li>
+        <li><a href="https://www.youtube.com/@SupertutorTV" target="_blank">SupertutorTV (YouTube)</a> - Excellent strategies and tips for all sections of the ACT and SAT.</li>
+        <li><a href="https://blog.prepscholar.com/the-best-act-prep-websites-you-should-be-using" target="_blank">PrepScholar ACT Blog</a> - High-quality articles and strategy guides.</li>
+        <li><a href="https://crackact.com/" target="_blank">CrackACT</a> - A huge database of real, previously administered ACT tests for practice.</li>
+      </ul>
+    </div>
+
+    <!-- SAT -->
+    <div class="resource-section">
+      <h3>SAT</h3>
+      <ul>
+        <li><a href="https://www.khanacademy.org/digital-sat" target="_blank">Khan Academy Digital SAT Prep</a> - The #1 free resource. Official partnership with College Board, offering thousands of practice questions and full tests.</li>
+        <li><a href="https://satsuite.collegeboard.org/digital/digital-practice-preparation/practice-tests/bluebook" target="_blank">Official Bluebook™ App</a> - The app you'll use for the real test, with 4 full-length adaptive practice tests.</li>
+        <li><a href="https://www.youtube.com/@SupertutorTV" target="_blank">SupertutorTV (YouTube)</a> - Top-tier strategies for hitting high scores, especially on Reading and Writing.</li>
+        <li><a href="https://blog.prepscholar.com/the-best-sat-websites" target="_blank">PrepScholar SAT Blog</a> - Contains some of the most detailed strategy guides available online.</li>
+        <li><a href="https://www.youtube.com/@TheOrganicChemistryTutor" target="_blank">The Organic Chemistry Tutor (YouTube)</a> - Don't let the name fool you. This channel has some of the best SAT Math explanation videos.</li>
+      </ul>
+    </div>
+
+    <!-- GRE -->
+    <div class="resource-section">
+      <h3>GRE</h3>
+      <ul>
+        <li><a href="https://www.gregmat.com/" target="_blank">GregMat (Website & YouTube)</a> - Widely considered the best GRE resource online. The YouTube channel is a goldmine of free strategies.</li>
+        <li><a href="https://www.ets.org/gre/test-takers/general-test/prepare/powerprep.html" target="_blank">Official ETS POWERPREP Tests</a> - Two free, official practice tests that simulate the real GRE. Absolutely essential.</li>
+        <li><a href="https://gre.magoosh.com/flashcards/vocabulary" target="_blank">Magoosh GRE Vocabulary Flashcards</a> - The most popular and effective free tool for learning GRE words.</li>
+        <li><a href="https://www.manhattanprep.com/gre/free-gre-resources/" target="_blank">Manhattan Prep Free Resources</a> - Offers a free full-length practice test and other valuable materials.</li>
+        <li><a href="https://www.youtube.com/@TheTestedTutor" target="_blank">The Tested Tutor (YouTube)</a> - Excellent for deep dives into difficult Quant problems.</li>
+      </ul>
+    </div>
+
+    <!-- GMAT -->
+    <div class="resource-section">
+      <h3>GMAT</h3>
+      <ul>
+        <li><a href="https://www.youtube.com/@GMATNinja" target="_blank">GMAT Ninja (YouTube)</a> - Legendary for their crystal-clear explanations, especially for Verbal (SC, CR, RC).</li>
+        <li><a href="https://www.mba.com/exam-prep/gmat-official-starter-kit-practice-exams" target="_blank">Official GMAT Starter Kit</a> - Two free official practice exams from the test-makers (GMAC).</li>
+        <li><a href="https://gmatclub.com/" target="_blank">GMAT Club Forum</a> - An enormous community with millions of practice questions and expert discussions.</li>
+        <li><a href="https://blog.targettestprep.com/" target="_blank">Target Test Prep Blog</a> - Incredibly detailed articles, especially for GMAT Quant.</li>
+        <li><a href="https://www.manhattanprep.com/gmat/free-gmat-resources/" target="_blank">Manhattan Prep Free Resources</a> - Includes a free practice test and access to their question banks.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+<script>
+  // Get the modal elements
+  const modal = document.getElementById('resourcesModal');
+  const openBtn = document.getElementById('openResourcesBtn');
+  const closeBtn = document.getElementsByClassName('close-button')[0];
+
+  // When the user clicks the button, open the modal
+  openBtn.onclick = function(event) {
+    event.preventDefault(); // Prevent page from jumping to top
+    modal.style.display = 'block';
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  closeBtn.onclick = function() {
+    modal.style.display = 'none';
+  }
+
+  // When the user clicks anywhere outside of the modal content, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  }
+  
+  // Optional: Close the modal with the Escape key
+  window.onkeydown = function(event) {
+    if (event.key === "Escape") {
+      modal.style.display = 'none';
+    }
+  }
+</script>
+<script>
+// =============================================
+// ============ QUIZ MODAL SCRIPT ================
+// =============================================
+// =============================================
+// ============ QUIZ MODAL SCRIPT V4 (Top 2) =====
+// =============================================
+const quizModal = document.getElementById('quizModal');
+const openQuizBtn = document.getElementById('openQuizBtn');
+const closeQuizBtn = document.querySelector('.close-quiz-button');
+const submitQuizBtn = document.getElementById('submitQuizBtn');
+const quizForm = document.getElementById('quizForm');
+const quizResultDiv = document.getElementById('quizResult');
+
+// --- Open and Close Logic ---
+openQuizBtn.onclick = function(e) {
+    e.preventDefault();
+    quizModal.style.display = 'block';
+    quizResultDiv.style.display = 'none';
+    quizForm.style.display = 'block';
+    quizForm.reset();
+}
+closeQuizBtn.onclick = function() { quizModal.style.display = 'none'; }
+window.addEventListener('click', function(event) {
+    if (event.target == quizModal) { quizModal.style.display = 'none'; }
+});
+
+// --- Main Quiz Logic ---
+submitQuizBtn.onclick = function() {
+    if (!quizForm.checkValidity()) {
+        alert("Please answer all questions to get your recommendation!");
+        return;
+    }
+
+    const getVal = (name) => document.querySelector(`input[name="${name}"]:checked`)?.value;
+    const getSelectVal = (id) => document.getElementById(id).value;
+
+    // --- Recommendation Stream 1: English Proficiency Test (EPT) ---
+    let eptScores = { ielts: 0, toefl: 0, pte: 0, duolingo: 0 };
+    let eptReasons = { ielts: [], toefl: [], pte: [], duolingo: [] };
+    
+    // Scoring logic remains the same...
+    const country = getVal('country');
+    if (country === 'usa') { eptScores.toefl += 3; eptReasons.toefl.push("it is highly preferred by US universities"); } 
+    else if (country === 'uk_can_aus') { eptScores.ielts += 3; eptReasons.ielts.push("it is the most recognized test in the UK, Canada, and Australia"); }
+    else { eptScores.ielts++; eptScores.toefl++; }
+    if (getVal('speaking') === 'human') { eptScores.ielts += 4; eptReasons.ielts.push("it features a face-to-face speaking test"); } 
+    else { eptScores.toefl++; eptReasons.toefl.push("its speaking section is computer-based"); eptScores.pte += 2; eptReasons.pte.push("it is computer-based with AI scoring"); eptScores.duolingo += 2; eptReasons.duolingo.push("you speak into your computer"); }
+    if (getVal('timeline') === 'asap') { eptScores.duolingo += 2; eptScores.pte++; eptReasons.duolingo.push("results are very fast"); }
+    if (getVal('budget') === 'low') { eptScores.duolingo += 4; eptReasons.duolingo.push("it has the lowest fee"); }
+    if (getVal('location') === 'home') { eptScores.duolingo += 4; eptReasons.duolingo.push("it can be taken online from home"); }
+    if (getVal('integrated') === 'yes') { eptScores.toefl += 2; eptReasons.toefl.push("it uses integrated tasks"); eptScores.pte += 2; eptReasons.pte.push("it is an integrated skills test"); } 
+    else { eptScores.ielts += 2; eptReasons.ielts.push("its tasks test one primary skill at a time"); }
+
+    // **NEW**: Sort EPT tests by score to find the top two
+    const sortedEpt = Object.entries(eptScores).sort((a, b) => b[1] - a[1]);
+    const eptWinner1 = sortedEpt[0];
+    const eptWinner2 = sortedEpt[1];
+
+    // --- Recommendation Stream 2: Aptitude Test ---
+    let aptitudeWinners = [];
+    let aptitudeReasons = { sat: [], act: [], gre: [], gmat: [] };
+    const goal = getVal('goal');
+    
+    if (goal === 'ug') {
+        let satScore = 0, actScore = 0;
+        aptitudeReasons.sat.push("it is the most widely used test for US undergraduate admissions");
+        aptitudeReasons.act.push("it is a great alternative to the SAT, accepted everywhere");
+        if (getVal('maths_level') === 'advanced') { satScore += 2; aptitudeReasons.sat.push("and aligns with your stronger math skills"); }
+        if (getVal('verbal_level') === 'advanced') { actScore += 2; aptitudeReasons.act.push("and its structure may suit your stronger verbal skills"); }
+        if (getVal('strength') === 'math') satScore += 2; else actScore += 2;
+        const ugScores = { sat: satScore, act: actScore };
+        aptitudeWinners = Object.entries(ugScores).sort((a, b) => b[1] - a[1]);
+    } else if (goal === 'grad') {
+        aptitudeReasons.gre.push("it is the standard test for most Master's and PhD programs");
+        if (getVal('verbal_level') === 'advanced') aptitudeReasons.gre.push("which is ideal given your advanced verbal reasoning skills");
+        aptitudeWinners = [['gre', 10]]; // Only one option, so it's always the winner
+    } else if (goal === 'mba') {
+        let gmatScore = 0, greScore = 0;
+        aptitudeReasons.gmat.push("it is the premier exam for business schools");
+        aptitudeReasons.gre.push("it is accepted by most MBA programs and is a strong alternative");
+        if (getVal('maths_level') === 'advanced') gmatScore += 2;
+        if (getVal('nonverbal_level') === 'advanced') { gmatScore += 3; aptitudeReasons.gmat.push("and your skills are a perfect match for its focus"); }
+        if (getVal('verbal_level') === 'advanced') { greScore += 3; aptitudeReasons.gre.push("and is a strong choice given your excellent verbal skills"); }
+        const mbaScores = { gmat: gmatScore, gre: greScore };
+        aptitudeWinners = Object.entries(mbaScores).sort((a, b) => b[1] - a[1]);
+    }
+
+    // --- Build and Display Result HTML ---
+    let resultHTML = `<h3>Your Personalized Recommendation</h3>`;
+    
+    // EPT Results Card
+    resultHTML += `<div class="result-card"><h4>Your English Test Recommendation</h4>`;
+    // EPT Priority 1
+    resultHTML += `<div class="rec-item"><span class="priority-label p1">PRIORITY 1</span><p class="primary-rec">${eptWinner1[0].toUpperCase()}</p>`;
+    resultHTML += `<p><strong>Why?</strong> ${eptReasons[eptWinner1[0]].join(', and ')}.</p></div>`;
+    // EPT Priority 2
+    if (eptWinner2 && eptWinner2[1] > 0) {
+        resultHTML += `<div class="rec-item"><span class="priority-label p2">PRIORITY 2</span><p class="primary-rec">${eptWinner2[0].toUpperCase()}</p>`;
+        resultHTML += `<p><strong>Why?</strong> This is a strong alternative because ${eptReasons[eptWinner2[0]].join(', and ')}.</p></div>`;
+    }
+    resultHTML += `</div>`;
+
+    // Aptitude Test Results Card
+    if (aptitudeWinners.length > 0) {
+        resultHTML += `<div class="result-card"><h4>Your Aptitude Test Recommendation</h4>`;
+        const aptWinner1 = aptitudeWinners[0];
+        resultHTML += `<div class="rec-item"><span class="priority-label p1">PRIORITY 1</span><p class="primary-rec">${aptWinner1[0].toUpperCase()}</p>`;
+        resultHTML += `<p><strong>Why?</strong> ${aptitudeReasons[aptWinner1[0]].join(', ')}.</p></div>`;
+        if (aptitudeWinners.length > 1 && aptitudeWinners[1][1] > 0) {
+            const aptWinner2 = aptitudeWinners[1];
+            resultHTML += `<div class="rec-item"><span class="priority-label p2">PRIORITY 2</span><p class="primary-rec">${aptWinner2[0].toUpperCase()}</p>`;
+            resultHTML += `<p><strong>Why?</strong> This is a solid alternative because ${aptitudeReasons[aptWinner2[0]].join(', ')}.</p></div>`;
+        }
+        resultHTML += `</div>`;
+    }
+
+    // English Level Note
+    const english_level = getSelectVal('english_level');
+    if (['b1', 'a1'].includes(english_level)) {
+        resultHTML += `<p style="margin-top:20px; font-style:italic; font-weight:bold;"><strong>Important Note:</strong> Based on your self-assessed English level, you will need significant and dedicated preparation to achieve the scores required by most universities (typically B2 or C1+). Start your studies early!</p>`;
+    }
+
+    quizResultDiv.innerHTML = resultHTML;
+    quizForm.style.display = 'none';
+    quizResultDiv.style.display = 'block';
+};
 </script>
 </body>
 </html>
