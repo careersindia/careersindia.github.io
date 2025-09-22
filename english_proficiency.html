@@ -134,6 +134,32 @@
 .home-button-container a:hover img {
   transform: scale(1.1); /* Slightly enlarge on hover */
 }
+/* ============================================= */
+/* ============ MOBILE OPTIMIZATIONS ============= */
+/* ============================================= */
+@media (max-width: 768px) {
+  .main-container {
+    /* The default flex-direction is row. We don't need to change it
+       because we already have flex-wrap: wrap; in the original style.
+       The columns will stack automatically when there isn't enough space. */
+  }
+
+  .left-column {
+    /* Turn off the sticky behavior on mobile */
+    position: static; 
+    
+    /* Remove the max-height and scrolling, let it be its natural height */
+    max-height: none; 
+    overflow-y: visible;
+  }
+  
+  /* This is the key fix for the anchor link scrolling */
+  .exam-section {
+    /* Adds a top margin to the scroll target, pushing it down
+       from under the top nav bar. Adjust the value if needed. */
+    scroll-margin-top: 20px; 
+  }
+}
   </style>
 </head>
 <body>
