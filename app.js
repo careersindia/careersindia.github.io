@@ -1,27 +1,13 @@
 // =================================================================
-// THIS IS THE FINAL, CORRECTED, AND WORKING app.js FILE
+// THIS IS THE FINAL, SIMPLE, AND WORKING app.js FILE
 // =================================================================
 
-console.log("Checkpoint 1: app.js has loaded and is running.");
-
-// --- The 'DOMContentLoaded' wrapper has been REMOVED from around this code ---
-
-console.log("Checkpoint 2: Running code immediately. Now checking for data variables...");
-
-// --- CRITICAL DATA VERIFICATION STEP ---
-if (typeof originalData === 'undefined' || typeof universities_part_1 === 'undefined') {
-    console.error("FATAL ERROR: A required data variable is missing from data.js. The script cannot continue.");
-    const displayArea = document.getElementById('scholarship-display');
-    if (displayArea) {
-        displayArea.innerHTML = '<p class="placeholder-text">Error: Could not initialize data. Please contact support.</p>';
-    }
-    // Use 'throw' to halt execution completely if data is missing
-    throw new Error("Missing critical data from data.js");
-}
-
-console.log("Checkpoint 3: All key data variables exist. Starting data processing...");
+console.log("App.js is running. All data should be available now.");
 
 // --- YOUR DATA PROCESSING LOGIC ---
+// This code runs directly. The 'defer' attribute in the HTML guarantees that
+// 'data.js' has already loaded and the HTML document is ready.
+
 const allUsaSimple = [...universities_part_1, ...universities_part_2, ...universities_part_3, ...universities_part_4, ...universities_part_5, ...universities_part_6, ...universities_part_7, ...universities_part_8, ...universities_part_9, ...universities_part_10, ...universities_part_11, ...universities_part_12, ...universities_part_13, ...universities_part_14, ...universities_part_15, ...universities_part_16, ...universities_part_17, ...universities_part_18, ...universities_part_19, ...universities_part_20];
 const allEuropeSimple = [...universities_europe, ...universities_europe_unranked];
 const generateUniqueId = (name) => {
@@ -51,8 +37,7 @@ transformAndAdd(allUsaSimple, 'USA');
 transformAndAdd(allEuropeSimple, 'Europe');
 transformAndAdd(universities_germany, 'Germany');
 const allScholarships = Array.from(scholarshipMap.values());
-
-console.log("Checkpoint 4: Data processing finished. Final scholarship count:", allScholarships.length);
+console.log("Data processing finished. Final scholarship count:", allScholarships.length);
 
 // --- YOUR FILTERING AND DISPLAY LOGIC ---
 const countrySelect = document.getElementById('country-select');
@@ -87,7 +72,6 @@ function applyFilters() { /* Your functions are here, unchanged */
     currentDisplayedScholarships = filteredScholarships;
     displayFilterResults(currentDisplayedScholarships);
 }
-
 function getQsRank(scholarship) { /* Your functions are here, unchanged */ 
     const rankings = scholarship["University Rankings"];
     if (typeof rankings !== 'object' || rankings === null) return Infinity;
@@ -102,7 +86,6 @@ function sortByQsRanking() { /* Your functions are here, unchanged */
     displayFilterResults(currentDisplayedScholarships);
 }
 function displayFilterResults(scholarships) {
-    console.log("Checkpoint 5: Display function called with", scholarships.length, "items.");
     displayArea.innerHTML = '';
     if (scholarships.length === 0) { displayArea.innerHTML = '<p class="placeholder-text">No scholarships match your criteria.</p>'; return; }
     scholarships.forEach(s => {
@@ -123,6 +106,7 @@ function displayIndianScholarships() { /* Your functions are here, unchanged */
     displayArea.innerHTML = contentToDisplay;
 }
 
+// Attach event listeners and run the initial filter
 countrySelect.addEventListener('change', applyFilters);
 levelSelect.addEventListener('change', applyFilters);
 dateSelect.addEventListener('change', applyFilters);

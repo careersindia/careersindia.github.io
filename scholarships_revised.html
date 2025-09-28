@@ -7,45 +7,172 @@
     <meta name="description" content="Find the right scholarship to fund your dream of studying abroad. Our database lists top scholarships for Indian students in the USA, UK, Canada, Germany, and Australia and many others.  Filter by country and education level to see university details, eligibility, and scholarship value.">
     <link rel="manifest" href="/manifest_7.json">
     <style>
-        /* YOUR ENTIRE CSS STYLES GO HERE - UNTOUCHED */
         @import url('https://fonts.cdnfonts.com/css/impact');
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; background-color: white; color: #333; }
-        .title-box { background-color: #7FFFD4; color: white; text-align: center; padding: 30px 20px; margin: 30px auto; width: 80%; max-width: 900px; border-radius: 15px; border: none; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); font-family: 'Impact', sans-serif; font-size: 3.5em; font-weight: normal; line-height: 1.1; text-shadow: 1px 1px 0px #004d00, 2px 2px 0px #004d00, 3px 3px 0px #004d00, 4px 4px 8px rgba(0,0,0,0.3); }
-        .main-container { display: flex; flex-wrap: wrap; width: 95%; margin: 0 auto; max-width: 1400px; }
-        .left-column { flex: 1; min-width: 280px; padding: 20px; background-color: #ffffff; border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); align-self: flex-start; }
-        .left-column h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
-        .filter-group { margin-bottom: 20px; }
-        .filter-group label { display: block; margin-bottom: 8px; font-weight: 600; }
-        .filter-group select, .filter-group button { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1em; cursor: pointer; }
-        .filter-group button { background-color: #f0f0f0; text-align: left; transition: background-color 0.2s; }
-        .filter-group button:hover { background-color: #e0e0e0; }
-        .right-column { flex: 3; min-width: 300px; padding: 0 10px; }
-        .placeholder-text { color: #777; font-size: 1.2em; text-align: center; padding: 50px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .scholarship-card { background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 25px; padding: 25px; border-left: 5px solid #39FF14; }
-        .scholarship-title { color: #333; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; margin-top: 0; margin-bottom: 15px; font-size: 1.5em; }
-        .details-table { width: 100%; border-collapse: collapse; }
-        .details-table td { padding: 12px 5px; border-bottom: 1px solid #f0f0f0; vertical-align: top; text-align: left; }
-        .details-table tr:last-child td { border-bottom: none; }
-        .details-table td:first-child { font-weight: bold; color: #333; width: 30%; }
-        .details-table td:last-child { color: #555; }
-        .details-table a { color: #007BFF; text-decoration: none; font-weight: bold; }
-        .details-table a:hover { text-decoration: underline; }
-        .details-table ul { margin: 0; padding-left: 20px; }
-        .details-table li { margin-bottom: 8px; }
-        .home-button-container { position: fixed; top: 20px; right: 25px; z-index: 1000; }
-        .home-button-container a img { width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: transform 0.2s; }
-        .home-button-container a:hover img { transform: scale(1.1); }
+        /* General Body Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            background-color: white;
+            color: #333;
+        }
+        .title-box {
+            background-color: #7FFFD4; /* Light Turquoise */
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin: 30px auto;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            font-family: 'Impact', sans-serif;
+            font-size: 3.5em;
+            font-weight: normal;
+            line-height: 1.1;
+            text-shadow: 
+                1px 1px 0px #004d00, 
+                2px 2px 0px #004d00, 
+                3px 3px 0px #004d00,
+                4px 4px 8px rgba(0,0,0,0.3);
+        }
+        .main-container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 95%;
+            margin: 0 auto;
+            max-width: 1400px;
+        }
+        .left-column {
+            flex: 1;
+            min-width: 280px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            align-self: flex-start;
+        }
+        .left-column h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .filter-group {
+            margin-bottom: 20px;
+        }
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .filter-group select, .filter-group button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .filter-group button {
+            background-color: #f0f0f0;
+            text-align: left;
+            transition: background-color 0.2s;
+        }
+        .filter-group button:hover {
+            background-color: #e0e0e0;
+        }
+        .right-column {
+            flex: 3;
+            min-width: 300px;
+            padding: 0 10px;
+        }
+        .placeholder-text {
+            color: #777;
+            font-size: 1.2em;
+            text-align: center;
+            padding: 50px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .scholarship-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+            padding: 25px;
+            border-left: 5px solid #39FF14;
+        }
+        .scholarship-title {
+            color: #333;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .details-table td {
+            padding: 12px 5px;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+            text-align: left;
+        }
+        .details-table tr:last-child td {
+            border-bottom: none;
+        }
+        .details-table td:first-child {
+            font-weight: bold;
+            color: #333;
+            width: 30%;
+        }
+        .details-table td:last-child {
+            color: #555;
+        }
+        .details-table a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .details-table a:hover {
+            text-decoration: underline;
+        }
+        .details-table ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .details-table li {
+            margin-bottom: 8px;
+        }
+        .home-button-container {
+            position: fixed;
+            top: 20px;
+            right: 25px;
+            z-index: 1000;
+        }
+        .home-button-container a img {
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+        .home-button-container a:hover img {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
 
-    <!-- YOUR ENTIRE HTML BODY IS HERE - UNTOUCHED -->
     <div class="title-box">
         TOP SCHOLARSHIP PROGRAMS FOR STUDYING OVERSEAS
     </div>
+
     <div class="main-container">
-       <!-- CORRECT CODE -->
-<div class="left-column">
+        <div class="left-column">
             <h2>Filters</h2>
             <div class="filter-group">
                 <label for="country-select">Choose a country:</label>
@@ -102,31 +229,17 @@
         </div>
     </div>
 
-    <!-- YOUR HOME BUTTON CODE IS HERE - UNTOUCHED -->
     <div class="home-button-container">
         <a href="/mainnow.html" title="Go to Home">
             <img src="images/home-icon.png" alt="Home">
         </a>
     </div>
 
-    <!-- THIS NEW, SIMPLE SCRIPT IS THE ONLY JAVASCRIPT LEFT IN THE HTML FILE -->
-    <script>
-        // This script will create a new <script> tag to load your huge data file.
-        const dataScript = document.createElement('script');
-        dataScript.src = 'data.js'; // The file with your giant 'originalData' object
-        document.body.appendChild(dataScript);
-
-        // This is the important part:
-        // We wait for the huge data.js file to finish loading.
-        // ONLY THEN do we load the app.js file which needs that data.
-        dataScript.onload = function() {
-            const appScript = document.createElement('script');
-            appScript.src = 'app.js'; // The file with all your filter/display functions
-            document.body.appendChild(appScript);
-        };
-    </script>
+    <!-- This is the simple, correct, and final way to load your scripts -->
+    <script src="data.js" defer></script>
+    <script src="app.js" defer></script>
     
-    <!-- YOUR SERVICE WORKER SCRIPT IS HERE - UNTOUCHED -->
+    <!-- Your Service Worker script -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
