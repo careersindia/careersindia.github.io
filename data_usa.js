@@ -113230,6 +113230,8 @@ const transformedScholarships = allSimpleUsaUniversities.map(transformSimpleToFu
 const allScholarships = [...detailedUsaScholarships, ...transformedScholarships];
 
 console.log(`USA data processed. Total scholarships: ${allScholarships.length}`);
+// Add this one line to the very end of your data_usa.js file
+module.exports = { allScholarships };
 
 
 

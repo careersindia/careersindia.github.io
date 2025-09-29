@@ -29,28 +29,60 @@
         .home-button-container a img { width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
         .placeholder-text { color: #777; font-size: 1.2em; text-align: center; padding: 50px; }
         .scholarship-title { font-size: 1.5em; }
-        .pagination { text-align: center; padding: 30px 0; font-size: 1.2em; }
+        .pagination { 
+            text-align: center; 
+            padding: 20px 0;
+            font-size: 1.2em; 
+            background-color: white; 
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1); 
+            width: 100%; 
+            left: 0; 
+            position: -webkit-sticky; 
+            position: sticky;
+            bottom: 0;
+            z-index: 999; 
+        }
         .pagination a { color: #007BFF; text-decoration: none; padding: 10px 18px; border: 1px solid #ddd; margin: 0 5px; border-radius: 5px; background-color: white; }
         .pagination span { padding: 10px 18px; color: #555; }
+        .button-link {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            text-align: left;
+            box-sizing: border-box;
+            text-decoration: none;
+            color: #333;
+            margin-bottom: 8px; /* Added spacing between buttons */
+        }
+        .button-link:hover {
+            background-color: #e0e0e0;
+        }
+        .left-column .section-heading {
+            font-weight: bold;
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
     </style>
 </head>
 <body>
 
     <div class="title-box">
-        SCHOLARSHIPS IN THE UK (Page 2 of 2)
+        SCHOLARSHIPS IN UK (Page 2 of 2)
     </div>
 
     <div class="main-container">
-        <!-- ============================================================= -->
-        <!-- == THIS IS THE NEW, CORRECTED LEFT COLUMN WITH ALL FILTERS == -->
-        <!-- ============================================================= -->
         <div class="left-column">
-            <h2>Filters</h2>
-            
-            <div class="filter-group">
-                <label>Special Reports:</label>
-                <button id="indianScholarshipsBtn">Top Scholarships for Indians</button>
-            </div>
+            <h2>Filter Current Page</h2>
             
             <div class="filter-group">
                 <label for="level-select">Level of Study:</label>
@@ -79,14 +111,31 @@
                 <label>Sort Results:</label>
                 <button id="sort-by-qs-btn">Sort by QS Ranking</button>
             </div>
+
+            <!-- == NEW SEPARATE NAVIGATION SECTION == -->
+            <div class="navigation-section">
+                <div class="section-heading">Browse Other Scholarships</div>
+                <a href="/scholarships_usa.html" class="button-link">Scholarships in USA</a>
+                <a href="/scholarships_uk.html" class="button-link">Scholarships in UK</a>
+                <a href="/scholarships_india.html" class="button-link" id="indianScholarshipsLink">Scholarships for INDIANS</a>
+                <a href="/scholarships_uae.html" class="button-link">Scholarships in UAE</a>
+<a href="/scholarships_germany.html" class="button-link">Scholarships in GERMANY</a>
+<a href="/scholarships_australia.html" class="button-link">Scholarships in AUSTRALIA</a>
+<a href="/scholarships_newzealand.html" class="button-link">Scholarships in NEW ZEALAND</a>
+<a href="/scholarships_canada.html" class="button-link">Scholarships in CANADA</a>
+<a href="/scholarships_europe.html" class="button-link">Scholarships in EUROPE</a>
+<a href="/scholarships_singapore.html" class="button-link">Scholarships in SINGAPORE</a>
+<a href="/scholarships_middleeast.html" class="button-link">Scholarships in MIDDLE EAST</a>
+            </div>
+            <!-- END NEW SEPARATE NAVIGATION SECTION -->
+
         </div>
         
         <div class="right-column">
             <div id="scholarship-display">
                 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1866 (roots)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -95,10 +144,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University for the Creative Arts</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university for creative arts).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university for creative arts).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.uca.ac.uk" target="_blank" rel="noopener noreferrer">https://www.uca.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and portfolio review.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All creative arts programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and portfolio review.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All creative arts programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>Up to £2,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Eligible offer holders are automatically awarded the scholarship.</td></tr>
@@ -110,20 +159,19 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1872</span>
-            <span class="rank-data" style="display:none;">551st</span>
+            <span class="rank-data" style="display:none;">N/A</span>
 
             <h3 class="scholarship-title">Aberystwyth University International Scholarship</h3>
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Aberystwyth University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 551st</li><li><strong>THE World University Rankings (2024):</strong> 401-500th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 551st</li><li><strong>THE World University Rankings (2024):</strong> 401-500th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.aber.ac.uk" target="_blank" rel="noopener noreferrer">https://www.aber.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>Up to £8,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -135,8 +183,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Postgraduate (Taught Master's)</span>
             <span class="year-data" style="display:none;">1852 (as Bath School of Art)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -145,10 +192,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Bath Spa University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.bathspa.ac.uk" target="_blank" rel="noopener noreferrer">https://www.bathspa.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Postgraduate (Taught Master's)</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Must hold an offer of admission and demonstrate outstanding academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught Master's programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must hold an offer of admission and demonstrate outstanding academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught Master's programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required, with a deadline typically in late June.</td></tr>
                     <tr><td>Value</td><td>£5,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the online scholarship application form, which requires a personal statement.</td></tr>
@@ -160,8 +207,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1882 (roots), 1993 (university status)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -170,10 +216,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Bedfordshire</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 801-1000th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 801-1000th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.beds.ac.uk" target="_blank" rel="noopener noreferrer">https://www.beds.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>Up to £1,500 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -185,8 +231,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1825 (as Bolton Mechanics Institute)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -195,10 +240,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Bolton</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.bolton.ac.uk" target="_blank" rel="noopener noreferrer">https://www.bolton.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£1,500 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -210,8 +255,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1962</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -220,10 +264,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Canterbury Christ Church University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.canterbury.ac.uk" target="_blank" rel="noopener noreferrer">https://www.canterbury.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£1,500 tuition fee discount per year.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -235,8 +279,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1839</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -245,10 +288,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Chester</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.chester.ac.uk" target="_blank" rel="noopener noreferrer">https://www.chester.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£2,000 tuition fee discount for the first year.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -260,8 +303,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1839 (roots)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -270,10 +312,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Chichester</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.chi.ac.uk" target="_blank" rel="noopener noreferrer">https://www.chi.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required.</td></tr>
                     <tr><td>Value</td><td>£1,000 to £2,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the online scholarship application form.</td></tr>
@@ -285,8 +327,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Postgraduate (Taught Master's)</span>
             <span class="year-data" style="display:none;">1946 (as the College of Aeronautics)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -295,10 +336,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Cranfield University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> A specialist postgraduate-only university, highly ranked in its fields.</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> A specialist postgraduate-only university, highly ranked in its fields.</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.cranfield.ac.uk" target="_blank" rel="noopener noreferrer">https://www.cranfield.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Postgraduate (Taught Master's)</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Must have a first or second class UK honours degree in a relevant subject area.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> MSc in Water and Wastewater Engineering, MSc in Water for Food Security.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must have a first or second class UK honours degree in a relevant subject area.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> MSc in Water and Wastewater Engineering, MSc in Water for Food Security.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required, with a deadline typically in April.</td></tr>
                     <tr><td>Value</td><td>Full tuition fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the online scholarship application form which includes a short essay on water management challenges.</td></tr>
@@ -310,8 +351,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">2007 (merger of older institutions)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -320,10 +360,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Cumbria</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.cumbria.ac.uk" target="_blank" rel="noopener noreferrer">https://www.cumbria.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>50% tuition fee reduction for the first year.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -335,20 +375,19 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1870 (as Leicester School of Art)</span>
-            <span class="rank-data" style="display:none;">851-900th</span>
+            <span class="rank-data" style="display:none;">N/A</span>
 
             <h3 class="scholarship-title">De Montfort University (DMU) International Scholarship</h3>
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, De Montfort University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 851-900th</li><li><strong>THE World University Rankings (2024):</strong> 601-800th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 851-900th</li><li><strong>THE World University Rankings (2024):</strong> 601-800th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.dmu.ac.uk" target="_blank" rel="noopener noreferrer">https://www.dmu.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£1,500 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -360,8 +399,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1885</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -370,10 +408,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Edge Hill University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.edgehill.ac.uk" target="_blank" rel="noopener noreferrer">https://www.edgehill.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£2,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -385,20 +423,19 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1964 (as Napier Technical College)</span>
-            <span class="rank-data" style="display:none;">851-900th</span>
+            <span class="rank-data" style="display:none;">N/A</span>
 
             <h3 class="scholarship-title">Edinburgh Napier University - South Asia Scholarship</h3>
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Edinburgh Napier University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 851-900th</li><li><strong>THE World University Rankings (2024):</strong> 401-500th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 851-900th</li><li><strong>THE World University Rankings (2024):</strong> 401-500th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.napier.ac.uk" target="_blank" rel="noopener noreferrer">https://www.napier.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be a national of a South Asian country, including India.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be a national of a South Asian country, including India.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>Up to £4,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -410,8 +447,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1902 (as Falmouth School of Art)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -420,10 +456,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Falmouth University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university for creative industries).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university for creative industries).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.falmouth.ac.uk" target="_blank" rel="noopener noreferrer">https://www.falmouth.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and portfolio.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All creative arts programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and portfolio.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All creative arts programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£2,500 tuition fee discount for the first year.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Eligible offer holders are automatically awarded the scholarship.</td></tr>
@@ -435,8 +471,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1847 (roots)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -445,10 +480,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Gloucestershire</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.glos.ac.uk" target="_blank" rel="noopener noreferrer">https://www.glos.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>Up to £4,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The grant is automatically awarded to eligible offer holders.</td></tr>
@@ -460,8 +495,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1887 (roots), 2008 (university status)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -470,10 +504,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Wrexham Glyndŵr University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://glyndwr.ac.uk" target="_blank" rel="noopener noreferrer">https://glyndwr.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£2,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -485,8 +519,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1901</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -495,10 +528,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Harper Adams University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university for agriculture).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university for agriculture).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.harper-adams.ac.uk" target="_blank" rel="noopener noreferrer">https://www.harper-adams.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Agriculture, Food, Engineering, Environment.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Agriculture, Food, Engineering, Environment.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required, with a deadline typically in June.</td></tr>
                     <tr><td>Value</td><td>£2,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the online scholarship application form.</td></tr>
@@ -510,20 +543,19 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate</span>
             <span class="year-data" style="display:none;">1821</span>
-            <span class="rank-data" style="display:none;">235th</span>
+            <span class="rank-data" style="display:none;">N/A</span>
 
             <h3 class="scholarship-title">Heriot-Watt University International Merit Award</h3>
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Heriot-Watt University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 235th</li><li><strong>THE World University Rankings (2024):</strong> 501-600th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 235th</li><li><strong>THE World University Rankings (2024):</strong> 501-600th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.hw.ac.uk" target="_blank" rel="noopener noreferrer">https://www.hw.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All undergraduate programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All undergraduate programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£3,000 tuition fee discount for each year of study.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The award is automatically applied to eligible offer holders.</td></tr>
@@ -535,20 +567,19 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1825 (roots)</span>
-            <span class="rank-data" style="display:none;">535th</span>
+            <span class="rank-data" style="display:none;">N/A</span>
 
             <h3 class="scholarship-title">University of Huddersfield International Scholarship</h3>
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Huddersfield</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 535th</li><li><strong>THE World University Rankings (2024):</strong> 601-800th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 535th</li><li><strong>THE World University Rankings (2024):</strong> 601-800th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.hud.ac.uk" target="_blank" rel="noopener noreferrer">https://www.hud.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£2,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -560,8 +591,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1966</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -570,10 +600,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Leeds Trinity University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.leedstrinity.ac.uk" target="_blank" rel="noopener noreferrer">https://www.leedstrinity.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£1,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -585,8 +615,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Postgraduate (Taught Master's)</span>
             <span class="year-data" style="display:none;">1844</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -595,10 +624,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Liverpool Hope University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.hope.ac.uk" target="_blank" rel="noopener noreferrer">https://www.hope.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Postgraduate (Taught Master's)</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught Master's programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught Master's programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required, with a deadline typically in June.</td></tr>
                     <tr><td>Value</td><td>50% tuition fee reduction.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the online scholarship application form, which requires a personal statement.</td></tr>
@@ -610,20 +639,19 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1848 (roots)</span>
-            <span class="rank-data" style="display:none;">951-1000th</span>
+            <span class="rank-data" style="display:none;">N/A</span>
 
             <h3 class="scholarship-title">London Metropolitan University International Scholarship</h3>
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, London Metropolitan University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 951-1000th</li><li><strong>THE World University Rankings (2024):</strong> 801-1000th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 951-1000th</li><li><strong>THE World University Rankings (2024):</strong> 801-1000th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.londonmet.ac.uk" target="_blank" rel="noopener noreferrer">https://www.londonmet.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£2,000 tuition fee discount for the first year.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -635,8 +663,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1924 (roots), 2005 (university status)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -645,10 +672,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Northampton</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.northampton.ac.uk" target="_blank" rel="noopener noreferrer">https://www.northampton.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>Up to 30% tuition fee reduction.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -660,8 +687,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1845</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -670,10 +696,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Norwich University of the Arts</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university for arts).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university for arts).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.nua.ac.uk" target="_blank" rel="noopener noreferrer">https://www.nua.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and portfolio.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All creative arts programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and portfolio.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All creative arts programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£3,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Eligible offer holders are automatically awarded the scholarship.</td></tr>
@@ -685,8 +711,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1916 (roots)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -695,10 +720,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University College Birmingham</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university college).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university college).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.ucb.ac.uk" target="_blank" rel="noopener noreferrer">https://www.ucb.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Hospitality, Tourism, Culinary Arts, and related fields.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Hospitality, Tourism, Culinary Arts, and related fields.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£1,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -710,20 +735,19 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1897 (roots)</span>
-            <span class="rank-data" style="display:none;">801-850th</span>
+            <span class="rank-data" style="display:none;">N/A</span>
 
             <h3 class="scholarship-title">University of West of Scotland (UWS) Global Scholarship</h3>
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of the West of Scotland</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 801-850th</li><li><strong>THE World University Rankings (2024):</strong> 601-800th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 801-850th</li><li><strong>THE World University Rankings (2024):</strong> 601-800th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.uws.ac.uk" target="_blank" rel="noopener noreferrer">https://www.uws.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£1,500 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -735,8 +759,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1840</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -745,10 +768,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Winchester</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.winchester.ac.uk" target="_blank" rel="noopener noreferrer">https://www.winchester.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required.</td></tr>
                     <tr><td>Value</td><td>£1,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the online scholarship application form.</td></tr>
@@ -760,8 +783,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1946</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -770,10 +792,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Worcester</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.worcester.ac.uk" target="_blank" rel="noopener noreferrer">https://www.worcester.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£3,000 tuition fee discount for the first year.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -785,8 +807,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1965</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -795,10 +816,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, AECC University College</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (specialist health sciences university).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (specialist health sciences university).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.aecc.ac.uk" target="_blank" rel="noopener noreferrer">https://www.aecc.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Chiropractic, Physiotherapy, Sport and Exercise Science.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Chiropractic, Physiotherapy, Sport and Exercise Science.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required.</td></tr>
                     <tr><td>Value</td><td>Up to £2,500 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the online scholarship application form.</td></tr>
@@ -810,8 +831,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1888 (as Dundee Institute of Technology)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -820,10 +840,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Abertay University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.abertay.ac.uk" target="_blank" rel="noopener noreferrer">https://www.abertay.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>Up to £4,000 per year.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -835,20 +855,19 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1843 (roots), 1992 (university status)</span>
-            <span class="rank-data" style="display:none;">1001-1200th</span>
+            <span class="rank-data" style="display:none;">N/A</span>
 
             <h3 class="scholarship-title">Birmingham City University (BCU) International Scholarship</h3>
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Birmingham City University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 1001-1200th</li><li><strong>THE World University Rankings (2024):</strong> 801-1000th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 1001-1200th</li><li><strong>THE World University Rankings (2024):</strong> 801-1000th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.bcu.ac.uk" target="_blank" rel="noopener noreferrer">https://www.bcu.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>Up to £2,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -860,8 +879,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1862</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -870,10 +888,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Bishop Grosseteste University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.bgu.ac.uk" target="_blank" rel="noopener noreferrer">https://www.bgu.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£3,000 tuition fee discount for the first year.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -885,8 +903,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1891</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -895,10 +912,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Buckinghamshire New University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.bucks.ac.uk" target="_blank" rel="noopener noreferrer">https://www.bucks.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£1,500 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -910,8 +927,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1865 (roots)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -920,10 +936,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Cardiff Metropolitan University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.cardiffmet.ac.uk" target="_blank" rel="noopener noreferrer">https://www.cardiffmet.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>Up to £1,500 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -935,8 +951,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1839</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -945,10 +960,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Chester</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.chester.ac.uk" target="_blank" rel="noopener noreferrer">https://www.chester.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on outstanding academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on outstanding academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required, with a deadline typically in June.</td></tr>
                     <tr><td>Value</td><td>50% tuition fee reduction.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the online scholarship application form, which requires a personal statement.</td></tr>
@@ -960,20 +975,19 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1875 (roots)</span>
-            <span class="rank-data" style="display:none;">1001-1200th</span>
+            <span class="rank-data" style="display:none;">N/A</span>
 
             <h3 class="scholarship-title">Glasgow Caledonian University (GCU) International Scholarship</h3>
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Glasgow Caledonian University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 1001-1200th</li><li><strong>THE World University Rankings (2024):</strong> 601-800th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 1001-1200th</li><li><strong>THE World University Rankings (2024):</strong> 601-800th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.gcu.ac.uk" target="_blank" rel="noopener noreferrer">https://www.gcu.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>Up to £5,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -985,8 +999,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate</span>
             <span class="year-data" style="display:none;">1846</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -995,10 +1008,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Leeds Arts University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university for arts).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university for arts).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.leeds-art.ac.uk" target="_blank" rel="noopener noreferrer">https://www.leeds-art.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and portfolio.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All creative arts programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and portfolio.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All creative arts programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£2,000 tuition fee discount for the first year.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Eligible offer holders are automatically awarded the scholarship.</td></tr>
@@ -1010,8 +1023,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate</span>
             <span class="year-data" style="display:none;">1962</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1020,10 +1032,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Ravensbourne University London</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university for digital media and design).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university for digital media and design).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.ravensbourne.ac.uk" target="_blank" rel="noopener noreferrer">https://www.ravensbourne.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and creative potential.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All undergraduate programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and creative potential.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All undergraduate programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£1,500 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Eligible offer holders are automatically considered.</td></tr>
@@ -1035,8 +1047,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">2007</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1045,10 +1056,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Suffolk</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.uos.ac.uk" target="_blank" rel="noopener noreferrer">https://www.uos.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£1,500 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -1060,8 +1071,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1872 (Trinity College of Music)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1070,10 +1080,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Trinity Laban Conservatoire of Music and Dance</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (specialist conservatoire).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (specialist conservatoire).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.trinitylaban.ac.uk" target="_blank" rel="noopener noreferrer">https://www.trinitylaban.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on performance at audition.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Music and Dance programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on performance at audition.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Music and Dance programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Considered as part of the audition process.</td></tr>
                     <tr><td>Value</td><td>Varies. Can be a partial fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for admission and attend an audition. All applicants are considered for scholarships.</td></tr>
@@ -1085,8 +1095,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1840</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1095,10 +1104,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Winchester</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.winchester.ac.uk" target="_blank" rel="noopener noreferrer">https://www.winchester.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on outstanding academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on outstanding academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required.</td></tr>
                     <tr><td>Value</td><td>£5,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the online scholarship application form, which requires a personal statement.</td></tr>
@@ -1110,8 +1119,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1887 (roots), 2008 (university status)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1120,10 +1128,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Wrexham Glyndŵr University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://glyndwr.ac.uk" target="_blank" rel="noopener noreferrer">https://glyndwr.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on outstanding academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on outstanding academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required.</td></tr>
                     <tr><td>Value</td><td>50% tuition fee reduction.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the online scholarship application form.</td></tr>
@@ -1135,8 +1143,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Postgraduate (Taught Master's)</span>
             <span class="year-data" style="display:none;">1839</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1145,10 +1152,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Chester</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.chester.ac.uk" target="_blank" rel="noopener noreferrer">https://www.chester.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Postgraduate (Taught Master's)</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught Master's programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught Master's programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required, with a deadline typically in June.</td></tr>
                     <tr><td>Value</td><td>£5,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the online scholarship application form.</td></tr>
@@ -1160,20 +1167,19 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Postgraduate</span>
             <span class="year-data" style="display:none;">1845</span>
-            <span class="rank-data" style="display:none;">12th</span>
+            <span class="rank-data" style="display:none;">N/A</span>
 
             <h3 class="scholarship-title">Glasgow School of Art Postgraduate Scholarships</h3>
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Glasgow School of Art</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>QS World University Rankings by Subject (2024) - Art & Design:</strong> 12th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings by Subject (2024) - Art & Design:</strong> 12th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.gsa.ac.uk" target="_blank" rel="noopener noreferrer">https://www.gsa.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and portfolio.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All postgraduate programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and portfolio.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All postgraduate programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Varies by specific scholarship, but typically in May.</td></tr>
                     <tr><td>Value</td><td>Varies. Can range from £3,000 to full tuition fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, apply for specific scholarships through the GSA's online portal.</td></tr>
@@ -1185,8 +1191,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">2011 (merger of older institutions)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1195,10 +1200,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of the Highlands and Islands</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.uhi.ac.uk" target="_blank" rel="noopener noreferrer">https://www.uhi.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required, with a deadline typically in May.</td></tr>
                     <tr><td>Value</td><td>£2,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the online scholarship application form.</td></tr>
@@ -1210,8 +1215,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate</span>
             <span class="year-data" style="display:none;">1826 (as Leeds College of Music)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1220,10 +1224,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Leeds Conservatoire</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (specialist conservatoire).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (specialist conservatoire).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.lcm.ac.uk" target="_blank" rel="noopener noreferrer">https://www.lcm.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on performance at audition.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Music programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on performance at audition.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Music programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Considered as part of the audition process.</td></tr>
                     <tr><td>Value</td><td>£1,000 tuition fee discount for the first year.</td></tr>
                     <tr><td>Application</td><td>Apply for admission and attend an audition. All applicants are considered for scholarships.</td></tr>
@@ -1235,8 +1239,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate</span>
             <span class="year-data" style="display:none;">1996</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1245,10 +1248,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Liverpool Institute for Performing Arts</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (specialist performing arts institution).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (specialist performing arts institution).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.lipa.ac.uk" target="_blank" rel="noopener noreferrer">https://www.lipa.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on performance at audition and interview.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Performing arts programmes.</li><li><strong>Other:</strong> Must be an international student and demonstrate financial need.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on performance at audition and interview.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Performing arts programmes.</li><li><strong>Other:</strong> Must be an international student and demonstrate financial need.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required.</td></tr>
                     <tr><td>Value</td><td>Varies. Can be a partial fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for admission and audition. If successful, you can apply for a scholarship.</td></tr>
@@ -1260,8 +1263,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1968</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1270,10 +1272,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Newman University, Birmingham</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.newman.ac.uk" target="_blank" rel="noopener noreferrer">https://www.newman.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£1,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -1285,8 +1287,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate</span>
             <span class="year-data" style="display:none;">1892</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1295,10 +1296,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Norland College</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (specialist college for early years education and nanny training).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (specialist college for early years education and nanny training).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.norland.ac.uk" target="_blank" rel="noopener noreferrer">https://www.norland.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Must hold an offer of admission.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> BA (Hons) Early Years Development and Learning.</li><li><strong>Other:</strong> Must be an international student and demonstrate financial need.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must hold an offer of admission.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> BA (Hons) Early Years Development and Learning.</li><li><strong>Other:</strong> Must be an international student and demonstrate financial need.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required.</td></tr>
                     <tr><td>Value</td><td>Varies. Partial fee waiver based on need.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. If successful, you can apply for a bursary.</td></tr>
@@ -1310,8 +1311,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1840 (roots)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1320,10 +1320,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Plymouth Marjon University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.marjon.ac.uk" target="_blank" rel="noopener noreferrer">https://www.marjon.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>Up to 50% tuition fee reduction.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -1335,8 +1335,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1875</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1345,10 +1344,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Queen Margaret University, Edinburgh</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 801-1000th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 801-1000th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.qmu.ac.uk" target="_blank" rel="noopener noreferrer">https://www.qmu.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£3,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -1360,8 +1359,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate</span>
             <span class="year-data" style="display:none;">1972</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1370,10 +1368,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Richmond, The American International University in London</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (private university with dual UK/US accreditation).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (private university with dual UK/US accreditation).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.richmond.ac.uk" target="_blank" rel="noopener noreferrer">https://www.richmond.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> SAT/ACT scores are considered. Must meet English language requirements.</li><li><strong>Field of Study:</strong> All undergraduate programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> SAT/ACT scores are considered. Must meet English language requirements.</li><li><strong>Field of Study:</strong> All undergraduate programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required, with a deadline typically in April.</td></tr>
                     <tr><td>Value</td><td>Varies. Can be a partial fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the online scholarship application form.</td></tr>
@@ -1385,8 +1383,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate</span>
             <span class="year-data" style="display:none;">1950</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1395,10 +1392,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Rose Bruford College</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (specialist drama school).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (specialist drama school).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.bruford.ac.uk" target="_blank" rel="noopener noreferrer">https://www.bruford.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on performance at audition.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All undergraduate programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on performance at audition.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All undergraduate programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required.</td></tr>
                     <tr><td>Value</td><td>Varies. Partial fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for admission and audition. If successful, you can apply for a scholarship.</td></tr>
@@ -1410,20 +1407,19 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1847</span>
-            <span class="rank-data" style="display:none;">5th</span>
+            <span class="rank-data" style="display:none;">N/A</span>
 
             <h3 class="scholarship-title">Royal Conservatoire of Scotland Scholarship</h3>
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Royal Conservatoire of Scotland</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>QS World University Rankings by Subject (2024) - Performing Arts:</strong> 5th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings by Subject (2024) - Performing Arts:</strong> 5th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.rcs.ac.uk" target="_blank" rel="noopener noreferrer">https://www.rcs.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on performance at audition.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Music, Drama, Dance, Production, and Film.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on performance at audition.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Music, Drama, Dance, Production, and Film.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Considered as part of the audition process.</td></tr>
                     <tr><td>Value</td><td>Varies. Partial fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for admission and attend an audition. All applicants are considered for scholarships.</td></tr>
@@ -1435,20 +1431,19 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1973 (merger of older institutions)</span>
-            <span class="rank-data" style="display:none;">32nd</span>
+            <span class="rank-data" style="display:none;">N/A</span>
 
             <h3 class="scholarship-title">Royal Northern College of Music (RNCM) Scholarship</h3>
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Royal Northern College of Music</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>QS World University Rankings by Subject (2024) - Performing Arts:</strong> 32nd</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings by Subject (2024) - Performing Arts:</strong> 32nd</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.rncm.ac.uk" target="_blank" rel="noopener noreferrer">https://www.rncm.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on performance at audition.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Music programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on performance at audition.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Music programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Considered as part of the audition process.</td></tr>
                     <tr><td>Value</td><td>Varies. Partial fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for admission and attend an audition. All applicants are considered for scholarships.</td></tr>
@@ -1460,8 +1455,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1850</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1470,10 +1464,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, St Mary's University, Twickenham</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.stmarys.ac.uk" target="_blank" rel="noopener noreferrer">https://www.stmarys.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£3,000 tuition fee discount for the first year.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -1485,8 +1479,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1914 (roots), 1992 (university status)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1495,10 +1488,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Staffordshire University</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1001-1200th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.staffs.ac.uk" target="_blank" rel="noopener noreferrer">https://www.staffs.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£2,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -1510,8 +1503,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Postgraduate (Taught Master's)</span>
             <span class="year-data" style="display:none;">2007</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1520,10 +1512,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Suffolk</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>THE World University Rankings (2024):</strong> 1201-1500th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.uos.ac.uk" target="_blank" rel="noopener noreferrer">https://www.uos.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Postgraduate (Taught Master's)</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit from undergraduate degree.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught Master's programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit from undergraduate degree.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught Master's programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required.</td></tr>
                     <tr><td>Value</td><td>£2,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the online scholarship application form.</td></tr>
@@ -1535,8 +1527,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1893</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1545,10 +1536,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Writtle University College</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university college).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university college).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://writtle.ac.uk" target="_blank" rel="noopener noreferrer">https://writtle.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Agriculture, Animal Science, Equine, Horticulture.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Agriculture, Animal Science, Equine, Horticulture.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required.</td></tr>
                     <tr><td>Value</td><td>£1,000 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the online scholarship application form.</td></tr>
@@ -1560,8 +1551,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Postgraduate</span>
             <span class="year-data" style="display:none;">1876 (as Gibson & Weldon)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1570,10 +1560,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Law</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university for law and business).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (specialist university for law and business).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.law.ac.uk" target="_blank" rel="noopener noreferrer">https://www.law.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Must hold an offer for a postgraduate programme.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Postgraduate law and business programmes.</li><li><strong>Other:</strong> Must be a national of India.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must hold an offer for a postgraduate programme.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Postgraduate law and business programmes.</li><li><strong>Other:</strong> Must be a national of India.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required.</td></tr>
                     <tr><td>Value</td><td>Full tuition fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, complete the scholarship application which requires an essay on a specific topic.</td></tr>
@@ -1585,8 +1575,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Postgraduate</span>
             <span class="year-data" style="display:none;">1825 (as Bolton Mechanics Institute)</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1595,10 +1584,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Bolton</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (not typically in major global rankings).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.bolton.ac.uk" target="_blank" rel="noopener noreferrer">https://www.bolton.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Must have achieved a first-class honours degree or equivalent.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught postgraduate programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must have achieved a first-class honours degree or equivalent.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught postgraduate programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£1,500 tuition fee discount.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -1610,20 +1599,19 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
             <span class="year-data" style="display:none;">1859 (as Brighton School of Art)</span>
-            <span class="rank-data" style="display:none;">771-780th</span>
+            <span class="rank-data" style="display:none;">N/A</span>
 
             <h3 class="scholarship-title">University of Brighton International Scholarship</h3>
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, University of Brighton</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 771-780th</li><li><strong>THE World University Rankings (2024):</strong> 601-800th</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 771-780th</li><li><strong>THE World University Rankings (2024):</strong> 601-800th</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.brighton.ac.uk" target="_blank" rel="noopener noreferrer">https://www.brighton.ac.uk</a></td></tr>
                     <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All taught programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>No separate application required. Automatic consideration.</td></tr>
                     <tr><td>Value</td><td>£1,000 to £2,500 tuition fee discount for the first year.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. The scholarship is automatically awarded to eligible offer holders.</td></tr>
@@ -1635,8 +1623,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Foundation, Undergraduate</span>
             <span class="year-data" style="display:none;">1985</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1645,10 +1632,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Cambridge School of Visual & Performing Arts</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (private arts college).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (private arts college).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.csvpa.com" target="_blank" rel="noopener noreferrer">https://www.csvpa.com</a></td></tr>
                     <tr><td>Level</td><td>Foundation, Undergraduate</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and portfolio.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Art & Design, Drama, Music.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and portfolio.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> Art & Design, Drama, Music.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required.</td></tr>
                     <tr><td>Value</td><td>Varies. Can be a partial fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, submit a scholarship application with a portfolio and personal statement.</td></tr>
@@ -1660,8 +1647,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">A-Level, Foundation</span>
             <span class="year-data" style="display:none;">1952</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1670,10 +1656,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, CATS Colleges (Cambridge, Canterbury, London)</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (private sixth form colleges).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (private sixth form colleges).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.catsglobalschools.com" target="_blank" rel="noopener noreferrer">https://www.catsglobalschools.com</a></td></tr>
                     <tr><td>Level</td><td>A-Level, Foundation</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All A-Level and Foundation subjects.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All A-Level and Foundation subjects.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required.</td></tr>
                     <tr><td>Value</td><td>Up to 40% tuition fee reduction.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, submit a scholarship application which may involve an essay and an interview.</td></tr>
@@ -1685,8 +1671,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">A-Level</span>
             <span class="year-data" style="display:none;">1977</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1695,10 +1680,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, d'Overbroeck's College, Oxford</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (private sixth form college).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (private sixth form college).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.doverbroecks.com" target="_blank" rel="noopener noreferrer">https://www.doverbroecks.com</a></td></tr>
                     <tr><td>Level</td><td>A-Level</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All A-Level subjects.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All A-Level subjects.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required.</td></tr>
                     <tr><td>Value</td><td>Varies. Partial fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, submit a scholarship application.</td></tr>
@@ -1710,8 +1695,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Sixth Form (A-Level/IB)</span>
             <span class="year-data" style="display:none;">1915</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1720,10 +1704,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, Headington School, Oxford</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (private girls' school).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (private girls' school).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.headington.org" target="_blank" rel="noopener noreferrer">https://www.headington.org</a></td></tr>
                     <tr><td>Level</td><td>Sixth Form (A-Level/IB)</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit, with specific scholarships for Music, Art, Drama, and Sport.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All subjects.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit, with specific scholarships for Music, Art, Drama, and Sport.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All subjects.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Separate application required, with deadlines typically in the autumn.</td></tr>
                     <tr><td>Value</td><td>Varies. Partial fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for admission. Then, submit a scholarship application relevant to your area of talent (e.g., portfolio for art, audition for music).</td></tr>
@@ -1735,8 +1719,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Foundation, International Year One, Pre-Master's</span>
             <span class="year-data" style="display:none;">2005</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1745,10 +1728,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, at various INTO partner universities</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (pathway provider for multiple universities).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (pathway provider for multiple universities).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.intostudy.com" target="_blank" rel="noopener noreferrer">https://www.intostudy.com</a></td></tr>
                     <tr><td>Level</td><td>Foundation, International Year One, Pre-Master's</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All pathway programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All pathway programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Varies by partner university and intake.</td></tr>
                     <tr><td>Value</td><td>Varies. Partial fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for an INTO pathway programme. You may be automatically considered or need to submit a separate application.</td></tr>
@@ -1760,8 +1743,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Foundation, International Year One, Pre-Master's</span>
             <span class="year-data" style="display:none;">1938</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1770,10 +1752,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, at various Kaplan partner universities</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (pathway provider for multiple universities).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (pathway provider for multiple universities).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.kaplanpathways.com" target="_blank" rel="noopener noreferrer">https://www.kaplanpathways.com</a></td></tr>
                     <tr><td>Level</td><td>Foundation, International Year One, Pre-Master's</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All pathway programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All pathway programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Varies by partner university and intake.</td></tr>
                     <tr><td>Value</td><td>Varies. Partial fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for a Kaplan pathway programme. You may be automatically considered or need to submit a separate application.</td></tr>
@@ -1785,8 +1767,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Foundation, International Year One, Pre-Master's</span>
             <span class="year-data" style="display:none;">1994</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1795,10 +1776,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, at various Navitas partner universities</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (pathway provider for multiple universities).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (pathway provider for multiple universities).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.navitas.com" target="_blank" rel="noopener noreferrer">https://www.navitas.com</a></td></tr>
                     <tr><td>Level</td><td>Foundation, International Year One, Pre-Master's</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All pathway programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All pathway programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Varies by partner university and intake.</td></tr>
                     <tr><td>Value</td><td>Varies. Partial fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for a Navitas pathway programme. You may be automatically considered or need to submit a separate application.</td></tr>
@@ -1810,8 +1791,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Foundation, International Year One, Pre-Master's</span>
             <span class="year-data" style="display:none;">1994</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1820,10 +1800,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, at various Study Group partner universities</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (pathway provider for multiple universities).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (pathway provider for multiple universities).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.studygroup.com" target="_blank" rel="noopener noreferrer">https://www.studygroup.com</a></td></tr>
                     <tr><td>Level</td><td>Foundation, International Year One, Pre-Master's</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All pathway programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All pathway programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Varies by partner university and intake.</td></tr>
                     <tr><td>Value</td><td>Varies. Partial fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for a Study Group pathway programme. You may be automatically considered or need to submit a separate application.</td></tr>
@@ -1835,8 +1815,7 @@
     
 
         <div class="scholarship-card">
-            
-            <!-- Hidden data for our filter script -->
+            <!-- Hidden data for filtering -->
             <span class="level-data" style="display:none;">Foundation, International Year One, Pre-Master's</span>
             <span class="year-data" style="display:none;">2008</span>
             <span class="rank-data" style="display:none;">N/A</span>
@@ -1845,10 +1824,10 @@
             <table class="details-table">
                 <tbody>
                     <tr><td>Host</td><td>UK, at various ONCAMPUS partner universities</td></tr>
-                    <tr><td>Rankings</td><td><ul><li><strong>Note:</strong> Not applicable (pathway provider for multiple universities).</li></ul></td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (pathway provider for multiple universities).</li></ul></td></tr>
                     <tr><td>Website</td><td><a href="https://www.oncampus.global" target="_blank" rel="noopener noreferrer">https://www.oncampus.global</a></td></tr>
                     <tr><td>Level</td><td>Foundation, International Year One, Pre-Master's</td></tr>
-                    <tr><td>Eligibility</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All pathway programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All pathway programmes.</li><li><strong>Other:</strong> Must be an international student.</li></ul></td></tr>
                     <tr><td>Deadline</td><td>Varies by partner university and intake.</td></tr>
                     <tr><td>Value</td><td>Varies. Partial fee waiver.</td></tr>
                     <tr><td>Application</td><td>Apply for an ONCAMPUS pathway programme. You may be automatically considered or need to submit a separate application.</td></tr>
@@ -1859,7 +1838,7 @@
         </div>
     
             </div>
-            <div id="pagination-controls">
+            <div id="pagination-controls" class="pagination">
                 <div class="pagination"><a href="/scholarships_uk.html">&laquo; Previous Page</a><span> Page 2 of 2 </span></div>
             </div>
         </div>
@@ -1871,7 +1850,6 @@
         </a>
     </div>
     
-    <!-- We will add the filtering script here -->
     <script src="app_filter.js" defer></script>
     
   <script>

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USA Scholarships for Indian Students (2025-26) | Careers India</title>
+    <meta name="description" content="Explore a complete, filterable list of top scholarships for Indian students to study in the USA. Find details on eligibility, deadlines, and university rankings.">
+    <link rel="manifest" href="/manifest_7.json">
+    <style>
+        /* This is your complete CSS. No changes are needed. */
+        @import url('https://fonts.cdnfonts.com/css/impact');
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; background-color: white; color: #333; }
+        .title-box { background-color: #7FFFD4; color: white; text-align: center; padding: 30px 20px; margin: 30px auto; width: 80%; max-width: 900px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); font-family: 'Impact', sans-serif; font-size: 3.5em; text-shadow: 1px 1px 0px #004d00, 4px 4px 8px rgba(0,0,0,0.3); }
+        .main-container { display: flex; flex-wrap: wrap; width: 95%; margin: 0 auto; max-width: 1400px; }
+        .left-column { flex: 1; min-width: 280px; padding: 20px; background-color: #ffffff; border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); align-self: flex-start; }
+        .left-column h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
+        .filter-group { margin-bottom: 20px; }
+        .filter-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .filter-group select, .filter-group button { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1em; cursor: pointer; }
+        .filter-group button { background-color: #f0f0f0; text-align: left; }
+        .right-column { flex: 3; min-width: 300px; padding: 0 10px; }
+        .scholarship-card { background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 25px; padding: 25px; border-left: 5px solid #39FF14; }
+        .details-table { width: 100%; border-collapse: collapse; }
+        .details-table td { padding: 12px 5px; border-bottom: 1px solid #f0f0f0; vertical-align: top; text-align: left; }
+        .details-table tr:last-child td { border-bottom: none; }
+        .details-table td:first-child { font-weight: bold; }
+        .details-table ul { margin: 0; padding-left: 20px; }
+        .home-button-container { position: fixed; top: 20px; right: 25px; z-index: 1000; }
+        .home-button-container a img { width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+        .placeholder-text { color: #777; font-size: 1.2em; text-align: center; padding: 50px; }
+        .scholarship-title { font-size: 1.5em; }
+        .pagination { 
+            text-align: center; 
+            padding: 20px 0;
+            font-size: 1.2em; 
+            background-color: white; 
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1); 
+            width: 100%; 
+            left: 0; 
+            position: -webkit-sticky; 
+            position: sticky;
+            bottom: 0;
+            z-index: 999; 
+        }
+        .pagination a { color: #007BFF; text-decoration: none; padding: 10px 18px; border: 1px solid #ddd; margin: 0 5px; border-radius: 5px; background-color: white; }
+        .pagination span { padding: 10px 18px; color: #555; }
+        .button-link {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            text-align: left;
+            box-sizing: border-box;
+            text-decoration: none;
+            color: #333;
+            margin-bottom: 8px; /* Added spacing between buttons */
+        }
+        .button-link:hover {
+            background-color: #e0e0e0;
+        }
+        .left-column .section-heading {
+            font-weight: bold;
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="title-box">
+        SCHOLARSHIPS IN NEW ZEALAND
+    </div>
+
+    <div class="main-container">
+        <div class="left-column">
+            <h2>Filter Current Page</h2>
+            
+            <div class="filter-group">
+                <label for="level-select">Level of Study:</label>
+                <select id="level-select">
+                    <option value="all">All Levels</option>
+                    <option value="undergraduate">Undergraduate</option>
+                    <option value="master">Postgraduate (Master's)</option>
+                    <option value="phd">Doctoral (PhD)</option>
+                    <option value="postdoctoral">Postdoctoral</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="date-select">University Establishment Date:</label>
+                <select id="date-select">
+                    <option value="all">Any Time</option>
+                    <option value="before-1500">Before 1500</option>
+                    <option value="1500-1700">1500 - 1700</option>
+                    <option value="1700-1900">1700 - 1900</option>
+                    <option value="1900-2000">1900 - 2000</option>
+                    <option value="after-2000">After 2000</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>Sort Results:</label>
+                <button id="sort-by-qs-btn">Sort by QS Ranking</button>
+            </div>
+
+            <!-- == NEW SEPARATE NAVIGATION SECTION == -->
+            <div class="navigation-section">
+                <div class="section-heading">Browse Other Scholarships</div>
+                <a href="/scholarships_usa.html" class="button-link">Scholarships in USA</a>
+                <a href="/scholarships_uk.html" class="button-link">Scholarships in UK</a>
+                <a href="/scholarships_india.html" class="button-link" id="indianScholarshipsLink">Scholarships for INDIANS</a>
+                <a href="/scholarships_uae.html" class="button-link">Scholarships in UAE</a>
+<a href="/scholarships_germany.html" class="button-link">Scholarships in GERMANY</a>
+<a href="/scholarships_australia.html" class="button-link">Scholarships in AUSTRALIA</a>
+<a href="/scholarships_newzealand.html" class="button-link">Scholarships in NEW ZEALAND</a>
+<a href="/scholarships_canada.html" class="button-link">Scholarships in CANADA</a>
+<a href="/scholarships_europe.html" class="button-link">Scholarships in EUROPE</a>
+<a href="/scholarships_singapore.html" class="button-link">Scholarships in SINGAPORE</a>
+<a href="/scholarships_middleeast.html" class="button-link">Scholarships in MIDDLE EAST</a>
+            </div>
+            <!-- END NEW SEPARATE NAVIGATION SECTION -->
+
+        </div>
+        
+        <div class="right-column">
+            <div id="scholarship-display">
+                
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Postgraduate (Master's and PhD).</span>
+            <span class="year-data" style="display:none;">N/A</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Manaaki New Zealand Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, at any eligible New Zealand university.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (multiple institutions). Key participating universities include University of Auckland (QS 2025: 68th) and University of Otago (QS 2025: 214th).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.manaaki.ac.nz" target="_blank" rel="noopener noreferrer">https://www.manaaki.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Postgraduate (Master's and PhD).</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Varies by country and chosen course. Generally requires a Bachelor's degree of a standard equivalent to a New Zealand Bachelor's degree.</li><li><strong>Standardized Test Scores:</strong> English proficiency is required (e.g., IELTS overall score of 6.5 and no band less than 6.0; TOEFL iBT score of 90 with a writing score of 21).</li><li><strong>Field of Study:</strong> Priority is given to subjects that contribute to the development of your home country, such as Climate Change and the Environment, Disaster Risk Management, Food Security and Agriculture, Renewable Energy, and Good Governance.</li><li><strong>Other:</strong> Must be a citizen of an eligible country (including India). Must agree to return to your home country for a minimum of two years after completing the scholarship. Work experience in a relevant field is strongly preferred.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The application window for India typically opens in February and closes in March each year.</td></tr>
+                    <tr><td>Value</td><td>A fully-funded scholarship covering full tuition fees, a living allowance of NZ$531 per week, an establishment allowance of NZ$3000, medical insurance, travel to and from your home country, and research and thesis costs for postgraduate students.</td></tr>
+                    <tr><td>Application</td><td>Apply online through the Manaaki New Zealand Scholarships online application portal. The process involves an initial eligibility check followed by a full application if you meet the criteria.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> Required as part of the online application, with specific questions about your development goals and how the scholarship will help.</li><li><strong>Letters of Recommendation (LORs):</strong> May be required at later stages.</li><li><strong>Academic Transcripts:</strong> Required from all tertiary institutions attended.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required if you are shortlisted.</li><li><strong>CV or Resume:</strong> Details of work experience are required in the application.</li><li><strong>Passport copy:</strong> Required to prove citizenship.</li></ul></td></tr>
+                    <tr><td>Established</td><td>N/A</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate (Taught Master's).</span>
+            <span class="year-data" style="display:none;">1883</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">University of Auckland India High Achievers Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, University of Auckland.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 68th</li><li><strong>THE World University Rankings (2024):</strong> 150th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.auckland.ac.nz" target="_blank" rel="noopener noreferrer">https://www.auckland.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate (Taught Master's).</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit. Applicants must have excellent grades in their previous qualifications (e.g., high scores in Standard XII for undergraduates or a high GPA in a Bachelor's degree for postgraduates).</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements for the chosen program.</li><li><strong>Field of Study:</strong> Most undergraduate and postgraduate taught programmes.</li><li><strong>Other:</strong> Must be a citizen of India. Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>There are typically several application rounds per year. For study commencing in Semester One (February), the deadline is usually in October of the previous year.</td></tr>
+                    <tr><td>Value</td><td>Up to NZ$20,000 towards tuition fees.</td></tr>
+                    <tr><td>Application</td><td>A separate online application is required after you have applied for admission to the university.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is required as part of the scholarship application.</li><li><strong>Letters of Recommendation (LORs):</strong> Required for the course application.</li><li><strong>Academic Transcripts:</strong> Required for the course application.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required for the course application.</li><li><strong>CV or Resume:</strong> May be required for postgraduate course applications.</li><li><strong>Passport copy:</strong> Required for the course application.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1883</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate (coursework).</span>
+            <span class="year-data" style="display:none;">1897</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Victoria University of Wellington Tongarewa Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Victoria University of Wellington.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 244th</li><li><strong>THE World University Rankings (2024):</strong> 401-500th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.wgtn.ac.nz" target="_blank" rel="noopener noreferrer">https://www.wgtn.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate (coursework).</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit. Must have a strong academic record.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All subjects.</li><li><strong>Other:</strong> Must be a new international student. The scholarship is awarded based on academic merit, and applicants are expected to act as ambassadors for the university.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>There are three application rounds per year, with deadlines typically in May, September, and December.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver of NZ$5,000 or NZ$10,000 for the first year of study.</td></tr>
+                    <tr><td>Application</td><td>A separate online application is required after you have applied for admission.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement of up to 500 words is required.</li><li><strong>Letters of Recommendation (LORs):</strong> One reference is required.</li><li><strong>Academic Transcripts:</strong> Required for the course application.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required for the course application.</li><li><strong>CV or Resume:</strong> May be required for postgraduate course applications.</li><li><strong>Passport copy:</strong> Required for the course application.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1897</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate.</span>
+            <span class="year-data" style="display:none;">1873</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">University of Canterbury International First Year Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, University of Canterbury.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 256th</li><li><strong>THE World University Rankings (2024):</strong> 501-600th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.canterbury.ac.nz" target="_blank" rel="noopener noreferrer">https://www.canterbury.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate.</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must have university entrance level qualification and demonstrate high academic achievement.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All undergraduate degree programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The application deadline is typically in mid-August for study commencing the following year.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver of NZ$10,000, NZ$15,000, or NZ$20,000 for the first year of study.</td></tr>
+                    <tr><td>Application</td><td>A separate online application is required through the university's scholarship portal.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement may be required.</li><li><strong>Letters of Recommendation (LORs):</strong> May be required.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>CV or Resume:</strong> Not typically required for undergraduate applications.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1873</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate (coursework).</span>
+            <span class="year-data" style="display:none;">1869</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">University of Otago Vice-Chancellor's Scholarship for International Students</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, University of Otago.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 214th</li><li><strong>THE World University Rankings (2024):</strong> 301-350th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.otago.ac.nz" target="_blank" rel="noopener noreferrer">https://www.otago.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate (coursework).</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All coursework programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>There are several application rounds, with deadlines typically in December, February, and April.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver of NZ$10,000 for the first year of study.</td></tr>
+                    <tr><td>Application</td><td>No separate application is required. Students are automatically considered when they receive their offer of place.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>All documents submitted for course application are used for consideration.:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1869</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate (coursework).</span>
+            <span class="year-data" style="display:none;">1964</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">University of Waikato International Excellence Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, University of Waikato.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 235th</li><li><strong>THE World University Rankings (2024):</strong> 401-500th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.waikato.ac.nz" target="_blank" rel="noopener noreferrer">https://www.waikato.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate (coursework).</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must demonstrate excellent academic achievement, typically with a GPA of B+ or equivalent.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All coursework programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Applications are accepted throughout the year, with no specific closing date.</td></tr>
+                    <tr><td>Value</td><td>Up to NZ$20,000 towards tuition fees.</td></tr>
+                    <tr><td>Application</td><td>A separate online application is required after you have received an offer of place.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement may be required.</li><li><strong>Academic Transcripts:</strong> Required for the course application.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required for the course application.</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1964</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate (coursework).</span>
+            <span class="year-data" style="display:none;">1927</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Massey University Vice-Chancellor's Excellence Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Massey University.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 239th</li><li><strong>THE World University Rankings (2024):</strong> 501-600th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.massey.ac.nz" target="_blank" rel="noopener noreferrer">https://www.massey.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate (coursework).</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit. Must have a strong academic record.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All coursework programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>NZ$5,000 per 60 credits enrolled, for up to the total credit value of the programme, with a maximum of NZ$10,000 per year.</td></tr>
+                    <tr><td>Application</td><td>A separate online application is required after you have received an offer of place.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement may be required.</li><li><strong>Academic Transcripts:</strong> Required for the course application.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required for the course application.</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1927</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Postgraduate (Taught Master's).</span>
+            <span class="year-data" style="display:none;">1878</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Lincoln University International Taught Master Merit Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Lincoln University.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 362nd</li><li><strong>QS World University Rankings by Subject (2024) - Agriculture & Forestry:</strong> 43rd</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.lincoln.ac.nz" target="_blank" rel="noopener noreferrer">https://www.lincoln.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Postgraduate (Taught Master's).</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must have a high GPA, typically B+ average or higher.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> Eligible 180-credit taught Master's programmes.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>NZ$10,000 towards the tuition fees.</td></tr>
+                    <tr><td>Application</td><td>No separate application is required. Students are automatically considered when they apply for an eligible programme.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>All documents submitted for course application are used for consideration.:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1878</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate (coursework).</span>
+            <span class="year-data" style="display:none;">2000</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Auckland University of Technology (AUT) International Scholarship - South Asia</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Auckland University of Technology.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 412th</li><li><strong>THE World University Rankings (2024):</strong> 401-500th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.aut.ac.nz" target="_blank" rel="noopener noreferrer">https://www.aut.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate (coursework).</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must have a high academic record from a recognized institution in a South Asian country.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All coursework programs.</li><li><strong>Other:</strong> Must be a citizen of a South Asian country, including India.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>NZ$5,000 towards tuition fees.</td></tr>
+                    <tr><td>Application</td><td>A separate online application is required after you have received an offer of place.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement may be required.</li><li><strong>Academic Transcripts:</strong> Required for the course application.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required for the course application.</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>2000</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma) and Undergraduate.</span>
+            <span class="year-data" style="display:none;">1976</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Unitec Institute of Technology International Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Unitec Institute of Technology.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (institute of technology).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.unitec.ac.nz" target="_blank" rel="noopener noreferrer">https://www.unitec.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma) and Undergraduate.</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$1,000 to NZ$3,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1976</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma) and Undergraduate.</span>
+            <span class="year-data" style="display:none;">1970</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Manukau Institute of Technology (MIT) International Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Manukau Institute of Technology.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (institute of technology).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.manukau.ac.nz" target="_blank" rel="noopener noreferrer">https://www.manukau.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma) and Undergraduate.</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$1,000 to NZ$2,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1970</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma) and Undergraduate.</span>
+            <span class="year-data" style="display:none;">1904 (WelTec), 1986 (Whitireia)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Wellington Institute of Technology (WelTec) and Whitireia New Zealand International Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Wellington Institute of Technology and Whitireia New Zealand.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (institutes of technology).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.wandw.ac.nz" target="_blank" rel="noopener noreferrer">https://www.wandw.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma) and Undergraduate.</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$1,000 to NZ$3,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1904 (WelTec), 1986 (Whitireia)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma) and Undergraduate.</span>
+            <span class="year-data" style="display:none;">2016 (merger of CPIT and Aoraki Polytechnic)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Ara Institute of Canterbury International Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Ara Institute of Canterbury.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (institute of technology).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.ara.ac.nz" target="_blank" rel="noopener noreferrer">https://www.ara.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma) and Undergraduate.</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$1,000 to NZ$2,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>2016 (merger of CPIT and Aoraki Polytechnic)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma) and Undergraduate.</span>
+            <span class="year-data" style="display:none;">2016 (merger of Bay of Plenty Polytechnic and Waiariki Institute of Technology)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Toi Ohomai Institute of Technology International Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Toi Ohomai Institute of Technology.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (institute of technology).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://toiohomai.ac.nz" target="_blank" rel="noopener noreferrer">https://toiohomai.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma) and Undergraduate.</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$1,000 to NZ$2,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>2016 (merger of Bay of Plenty Polytechnic and Waiariki Institute of Technology)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma) and Undergraduate.</span>
+            <span class="year-data" style="display:none;">1971</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Southern Institute of Technology (SIT) International Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Southern Institute of Technology.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (institute of technology).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.sit.ac.nz" target="_blank" rel="noopener noreferrer">https://www.sit.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma) and Undergraduate.</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$1,000 to NZ$2,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1971</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma) and Undergraduate.</span>
+            <span class="year-data" style="display:none;">1905</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Nelson Marlborough Institute of Technology (NMIT) International Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Nelson Marlborough Institute of Technology.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (institute of technology).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.nmit.ac.nz" target="_blank" rel="noopener noreferrer">https://www.nmit.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma) and Undergraduate.</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$1,000 to NZ$1,500.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1905</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma) and Undergraduate.</span>
+            <span class="year-data" style="display:none;">1978</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Northland Polytechnic (NorthTec) International Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Northland Polytechnic.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (polytechnic).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.northtec.ac.nz" target="_blank" rel="noopener noreferrer">https://www.northtec.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma) and Undergraduate.</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$1,000 to NZ$2,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1978</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma) and Undergraduate.</span>
+            <span class="year-data" style="display:none;">1966</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Otago Polytechnic International Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Otago Polytechnic.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (polytechnic).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.op.ac.nz" target="_blank" rel="noopener noreferrer">https://www.op.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma) and Undergraduate.</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$1,000 to NZ$2,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1966</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma) and Undergraduate.</span>
+            <span class="year-data" style="display:none;">1972</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Western Institute of Technology at Taranaki (WITT) International Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Western Institute of Technology at Taranaki.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (institute of technology).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.witt.ac.nz" target="_blank" rel="noopener noreferrer">https://www.witt.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma) and Undergraduate.</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$1,000 to NZ$2,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1972</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma) and Undergraduate.</span>
+            <span class="year-data" style="display:none;">1975</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Eastern Institute of Technology (EIT) International Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Eastern Institute of Technology.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (institute of technology).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.eit.ac.nz" target="_blank" rel="noopener noreferrer">https://www.eit.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma) and Undergraduate.</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$1,000 to NZ$2,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1975</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma) and Undergraduate.</span>
+            <span class="year-data" style="display:none;">1924</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Waikato Institute of Technology (Wintec) International Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Waikato Institute of Technology.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (institute of technology).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.wintec.ac.nz" target="_blank" rel="noopener noreferrer">https://www.wintec.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma) and Undergraduate.</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All programs.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$1,000 to NZ$2,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1924</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma).</span>
+            <span class="year-data" style="display:none;">2002</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">New Zealand School of Education (NZSE) International Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, New Zealand School of Education.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (private training establishment).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://nzse.ac.nz" target="_blank" rel="noopener noreferrer">https://nzse.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma).</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> Education, IT, and Business.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$1,000 to NZ$2,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>2002</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma).</span>
+            <span class="year-data" style="display:none;">2006</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Queenstown Resort College (QRC) International Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Queenstown Resort College.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (private tertiary education provider).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.qrc.ac.nz" target="_blank" rel="noopener noreferrer">https://www.qrc.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma).</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> Hospitality Management and Adventure Tourism Management.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$2,000 to NZ$5,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a personal statement and an interview.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is required.</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>2006</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma).</span>
+            <span class="year-data" style="display:none;">1985</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">New Zealand School of Tourism (NZST) International Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, New Zealand School of Tourism.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (private training establishment).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.nzschooloftourism.co.nz" target="_blank" rel="noopener noreferrer">https://www.nzschooloftourism.co.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma).</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> Tourism, Hospitality, and Travel.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$1,000 to NZ$2,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1985</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma) and Undergraduate.</span>
+            <span class="year-data" style="display:none;">1998</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Media Design School International Student Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Media Design School.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (private tertiary provider). Highly regarded in creative technology fields.</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.mediadesignschool.com" target="_blank" rel="noopener noreferrer">https://www.mediadesignschool.com</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma) and Undergraduate.</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and a creative portfolio.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> Creative Technologies, 3D Animation and Visual Effects, Game Art, Game Programming, and Graphic Design.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$2,000 to NZ$5,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a portfolio and a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Creative Portfolio:</strong> Yes</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1998</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Vocational (Diploma) and Undergraduate.</span>
+            <span class="year-data" style="display:none;">1997</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Yoobee College of Creative Innovation International Student Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>New Zealand, Yoobee College of Creative Innovation.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (private training establishment).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.yoobee.ac.nz" target="_blank" rel="noopener noreferrer">https://www.yoobee.ac.nz</a></td></tr>
+                    <tr><td>Level</td><td>Vocational (Diploma) and Undergraduate.</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit and a creative portfolio.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> Animation, Film, Design, and Technology.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Students should check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, typically NZ$1,000 to NZ$3,000.</td></tr>
+                    <tr><td>Application</td><td>A separate application is usually required, which includes a portfolio and a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is usually required.</li><li><strong>Creative Portfolio:</strong> Yes</li><li><strong>Academic Transcripts:</strong> Yes</li><li><strong>Other documents as submitted for the course application:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1997</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+            </div>
+            <div id="pagination-controls" class="pagination">
+                <div class="pagination"><span> Page 1 of 1 </span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="home-button-container">
+        <a href="/scholarships.html" title="Back to All Countries">
+            <img src="images/home-icon.png" alt="Home">
+        </a>
+    </div>
+    
+    <script src="app_filter.js" defer></script>
+    
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-workbox.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+
+</body>
+</html>

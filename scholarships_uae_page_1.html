@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USA Scholarships for Indian Students (2025-26) | Careers India</title>
+    <meta name="description" content="Explore a complete, filterable list of top scholarships for Indian students to study in the USA. Find details on eligibility, deadlines, and university rankings.">
+    <link rel="manifest" href="/manifest_7.json">
+    <style>
+        /* This is your complete CSS. No changes are needed. */
+        @import url('https://fonts.cdnfonts.com/css/impact');
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; background-color: white; color: #333; }
+        .title-box { background-color: #7FFFD4; color: white; text-align: center; padding: 30px 20px; margin: 30px auto; width: 80%; max-width: 900px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); font-family: 'Impact', sans-serif; font-size: 3.5em; text-shadow: 1px 1px 0px #004d00, 4px 4px 8px rgba(0,0,0,0.3); }
+        .main-container { display: flex; flex-wrap: wrap; width: 95%; margin: 0 auto; max-width: 1400px; }
+        .left-column { flex: 1; min-width: 280px; padding: 20px; background-color: #ffffff; border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); align-self: flex-start; }
+        .left-column h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
+        .filter-group { margin-bottom: 20px; }
+        .filter-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .filter-group select, .filter-group button { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1em; cursor: pointer; }
+        .filter-group button { background-color: #f0f0f0; text-align: left; }
+        .right-column { flex: 3; min-width: 300px; padding: 0 10px; }
+        .scholarship-card { background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 25px; padding: 25px; border-left: 5px solid #39FF14; }
+        .details-table { width: 100%; border-collapse: collapse; }
+        .details-table td { padding: 12px 5px; border-bottom: 1px solid #f0f0f0; vertical-align: top; text-align: left; }
+        .details-table tr:last-child td { border-bottom: none; }
+        .details-table td:first-child { font-weight: bold; }
+        .details-table ul { margin: 0; padding-left: 20px; }
+        .home-button-container { position: fixed; top: 20px; right: 25px; z-index: 1000; }
+        .home-button-container a img { width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+        .placeholder-text { color: #777; font-size: 1.2em; text-align: center; padding: 50px; }
+        .scholarship-title { font-size: 1.5em; }
+        .pagination { 
+            text-align: center; 
+            padding: 20px 0;
+            font-size: 1.2em; 
+            background-color: white; 
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1); 
+            width: 100%; 
+            left: 0; 
+            position: -webkit-sticky; 
+            position: sticky;
+            bottom: 0;
+            z-index: 999; 
+        }
+        .pagination a { color: #007BFF; text-decoration: none; padding: 10px 18px; border: 1px solid #ddd; margin: 0 5px; border-radius: 5px; background-color: white; }
+        .pagination span { padding: 10px 18px; color: #555; }
+        .button-link {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            text-align: left;
+            box-sizing: border-box;
+            text-decoration: none;
+            color: #333;
+            margin-bottom: 8px; /* Added spacing between buttons */
+        }
+        .button-link:hover {
+            background-color: #e0e0e0;
+        }
+        .left-column .section-heading {
+            font-weight: bold;
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="title-box">
+        SCHOLARSHIPS IN UAE
+    </div>
+
+    <div class="main-container">
+        <div class="left-column">
+            <h2>Filter Current Page</h2>
+            
+            <div class="filter-group">
+                <label for="level-select">Level of Study:</label>
+                <select id="level-select">
+                    <option value="all">All Levels</option>
+                    <option value="undergraduate">Undergraduate</option>
+                    <option value="master">Postgraduate (Master's)</option>
+                    <option value="phd">Doctoral (PhD)</option>
+                    <option value="postdoctoral">Postdoctoral</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="date-select">University Establishment Date:</label>
+                <select id="date-select">
+                    <option value="all">Any Time</option>
+                    <option value="before-1500">Before 1500</option>
+                    <option value="1500-1700">1500 - 1700</option>
+                    <option value="1700-1900">1700 - 1900</option>
+                    <option value="1900-2000">1900 - 2000</option>
+                    <option value="after-2000">After 2000</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>Sort Results:</label>
+                <button id="sort-by-qs-btn">Sort by QS Ranking</button>
+            </div>
+
+            <!-- == NEW SEPARATE NAVIGATION SECTION == -->
+            <div class="navigation-section">
+                <div class="section-heading">Browse Other Scholarships</div>
+                <a href="/scholarships_usa.html" class="button-link">Scholarships in USA</a>
+                <a href="/scholarships_uk.html" class="button-link">Scholarships in UK</a>
+                <a href="/scholarships_india.html" class="button-link" id="indianScholarshipsLink">Scholarships for INDIANS</a>
+                <a href="/scholarships_uae.html" class="button-link">Scholarships in UAE</a>
+<a href="/scholarships_germany.html" class="button-link">Scholarships in GERMANY</a>
+<a href="/scholarships_australia.html" class="button-link">Scholarships in AUSTRALIA</a>
+<a href="/scholarships_newzealand.html" class="button-link">Scholarships in NEW ZEALAND</a>
+<a href="/scholarships_canada.html" class="button-link">Scholarships in CANADA</a>
+<a href="/scholarships_europe.html" class="button-link">Scholarships in EUROPE</a>
+<a href="/scholarships_singapore.html" class="button-link">Scholarships in SINGAPORE</a>
+<a href="/scholarships_middleeast.html" class="button-link">Scholarships in MIDDLE EAST</a>
+            </div>
+            <!-- END NEW SEPARATE NAVIGATION SECTION -->
+
+        </div>
+        
+        <div class="right-column">
+            <div id="scholarship-display">
+                
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Postgraduate (Master's and PhD)</span>
+            <span class="year-data" style="display:none;">2019</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Chancellor's Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>CSRankings (2024) - AI, CV, ML, NLP:</strong> 18th globally</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://mbzuai.ac.ae" target="_blank" rel="noopener noreferrer">https://mbzuai.ac.ae</a></td></tr>
+                    <tr><td>Level</td><td>Postgraduate (Master's and PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must have a minimum CGPA of 3.2 (on a 4.0 scale) or equivalent from a reputable university. Must demonstrate academic excellence and potential for research.</li><li><strong>Standardized Test Scores:</strong> English proficiency is required (IELTS 6.5, TOEFL iBT 90). A GRE score is optional but recommended.</li><li><strong>Field of Study:</strong> Computer Vision, Machine Learning, Natural Language Processing.</li><li><strong>Other:</strong> Open to all nationalities. Must be a full-time student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The deadline for international students is typically at the end of March for the Fall intake.</td></tr>
+                    <tr><td>Value</td><td>This is a fully-funded scholarship covering 100% of tuition fees, a competitive monthly stipend for living expenses, university accommodation, health insurance, and one return ticket to your home country per year.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to an MSc or PhD program through the MBZUAI online portal. All admitted students are automatically considered for the scholarship. There is no separate scholarship application.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> Required, detailing your research interests and academic goals.</li><li><strong>Letters of Recommendation (LORs):</strong> Two letters of recommendation are required.</li><li><strong>Academic Transcripts:</strong> Required from all post-secondary institutions attended.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>CV or Resume:</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2019</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Postgraduate (Master's and PhD)</span>
+            <span class="year-data" style="display:none;">2007 (through a merger of older institutions).</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Provost's Graduate Fellowship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, Khalifa University</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 204th</li><li><strong>THE World University Rankings (2024):</strong> 251-300th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.ku.ac.ae" target="_blank" rel="noopener noreferrer">https://www.ku.ac.ae</a></td></tr>
+                    <tr><td>Level</td><td>Postgraduate (Master's and PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must have a high CGPA from a reputable university. A minimum of 3.25 for MSc and 3.5 for PhD applicants is typically required.</li><li><strong>Standardized Test Scores:</strong> English proficiency is required (IELTS 6.5, TOEFL iBT 91). A GRE score is required for all applicants to the College of Engineering.</li><li><strong>Field of Study:</strong> Various programs in Engineering, Science, and Arts & Humanities.</li><li><strong>Other:</strong> Open to all nationalities. Must be a full-time student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The application deadline is typically around late April for the Fall semester.</td></tr>
+                    <tr><td>Value</td><td>A fully-funded scholarship that includes a monthly stipend (AED 20,000 for Master's, AED 40,000 for PhD), full tuition fee waiver, support to attend international research conferences, and free university accommodation for eligible students.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to a graduate program at Khalifa University. Eligible students are automatically considered for fellowships.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A statement detailing your research interests is required.</li><li><strong>Letters of Recommendation (LORs):</strong> Two letters of recommendation are required.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>CV or Resume:</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2007 (through a merger of older institutions).</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
+            <span class="year-data" style="display:none;">1997</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">University of Dubai International Students Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, University of Dubai</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS Arab Region Rankings (2024):</strong> 51-60th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://ud.ac.ae" target="_blank" rel="noopener noreferrer">https://ud.ac.ae</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit. For undergraduates, requires a high school score of 90% or above. For postgraduates, requires a CGPA of 3.5 or above.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the university.</li><li><strong>Field of Study:</strong> Programs in Business, Law, and IT.</li><li><strong>Other:</strong> Must be a new international student.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application required. Students are automatically considered upon admission.</td></tr>
+                    <tr><td>Value</td><td>A 25% tuition fee discount.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to the University of Dubai. You will be automatically assessed for the scholarship.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1997</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">1997</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">American University of Sharjah (AUS) Chancellor's Scholars Award</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, American University of Sharjah</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 334th</li><li><strong>QS Arab Region Rankings (2024):</strong> 7th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.aus.edu" target="_blank" rel="noopener noreferrer">https://www.aus.edu</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on exceptional academic merit. Typically requires very high secondary school scores.</li><li><strong>Standardized Test Scores:</strong> Must meet AUS admission requirements, which often include SAT scores and English proficiency tests (TOEFL/IELTS).</li><li><strong>Field of Study:</strong> All undergraduate programs.</li><li><strong>Other:</strong> Open to first-time undergraduate students of any nationality. Based purely on merit.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Students are automatically considered if they apply for admission by the priority deadline, typically in early March.</td></tr>
+                    <tr><td>Value</td><td>A 75% to 100% tuition fee waiver. It is renewable based on maintaining a high GPA (3.5 or above).</td></tr>
+                    <tr><td>Application</td><td>Apply for undergraduate admission to AUS. The admissions committee automatically identifies and selects eligible candidates.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>SAT/ACT scores:</strong> May be required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1997</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">2010</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">New York University Abu Dhabi (NYUAD) Financial Aid</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, New York University Abu Dhabi</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>NYU - QS World University Rankings (2025):</strong> 43rd</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://nyuad.nyu.edu" target="_blank" rel="noopener noreferrer">https://nyuad.nyu.edu</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must be admitted to NYUAD. Admission is highly competitive.</li><li><strong>Standardized Test Scores:</strong> NYU is test-optional, but strong scores are recommended. English proficiency must be demonstrated.</li><li><strong>Field of Study:</strong> All undergraduate programs.</li><li><strong>Other:</strong> NYUAD is need-blind for all applicants, including international students. This means your ability to pay is not a factor in the admission decision.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>You must apply for admission and financial aid by the relevant deadline (Early Decision in November, Regular Decision in January).</td></tr>
+                    <tr><td>Value</td><td>NYUAD meets 100% of demonstrated financial need. Awards can be full scholarships covering tuition, room, board, personal expenses, health insurance, and flights to and from Abu Dhabi.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to NYUAD via the Common Application. Submit the CSS Profile to be considered for financial aid.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> Part of the Common Application.</li><li><strong>Letters of Recommendation (LORs):</strong> Required.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required if needed.</li><li><strong>CV or Resume:</strong> Not typically required.</li><li><strong>Passport copy:</strong> Required.</li><li><strong>Proof of financial need (if applicable):</strong> The CSS Profile and supporting parent income documents are required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2010</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
+            <span class="year-data" style="display:none;">1993</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">University of Wollongong in Dubai (UOWD) Academic Merit Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, University of Wollongong in Dubai</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>University of Wollongong - QS World University Rankings (2025):</strong> 167th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.uowdubai.ac.ae" target="_blank" rel="noopener noreferrer">https://www.uowdubai.ac.ae</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic excellence. For undergraduates, requires high school scores of 80% or higher. For postgraduates, requires a Bachelor's degree with a score of 75% or higher.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All coursework programs.</li><li><strong>Other:</strong> Open to new international students.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Students are automatically considered upon admission.</td></tr>
+                    <tr><td>Value</td><td>A tiered tuition fee waiver from 15% to 50%, depending on the academic score.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to UOWD. The scholarship is awarded automatically to eligible students based on their academic results.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1993</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
+            <span class="year-data" style="display:none;">1821 (in the UK), 2005 (Dubai Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Heriot-Watt University Dubai Campus Merit Scholarship for Indian Students</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, Heriot-Watt University Dubai Campus</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Heriot-Watt University - QS World University Rankings (2025):</strong> 235th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.hw.ac.uk/dubai" target="_blank" rel="noopener noreferrer">https://www.hw.ac.uk/dubai</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit. Specific percentages for Indian curriculum (e.g., CBSE, CISCE) are listed on the website, typically 70% and above.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the course.</li><li><strong>Field of Study:</strong> All coursework programs.</li><li><strong>Other:</strong> Must be a citizen of India.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Students are automatically considered upon admission.</td></tr>
+                    <tr><td>Value</td><td>A tiered tuition fee waiver. The exact amount varies by academic performance and is a fixed AED amount deducted from the tuition fee.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to a program at the Dubai campus. The scholarship amount is confirmed in the offer letter if you are eligible.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1821 (in the UK), 2005 (Dubai Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Foundation (pathway to undergraduate).</span>
+            <span class="year-data" style="display:none;">1878 (in the UK), 2005 (Dubai Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Middlesex University Dubai International Foundation Programme (IFP) Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, Middlesex University Dubai</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Middlesex University - QS World University Rankings (2025):</strong> 641-650th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.mdx.ac.ae" target="_blank" rel="noopener noreferrer">https://www.mdx.ac.ae</a></td></tr>
+                    <tr><td>Level</td><td>Foundation (pathway to undergraduate).</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit in high school.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements for the foundation program.</li><li><strong>Field of Study:</strong> Pathway to various undergraduate degrees.</li><li><strong>Other:</strong> Open to all international students applying for the IFP.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Students are automatically considered upon admission.</td></tr>
+                    <tr><td>Value</td><td>A fixed tuition fee reduction, typically around AED 5,000.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to the International Foundation Programme. Eligible students are automatically awarded the grant.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1878 (in the UK), 2005 (Dubai Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">2006</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Canadian University Dubai Scholarship for Academic Excellence</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, Canadian University Dubai (CUD)</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 556th</li><li><strong>QS Arab Region Rankings (2024):</strong> 25th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.cud.ac.ae" target="_blank" rel="noopener noreferrer">https://www.cud.ac.ae</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on outstanding academic achievement in high school. Requires a score of 95% or higher.</li><li><strong>Standardized Test Scores:</strong> Must meet CUD's English language requirements.</li><li><strong>Field of Study:</strong> All undergraduate programs.</li><li><strong>Other:</strong> Open to new students of all nationalities.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>You must apply for the scholarship before the start of the semester.</td></tr>
+                    <tr><td>Value</td><td>A 50% tuition fee waiver for the first semester, renewable if a high GPA is maintained.</td></tr>
+                    <tr><td>Application</td><td>Submit a scholarship application form along with your application for admission.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li><li><strong>Scholarship Application Form:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2006</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
+            <span class="year-data" style="display:none;">1829 (in the US), 2008 (Dubai Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Rochester Institute of Technology (RIT) Dubai Merit Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, RIT Dubai</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>RIT (Main Campus) - QS World University Rankings (2025):</strong> 951-1000th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.rit.edu/dubai" target="_blank" rel="noopener noreferrer">https://www.rit.edu/dubai</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit. For undergraduates, high school average is considered. For postgraduates, the undergraduate GPA is considered.</li><li><strong>Standardized Test Scores:</strong> Must meet RIT Dubai's English language requirements.</li><li><strong>Field of Study:</strong> Programs in Engineering, Computing, Business, and Leadership.</li><li><strong>Other:</strong> Open to all new students.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Students are automatically considered upon admission.</td></tr>
+                    <tr><td>Value</td><td>A tiered tuition fee reduction from 10% to 40% based on academic scores.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to RIT Dubai. The scholarship award is communicated along with the offer of admission.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1829 (in the US), 2008 (Dubai Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">1995</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">American University in Dubai (AUD) Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, American University in Dubai</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 551st</li><li><strong>QS Arab Region Rankings (2024):</strong> 27th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.aud.edu" target="_blank" rel="noopener noreferrer">https://www.aud.edu</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Several scholarships available. The H.H. Sheikh Mohammed Bin Rashid Al Maktoum Scholarship requires outstanding academic and leadership qualities. Other scholarships are based on specific high school curricula scores.</li><li><strong>Standardized Test Scores:</strong> Must meet AUD's English proficiency and often SAT requirements.</li><li><strong>Field of Study:</strong> All undergraduate programs.</li><li><strong>Other:</strong> Open to students of all nationalities.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by scholarship. The deadline for the H.H. Sheikh Mohammed Bin Rashid Al Maktoum Scholarship is typically in early March.</td></tr>
+                    <tr><td>Value</td><td>Can range from a partial scholarship to a 100% tuition fee waiver for the duration of the program.</td></tr>
+                    <tr><td>Application</td><td>A separate and detailed scholarship application is required for the most prestigious awards. This includes essays and letters of recommendation.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> Required in the form of essays.</li><li><strong>Letters of Recommendation (LORs):</strong> Required for top scholarships.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>CV or Resume:</strong> Detailing extracurricular activities.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1995</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">1998</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Zayed University Undergraduate Merit Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, Zayed University</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 621-630th</li><li><strong>QS Arab Region Rankings (2024):</strong> 19th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.zu.ac.ae" target="_blank" rel="noopener noreferrer">https://www.zu.ac.ae</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on high academic standing in the final year of high school (typically 95% or higher).</li><li><strong>Standardized Test Scores:</strong> Must meet the university's English requirements.</li><li><strong>Field of Study:</strong> All undergraduate programs.</li><li><strong>Other:</strong> Open to new international students.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Students are automatically considered upon admission.</td></tr>
+                    <tr><td>Value</td><td>A 50% tuition fee waiver for the first semester, renewable based on maintaining a high GPA.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to Zayed University. You are automatically considered for the scholarship.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1998</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
+            <span class="year-data" style="display:none;">2006</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Sorbonne University Abu Dhabi Academic Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, Sorbonne University Abu Dhabi</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Sorbonne University (Paris) - QS World University Rankings (2025):</strong> 59th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.sorbonne.ae" target="_blank" rel="noopener noreferrer">https://www.sorbonne.ae</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Awarded based on outstanding academic results from the previous year of study. For new students, this is based on high school grades.</li><li><strong>Standardized Test Scores:</strong> Must meet the English and/or French language requirements of the program.</li><li><strong>Field of Study:</strong> All programs.</li><li><strong>Other:</strong> Open to all students, including internationals.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The deadline for scholarship applications is typically in early July.</td></tr>
+                    <tr><td>Value</td><td>A tuition fee waiver of 25% to 75% for one semester, renewable based on continued academic excellence.</td></tr>
+                    <tr><td>Application</td><td>A separate online scholarship application must be submitted through the university's portal.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li><li><strong>Scholarship Application Form:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2006</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
+            <span class="year-data" style="display:none;">2011 (Dubai Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Amity University Dubai Merit Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, Amity University Dubai</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Part of the Amity Education Group, which is a leading private education provider in India. Not typically featured in major global rankings.</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://amityuniversity.ae" target="_blank" rel="noopener noreferrer">https://amityuniversity.ae</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit. For undergraduates, requires scores of 80% and above in Standard XII (CBSE/ISC) or equivalent. For postgraduates, requires a high score in the undergraduate degree.</li><li><strong>Standardized Test Scores:</strong> Must meet the university's English proficiency requirements.</li><li><strong>Field of Study:</strong> All programs.</li><li><strong>Other:</strong> Open to all new students.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Students are automatically considered upon admission.</td></tr>
+                    <tr><td>Value</td><td>A tiered tuition fee waiver from 25% to 50% based on academic scores.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to Amity University Dubai. The scholarship is awarded based on the documents submitted with your application.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2011 (Dubai Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">1964 (in India), 2000 (Dubai Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">BITS Pilani, Dubai Campus Merit Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, BITS Pilani, Dubai Campus</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>BITS Pilani (India) - QS World University Rankings (2025):</strong> 209th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.bits-pilani.ac.in/dubai/" target="_blank" rel="noopener noreferrer">https://www.bits-pilani.ac.in/dubai/</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on the aggregate marks in Physics, Chemistry, and Mathematics in the Grade 12 examination. Requires scores of 80% and above.</li><li><strong>Standardized Test Scores:</strong> Must meet the institute's English proficiency requirements.</li><li><strong>Field of Study:</strong> Engineering and Technology programs.</li><li><strong>Other:</strong> Open to all new students.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Students are automatically considered upon admission.</td></tr>
+                    <tr><td>Value</td><td>A tiered tuition fee waiver from 15% to 50% for the first year, based on board examination marks.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to BITS Pilani, Dubai Campus. The scholarship is awarded based on your final Grade 12 marks.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1964 (in India), 2000 (Dubai Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">1953 (in India), 2000 (Dubai Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Manipal Academy of Higher Education (MAHE), Dubai - Merit Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, Manipal Academy of Higher Education, Dubai Campus</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>MAHE (India) - QS World University Rankings (2025):</strong> 711-720th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.manipaldubai.com" target="_blank" rel="noopener noreferrer">https://www.manipaldubai.com</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit in the final year of high school. Tiered system based on percentage (e.g., 95%+, 90%+, 85%+).</li><li><strong>Standardized Test Scores:</strong> Must meet the university's English proficiency requirements.</li><li><strong>Field of Study:</strong> All undergraduate programs.</li><li><strong>Other:</strong> Open to all new students applying for undergraduate programs.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Students are automatically considered based on their admission application and final school marks.</td></tr>
+                    <tr><td>Value</td><td>A tiered tuition fee waiver for the first year of study, ranging from 10% to 40% based on the final board examination scores.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to an undergraduate program at MAHE Dubai. The scholarship is automatically granted to eligible students upon confirmation of final grades.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required (Grade 10, 11, and 12).</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> May be required if English was not the medium of instruction.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1953 (in India), 2000 (Dubai Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">1900 (in the UK), 2018 (Dubai Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">University of Birmingham Dubai Chancellor's Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, University of Birmingham Dubai</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>University of Birmingham - QS World University Rankings (2025):</strong> 80th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.birmingham.ac.uk/dubai" target="_blank" rel="noopener noreferrer">https://www.birmingham.ac.uk/dubai</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must demonstrate exceptional academic achievement and an innovative thinking mindset.</li><li><strong>Standardized Test Scores:</strong> Must meet the university's English language requirements for the chosen course.</li><li><strong>Field of Study:</strong> All undergraduate programs.</li><li><strong>Other:</strong> Open to all new international students.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>A separate application is required, typically by a deadline in late May.</td></tr>
+                    <tr><td>Value</td><td>A 50% tuition fee waiver for the duration of the undergraduate program.</td></tr>
+                    <tr><td>Application</td><td>First, apply for admission to the University of Birmingham Dubai. Once you receive an offer, you can submit a separate online application for the Chancellor's Scholarship, which includes a video submission.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A video submission (up to 2 minutes) is required for the scholarship, answering specific prompts about your ambitions and suitability.</li><li><strong>Letters of Recommendation (LORs):</strong> Required for the course application.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1900 (in the UK), 2018 (Dubai Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">2004 (in Singapore), 2005 (Dubai Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">SP Jain School of Global Management - Dean's List Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, SP Jain School of Global Management, Dubai Campus</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Ranked by various business publications, e.g., Forbes Top 20 International 1-year MBAs.</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.spjain.ae" target="_blank" rel="noopener noreferrer">https://www.spjain.ae</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on outstanding academic performance in high school, extracurricular activities, and a strong aptitude for business studies.</li><li><strong>Standardized Test Scores:</strong> SAT/ACT scores are considered. English proficiency is required.</li><li><strong>Field of Study:</strong> Business programs (e.g., Bachelor of Business Administration).</li><li><strong>Other:</strong> Open to new international students.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Students are automatically assessed for merit scholarships during the admission process.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver. The value varies based on the overall strength of the applicant's profile.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to an undergraduate program at SP Jain. The admissions committee assesses all applicants for scholarship eligibility.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> Essays are required as part of the admission application.</li><li><strong>Letters of Recommendation (LORs):</strong> May be requested.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>SAT/ACT scores:</strong> Recommended.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2004 (in Singapore), 2005 (Dubai Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
+            <span class="year-data" style="display:none;">1973 (in Australia), 2008 (Dubai Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Murdoch University Dubai - International Welcome Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, Murdoch University Dubai</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Murdoch University - QS World University Rankings (2025):</strong> 436th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.murdoch.edu.au/dubai" target="_blank" rel="noopener noreferrer">https://www.murdoch.edu.au/dubai</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic achievement in previous studies.</li><li><strong>Standardized Test Scores:</strong> Must meet the university's English language requirements.</li><li><strong>Field of Study:</strong> All coursework programs.</li><li><strong>Other:</strong> Must be an international student commencing studies at the Dubai campus.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application required. Students are automatically considered upon receiving an offer.</td></tr>
+                    <tr><td>Value</td><td>A 20% tuition fee reduction for the duration of the program.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to Murdoch University Dubai. The scholarship is automatically awarded to eligible students.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1973 (in Australia), 2008 (Dubai Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">2003</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Abu Dhabi University - Academic Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, Abu Dhabi University</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 580th</li><li><strong>QS Arab Region Rankings (2024):</strong> 17th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.adu.ac.ae" target="_blank" rel="noopener noreferrer">https://www.adu.ac.ae</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on high academic scores in the final year of high school (e.g., 90% or higher).</li><li><strong>Standardized Test Scores:</strong> Must meet the university's English proficiency requirements.</li><li><strong>Field of Study:</strong> All undergraduate programs.</li><li><strong>Other:</strong> Open to all new students.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Students are automatically considered based on their admission application.</td></tr>
+                    <tr><td>Value</td><td>A 20% tuition fee waiver. Renewable based on maintaining a high GPA.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to Abu Dhabi University. The scholarship is automatically awarded to eligible students.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2003</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">1988</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Ajman University - Academic Scholarships for New Students</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, Ajman University</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 551st</li><li><strong>QS Arab Region Rankings (2024):</strong> 16th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.ajman.ac.ae" target="_blank" rel="noopener noreferrer">https://www.ajman.ac.ae</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on final high school scores. Tiered discounts for scores of 99%, 95%+, 90%+, and 85%+.</li><li><strong>Standardized Test Scores:</strong> Must meet the university's English proficiency requirements.</li><li><strong>Field of Study:</strong> All undergraduate programs.</li><li><strong>Other:</strong> Open to all new students.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Students are automatically considered upon admission.</td></tr>
+                    <tr><td>Value</td><td>A tiered tuition fee waiver ranging from 20% to 100% for the first semester, depending on the high school score.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to Ajman University. The scholarship is granted automatically based on verified high school results.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1988</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">2009</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Ras Al Khaimah American University (RAK) Academic Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, American University of Ras Al Khaimah (AURAK)</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 951-1000th</li><li><strong>QS Arab Region Rankings (2024):</strong> 44th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://aurak.ac.ae" target="_blank" rel="noopener noreferrer">https://aurak.ac.ae</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on high school academic performance. A minimum score of 90% is typically required to be considered.</li><li><strong>Standardized Test Scores:</strong> Must meet AURAK's English proficiency requirements.</li><li><strong>Field of Study:</strong> All undergraduate programs.</li><li><strong>Other:</strong> Open to new international students.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Students are automatically considered upon admission.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, with the percentage varying based on academic results.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to AURAK. The scholarship is awarded automatically to qualifying students.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2009</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">Not applicable (multiple universities)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Al Ghurair Young Thinkers Program (YTP) - University Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>UAE, at partner universities (e.g., American University of Sharjah, Khalifa University).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (foundation providing scholarships to multiple universities).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.alghurairfoundation.org" target="_blank" rel="noopener noreferrer">https://www.alghurairfoundation.org</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Requires a high school graduation score of 85% or higher.</li><li><strong>Standardized Test Scores:</strong> As required by the partner university.</li><li><strong>Field of Study:</strong> STEM (Science, Technology, Engineering, and Mathematics) fields.</li><li><strong>Other:</strong> Must be an Arab citizen (note: this scholarship is **not for Indian nationals** but is a major scholarship in the region, included for awareness). Must be under 21 years of age and demonstrate financial need.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The application cycle is typically in the early part of the year.</td></tr>
+                    <tr><td>Value</td><td>A full scholarship covering tuition, university housing, a living stipend, health insurance, and travel.</td></tr>
+                    <tr><td>Application</td><td>Apply through the Al Ghurair Foundation's online portal.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> Essays are required.</li><li><strong>Letters of Recommendation (LORs):</strong> Required.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li><li><strong>Proof of financial need (if applicable):</strong> A key requirement for the application.</li></ul></td></tr>
+                    <tr><td>Established</td><td>Not applicable (multiple universities)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+            </div>
+            <div id="pagination-controls" class="pagination">
+                <div class="pagination"><span> Page 1 of 1 </span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="home-button-container">
+        <a href="/scholarships.html" title="Back to All Countries">
+            <img src="images/home-icon.png" alt="Home">
+        </a>
+    </div>
+    
+    <script src="app_filter.js" defer></script>
+    
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-workbox.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+
+</body>
+</html>

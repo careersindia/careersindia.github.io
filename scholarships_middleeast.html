@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USA Scholarships for Indian Students (2025-26) | Careers India</title>
+    <meta name="description" content="Explore a complete, filterable list of top scholarships for Indian students to study in the USA. Find details on eligibility, deadlines, and university rankings.">
+    <link rel="manifest" href="/manifest_7.json">
+    <style>
+        /* This is your complete CSS. No changes are needed. */
+        @import url('https://fonts.cdnfonts.com/css/impact');
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; background-color: white; color: #333; }
+        .title-box { background-color: #7FFFD4; color: white; text-align: center; padding: 30px 20px; margin: 30px auto; width: 80%; max-width: 900px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); font-family: 'Impact', sans-serif; font-size: 3.5em; text-shadow: 1px 1px 0px #004d00, 4px 4px 8px rgba(0,0,0,0.3); }
+        .main-container { display: flex; flex-wrap: wrap; width: 95%; margin: 0 auto; max-width: 1400px; }
+        .left-column { flex: 1; min-width: 280px; padding: 20px; background-color: #ffffff; border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); align-self: flex-start; }
+        .left-column h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
+        .filter-group { margin-bottom: 20px; }
+        .filter-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .filter-group select, .filter-group button { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1em; cursor: pointer; }
+        .filter-group button { background-color: #f0f0f0; text-align: left; }
+        .right-column { flex: 3; min-width: 300px; padding: 0 10px; }
+        .scholarship-card { background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 25px; padding: 25px; border-left: 5px solid #39FF14; }
+        .details-table { width: 100%; border-collapse: collapse; }
+        .details-table td { padding: 12px 5px; border-bottom: 1px solid #f0f0f0; vertical-align: top; text-align: left; }
+        .details-table tr:last-child td { border-bottom: none; }
+        .details-table td:first-child { font-weight: bold; }
+        .details-table ul { margin: 0; padding-left: 20px; }
+        .home-button-container { position: fixed; top: 20px; right: 25px; z-index: 1000; }
+        .home-button-container a img { width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+        .placeholder-text { color: #777; font-size: 1.2em; text-align: center; padding: 50px; }
+        .scholarship-title { font-size: 1.5em; }
+        .pagination { 
+            text-align: center; 
+            padding: 20px 0;
+            font-size: 1.2em; 
+            background-color: white; 
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1); 
+            width: 100%; 
+            left: 0; 
+            position: -webkit-sticky; 
+            position: sticky;
+            bottom: 0;
+            z-index: 999; 
+        }
+        .pagination a { color: #007BFF; text-decoration: none; padding: 10px 18px; border: 1px solid #ddd; margin: 0 5px; border-radius: 5px; background-color: white; }
+        .pagination span { padding: 10px 18px; color: #555; }
+        .button-link {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            text-align: left;
+            box-sizing: border-box;
+            text-decoration: none;
+            color: #333;
+            margin-bottom: 8px; /* Added spacing between buttons */
+        }
+        .button-link:hover {
+            background-color: #e0e0e0;
+        }
+        .left-column .section-heading {
+            font-weight: bold;
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="title-box">
+        SCHOLARSHIPS IN MIDDLE EAST
+    </div>
+
+    <div class="main-container">
+        <div class="left-column">
+            <h2>Filter Current Page</h2>
+            
+            <div class="filter-group">
+                <label for="level-select">Level of Study:</label>
+                <select id="level-select">
+                    <option value="all">All Levels</option>
+                    <option value="undergraduate">Undergraduate</option>
+                    <option value="master">Postgraduate (Master's)</option>
+                    <option value="phd">Doctoral (PhD)</option>
+                    <option value="postdoctoral">Postdoctoral</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="date-select">University Establishment Date:</label>
+                <select id="date-select">
+                    <option value="all">Any Time</option>
+                    <option value="before-1500">Before 1500</option>
+                    <option value="1500-1700">1500 - 1700</option>
+                    <option value="1700-1900">1700 - 1900</option>
+                    <option value="1900-2000">1900 - 2000</option>
+                    <option value="after-2000">After 2000</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>Sort Results:</label>
+                <button id="sort-by-qs-btn">Sort by QS Ranking</button>
+            </div>
+
+            <!-- == NEW SEPARATE NAVIGATION SECTION == -->
+            <div class="navigation-section">
+                <div class="section-heading">Browse Other Scholarships</div>
+                <a href="/scholarships_usa.html" class="button-link">Scholarships in USA</a>
+                <a href="/scholarships_uk.html" class="button-link">Scholarships in UK</a>
+                <a href="/scholarships_india.html" class="button-link" id="indianScholarshipsLink">Scholarships for INDIANS</a>
+                <a href="/scholarships_uae.html" class="button-link">Scholarships in UAE</a>
+<a href="/scholarships_germany.html" class="button-link">Scholarships in GERMANY</a>
+<a href="/scholarships_australia.html" class="button-link">Scholarships in AUSTRALIA</a>
+<a href="/scholarships_newzealand.html" class="button-link">Scholarships in NEW ZEALAND</a>
+<a href="/scholarships_canada.html" class="button-link">Scholarships in CANADA</a>
+<a href="/scholarships_europe.html" class="button-link">Scholarships in EUROPE</a>
+<a href="/scholarships_singapore.html" class="button-link">Scholarships in SINGAPORE</a>
+<a href="/scholarships_middleeast.html" class="button-link">Scholarships in MIDDLE EAST</a>
+            </div>
+            <!-- END NEW SEPARATE NAVIGATION SECTION -->
+
+        </div>
+        
+        <div class="right-column">
+            <div id="scholarship-display">
+                
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Postgraduate (Master's and PhD)</span>
+            <span class="year-data" style="display:none;">2009 [14]</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">King Abdullah University of Science and Technology (KAUST) Fellowship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Saudi Arabia, King Abdullah University of Science and Technology (KAUST).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 143rd</li><li><strong>Times Higher Education Arab University Rankings (2023):</strong> 1st</li><li><strong>Nature Index (2023):</strong> 1st in the Arab Region for high-quality research output</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.kaust.edu.sa" target="_blank" rel="noopener noreferrer">https://www.kaust.edu.sa</a></td></tr>
+                    <tr><td>Level</td><td>Postgraduate (Master's and PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must hold a Bachelor's degree for Master's programs and a Master's degree for PhD programs from a recognized institution. A minimum GPA of 3.0 on a 4.0 scale is typically required, with most admitted students having a GPA above 3.5. [15, 7]</li><li><strong>Standardized Test Scores:</strong> A minimum TOEFL IBT score of 79 or an IELTS score of 6.5 is required. The GRE is not mandatory but is strongly recommended and can strengthen an application. [14]</li><li><strong>Field of Study:</strong> Programs in Biological and Environmental Sciences and Engineering; Computer, Electrical, and Mathematical Sciences and Engineering; and Physical Sciences and Engineering. [16]</li><li><strong>Other:</strong> Open to all nationalities. Admission to KAUST is merit-based, and every admitted student receives the fellowship. [14, 7]</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>There are several application deadlines throughout the year, with a main deadline often around early January. [14]</td></tr>
+                    <tr><td>Value</td><td>A fully funded scholarship that covers full tuition fees, a monthly living stipend (ranging from $20,000 to $30,000 annually), on-campus housing, medical and dental coverage, and relocation support. [14, 7]</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to a graduate program through the KAUST online portal. All admitted students are automatically awarded the KAUST Fellowship. [15]</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A 750-word statement concerning your past work, academic plans, and career objectives is required. [14]</li><li><strong>Letters of Recommendation (LORs):</strong> Three letters of recommendation are required. [16]</li><li><strong>Academic Transcripts:</strong> Official transcripts from all previously attended institutions are necessary. [14]</li><li><strong>CV or Resume:</strong> A detailed CV is required. [14]</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required for non-native English speakers. [14]</li></ul></td></tr>
+                    <tr><td>Established</td><td>2009 [14]</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate, Postgraduate (Master's and PhD), and Law programs</span>
+            <span class="year-data" style="display:none;">2010 [8]</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Hamad Bin Khalifa University (HBKU) Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Qatar, Hamad Bin Khalifa University (HBKU).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 336th</li><li><strong>QS Arab Region Rankings (2025):</strong> 18th</li><li><strong>U.S. News & World Report Best Global Universities (2023):</strong> 521st</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.hbku.edu.qa" target="_blank" rel="noopener noreferrer">https://www.hbku.edu.qa</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate, Postgraduate (Master's and PhD), and Law programs</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must meet the specific academic requirements of the chosen Bachelor's, Master's, or PhD program. A strong academic record is essential. [9, 8]</li><li><strong>Standardized Test Scores:</strong> IELTS or TOEFL scores are generally required, but this may be waived for students who have studied at an English-medium institution. [8]</li><li><strong>Field of Study:</strong> A wide range of programs across its colleges: Islamic Studies, Humanities & Social Sciences, Science & Engineering, Law, and Health & Life Sciences. [8]</li><li><strong>Other:</strong> Open to Qatari and international students. [9]</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Application deadlines are typically February 1 for international students and March 15 for Qatar residents. [8]</td></tr>
+                    <tr><td>Value</td><td>This is a fully funded scholarship that provides a monthly stipend (QAR 5,000 for Bachelor's/Master's and QAR 7,500 for PhD), full tuition fee coverage, accommodation, and an annual return flight ticket. Family housing may be provided for married students. [8, 42]</td></tr>
+                    <tr><td>Application</td><td>Students must first apply for and be admitted to an HBKU program. Successful applicants are then considered for the scholarship. [9]</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> Required for most graduate programs. [8]</li><li><strong>Letters of Recommendation (LORs):</strong> Generally required for graduate applications. [8]</li><li><strong>Academic Transcripts:</strong> Required from all previous educational institutions. [8]</li><li><strong>CV or Resume:</strong> Required. [8]</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required if applicable. [9]</li></ul></td></tr>
+                    <tr><td>Established</td><td>2010 [8]</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate, Postgraduate (Master's and PhD)</span>
+            <span class="year-data" style="display:none;">1967</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">King Abdulaziz University (KAU) Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Saudi Arabia, King Abdulaziz University (KAU).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 134th</li><li><strong>Times Higher Education World University Rankings (2025):</strong> 154th</li><li><strong>U.S. News & World Report Best Global Universities (2023):</strong> 131st</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.kau.edu.sa" target="_blank" rel="noopener noreferrer">https://www.kau.edu.sa</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate, Postgraduate (Master's and PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> For Master's programs, a Bachelor's degree with a 'Very Good' grade is required. For PhD programs, a Master's degree with a 'Very Good' grade is necessary. [11]</li><li><strong>Standardized Test Scores:</strong> English proficiency test (IELTS 5 or TOEFL PBT 500/iBT 61) is required for most programs. [11]</li><li><strong>Field of Study:</strong> A wide range of fields including Sciences, Engineering, Humanities, Arts, Information Technology, and Business Administrations. Health Sciences programs are generally not available. [11, 34]</li><li><strong>Other:</strong> Open to all international students. Applicants must have good conduct and be medically fit. [11]</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Applications are typically open year-round, so there is no specific deadline. [18]</td></tr>
+                    <tr><td>Value</td><td>A fully funded scholarship that covers full tuition fees, a monthly stipend, accommodation, healthcare, a preparation allowance upon arrival, a graduation allowance, and annual round-trip airfare tickets. [34, 11]</td></tr>
+                    <tr><td>Application</td><td>Apply online through the university's admission portal. There is no separate application for the scholarship.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> May be required depending on the program.</li><li><strong>Letters of Recommendation (LORs):</strong> Two recommendation letters from former professors are required. [11]</li><li><strong>Academic Transcripts:</strong> Certified copies of all academic transcripts are required. [11]</li><li><strong>CV or Resume:</strong> A comprehensive CV is needed.</li><li><strong>Passport copy:</strong> A copy of a valid passport is required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1967</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">1977</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Qatar University Scholarship for International Students</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Qatar, Qatar University.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 177th</li><li><strong>Times Higher Education World University Rankings (2025):</strong> 251-300 band</li><li><strong>QS Arab Region Rankings (2025):</strong> 3rd</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="http://www.qu.edu.qa" target="_blank" rel="noopener noreferrer">http://www.qu.edu.qa</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must have a high school certificate with an excellent academic record (minimum 95% average for competitive scholarships). [46]</li><li><strong>Standardized Test Scores:</strong> Must meet the admission requirements of the chosen college.</li><li><strong>Field of Study:</strong> All undergraduate programs offered at the university.</li><li><strong>Other:</strong> Open to international students who have received final acceptance into the university. [24]</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Application timelines are announced on the university website, typically aligning with the general admission period.</td></tr>
+                    <tr><td>Value</td><td>Covers exemption from tuition and textbook fees, provides a monthly stipend of 500 QAR, student housing, and an annual round-trip airfare ticket. [46, 20]</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to Qatar University through their online portal. Eligible admitted students are automatically considered for the scholarship. [46]</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Official high school transcripts are required. [46]</li><li><strong>Proof of English proficiency or Arabic proficiency:</strong> Depending on the language of instruction for the chosen program.</li><li><strong>Passport copy:</strong> Required.</li><li><strong>Personal Photograph:</strong> Required for the application.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1977</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Postgraduate (Master's and PhD)</span>
+            <span class="year-data" style="display:none;">2014</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Doha Institute for Graduate Studies Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Qatar, Doha Institute for Graduate Studies.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> As a specialized graduate-only institution for social sciences and public administration, it is not typically included in major global university rankings like QS or THE.</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.dohainstitute.edu.qa" target="_blank" rel="noopener noreferrer">https://www.dohainstitute.edu.qa</a></td></tr>
+                    <tr><td>Level</td><td>Postgraduate (Master's and PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> A Bachelor's degree from a recognized university with a strong academic record.</li><li><strong>Standardized Test Scores:</strong> Proficiency in Arabic and English is required, as the institute is bilingual.</li><li><strong>Field of Study:</strong> Programs within the School of Social Sciences and Humanities and the School of Economics, Administration and Public Policy. [43]</li><li><strong>Other:</strong> Open to all nationalities. Scholarships are awarded based on merit (Tamim Scholarship) or financial need (Sanad Scholarship). [19, 41]</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The admission application deadline is typically January 15. [19]</td></tr>
+                    <tr><td>Value</td><td>The Tamim merit scholarship is fully funded, covering tuition, accommodation, a monthly stipend, health insurance, and two travel tickets. The Sanad need-based grant covers 10% to 100% of tuition and may include the other benefits. [32, 41]</td></tr>
+                    <tr><td>Application</td><td>Applicants should apply for admission to their chosen program through the institute's portal. They will be automatically considered for the available scholarships. [41]</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is required. [43]</li><li><strong>Letters of Recommendation (LORs):</strong> Academic references are required. [43]</li><li><strong>Academic Transcripts:</strong> Required from all undergraduate studies.</li><li><strong>CV or Resume:</strong> A detailed resume is necessary.</li><li><strong>Proof of Language Proficiency:</strong> Evidence of Arabic and English proficiency is required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2014</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate, Postgraduate (Master's and PhD)</span>
+            <span class="year-data" style="display:none;">Kuwait University was established in 1966.</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Kuwait Government Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Kuwait, at various public universities like Kuwait University.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Kuwait University - QS World University Rankings (2025):</strong> 851-900 band</li><li><strong>Kuwait University - Times Higher Education World University Rankings (2025):</strong> 1001-1200 band</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.mohe.edu.kw" target="_blank" rel="noopener noreferrer">https://www.mohe.edu.kw</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate, Postgraduate (Master's and PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Requires a strong academic record from previous studies. Specific GPA requirements may apply depending on the field of study. [23]</li><li><strong>Standardized Test Scores:</strong> While some scholarships are advertised as 'without IELTS', English or Arabic proficiency is generally required depending on the program. GMAT may be needed for MBA tracks. [23, 21]</li><li><strong>Field of Study:</strong> A wide range of majors in fields like medicine, engineering, and humanities. [33]</li><li><strong>Other:</strong> Open to international students, though specific quotas may apply per country. [23, 21]</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The application period is typically around mid-June each year. [33]</td></tr>
+                    <tr><td>Value</td><td>A fully funded scholarship covering tuition fees, a monthly living stipend, housing, an annual round-trip ticket, and allowances for books and supplies. [33, 23]</td></tr>
+                    <tr><td>Application</td><td>Applications are generally submitted through the Kuwait Ministry of Higher Education's portal or through the cultural missions of Kuwait abroad. [21]</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Certified and translated transcripts are required. [23]</li><li><strong>Passport copy:</strong> A valid passport is necessary.</li><li><strong>Personal Photograph:</strong> Required for the application.</li><li><strong>Health Certificate:</strong> A medical fitness certificate may be required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>Kuwait University was established in 1966.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate, Postgraduate (Master's and PhD)</span>
+            <span class="year-data" style="display:none;">1957</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">King Saud University (KSU) Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Saudi Arabia, King Saud University (KSU).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 145th</li><li><strong>Times Higher Education World University Rankings (2025):</strong> 251-300 band</li><li><strong>U.S. News & World Report Best Global Universities (2023):</strong> 153rd</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.ksu.edu.sa" target="_blank" rel="noopener noreferrer">https://www.ksu.edu.sa</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate, Postgraduate (Master's and PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> A high school certificate with a 'very good' grade for undergraduate, and relevant degrees for postgraduate studies with a strong academic record. [31]</li><li><strong>Standardized Test Scores:</strong> Language proficiency in either Arabic or English is required, depending on the program. [39]</li><li><strong>Field of Study:</strong> Most programs offered by the university.</li><li><strong>Other:</strong> Open to all international students. [39]</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Undergraduate deadline is often around mid-June, while postgraduate deadlines can be in October. [10]</td></tr>
+                    <tr><td>Value</td><td>A fully funded scholarship covering tuition, a monthly stipend, free furnished accommodation, healthcare, and relocation support. [31, 35]</td></tr>
+                    <tr><td>Application</td><td>Apply online through the university's scholarship portal.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Required from all previous levels of study. [31]</li><li><strong>Letters of Recommendation (LORs):</strong> Required for postgraduate programs.</li><li><strong>Statement of Purpose (SOP):</strong> Required for postgraduate programs.</li><li><strong>Passport copy:</strong> A valid passport is required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1957</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Postgraduate (Master's and PhD)</span>
+            <span class="year-data" style="display:none;">1963 [4]</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">King Fahd University of Petroleum and Minerals (KFUPM) Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Saudi Arabia, King Fahd University of Petroleum and Minerals (KFUPM).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 143rd</li><li><strong>Times Higher Education World University Rankings (2025):</strong> 201-250 band</li><li><strong>U.S. News & World Report Best Global Universities (2023):</strong> 188th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.kfupm.edu.sa" target="_blank" rel="noopener noreferrer">https://www.kfupm.edu.sa</a></td></tr>
+                    <tr><td>Level</td><td>Postgraduate (Master's and PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> A four-year Bachelor's degree for Master's and a two-year Master's degree for PhD applicants. A minimum GPA of 3.0 out of 4.0 is required. [4]</li><li><strong>Standardized Test Scores:</strong> Minimum TOEFL iBT of 70 or IELTS of 6.0 for Master's programs. For PhD, a TOEFL iBT of 80 or IELTS of 6.5 is needed. GRE is also required. [4, 17]</li><li><strong>Field of Study:</strong> Engineering, Sciences, Business Administration, Computer Engineering, and Environmental Design. [49, 17]</li><li><strong>Other:</strong> Open to all nationalities. Every admitted graduate student is offered a full scholarship. [4]</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>There are multiple deadlines, with one typically in mid-July. [16]</td></tr>
+                    <tr><td>Value</td><td>A fully funded scholarship that covers tuition fees, a competitive monthly stipend, free furnished accommodation, medical care, free textbooks, subsidized meals, and an annual round-trip air ticket. [10, 4]</td></tr>
+                    <tr><td>Application</td><td>Complete the online application through the KFUPM admissions portal and upload all mandatory documents before the deadline. [4]</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A one-page essay detailing career and research goals is required. [16]</li><li><strong>Letters of Recommendation (LORs):</strong> Two or three letters of recommendation are required, submitted through the online system. [17, 4]</li><li><strong>Academic Transcripts:</strong> Official transcripts are required. [17]</li><li><strong>CV or Resume:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required. [16]</li><li><strong>GRE/GMAT scores:</strong> GRE is required for most programs; GMAT is required for MBA. [17]</li></ul></td></tr>
+                    <tr><td>Established</td><td>1963 [4]</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate, Postgraduate (Master's and PhD)</span>
+            <span class="year-data" style="display:none;">1961 [8]</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Islamic University of Madinah Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Saudi Arabia, Islamic University of Madinah.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> As a specialized institution for Islamic and Arabic studies, it is not ranked by major global systems like QS or THE.</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://studyinsaudi.moe.gov.sa" target="_blank" rel="noopener noreferrer">https://studyinsaudi.moe.gov.sa</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate, Postgraduate (Master's and PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> High school diploma for undergraduate applicants. Bachelor's degree with a minimum GPA of 3.75 out of 5 for Master's applicants. [27, 7]</li><li><strong>Standardized Test Scores:</strong> For non-Gulf country Master's applicants, a minimum GRE (quantitative part) score of 130 and a TOEFL-PBT score of 450 or equivalent is required. [27, 7]</li><li><strong>Field of Study:</strong> Primarily focused on Islamic studies, Arabic language, Engineering, and Sciences. [27]</li><li><strong>Other:</strong> Open to male Muslim students from all countries. Must be of good conduct and medically fit. [27, 7]</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Typically June 14 for Bachelor's programs and October 31 for Master's and PhD programs. [8, 19]</td></tr>
+                    <tr><td>Value</td><td>A fully funded scholarship covering tuition, a monthly stipend, free furnished accommodation, quality healthcare, subsidized meals, and an annual round-trip airfare ticket. [19, 27]</td></tr>
+                    <tr><td>Application</td><td>Applications are submitted through the 'Study in Saudi' platform. [8, 19]</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Educational Documents:</strong> Certified high school/university certificates and transcripts. [7]</li><li><strong>Passport copy:</strong> A valid passport is required. [8]</li><li><strong>Birth Certificate:</strong> Required. [7]</li><li><strong>Medical Report:</strong> A report confirming the absence of infectious diseases is needed. [8]</li><li><strong>Letters of Recommendation (LORs):</strong> Required. [7]</li></ul></td></tr>
+                    <tr><td>Established</td><td>1961 [8]</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">Qatar Foundation was established in 1995; partner universities arrived subsequently.</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Qatar Foundation (QF) Merit Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Qatar, at QF partner universities (e.g., Georgetown, Texas A&M, Weill Cornell, Carnegie Mellon). [11]</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> This scholarship is for study at QF's elite partner universities, which are branch campuses of highly-ranked institutions. For example, Northwestern University is ranked 47th and Georgetown University is ranked 297th in the QS World University Rankings 2025.</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.qf.org.qa" target="_blank" rel="noopener noreferrer">https://www.qf.org.qa</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must have completed at least two semesters (one year) of study at a QF partner university. Requires an outstanding academic record with a minimum cumulative GPA of 3.6. [18, 11]</li><li><strong>Standardized Test Scores:</strong> Not applicable for the scholarship itself, but required for initial admission to the university.</li><li><strong>Field of Study:</strong> All programs offered at the QF partner universities.</li><li><strong>Other:</strong> Open to all nationalities. This is a highly competitive, merit-based scholarship for continuing students.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by university, but applications are typically reviewed annually.</td></tr>
+                    <tr><td>Value</td><td>The scholarship covers tuition and textbook costs. It can be combined with other partial scholarships. [18, 5]</td></tr>
+                    <tr><td>Application</td><td>Students apply through their respective university's financial aid office after completing their first year of study. Requires letters of recommendation. [18]</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Letters of Recommendation (LORs):</strong> At least two letters of recommendation from a professor and an academic dean are required. [33, 18]</li><li><strong>Academic Transcripts:</strong> University transcripts showing a GPA of 3.6 or higher are necessary. [18]</li></ul></td></tr>
+                    <tr><td>Established</td><td>Qatar Foundation was established in 1995; partner universities arrived subsequently.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">Not applicable (scholarship program).</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Crown Prince’s International Scholarship Program (CPISP)</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Bahrain (for selection), with studies at top international universities.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> This program sends students to top-ranked universities globally (e.g., Ivy League, Oxbridge). Rankings are not applicable to the program itself.</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="http://www.cpisp.bh" target="_blank" rel="noopener noreferrer">http://www.cpisp.bh</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must be a Bahraini citizen in the 11th grade (or equivalent) with an outstanding cumulative GPA of 97% or higher. [12]</li><li><strong>Standardized Test Scores:</strong> Not required for initial application, but selected candidates undergo extensive training for IELTS, SAT, etc.</li><li><strong>Field of Study:</strong> Open to all fields of study at leading international universities.</li><li><strong>Other:</strong> Awarded to the most gifted and talented high school students in Bahrain. [12]</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The application period is typically in March of each year. [12]</td></tr>
+                    <tr><td>Value</td><td>A fully funded scholarship covering tuition, fees, living expenses, books, and airfare for the entire duration of the degree program.</td></tr>
+                    <tr><td>Application</td><td>Students apply online during their 11th grade. The selection process involves qualifying tests, interviews, and a comprehensive leadership and academic training program for the top candidates before they apply to universities. [12]</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Official school transcripts showing a GPA of 97% or higher. [12]</li><li><strong>Passport copy:</strong> Copy of Bahraini passport.</li></ul></td></tr>
+                    <tr><td>Established</td><td>Not applicable (scholarship program).</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">2003 [41]</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Taibah University Undergraduate Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Saudi Arabia, Taibah University.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS Arab Region Rankings (2025):</strong> 71st</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.taibahu.edu.sa" target="_blank" rel="noopener noreferrer">https://www.taibahu.edu.sa</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must have a high school diploma or its equivalent with a strong academic record. [20, 32]</li><li><strong>Standardized Test Scores:</strong> No language certificate is explicitly required for application, but proficiency in the language of instruction (Arabic/English) is necessary. [22]</li><li><strong>Field of Study:</strong> Wide range of majors including Arts, Humanities, Engineering, Business Administration, Pharmacy, Medicine, and Sciences. [22]</li><li><strong>Other:</strong> Open to all non-Saudi international students. Female applicants must have a 'mahram' (male guardian) accompanying them. [32, 22]</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The deadline is typically in late December. [34]</td></tr>
+                    <tr><td>Value</td><td>A fully funded scholarship covering full tuition fees, a monthly stipend, free accommodation, health insurance, and a travel allowance. [34, 20]</td></tr>
+                    <tr><td>Application</td><td>Apply online through the Taibah University admissions portal. [34]</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> A copy of the high school certificate, translated into Arabic and authenticated by the Saudi embassy. [32, 22]</li><li><strong>Passport copy:</strong> A valid passport with at least six months of validity is required. [32]</li><li><strong>Personal Photograph:</strong> A recent colored photograph (4x6 cm) is required. [32]</li></ul></td></tr>
+                    <tr><td>Established</td><td>2003 [41]</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
+            <span class="year-data" style="display:none;">1981</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Umm Al-Qura University Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Saudi Arabia, Umm Al-Qura University.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 487th</li><li><strong>Times Higher Education World University Rankings (2025):</strong> 601-800 band</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://uqu.edu.sa" target="_blank" rel="noopener noreferrer">https://uqu.edu.sa</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Requires a high school diploma for undergraduate and a relevant Bachelor's/Master's degree for postgraduate studies, with a 'very good' academic standing. [25, 43]</li><li><strong>Standardized Test Scores:</strong> Proof of Arabic language proficiency is essential, as many courses are taught in Arabic. [25]</li><li><strong>Field of Study:</strong> Primarily Islamic Studies, Arabic Language, Education, and Social Sciences. Some science and engineering programs may be available. [43, 44]</li><li><strong>Other:</strong> Open to international Muslim students. Applicants must abide by the university's rules and regulations. [25]</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The application portal is typically open for a specific period each year; check the university's admissions deanship website for exact dates. [43]</td></tr>
+                    <tr><td>Value</td><td>A fully funded scholarship providing a monthly stipend, full tuition waiver, furnished accommodation for unmarried students, healthcare, and an annual round-trip air ticket. [25, 43]</td></tr>
+                    <tr><td>Application</td><td>Apply online through the university's external scholarship portal during the application period. [44]</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Authenticated copies of all educational certificates. [43]</li><li><strong>Passport and ID documents:</strong> Valid passport and national ID card. [43]</li><li><strong>Personal Photograph:</strong> Recent passport-sized photograph.</li><li><strong>Conduct Certificate:</strong> A certificate of good conduct is required. [25]</li></ul></td></tr>
+                    <tr><td>Established</td><td>1981</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">2003</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">American University of Kuwait (AUK) Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Kuwait, American University of Kuwait (AUK).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS Arab Region Rankings (2025):</strong> 73rd</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.auk.edu.kw" target="_blank" rel="noopener noreferrer">https://www.auk.edu.kw</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Awarded based on academic excellence. Applicants are typically expected to have a very high secondary school GPA (often 90% or higher). [29, 28]</li><li><strong>Standardized Test Scores:</strong> Not the primary factor, but overall academic performance is assessed. [29]</li><li><strong>Field of Study:</strong> All undergraduate programs offered at AUK. [29]</li><li><strong>Other:</strong> Open to all nationalities. These are merit-based scholarships for new and continuing students. [28]</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Deadlines for Fall and Spring semesters are typically in late January and September, respectively. [29]</td></tr>
+                    <tr><td>Value</td><td>A partial tuition waiver, typically ranging from 10% to 50% of the tuition fees for a specific number of credits. It is not a fully funded scholarship. [29, 28]</td></tr>
+                    <tr><td>Application</td><td>A separate scholarship application must be submitted to the AUK admissions office after applying for admission. Requires an essay and letters of recommendation. [29]</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Scholarship Application Form:</strong> Must be completed and submitted by the deadline. [29]</li><li><strong>Personal Essay:</strong> An essay on a specified topic is usually required. [29]</li><li><strong>Letters of Recommendation (LORs):</strong> Required to support the application. [29]</li><li><strong>Academic Transcripts:</strong> High school transcripts are required for new students. [28]</li></ul></td></tr>
+                    <tr><td>Established</td><td>2003</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">1986</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">University of Bahrain Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Bahrain, University of Bahrain.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 851-900 band</li><li><strong>QS Arab Region Rankings (2025):</strong> 28th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.uob.edu.bh" target="_blank" rel="noopener noreferrer">https://www.uob.edu.bh</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Primarily for Bahraini citizens with excellent high school grades. A limited number of scholarships are available to non-Bahraini students, often through government agreements or for residents with exceptional merit. [31]</li><li><strong>Standardized Test Scores:</strong> Must meet the university's admission and aptitude test requirements.</li><li><strong>Field of Study:</strong> Various programs offered by the university.</li><li><strong>Other:</strong> The vast majority of scholarships are reserved for Bahraini nationals. [31]</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Follows the general admission timeline of the university.</td></tr>
+                    <tr><td>Value</td><td>Can range from a partial tuition fee waiver to a full scholarship covering tuition and other expenses, depending on the specific award. [31]</td></tr>
+                    <tr><td>Application</td><td>Students apply for admission, and scholarship eligibility is often determined based on the information provided, or through a separate application to the Ministry of Education for government-funded awards. [31]</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Official high school transcripts.</li><li><strong>National ID / Passport:</strong> Required for identification.</li><li><strong>Aptitude Test Scores:</strong> As required by the university.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1986</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">2008</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Princess Nourah bint Abdulrahman University Scholarship for Women</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Saudi Arabia, Princess Nourah bint Abdulrahman University (PNU).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Times Higher Education World University Rankings (2025):</strong> 601-800 band</li><li><strong>QS Arab Region Rankings (2025):</strong> 40th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.pnu.edu.sa" target="_blank" rel="noopener noreferrer">https://www.pnu.edu.sa</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must hold a high school certificate recognized in Saudi Arabia with a 'very good' grade or higher.</li><li><strong>Standardized Test Scores:</strong> Proficiency in Arabic is required as it is the primary language of instruction. The university offers an intensive Arabic language program for non-speakers.</li><li><strong>Field of Study:</strong> All undergraduate programs offered at the university, including Health, Science, Humanities, and Social Work.</li><li><strong>Other:</strong> Exclusively for non-Saudi female students. Must not have received another scholarship from a Saudi institution.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The application period is announced annually on the Deanship of Admission's website.</td></tr>
+                    <tr><td>Value</td><td>A fully funded scholarship covering tuition fees, a monthly stipend, furnished accommodation, health care, and an annual round-trip air ticket.</td></tr>
+                    <tr><td>Application</td><td>Apply online through the university's application portal. The process is competitive and based on academic merit.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Certified copy of the high school certificate.</li><li><strong>Passport copy:</strong> Valid passport.</li><li><strong>Personal Photograph:</strong> Required.</li><li><strong>Medical Certificate:</strong> A certificate of medical fitness.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2008</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
+            <span class="year-data" style="display:none;">2002</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Alfaisal University Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Saudi Arabia, Alfaisal University.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Times Higher Education World University Rankings (2025):</strong> 251-300 band</li><li><strong>QS Arab Region Rankings (2025):</strong> 9th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.alfaisal.edu" target="_blank" rel="noopener noreferrer">https://www.alfaisal.edu</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Highly competitive and based on academic merit. For undergraduate, this includes high school GPA and university admission exam scores. For graduate, it includes undergraduate GPA and interview performance.</li><li><strong>Standardized Test Scores:</strong> Strong standardized test scores (e.g., SAT, GRE) are beneficial. English proficiency (IELTS/TOEFL) is required as instruction is in English.</li><li><strong>Field of Study:</strong> Colleges of Medicine, Engineering, Business, and Science.</li><li><strong>Other:</strong> Open to all nationalities. Both new and continuing students can apply. Scholarships are awarded as 'Merit-Based' or 'Financial Aid'.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Applications are reviewed on a rolling basis, but early application is encouraged, typically before the start of each semester.</td></tr>
+                    <tr><td>Value</td><td>Partial to full tuition coverage. The percentage of the scholarship depends on the academic standing and, in some cases, financial need of the applicant. It is not a fully funded scholarship covering living expenses.</td></tr>
+                    <tr><td>Application</td><td>Students must first be admitted to an Alfaisal University program. After admission, they can submit a separate scholarship application through the university portal.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Scholarship Application Form:</strong> Required.</li><li><strong>Academic Transcripts:</strong> Considered from the admission application.</li><li><strong>Financial Documents:</strong> Required for need-based financial aid applications.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2002</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">2002</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Gulf University for Science and Technology (GUST) Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Kuwait, Gulf University for Science and Technology (GUST).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS Arab Region Rankings (2025):</strong> 62nd</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.gust.edu.kw" target="_blank" rel="noopener noreferrer">https://www.gust.edu.kw</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Requires an excellent high school GPA (typically 90% or above for merit scholarships). Specific scholarships may exist for alumni children or those with special talents.</li><li><strong>Standardized Test Scores:</strong> Must meet GUST's admission requirements, including English proficiency.</li><li><strong>Field of Study:</strong> All undergraduate programs offered at GUST.</li><li><strong>Other:</strong> Open to all nationalities. Primarily merit-based.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by semester. Check the university's academic calendar and admissions page for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver. The amount of the award varies based on the specific scholarship and the student's academic performance. It does not cover all expenses.</td></tr>
+                    <tr><td>Application</td><td>Students are typically assessed for scholarships automatically upon admission based on their high school grades. Separate applications may be required for special scholarships.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>All documents for university admission:</strong> Used for scholarship consideration.</li><li><strong>High School Transcript:</strong> The primary document for assessment.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2002</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">2019</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">American University of Bahrain (AUBH) Merit Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Bahrain, American University of Bahrain (AUBH).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> As a new university established in 2019, AUBH is not yet featured in major global ranking systems.</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://aubh.edu.bh" target="_blank" rel="noopener noreferrer">https://aubh.edu.bh</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic excellence demonstrated in the final year of high school. Typically requires a GPA of 90% or above.</li><li><strong>Standardized Test Scores:</strong> Must meet AUBH's English proficiency requirements (IELTS/TOEFL).</li><li><strong>Field of Study:</strong> All undergraduate programs offered at AUBH.</li><li><strong>Other:</strong> Open to all nationalities applying for admission.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Students must apply by the scholarship deadline, which is typically before the start of the Fall semester.</td></tr>
+                    <tr><td>Value</td><td>A partial scholarship covering a percentage of the annual tuition fees. The scholarship is renewable if the student maintains a high GPA at AUBH.</td></tr>
+                    <tr><td>Application</td><td>A separate scholarship application is required after submitting the main university application. It usually involves a personal statement or essay.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Scholarship Application Form:</strong> Required.</li><li><strong>Personal Statement:</strong> An essay detailing achievements and goals.</li><li><strong>High School Transcripts:</strong> Used for eligibility assessment.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2019</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+            </div>
+            <div id="pagination-controls" class="pagination">
+                <div class="pagination"><span> Page 1 of 1 </span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="home-button-container">
+        <a href="/scholarships.html" title="Back to All Countries">
+            <img src="images/home-icon.png" alt="Home">
+        </a>
+    </div>
+    
+    <script src="app_filter.js" defer></script>
+    
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-workbox.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+
+</body>
+</html>

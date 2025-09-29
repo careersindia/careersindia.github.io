@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USA Scholarships for Indian Students (2025-26) | Careers India</title>
+    <meta name="description" content="Explore a complete, filterable list of top scholarships for Indian students to study in the USA. Find details on eligibility, deadlines, and university rankings.">
+    <link rel="manifest" href="/manifest_7.json">
+    <style>
+        /* This is your complete CSS. No changes are needed. */
+        @import url('https://fonts.cdnfonts.com/css/impact');
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; background-color: white; color: #333; }
+        .title-box { background-color: #7FFFD4; color: white; text-align: center; padding: 30px 20px; margin: 30px auto; width: 80%; max-width: 900px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); font-family: 'Impact', sans-serif; font-size: 3.5em; text-shadow: 1px 1px 0px #004d00, 4px 4px 8px rgba(0,0,0,0.3); }
+        .main-container { display: flex; flex-wrap: wrap; width: 95%; margin: 0 auto; max-width: 1400px; }
+        .left-column { flex: 1; min-width: 280px; padding: 20px; background-color: #ffffff; border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); align-self: flex-start; }
+        .left-column h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
+        .filter-group { margin-bottom: 20px; }
+        .filter-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .filter-group select, .filter-group button { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1em; cursor: pointer; }
+        .filter-group button { background-color: #f0f0f0; text-align: left; }
+        .right-column { flex: 3; min-width: 300px; padding: 0 10px; }
+        .scholarship-card { background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 25px; padding: 25px; border-left: 5px solid #39FF14; }
+        .details-table { width: 100%; border-collapse: collapse; }
+        .details-table td { padding: 12px 5px; border-bottom: 1px solid #f0f0f0; vertical-align: top; text-align: left; }
+        .details-table tr:last-child td { border-bottom: none; }
+        .details-table td:first-child { font-weight: bold; }
+        .details-table ul { margin: 0; padding-left: 20px; }
+        .home-button-container { position: fixed; top: 20px; right: 25px; z-index: 1000; }
+        .home-button-container a img { width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+        .placeholder-text { color: #777; font-size: 1.2em; text-align: center; padding: 50px; }
+        .scholarship-title { font-size: 1.5em; }
+        .pagination { 
+            text-align: center; 
+            padding: 20px 0;
+            font-size: 1.2em; 
+            background-color: white; 
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1); 
+            width: 100%; 
+            left: 0; 
+            position: -webkit-sticky; 
+            position: sticky;
+            bottom: 0;
+            z-index: 999; 
+        }
+        .pagination a { color: #007BFF; text-decoration: none; padding: 10px 18px; border: 1px solid #ddd; margin: 0 5px; border-radius: 5px; background-color: white; }
+        .pagination span { padding: 10px 18px; color: #555; }
+        .button-link {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            text-align: left;
+            box-sizing: border-box;
+            text-decoration: none;
+            color: #333;
+            margin-bottom: 8px; /* Added spacing between buttons */
+        }
+        .button-link:hover {
+            background-color: #e0e0e0;
+        }
+        .left-column .section-heading {
+            font-weight: bold;
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="title-box">
+        SCHOLARSHIPS IN SINGAPORE
+    </div>
+
+    <div class="main-container">
+        <div class="left-column">
+            <h2>Filter Current Page</h2>
+            
+            <div class="filter-group">
+                <label for="level-select">Level of Study:</label>
+                <select id="level-select">
+                    <option value="all">All Levels</option>
+                    <option value="undergraduate">Undergraduate</option>
+                    <option value="master">Postgraduate (Master's)</option>
+                    <option value="phd">Doctoral (PhD)</option>
+                    <option value="postdoctoral">Postdoctoral</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="date-select">University Establishment Date:</label>
+                <select id="date-select">
+                    <option value="all">Any Time</option>
+                    <option value="before-1500">Before 1500</option>
+                    <option value="1500-1700">1500 - 1700</option>
+                    <option value="1700-1900">1700 - 1900</option>
+                    <option value="1900-2000">1900 - 2000</option>
+                    <option value="after-2000">After 2000</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>Sort Results:</label>
+                <button id="sort-by-qs-btn">Sort by QS Ranking</button>
+            </div>
+
+            <!-- == NEW SEPARATE NAVIGATION SECTION == -->
+            <div class="navigation-section">
+                <div class="section-heading">Browse Other Scholarships</div>
+                <a href="/scholarships_usa.html" class="button-link">Scholarships in USA</a>
+                <a href="/scholarships_uk.html" class="button-link">Scholarships in UK</a>
+                <a href="/scholarships_india.html" class="button-link" id="indianScholarshipsLink">Scholarships for INDIANS</a>
+                <a href="/scholarships_uae.html" class="button-link">Scholarships in UAE</a>
+<a href="/scholarships_germany.html" class="button-link">Scholarships in GERMANY</a>
+<a href="/scholarships_australia.html" class="button-link">Scholarships in AUSTRALIA</a>
+<a href="/scholarships_newzealand.html" class="button-link">Scholarships in NEW ZEALAND</a>
+<a href="/scholarships_canada.html" class="button-link">Scholarships in CANADA</a>
+<a href="/scholarships_europe.html" class="button-link">Scholarships in EUROPE</a>
+<a href="/scholarships_singapore.html" class="button-link">Scholarships in SINGAPORE</a>
+<a href="/scholarships_middleeast.html" class="button-link">Scholarships in MIDDLE EAST</a>
+            </div>
+            <!-- END NEW SEPARATE NAVIGATION SECTION -->
+
+        </div>
+        
+        <div class="right-column">
+            <div id="scholarship-display">
+                
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Doctoral (PhD)</span>
+            <span class="year-data" style="display:none;">NTU (1991), NUS (1905), SUTD (2009), SMU (2000).</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Singapore International Graduate Award (SINGA)</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, at Nanyang Technological University (NTU), National University of Singapore (NUS), Singapore University of Technology and Design (SUTD), or Singapore Management University (SMU).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>NUS:</strong> QS World University Rankings (2025): 8th</li><li><strong>NTU:</strong> QS World University Rankings (2025): 15th</li><li><strong>SUTD/SMU:</strong> Specialized universities, highly ranked in their respective fields.</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.a-star.edu.sg" target="_blank" rel="noopener noreferrer">https://www.a-star.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Doctoral (PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must demonstrate a passion for research and have excellent academic results. A Bachelor's degree with at least a second-class upper honours or equivalent is typically required.</li><li><strong>Standardized Test Scores:</strong> GRE is strongly recommended as it can significantly enhance an application. English proficiency (IELTS/TOEFL) is required if English is not the applicant's first language.</li><li><strong>Field of Study:</strong> Biomedical Sciences, Computing and Information Sciences, Engineering and Technology, and Physical Sciences.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>There are two application cycles. For the August intake, the deadline is typically December 1 of the preceding year. For the January intake, the deadline is June 1 of the preceding year.</td></tr>
+                    <tr><td>Value</td><td>A fully-funded scholarship for up to 4 years. It covers full tuition fees, a monthly stipend of S$2,200 (which increases to S$2,700 after passing the Qualifying Examination), a one-time airfare grant of up to S$1,500, and a one-time settling-in allowance of S$1,000.</td></tr>
+                    <tr><td>Application</td><td>Apply online through the SINGA application portal. No separate application to the universities is needed initially. You must indicate your choice of research supervisors.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A statement of purpose is part of the online application.</li><li><strong>Letters of Recommendation (LORs):</strong> Two academic reference reports are required. Referees submit these online.</li><li><strong>Academic Transcripts:</strong> Required from all undergraduate and/or Master's studies.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required if applicable.</li><li><strong>CV or Resume:</strong> Recommended to upload.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>NTU (1991), NUS (1905), SUTD (2009), SMU (2000).</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">NUS (1905), NTU (1991), SMU (2000), SUTD (2009).</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Dr Goh Keng Swee (GKS) Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, at National University of Singapore (NUS), Nanyang Technological University (NTU), Singapore Management University (SMU), or Singapore University of Technology and Design (SUTD).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>NUS:</strong> QS World University Rankings (2025): 8th</li><li><strong>NTU:</strong> QS World University Rankings (2025): 15th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.abs.org.sg" target="_blank" rel="noopener noreferrer">https://www.abs.org.sg</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must have excellent academic results from high school (e.g., top 5% of cohort) and demonstrate strong leadership qualities.</li><li><strong>Standardized Test Scores:</strong> Must meet the admission and English language requirements of the chosen university (SAT/ACT may be required).</li><li><strong>Field of Study:</strong> All disciplines except Medicine, Dentistry, and Architecture.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The application period is typically from November to mid-March.</td></tr>
+                    <tr><td>Value</td><td>A full scholarship covering tuition fees, a maintenance allowance of S$6,500 per year, hostel allowance based on institution rates, a one-time settling-in allowance of S$200, and return airfare to your home country upon graduation. This is a bonded scholarship, meaning you must work for a company in Singapore for 3 years after graduation.</td></tr>
+                    <tr><td>Application</td><td>Apply online through the GKS Scholarship portal. You must also separately apply for admission to the partner universities. Shortlisted candidates will undergo interviews.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal essay is required.</li><li><strong>Letters of Recommendation (LORs):</strong> May be required.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required for university admission.</li><li><strong>CV or Resume:</strong> Detailing extracurricular activities and leadership roles.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>NUS (1905), NTU (1991), SMU (2000), SUTD (2009).</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">NUS (1905), NTU (1991).</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">ASEAN Undergraduate Scholarship (AUS)</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, at National University of Singapore (NUS) or Nanyang Technological University (NTU).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>NUS:</strong> QS World University Rankings (2025): 8th</li><li><strong>NTU:</strong> QS World University Rankings (2025): 15th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.nus.edu.sg" target="_blank" rel="noopener noreferrer">https://www.nus.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Requires outstanding academic merit as demonstrated in high school.</li><li><strong>Standardized Test Scores:</strong> Must meet the university's admission requirements.</li><li><strong>Field of Study:</strong> All undergraduate programmes.</li><li><strong>Other:</strong> Although primarily for ASEAN nations, this is sometimes extended to students from India. This is a tuition grant scheme that comes with a bond obligation.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. You are automatically considered when you apply for admission and the MOE Tuition Grant. The admission deadline is typically in March.</td></tr>
+                    <tr><td>Value</td><td>The scholarship covers the subsidized tuition fees (after the MOE Tuition Grant). It does not cover living expenses. A 3-year bond to work in Singapore is required.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to NUS or NTU and apply for the MOE Tuition Grant. All eligible international students are considered.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>All documents required for university admission.:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>NUS (1905), NTU (1991).</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Doctoral (PhD)</span>
+            <span class="year-data" style="display:none;">1905</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">President's Graduate Fellowship (NUS)</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, National University of Singapore (NUS).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 8th</li><li><strong>THE World University Rankings (2024):</strong> 19th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.nus.edu.sg" target="_blank" rel="noopener noreferrer">https://www.nus.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Doctoral (PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must have a first-class honours degree or equivalent and be admitted as a PhD candidate at NUS.</li><li><strong>Standardized Test Scores:</strong> Must meet the university's English requirements. GRE may be required for some programs.</li><li><strong>Field of Study:</strong> All PhD programs.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. You are nominated by your department upon admission to the PhD program.</td></tr>
+                    <tr><td>Value</td><td>A monthly stipend (S$3,000 to S$3,500), full tuition fee subsidy, a S$750 one-time travel allowance, and a S$500 one-time computer allowance.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to a PhD program at NUS. Your department will nominate you for the fellowship if you are a top candidate.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>All documents for PhD admission (SOP, LORs, transcripts, etc.).:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1905</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Doctoral (PhD)</span>
+            <span class="year-data" style="display:none;">1991</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Nanyang President's Graduate Scholarship (NTU)</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, Nanyang Technological University (NTU).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 15th</li><li><strong>THE World University Rankings (2024):</strong> 32nd</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.ntu.edu.sg" target="_blank" rel="noopener noreferrer">https://www.ntu.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Doctoral (PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must have a Bachelor's degree with First Class Honours or equivalent.</li><li><strong>Standardized Test Scores:</strong> Must meet the university's English proficiency requirements. GRE is required for some programs.</li><li><strong>Field of Study:</strong> All PhD programs.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The application deadline is typically November 30 for the August intake of the following year.</td></tr>
+                    <tr><td>Value</td><td>Full tuition fee coverage, a monthly stipend of S$3,000, a conference allowance of S$4,000 per year, a one-time IT allowance of S$1,500, an annual grant for journal subscriptions, and a one-time thesis preparation allowance.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to an NTU PhD program and indicate your interest in the scholarship within the application form.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A research proposal is required.</li><li><strong>Letters of Recommendation (LORs):</strong> Two academic references are needed.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>CV or Resume:</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1991</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Doctoral (PhD)</span>
+            <span class="year-data" style="display:none;">2000</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Singapore Management University (SMU) Postgraduate Research Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, Singapore Management University.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 585th</li><li><strong>QS World University Rankings by Subject (2024) - Business & Management Studies:</strong> 44th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://graduatestudies.smu.edu.sg" target="_blank" rel="noopener noreferrer">https://graduatestudies.smu.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Doctoral (PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must be admitted to an SMU PhD program. Requires a good Master's or Bachelor's degree.</li><li><strong>Standardized Test Scores:</strong> A good GMAT or GRE score is required for PhD in Business. English proficiency is required.</li><li><strong>Field of Study:</strong> PhD programs in Business, Economics, Psychology, Law, and Information Systems.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. You are automatically considered when you apply for a PhD program, typically by the end of January.</td></tr>
+                    <tr><td>Value</td><td>Full tuition fee waiver and a monthly living stipend (ranging from S$2,200 to S$3,300).</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to an SMU PhD program. All admitted students are automatically considered.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> Required.</li><li><strong>Letters of Recommendation (LORs):</strong> Three are required.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>CV or Resume:</strong> Required.</li><li><strong>GMAT/GRE scores:</strong> Required for many programs.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2000</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Postgraduate (MBA)</span>
+            <span class="year-data" style="display:none;">1957 (in France), 2000 (Singapore Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">INSEAD-Syngenta MBA Scholarship for Emerging Country Leaders</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore (or France), INSEAD Business School.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Financial Times Global MBA Ranking (2024):</strong> 2nd</li><li><strong>QS Global MBA Rankings (2024):</strong> 2nd</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.insead.edu" target="_blank" rel="noopener noreferrer">https://www.insead.edu</a></td></tr>
+                    <tr><td>Level</td><td>Postgraduate (MBA)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must be admitted to the INSEAD MBA program.</li><li><strong>Standardized Test Scores:</strong> A competitive GMAT/GRE score is required for admission.</li><li><strong>Field of Study:</strong> Master of Business Administration.</li><li><strong>Other:</strong> For candidates from developing countries (including India) who have a commitment to working in their home country and a background in the agricultural sector.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by admission round. Typically there are deadlines in February and April.</td></tr>
+                    <tr><td>Value</td><td>A scholarship of €25,000.</td></tr>
+                    <tr><td>Application</td><td>After submitting your MBA application, you can access the scholarship application portal and apply with specific scholarship essays.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> Specific scholarship essays are required.</li><li><strong>All documents for the INSEAD MBA application.:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1957 (in France), 2000 (Singapore Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Doctoral (PhD)</span>
+            <span class="year-data" style="display:none;">1905</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Lee Kong Chian Graduate Scholarships (NUS)</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, National University of Singapore (NUS).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 8th</li><li><strong>THE World University Rankings (2024):</strong> 19th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.nus.edu.sg" target="_blank" rel="noopener noreferrer">https://www.nus.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Doctoral (PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Excellent academic record, admitted to an NUS PhD program.</li><li><strong>Standardized Test Scores:</strong> As required for the program.</li><li><strong>Field of Study:</strong> All PhD programs.</li><li><strong>Other:</strong> For students who demonstrate leadership and a commitment to service.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. You are nominated by your department.</td></tr>
+                    <tr><td>Value</td><td>A monthly stipend of S$3,300, full tuition fees, and various allowances for books, travel, and settling in.</td></tr>
+                    <tr><td>Application</td><td>Apply for PhD admission. Your department will nominate you if you are a top candidate.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>All documents for PhD admission.:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1905</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Doctoral (PhD)</span>
+            <span class="year-data" style="display:none;">Not applicable (multiple universities)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">A*STAR Computing and Information Science (ACIS) Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, at NUS, NTU, SUTD, or SMU.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Tenable at Singapore's top universities for computer science, including NUS (QS Subject 2024: 6th) and NTU (QS Subject 2024: 9th).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.a-star.edu.sg" target="_blank" rel="noopener noreferrer">https://www.a-star.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Doctoral (PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> A Bachelor's degree with a strong academic record.</li><li><strong>Standardized Test Scores:</strong> As required by the university.</li><li><strong>Field of Study:</strong> Computing and Information Science fields, including AI, Cybersecurity, Data Analytics, and Robotics.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The deadline is typically August 1 for the following year's January intake.</td></tr>
+                    <tr><td>Value</td><td>A fully-funded scholarship covering tuition, a monthly stipend, and allowances. Includes a one-year research attachment at an A*STAR Research Institute.</td></tr>
+                    <tr><td>Application</td><td>Apply online through the A*STAR portal.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A research proposal is required.</li><li><strong>Letters of Recommendation (LORs):</strong> Required.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Passport copy:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>Not applicable (multiple universities)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate</span>
+            <span class="year-data" style="display:none;">1905</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Science & Technology Undergraduate Scholarship (NUS)</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, National University of Singapore (NUS).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 8th</li><li><strong>THE World University Rankings (2024):</strong> 19th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.nus.edu.sg" target="_blank" rel="noopener noreferrer">https://www.nus.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Excellent high school results.</li><li><strong>Standardized Test Scores:</strong> As required for admission.</li><li><strong>Field of Study:</strong> Computing, Engineering, and Science (excluding Pharmacy).</li><li><strong>Other:</strong> For citizens of Asian countries (excluding Singapore).</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. You are considered with your admission application.</td></tr>
+                    <tr><td>Value</td><td>Covers the subsidized tuition fees (after MOE Tuition Grant), a S$6,000 annual living allowance, a S$200 one-time settling-in allowance, and an annual accommodation allowance. Carries a 3-year bond.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to an eligible program at NUS. All eligible candidates are automatically considered.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>All documents required for university admission.:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1905</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Recent Graduates</span>
+            <span class="year-data" style="display:none;">Not applicable (competition)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">James Dyson Award</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Global, including a national competition in India. Top prize is international.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (design competition).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.jamesdysonaward.org" target="_blank" rel="noopener noreferrer">https://www.jamesdysonaward.org</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Recent Graduates</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must be enrolled or have recently graduated (within 4 years) from a university-level course in engineering or design.</li><li><strong>Standardized Test Scores:</strong> N/A.</li><li><strong>Field of Study:</strong> Product Design, Industrial Design, and Engineering.</li><li><strong>Other:</strong> This is a design competition. You must have designed a product that solves a problem.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The deadline to enter is typically in mid-July.</td></tr>
+                    <tr><td>Value</td><td>The national winner receives £5,000. The international winner receives £30,000.</td></tr>
+                    <tr><td>Application</td><td>Submit your project details, images, and a video to the James Dyson Award website.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>A detailed project description and rationale.:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>Not applicable (competition)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate (Research Internship)</span>
+            <span class="year-data" style="display:none;">1991</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">NTU India Connect Research Internship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, Nanyang Technological University (NTU).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 15th</li><li><strong>THE World University Rankings (2024):</strong> 32nd</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://global.ntu.edu.sg" target="_blank" rel="noopener noreferrer">https://global.ntu.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate (Research Internship)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must be enrolled in an Indian university and have a strong academic record.</li><li><strong>Standardized Test Scores:</strong> English proficiency is required.</li><li><strong>Field of Study:</strong> Various research areas available at NTU.</li><li><strong>Other:</strong> Specifically for students from Indian universities to undertake a short-term research project.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The application window is typically in the fall for the following summer.</td></tr>
+                    <tr><td>Value</td><td>A monthly stipend to cover living costs for the duration of the internship (2-6 months).</td></tr>
+                    <tr><td>Application</td><td>Apply online through the NTU Global portal.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A statement of research interest is required.</li><li><strong>Letters of Recommendation (LORs):</strong> Required.</li><li><strong>Academic Transcripts:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1991</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Diploma and Undergraduate</span>
+            <span class="year-data" style="display:none;">1964</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">SIM Global Education Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, Singapore Institute of Management (SIM).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (private education institution).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.sim.edu.sg" target="_blank" rel="noopener noreferrer">https://www.sim.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Diploma and Undergraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Outstanding academic results in high school or diploma studies.</li><li><strong>Standardized Test Scores:</strong> English proficiency as required for the course.</li><li><strong>Field of Study:</strong> All diploma and undergraduate degree programs offered at SIM.</li><li><strong>Other:</strong> Open to new international students. Must demonstrate strong leadership and co-curricular records.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>There are typically two application cycles, with deadlines in March and September.</td></tr>
+                    <tr><td>Value</td><td>Covers tuition fees, course fees, and examination fees.</td></tr>
+                    <tr><td>Application</td><td>A separate online application is required after you have applied for a course at SIM.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal essay is required.</li><li><strong>Letters of Recommendation (LORs):</strong> One reference is required.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>CV or Resume:</strong> Detailing co-curricular achievements.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1964</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
+            <span class="year-data" style="display:none;">1970 (in Australia), 2003 (Singapore Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">James Cook University (JCU) Singapore - Vice Chancellor's International Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, James Cook University Singapore.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>James Cook University - QS World University Rankings (2025):</strong> 445th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.jcu.edu.sg" target="_blank" rel="noopener noreferrer">https://www.jcu.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit. A high level of achievement is required.</li><li><strong>Standardized Test Scores:</strong> English proficiency is required.</li><li><strong>Field of Study:</strong> All coursework programs offered at the Singapore campus.</li><li><strong>Other:</strong> Open to all international students.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by intake. Check the website for specific dates.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee reduction, up to 25% for the duration of the course.</td></tr>
+                    <tr><td>Application</td><td>A separate scholarship application is required, which includes a personal statement.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is required.</li><li><strong>Academic Transcripts:</strong> Required for the course application.</li><li><strong>CV or Resume:</strong> Recommended.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1970 (in Australia), 2003 (Singapore Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Postgraduate (Master's)</span>
+            <span class="year-data" style="display:none;">2004</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">SP Jain School of Global Management - Postgraduate Merit Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, SP Jain School of Global Management.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Ranked by various business publications, e.g., Forbes Top 20 International 1-year MBAs.</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.spjain.sg" target="_blank" rel="noopener noreferrer">https://www.spjain.sg</a></td></tr>
+                    <tr><td>Level</td><td>Postgraduate (Master's)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Strong undergraduate academic performance and a good GMAT/GRE/SPJAT score.</li><li><strong>Standardized Test Scores:</strong> GMAT/GRE/SPJAT and English proficiency tests are required.</li><li><strong>Field of Study:</strong> Master's programs such as the Global MBA.</li><li><strong>Other:</strong> Open to all nationalities. Based on a holistic review of the application, including work experience and interview performance.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. You are automatically considered with your program application.</td></tr>
+                    <tr><td>Value</td><td>Partial tuition fee waivers of varying amounts.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to a postgraduate program. The admissions committee will assess you for scholarship eligibility.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>All documents for program admission (essays, LORs, transcripts, etc.).:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>2004</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Diploma, Undergraduate, and Postgraduate</span>
+            <span class="year-data" style="display:none;">1966 (in Australia), 2008 (Singapore Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Curtin Singapore - Merit Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, Curtin University Singapore.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Curtin University - QS World University Rankings (2025):</strong> 174th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.curtin.edu.sg" target="_blank" rel="noopener noreferrer">https://www.curtin.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Diploma, Undergraduate, and Postgraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Based on academic merit from previous studies.</li><li><strong>Standardized Test Scores:</strong> Must meet English language requirements.</li><li><strong>Field of Study:</strong> All programs at the Singapore campus.</li><li><strong>Other:</strong> Open to new international students.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application required. You are automatically assessed.</td></tr>
+                    <tr><td>Value</td><td>A 25% reduction in the first-year tuition fee.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to Curtin Singapore. Eligible students will be automatically awarded the scholarship.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>All documents submitted for course application.:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1966 (in Australia), 2008 (Singapore Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Undergraduate and Postgraduate</span>
+            <span class="year-data" style="display:none;">1956</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">Management Development Institute of Singapore (MDIS) - Merit Scholarships</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, MDIS.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (private education institution).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.mdis.edu.sg" target="_blank" rel="noopener noreferrer">https://www.mdis.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Undergraduate and Postgraduate</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Excellent academic results.</li><li><strong>Standardized Test Scores:</strong> English proficiency as required.</li><li><strong>Field of Study:</strong> Various programs.</li><li><strong>Other:</strong> Open to all nationalities. A strong record of co-curricular activities is also considered.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies. Check the website for the current application cycle.</td></tr>
+                    <tr><td>Value</td><td>Partial tuition fee grants, with values such as S$4,000 for Master's and S$3,200 for Bachelor's.</td></tr>
+                    <tr><td>Application</td><td>A separate application form is required, to be submitted along with your course application.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A personal statement is often required.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>CV or Resume:</strong> Detailing achievements.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1956</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Postgraduate (Master's by Research and PhD)</span>
+            <span class="year-data" style="display:none;">1991</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">NTU Research Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, Nanyang Technological University (NTU).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 15th</li><li><strong>THE World University Rankings (2024):</strong> 32nd</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.ntu.edu.sg" target="_blank" rel="noopener noreferrer">https://www.ntu.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Postgraduate (Master's by Research and PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Requires a Bachelor's degree with at least Second Class Honours (Upper Division) or equivalent.</li><li><strong>Standardized Test Scores:</strong> Must meet the English language requirements of the specific graduate school. GRE may be required for certain programs.</li><li><strong>Field of Study:</strong> All research-based graduate programs at NTU.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. You are automatically considered when you apply for a research-based postgraduate program. Deadlines are typically in November and January.</td></tr>
+                    <tr><td>Value</td><td>A monthly stipend (S$2,200, which increases to S$2,700 after passing the Qualifying Exam) and a tuition fee subsidy. This is the primary funding mechanism for most international research students at NTU.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to an eligible Master's by Research or PhD program at NTU. All eligible admitted students are considered.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A research proposal or statement of interest is required.</li><li><strong>Letters of Recommendation (LORs):</strong> Two academic references are required.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>CV or Resume:</strong> Required.</li><li><strong>Proof of English proficiency (TOEFL/IELTS scores):</strong> Required if applicable.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1991</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Postgraduate (Master's by Research and PhD)</span>
+            <span class="year-data" style="display:none;">1905</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">NUS Research Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, National University of Singapore (NUS).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>QS World University Rankings (2025):</strong> 8th</li><li><strong>THE World University Rankings (2024):</strong> 19th</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.nus.edu.sg" target="_blank" rel="noopener noreferrer">https://www.nus.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Postgraduate (Master's by Research and PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Requires a Bachelor's degree with at least Second Class Honours (Upper Division) or equivalent.</li><li><strong>Standardized Test Scores:</strong> English proficiency (IELTS/TOEFL) is required. GRE is required for many faculties, including Engineering and Computer Science.</li><li><strong>Field of Study:</strong> All research-based graduate programs at NUS.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. You are automatically considered when you apply for a research-based program.</td></tr>
+                    <tr><td>Value</td><td>A monthly stipend (S$2,200, which increases to S$2,700 after passing the Qualifying Exam) and a full tuition fee subsidy.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to an eligible Master's by Research or PhD program at NUS. All admitted research students are typically offered this scholarship.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> A research proposal is required.</li><li><strong>Letters of Recommendation (LORs):</strong> Two references are required.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>CV or Resume:</strong> Required.</li><li><strong>GRE/GMAT scores:</strong> Required for many programs.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1905</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Doctoral (PhD)</span>
+            <span class="year-data" style="display:none;">2009</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">SUTD PhD President's Graduate Fellowship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, Singapore University of Technology and Design (SUTD).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> A young and specialized university, often recognized for innovation and engineering education.</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://sutd.edu.sg" target="_blank" rel="noopener noreferrer">https://sutd.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Doctoral (PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> An outstanding Bachelor's or Master's degree in a relevant discipline with a strong academic record.</li><li><strong>Standardized Test Scores:</strong> A good GRE score is required. English proficiency (IELTS/TOEFL) is also necessary.</li><li><strong>Field of Study:</strong> PhD programs in Engineering (all pillars) and Architecture and Sustainable Design.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Considered upon application to the PhD program. The application deadline is typically in mid-March.</td></tr>
+                    <tr><td>Value</td><td>A very attractive monthly stipend of S$3,600, full tuition fee coverage, and conference funding support.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to an SUTD PhD program. Top candidates are automatically considered for this prestigious fellowship.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Statement of Purpose (SOP):</strong> Required.</li><li><strong>Letters of Recommendation (LORs):</strong> Three are required.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>CV or Resume:</strong> Required.</li><li><strong>GRE scores:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2009</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Doctoral (PhD)</span>
+            <span class="year-data" style="display:none;">2017</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">SUSS PhD Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, Singapore University of Social Sciences (SUSS).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> A specialized public university focused on social sciences. Not typically included in major global rankings.</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.suss.edu.sg" target="_blank" rel="noopener noreferrer">https://www.suss.edu.sg</a></td></tr>
+                    <tr><td>Level</td><td>Doctoral (PhD)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must have at least a 2nd Upper Class Honours Degree or equivalent from a reputable university. Must be seeking admission to a full-time PhD programme at SUSS.</li><li><strong>Standardized Test Scores:</strong> English proficiency (IELTS/TOEFL) is required if the medium of instruction in previous studies was not English.</li><li><strong>Field of Study:</strong> PhD in Gerontology, PhD in Engineering, and other PhD programmes offered by the Office of Graduate Studies.</li><li><strong>Other:</strong> Open to all nationalities. Must not be receiving any other sponsorship or scholarship.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Eligible applicants are nominated by the admissions committee. Interviews for shortlisted candidates are held by end of May for the July intake and end of November for the January intake.</td></tr>
+                    <tr><td>Value</td><td>Covers full tuition and miscellaneous fees. Provides a monthly stipend of S$2,200 for international students (increases to S$2,700 after passing the Qualifying Examination). The scholarship is tenable for up to 4 years.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to a PhD programme at SUSS. Your application will be evaluated for the scholarship during the admission interviews. Nominated applicants will be invited for a separate scholarship interview.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>All documents required for PhD admission.:</strong> Yes</li><li><strong>Research Proposal:</strong> Required as part of the PhD application.</li><li><strong>Academic Transcripts:</strong> Required.</li><li><strong>Letters of Recommendation (LORs):</strong> Required for PhD admission.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2017</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Pre-University (Junior College - equivalent to classes 11 and 12)</span>
+            <span class="year-data" style="display:none;">Not applicable (multiple Junior Colleges).</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">SIA Youth Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, at selected Junior Colleges.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (pre-university/high school level).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.moe.gov.sg" target="_blank" rel="noopener noreferrer">https://www.moe.gov.sg</a></td></tr>
+                    <tr><td>Level</td><td>Pre-University (Junior College - equivalent to classes 11 and 12)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must have completed Class 10 in the application year with an excellent academic record (minimum 85% or Grade A in English as the first language).</li><li><strong>Standardized Test Scores:</strong> Not applicable.</li><li><strong>Field of Study:</strong> GCE 'A'-Level curriculum.</li><li><strong>Other:</strong> Must be a citizen of India. Age between 17 to 19 years at the time of application.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>The application period is typically in June/July.</td></tr>
+                    <tr><td>Value</td><td>A full scholarship covering tuition fees and examination fees. Includes an annual allowance, hostel accommodation, a settling-in allowance, medical benefits, and accident insurance coverage. Also covers return airfare.</td></tr>
+                    <tr><td>Application</td><td>Apply online through the Ministry of Education, Singapore's website. Shortlisted candidates will be invited to take a selection test and attend an interview.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Class 9 final and Class 10 pre-board/final mark sheets.</li><li><strong>Passport or Birth Certificate:</strong> Required for identity and age proof.</li><li><strong>Passport-sized photograph:</strong> Required.</li></ul></td></tr>
+                    <tr><td>Established</td><td>Not applicable (multiple Junior Colleges).</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">High School (Classes 11 and 12)</span>
+            <span class="year-data" style="display:none;">2002 (Singapore Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">GIIS Global Citizen Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, Global Indian International School (GIIS).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Not applicable (international K-12 school).</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://singapore.globalindianschool.org" target="_blank" rel="noopener noreferrer">https://singapore.globalindianschool.org</a></td></tr>
+                    <tr><td>Level</td><td>High School (Classes 11 and 12)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Requires excellent academic results in Class 9 and Class 10 pre-board examinations (typically above 80-85%).</li><li><strong>Standardized Test Scores:</strong> Not applicable, but there is a written scholarship test.</li><li><strong>Field of Study:</strong> CBSE or IB Diploma Programme.</li><li><strong>Other:</strong> Must be an Indian citizen. Strong co-curricular achievements are also considered.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Application deadlines are typically in January/February/March for different test dates.</td></tr>
+                    <tr><td>Value</td><td>A fully-funded scholarship worth approximately S$90,000 per student. It covers tuition fees, boarding and lodging at the hostel, and travel expenses for two years.</td></tr>
+                    <tr><td>Application</td><td>Apply online through the GIIS website. The selection process involves a written test (General Ability, Maths, English) followed by two rounds of interviews for shortlisted candidates.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Academic Transcripts:</strong> Mark sheets of Class 9 and Class 10 pre-board/half-yearly examinations.</li><li><strong>Certificates of extra-curricular achievements:</strong> Required.</li><li><strong>Valid ID Proof:</strong> Passport or Aadhaar Card.</li></ul></td></tr>
+                    <tr><td>Established</td><td>2002 (Singapore Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Postgraduate (MBA)</span>
+            <span class="year-data" style="display:none;">1957 (in France), 2000 (Singapore Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">INSEAD Louis Vuitton Scholarship for Indian Citizens</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore (or France), INSEAD Business School.</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Financial Times Global MBA Ranking (2024):</strong> 2nd</li><li><strong>QS Global MBA Rankings (2024):</strong> 2nd</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.insead.edu" target="_blank" rel="noopener noreferrer">https://www.insead.edu</a></td></tr>
+                    <tr><td>Level</td><td>Postgraduate (MBA)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Must be admitted to the INSEAD MBA programme.</li><li><strong>Standardized Test Scores:</strong> A competitive GMAT/GRE score is required for admission.</li><li><strong>Field of Study:</strong> Master of Business Administration.</li><li><strong>Other:</strong> Must be a citizen of India and have completed a significant part of your education and professional experience in India. Preference is given to candidates with experience in the retail sector.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>Varies by admission round. Typically there are deadlines in April/May and June/July.</td></tr>
+                    <tr><td>Value</td><td>A scholarship of €25,000.</td></tr>
+                    <tr><td>Application</td><td>After receiving an admission offer, apply through the INSEAD scholarship portal. This requires submitting specific essays detailing your career aspirations and financial situation.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>Scholarship Essays:</strong> Required, focusing on career goals and financial need.</li><li><strong>All documents for the INSEAD MBA application:</strong> Considered during evaluation.</li></ul></td></tr>
+                    <tr><td>Established</td><td>1957 (in France), 2000 (Singapore Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Postgraduate (Master's)</span>
+            <span class="year-data" style="display:none;">1907 (in France), 2005 (Singapore Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">ESSEC Business School Excellence Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, ESSEC Business School (Asia-Pacific Campus).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Globally recognized business school. Financial Times ranks its Master in Management and Master in Finance programs in the top 10 worldwide.</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.essec.edu" target="_blank" rel="noopener noreferrer">https://www.essec.edu</a></td></tr>
+                    <tr><td>Level</td><td>Postgraduate (Master's)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Demonstrated outstanding academic performance in previous studies.</li><li><strong>Standardized Test Scores:</strong> A strong GMAT or GRE score is required for admission and is a key factor for the scholarship.</li><li><strong>Field of Study:</strong> Master in Finance, Master in Management, and other Master's programs.</li><li><strong>Other:</strong> Open to all international students. Awarded based on the overall quality of the application profile.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Candidates are automatically considered upon admission to the program.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, which can cover up to 50% of the total tuition fees.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to an eligible Master's program at ESSEC's Singapore campus. Scholarship decisions are made at the same time as the admission offer.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>All documents for Master's program admission.:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1907 (in France), 2005 (Singapore Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <div class="scholarship-card">
+            <!-- Hidden data for filtering -->
+            <span class="level-data" style="display:none;">Postgraduate (Master's)</span>
+            <span class="year-data" style="display:none;">1907 (in France), 2005 (Singapore Campus)</span>
+            <span class="rank-data" style="display:none;">N/A</span>
+
+            <h3 class="scholarship-title">ESSEC Business School Diversity Scholarship</h3>
+            <table class="details-table">
+                <tbody>
+                    <tr><td>Host</td><td>Singapore, ESSEC Business School (Asia-Pacific Campus).</td></tr>
+                    <tr><td>Rankings / Featured In</td><td><ul><li><strong>Note:</strong> Globally recognized business school. Financial Times ranks its Master in Management and Master in Finance programs in the top 10 worldwide.</li></ul></td></tr>
+                    <tr><td>Website</td><td><a href="https://www.essec.edu" target="_blank" rel="noopener noreferrer">https://www.essec.edu</a></td></tr>
+                    <tr><td>Level</td><td>Postgraduate (Master's)</td></tr>
+                    <tr><td>Eligibility / Features</td><td><ul><li><strong>Academic Requirements:</strong> Strong academic record.</li><li><strong>Standardized Test Scores:</strong> As required for program admission.</li><li><strong>Field of Study:</strong> Master in Finance, Master in Management, and other Master's programs.</li><li><strong>Other:</strong> Open to international students from diverse backgrounds (citizenship, prior education, or personal experience) who can enrich the cohort. Both merit and financial need are considered.</li></ul></td></tr>
+                    <tr><td>Deadline</td><td>No separate application. Candidates are automatically considered upon admission.</td></tr>
+                    <tr><td>Value</td><td>A partial tuition fee waiver, which can cover up to 50% of the total tuition fees.</td></tr>
+                    <tr><td>Application</td><td>Apply for admission to an eligible Master's program at ESSEC's Singapore campus. Your profile's contribution to the class diversity will be evaluated for the scholarship.</td></tr>
+                    <tr><td>Documents</td><td><ul><li><strong>All documents for Master's program admission.:</strong> Yes</li></ul></td></tr>
+                    <tr><td>Established</td><td>1907 (in France), 2005 (Singapore Campus)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    
+            </div>
+            <div id="pagination-controls" class="pagination">
+                <div class="pagination"><span> Page 1 of 1 </span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="home-button-container">
+        <a href="/scholarships.html" title="Back to All Countries">
+            <img src="images/home-icon.png" alt="Home">
+        </a>
+    </div>
+    
+    <script src="app_filter.js" defer></script>
+    
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-workbox.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+
+</body>
+</html>

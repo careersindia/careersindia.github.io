@@ -1,107 +1,141 @@
 // =================================================================================
-// == COMPLETE app_filter.js SCRIPT FOR FILTERING AND SORTING STATIC PAGES ==
+// == FINAL, COMPLETE app_filter.js WITH CORRECTED FILTER LOGIC ==
 // =================================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Static page loaded. Initializing filters...");
+    console.log("Static page loaded. Initializing interactive filters...");
 
-    // 1. Get all the HTML elements we need
+    // 1. Get all the interactive HTML elements
     const levelSelect = document.getElementById('level-select');
     const dateSelect = document.getElementById('date-select');
     const sortButton = document.getElementById('sort-by-qs-btn');
-    const indianScholarshipsBtn = document.getElementById('indianScholarshipsBtn');
     const displayArea = document.getElementById('scholarship-display');
     
-    // Get all the scholarship cards that were pre-built into the HTML
+    // 2. Get all the scholarship cards that were pre-built into the HTML
     const allScholarshipCards = Array.from(displayArea.querySelectorAll('.scholarship-card'));
 
     if (allScholarshipCards.length === 0) {
         console.log("No scholarship cards found on the page. Stopping filter script.");
+        // If no cards, ensure placeholder is shown if it was meant to be shown
+        // and prevent errors from trying to process empty data.
+        showPlaceholder(true); 
         return;
     }
     
     console.log(`Found ${allScholarshipCards.length} scholarship cards to manage.`);
 
-    // 2. We need to read the data from each card so we can filter it.
-    // We'll store this data in a clean array of objects.
-    const allScholarshipsData = allScholarshipCards.map(card => {
-        const get = (selector, attribute = 'textContent') => {
-            const element = card.querySelector(selector);
-            return element ? element[attribute].trim() : '';
+    // 3. Read the hidden data from each card into a clean JavaScript array.
+    const allScholarshipsData = allScholarshipCards.map((card, index) => {
+        const get = (className) => {
+            const element = card.querySelector('.' + className);
+            return element ? element.textContent.trim() : '';
         };
 
-        const rankText = get('.rank-data');
+        const rankText = get('rank-data');
         const rankMatch = rankText.match(/\d+/);
 
         return {
-            element: card, // Keep a reference to the original HTML element
-            level: get('.level-data'),
-            year: parseInt(get('.year-data'), 10) || 0,
-            qsRank: rankMatch ? parseInt(rankMatch[0], 10) : Infinity
+            element: card,
+            // Ensure level is lowercased for consistent matching.
+            // Split by comma or 'and' to handle multiple levels like "undergraduate and postgraduate"
+            level: get('level-data').toLowerCase().split(/,\s*| and /).map(s => s.trim()), 
+            year: parseInt(get('year-data'), 10) || 0,
+            qsRank: rankMatch ? parseInt(rankMatch[0], 10) : Infinity,
+            originalIndex: index
         };
     });
 
-    // --- All filter, sort, and display functions ---
+    // Helper to manage the "No results found" message
+    function showPlaceholder(show) {
+        let placeholder = displayArea.querySelector('.placeholder-text');
+        if (show && !placeholder) {
+            displayArea.insertAdjacentHTML('beforeend', '<p class="placeholder-text">No scholarships match your criteria on this page.</p>');
+        } else if (!show && placeholder) {
+            placeholder.remove();
+        }
+    }
 
+    // =========================================================================
+    // == BUG FIX: THIS IS THE NEW, CORRECTED applyFilters FUNCTION ==
+    // =========================================================================
     function applyFilters() {
         const levelFilter = levelSelect.value;
         const dateFilter = dateSelect.value;
+        let visibleCount = 0;
 
         allScholarshipsData.forEach(scholarship => {
-            let isVisible = true;
+            let matchesLevel = false;
+            let matchesDate = false;
 
-            // Level of Study Filter
-            if (levelFilter !== 'all' && !scholarship.level.toLowerCase().includes(levelFilter)) {
-                isVisible = false;
+            // --- LEVEL OF STUDY FILTER (CORRECTED LOGIC) ---
+            if (levelFilter === 'all') {
+                matchesLevel = true;
+            } else {
+                // Check if ANY of the scholarship's levels match the filter value
+                if (scholarship.level.includes(levelFilter)) {
+                    matchesLevel = true;
+                }
             }
 
-            // Establishment Date Filter
-            if (dateFilter !== 'all') {
+            // --- ESTABLISHMENT DATE FILTER (CORRECTED LOGIC) ---
+            if (dateFilter === 'all') {
+                matchesDate = true;
+            } else {
                 const year = scholarship.year;
-                if (!year) {
-                    isVisible = false;
-                } else {
+                if (year && year > 0) {
                     switch (dateFilter) {
-                        case 'before-1500': if (year >= 1500) isVisible = false; break;
-                        case '1500-1700': if (year < 1500 || year > 1700) isVisible = false; break;
-                        case '1700-1900': if (year < 1700 || year > 1900) isVisible = false; break;
-                        case '1900-2000': if (year < 1900 || year > 2000) isVisible = false; break;
-                        case 'after-2000': if (year <= 2000) isVisible = false; break;
+                        case 'before-1500': if (year < 1500) matchesDate = true; break;
+                        case '1500-1700': if (year >= 1500 && year <= 1700) matchesDate = true; break;
+                        case '1700-1900': if (year > 1700 && year <= 1900) matchesDate = true; break;
+                        case '1900-2000': if (year > 1900 && year <= 2000) matchesDate = true; break;
+                        case 'after-2000': if (year > 2000) matchesDate = true; break;
                     }
                 }
             }
 
-            // Show or hide the card based on the filters
+            // A card is visible ONLY if it matches BOTH active filters.
+            const isVisible = matchesLevel && matchesDate;
+
+            // Show or hide the actual HTML card
             scholarship.element.style.display = isVisible ? 'block' : 'none';
+            if (isVisible) visibleCount++;
         });
+        
+        // Handle the "No results found" message
+        showPlaceholder(visibleCount === 0);
     }
 
+    // --- SORT FUNCTION (Unchanged - scope is current page) ---
     function sortByQsRanking() {
-        // Sort the data array based on the QS rank
-        allScholarshipsData.sort((a, b) => a.qsRank - b.qsRank);
+        allScholarshipsData.sort((a, b) => {
+            // Handle Infinity ranks for non-ranked items
+            if (a.qsRank === Infinity && b.qsRank === Infinity) {
+                return a.originalIndex - b.originalIndex; // Maintain original order if both unranked
+            }
+            if (a.qsRank === Infinity) return 1; // Unranked comes after ranked
+            if (b.qsRank === Infinity) return -1; // Ranked comes before unranked
 
-        // Re-order the actual HTML elements in the display area
+            if (a.qsRank < b.qsRank) return -1;
+            if (a.qsRank > b.qsRank) return 1;
+            return a.originalIndex - b.originalIndex; // Stable sort for same ranks
+        });
+        
+        // Re-append elements in the new sorted order
         allScholarshipsData.forEach(scholarship => {
             displayArea.appendChild(scholarship.element);
         });
-        
-        // Re-apply filters to ensure visibility is correct
-        applyFilters();
+        console.log("Sorting complete.");
     }
     
-    // --- Attach all event listeners ---
+    // --- Attach Event Listeners to the Controls ---
     if (levelSelect) levelSelect.addEventListener('change', applyFilters);
     if (dateSelect) dateSelect.addEventListener('change', applyFilters);
     if (sortButton) sortButton.addEventListener('click', sortByQsRanking);
 
-    // The Indian Scholarships button is more complex with this static method.
-    // For now, it's best to link it to a separate, dedicated page.
-    if (indianScholarshipsBtn) {
-        indianScholarshipsBtn.addEventListener('click', () => {
-            // This can link to a future pre-built page for Indian scholarships
-            alert("This feature will be available on a dedicated page.");
-        });
-    }
+    // Apply filters once on load to ensure initial state is correct (e.g., if any filter
+    // had a default value other than 'all' or if we want to immediately filter based on URL params).
+    // For now, with default 'all' selected, this just ensures everything is visible.
+    applyFilters(); 
     
-    console.log("Filters are now active.");
+    console.log("Interactive filters are now active.");
 });
