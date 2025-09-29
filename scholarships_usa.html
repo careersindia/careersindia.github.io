@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USA Scholarships for Indian Students (2025-26) | Careers India</title>
+    <meta name="description" content="Explore a complete, filterable list of top scholarships for Indian students to study in the USA. Find details on eligibility, deadlines, and university rankings.">
+    <link rel="manifest" href="/manifest_7.json">
+    <style>
+        /* All of your CSS is here. */
+        @import url('https://fonts.cdnfonts.com/css/impact');
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; background-color: white; color: #333; }
+        .title-box { background-color: #7FFFD4; color: white; text-align: center; padding: 30px 20px; margin: 30px auto; width: 80%; max-width: 900px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); font-family: 'Impact', sans-serif; font-size: 3.5em; text-shadow: 1px 1px 0px #004d00, 4px 4px 8px rgba(0,0,0,0.3); }
+        .main-container { display: flex; flex-wrap: wrap; width: 95%; margin: 0 auto; max-width: 1400px; }
+        .left-column { flex: 1; min-width: 280px; padding: 20px; background-color: #ffffff; border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); align-self: flex-start; }
+        .left-column h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
+        .filter-group { margin-bottom: 20px; }
+        .filter-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .filter-group select, .filter-group button { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1em; cursor: pointer; }
+        .filter-group button { background-color: #f0f0f0; text-align: left; }
+        .right-column { flex: 3; min-width: 300px; padding: 0 10px; }
+        .scholarship-card { background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 25px; padding: 25px; border-left: 5px solid #39FF14; }
+        .details-table { width: 100%; border-collapse: collapse; }
+        .details-table td { padding: 12px 5px; border-bottom: 1px solid #f0f0f0; vertical-align: top; text-align: left; }
+        .details-table tr:last-child td { border-bottom: none; }
+        .details-table td:first-child { font-weight: bold; }
+        .details-table ul { margin: 0; padding-left: 20px; }
+        .home-button-container { position: fixed; top: 20px; right: 25px; z-index: 1000; }
+        .home-button-container a img { width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+        .placeholder-text { color: #777; font-size: 1.2em; text-align: center; padding: 50px; }
+        .scholarship-title { font-size: 1.5em; }
+        /* ... add any other CSS rules you have ... */
+    </style>
+</head>
+<body>
+
+    <div class="title-box">
+        SCHOLARSHIPS IN THE USA
+    </div>
+
+    <div class="main-container">
+        <div class="left-column">
+            <h2>Filters</h2>
+            
+            <div class="filter-group">
+                <label>Special Reports:</label>
+                <button id="indianScholarshipsBtn">Top Scholarships for Indians</button>
+            </div>
+            
+            <div class="filter-group">
+                <label for="level-select">Level of Study:</label>
+                <select id="level-select">
+                    <option value="all">All Levels</option>
+                    <option value="undergraduate">Undergraduate</option>
+                    <option value="master">Postgraduate (Master's)</option>
+                    <option value="phd">Doctoral (PhD)</option>
+                    <option value="postdoctoral">Postdoctoral</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="date-select">University Establishment Date:</label>
+                <select id="date-select">
+                    <option value="all">Any Time</option>
+                    <option value="before-1500">Before 1500</option>
+                    <option value="1500-1700">1500 - 1700</option>
+                    <option value="1700-1900">1700 - 1900</option>
+                    <option value="1900-2000">1900 - 2000</option>
+                    <option value="after-2000">After 2000</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Sort Results:</label>
+                <button id="sort-by-qs-btn">Sort by QS Ranking</button>
+            </div>
+        </div>
+        <div class="right-column">
+            <div id="scholarship-display">
+                <div class="placeholder-text">Loading scholarships...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="home-button-container">
+        <a href="/scholarships.html" title="Back to All Countries">
+            <img src="images/home-icon.png" alt="Home">
+        </a>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- ============ FINAL, CORRECT SCRIPT SECTION ============ -->
+    <!-- ============================================================= -->
+    
+    <!-- Load the main data for this country page -->
+    <script src="data_usa.js" defer></script>
+    
+    <!-- THIS IS THE FIX: Load the special data file for the Indian scholarships button -->
+    <script src="data_india_special.js" defer></script>
+    
+    <!-- Load the application logic file that uses both data files -->
+    <script src="app_country.js" defer></script>
+    
+    <!-- Your Service Worker script -->
+ <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-workbox.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+
+</body>
+</html>
