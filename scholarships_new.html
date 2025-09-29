@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Study Abroad & Indian Scholarships | Careers India</title>
+    <meta name="description" content="Select a country to explore a comprehensive list of scholarships for Indian students. Find opportunities in the USA, UK, Canada, Australia, and within India.">
+    <link rel="manifest" href="/manifest_7.json">
+    <style>
+        /* You can reuse your main CSS or use these simple styles */
+        @import url('https://fonts.cdnfonts.com/css/impact');
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            text-align: center;
+        }
+        .title-box {
+            background-color: #7FFFD4;
+            color: white;
+            padding: 30px 20px;
+            font-family: 'Impact', sans-serif;
+            font-size: 3em;
+            text-shadow: 1px 1px 0px #004d00, 3px 3px 6px rgba(0,0,0,0.3);
+        }
+        .intro-text {
+            margin: 40px 20px;
+            font-size: 1.2em;
+            color: #555;
+        }
+        .country-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .country-link {
+            display: block;
+            background-color: white;
+            color: #333;
+            text-decoration: none;
+            padding: 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            flex-basis: 280px; /* Set a base width for each box */
+        }
+        .country-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .country-link h2 {
+            margin: 0;
+            font-size: 1.8em;
+            color: #0056b3;
+        }
+        .home-button-container {
+            position: fixed;
+            top: 20px;
+            right: 25px;
+            z-index: 1000;
+        }
+        .home-button-container a img {
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="title-box">
+        GLOBAL & INDIAN SCHOLARSHIP DATABASE
+    </div>
+
+    <p class="intro-text">
+        Select a destination to explore a comprehensive list of scholarships.
+    </p>
+
+    <div class="country-grid">
+        <!-- This is the link to the page you just built -->
+        <a href="/scholarships_usa.html" class="country-link">
+            <h2>Scholarships in the USA</h2>
+        </a>
+
+        <!-- Add links for the other pages as you create them -->
+        <!-- Example for UK (you will build this page next) -->
+        <!--
+        <a href="/scholarships_uk.html" class="country-link">
+            <h2>Scholarships in the UK</h2>
+        </a>
+        -->
+
+        <!-- Example for Canada -->
+        <!--
+        <a href="/scholarships_canada.html" class="country-link">
+            <h2>Scholarships in Canada</h2>
+        </a>
+        -->
+        
+        <!-- Example for India -->
+        <!--
+        <a href="/scholarships_india.html" class="country-link">
+            <h2>Scholarships in India</h2>
+        </a>
+        -->
+    </div>
+    
+    <div class="home-button-container">
+        <a href="/mainnow.html" title="Go to Home">
+            <img src="images/home-icon.png" alt="Home">
+        </a>
+    </div>
+
+    <!-- No complex scripts are needed on this page -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-workbox.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+
+</body>
+</html>
