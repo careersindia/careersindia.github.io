@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Abroad Scholarships for Indian Students (2025-26) | Careers India</title>
+<meta name="description" content="Find the right scholarship to fund your dream of studying abroad. Our database lists top scholarships for Indian students in the USA, UK, Canada, Germany, and Australia and many others.  Filter by country and education level to see university details, eligibility, and scholarship value.">
+<link rel="manifest" href="/manifest_7.json">
+    <!-- Your Original CSS Is Included Below -->
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #ffffff; }
+        .header-buttons { text-align: center; margin-bottom: 20px; flex-wrap: wrap; display: flex; justify-content: center; }
+        .country-button { background-color: aquamarine; color: black; border: none; padding: 10px 15px; margin: 5px; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        .country-button:hover { background-color: #0056b3; }
+        .scholarship-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
+        .scholarship-item { background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .scholarship-item table { width: 100%; border-collapse: collapse; }
+        .scholarship-item th, .scholarship-item td { text-align: left; padding: 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+        .scholarship-item th { width: 30%; font-weight: bold; color: #333; }
+        .scholarship-item td { color: #555; }
+        .scholarship-item h3 { margin-top: 0; color: #0056b3; }
+        .nested-list { list-style-type: none; padding-left: 0; margin: 0; }
+        .nested-list li { margin-bottom: 5px; }
+
+        .extra-universities-section { max-width: 1200px; margin: 40px auto; padding: 20px; background-color: #fff; border-radius: 8px; }
+        .extra-universities-section h2 { text-align: center; }
+        .university-list { list-style-type: none; padding: 0; column-count: 3; column-gap: 20px; }
+        .university-list li { margin-bottom: 8px; }
+        .search-container { text-align: center; margin-bottom: 20px; }
+        #searchInput { width: 50%; padding: 10px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc; }
+.home-button-container {
+  position: fixed; /* This makes it float on top of other content */
+  top: 20px;       /* Position 20px from the top edge */
+  right: 25px;     /* Position 25px from the right edge */
+  z-index: 1000;   /* Ensures it's above other elements */
+}
+
+.home-button-container a img {
+  width: 50px; /* Adjust size as needed */
+  height: 50px;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.home-button-container a:hover img {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+    </style>
+</head>
+<body>
+
+    <!-- SECTION 1: MAIN SCHOLARSHIPS -->
+    <div class="header-buttons">
+        <button class="country-button" onclick="filterByCountry('all')">All</button>
+        <button class="country-button" onclick="filterByCountry('usa')">USA</button>
+        <button class="country-button" onclick="filterByCountry('uk')">UK</button>
+        <button class="country-button" onclick="filterByCountry('canada')">Canada</button>
+        <button class="country-button" onclick="filterByCountry('australia')">Australia</button>
+        <button class="country-button" onclick="filterByCountry('newzealand')">New Zealand</button>
+        <button class="country-button" onclick="filterByCountry('germany')">Germany</button>
+        <button class="country-button" onclick="filterByCountry('europe')">Europe</button>
+        <button class="country-button" onclick="filterByCountry('uae')">UAE</button>
+        <button class="country-button" onclick="filterByCountry('middleeast')">Middle East</button>
+        <button class="country-button" onclick="filterByCountry('singapore')">Singapore</button>
+        <button class="country-button" onclick="filterByCountry('india')">India</button>
+    </div>
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="searchScholarships()" placeholder="Search for university, scholarship, level...">
+    </div>
+    <div class="scholarship-container" id="scholarshipContainer">
+        <p>Loading scholarship data, please wait...</p>
+    </div>
+
+    <!-- SECTION 2: EXTRA UNIVERSITY LISTS -->
+    <div class="extra-universities-section" id="extraUniversitiesContainer">
+        <!-- Extra university lists will be loaded here -->
+    </div>
+
+    <script>
+        // --- GLOBAL VARIABLES & CONFIG ---
+        const scholarshipContainer = document.getElementById('scholarshipContainer');
+        const extraUniversitiesContainer = document.getElementById('extraUniversitiesContainer');
+        let allScholarshipsData = [];
+
+        // --- DATA FETCHING ---
+        async function loadAllData() {
+            try {
+                const [scholarshipResponse, extraUniResponse] = await Promise.all([
+                    fetch('all_scholarship_data.json'),
+                    fetch('extra_universities.json')
+                ]);
+
+                if (!scholarshipResponse.ok || !extraUniResponse.ok) {
+                    throw new Error('Network response was not ok.');
+                }
+
+                const scholarshipData = await scholarshipResponse.json();
+                const extraUniversitiesData = await extraUniResponse.json();
+
+                let processedData = [];
+                for (const countryCode in scholarshipData) {
+                    scholarshipData[countryCode].forEach(scholarship => {
+                        scholarship.country = countryCode;
+                        processedData.push(scholarship);
+                    });
+                }
+                allScholarshipsData = processedData;
+                displayScholarships(allScholarshipsData);
+                displayExtraUniversities(extraUniversitiesData);
+
+            } catch (error) {
+                console.error("Could not fetch or process page data:", error);
+                scholarshipContainer.innerHTML = '<p style="color: red; text-align: center;">Failed to load scholarship data.</p>';
+            }
+        }
+
+        // --- DISPLAY FUNCTIONS ---
+
+        // --- THIS IS THE UPDATED FUNCTION ---
+        function displayScholarships(scholarships) {
+            scholarshipContainer.innerHTML = '';
+            if (scholarships.length === 0) {
+                scholarshipContainer.innerHTML = '<p style="text-align: center;">No scholarships found.</p>';
+                return;
+            }
+
+            scholarships.forEach(scholarship => {
+                const item = document.createElement('div');
+                item.className = 'scholarship-item';
+
+                // Helper function to build HTML for nested objects (like Rankings, Eligibility)
+                const buildNestedList = (obj) => {
+                    if (!obj || typeof obj !== 'object') return 'N/A';
+                    let listHtml = '<ul class="nested-list">';
+                    for (const key in obj) {
+                        // For "Required Documents", the value is just 'true', so we only show the key.
+                        const value = obj[key] === true ? '' : `: ${obj[key]}`;
+                        listHtml += `<li><strong>${key}</strong>${value}</li>`;
+                    }
+                    listHtml += '</ul>';
+                    return listHtml;
+                };
+
+                // Build the full HTML structure for the scholarship
+                item.innerHTML = `
+                    <h3>${scholarship["Scholarship Name"] || 'N/A'}</h3>
+                    <table>
+                        <tr><th>Host</th><td>${scholarship["Host Country and University"] || 'N/A'}</td></tr>
+                        <tr><th>Rankings</th><td>${buildNestedList(scholarship["University Rankings"])}</td></tr>
+                        <tr><th>Website</th><td><a href="${scholarship.Website}" target="_blank">${scholarship.Website || 'N/A'}</a></td></tr>
+                        <tr><th>Level</th><td>${scholarship["Level of Study"] || 'N/A'}</td></tr>
+                        <tr><th>Eligibility</th><td>${buildNestedList(scholarship["Eligibility Criteria"])}</td></tr>
+                        <tr><th>Deadline</th><td>${scholarship["Application Deadline"] || 'N/A'}</td></tr>
+                        <tr><th>Value</th><td>${scholarship["Value/Inclusions"] || 'N/A'}</td></tr>
+                        <tr><th>Application</th><td>${scholarship["Application Process"] || 'N/A'}</td></tr>
+                        <tr><th>Documents</th><td>${buildNestedList(scholarship["Required Documents"])}</td></tr>
+                        <tr><th>Established</th><td>${scholarship["Establishment date of the University"] || 'N/A'}</td></tr>
+                    </table>
+                `;
+                scholarshipContainer.appendChild(item);
+            });
+        }
+
+        function displayExtraUniversities(extraData) {
+            extraUniversitiesContainer.innerHTML = '';
+            for (const countryCode in extraData) {
+                if (extraData[countryCode].length > 0) {
+                    const countryName = countryCode.toUpperCase();
+                    const sectionTitle = document.createElement('h2');
+                    sectionTitle.textContent = `Additional Universities in ${countryName}`;
+                    const list = document.createElement('ul');
+                    list.className = 'university-list';
+                    extraData[countryCode].forEach(uni => {
+                        const listItem = document.createElement('li');
+                        listItem.innerHTML = `<a href="${uni.link}" target="_blank">${uni.name}</a>`;
+                        list.appendChild(listItem);
+                    });
+                    extraUniversitiesContainer.appendChild(sectionTitle);
+                    extraUniversitiesContainer.appendChild(list);
+                }
+            }
+        }
+
+        // --- INTERACTIVITY FUNCTIONS ---
+        function filterByCountry(country) {
+            document.getElementById('searchInput').value = ''; // Clear search on country filter
+            if (country === 'all') {
+                displayScholarships(allScholarshipsData);
+            } else {
+                const filtered = allScholarshipsData.filter(s => s.country === country);
+                displayScholarships(filtered);
+            }
+        }
+
+        function searchScholarships() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allScholarshipsData.filter(s => {
+                // Search in all relevant fields
+                return Object.values(s).some(value => 
+                    String(value).toLowerCase().includes(searchTerm)
+                );
+            });
+            displayScholarships(filtered);
+        }
+
+        // --- SCRIPT EXECUTION ---
+        document.addEventListener('DOMContentLoaded', loadAllData);
+    </script>
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-workbox.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+</body>
+</html>
