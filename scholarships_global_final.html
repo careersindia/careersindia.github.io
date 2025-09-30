@@ -54,11 +54,22 @@
 </head>
 <body>
 
+<h1 style="text-align: center; padding: 20px; background-color: aquamarine; border-radius: 8px; box-shadow: 5px 5px 10px rgba(0,0,0,0.2); max-width: 800px; margin: 20px auto; border: 1px solid #ddd; font-family: Impact, sans-serif;font-size: 48px;">GLOBAL SCHOLARSHIPS PAGE</h1>
+
     <!-- SECTION 1: MAIN SCHOLARSHIPS -->
-    <div class="header-buttons">
+      <div class="header-buttons">
         <button class="country-button" onclick="filterByCountry('all')">All</button>
         <button class="country-button" onclick="filterByCountry('usa')">USA</button>
-        <!-- ... your other buttons ... -->
+        <button class="country-button" onclick="filterByCountry('uk')">UK</button>
+        <button class="country-button" onclick="filterByCountry('canada')">Canada</button>
+        <button class="country-button" onclick="filterByCountry('australia')">Australia</button>
+        <button class="country-button" onclick="filterByCountry('newzealand')">New Zealand</button>
+        <button class="country-button" onclick="filterByCountry('germany')">Germany</button>
+        <button class="country-button" onclick="filterByCountry('europe')">Europe</button>
+        <button class="country-button" onclick="filterByCountry('uae')">UAE</button>
+        <button class="country-button" onclick="filterByCountry('middleeast')">Middle East</button>
+        <button class="country-button" onclick="filterByCountry('singapore')">Singapore</button>
+        <button class="country-button" onclick="filterByCountry('india')">India</button>
     </div>
     <div class="search-container">
         <input type="text" id="searchInput" onkeyup="searchScholarships()" placeholder="Search for university, scholarship, level...">
