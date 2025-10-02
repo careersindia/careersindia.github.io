@@ -141,6 +141,206 @@
         <!-- 1. UPSC Civil Services Examination (CSE) -->
         <div class="exam-section" id="gov-upsc-cse">
             <h2>1. UPSC Civil Services Examination (CSE)</h2>
+
+<!-- Start of Collapsible UPSC Book Hub -->
+<style>
+    .upsc-accordion {
+        max-width: 90%;
+        margin: 20px auto;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        overflow: hidden; /* Important for the rounded corners */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .accordion-header {
+        background-color: aquamarine;
+        padding: 25px 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        position: relative; /* For the arrow icon */
+    }
+    .accordion-header:hover {
+        background-color: #66cdaa; /* A slightly darker aquamarine for hover */
+    }
+    .accordion-header h2 {
+        margin: 0;
+        color: #1a2a4c;
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+    .accordion-header .hub-intro {
+        margin: 10px 0 0;
+        color: #2c5282;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        padding-right: 30px; /* Space for the arrow */
+    }
+    .accordion-header::after { /* The expand/collapse arrow */
+        content: '\25BC'; /* Down arrow character */
+        font-size: 1.2rem;
+        color: #1a2a4c;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%) rotate(0deg);
+        transition: transform 0.4s ease;
+    }
+    .upsc-accordion.active .accordion-header::after {
+        transform: translateY(-50%) rotate(180deg); /* Up arrow */
+    }
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.7s ease-out, padding 0.5s ease;
+        background: #fdfdfd;
+        padding: 0 30px;
+    }
+    .gs-section {
+        margin-bottom: 25px;
+    }
+    .gs-section h3 {
+        color: #2c5282;
+        border-bottom: 2px solid #a0aec0;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+    }
+    .accordion-content ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .accordion-content li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .accordion-content li:last-child { border-bottom: none; }
+    .book-title {
+        color: #2d3748;
+        font-weight: 500;
+        padding-right: 15px;
+    }
+    .affiliate-link {
+        display: inline-block;
+        padding: 8px 18px;
+        background-color: #3182ce;
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        font-weight: bold;
+        white-space: nowrap;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .affiliate-link:hover {
+        background-color: #2b6cb0;
+        transform: translateY(-2px);
+    }
+    #redirect-overlay {
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(0, 0, 0, 0.85); color: white;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 2rem; font-weight: bold; z-index: 9999;
+        opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #redirect-overlay.visible { opacity: 1; visibility: visible; }
+</style>
+
+<div class="upsc-accordion" id="upscBookAccordion">
+    <div class="accordion-header">
+        <h2>The Ultimate UPSC CSE Booklist</h2>
+        <p class="hub-intro">
+            Forge your path to success with this curated collection of the most essential and highly-reviewed books for every stage of your UPSC preparation. From foundational history to advanced ethics, this list represents the gold standard used by toppers to build a comprehensive and winning strategy. <strong>Click here to expand the complete list.</strong>
+        </p>
+    </div>
+    <div class="accordion-content">
+        <!-- The padding-top is added here to create space when it opens -->
+        <div style="padding-top: 25px;">
+            <div class="gs-section">
+                <h3>General Studies - Paper I</h3>
+                <ul>
+                    <li><span class="book-title">History of Modern India (Rajiv Ahir)</span> <a href="https://fktr.in/z9IkENq" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Indian Art and Culture (Nitin Singhania)</span> <a href="https://fktr.in/itZTjzY" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">India's Ancient Past (R.S. Sharma)</span> <a href="https://fktr.in/bjkuSrq" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">History of Medieval India (Satish Chandra)</span> <a href="https://fktr.in/Lya6Ewo" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Physical and Human Geography (G.C. Leong)</span> <a href="https://fktr.in/qhyuz4Z" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Geography of India (Majid Hussain)</span> <a href="https://fktr.in/25eYwLR" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                </ul>
+            </div>
+
+            <div class="gs-section">
+                <h3>General Studies - Paper II</h3>
+                <ul>
+                    <li><span class="book-title">Indian Polity (M. Laxmikanth)</span> <a href="https://fktr.in/o95wczQ" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Governance in India (M. Laxmikanth)</span> <a href="https://fktr.in/3idZcya" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                </ul>
+            </div>
+
+            <div class="gs-section">
+                <h3>General Studies - Paper III & IV</h3>
+                <ul>
+                    <li><span class="book-title">Indian Economy (Ramesh Singh)</span> <a href="https://fktr.in/uIbDrPh" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Environment (Shankar IAS)</span> <a href="https://fktr.in/U3JI4FF" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Challenges to Internal Security (Ashok Kumar)</span> <a href="https://fktr.in/zVx8Sw9" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Ethics, Integrity & Aptitude (Subba Rao)</span> <a href="https://fktr.in/zFKc4IX" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                </ul>
+            </div>
+
+            <div class="gs-section">
+                <h3>Prelims - CSAT Paper II</h3>
+                <ul>
+                    <li><span class="book-title">Cracking the CSAT Paper 2 (Ariant)</span> <a href="https://fktr.in/MNr1Vv9" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- This div is for the link click animation overlay -->
+<div id="redirect-overlay">Redirecting to Flipkart...</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const accordion = document.getElementById('upscBookAccordion');
+        const accordionHeader = accordion.querySelector('.accordion-header');
+        const accordionContent = accordion.querySelector('.accordion-content');
+
+        accordionHeader.addEventListener('click', function() {
+            accordion.classList.toggle('active');
+            if (accordion.classList.contains('active')) {
+                // Set max-height to its scrollHeight to make it expand
+                accordionContent.style.maxHeight = accordionContent.scrollHeight + 50 + 'px';
+                accordionContent.style.padding = '0 30px 25px 30px'; // Add padding back
+            } else {
+                // Set max-height to 0 to collapse it
+                accordionContent.style.maxHeight = '0';
+                accordionContent.style.padding = '0 30px'; // Remove padding
+            }
+        });
+        
+        // The link-click animation script remains the same
+        const links = document.querySelectorAll('.affiliate-link');
+        const overlay = document.getElementById('redirect-overlay');
+
+        links.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const destinationUrl = this.href;
+                overlay.classList.add('visible');
+                setTimeout(function() {
+                    window.open(destinationUrl, '_blank');
+                    setTimeout(() => { overlay.classList.remove('visible'); }, 500);
+                }, 800);
+            });
+        });
+    });
+</script>
+<!-- End of Collapsible UPSC Book Hub -->
+
+
+
+
             <h4>Posts/Services Offered (Illustrative):</h4>
             <ul>
                 <li><strong>All India Services:</strong>
@@ -240,6 +440,182 @@
         <!-- 2. UPSC Indian Forest Service (IFoS) Examination -->
         <div class="exam-section" id="gov-upsc-ifos">
             <h2>2. UPSC Indian Forest Service (IFoS) Examination</h2>
+<!-- Start of Collapsible IFoS Book Hub -->
+<style>
+    .ifos-accordion {
+        max-width: 90%;
+        margin: 20px auto;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        overflow: hidden; /* Important for the rounded corners */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .ifos-accordion-header {
+        background-color: aquamarine;
+        padding: 25px 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        position: relative; /* For the arrow icon */
+    }
+    .ifos-accordion-header:hover {
+        background-color: #66cdaa; /* A slightly darker aquamarine for hover */
+    }
+    .ifos-accordion-header h2 {
+        margin: 0;
+        color: #1a2a4c;
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+    .ifos-accordion-header .hub-intro {
+        margin: 10px 0 0;
+        color: #2c5282;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        padding-right: 30px; /* Space for the arrow */
+    }
+    .ifos-accordion-header::after { /* The expand/collapse arrow */
+        content: '\25BC'; /* Down arrow character */
+        font-size: 1.2rem;
+        color: #1a2a4c;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%) rotate(0deg);
+        transition: transform 0.4s ease;
+    }
+    .ifos-accordion.active .ifos-accordion-header::after {
+        transform: translateY(-50%) rotate(180deg); /* Up arrow */
+    }
+    .ifos-accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.7s ease-out, padding 0.5s ease;
+        background: #fdfdfd;
+        padding: 0 30px;
+    }
+    .ifos-section {
+        margin-bottom: 25px;
+    }
+    .ifos-section h3 {
+        color: #2c5282;
+        border-bottom: 2px solid #a0aec0;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+    }
+    .ifos-accordion-content ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .ifos-accordion-content li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .ifos-accordion-content li:last-child { border-bottom: none; }
+    .book-title {
+        color: #2d3748;
+        font-weight: 500;
+        padding-right: 15px;
+    }
+    .affiliate-link {
+        display: inline-block;
+        padding: 8px 18px;
+        background-color: #3182ce;
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        font-weight: bold;
+        white-space: nowrap;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .affiliate-link:hover {
+        background-color: #2b6cb0;
+        transform: translateY(-2px);
+    }
+    /* The redirect overlay styles can be reused if already on the page */
+    #redirect-overlay-ifos {
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(0, 0, 0, 0.85); color: white;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 2rem; font-weight: bold; z-index: 9999;
+        opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #redirect-overlay-ifos.visible { opacity: 1; visibility: visible; }
+</style>
+
+<div class="ifos-accordion" id="ifosBookAccordion">
+    <div class="ifos-accordion-header">
+        <h2>Essential Booklist for UPSC IFoS Mains</h2>
+        <p class="hub-intro">
+            Master the Indian Forest Service Main Exam with this curated list of the most reputable and highly-reviewed books. This collection covers the core papers and popular optional subjects to build a strong foundation for a top score. <strong>Click here to expand the complete list.</strong>
+        </p>
+    </div>
+    <div class="ifos-accordion-content">
+        <div style="padding-top: 25px;">
+            <div class="ifos-section">
+                <h3>General Papers</h3>
+                <ul>
+                    <li><span class="book-title">Objective General English (S.P. Bakshi)</span> <a href="https://fktr.in/xwyvma4" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">High School English Grammar (Wren & Martin)</span> <a href="https://fktr.in/qUsw64p" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">General Knowledge (Manohar Pandey)</span> <a href="https://fktr.in/fR0bIx5" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                </ul>
+            </div>
+
+            <div class="ifos-section">
+                <h3>Popular Optional Subjects</h3>
+                <ul>
+                    <li><span class="book-title">Indian Forestry (Manikandan & Prabhu)</span> <a href="https://fktr.in/ZmTG7cV" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Principles of Agronomy (S.R. Reddy)</span> <a href="https://fktr.in/qzgY1xR" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Environment (Shankar IAS)</span> <a href="https://fktr.in/U3JI4FF" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Textbook of Geology (Mahapatra)</span> <a href="https://fktr.in/mR0onmb" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Zoology - Invertebrates (Kotpal)</span> <a href="https://fktr.in/3A6xCtN" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">A Textbook of Botany (Singh, Pande, Jain)</span> <a href="https://fktr.in/Hd1bHFa" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- This div is for the link click animation overlay -->
+<div id="redirect-overlay-ifos">Redirecting to Flipkart...</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const ifosAccordion = document.getElementById('ifosBookAccordion');
+        const ifosAccordionHeader = ifosAccordion.querySelector('.ifos-accordion-header');
+        const ifosAccordionContent = ifosAccordion.querySelector('.ifos-accordion-content');
+
+        ifosAccordionHeader.addEventListener('click', function() {
+            ifosAccordion.classList.toggle('active');
+            if (ifosAccordion.classList.contains('active')) {
+                ifosAccordionContent.style.maxHeight = ifosAccordionContent.scrollHeight + 50 + 'px';
+                ifosAccordionContent.style.padding = '0 30px 25px 30px';
+            } else {
+                ifosAccordionContent.style.maxHeight = '0';
+                ifosAccordionContent.style.padding = '0 30px';
+            }
+        });
+        
+        const ifosLinks = document.querySelectorAll('#ifosBookAccordion .affiliate-link');
+        const ifosOverlay = document.getElementById('redirect-overlay-ifos');
+
+        ifosLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const destinationUrl = this.href;
+                ifosOverlay.classList.add('visible');
+                setTimeout(function() {
+                    window.open(destinationUrl, '_blank');
+                    setTimeout(() => { ifosOverlay.classList.remove('visible'); }, 500);
+                }, 800);
+            });
+        });
+    });
+</script>
+<!-- End of Collapsible IFoS Book Hub -->
             <h4>Posts/Services Offered:</h4> <ul><li>Indian Forest Service (IFoS) - An All India Service.</li></ul>
             <h4>Eligibility Criteria (General):</h4>
             <ul>
@@ -269,6 +645,207 @@
         <!-- 3. UPSC Engineering Services Examination (ESE / IES) -->
         <div class="exam-section" id="gov-upsc-ese">
             <h2>3. UPSC Engineering Services Examination (ESE / IES)</h2>
+
+<!-- Start of Collapsible ESE Book Hub -->
+<style>
+    .ese-accordion {
+        max-width: 90%;
+        margin: 20px auto;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        overflow: hidden; /* Important for the rounded corners */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .ese-accordion-header {
+        background-color: aquamarine;
+        padding: 25px 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        position: relative; /* For the arrow icon */
+    }
+    .ese-accordion-header:hover {
+        background-color: #66cdaa; /* A slightly darker aquamarine for hover */
+    }
+    .ese-accordion-header h2 {
+        margin: 0;
+        color: #1a2a4c;
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+    .ese-accordion-header .hub-intro {
+        margin: 10px 0 0;
+        color: #2c5282;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        padding-right: 30px; /* Space for the arrow */
+    }
+    .ese-accordion-header::after { /* The expand/collapse arrow */
+        content: '\25BC'; /* Down arrow character */
+        font-size: 1.2rem;
+        color: #1a2a4c;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%) rotate(0deg);
+        transition: transform 0.4s ease;
+    }
+    .ese-accordion.active .ese-accordion-header::after {
+        transform: translateY(-50%) rotate(180deg); /* Up arrow */
+    }
+    .ese-accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.7s ease-out, padding 0.5s ease;
+        background: #fdfdfd;
+        padding: 0 30px;
+    }
+    .ese-discipline-section {
+        margin-bottom: 25px;
+    }
+    .ese-discipline-section h3 {
+        color: #2c5282;
+        border-bottom: 2px solid #a0aec0;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+    }
+    .ese-accordion-content ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .ese-accordion-content li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .ese-accordion-content li:last-child { border-bottom: none; }
+    .book-title {
+        color: #2d3748;
+        font-weight: 500;
+        padding-right: 15px;
+    }
+    .affiliate-link {
+        display: inline-block;
+        padding: 8px 18px;
+        background-color: #3182ce;
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        font-weight: bold;
+        white-space: nowrap;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .affiliate-link:hover {
+        background-color: #2b6cb0;
+        transform: translateY(-2px);
+    }
+    /* The redirect overlay styles can be reused if already on the page */
+    #redirect-overlay-ese {
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(0, 0, 0, 0.85); color: white;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 2rem; font-weight: bold; z-index: 9999;
+        opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #redirect-overlay-ese.visible { opacity: 1; visibility: visible; }
+</style>
+
+<div class="ese-accordion" id="eseBookAccordion">
+    <div class="ese-accordion-header">
+        <h2>Definitive Booklist for UPSC ESE/IES</h2>
+        <p class="hub-intro">
+            Dominate the Engineering Services Exam with these essential, all-in-one resources from Made Easy. This curated list covers the common GS paper and the complete technical syllabus for each engineering branch. <strong>Click here to find the books for your discipline.</strong>
+        </p>
+    </div>
+    <div class="ese-accordion-content">
+        <div style="padding-top: 25px;">
+
+            <div class="ese-discipline-section">
+                <h3>Common Paper: GS & Engineering Aptitude</h3>
+                <ul>
+                    <li><span class="book-title">General Studies & Engineering Aptitude</span> <a href="https://fktr.in/9xkJx9o" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                </ul>
+            </div>
+
+            <div class="ese-discipline-section">
+                <h3>Mechanical Engineering</h3>
+                <ul>
+                    <li><span class="book-title">Prelims Objective Papers (Vol I & II)</span> <a href="https://fktr.in/Nm58vbL" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Mains Conventional Paper I</span> <a href="https://fktr.in/7QUcvU0" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Mains Conventional Paper II</span> <a href="https://fktr.in/yfaigyS" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                </ul>
+            </div>
+
+            <div class="ese-discipline-section">
+                <h3>Civil Engineering</h3>
+                <ul>
+                    <li><span class="book-title">Prelims Objective Papers (Vol I & II)</span> <a href="https://fktr.in/8T533sz" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Mains Conventional Paper I</span> <a href="https://fktr.in/6GSH6eq" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Mains Conventional Paper II</span> <a href="https://fktr.in/Gftliqm" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                </ul>
+            </div>
+
+            <div class="ese-discipline-section">
+                <h3>Electrical Engineering</h3>
+                <ul>
+                    <li><span class="book-title">Prelims Objective Papers (Vol I & II)</span> <a href="https://fktr.in/qsaHmxK" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Mains Conventional Paper I</span> <a href="https://fktr.in/dzsownm" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Mains Conventional Paper II</span> <a href="https://fktr.in/q2ryzpI" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                </ul>
+            </div>
+
+            <div class="ese-discipline-section">
+                <h3>Electronics & Telecommunication Engg.</h3>
+                <ul>
+                    <li><span class="book-title">Prelims Objective Papers (Vol I & II)</span> <a href="https://fktr.in/xsIzD2v" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                    <li><span class="book-title">Mains Conventional Paper II</span> <a href="https://fktr.in/hntUUEe" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- This div is for the link click animation overlay -->
+<div id="redirect-overlay-ese">Redirecting to Flipkart...</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const eseAccordion = document.getElementById('eseBookAccordion');
+        const eseAccordionHeader = eseAccordion.querySelector('.ese-accordion-header');
+        const eseAccordionContent = eseAccordion.querySelector('.ese-accordion-content');
+
+        eseAccordionHeader.addEventListener('click', function() {
+            eseAccordion.classList.toggle('active');
+            if (eseAccordion.classList.contains('active')) {
+                eseAccordionContent.style.maxHeight = eseAccordionContent.scrollHeight + 50 + 'px';
+                eseAccordionContent.style.padding = '0 30px 25px 30px';
+            } else {
+                eseAccordionContent.style.maxHeight = '0';
+                eseAccordionContent.style.padding = '0 30px';
+            }
+        });
+        
+        const eseLinks = document.querySelectorAll('#eseBookAccordion .affiliate-link');
+        const eseOverlay = document.getElementById('redirect-overlay-ese');
+
+        eseLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const destinationUrl = this.href;
+                eseOverlay.classList.add('visible');
+                setTimeout(function() {
+                    window.open(destinationUrl, '_blank');
+                    setTimeout(() => { eseOverlay.classList.remove('visible'); }, 500);
+                }, 800);
+            });
+        });
+    });
+</script>
+<!-- End of Collapsible ESE Book Hub -->
+
             <h4>Posts/Services Offered:</h4>
             <ul>
                 <li>Group 'A' Services/Posts in Civil, Mechanical, Electrical, Electronics & Telecommunication Engineering in organizations like Railways, CPWD, MES, etc.</li>
@@ -304,6 +881,208 @@
         <!-- 4. UPSC Combined Defence Services (CDS) Examination -->
         <div class="exam-section" id="gov-upsc-cds">
             <h2>4. UPSC Combined Defence Services (CDS) Examination</h2>
+
+<!-- Start of Collapsible CDS Book Hub -->
+<style>
+    .cds-accordion {
+        max-width: 90%;
+        margin: 20px auto;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        overflow: hidden; /* Important for the rounded corners */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .cds-accordion-header {
+        background-color: aquamarine;
+        padding: 25px 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        position: relative; /* For the arrow icon */
+    }
+    .cds-accordion-header:hover {
+        background-color: #66cdaa; /* A slightly darker aquamarine for hover */
+    }
+    .cds-accordion-header h2 {
+        margin: 0;
+        color: #1a2a4c;
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+    .cds-accordion-header .hub-intro {
+        margin: 10px 0 0;
+        color: #2c5282;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        padding-right: 30px; /* Space for the arrow */
+    }
+    .cds-accordion-header::after { /* The expand/collapse arrow */
+        content: '\25BC'; /* Down arrow character */
+        font-size: 1.2rem;
+        color: #1a2a4c;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%) rotate(0deg);
+        transition: transform 0.4s ease;
+    }
+    .cds-accordion.active .cds-accordion-header::after {
+        transform: translateY(-50%) rotate(180deg); /* Up arrow */
+    }
+    .cds-accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.7s ease-out, padding 0.5s ease;
+        background: #fdfdfd;
+        padding: 0 30px;
+    }
+    .cds-section {
+        margin-bottom: 25px;
+    }
+    .cds-section h3 {
+        color: #2c5282;
+        border-bottom: 2px solid #a0aec0;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+    }
+    .cds-accordion-content ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .cds-accordion-content li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .cds-accordion-content li:last-child { border-bottom: none; }
+    .book-title {
+        color: #2d3748;
+        font-weight: 500;
+        padding-right: 15px;
+    }
+    .book-purpose {
+        font-size: 0.9rem;
+        color: #718096;
+        display: block;
+    }
+    .affiliate-link {
+        display: inline-block;
+        padding: 8px 18px;
+        background-color: #3182ce;
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        font-weight: bold;
+        white-space: nowrap;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .affiliate-link:hover {
+        background-color: #2b6cb0;
+        transform: translateY(-2px);
+    }
+    /* The redirect overlay styles can be reused if already on the page */
+    #redirect-overlay-cds {
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(0, 0, 0, 0.85); color: white;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 2rem; font-weight: bold; z-index: 9999;
+        opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #redirect-overlay-cds.visible { opacity: 1; visibility: visible; }
+</style>
+
+<div class="cds-accordion" id="cdsBookAccordion">
+    <div class="cds-accordion-header">
+        <h2>Top-Rated Booklist for the CDS Exam</h2>
+        <p class="hub-intro">
+            Crack the Combined Defence Services exam with this definitive collection of the most recommended and highly-rated books. This list covers the core all-in-one guide and the best subject-specific books for a complete preparation strategy. <strong>Click here to view the essential booklist.</strong>
+        </p>
+    </div>
+    <div class="cds-accordion-content">
+        <div style="padding-top: 25px;">
+            <div class="cds-section">
+                <h3>Comprehensive Guide</h3>
+                <ul>
+                    <li>
+                        <div>
+                            <span class="book-title">Pathfinder for CDS (Arihant)</span>
+                            <span class="book-purpose">The best all-in-one book for complete syllabus coverage and practice.</span>
+                        </div>
+                        <a href="https://fktr.in/wzV5wN7" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cds-section">
+                <h3>Subject-Specific Mastery</h3>
+                <ul>
+                    <li>
+                        <div>
+                            <span class="book-title">Objective General English (S.P. Bakshi)</span>
+                            <span class="book-purpose">For mastering grammar, vocabulary, and objective questions.</span>
+                        </div>
+                        <a href="https://fktr.in/xwyvma4" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a>
+                    </li>
+                    <li>
+                        <div>
+                            <span class="book-title">General Knowledge (Lucent's)</span>
+                            <span class="book-purpose">The go-to resource for comprehensive static GK coverage.</span>
+                        </div>
+                        <a href="https://fktr.in/bYQxJ2N" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a>
+                    </li>
+                    <li>
+                        <div>
+                            <span class="book-title">Quantitative Aptitude (R.S. Aggarwal)</span>
+                            <span class="book-purpose">For extensive practice in all Elementary Mathematics topics.</span>
+                        </div>
+                        <a href="https://fktr.in/c08wkhD" target="_blank" rel="noopener noreferrer" class="affiliate-link">View on Flipkart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- This div is for the link click animation overlay -->
+<div id="redirect-overlay-cds">Redirecting to Flipkart...</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cdsAccordion = document.getElementById('cdsBookAccordion');
+        const cdsAccordionHeader = cdsAccordion.querySelector('.cds-accordion-header');
+        const cdsAccordionContent = cdsAccordion.querySelector('.cds-accordion-content');
+
+        cdsAccordionHeader.addEventListener('click', function() {
+            cdsAccordion.classList.toggle('active');
+            if (cdsAccordion.classList.contains('active')) {
+                cdsAccordionContent.style.maxHeight = cdsAccordionContent.scrollHeight + 50 + 'px';
+                cdsAccordionContent.style.padding = '0 30px 25px 30px';
+            } else {
+                cdsAccordionContent.style.maxHeight = '0';
+                cdsAccordionContent.style.padding = '0 30px';
+            }
+        });
+        
+        const cdsLinks = document.querySelectorAll('#cdsBookAccordion .affiliate-link');
+        const cdsOverlay = document.getElementById('redirect-overlay-cds');
+
+        cdsLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const destinationUrl = this.href;
+                cdsOverlay.classList.add('visible');
+                setTimeout(function() {
+                    window.open(destinationUrl, '_blank');
+                    setTimeout(() => { cdsOverlay.classList.remove('visible'); }, 500);
+                }, 800);
+            });
+        });
+    });
+</script>
+<!-- End of Collapsible CDS Book Hub -->
+
             <h4>Posts/Services Offered:</h4> <ul><li>Officer cadre entry to Indian Military Academy (IMA), Indian Naval Academy (INA), Air Force Academy (AFA), Officers' Training Academy (OTA).</li></ul>
             <h4>Eligibility Criteria (General):</h4>
             <ul>
