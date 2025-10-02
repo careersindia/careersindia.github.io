@@ -3,14 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UGC NET – University Grants Commission National Eligibility Test Details</title>
+     <title>UGC NET – University Grants Commission National Eligibility Test Details</title>
 <link rel="manifest" href="/manifest_7.json">
     <style>
-        body { background-color: white; color: green; font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
-        h1 { border-bottom: 2px solid green; padding-bottom: 10px; }
-        dl { margin-bottom: 15px; }
-        dt { font-weight: bold; float: left; width: 200px; clear: left; padding-right: 10px; }
-        dd { margin-left: 210px; margin-bottom: 8px; overflow: hidden; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* A light grey to make the white box stand out */
+            margin: 0;
+            padding: 20px;
+        }
+        .ugc-net-details-container {
+            color: black;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px 30px;
+            overflow: hidden;
+        }
+        .ugc-net-title-box {
+            text-align: center;
+            padding: 25px;
+            background-color: aquamarine;
+            border-radius: 10px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.1), 5px 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid #66cdaa;
+            margin-bottom: 30px;
+        }
+        .ugc-net-title-box h1 {
+            margin: 0;
+            font-family: Impact, sans-serif;
+            font-size: 2.8rem;
+            color: black;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .ugc-net-section {
+            margin-bottom: 25px;
+        }
+        .ugc-net-section h3 {
+            font-size: 1.5rem;
+            color: black;
+            background-color: aquamarine;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .ugc-net-section .icon {
+            font-size: 1.8rem;
+            margin-right: 12px;
+            line-height: 1;
+        }
+        .ugc-net-section p, .ugc-net-section li, .ugc-net-section td {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .ugc-net-section ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        .ugc-net-section li::before {
+            content: '✓';
+            color: #20c997; /* A nice green for the checkmark */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .ugc-net-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .ugc-net-table th, .ugc-net-table td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+        .ugc-net-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .ugc-net-details-container a {
+            color: #0d6efd;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .ugc-net-details-container a:hover {
+            text-decoration: underline;
+        }
 .home-button-container {
   position: fixed; /* This makes it float on top of other content */
   top: 20px;       /* Position 20px from the top edge */
@@ -32,17 +117,162 @@
     </style>
 </head>
 <body>
-    <h1>UGC NET – University Grants Commission National Eligibility Test</h1>
-    <dl>
-        <dt>Eligibility</dt><dd>Candidates must have a Master's degree or equivalent with at least 55% marks (50% for reserved categories) from a recognized university.</dd>
-        <dt>Scope</dt><dd>To determine the eligibility of Indian nationals for 'Assistant Professor' and for 'Junior Research Fellowship (JRF) and Assistant Professor' in Indian universities and colleges.</dd>
-        <dt>How to Apply</dt><dd>Online application via the official National Testing Agency (NTA) UGC NET website.</dd>
-        <dt>Exam Structure</dt><dd>Computer-Based Test (CBT) consisting of two papers. Paper 1 (General Paper on Teaching/Research Aptitude) has 50 questions, and Paper 2 (Subject-specific) has 100 questions. Total duration: 3 hours, without any break between papers.</dd>
-        <dt>Score Pattern</dt><dd>Each question carries 2 marks. There is no negative marking for incorrect answers.</dd>
-        <dt>Fees</dt><dd>Approximately ₹1,150 for General category; fees are subsidized for EWS/OBC/SC/ST/PwD categories.</dd>
-        <dt>Exam Timing</dt><dd>Conducted twice a year, typically in June and December cycles.</dd>
-        <dt>Results</dt><dd>Announced on the official NTA website, usually within a month of the exam conclusion.</dd>
-    </dl>
+
+    <div class="ugc-net-details-container">
+
+        <div class="ugc-net-title-box">
+            <h1>DETAILS ABOUT UGC-NET EXAM</h1>
+        </div>
+
+        <div class="ugc-net-section">
+            <h3><span class="icon">ℹ️</span>Full Form</h3>
+            <p>University Grants Commission - National Eligibility Test (UGC-NET).</p>
+        </div>
+
+        <div class="ugc-net-section">
+            <h3><span class="icon">✅</span>Eligibility</h3>
+            <ul>
+                <li><b>Academic Qualification:</b> Master's Degree or equivalent from a recognized university.</li>
+                <li><b>Marks:</b> A minimum of 55% aggregate marks for General/EWS category and 50% for reserved categories (SC/ST/OBC/PwD).</li>
+                <li>Final year students of a Master's degree are also eligible to apply.</li>
+            </ul>
+        </div>
+
+        <div class="ugc-net-section">
+            <h3><span class="icon">🎂</span>Age Limit</h3>
+            <ul>
+                <li><b>For JRF (Junior Research Fellowship):</b> Maximum **30 years**. Age relaxations are applicable for reserved categories and women.</li>
+                <li><b>For Assistant Professor:</b> There is **no upper age limit**.</li>
+            </ul>
+        </div>
+
+        <div class="ugc-net-section">
+            <h3><span class="icon">📖</span>Detailed Syllabus</h3>
+            <p>The exam consists of two papers:</p>
+            <ul>
+                <li><b>Paper 1 (Common for all):</b> Tests Teaching Aptitude, Research Aptitude, Reading Comprehension, Communication, Reasoning, Data Interpretation, ICT, People & Environment, and Higher Education System.</li>
+                <li><b>Paper 2 (Subject Specific):</b> Based on the Master's level syllabus of the subject chosen by the candidate from a list of 83 subjects (e.g., Economics, History, Political Science, Commerce, English Literature, etc.).</li>
+            </ul>
+        </div>
+        
+        <div class="ugc-net-section">
+            <h3><span class="icon">⚙️</span>Selection Process</h3>
+            <p>UGC-NET is an eligibility test. The process is straightforward:</p>
+            <ol>
+                <li><b>Step 1: Appear for the Computer-Based Test (CBT).</b> Both Paper 1 and Paper 2 are conducted in a single session.</li>
+                <li><b>Step 2: Qualify the Exam.</b> Two separate merit lists are prepared:
+                    <ul>
+                        <li><b>List 1:</b> For "Junior Research Fellowship (JRF) & Assistant Professor". This has a higher cut-off.</li>
+                        <li><b>List 2:</b> For "Assistant Professor only".</li>
+                    </ul>
+                </li>
+                <li><b>Step 3: Use the Qualification.</b> A qualified candidate can use their eligibility certificate to apply for Ph.D. programs or faculty positions.</li>
+            </ol>
+        </div>
+
+        <div class="ugc-net-section">
+            <h3><span class="icon">💰</span>Stipend / Salary Potential</h3>
+            <p><b>For JRF Awardees (During Ph.D.):</b></p>
+            <ul>
+                <li><b>Junior Research Fellow (JRF):</b> A monthly stipend of approximately <strong>₹37,000</strong> for the first two years.</li>
+                <li><b>Senior Research Fellow (SRF):</b> A monthly stipend of approximately <strong>₹42,000</strong> for the remaining tenure, plus HRA.</li>
+            </ul>
+            <p><b>For Assistant Professor:</b> The starting salary in a central university is approximately <strong>₹70,000 - ₹90,000 per month</strong> (as per 7th Pay Commission, Level 10).</p>
+        </div>
+
+        <div class="ugc-net-section">
+            <h3><span class="icon">🧑‍🏫</span>Starting Post</h3>
+            <p>This is an eligibility test. After qualifying, the starting designation is:</p>
+            <ul>
+                <li><b>Junior Research Fellow (JRF) / Ph.D. Scholar</b> in a university or research institution.</li>
+                <li><b>Assistant Professor</b> in a college or university (after a separate recruitment process).</li>
+            </ul>
+        </div>
+
+        <div class="ugc-net-section">
+            <h3><span class="icon">📋</span>Job Profile (of an Assistant Professor)</h3>
+            <p>The profile involves teaching undergraduate and postgraduate students, conducting research and publishing academic papers, guiding student projects, and contributing to the administrative activities of the department and university.</p>
+        </div>
+
+        <div class="ugc-net-section">
+            <h3><span class="icon">🎁</span>Facilities After Selection (NA)</h3>
+            <p>NA (This is an eligibility test. Facilities depend on the university or college the candidate joins).</p>
+        </div>
+
+        <div class="ugc-net-section">
+            <h3><span class="icon">🎯</span>Scope</h3>
+            <p>The UGC-NET is the mandatory qualifying exam for anyone aspiring to become an Assistant Professor in Indian universities and colleges. It is also the primary gateway to a fully-funded Ph.D. in Arts, Humanities, and Social Sciences through the Junior Research Fellowship (JRF). It is the essential credential for a career in academia in these fields.</p>
+        </div>
+
+        <div class="ugc-net-section">
+            <h3><span class="icon">🗓️</span>Exam Dates & Frequency</h3>
+            <ul>
+                <li><b>Frequency:</b> The exam is conducted <strong>twice a year</strong>.</li>
+                <li><b>Exam Months:</b> Typically in <strong>June</strong> and <strong>December</strong>.</li>
+            </ul>
+        </div>
+
+        <div class="ugc-net-section">
+            <h3><span class="icon">📝</span>How to Apply</h3>
+            <p>The application process is managed by the National Testing Agency (NTA). Candidates must apply online through the official NTA UGC-NET website.</p>
+        </div>
+
+        <div class="ugc-net-section">
+            <h3><span class="icon">📊</span>Exam Structure & Score Pattern</h3>
+            <table class="ugc-net-table">
+                <thead>
+                    <tr>
+                        <th>Paper</th>
+                        <th>Subject</th>
+                        <th>No. of Questions</th>
+                        <th>Maximum Marks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Paper I</b></td>
+                        <td>Teaching & Research Aptitude</td>
+                        <td>50</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td><b>Paper II</b></td>
+                        <td>Subject Specific</td>
+                        <td>100</td>
+                        <td>200</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td></td>
+                        <td><strong>150</strong></td>
+                        <td><strong>300</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><b>Scoring Pattern:</b> +2 marks for every correct answer. There is **no negative marking** for incorrect answers.</p>
+        </div>
+        
+        <div class="ugc-net-section">
+            <h3><span class="icon">⏱️</span>Duration of the Exam</h3>
+            <p>The total duration of the exam is <strong>3 hours (180 minutes)</strong>, conducted in a single session with no break between Paper I and Paper II.</p>
+        </div>
+        
+        <div class="ugc-net-section">
+            <h3><span class="icon">⏳</span>Result Time</h3>
+            <p>The results are typically declared within <strong>1 month</strong> after the examination.</p>
+        </div>
+
+        <div class="ugc-net-section">
+            <h3><span class="icon">💸</span>Fees</h3>
+            <p>The application fee is typically around <strong>₹1,150</strong> for the General category, with lower fees for EWS/OBC and SC/ST/PwD candidates. This fee is subject to change.</p>
+        </div>
+
+        <div class="ugc-net-section">
+            <h3><span class="icon">🌐</span>Official Website</h3>
+            <p>For all official notifications, application forms, and authentic information, always refer to the official NTA UGC-NET website: <a href="https://ugcnet.nta.nic.in/" target="_blank" rel="noopener noreferrer">ugcnet.nta.nic.in</a></p>
+        </div>
+
+    </div>
 <div class="home-button-container">
   <a href="/mainnow.html" title="Go to Home">
     <img src="images/home-icon.png" alt="Home">

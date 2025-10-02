@@ -7,11 +7,96 @@
 <meta name="description" content="Understand the complete 5-day SSB (Services Selection Board) interview process for Army, Navy, and Air Force selection. Learn about the screening test, psychological tests, GTO, and personal interview.">
 <link rel="manifest" href="/manifest_7.json">
     <style>
-        body { background-color: white; color: green; font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
-        h1 { border-bottom: 2px solid green; padding-bottom: 10px; }
-        dl { margin-bottom: 15px; }
-        dt { font-weight: bold; float: left; width: 200px; clear: left; padding-right: 10px; }
-        dd { margin-left: 210px; margin-bottom: 8px; overflow: hidden; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* A light grey to make the white box stand out */
+            margin: 0;
+            padding: 20px;
+        }
+        .ssb-details-container {
+            color: black;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px 30px;
+            overflow: hidden;
+        }
+        .ssb-title-box {
+            text-align: center;
+            padding: 25px;
+            background-color: aquamarine;
+            border-radius: 10px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.1), 5px 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid #66cdaa;
+            margin-bottom: 30px;
+        }
+        .ssb-title-box h1 {
+            margin: 0;
+            font-family: Impact, sans-serif;
+            font-size: 2.8rem;
+            color: black;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .ssb-section {
+            margin-bottom: 25px;
+        }
+        .ssb-section h3 {
+            font-size: 1.5rem;
+            color: black;
+            background-color: aquamarine;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .ssb-section .icon {
+            font-size: 1.8rem;
+            margin-right: 12px;
+            line-height: 1;
+        }
+        .ssb-section p, .ssb-section li, .ssb-section td {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .ssb-section ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        .ssb-section li::before {
+            content: '✓';
+            color: #20c997; /* A nice green for the checkmark */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .ssb-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .ssb-table th, .ssb-table td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+        .ssb-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .ssb-details-container a {
+            color: #0d6efd;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .ssb-details-container a:hover {
+            text-decoration: underline;
+        }
 .home-button-container {
   position: fixed; /* This makes it float on top of other content */
   top: 20px;       /* Position 20px from the top edge */
@@ -33,19 +118,141 @@
     </style>
 </head>
 <body>
-<h1>SSB Interview Process Details</h1>
-    <dl>
-        <dt>Full Form</dt><dd>Services Selection Board Interview</dd>
-        <dt>Eligibility</dt><dd>Must qualify NDA/CDS/AFCAT/INET or Army Technical routes</dd>
-        <dt>Scope</dt><dd>Final selection into defence services</dd>
-        <dt>How to Apply</dt><dd>Allocated after written exam results</dd>
-        <dt>Structure</dt><dd>5-day testing: Screening, Psychology, GTO, Interview, Conference</dd>
-        <dt>Score Pattern</dt><dd>900 marks for SSB</dd>
-        <dt>Fees</dt><dd>Free (travel allowance given)</dd>
-        <dt>Time Conducted</dt><dd>After written exam results</dd>
-        <dt>Frequency</dt><dd>As per selection cycle</dd>
-        <dt>Result Time</dt><dd>Within 1–2 weeks post-interview</dd>
-    </dl>
+
+    <div class="ssb-details-container">
+
+        <div class="ssb-title-box">
+            <h1>DETAILS ABOUT SSB INTERVIEW</h1>
+        </div>
+
+        <div class="ssb-section">
+            <h3><span class="icon">ℹ️</span>Full Form</h3>
+            <p>Services Selection Board (SSB).</p>
+        </div>
+
+        <div class="ssb-section">
+            <h3><span class="icon">✅</span>Eligibility</h3>
+            <p>Candidates are eligible for an SSB interview call after successfully qualifying in a written examination like **NDA, CDS, AFCAT**, or through direct entry schemes like **TES (Technical Entry Scheme)** and **TGC (Technical Graduate Course)**.</p>
+        </div>
+
+        <div class="ssb-section">
+            <h3><span class="icon">🎂</span>Age Limit</h3>
+            <p>The age limit is determined by the specific entry scheme for which the candidate has applied (e.g., 16.5-19.5 years for NDA, 19-25 years for CDS-OTA, etc.).</p>
+        </div>
+
+        <div class="ssb-section">
+            <h3><span class="icon">🧠</span>Syllabus (Qualities & Tests Assessed)</h3>
+            <p>There is no academic syllabus. SSB is a personality and aptitude assessment that evaluates "Officer Like Qualities" (OLQs). The tests are designed to assess the candidate's mind, body, and actions through three major techniques:</p>
+            <ul>
+                <li><b>Manasa (Psychological Tests):</b> To assess the subconscious mind. Includes Thematic Apperception Test (TAT), Word Association Test (WAT), Situation Reaction Test (SRT), and Self-Description Test (SDT).</li>
+                <li><b>Vacha (Group Tests):</b> To assess group dynamics and individual performance. Includes Group Discussion (GD), Group Planning Exercise (GPE), Progressive Group Task (PGT), and Individual Obstacles.</li>
+                <li><b>Karma (Interview):</b> A personal interview with a senior officer to assess personality, general awareness, and suitability for a career in the armed forces.</li>
+            </ul>
+        </div>
+        
+        <div class="ssb-section">
+            <h3><span class="icon">⚙️</span>Selection Process (The 5-Day Procedure)</h3>
+            <p>The SSB interview is a comprehensive 5-day process:</p>
+            <ul>
+                <li><b>Day 0 (Reporting):</b> Document verification and form filling.</li>
+                <li><b>Day 1 (Screening Test):</b> Officer Intelligence Rating (OIR) test and Picture Perception & Discussion Test (PP&DT). Candidates who clear this are "Screened In" and stay for the next four days.</li>
+                <li><b>Day 2 (Psychological Tests):</b> A battery of written psychological tests (TAT, WAT, SRT, SDT).</li>
+                <li><b>Day 3 & 4 (Group Testing Officer - GTO Tasks):</b> A series of indoor and outdoor group tasks, including GD, GPE, PGT, Command Task, and Individual Obstacles. The Personal Interview is also conducted on one of these days.</li>
+                <li><b>Day 5 (Conference):</b> All assessors (the Psychologist, GTO, and Interviewing Officer) discuss each candidate's performance. The final result ("Recommended" or "Not Recommended") is declared.</li>
+            </ul>
+        </div>
+
+        <div class="ssb-section">
+            <h3><span class="icon">💰</span>Starting Salary Potential (After Clearing SSB & Training)</h3>
+            <p>NA. SSB is a selection process. The salary is awarded after completing training at the respective military academy. As a commissioned officer (Lieutenant, Sub-Lieutenant, or Flying Officer), the starting salary is approximately <strong>₹85,000 - ₹1,00,000 per month</strong>.</p>
+        </div>
+
+        <div class="ssb-section">
+            <h3><span class="icon">🎖️</span>Starting Post & Department (After Clearing SSB & Training)</h3>
+            <p>NA. The starting post is determined by the entry scheme and training academy. It will be a commissioned officer rank in the Indian Army, Navy, or Air Force.</p>
+        </div>
+
+        <div class="ssb-section">
+            <h3><span class="icon">📋</span>Job Profile (NA)</h3>
+            <p>NA. This is a selection process for officer roles in the Indian Armed Forces.</p>
+        </div>
+
+        <div class="ssb-section">
+            <h3><span class="icon">🎁</span>Facilities During SSB</h3>
+            <ul>
+                <li>Free accommodation and messing (food) is provided to all candidates for the duration of the 5-day interview.</li>
+                <li>Candidates appearing for the first time are entitled to a travel allowance (AC-III Tier train fare by the shortest route).</li>
+            </ul>
+        </div>
+
+        <div class="ssb-section">
+            <h3><span class="icon">🎯</span>Scope</h3>
+            <p>The SSB interview is the universal and mandatory gateway to becoming a commissioned officer in the Indian Armed Forces. Clearing the SSB is a prestigious achievement that opens the door to a challenging, adventurous, and honorable career dedicated to leading the men and women of the Army, Navy, or Air Force.</p>
+        </div>
+
+        <div class="ssb-section">
+            <h3><span class="icon">🗓️</span>Exam Dates & Frequency</h3>
+            <ul>
+                <li><b>Frequency:</b> SSB interviews are conducted throughout the year.</li>
+                <li><b>Dates:</b> After clearing a written exam (like NDA/CDS), candidates receive a "call-up letter" and can select a date from a batch of available dates at their allotted SSB center.</li>
+            </ul>
+        </div>
+
+        <div class="ssb-section">
+            <h3><span class="icon">📝</span>How to Apply</h3>
+            <p>Candidates do not apply for the SSB directly. They apply for an officer entry scheme (e.g., NDA, CDS, TGC). If they clear the initial shortlisting or written exam, they are automatically called for the SSB interview.</p>
+        </div>
+
+        <div class="ssb-section">
+            <h3><span class="icon">📊</span>Exam Structure & Score Pattern</h3>
+            <p>There is no numerical score given to the candidate. The assessment is holistic and qualitative.</p>
+            <table class="ssb-table">
+                <thead>
+                    <tr>
+                        <th>Stage</th>
+                        <th>Outcome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Day 1 (Screening)</td>
+                        <td>Screened In / Screened Out</td>
+                    </tr>
+                    <tr>
+                        <td>Day 5 (Conference)</td>
+                        <td>Recommended / Not Recommended</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Only "Recommended" candidates proceed to the medical examination.</p>
+        </div>
+        
+        <div class="ssb-section">
+            <h3><span class="icon">⏱️</span>Duration of the Exam</h3>
+            <p>The entire SSB process lasts for <strong>5 days</strong>.</p>
+        </div>
+        
+        <div class="ssb-section">
+            <h3><span class="icon">⏳</span>Result Time</h3>
+            <p>The result of the SSB interview is declared on the **final day (Day 5)**, immediately after the conference.</p>
+        </div>
+
+        <div class="ssb-section">
+            <h3><span class="icon">💸</span>Fees</h3>
+            <p>There is **no fee** for appearing for the SSB interview. Travel allowance is provided to first-time candidates.</p>
+        </div>
+
+        <div class="ssb-section">
+            <h3><span class="icon">🌐</span>Official Website</h3>
+            <p>There is no single SSB website. Candidates should refer to the official career websites of the respective forces:</p>
+            <ul>
+                <li>Indian Army: <a href="https://joinindianarmy.nic.in/" target="_blank" rel="noopener noreferrer">joinindianarmy.nic.in</a></li>
+                <li>Indian Navy: <a href="https://www.joinindiannavy.gov.in/" target="_blank" rel="noopener noreferrer">joinindiannavy.gov.in</a></li>
+                <li>Indian Air Force: <a href="https://careerindianairforce.cdac.in/" target="_blank" rel="noopener noreferrer">careerindianairforce.cdac.in</a></li>
+            </ul>
+        </div>
+
+    </div>
 <div class="home-button-container">
   <a href="/mainnow.html" title="Go to Home">
     <img src="images/home-icon.png" alt="Home">
