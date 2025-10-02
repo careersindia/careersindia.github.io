@@ -1,1322 +1,1315 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-  <loc>https://careersindia.github.io/</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
+  <loc>https://www.campusindia.org/</loc>
+  <lastmod>2025-10-02</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/mainnow.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
+  <loc>https://www.campusindia.org/mainnow.html</loc>
+  <lastmod>2025-10-02</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ssc1.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ssc1.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/hsc1.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/hsc1.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/grad1.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/grad1.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/pg1.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/pg1.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/alternative_ssc.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/alternative_ssc.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/alternative_hsc.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/alternative_hsc.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/alternative_grad.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/alternative_grad.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/alternative_pg.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/alternative_pg.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/roi_ssc_1.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/roi_ssc_1.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/roi_hsc_2.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/roi_hsc_2.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/roi_grad_1.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/roi_grad_1.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/roi_pg_1.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/roi_pg_1.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/skill_gap_ssc.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/skill_gap_ssc.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/skill_gap_hsc.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/skill_gap_hsc.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/skill_gap_grad.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/skill_gap_grad.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/skill_gap_pg.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/skill_gap_pg.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/careerpath_ssc_2.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/careerpath_ssc_2.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/careerpath_hsc_2.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/careerpath_hsc_2.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/careerpath_grad_2.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/careerpath_grad_2.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/careerpath_pg_2.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/careerpath_pg_2.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/careerpath_govt_2.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/careerpath_govt_2.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/govt.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/govt.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/calendar1.html?v=2</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/calendar1.html?v=2</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/afcat.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/afcat.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/aiims_mbbs.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/aiims_mbbs.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ailet.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ailet.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/aissee.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/aissee.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/bitsat.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/bitsat.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ca_final.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ca_final.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ca_foundation.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ca_foundation.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ca_intermediate.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ca_intermediate.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/cat.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/cat.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/cds.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/cds.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ceed.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ceed.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/clat.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/clat.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/cma_final.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/cma_final.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/cma_foundation.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/cma_foundation.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/cma_intermediate.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/cma_intermediate.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/cmat.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/cmat.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/cmi_entrance_exam.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/cmi_entrance_exam.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/cs_executive.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/cs_executive.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/cs_professional.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/cs_professional.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/cseet.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/cseet.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/csir_ugc_net.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/csir_ugc_net.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ctet.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ctet.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/cuet_pg.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/cuet_pg.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/cuet_ug.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/cuet_ug.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/dbt_jrf.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/dbt_jrf.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/epfo_eo_ao.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/epfo_eo_ao.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/epfo_ssa.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/epfo_ssa.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/esic_exam.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/esic_exam.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/fci_exam.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/fci_exam.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/fmge.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/fmge.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ftii_jet.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ftii_jet.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/gate.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/gate.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ibps_clerk.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ibps_clerk.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ibps_po.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ibps_po.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ibps_so.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ibps_so.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/icar_aieea.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/icar_aieea.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/icmr_jrf.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/icmr_jrf.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/iiith_pgee.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/iiith_pgee.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/iiser_aptitude_test_iat.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/iiser_aptitude_test_iat.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ini_cet.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ini_cet.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/isi_admission_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/isi_admission_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/jee_advanced.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/jee_advanced.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/jee_main.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/jee_main.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/jest.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/jest.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/jipmer_mbbs.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/jipmer_mbbs.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/jnvst.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/jnvst.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/kvpy.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/kvpy.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/lic_aao.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/lic_aao.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/lsat_india.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/lsat_india.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/mat.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/mat.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/nata.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/nata.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/nch_mct_jee.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/nch_mct_jee.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/nda.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/nda.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/neet_pg.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/neet_pg.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/neet_ug.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/neet_ug.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/nest.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/nest.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/nid_dat.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/nid_dat.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/nift_entrance_exam.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/nift_entrance_exam.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/nmat.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/nmat.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/rbi_grade_b.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/rbi_grade_b.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/rrb_alp.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/rrb_alp.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/rrb_je.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/rrb_je.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/rrb_ntpc.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/rrb_ntpc.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/slat.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/slat.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/snap.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/snap.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/srfti_jet.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/srfti_jet.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/srm_jeee.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/srm_jeee.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ssb_interview.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ssb_interview.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ssc_cgl.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ssc_cgl.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ssc_chsl.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ssc_chsl.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ssc_mts.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ssc_mts.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/tissnet.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/tissnet.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/uceed.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/uceed.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ugc_net.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/ugc_net.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/viteee.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/viteee.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/xat.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/xat.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/verification.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/loan_process_study_abroad.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/loan_process_study_abroad.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/living_and_learning_abroad.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/living_and_learning_abroad.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/sac.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/sac.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/english_proficiency.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/english_proficiency.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/premierInstitutes.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/premierInstitutes.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/top_schools.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/top_schools.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/top_universities.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/top_universities.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/top_colleges.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/top_colleges.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/diploma_revised_1.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/diploma_revised_1.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/top_graduation_colleges.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/top_graduation_colleges.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/top_vocational2.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/top_vocational2.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/coaching1.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/coaching1.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/chart_govt_exams.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/chart_govt_exams.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/chart_graduates.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/chart_graduates.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/after_ssc_chart.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/after_ssc_chart.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/after_hsc_chart.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/after_hsc_chart.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/after_graduation_chart.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/after_graduation_chart.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/after_pg_chart.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/after_pg_chart.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/after_govt_chart.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/after_govt_chart.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/perception_ssc.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/perception_ssc.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/perception_hsc.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/perception_hsc.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/perception_graduation.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/perception_graduation.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/perception_post_graduation.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/perception_post_graduation.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/perception_govt.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/perception_govt.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/maths_tricks.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/maths_tricks.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/english_grammar.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/english_grammar.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/vr.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/nvr.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/nvr.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/iim_community.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/iim_community.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/iit_community.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/iit_community.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/study_abroad_community.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/study_abroad_community.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/emerging_careers.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/emerging_careers.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/category.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/category.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/scholarship_india.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/scholarship_india.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/campuscount.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/campuscount.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/QnA.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/QnA.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/glossary.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/glossary.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/udaan_revised_1.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/udaan_revised_1.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/coursecomparison.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/coursecomparison.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/about.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/about.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/contact.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/contact.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/privacy.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/privacy.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/disclaimer.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/disclaimer.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/credibility_report_1.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.campusindia.org/credibility_report_1.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ssc.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/ssc.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/hsc.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/hsc.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/grad.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/grad.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/pg.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/pg.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_australia.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_australia.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_bahrain.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_bahrain.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_canada.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_canada.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_china.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_china.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_france.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_france.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_germany.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_germany.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_italy.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_italy.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_japan.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_japan.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_kuwait.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_kuwait.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_luxembourg.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_luxembourg.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_malaysia.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_malaysia.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_new_zealand.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_new_zealand.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_oman.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_oman.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_qatar.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_qatar.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_russia.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_russia.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_saudi_arabia.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_saudi_arabia.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_singapore.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_singapore.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_south_korea.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_south_korea.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_spain.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_spain.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_switzerland.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_switzerland.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_uae.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_uae.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_uk.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_uk.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verification_usa.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verification_usa.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/recommendation_masters.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/recommendation_masters.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/recommendation_undergraduates.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/recommendation_undergraduates.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/mumbai.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/mumbai.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/delhi.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/delhi.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/chennai.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/chennai.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/kolkata.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/kolkata.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/ahmedabad.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/ahmedabad.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/hyderabad.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/hyderabad.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/bengaluru.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/bengaluru.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/pune.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/pune.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_count_triangles.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_count_triangles.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_cube_of_a_number.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_cube_of_a_number.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_cube_root_of_a_number.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_cube_root_of_a_number.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_division.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_division.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_dot_add_1.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_dot_add_1.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_dot_division.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_dot_division.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_dot_formulae.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_dot_formulae.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_dot_multiply.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_dot_multiply.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_dot_polynomials.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_dot_polynomials.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_dot_subtract.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_dot_subtract.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_fractions.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_fractions.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_hcf_lcm.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_hcf_lcm.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_japanese_multiply.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_japanese_multiply.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_multiplication.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_multiplication.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_multiplication_decimal_1.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_multiplication_decimal_1.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_percentage.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_percentage.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_square_of_a_decimal.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_square_of_a_decimal.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_square_of_a_number.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_square_of_a_number.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_square_root_of_a_decimal.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_square_root_of_a_decimal.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_square_root_of_a_number.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_square_root_of_a_number.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_tables.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_tables.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_trigonometry.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_trigonometry.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/Trick_vedic_maths.pdf</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/Trick_vedic_maths.pdf</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/nouns.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/nouns.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/verbs.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/verbs.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/adjectives.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/adjectives.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/adverbs.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/adverbs.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/pronouns.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/pronouns.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/prepositions.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/prepositions.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/conjunctions.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/conjunctions.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/interjections.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/interjections.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/phrases.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/phrases.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/clauses.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/clauses.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/sub_pred.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/sub_pred.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/sub_verb_agreement.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/sub_verb_agreement.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/modals.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/modals.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/articles.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/articles.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/active_passive.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/active_passive.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/object_complement.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/object_complement.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/tenses.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/tenses.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/direct_indirect.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/direct_indirect.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/types_of_sentences.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/types_of_sentences.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/conditionals.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/conditionals.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/gerunds_infinitives_participles.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/gerunds_infinitives_participles.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/parallelism.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/parallelism.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/question_tags.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/question_tags.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/inversions.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/inversions.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/determiners_quantifiers.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/determiners_quantifiers.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/phrasal_verbs.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/phrasal_verbs.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/one_word_substitution.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/one_word_substitution.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/paronyms_homophones.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/paronyms_homophones.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/parajumbles.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/parajumbles.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/cloze_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/cloze_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/important_vocabulary.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/important_vocabulary.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/idioms.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/idioms.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/advanced_terminologies.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/advanced_terminologies.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_age_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_age_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_alphabet_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_alphabet_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_blood_relations_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_blood_relations_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_calendar_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_calendar_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_clock_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_clock_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_coding_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_coding_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_data_interpretation_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_data_interpretation_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_direction_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_direction_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_inequalities_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_inequalities_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_letter_analogy_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_letter_analogy_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_number_analogy_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_number_analogy_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_number_series_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_number_series_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_odd_one_out_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_odd_one_out_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_order_ranking_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_order_ranking_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_seating_arrangement_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_seating_arrangement_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_series_completion_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_series_completion_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_simplification_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_simplification_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_statements_assumptions_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_statements_assumptions_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_statements_conclusions_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_statements_conclusions_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/vr_syllogisms_test.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/vr_syllogisms_test.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/blue.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/blue.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/white.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/white.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://careersindia.github.io/remote1.html</loc>
-  <lastmod>2025-09-22T17:14:46+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.campusindia.org/remote1.html</loc>
+  <lastmod>2025-10-02</lastmod>
+  <priority>0.64</priority>
 </url>
-
 
 </urlset>
