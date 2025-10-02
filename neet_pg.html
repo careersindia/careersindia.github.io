@@ -7,11 +7,96 @@
 <meta name="description" content="Get complete details for the NEET PG 2025 exam for MD/MS admissions. Find information on eligibility, syllabus, exam pattern, application process, and important dates.">
 <link rel="manifest" href="/manifest_7.json">
     <style>
-        body { background-color: white; color: green; font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
-        h1 { border-bottom: 2px solid green; padding-bottom: 10px; }
-        dl { margin-bottom: 15px; }
-        dt { font-weight: bold; float: left; width: 200px; clear: left; padding-right: 10px; }
-        dd { margin-left: 210px; margin-bottom: 8px; overflow: hidden; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* A light grey to make the white box stand out */
+            margin: 0;
+            padding: 20px;
+        }
+        .neet-pg-details-container {
+            color: black;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px 30px;
+            overflow: hidden;
+        }
+        .neet-pg-title-box {
+            text-align: center;
+            padding: 25px;
+            background-color: aquamarine;
+            border-radius: 10px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.1), 5px 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid #66cdaa;
+            margin-bottom: 30px;
+        }
+        .neet-pg-title-box h1 {
+            margin: 0;
+            font-family: Impact, sans-serif;
+            font-size: 2.8rem;
+            color: black;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .neet-pg-section {
+            margin-bottom: 25px;
+        }
+        .neet-pg-section h3 {
+            font-size: 1.5rem;
+            color: black;
+            background-color: aquamarine;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .neet-pg-section .icon {
+            font-size: 1.8rem;
+            margin-right: 12px;
+            line-height: 1;
+        }
+        .neet-pg-section p, .neet-pg-section li, .neet-pg-section td {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .neet-pg-section ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        .neet-pg-section li::before {
+            content: '✓';
+            color: #20c997; /* A nice green for the checkmark */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .neet-pg-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .neet-pg-table th, .neet-pg-table td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+        .neet-pg-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .neet-pg-details-container a {
+            color: #0d6efd;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .neet-pg-details-container a:hover {
+            text-decoration: underline;
+        }
 .home-button-container {
   position: fixed; /* This makes it float on top of other content */
   top: 20px;       /* Position 20px from the top edge */
@@ -33,17 +118,154 @@
     </style>
 </head>
 <body>
- <h1>NEET PG Exam Details (Postgraduate)</h1>
-    <dl>
-        <dt>Eligibility</dt><dd>Candidates must possess an MBBS degree or Provisional MBBS Pass Certificate and a permanent or provisional registration certificate of MBBS qualification issued by the MCI/SMC. Completion of a one-year internship is mandatory.</dd>
-        <dt>Scope</dt><dd>Admission to MD/MS and PG Diploma courses in medical colleges across India, except for institutions like AIIMS, PGIMER, JIPMER, NIMHANS, and Sree Chitra Tirunal Institute.</dd>
-        <dt>How to Apply</dt><dd>Online application via the official website of the National Board of Examinations in Medical Sciences (NBEMS).</dd>
-        <dt>Exam Structure</dt><dd>Computer-Based Test (CBT) with 200 multiple-choice questions from the MBBS curriculum. Duration: 3 hours and 30 minutes.</dd>
-        <dt>Score Pattern</dt><dd>+4 marks for each correct answer; -1 mark for each incorrect answer (25% negative marking).</dd>
-        <dt>Fees</dt><dd>Approximately ₹4,250 for General/OBC category; ₹3,250 for SC/ST/PwD.</dd>
-        <dt>Exam Timing</dt><dd>Conducted once a year, with the date scheduled by NBEMS, typically in the first half of the year.</dd>
-        <dt>Results</dt><dd>Announced on the official NBEMS website, usually within a few weeks of the exam date.</dd>
-    </dl>
+
+    <div class="neet-pg-details-container">
+
+        <div class="neet-pg-title-box">
+            <h1>DETAILS ABOUT NEET-PG EXAM</h1>
+        </div>
+
+        <div class="neet-pg-section">
+            <h3><span class="icon">ℹ️</span>Full Form</h3>
+            <p>National Eligibility cum Entrance Test (Postgraduate).</p>
+        </div>
+
+        <div class="neet-pg-section">
+            <h3><span class="icon">✅</span>Eligibility</h3>
+            <ul>
+                <li><b>Nationality:</b> Must be a citizen of India or an OCI/PIO cardholder.</li>
+                <li><b>Academic Qualification:</b> Must possess an MBBS degree or Provisional MBBS Pass Certificate from a recognized medical college.</li>
+                <li><b>Internship:</b> Must have completed or be likely to complete the mandatory one-year rotating internship on or before the specified cut-off date for the admission year.</li>
+                <li><b>Registration:</b> Must possess a permanent or provisional registration certificate issued by the MCI/NMC or State Medical Council.</li>
+            </ul>
+        </div>
+
+        <div class="neet-pg-section">
+            <h3><span class="icon">🎂</span>Age Limit</h3>
+            <p>There is **no upper age limit** to appear for the NEET-PG examination.</p>
+        </div>
+
+        <div class="neet-pg-section">
+            <h3><span class="icon">📖</span>Detailed Syllabus</h3>
+            <p>The syllabus comprises all subjects taught during the 5.5-year MBBS curriculum. It is divided into three main sections:</p>
+            <ul>
+                <li><b>Pre-Clinical:</b> Anatomy, Physiology, Biochemistry.</li>
+                <li><b>Para-Clinical:</b> Pathology, Pharmacology, Microbiology, Forensic Medicine, Social & Preventive Medicine.</li>
+                <li><b>Clinical:</b> Medicine & allied subjects (Dermatology, Psychiatry, etc.), Surgery & allied subjects (Orthopaedics, Anaesthesia, etc.), Obstetrics & Gynaecology, Paediatrics.</li>
+            </ul>
+        </div>
+        
+        <div class="neet-pg-section">
+            <h3><span class="icon">⚙️</span>Selection Process</h3>
+            <ol>
+                <li><b>Step 1: NEET-PG Written Examination.</b> A single-session, computer-based test (CBT).</li>
+                <li><b>Step 2: Declaration of Results.</b> The NBE releases a merit list with candidate scores and All India Ranks (AIR).</li>
+                <li><b>Step 3: Counselling and Seat Allotment.</b> Qualified candidates participate in online counselling for the 50% All India Quota (conducted by MCC) and separate state-level counselling for the 50% State Quota seats.</li>
+            </ol>
+        </div>
+
+        <div class="neet-pg-section">
+            <h3><span class="icon">💰</span>Starting Salary Potential (After PG)</h3>
+            <p>After completing a 3-year MD/MS, doctors start as Senior Residents or Specialists. The salary sees a significant jump.</p>
+            <ul>
+                <li><b>Government Hospital (Senior Resident/Specialist):</b> Approximately <strong>₹1,00,000 - ₹1,50,000 per month</strong>.</li>
+                <li><b>Private/Corporate Hospital:</b> Can range from <strong>₹1.5 Lakhs to ₹3 Lakhs per month</strong> or more, depending on the specialization and hospital.</li>
+            </ul>
+        </div>
+
+        <div class="neet-pg-section">
+            <h3><span class="icon">⚕️</span>Starting Post & Department (After PG)</h3>
+            <p>After completing an MD/MS, the starting post is typically a <strong>Senior Resident</strong> or a <strong>Consultant</strong> in a specific medical department, such as:</p>
+            <ul>
+                <li>Cardiology, Neurology, Gastroenterology (Medical branches).</li>
+                <li>Orthopaedics, General Surgery, Neurosurgery (Surgical branches).</li>
+                <li>Radiology, Pathology, Anaesthesiology (Diagnostic & Supportive branches).</li>
+                <li>Obstetrics & Gynaecology, Paediatrics.</li>
+            </ul>
+        </div>
+
+        <div class="neet-pg-section">
+            <h3><span class="icon">📋</span>Job Profile</h3>
+            <p>The job profile of a specialist doctor involves providing advanced medical care in their chosen field, performing complex surgeries and procedures, mentoring junior doctors, and often engaging in clinical research and academic activities.</p>
+        </div>
+
+        <div class="neet-pg-section">
+            <h3><span class="icon">🎁</span>Facilities After Selection (During PG Residency)</h3>
+            <p>During the 3-year PG course, a Junior Resident receives:</p>
+            <ul>
+                <li>A monthly stipend (which is effectively the salary).</li>
+                <li>On-campus hostel accommodation in most government colleges.</li>
+                <li>Intense clinical exposure and hands-on training with advanced medical equipment.</li>
+                <li>Access to extensive medical libraries and research opportunities.</li>
+            </ul>
+        </div>
+
+        <div class="neet-pg-section">
+            <h3><span class="icon">🎯</span>Scope</h3>
+            <p>NEET-PG is the primary gateway to becoming a specialist doctor in India. It opens the door to a highly respected and financially rewarding career. After MD/MS, one can further pursue super-specialization (DM/M.Ch) through the NEET-SS exam, establish a private practice, work in corporate hospitals, or enter academia.</p>
+        </div>
+
+        <div class="neet-pg-section">
+            <h3><span class="icon">🗓️</span>Exam Dates & Frequency</h3>
+            <ul>
+                <li><b>Frequency:</b> The NEET-PG exam is conducted <strong>once a year</strong>.</li>
+                <li><b>Exam Month:</b> The schedule has been variable in recent years, but it is typically held in the first half of the calendar year (e.g., March, May, or July).</li>
+            </ul>
+        </div>
+
+        <div class="neet-pg-section">
+            <h3><span class="icon">📝</span>How to Apply</h3>
+            <p>The application process is managed by the National Board of Examinations in Medical Sciences (NBEMS). Candidates must apply online through the official NBE website during the specified registration window.</p>
+        </div>
+
+        <div class="neet-pg-section">
+            <h3><span class="icon">📊</span>Exam Structure & Score Pattern</h3>
+            <table class="neet-pg-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Exam Mode</td>
+                        <td>Computer-Based Test (CBT)</td>
+                    </tr>
+                    <tr>
+                        <td>Number of Questions</td>
+                        <td>200 (Multiple Choice Questions)</td>
+                    </tr>
+                    <tr>
+                        <td>Maximum Marks</td>
+                        <td>800</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><b>Scoring Pattern:</b> +4 marks for every correct answer, -1 mark for every incorrect answer. No marks for unattempted questions.</p>
+        </div>
+        
+        <div class="neet-pg-section">
+            <h3><span class="icon">⏱️</span>Duration of the Exam</h3>
+            <p>The total duration of the exam is <strong>210 minutes (3 hours and 30 minutes)</strong>.</p>
+        </div>
+        
+        <div class="neet-pg-section">
+            <h3><span class="icon">⏳</span>Result Time</h3>
+            <p>The results are typically declared within <strong>30 to 40 days</strong> after the examination date.</p>
+        </div>
+
+        <div class="neet-pg-section">
+            <h3><span class="icon">💸</span>Fees</h3>
+            <p>The application fee is typically around <strong>₹4,250</strong> for General/OBC candidates and <strong>₹3,250</strong> for SC/ST/PwD candidates. This fee is subject to change.</p>
+        </div>
+
+        <div class="neet-pg-section">
+            <h3><span class="icon">🌐</span>Official Website</h3>
+            <p>For all official notifications, bulletins, and application forms, always refer to the official NBE website: <a href="https://nbe.edu.in/" target="_blank" rel="noopener noreferrer">nbe.edu.in</a></p>
+        </div>
+
+    </div>
 <div class="home-button-container">
   <a href="/mainnow.html" title="Go to Home">
     <img src="images/home-icon.png" alt="Home">

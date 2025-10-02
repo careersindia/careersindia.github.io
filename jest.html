@@ -7,11 +7,96 @@
 <meta name="description" content="Get complete details for the JEST (Joint Entrance Screening Test) 2025. Find info on eligibility, syllabus, and dates for Ph.D. programs in Physics and Theoretical Computer Science.">
 <link rel="manifest" href="/manifest_7.json">
     <style>
-        body { background-color: white; color: green; font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
-        h1 { border-bottom: 2px solid green; padding-bottom: 10px; }
-        dl { margin-bottom: 15px; }
-        dt { font-weight: bold; float: left; width: 200px; clear: left; padding-right: 10px; }
-        dd { margin-left: 210px; margin-bottom: 8px; overflow: hidden; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* A light grey to make the white box stand out */
+            margin: 0;
+            padding: 20px;
+        }
+        .jest-details-container {
+            color: black;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px 30px;
+            overflow: hidden;
+        }
+        .jest-title-box {
+            text-align: center;
+            padding: 25px;
+            background-color: aquamarine;
+            border-radius: 10px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.1), 5px 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid #66cdaa;
+            margin-bottom: 30px;
+        }
+        .jest-title-box h1 {
+            margin: 0;
+            font-family: Impact, sans-serif;
+            font-size: 2.8rem;
+            color: black;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .jest-section {
+            margin-bottom: 25px;
+        }
+        .jest-section h3 {
+            font-size: 1.5rem;
+            color: black;
+            background-color: aquamarine;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .jest-section .icon {
+            font-size: 1.8rem;
+            margin-right: 12px;
+            line-height: 1;
+        }
+        .jest-section p, .jest-section li, .jest-section td {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .jest-section ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        .jest-section li::before {
+            content: '✓';
+            color: #20c997; /* A nice green for the checkmark */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .jest-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .jest-table th, .jest-table td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+        .jest-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .jest-details-container a {
+            color: #0d6efd;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .jest-details-container a:hover {
+            text-decoration: underline;
+        }
 .home-button-container {
   position: fixed; /* This makes it float on top of other content */
   top: 20px;       /* Position 20px from the top edge */
@@ -33,19 +118,157 @@
     </style>
 </head>
 <body>
-   <h1>JEST Exam Details (Joint Entrance Screening Test)</h1>
-    <dl>
-        <dt>Full Form</dt><dd>Joint Entrance Screening Test</dd>
-        <dt>Eligibility</dt><dd>B.E./B.Tech/M.Sc. in Physics/Maths/Computational Science (depends on program)</dd>
-        <dt>Scope</dt><dd>Admission to Ph.D. & integrated Ph.D. in physics & theoretical computer science in IISER, NISER, etc.</dd>
-        <dt>How to Apply</dt><dd>Apply at jest.org.in</dd>
-        <dt>Exam Structure</dt><dd>Single paper: 3 sections (Part A: Math, B: Physics, C: Advanced); 3 hours</dd>
-        <dt>Score Pattern & Analysis</dt><dd>+1 for correct (in Parts A & B), +3 (Part C), negative marking varies</dd>
-        <dt>Fees</dt><dd>₹800 (Gen), ₹400 (SC/ST/Female)</dd>
-        <dt>Time Conducted</dt><dd>Typically in February</dd>
-        <dt>Frequency</dt><dd>Once a year</dd>
-        <dt>Result Time</dt><dd>Results in 4–5 weeks</dd>
-    </dl>
+
+    <div class="jest-details-container">
+
+        <div class="jest-title-box">
+            <h1>DETAILS ABOUT JEST EXAM</h1>
+        </div>
+
+        <div class="jest-section">
+            <h3><span class="icon">ℹ️</span>Full Form</h3>
+            <p>Joint Entrance Screening Test (JEST).</p>
+        </div>
+
+        <div class="jest-section">
+            <h3><span class="icon">✅</span>Eligibility</h3>
+            <ul>
+                <li><b>For Ph.D. in Physics:</b> M.Sc. in Physics. Some institutes also accept B.E./B.Tech./M.Sc./M.E./M.Tech. in relevant disciplines.</li>
+                <li><b>For Ph.D. in Theoretical Computer Science:</b> M.Sc./M.E./M.Tech. in Computer Science and related disciplines.</li>
+                <li><b>For Integrated Ph.D.:</b> B.Sc. in Physics or B.E./B.Tech. in relevant engineering disciplines.</li>
+                <li>(Note: Specific eligibility criteria can vary slightly between participating institutes.)</li>
+            </ul>
+        </div>
+
+        <div class="jest-section">
+            <h3><span class="icon">🎂</span>Age Limit</h3>
+            <p>There is **no age restriction** for appearing for the JEST examination.</p>
+        </div>
+
+        <div class="jest-section">
+            <h3><span class="icon">🔬</span>Detailed Syllabus</h3>
+            <p>The syllabus is based on the general curriculum of undergraduate and postgraduate level courses.</p>
+            <ul>
+                <li><b>Physics:</b> Mathematical Methods, Classical Mechanics, Electromagnetism & Optics, Quantum Mechanics, Thermodynamics & Statistical Physics, and Electronics.</li>
+                <li><b>Theoretical Computer Science:</b> Analytical Reasoning and Deduction, Combinatorics, Data Structures and Algorithms, Discrete Mathematics, Graph Theory, and Principles of Programming.</li>
+            </ul>
+        </div>
+        
+        <div class="jest-section">
+            <h3><span class="icon">⚙️</span>Selection Process</h3>
+            <ol>
+                <li><b>Step 1: JEST Written Examination.</b> Candidates are shortlisted based on their rank in this single-paper, offline test.</li>
+                <li><b>Step 2: Interviews at Participating Institutes.</b> JEST is a screening test. Candidates must apply **separately** to each participating institute using their JEST score.</li>
+                <li><b>Step 3: Final Selection.</b> Each institute conducts its own interviews and/or further written tests to make the final selection. The JEST score is just one part of the overall evaluation.</li>
+            </ol>
+        </div>
+
+        <div class="jest-section">
+            <h3><span class="icon">💰</span>Stipend & Fellowship (During Ph.D.)</h3>
+            <p>JEST is an entrance exam for a research program, not a job. Selected candidates are admitted as Junior Research Fellows (JRF) and receive a monthly stipend as per government norms.</p>
+            <ul>
+                <li><b>Junior Research Fellow (JRF) Stipend:</b> Approximately <strong>₹37,000 per month</strong> for the first two years.</li>
+                <li><b>Senior Research Fellow (SRF) Stipend:</b> Approximately <strong>₹42,000 per month</strong> for the remaining tenure, plus other allowances like HRA.</li>
+            </ul>
+        </div>
+
+        <div class="jest-section">
+            <h3><span class="icon">👨‍🔬</span>Starting Post & Department</h3>
+            <p>The starting designation upon selection is <strong>Junior Research Fellow (JRF)</strong> or <strong>Ph.D. Scholar</strong> in one of the premier research institutes of India, such as:</p>
+            <ul>
+                <li>Tata Institute of Fundamental Research (TIFR)</li>
+                <li>Harish-Chandra Research Institute (HRI)</li>
+                <li>Indian Institutes of Science Education and Research (IISERs)</li>
+                <li>S.N. Bose National Centre for Basic Sciences</li>
+                <li>National Institute of Science Education and Research (NISER)</li>
+            </ul>
+        </div>
+
+        <div class="jest-section">
+            <h3><span class="icon">📋</span>Profile of a Research Scholar</h3>
+            <p>The role involves conducting original research under the guidance of a faculty supervisor, taking advanced coursework, publishing research papers in academic journals, and presenting work at national and international conferences. It is a career dedicated to the pursuit of knowledge and scientific discovery.</p>
+        </div>
+
+        <div class="jest-section">
+            <h3><span class="icon">🎁</span>Facilities After Selection (in Research Institutes)</h3>
+            <ul>
+                <li>Access to world-class, state-of-the-art research laboratories and equipment.</li>
+                <li>Interaction with some of the best scientific minds and faculty in the country.</li>
+                <li>Fully-funded opportunities to attend international conferences.</li>
+                <li>Excellent libraries, computational facilities, and on-campus accommodation.</li>
+            </ul>
+        </div>
+
+        <div class="jest-section">
+            <h3><span class="icon">🎯</span>Scope</h3>
+            <p>JEST is recognized as a National Eligibility Test (NET) by the Science & Engineering Research Board (SERB). It is the primary gateway for students aspiring to pursue a Ph.D. or Integrated Ph.D. in Physics and related fields at India's most prestigious research institutions. A Ph.D. from one of these institutes opens up careers in academia (as a professor), fundamental research (as a scientist in national or international labs), and R&D roles in high-tech industries.</p>
+        </div>
+
+        <div class="jest-section">
+            <h3><span class="icon">🗓️</span>Exam Dates & Frequency</h3>
+            <ul>
+                <li><b>Frequency:</b> The JEST exam is conducted <strong>once a year</strong>.</li>
+                <li><b>Exam Month:</b> Typically in <strong>February</strong>.</li>
+            </ul>
+        </div>
+
+        <div class="jest-section">
+            <h3><span class="icon">📝</span>How to Apply</h3>
+            <p>Candidates must apply online through the official JEST website. The process involves registration, filling the application form, uploading documents, and paying the application fee.</p>
+        </div>
+
+        <div class="jest-section">
+            <h3><span class="icon">📊</span>Exam Structure & Score Pattern</h3>
+            <table class="jest-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Exam Mode</td>
+                        <td>Offline, Pen & Paper (OMR-based)</td>
+                    </tr>
+                    <tr>
+                        <td>Number of Questions</td>
+                        <td>50 (divided into 3 parts with varying marks)</td>
+                    </tr>
+                    <tr>
+                        <td>Maximum Marks</td>
+                        <td>100</td>
+                    </tr>
+                     <tr>
+                        <td>Question Types</td>
+                        <td>Multiple-Choice (MCQ), Multiple Select (MSQ), and Numerical Answer Type (NAT).</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><b>Scoring Pattern:</b> The exam has a complex structure with different marks and negative marking schemes for each of its three parts. Part A typically has 1 mark questions with -1/3 negative marking, Part B has 3 mark questions with -1 negative marking, and Part C has 3 mark questions with no negative marking.</p>
+        </div>
+        
+        <div class="jest-section">
+            <h3><span class="icon">⏱️</span>Duration of the Exam</h3>
+            <p>The total duration of the exam is <strong>180 minutes (3 hours)</strong>.</p>
+        </div>
+        
+        <div class="jest-section">
+            <h3><span class="icon">⏳</span>Result Time</h3>
+            <p>The results are typically declared within <strong>3 to 4 weeks</strong> after the examination, usually in March.</p>
+        </div>
+
+        <div class="jest-section">
+            <h3><span class="icon">💸</span>Fees</h3>
+            <p>The application fee is typically around <strong>₹800</strong> for General category candidates and <strong>₹400</strong> for reserved categories. This fee is subject to change.</p>
+        </div>
+
+        <div class="jest-section">
+            <h3><span class="icon">🌐</span>Official Website</h3>
+            <p>For all official notifications, registration, and authentic information, always refer to the official JEST website: <a href="https://www.jest.org.in/" target="_blank" rel="noopener noreferrer">www.jest.org.in</a></p>
+        </div>
+
+    </div>
 <div class="home-button-container">
   <a href="/mainnow.html" title="Go to Home">
     <img src="images/home-icon.png" alt="Home">

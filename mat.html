@@ -7,11 +7,96 @@
 <meta name="description" content="Get complete details for the MAT (Management Aptitude Test) 2024 exam. Find information on eligibility, syllabus, exam pattern, application process, and important dates for MBA/PGDM admissions.">
 <link rel="manifest" href="/manifest_7.json">
     <style>
-        body { background-color: white; color: green; font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
-        h1 { border-bottom: 2px solid green; padding-bottom: 10px; }
-        dl { margin-bottom: 15px; }
-        dt { font-weight: bold; float: left; width: 200px; clear: left; padding-right: 10px; }
-        dd { margin-left: 210px; margin-bottom: 8px; overflow: hidden; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* A light grey to make the white box stand out */
+            margin: 0;
+            padding: 20px;
+        }
+        .mat-details-container {
+            color: black;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px 30px;
+            overflow: hidden;
+        }
+        .mat-title-box {
+            text-align: center;
+            padding: 25px;
+            background-color: aquamarine;
+            border-radius: 10px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.1), 5px 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid #66cdaa;
+            margin-bottom: 30px;
+        }
+        .mat-title-box h1 {
+            margin: 0;
+            font-family: Impact, sans-serif;
+            font-size: 2.8rem;
+            color: black;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .mat-section {
+            margin-bottom: 25px;
+        }
+        .mat-section h3 {
+            font-size: 1.5rem;
+            color: black;
+            background-color: aquamarine;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .mat-section .icon {
+            font-size: 1.8rem;
+            margin-right: 12px;
+            line-height: 1;
+        }
+        .mat-section p, .mat-section li, .mat-section td {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .mat-section ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        .mat-section li::before {
+            content: '✓';
+            color: #20c997; /* A nice green for the checkmark */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .mat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .mat-table th, .mat-table td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+        .mat-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .mat-details-container a {
+            color: #0d6efd;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .mat-details-container a:hover {
+            text-decoration: underline;
+        }
 .home-button-container {
   position: fixed; /* This makes it float on top of other content */
   top: 20px;       /* Position 20px from the top edge */
@@ -33,17 +118,169 @@
     </style>
 </head>
 <body>
-  <h1>MAT Exam Details (Management Aptitude Test)</h1>
-    <dl>
-        <dt>Eligibility</dt><dd>Bachelor’s degree in any discipline. Final-year students can apply.</dd>
-        <dt>Scope</dt><dd>Accepted by over 600 B-schools across India.</dd>
-        <dt>How to Apply</dt><dd>Online registration via the AIMA website.</dd>
-        <dt>Exam Structure</dt><dd>Five sections: Language Comprehension, Mathematical Skills, Data Analysis & Sufficiency, Intelligence & Critical Reasoning, Indian & Global Environment. Duration: 150 minutes. Available in Paper-Based Test (PBT), Computer-Based Test (CBT), and Internet-Based Test (IBT) modes.</dd>
-        <dt>Score Pattern</dt><dd>Composite score out of 800; separate score for Indian & Global Environment.</dd>
-        <dt>Fees</dt><dd>Approximately ₹1,950 for one mode; ₹3,100 for two modes.</dd>
-        <dt>Exam Timing</dt><dd>Conducted four times a year – February, May, September, and December.</dd>
-        <dt>Results</dt><dd>Announced within a few weeks after the exam.</dd>
-    </dl>
+
+    <div class="mat-details-container">
+
+        <div class="mat-title-box">
+            <h1>DETAILS ABOUT MAT EXAM</h1>
+        </div>
+
+        <div class="mat-section">
+            <h3><span class="icon">ℹ️</span>Full Form</h3>
+            <p>Management Aptitude Test (MAT).</p>
+        </div>
+
+        <div class="mat-section">
+            <h3><span class="icon">✅</span>Eligibility</h3>
+            <ul>
+                <li><b>Academic Qualification:</b> A candidate must be a graduate in any discipline from a recognized university.</li>
+                <li><b>Final Year Students:</b> Candidates appearing for the final year of their Bachelor’s degree are also eligible to apply.</li>
+                <li><b>Marks Criteria:</b> There is no minimum percentage requirement to appear for the MAT exam itself, but individual participating colleges have their own criteria (usually 50%).</li>
+            </ul>
+        </div>
+
+        <div class="mat-section">
+            <h3><span class="icon">🎂</span>Age Limit</h3>
+            <p>There is **no age limit** for candidates to appear for the MAT exam.</p>
+        </div>
+
+        <div class="mat-section">
+            <h3><span class="icon">📖</span>Detailed Syllabus</h3>
+            <ul>
+                <li><b>Language Comprehension:</b> Reading Comprehension, Vocabulary (Synonyms, Antonyms), Grammar, Para Jumbles, Sentence Correction.</li>
+                <li><b>Intelligence & Critical Reasoning:</b> Analytical Reasoning, Puzzles, Blood Relations, Direction Sense, Series, Statements & Assumptions/Arguments.</li>
+                <li><b>Mathematical Skills:</b> Arithmetic (Percentage, Profit & Loss, etc.), Algebra, Geometry, Mensuration, and Modern Math.</li>
+                <li><b>Data Analysis & Sufficiency:</b> Interpretation of Tables, Graphs (Line, Bar, Pie), Charts, and Data Sufficiency questions.</li>
+                <li><b>Indian & Global Environment:</b> General Knowledge, Current Affairs (National & International), Business & Economy, Corporate News, and Static GK.</li>
+            </ul>
+        </div>
+        
+        <div class="mat-section">
+            <h3><span class="icon">⚙️</span>Selection Process</h3>
+            <ol>
+                <li><b>Step 1: Appear for the MAT Exam.</b> Candidates appear for the test in their chosen mode (PBT, CBT, or IBT).</li>
+                <li><b>Step 2: Scorecard Release.</b> AIMA releases a scorecard containing the candidate's sectional and overall scaled scores and percentile.</li>
+                <li><b>Step 3: Apply to B-Schools.</b> Candidates use their MAT scorecard to apply individually to the hundreds of B-schools that accept MAT scores.</li>
+                <li><b>Step 4: College Selection Process.</b> Each participating institute conducts its own selection process, which typically includes Group Discussion (GD), a Written Ability Test (WAT), and/or a Personal Interview (PI).</li>
+            </ol>
+        </div>
+
+        <div class="mat-section">
+            <h3><span class="icon">💰</span>Starting Salary Potential (After MBA)</h3>
+            <p>Salaries depend heavily on the college a candidate gets into. MAT scores are accepted by a wide range of Tier-2 and Tier-3 B-schools.</p>
+            <ul>
+                <li><b>Average Salary Package:</b> Approximately <strong>₹6 Lakhs to ₹12 Lakhs per annum</strong> in good colleges.</li>
+                <li><b>Highest Salary Package:</b> Can go up to <strong>₹18 Lakhs to ₹25 Lakhs per annum</strong> in some of the top colleges accepting MAT scores.</li>
+            </ul>
+        </div>
+
+        <div class="mat-section">
+            <h3><span class="icon">🚀</span>Starting Post & Department (After MBA)</h3>
+            <p>NA (This is an entrance exam for a postgraduate course. Career paths depend on the chosen MBA specialization like Marketing, Finance, HR, etc.).</p>
+        </div>
+
+        <div class="mat-section">
+            <h3><span class="icon">📋</span>Job Profile (NA)</h3>
+            <p>NA (This is an entrance exam for a postgraduate course).</p>
+        </div>
+
+        <div class="mat-section">
+            <h3><span class="icon">🎁</span>Facilities After Selection (in B-Schools)</h3>
+            <ul>
+                <li>Industry-focused curriculum and experienced faculty.</li>
+                <li>Strong placement cells with corporate connections.</li>
+                <li>Opportunities for internships and practical industry exposure.</li>
+                <li>Development of managerial and leadership skills.</li>
+            </ul>
+        </div>
+
+        <div class="mat-section">
+            <h3><span class="icon">🎯</span>Scope</h3>
+            <p>MAT is a national-level MBA entrance exam conducted by the All India Management Association (AIMA). Its score is accepted by over 600 business schools across India. Due to its high frequency and moderate difficulty level, it is a very popular and accessible option for students seeking admission to a wide range of MBA and PGDM programs.</p>
+        </div>
+
+        <div class="mat-section">
+            <h3><span class="icon">🗓️</span>Exam Dates & Frequency</h3>
+            <ul>
+                <li><b>Frequency:</b> MAT is conducted **multiple times a year**, typically in four main phases.</li>
+                <li><b>Exam Months:</b> The exam sessions are usually held in **February, May, September, and December**.</li>
+                <li><b>Exam Modes:</b> It offers flexibility with three testing modes: Paper-Based Test (PBT), Computer-Based Test (CBT), and Internet-Based Test (IBT).</li>
+            </ul>
+        </div>
+
+        <div class="mat-section">
+            <h3><span class="icon">📝</span>How to Apply</h3>
+            <p>Candidates must register and apply online through the official AIMA MAT website. During registration, they can select their preferred testing mode and test city.</p>
+        </div>
+
+        <div class="mat-section">
+            <h3><span class="icon">📊</span>Exam Structure & Score Pattern</h3>
+            <table class="mat-table">
+                <thead>
+                    <tr>
+                        <th>Section</th>
+                        <th>Number of Questions</th>
+                        <th>Suggested Time (Mins)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Language Comprehension</td>
+                        <td>40</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Intelligence & Critical Reasoning</td>
+                        <td>40</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Mathematical Skills</td>
+                        <td>40</td>
+                        <td>40</td>
+                    </tr>
+                     <tr>
+                        <td>Data Analysis & Sufficiency</td>
+                        <td>40</td>
+                        <td>35</td>
+                    </tr>
+                     <tr>
+                        <td>Indian & Global Environment*</td>
+                        <td>40</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong>200</strong></td>
+                        <td><strong>150 Minutes</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><b>Scoring Pattern:</b> +1 mark for every correct answer, -0.25 marks for every incorrect answer.</p>
+            <p>*The score of the "Indian & Global Environment" section is reported separately and is usually not included in the calculation of the final composite score and percentile.</p>
+        </div>
+        
+        <div class="mat-section">
+            <h3><span class="icon">⏱️</span>Duration of the Exam</h3>
+            <p>The total duration of the exam is <strong>150 minutes (2 hours and 30 minutes)</strong> with no strict sectional time limits, but suggested times are provided.</p>
+        </div>
+        
+        <div class="mat-section">
+            <h3><span class="icon">⏳</span>Result Time</h3>
+            <p>The results for each session are typically declared within **3 to 4 weeks** after the examination.</p>
+        </div>
+
+        <div class="mat-section">
+            <h3><span class="icon">💸</span>Fees</h3>
+            <p>The application fee is typically around <strong>₹2,100</strong> for one test mode or <strong>₹3,300</strong> for two test modes (e.g., CBT and PBT). This fee is subject to change.</p>
+        </div>
+
+        <div class="mat-section">
+            <h3><span class="icon">🌐</span>Official Website</h3>
+            <p>For all official notifications, registration, and authentic information, always refer to the official AIMA MAT website: <a href="https://mat.aima.in/" target="_blank" rel="noopener noreferrer">mat.aima.in</a></p>
+        </div>
+
+    </div>
 <div class="home-button-container">
   <a href="/mainnow.html" title="Go to Home">
     <img src="images/home-icon.png" alt="Home">

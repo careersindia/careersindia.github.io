@@ -7,11 +7,96 @@
 <meta name="description" content="Get complete details for the GATE (Graduate Aptitude Test in Engineering) 2025 exam. Find info on eligibility, syllabus, exam pattern, and dates for M.Tech admissions and PSU recruitment.">
 <link rel="manifest" href="/manifest_7.json">
     <style>
-        body { background-color: white; color: green; font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
-        h1 { border-bottom: 2px solid green; padding-bottom: 10px; }
-        dl { margin-bottom: 15px; }
-        dt { font-weight: bold; float: left; width: 200px; clear: left; padding-right: 10px; }
-        dd { margin-left: 210px; margin-bottom: 8px; overflow: hidden; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* A light grey to make the white box stand out */
+            margin: 0;
+            padding: 20px;
+        }
+        .gate-details-container {
+            color: black;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px 30px;
+            overflow: hidden;
+        }
+        .gate-title-box {
+            text-align: center;
+            padding: 25px;
+            background-color: aquamarine;
+            border-radius: 10px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.1), 5px 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid #66cdaa;
+            margin-bottom: 30px;
+        }
+        .gate-title-box h1 {
+            margin: 0;
+            font-family: Impact, sans-serif;
+            font-size: 2.8rem;
+            color: black;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .gate-section {
+            margin-bottom: 25px;
+        }
+        .gate-section h3 {
+            font-size: 1.5rem;
+            color: black;
+            background-color: aquamarine;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .gate-section .icon {
+            font-size: 1.8rem;
+            margin-right: 12px;
+            line-height: 1;
+        }
+        .gate-section p, .gate-section li, .gate-section td {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .gate-section ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        .gate-section li::before {
+            content: '✓';
+            color: #20c997; /* A nice green for the checkmark */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .gate-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .gate-table th, .gate-table td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+        .gate-table th {
+            background-color: #f0f0f4;
+            font-weight: bold;
+        }
+        .gate-details-container a {
+            color: #0d6efd;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .gate-details-container a:hover {
+            text-decoration: underline;
+        }
 .home-button-container {
   position: fixed; /* This makes it float on top of other content */
   top: 20px;       /* Position 20px from the top edge */
@@ -33,20 +118,159 @@
     </style>
 </head>
 <body>
-   <h1>GATE Exam Details (Graduate Aptitude Test in Engineering)</h1>
-    <dl>
-        <dt>Name of Entrance Test</dt><dd>GATE</dd>
-        <dt>Full Form</dt><dd>Graduate Aptitude Test in Engineering</dd>
-        <dt>Eligibility</dt><dd>Bachelor’s degree in Engineering/Science; final-year students eligible</dd>
-        <dt>Scope</dt><dd>Admission to M.Tech/PhD; PSU recruitment</dd>
-        <dt>How to Apply</dt><dd>Online via GOAPS portal https://gate.iitk.ac.in (changes per year)</dd>
-        <dt>Exam Structure</dt><dd>Online; MCQ, MSQ, NAT; sections: General Aptitude + Subject Paper</dd>
-        <dt>Score Pattern/Analysis</dt><dd>100 marks total; normalized score (for multi-session papers); rank based on raw/normalized scores</dd>
-        <dt>Fees</dt><dd>₹1800 (General); ₹900 (SC/ST/PwD/Female)</dd>
-        <dt>Time When Conducted</dt><dd>February</dd>
-        <dt>Number of Times/Year</dt><dd>1</dd>
-        <dt>Time for Results</dt><dd>Mid-March (~1 month after exam)</dd>
-    </dl>
+
+    <div class="gate-details-container">
+
+        <div class="gate-title-box">
+            <h1>DETAILS ABOUT GATE EXAM</h1>
+        </div>
+
+        <div class="gate-section">
+            <h3><span class="icon">ℹ️</span>Full Form</h3>
+            <p>Graduate Aptitude Test in Engineering (GATE).</p>
+        </div>
+
+        <div class="gate-section">
+            <h3><span class="icon">✅</span>Eligibility</h3>
+            <ul>
+                <li><b>Academic Qualification:</b> A candidate who is currently studying in the 3rd or higher years of any undergraduate degree program OR has already completed any government-approved degree program in Engineering / Technology / Architecture / Science / Commerce / Arts is eligible.</li>
+                <li><b>No Marks Criteria:</b> There is no minimum percentage requirement to appear for the GATE exam.</li>
+            </ul>
+        </div>
+
+        <div class="gate-section">
+            <h3><span class="icon">🎂</span>Age Limit</h3>
+            <p>There is **no age limit** for candidates to appear for the GATE exam.</p>
+        </div>
+
+        <div class="gate-section">
+            <h3><span class="icon">📖</span>Detailed Syllabus</h3>
+            <p>The exam consists of two main parts:</p>
+            <ul>
+                <li><b>General Aptitude (GA):</b> This section is common for all papers. It tests Verbal Ability (English grammar, vocabulary, reading comprehension) and Numerical Ability (quantitative aptitude, data interpretation, logical reasoning).</li>
+                <li><b>Core Subject Paper:</b> This is the main part of the exam. The syllabus is specific to the engineering/science discipline chosen by the candidate (e.g., Computer Science, Mechanical, Civil, etc.) and is based on the standard undergraduate curriculum for that discipline.</li>
+            </ul>
+        </div>
+        
+        <div class="gate-section">
+            <h3><span class="icon">⚙️</span>Selection Process</h3>
+            <p>GATE is a qualifying exam. The score is used for two primary purposes:</p>
+            <ol>
+                <li><b>Admission to Postgraduate Programs (M.E./M.Tech/Ph.D.):</b>
+                    <ul>
+                        <li>Candidates use their GATE scorecard to apply to institutions like IITs, IISc Bangalore, NITs, etc.</li>
+                        <li>Each institute then conducts its own admission process (like COAP or CCMT counselling) or interviews for final selection.</li>
+                    </ul>
+                </li>
+                <li><b>Recruitment in Public Sector Undertakings (PSUs):</b>
+                    <ul>
+                        <li>Many PSUs (like ONGC, IOCL, NTPC, BHEL) use GATE scores to shortlist candidates.</li>
+                        <li>Shortlisted candidates are then called for Group Discussions (GD) and Personal Interviews (PI) for final selection.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="gate-section">
+            <h3><span class="icon">💰</span>Starting Salary / Stipend Potential</h3>
+            <ul>
+                <li><b>If joining a PSU:</b> The starting salary is excellent. An Engineer/Officer Trainee in a Maharatna PSU can expect a CTC of approximately <strong>₹15 Lakhs to ₹20 Lakhs per annum</strong>.</li>
+                <li><b>If pursuing M.Tech:</b> Admitted students receive a monthly stipend from the Ministry of Education, which is currently <strong>₹12,400 per month</strong>.</li>
+            </ul>
+        </div>
+
+        <div class="gate-section">
+            <h3><span class="icon">🚀</span>Starting Post & Department</h3>
+            <ul>
+                <li><b>In PSUs:</b> The starting designation is typically <strong>Executive Trainee</strong> or <strong>Engineer Trainee</strong> in the relevant technical department.</li>
+                <li><b>In Academia:</b> The starting role is a <strong>Postgraduate Student</strong> (M.Tech Scholar or Ph.D. Fellow).</li>
+            </ul>
+        </div>
+
+        <div class="gate-section">
+            <h3><span class="icon">📋</span>Job Profile (in a PSU)</h3>
+            <p>The job profile of a PSU engineer is a blend of technical and managerial work. It involves project management, plant operations, maintenance, quality control, and working on large-scale national infrastructure projects. It is a stable and prestigious government-sector job.</p>
+        </div>
+
+        <div class="gate-section">
+            <h3><span class="icon">🎁</span>Facilities After Selection</h3>
+            <ul>
+                <li><b>In PSUs:</b> Comprehensive benefits including housing/HRA, medical facilities for family, travel allowances, and performance-related pay.</li>
+                <li><b>In IITs/IISc:</b> Access to world-class research labs, top academic faculty, extensive libraries, and a highly stimulating intellectual environment.</li>
+            </ul>
+        </div>
+
+        <div class="gate-section">
+            <h3><span class="icon">🎯</span>Scope</h3>
+            <p>GATE is the most important postgraduate entrance examination for engineers and science graduates in India. It has a powerful dual scope: it is the primary gateway for admission to prestigious Master's and Doctoral programs (M.Tech/Ph.D.) in institutions like IITs and IISc, and it is also the direct recruitment path for many coveted technical positions in India's top Public Sector Undertakings (PSUs).</p>
+        </div>
+
+        <div class="gate-section">
+            <h3><span class="icon">🗓️</span>Exam Dates & Frequency</h3>
+            <ul>
+                <li><b>Frequency:</b> The GATE exam is conducted <strong>once a year</strong>.</li>
+                <li><b>Exam Month:</b> Typically held over multiple weekends in <strong>February</strong>.</li>
+            </ul>
+        </div>
+
+        <div class="gate-section">
+            <h3><span class="icon">📝</span>How to Apply</h3>
+            <p>The application process is conducted online through the official GATE Online Application Processing System (GOAPS). The exam is jointly organized by the seven IITs and IISc Bangalore on a rotational basis.</p>
+        </div>
+
+        <div class="gate-section">
+            <h3><span class="icon">📊</span>Exam Structure & Score Pattern</h3>
+            <table class="gate-table">
+                <thead>
+                    <tr>
+                        <th>Section</th>
+                        <th>Distribution of Marks</th>
+                        <th>Total Marks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>General Aptitude (GA)</td>
+                        <td>10 Questions (5 x 1-mark + 5 x 2-marks)</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>Core Engineering Subject</td>
+                        <td>55 Questions (25 x 1-mark + 30 x 2-marks)</td>
+                        <td>85</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong>65 Questions</strong></td>
+                        <td><strong>100</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><b>Question Types:</b> The exam features Multiple Choice Questions (MCQ), Multiple Select Questions (MSQ), and Numerical Answer Type (NAT) questions.</p>
+            <p><b>Scoring Pattern:</b> There is **negative marking** for incorrect answers in MCQs only (1/3rd for 1-mark questions, 2/3rd for 2-mark questions). There is no negative marking for MSQ and NAT questions.</p>
+        </div>
+        
+        <div class="gate-section">
+            <h3><span class="icon">⏱️</span>Duration of the Exam</h3>
+            <p>The total duration of the exam is <strong>180 minutes (3 hours)</strong>.</p>
+        </div>
+        
+        <div class="gate-section">
+            <h3><span class="icon">⏳</span>Result Time</h3>
+            <p>The results are typically declared in the second or third week of <strong>March</strong>, approximately one month after the exam.</p>
+        </div>
+
+        <div class="gate-section">
+            <h3><span class="icon">💸</span>Fees</h3>
+            <p>The application fee is typically around <strong>₹1,800</strong> for male candidates (General/OBC) and <strong>₹900</strong> for female candidates and reserved categories. The fee is higher for international candidates and during the extended registration period.</p>
+        </div>
+
+        <div class="gate-section">
+            <h3><span class="icon">🌐</span>Official Website</h3>
+            <p>The official website changes each year depending on the organizing institute. For the current year, you can find it by searching "GATE [Year] Official Website" or starting at the main portal: <a href="https://gate.iitk.ac.in/" target="_blank" rel="noopener noreferrer">gate.iitk.ac.in</a> (link may change yearly).</p>
+        </div>
+
+    </div>
 <div class="home-button-container">
   <a href="/mainnow.html" title="Go to Home">
     <img src="images/home-icon.png" alt="Home">
@@ -65,6 +289,5 @@
     });
   }
 </script>
-
 </body>
 </html>

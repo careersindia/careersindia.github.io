@@ -7,11 +7,96 @@
 <meta name="description" content="Get complete details for the JEE Advanced 2025 exam. Find information on eligibility for IITs, syllabus, exam pattern, application process, and important dates.">
 <link rel="manifest" href="/manifest_7.json">
     <style>
-        body { background-color: white; color: green; font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
-        h1 { border-bottom: 2px solid green; padding-bottom: 10px; }
-        dl { margin-bottom: 15px; }
-        dt { font-weight: bold; float: left; width: 200px; clear: left; padding-right: 10px; }
-        dd { margin-left: 210px; margin-bottom: 8px; overflow: hidden; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* A light grey to make the white box stand out */
+            margin: 0;
+            padding: 20px;
+        }
+        .jee-advanced-details-container {
+            color: black;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px 30px;
+            overflow: hidden;
+        }
+        .jee-advanced-title-box {
+            text-align: center;
+            padding: 25px;
+            background-color: aquamarine;
+            border-radius: 10px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.1), 5px 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid #66cdaa;
+            margin-bottom: 30px;
+        }
+        .jee-advanced-title-box h1 {
+            margin: 0;
+            font-family: Impact, sans-serif;
+            font-size: 2.8rem;
+            color: black;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .jee-advanced-section {
+            margin-bottom: 25px;
+        }
+        .jee-advanced-section h3 {
+            font-size: 1.5rem;
+            color: black;
+            background-color: aquamarine;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .jee-advanced-section .icon {
+            font-size: 1.8rem;
+            margin-right: 12px;
+            line-height: 1;
+        }
+        .jee-advanced-section p, .jee-advanced-section li, .jee-advanced-section td {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .jee-advanced-section ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        .jee-advanced-section li::before {
+            content: '✓';
+            color: #20c997; /* A nice green for the checkmark */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .jee-advanced-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .jee-advanced-table th, .jee-advanced-table td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+        .jee-advanced-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .jee-advanced-details-container a {
+            color: #0d6efd;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .jee-advanced-details-container a:hover {
+            text-decoration: underline;
+        }
 .home-button-container {
   position: fixed; /* This makes it float on top of other content */
   top: 20px;       /* Position 20px from the top edge */
@@ -33,20 +118,161 @@
     </style>
 </head>
 <body>
-  <h1>JEE Advanced Exam Details</h1>
-    <dl>
-        <dt>Name of Entrance Test</dt><dd>JEE Advanced</dd>
-        <dt>Full Form</dt><dd>Joint Entrance Examination Advanced</dd>
-        <dt>Eligibility</dt><dd>Top 2.5 lakh JEE Main rankers; 10+2 PCM; age <25; max 2 attempts</dd>
-        <dt>Scope</dt><dd>Admission to IITs</dd>
-        <dt>How to Apply</dt><dd>Online via https://jeeadv.ac.in</dd>
-        <dt>Exam Structure</dt><dd>2 papers (PCM); MCQs, numerical, comprehension; pattern varies yearly</dd>
-        <dt>Score Pattern/Analysis</dt><dd>No fixed pattern; total ~360 marks; score normalized; ranks based on aggregate of both papers</dd>
-        <dt>Fees</dt><dd>₹2800 (General); ₹1400 (SC/ST/PwD/Female) – varies</dd>
-        <dt>Time When Conducted</dt><dd>Usually in June</dd>
-        <dt>Number of Times/Year</dt><dd>1</dd>
-        <dt>Time for Results</dt><dd>~10–14 days after exam</dd>
-    </dl>
+
+    <div class="jee-advanced-details-container">
+
+        <div class="jee-advanced-title-box">
+            <h1>DETAILS ABOUT JEE ADVANCED EXAM</h1>
+        </div>
+
+        <div class="jee-advanced-section">
+            <h3><span class="icon">ℹ️</span>Full Form</h3>
+            <p>Joint Entrance Examination (Advanced).</p>
+        </div>
+
+        <div class="jee-advanced-section">
+            <h3><span class="icon">✅</span>Eligibility</h3>
+            <ul>
+                <li><b>Performance in JEE (Main):</b> Candidates must be among the top ~2,50,000 successful candidates (including all categories) in the B.E./B.Tech. paper of JEE (Main).</li>
+                <li><b>Age Limit:</b> Candidates should have been born on or after October 1, 1999. Five years relaxation is given to SC, ST, and PwD candidates.</li>
+                <li><b>Number of Attempts:</b> A candidate can attempt JEE (Advanced) a maximum of two times in two consecutive years.</li>
+                <li><b>Appearance in Class XII (or equivalent):</b> A candidate should have appeared for the Class XII (or equivalent) examination for the first time in either the preceding year or the current year.</li>
+                <li><b>Earlier Admission at IITs:</b> A candidate should NOT have been admitted to an IIT before.</li>
+            </ul>
+        </div>
+
+        <div class="jee-advanced-section">
+            <h3><span class="icon">🎂</span>Age Limit</h3>
+            <p>Yes, there is an age limit. Candidates must be born on or after October 1, 1999 (age relaxation applies for reserved categories).</p>
+        </div>
+
+        <div class="jee-advanced-section">
+            <h3><span class="icon">📖</span>Detailed Syllabus</h3>
+            <p>The syllabus is based on the Class XI and XII curriculum of Physics, Chemistry, and Mathematics, but the scope is deeper and more comprehensive than JEE Main.</p>
+            <ul>
+                <li><b>Physics:</b> Includes topics like General Physics, Mechanics, Thermal Physics, Electricity & Magnetism, Optics, and Modern Physics, with a strong emphasis on conceptual understanding and complex problem-solving.</li>
+                <li><b>Chemistry:</b> Covers Physical, Organic, and Inorganic Chemistry. The syllabus is extensive, requiring a deep understanding of reaction mechanisms, thermodynamics, and the properties of elements and compounds.</li>
+                <li><b>Mathematics:</b> Includes Algebra, Trigonometry, Analytical Geometry, Differential Calculus, Integral Calculus, and Vectors. Questions are known for being non-standard and requiring a high degree of analytical skill.</li>
+            </ul>
+        </div>
+        
+        <div class="jee-advanced-section">
+            <h3><span class="icon">⚙️</span>Selection Process</h3>
+            <ol>
+                <li><b>Step 1: Qualify in JEE (Main).</b> Be among the top ~2.5 Lakh candidates.</li>
+                <li><b>Step 2: Register and Appear for JEE (Advanced).</b> This consists of two computer-based papers (Paper 1 and Paper 2) held on the same day.</li>
+                <li><b>Step 3: Declaration of Results & All India Rank (AIR).</b> Ranks are prepared based on the aggregate marks obtained in Paper 1 and Paper 2.</li>
+                <li><b>Step 4: JoSAA Counselling.</b> Candidates who secure a rank participate in the Joint Seat Allocation Authority (JoSAA) counselling for admission to the Indian Institutes of Technology (IITs).</li>
+            </ol>
+        </div>
+
+        <div class="jee-advanced-section">
+            <h3><span class="icon">💰</span>Placement & Salary Potential (After B.Tech from IIT)</h3>
+            <p>Placements at top IITs (Bombay, Delhi, Madras, etc.) are among the best in the world, attracting top global companies.</p>
+            <ul>
+                <li><b>Average Salary Package:</b> Approximately <strong>₹25 Lakhs to ₹35 Lakhs per annum</strong>.</li>
+                <li><b>Highest Salary Package:</b> Frequently exceeds <strong>₹1.5 to ₹2 Crores per annum</strong>, especially for international roles in quantitative finance and software engineering.</li>
+            </ul>
+        </div>
+
+        <div class="jee-advanced-section">
+            <h3><span class="icon">🚀</span>Starting Post & Career Paths</h3>
+            <p>IIT graduates are recruited for premier roles across industries:</p>
+            <ul>
+                <li><b>Software Development Engineer</b> at FAANG companies (Facebook/Meta, Amazon, Apple, Netflix, Google).</li>
+                <li><b>Quantitative Analyst ("Quant")</b> at high-frequency trading firms and investment banks.</li>
+                <li><b>Management Consultant</b> at top-tier firms like McKinsey, BCG, and Bain.</li>
+                <li><b>Core Engineering Roles</b> in R&D departments of leading global firms.</li>
+                <li>Many also become successful <b>Entrepreneurs</b>, founding major startups.</li>
+            </ul>
+        </div>
+
+        <div class="jee-advanced-section">
+            <h3><span class="icon">📋</span>Job Profile (NA)</h3>
+            <p>NA (This is an entrance exam for an undergraduate course).</p>
+        </div>
+
+        <div class="jee-advanced-section">
+            <h3><span class="icon">🎁</span>Facilities After Selection (in IITs)</h3>
+            <ul>
+                <li>Access to some of the brightest minds (both faculty and peers) in the country.</li>
+                <li>World-class research infrastructure, labs, and innovation centers.</li>
+                <li>A globally recognized brand name that opens doors for life.</li>
+                <li>An extremely vibrant campus life with top-tier technical and cultural festivals.</li>
+                <li>A powerful and influential global alumni network.</li>
+            </ul>
+        </div>
+
+        <div class="jee-advanced-section">
+            <h3><span class="icon">🎯</span>Scope</h3>
+            <p>JEE Advanced is the sole gateway to the 23 Indian Institutes of Technology (IITs), which are institutions of national importance and globally recognized centers of excellence. A degree from an IIT provides unparalleled opportunities for careers in cutting-edge technology, research, finance, and entrepreneurship. It is considered the pinnacle of undergraduate engineering education in India.</p>
+        </div>
+
+        <div class="jee-advanced-section">
+            <h3><span class="icon">🗓️</span>Exam Dates & Frequency</h3>
+            <ul>
+                <li><b>Frequency:</b> The JEE Advanced exam is conducted <strong>once a year</strong>.</li>
+                <li><b>Exam Month:</b> Typically held in late <strong>May or early June</strong>, after the JEE Main results are finalized.</li>
+            </ul>
+        </div>
+
+        <div class="jee-advanced-section">
+            <h3><span class="icon">📝</span>How to Apply</h3>
+            <p>Only candidates who qualify in JEE (Main) are eligible to apply. The registration process is done online through the official JEE Advanced website, which is managed by one of the IITs on a rotational basis each year.</p>
+        </div>
+
+        <div class="jee-advanced-section">
+            <h3><span class="icon">📊</span>Exam Structure & Score Pattern</h3>
+            <p>The exam structure is **not fixed** and changes every year, which is a key part of its challenge. It always consists of two papers, but the type of questions can vary.</p>
+            <table class="jee-advanced-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Number of Papers</td>
+                        <td>2 (Paper 1 and Paper 2, both compulsory)</td>
+                    </tr>
+                    <tr>
+                        <td>Subjects</td>
+                        <td>Physics, Chemistry, and Mathematics in both papers</td>
+                    </tr>
+                    <tr>
+                        <td>Question Types</td>
+                        <td>Can include MCQs with single correct, MCQs with multiple correct, Numerical Answer Type, Paragraph-based questions, Matrix Match, etc.</td>
+                    </tr>
+                    <tr>
+                        <td>Scoring</td>
+                        <td>Complex partial and negative marking schemes are a hallmark of the exam.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="jee-advanced-section">
+            <h3><span class="icon">⏱️</span>Duration of the Exam</h3>
+            <p>Each paper (Paper 1 and Paper 2) is <strong>3 hours (180 minutes)</strong> long. Both are held on the same day with a break in between.</p>
+        </div>
+        
+        <div class="jee-advanced-section">
+            <h3><span class="icon">⏳</span>Result Time</h3>
+            <p>The results are declared very quickly, typically within <strong>10 to 12 days</strong> after the examination date.</p>
+        </div>
+
+        <div class="jee-advanced-section">
+            <h3><span class="icon">💸</span>Fees</h3>
+            <p>The application fee is typically around <strong>₹2,900</strong> for male candidates (General) and <strong>₹1,450</strong> for female candidates and reserved categories.</p>
+        </div>
+
+        <div class="jee-advanced-section">
+            <h3><span class="icon">🌐</span>Official Website</h3>
+            <p>The official website changes each year depending on the organizing IIT. For the current year, it is: <a href="https://jeeadv.ac.in/" target="_blank" rel="noopener noreferrer">jeeadv.ac.in</a></p>
+        </div>
+
+    </div>
 <div class="home-button-container">
   <a href="/mainnow.html" title="Go to Home">
     <img src="images/home-icon.png" alt="Home">
