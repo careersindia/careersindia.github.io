@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Level Entrance Tests in India</title>
+<link rel="manifest" href="/manifest_7.json">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .hub-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .hub-title-box {
+            text-align: center;
+            padding: 25px;
+            background-color: turquoise; /* User requested turquoise */
+            border-radius: 10px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.1), 5px 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid #3ca8a8;
+            margin-bottom: 30px;
+        }
+        .hub-title-box h1 {
+            margin: 0;
+            font-family: Impact, sans-serif;
+            font-size: 2.8rem;
+            color: black;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+        .search-container {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        #examSearchInput {
+            width: 80%;
+            padding: 15px;
+            font-size: 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        #examSearchInput:focus {
+            border-color: turquoise;
+        }
+        .exam-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .exam-item {
+            display: flex;
+            align-items: center;
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 15px;
+            text-decoration: none;
+            color: black;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .exam-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .exam-item .icon {
+            font-size: 1.8rem;
+            margin-right: 15px;
+        }
+        .centered-item-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .centered-item-container .exam-item {
+            width: 23%; /* Approx width of one grid item */
+        }
+        /* Responsive Grid */
+        @media (max-width: 1200px) {
+            .exam-grid { grid-template-columns: repeat(3, 1fr); }
+            .centered-item-container .exam-item { width: 31%; }
+        }
+        @media (max-width: 900px) {
+            .exam-grid { grid-template-columns: repeat(2, 1fr); }
+            .centered-item-container .exam-item { width: 48%; }
+        }
+        @media (max-width: 600px) {
+            .exam-grid { grid-template-columns: repeat(1, 1fr); }
+            .centered-item-container .exam-item { width: 98%; }
+        }
+.home-button-container {
+  position: fixed; /* This makes it float on top of other content */
+  top: 20px;       /* Position 20px from the top edge */
+  right: 25px;     /* Position 25px from the right edge */
+  z-index: 1000;   /* Ensures it's above other elements */
+}
+
+.home-button-container a img {
+  width: 50px; /* Adjust size as needed */
+  height: 50px;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.home-button-container a:hover img {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+    </style>
+</head>
+<body>
+
+    <div class="hub-container">
+
+        <div class="hub-title-box">
+            <h1>NATIONAL LEVEL ENTRANCE TESTS</h1>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="examSearchInput" onkeyup="filterExams()" placeholder="Search for an exam by name...">
+        </div>
+
+        <div class="exam-grid">
+            <!-- Row 1 -->
+            <a href="afcat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">AFCAT</span></a>
+            <a href="ailet.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">AILET</span></a>
+            <a href="aissee.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">AISSEE</span></a>
+            <a href="bitsat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">BITSAT</span></a>
+            <!-- Row 2 -->
+            <a href="ca_final.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CA FINAL</span></a>
+            <a href="ca_foundation.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CA FOUNDATION</span></a>
+            <a href="ca_intermediate.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CA INTERMEDIATE</span></a>
+            <a href="cat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CAT</span></a>
+            <!-- Row 3 -->
+            <a href="cds.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CDS</span></a>
+            <a href="ceed.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CEED</span></a>
+            <a href="clat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CLAT</span></a>
+            <a href="cma_final.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CMA FINAL</span></a>
+            <!-- Row 4 -->
+            <a href="cma_foundation.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CMA FOUNDATION</span></a>
+            <a href="cma_intermediate.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CMA INTERMEDIATE</span></a>
+            <a href="cmat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CMAT</span></a>
+            <a href="cmi_entrance_exam.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CMI ENTRANCE EXAM</span></a>
+            <!-- Row 5 -->
+            <a href="cs_professional.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CS</span></a>
+            <a href="cseet.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CSEET</span></a>
+            <a href="csir_ugc_net.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CSIR UGC NET</span></a>
+            <a href="ctet.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CTET</span></a>
+             <!-- Row 6 -->
+            <a href="cuet_pg.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CUET-PG</span></a>
+            <a href="cuet_ug.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CUET-UG</span></a>
+            <a href="dbt_jrf.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">DBT-JRF</span></a>
+            <a href="epfo_eo_ao.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">EPFO-EO-AO</span></a>
+            <!-- Row 7 -->
+            <a href="epfo_ssa.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">EPFO-SSA</span></a>
+            <a href="fci_exam.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">FCI</span></a>
+            <a href="ftii_jet.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">FTII-JET</span></a>
+            <a href="gate.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">GATE</span></a>
+            <!-- Row 8 -->
+            <a href="ibps_clerk.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">IBPS CLERK</span></a>
+            <a href="ibps_po.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">IBPS PO</span></a>
+            <a href="ibps_so.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">IBPS SO</span></a>
+            <a href="icar_aieea_pg.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">ICAR PG</span></a>
+            <!-- Row 9 -->
+            <a href="icar_aieea_ug.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">ICAR UG</span></a>
+            <a href="icmr_jrf.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">ICMR JRF</span></a>
+            <a href="iith_pgee.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">IITH PGEE</span></a>
+            <a href="ini_cet.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">INI CET</span></a>
+            <!-- Row 10 -->
+            <a href="isi_admission_test.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">ISI</span></a>
+            <a href="jee_advanced.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">JEE ADVANCED</span></a>
+            <a href="jee_mains.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">JEE MAINS</span></a>
+            <a href="jest.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">JEST</span></a>
+            <!-- Row 11 -->
+            <a href="jnvst.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">JNVST</span></a>
+            <a href="lic_aao.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">LIC AAO</span></a>
+            <a href="lsat_india.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">LSAT INDIA</span></a>
+            <a href="mat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">MAT</span></a>
+            <!-- Row 12 -->
+            <a href="nata.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NATA</span></a>
+            <a href="nch_mct_jee.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NCH MCT JEE</span></a>
+            <a href="nda.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NDA</span></a>
+            <a href="neet_pg.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NEET PG</span></a>
+            <!-- Row 13 -->
+            <a href="neet_ug.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NEET UG</span></a>
+            <a href="nest.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NEST</span></a>
+            <a href="nid_dat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NID DAT</span></a>
+            <a href="nift_entrance_exam.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NIFT ENTRANCE EXAM</span></a>
+            <!-- Row 14 -->
+            <a href="nmat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NMAT</span></a>
+            <a href="rbi_grade_b.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">RBI GRADE B</span></a>
+            <a href="rrb_alp.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">RRB-ALP</span></a>
+            <a href="rrb_je.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">RRB-JE</span></a>
+            <!-- Row 15 -->
+            <a href="rrb_ntpc.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">RRB NTPC</span></a>
+            <a href="slat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SLAT</span></a>
+            <a href="snap.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SNAP</span></a>
+            <a href="srfti_jet.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SRFTI-JET</span></a>
+            <!-- Row 16 -->
+            <a href="srm_jeee.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SRM-JEEE</span></a>
+            <a href="ssb_interview.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SSB-INTERVIEW</span></a>
+            <a href="ssc_cgl.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SSC-CGL</span></a>
+            <a href="ssc_chsl.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SSC-CHSL</span></a>
+            <!-- Row 17 -->
+            <a href="ssc_mts.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SSC-MTS</span></a>
+            <a href="uceed.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">UCEED</span></a>
+            <a href="ugc_net.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">UGC-NET</span></a>
+            <a href="viteee.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">VITEEE</span></a>
+            <!-- Row 18 -->
+            <a href="xat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">XAT</span></a>
+            <a href="esic_exam.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">ESIC</span></a>
+            <a href="fmge.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">FMGE</span></a>
+            <a href="iiser_aptitude_test_iat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">IAT</span></a>
+            <!-- NOTE: The above are the 72 items (18 rows x 4 columns) -->
+        </div>
+
+        <!-- The 73rd item, centered below the grid -->
+        <div class="centered-item-container">
+            <a href="jipmer_mbbs.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">JIPMER MBBS</span></a>
+        </div>
+
+    </div>
+
+    <script>
+        function filterExams() {
+            // Get input value and convert to uppercase for case-insensitive search
+            let filter = document.getElementById('examSearchInput').value.toUpperCase();
+            
+            // Get all exam items
+            let items = document.querySelectorAll('.exam-item');
+            
+            // Loop through all items
+            items.forEach(item => {
+                // Get the text content of the exam name
+                let examName = item.querySelector('.exam-name').textContent || item.querySelector('.exam-name').innerText;
+                
+                // Check if the exam name matches the search filter
+                if (examName.toUpperCase().indexOf(filter) > -1) {
+                    item.style.display = "flex"; // Show the item
+                } else {
+                    item.style.display = "none"; // Hide the item
+                }
+            });
+        }
+    </script>
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-workbox.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+</body>
+</html>
