@@ -7,11 +7,96 @@
 <meta name="description" content="Get complete details for the UPSC CDS (Combined Defence Services) 2024-2025 exam. Find information on eligibility, syllabus, application process, exam dates, and scope for joining the IMA, INA, AFA, and OTA.">
 <link rel="manifest" href="/manifest_7.json">
     <style>
-        body { background-color: white; color: green; font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
-        h1 { border-bottom: 2px solid green; padding-bottom: 10px; }
-        dl { margin-bottom: 15px; }
-        dt { font-weight: bold; float: left; width: 200px; clear: left; padding-right: 10px; }
-        dd { margin-left: 210px; margin-bottom: 8px; overflow: hidden; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* A light grey to make the white box stand out */
+            margin: 0;
+            padding: 20px;
+        }
+        .cds-details-container {
+            color: black;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px 30px;
+            overflow: hidden;
+        }
+        .cds-title-box {
+            text-align: center;
+            padding: 25px;
+            background-color: aquamarine;
+            border-radius: 10px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.1), 5px 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid #66cdaa;
+            margin-bottom: 30px;
+        }
+        .cds-title-box h1 {
+            margin: 0;
+            font-family: Impact, sans-serif;
+            font-size: 2.8rem;
+            color: black;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .cds-section {
+            margin-bottom: 25px;
+        }
+        .cds-section h3 {
+            font-size: 1.5rem;
+            color: black;
+            background-color: aquamarine;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .cds-section .icon {
+            font-size: 1.8rem;
+            margin-right: 12px;
+            line-height: 1;
+        }
+        .cds-section p, .cds-section li, .cds-section td {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .cds-section ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        .cds-section li::before {
+            content: '✓';
+            color: #20c997; /* A nice green for the checkmark */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .cds-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .cds-table th, .cds-table td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+        .cds-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .cds-details-container a {
+            color: #0d6efd;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .cds-details-container a:hover {
+            text-decoration: underline;
+        }
 .home-button-container {
   position: fixed; /* This makes it float on top of other content */
   top: 20px;       /* Position 20px from the top edge */
@@ -33,19 +118,142 @@
     </style>
 </head>
 <body>
-    <h1>UPSC CDS Exam Details (Combined Defence Services)</h1>
-    <dl>
-        <dt>Full Form</dt><dd>Combined Defence Services</dd>
-        <dt>Eligibility</dt><dd>Graduate (PCM for Navy/AF)</dd>
-        <dt>Scope</dt><dd>Entry into IMA, OTA, INA, AFA</dd>
-        <dt>How to Apply</dt><dd>UPSC portal</dd>
-        <dt>Exam Structure</dt><dd>English, GK, Math (for IMA/INA/AFA) + SSB Interview</dd>
-        <dt>Score Pattern</dt><dd>Written: 300 (OTA: 200) + SSB</dd>
-        <dt>Fees</dt><dd>₹200</dd>
-        <dt>Time Conducted</dt><dd>Feb & Nov</dd>
-        <dt>Frequency</dt><dd>Twice a year</dd>
-        <dt>Result Time</dt><dd>~50–60 days</dd>
-    </dl>
+
+    <div class="cds-details-container">
+
+        <div class="cds-title-box">
+            <h1>DETAILS ABOUT CDS EXAM</h1>
+        </div>
+
+        <div class="cds-section">
+            <h3><span class="icon">ℹ️</span>Full Form</h3>
+            <p>Combined Defence Services (CDS) Examination.</p>
+        </div>
+
+        <div class="cds-section">
+            <h3><span class="icon">✅</span>Eligibility</h3>
+            <ul>
+                <li><b>Nationality:</b> Must be a citizen of India (or subject of Nepal/Bhutan, or Tibetan refugee).</li>
+                <li><b>Marital Status:</b> Unmarried.</li>
+                <li><b>For IMA & OTA:</b> Degree from a recognized university or equivalent.</li>
+                <li><b>For Indian Naval Academy:</b> Degree in Engineering from a recognized university.</li>
+                <li><b>For Air Force Academy:</b> Degree of a recognized university (with Physics and Mathematics at 10+2 level) or Bachelor of Engineering.</li>
+            </ul>
+        </div>
+
+        <div class="cds-section">
+            <h3><span class="icon">🎂</span>Age Limit</h3>
+            <ul>
+                <li><b>For IMA & INA:</b> 19 to 24 years.</li>
+                <li><b>For Air Force Academy:</b> 20 to 24 years.</li>
+                <li><b>For Officers' Training Academy (OTA):</b> 19 to 25 years.</li>
+            </ul>
+        </div>
+
+        <div class="cds-section">
+            <h3><span class="icon">📖</span>Detailed Syllabus</h3>
+            <ul>
+                <li><b>English:</b> Vocabulary, Grammar, Reading Comprehension, Error Spotting, Sentence Improvement, and Jumbled Sentences (Para Jumbles).</li>
+                <li><b>General Knowledge:</b> Current Affairs (National & International), History of India (especially Freedom Struggle), Geography, Indian Polity, Basic Economics, and General Science (Physics, Chemistry, Biology of Class 10th level).</li>
+                <li><b>Elementary Mathematics (Only for IMA, INA, AFA):</b> Arithmetic, Algebra, Trigonometry, Geometry, Mensuration, and Statistics of Class 10th level.</li>
+            </ul>
+        </div>
+        
+        <div class="cds-section">
+            <h3><span class="icon">⚙️</span>Selection Process</h3>
+            <p>The selection is a two-stage process:</p>
+            <ol>
+                <li><b>Step 1: Written Examination.</b> Candidates who qualify in the written exam are shortlisted for the next stage.</li>
+                <li><b>Step 2: SSB Interview.</b> The Service Selection Board (SSB) conducts a comprehensive 5-day interview process which includes psychological tests, group tasks, and a personal interview to assess officer-like qualities.</li>
+                <li><b>Step 3: Medical Examination.</b> Candidates recommended by the SSB undergo a detailed medical examination.</li>
+                <li><b>Step 4: Final Merit List.</b> A merit list is prepared based on the total marks in the written exam and the SSB interview.</li>
+            </ol>
+        </div>
+
+        <div class="cds-section">
+            <h3><span class="icon">💰</span>Starting Salary Potential</h3>
+            <p>After successful training and commissioning, an officer starts as a <strong>Lieutenant</strong> (in Army), <strong>Sub-Lieutenant</strong> (in Navy), or <strong>Flying Officer</strong> (in Air Force) in Pay Level 10. The starting salary, including all allowances, is approximately <strong>₹85,000 - ₹1,00,000 per month</strong>.</p>
+        </div>
+
+        <div class="cds-section">
+            <h3><span class="icon">🎖️</span>Starting Post & Department</h3>
+            <p>The starting rank and branch depend on the academy joined:</p>
+            <ul>
+                <li><b>Indian Military Academy (IMA):</b> Lieutenant in the Indian Army (Infantry, Artillery, Armoured Corps, etc.).</li>
+                <li><b>Indian Naval Academy (INA):</b> Sub-Lieutenant in the Indian Navy (Executive, Technical, etc.).</li>
+                <li><b>Air Force Academy (AFA):</b> Flying Officer in the Indian Air Force (Flying, Technical, or Ground Duty).</li>
+                <li><b>Officers' Training Academy (OTA):</b> Lieutenant in the Indian Army (Short Service Commission).</li>
+            </ul>
+        </div>
+
+        <div class="cds-section">
+            <h3><span class="icon">📋</span>Job Profile</h3>
+            <p>The job profile of an officer in the armed forces is one of leadership and command. It involves leading troops, managing strategic assets, and participating in operations. It is a highly respected and dynamic career that demands physical fitness, mental alertness, and unwavering integrity.</p>
+        </div>
+
+        <div class="cds-section">
+            <h3><span class="icon">🎁</span>Facilities After Selection</h3>
+            <p>Officers are entitled to a wide range of facilities and perks, including:</p>
+            <ul>
+                <li>Free accommodation and medical facilities for self and family.</li>
+                <li>Access to Canteen Store Department (CSD) facilities.</li>
+                <li>Generous leave policies (60 days annual leave, 20 days casual leave).</li>
+                <li>Travel concessions and access to officers' clubs and messes.</li>
+                <li>Opportunities for higher education and foreign postings.</li>
+            </ul>
+        </div>
+
+        <div class="cds-section">
+            <h3><span class="icon">🎯</span>Scope</h3>
+            <p>A career in the armed forces offers immense scope for personal and professional growth. There is a well-defined career progression path with opportunities to rise to the highest ranks. It provides a life of honor, adventure, and the unparalleled opportunity to serve the nation.</p>
+        </div>
+
+        <div class="cds-section">
+            <h3><span class="icon">🗓️</span>Exam Dates & Frequency</h3>
+            <ul>
+                <li><b>Frequency:</b> The CDS exam is conducted <strong>twice a year</strong> by UPSC.</li>
+                <li><b>Exam Months:</b> CDS (I) is typically held in <strong>April</strong>, and CDS (II) is held in <strong>September</strong>.</li>
+            </ul>
+        </div>
+
+        <div class="cds-section">
+            <h3><span class="icon">📝</span>How to Apply</h3>
+            <p>Candidates must apply online through the official UPSC website. The process involves a two-part registration, filling the application form, uploading documents, and paying the fee.</p>
+        </div>
+
+        <div class="cds-section">
+            <h3><span class="icon">📊</span>Exam Structure & Score Pattern</h3>
+            <p><b>For IMA, INA, AFA:</b></p>
+            <table class="cds-table">
+                <thead><tr><th>Subject</th><th>Max Marks</th><th>Duration</th></tr></thead>
+                <tbody>
+                    <tr><td>English</td><td>100</td><td>2 Hours</td></tr>
+                    <tr><td>General Knowledge</td><td>100</td><td>2 Hours</td></tr>
+                    <tr><td>Elementary Mathematics</td><td>100</td><td>2 Hours</td></tr>
+                </tbody>
+            </table>
+             <p><b>For OTA:</b></p>
+            <table class="cds-table">
+                 <thead><tr><th>Subject</th><th>Max Marks</th><th>Duration</th></tr></thead>
+                <tbody>
+                    <tr><td>English</td><td>100</td><td>2 Hours</td></tr>
+                    <tr><td>General Knowledge</td><td>100</td><td>2 Hours</td></tr>
+                </tbody>
+            </table>
+            <p><b>Scoring Pattern:</b> There is **negative marking** for incorrect answers. 1/3rd of the marks assigned to a question will be deducted for each wrong answer.</p>
+        </div>
+
+        <div class="cds-section">
+            <h3><span class="icon">💸</span>Fees</h3>
+            <p>The application fee is <strong>₹200</strong> for General/OBC male candidates. Female candidates and candidates belonging to SC/ST categories are exempted from fee payment.</p>
+        </div>
+
+        <div class="cds-section">
+            <h3><span class="icon">🌐</span>Official Website</h3>
+            <p>For the latest notifications, application forms, and authentic information, always refer to the official UPSC website: <a href="https://upsc.gov.in" target="_blank" rel="noopener noreferrer">upsc.gov.in</a></p>
+        </div>
+
+    </div>
 <div class="home-button-container">
   <a href="/mainnow.html" title="Go to Home">
     <img src="images/home-icon.png" alt="Home">
