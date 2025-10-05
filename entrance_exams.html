@@ -3,33 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Guide to 70+ National Entrance Exams in India (2025)</title>
-    <meta name="description" content="Your ultimate guide to 70+ national level entrance exams in India. Find detailed information on syllabus, eligibility, exam dates, and selection process for  JEE, NEET, CAT, XAT and more.">
-<link rel="manifest" href="/manifest_7.json">
+    <title>Guide to 70+ National Entrance Exams in India (2025)</title>
+    <meta name="description" content="Your ultimate guide to 70+ national level entrance exams in India. Find detailed information on syllabus, eligibility, exam dates, and selection process for JEE, NEET, CAT, XAT and more.">
+    <link rel="manifest" href="/manifest_7.json">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
+        /* --- General Body & Font --- */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 20px;
         }
+
         .hub-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 20px auto;
-            padding: 20px 30px;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background-color: transparent; /* Main container is now just for layout */
         }
+
         .hub-title-box {
             text-align: center;
             padding: 25px;
-            background-color: turquoise; /* User requested turquoise */
+            background-color: turquoise;
             border-radius: 10px;
             box-shadow: inset 0 0 15px rgba(0,0,0,0.1), 5px 5px 15px rgba(0,0,0,0.2);
             border: 1px solid #3ca8a8;
             margin-bottom: 30px;
         }
+
         .hub-title-box h1 {
             margin: 0;
             font-family: Impact, sans-serif;
@@ -38,14 +42,41 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             letter-spacing: 1px;
         }
+        
+        /* --- Two-Column Layout --- */
+        .main-content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .left-column {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: fit-content; /* Sticks to the top */
+        }
+        
+        .right-column {
+            flex: 3;
+            min-width: 500px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- Left Column: Search & Autocomplete --- */
         .search-container {
-            margin-bottom: 40px;
-            text-align: center;
+            position: relative;
         }
         #examSearchInput {
-            width: 80%;
+            width: 100%;
             padding: 15px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             border: 2px solid #ddd;
             border-radius: 30px;
             outline: none;
@@ -54,6 +85,27 @@
         #examSearchInput:focus {
             border-color: turquoise;
         }
+        #autocomplete-list {
+            border: 1px solid #ddd;
+            border-top: none;
+            max-height: 400px;
+            overflow-y: auto;
+            position: absolute;
+            background-color: white;
+            width: 100%;
+            z-index: 100;
+            border-radius: 0 0 10px 10px;
+        }
+        #autocomplete-list div {
+            padding: 12px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+        #autocomplete-list div:hover {
+            background-color: #e9e9e9;
+        }
+
+        /* --- Right Column: Grid and Content --- */
         .exam-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -79,46 +131,42 @@
         .exam-item .icon {
             font-size: 1.8rem;
             margin-right: 15px;
+            width: 30px; /* For alignment */
+            text-align: center;
+            color: #00CED1;
         }
-        .centered-item-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
+
+        /* --- Dynamic Content Area --- */
+        #examContent {
+            font-family: Arial, sans-serif; /* Ensures consistent font */
+            line-height: 1.6;
         }
-        .centered-item-container .exam-item {
-            width: 23%; /* Approx width of one grid item */
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: turquoise;
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        /* Responsive Grid */
-        @media (max-width: 1200px) {
-            .exam-grid { grid-template-columns: repeat(3, 1fr); }
-            .centered-item-container .exam-item { width: 31%; }
-        }
-        @media (max-width: 900px) {
+        
+        /* --- Responsive Grid Adjustments --- */
+        @media (max-width: 1300px) { .exam-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 992px) { .exam-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) {
+            .main-content-wrapper { flex-direction: column; }
             .exam-grid { grid-template-columns: repeat(2, 1fr); }
-            .centered-item-container .exam-item { width: 48%; }
         }
-        @media (max-width: 600px) {
-            .exam-grid { grid-template-columns: repeat(1, 1fr); }
-            .centered-item-container .exam-item { width: 98%; }
-        }
-.home-button-container {
-  position: fixed; /* This makes it float on top of other content */
-  top: 20px;       /* Position 20px from the top edge */
-  right: 25px;     /* Position 25px from the right edge */
-  z-index: 1000;   /* Ensures it's above other elements */
-}
+        @media (max-width: 600px) { .exam-grid { grid-template-columns: 1fr; } }
 
-.home-button-container a img {
-  width: 50px; /* Adjust size as needed */
-  height: 50px;
-
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  transition: transform 0.2s;
-}
-
-.home-button-container a:hover img {
-  transform: scale(1.1); /* Slightly enlarge on hover */
-}
+        /* Home Button (from your code) */
+        .home-button-container { position: fixed; top: 20px; right: 25px; z-index: 1000; }
+        .home-button-container a img { width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: transform 0.2s; }
+        .home-button-container a:hover img { transform: scale(1.1); }
     </style>
 </head>
 <body>
@@ -129,150 +177,209 @@
             <h1>NATIONAL LEVEL ENTRANCE TESTS</h1>
         </div>
 
-        <div class="search-container">
-            <input type="text" id="examSearchInput" onkeyup="filterExams()" placeholder="Search for an exam by name...">
-        </div>
+        <div class="main-content-wrapper">
+            <div class="left-column">
+                <div class="search-container">
+                    <input type="text" id="examSearchInput" onkeyup="filterExams()" placeholder="Search for an exam...">
+                    <div id="autocomplete-list"></div>
+                </div>
+            </div>
 
-        <div class="exam-grid">
-            <!-- Row 1 -->
-            <a href="afcat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">AFCAT</span></a>
-            <a href="ailet.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">AILET</span></a>
-            <a href="aissee.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">AISSEE</span></a>
-            <a href="bitsat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">BITSAT</span></a>
-            <!-- Row 2 -->
-            <a href="ca_final.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CA FINAL</span></a>
-            <a href="ca_foundation.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CA FOUNDATION</span></a>
-            <a href="ca_intermediate.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CA INTERMEDIATE</span></a>
-            <a href="cat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CAT</span></a>
-            <!-- Row 3 -->
-            <a href="cds.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CDS</span></a>
-            <a href="ceed.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CEED</span></a>
-            <a href="clat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CLAT</span></a>
-            <a href="cma_final.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CMA FINAL</span></a>
-            <!-- Row 4 -->
-            <a href="cma_foundation.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CMA FOUNDATION</span></a>
-            <a href="cma_intermediate.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CMA INTERMEDIATE</span></a>
-            <a href="cmat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CMAT</span></a>
-            <a href="cmi_entrance_exam.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CMI ENTRANCE EXAM</span></a>
-            <!-- Row 5 -->
-            <a href="cs_professional.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CS</span></a>
-            <a href="cseet.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CSEET</span></a>
-            <a href="csir_ugc_net.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CSIR UGC NET</span></a>
-            <a href="ctet.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CTET</span></a>
-             <!-- Row 6 -->
-            <a href="cuet_pg.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CUET-PG</span></a>
-            <a href="cuet_ug.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">CUET-UG</span></a>
-            <a href="dbt_jrf.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">DBT-JRF</span></a>
-            <a href="epfo_eo_ao.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">EPFO-EO-AO</span></a>
-            <!-- Row 7 -->
-            <a href="epfo_ssa.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">EPFO-SSA</span></a>
-            <a href="fci_exam.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">FCI</span></a>
-            <a href="ftii_jet.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">FTII-JET</span></a>
-            <a href="gate.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">GATE</span></a>
-            <!-- Row 8 -->
-            <a href="ibps_clerk.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">IBPS CLERK</span></a>
-            <a href="ibps_po.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">IBPS PO</span></a>
-            <a href="ibps_so.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">IBPS SO</span></a>
-            <a href="icar_aieea_pg.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">ICAR PG</span></a>
-            <!-- Row 9 -->
-            <a href="icar_aieea_ug.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">ICAR UG</span></a>
-            <a href="icmr_jrf.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">ICMR JRF</span></a>
-            <a href="iith_pgee.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">IITH PGEE</span></a>
-            <a href="ini_cet.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">INI CET</span></a>
-            <!-- Row 10 -->
-            <a href="isi_admission_test.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">ISI</span></a>
-            <a href="jee_advanced.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">JEE ADVANCED</span></a>
-            <a href="jee_mains.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">JEE MAINS</span></a>
-            <a href="jest.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">JEST</span></a>
-            <!-- Row 11 -->
-            <a href="jnvst.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">JNVST</span></a>
-            <a href="lic_aao.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">LIC AAO</span></a>
-            <a href="lsat_india.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">LSAT INDIA</span></a>
-            <a href="mat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">MAT</span></a>
-            <!-- Row 12 -->
-            <a href="nata.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NATA</span></a>
-            <a href="nch_mct_jee.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NCH MCT JEE</span></a>
-            <a href="nda.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NDA</span></a>
-            <a href="neet_pg.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NEET PG</span></a>
-            <!-- Row 13 -->
-            <a href="neet_ug.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NEET UG</span></a>
-            <a href="nest.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NEST</span></a>
-            <a href="nid_dat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NID DAT</span></a>
-            <a href="nift_entrance_exam.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NIFT ENTRANCE EXAM</span></a>
-            <!-- Row 14 -->
-            <a href="nmat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">NMAT</span></a>
-            <a href="rbi_grade_b.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">RBI GRADE B</span></a>
-            <a href="rrb_alp.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">RRB-ALP</span></a>
-            <a href="rrb_je.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">RRB-JE</span></a>
-            <!-- Row 15 -->
-            <a href="rrb_ntpc.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">RRB NTPC</span></a>
-            <a href="slat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SLAT</span></a>
-            <a href="snap.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SNAP</span></a>
-            <a href="srfti_jet.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SRFTI-JET</span></a>
-            <!-- Row 16 -->
-            <a href="srm_jeee.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SRM-JEEE</span></a>
-            <a href="ssb_interview.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SSB-INTERVIEW</span></a>
-            <a href="ssc_cgl.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SSC-CGL</span></a>
-            <a href="ssc_chsl.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SSC-CHSL</span></a>
-            <!-- Row 17 -->
-            <a href="ssc_mts.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">SSC-MTS</span></a>
-            <a href="uceed.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">UCEED</span></a>
-            <a href="ugc_net.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">UGC-NET</span></a>
-            <a href="viteee.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">VITEEE</span></a>
-            <!-- Row 18 -->
-            <a href="xat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">XAT</span></a>
-            <a href="esic_exam.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">ESIC</span></a>
-            <a href="fmge.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">FMGE</span></a>
-            <a href="iiser_aptitude_test_iat.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">IAT</span></a>
-            <!-- NOTE: The above are the 72 items (18 rows x 4 columns) -->
+            <div class="right-column" id="rightColumn">
+                <!-- The exam grid or content will be loaded here by JavaScript -->
+            </div>
         </div>
-
-        <!-- The 73rd item, centered below the grid -->
-        <div class="centered-item-container">
-            <a href="jipmer_mbbs.html" class="exam-item"><span class="icon">🎓</span><span class="exam-name">JIPMER MBBS</span></a>
-        </div>
-
+    </div>
+    
+    <!-- Home Button -->
+    <div class="home-button-container">
+      <a href="/mainnow.html" title="Go to Home">
+        <img src="images/home-icon.png" alt="Home">
+      </a>
     </div>
 
     <script>
-        function filterExams() {
-            // Get input value and convert to uppercase for case-insensitive search
-            let filter = document.getElementById('examSearchInput').value.toUpperCase();
-            
-            // Get all exam items
-            let items = document.querySelectorAll('.exam-item');
-            
-            // Loop through all items
-            items.forEach(item => {
-                // Get the text content of the exam name
-                let examName = item.querySelector('.exam-name').textContent || item.querySelector('.exam-name').innerText;
-                
-                // Check if the exam name matches the search filter
-                if (examName.toUpperCase().indexOf(filter) > -1) {
-                    item.style.display = "flex"; // Show the item
-                } else {
-                    item.style.display = "none"; // Hide the item
+        // --- DATA: All exam information is stored here ---
+        const exams = [
+            { name: "AFCAT", href: "afcat.html", icon: "fa-solid fa-plane" },
+            { name: "AILET", href: "ailet.html", icon: "fa-solid fa-gavel" },
+            { name: "AISSEE", href: "aissee.html", icon: "fa-solid fa-shield-halved" },
+            { name: "BITSAT", href: "bitsat.html", icon: "fa-solid fa-microchip" },
+            { name: "CA FINAL", href: "ca_final.html", icon: "fa-solid fa-calculator" },
+            { name: "CA FOUNDATION", href: "ca_foundation.html", icon: "fa-solid fa-building-columns" },
+            { name: "CA INTERMEDIATE", href: "ca_intermediate.html", icon: "fa-solid fa-chart-line" },
+            { name: "CAT", href: "cat.html", icon: "fa-solid fa-briefcase" },
+            { name: "CDS", href: "cds.html", icon: "fa-solid fa-person-military-rifle" },
+            { name: "CEED", href: "ceed.html", icon: "fa-solid fa-palette" },
+            { name: "CLAT", href: "clat.html", icon: "fa-solid fa-scale-balanced" },
+            { name: "CMA FINAL", href: "cma_final.html", icon: "fa-solid fa-file-invoice-dollar" },
+            { name: "CMA FOUNDATION", href: "cma_foundation.html", icon: "fa-solid fa-landmark" },
+            { name: "CMA INTERMEDIATE", href: "cma_intermediate.html", icon: "fa-solid fa-chart-pie" },
+            { name: "CMAT", href: "cmat.html", icon: "fa-solid fa-building" },
+            { name: "CMI ENTRANCE EXAM", href: "cmi_entrance_exam.html", icon: "fa-solid fa-infinity" },
+            { name: "CS", href: "cs_professional.html", icon: "fa-solid fa-user-tie" },
+            { name: "CSEET", href: "cseet.html", icon: "fa-solid fa-file-signature" },
+            { name: "CSIR UGC NET", href: "csir_ugc_net.html", icon: "fa-solid fa-flask-vial" },
+            { name: "CTET", href: "ctet.html", icon: "fa-solid fa-chalkboard-user" },
+            { name: "CUET-PG", href: "cuet_pg.html", icon: "fa-solid fa-user-graduate" },
+            { name: "CUET-UG", href: "cuet_ug.html", icon: "fa-solid fa-graduation-cap" },
+            { name: "DBT-JRF", href: "dbt_jrf.html", icon: "fa-solid fa-dna" },
+            { name: "EPFO-EO-AO", href: "epfo_eo_ao.html", icon: "fa-solid fa-money-check-dollar" },
+            { name: "EPFO-SSA", href: "epfo_ssa.html", icon: "fa-solid fa-keyboard" },
+            { name: "FCI", href: "fci_exam.html", icon: "fa-solid fa-wheat-awn" },
+            { name: "FTII-JET", href: "ftii_jet.html", icon: "fa-solid fa-film" },
+            { name: "GATE", href: "gate.html", icon: "fa-solid fa-gears" },
+            { name: "IBPS CLERK", href: "ibps_clerk.html", icon: "fa-solid fa-building-ngo" },
+            { name: "IBPS PO", href: "ibps_po.html", icon: "fa-solid fa-user-pen" },
+            { name: "IBPS SO", href: "ibps_so.html", icon: "fa-solid fa-user-gear" },
+            { name: "ICAR PG", href: "icar_aieea_pg.html", icon: "fa-solid fa-seedling" },
+            { name: "ICAR UG", href: "icar_aieea_ug.html", icon: "fa-solid fa-tractor" },
+            { name: "ICMR JRF", href: "icmr_jrf.html", icon: "fa-solid fa-microscope" },
+            { name: "IITH PGEE", href: "iith_pgee.html", icon: "fa-solid fa-laptop-code" },
+            { name: "INI CET", href: "ini_cet.html", icon: "fa-solid fa-stethoscope" },
+            { name: "ISI", href: "isi_admission_test.html", icon: "fa-solid fa-chart-simple" },
+            { name: "JEE ADVANCED", href: "jee_advanced.html", icon: "fa-solid fa-rocket" },
+            { name: "JEE MAINS", href: "jee_mains.html", icon: "fa-solid fa-atom" },
+            { name: "JEST", href: "jest.html", icon: "fa-solid fa-satellite" },
+            { name: "JNVST", href: "jnvst.html", icon: "fa-solid fa-school" },
+            { name: "LIC AAO", href: "lic_aao.html", icon: "fa-solid fa-shield-heart" },
+            { name: "LSAT INDIA", href: "lsat_india.html", icon: "fa-solid fa-scroll" },
+            { name: "MAT", href: "mat.html", icon: "fa-solid fa-sitemap" },
+            { name: "NATA", href: "nata.html", icon: "fa-solid fa-drafting-compass" },
+            { name: "NCH MCT JEE", href: "nch_mct_jee.html", icon: "fa-solid fa-hotel" },
+            { name: "NDA", href: "nda.html", icon: "fa-solid fa-flag" },
+            { name: "NEET PG", href: "neet_pg.html", icon: "fa-solid fa-user-doctor" },
+            { name: "NEET UG", href: "neet_ug.html", icon: "fa-solid fa-kit-medical" },
+            { name: "NEST", href: "nest.html", icon: "fa-solid fa-atom-simple" },
+            { name: "NID DAT", href: "nid_dat.html", icon: "fa-solid fa-object-group" },
+            { name: "NIFT ENTRANCE EXAM", href: "nift_entrance_exam.html", icon: "fa-solid fa-shirt" },
+            { name: "NMAT", href: "nmat.html", icon: "fa-solid fa-building-user" },
+            { name: "RBI GRADE B", href: "rbi_grade_b.html", icon: "fa-solid fa-indian-rupee-sign" },
+            { name: "RRB-ALP", href: "rrb_alp.html", icon: "fa-solid fa-train-subway" },
+            { name: "RRB-JE", href: "rrb_je.html", icon: "fa-solid fa-helmet-safety" },
+            { name: "RRB NTPC", href: "rrb_ntpc.html", icon: "fa-solid fa-train" },
+            { name: "SLAT", href: "slat.html", icon: "fa-solid fa-pen-nib" },
+            { name: "SNAP", href: "snap.html", icon: "fa-solid fa-lightbulb" },
+            { name: "SRFTI-JET", href: "srfti_jet.html", icon: "fa-solid fa-video" },
+            { name: "SRM-JEEE", href: "srm_jeee.html", icon: "fa-solid fa-cogs" },
+            { name: "SSB-INTERVIEW", href: "ssb_interview.html", icon: "fa-solid fa-user-shield" },
+            { name: "SSC-CGL", href: "ssc_cgl.html", icon: "fa-solid fa-landmark-dome" },
+            { name: "SSC-CHSL", href: "ssc_chsl.html", icon: "fa-solid fa-computer" },
+            { name: "SSC-MTS", href: "ssc_mts.html", icon: "fa-solid fa-file-alt" },
+            { name: "UCEED", href: "uceed.html", icon: "fa-solid fa-pen-ruler" },
+            { name: "UGC-NET", href: "ugc_net.html", icon: "fa-solid fa-book-open" },
+            { name: "VITEEE", href: "viteee.html", icon: "fa-solid fa-flask" },
+            { name: "XAT", href: "xat.html", icon: "fa-solid fa-users" },
+            { name: "ESIC", href: "esic_exam.html", icon: "fa-solid fa-hospital" },
+            { name: "FMGE", href: "fmge.html", icon: "fa-solid fa-globe" },
+            { name: "IAT", href: "iiser_aptitude_test_iat.html", icon: "fa-solid fa-brain" }
+         
+        ];
+
+        const rightColumn = document.getElementById('rightColumn');
+        const searchInput = document.getElementById('examSearchInput');
+        const autocompleteList = document.getElementById('autocomplete-list');
+
+        // --- Function to render the main exam grid ---
+        function renderExamGrid() {
+            let gridHTML = '<div class="exam-grid">';
+            exams.forEach(exam => {
+                gridHTML += `
+                    <a href="${exam.href}" class="exam-item" data-file="${exam.href}">
+                        <span class="icon"><i class="${exam.icon}"></i></span>
+                        <span class="exam-name">${exam.name}</span>
+                    </a>
+                `;
+            });
+            gridHTML += '</div>';
+            rightColumn.innerHTML = gridHTML;
+        }
+
+        // --- Function to load and display content from an HTML file ---
+        async function loadExamContent(fileName) {
+            rightColumn.innerHTML = '<p>Loading content...</p>'; // Show loading message
+            try {
+                const response = await fetch(fileName);
+                if (!response.ok) {
+                    throw new Error(`Could not load ${fileName}. File not found.`);
                 }
+                const content = await response.text();
+                
+                // Add a "Back to All Exams" button and the fetched content
+                rightColumn.innerHTML = `
+                    <a href="#" class="back-button" onclick="renderExamGrid(); return false;">← Back to All Exams</a>
+                    <div id="examContent">${content}</div>
+                `;
+            } catch (error) {
+                console.error('Error fetching content:', error);
+                rightColumn.innerHTML = `
+                    <a href="#" class="back-button" onclick="renderExamGrid(); return false;">← Back to All Exams</a>
+                    <p style="color: red;">Sorry, the content for this exam could not be loaded. Please try again later.</p>
+                `;
+            }
+        }
+
+        // --- Function for search and autocomplete ---
+        function filterExams() {
+            const filter = searchInput.value.toLowerCase();
+            autocompleteList.innerHTML = '';
+            
+            if (filter.length < 2) {
+                return; // Don't show suggestions for less than 2 characters
+            }
+
+            const filteredExams = exams.filter(exam => exam.name.toLowerCase().includes(filter));
+            
+            filteredExams.forEach(exam => {
+                const div = document.createElement('div');
+                div.innerHTML = exam.name;
+                div.addEventListener('click', () => {
+                    searchInput.value = exam.name;
+                    autocompleteList.innerHTML = '';
+                    loadExamContent(exam.href); // Load content directly
+                });
+                autocompleteList.appendChild(div);
             });
         }
+        
+        // --- Main Event Listener on page load ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderExamGrid(); // Show the grid initially
+
+            // Use event delegation for grid item clicks
+            rightColumn.addEventListener('click', function(e) {
+                const examLink = e.target.closest('.exam-item');
+                if (examLink) {
+                    e.preventDefault(); // Stop the link from navigating away
+                    const fileName = examLink.dataset.file;
+                    loadExamContent(fileName);
+                }
+            });
+        });
+        
+        // --- Close autocomplete when clicking outside ---
+        document.addEventListener('click', function(e) {
+            if (e.target !== searchInput) {
+                autocompleteList.innerHTML = '';
+            }
+        });
+        
     </script>
 <div class="home-button-container">
   <a href="/mainnow.html" title="Go to Home">
     <img src="images/home-icon.png" alt="Home">
   </a>
-</div>
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw-workbox.js')
-        .then(registration => {
-          console.log('Service Worker registered successfully:', registration);
-        })
-        .catch(error => {
-          console.log('Service Worker registration failed:', error);
+</div>    
+    <script>
+      // Service Worker (from your code)
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw-workbox.js')
+            .then(registration => { console.log('SW registered:', registration); })
+            .catch(error => { console.log('SW registration failed:', error); });
         });
-    });
-  }
-</script>
+      }
+    </script>
+
 </body>
 </html>
