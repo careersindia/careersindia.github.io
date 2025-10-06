@@ -215,7 +215,35 @@
 
 <!-- ======================= END OF MASTER STYLES ========================== -->
 
-       
+/* --- STYLES FOR COMPARISON FEATURE --- */
+    .comparison-section {
+        border-top: 2px solid #008080;
+        margin-top: 30px;
+        padding-top: 20px;
+    }
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        table-layout: fixed;
+    }
+    .comparison-table th, .comparison-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+        vertical-align: top;
+        word-wrap: break-word;
+    }
+    .comparison-table th {
+        background-color: aquamarine;
+        color: black;
+        font-size: 1.1em;
+    }
+    .comparison-table td:first-child {
+        font-weight: bold;
+        background-color: #f9f9f9;
+        width: 25%;
+    }
     </style>
 </head>
 <body>
@@ -238,7 +266,23 @@
                     <option value="">-- Select an Exam --</option>
                 </select>
             </div>
-            
+<!-- NEW COMPARISON SECTION -->
+            <div class="comparison-section">
+                <div class="input-group">
+                    <label for="compareExam1">Compare Exams:</label>
+                    <select id="compareExam1">
+                        <option value="">-- Select Exam 1 --</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <select id="compareExam2">
+                        <option value="">-- Select Exam 2 --</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <button id="compareBtn">Compare</button>
+                </div>
+            </div>            
           
         </div>
 
@@ -783,7 +827,7 @@ const examData = {
                 startingPost: "Manager (Grade 'B').",
                 fees: "General/OBC/EWS: ₹850. SC/ST/PwBD: ₹100.",
                 hiringOrgs: ["Reserve Bank of India (RBI)"],
-                website: "https://www.rbi.org.in/Scripts/Vacancies.aspx",
+                website: "https://www.rbi.org.in",
                 books: [ { section: "⭐ Key Books for RBI Grade B", title: `<div class="affiliate-hub"><div class="affiliate-list"><div class="list-section"><h3 class="list-section-title">Core Booklist for RBI Grade B Officers</h3><div class="list-item"><div class="item-info"><span class="item-title">Indian Economy</span><span class="item-author">by Ramesh Singh</span></div><a href="https://fktr.in/gMVoAi8" target="_blank" class="affiliate-button">View</a></div><div class="list-item"><div class="item-info"><span class="item-title">Management</span><span class="item-author">by Stephen P. Robbins</span></div><a href="https://fktr.in/tXslhvx" target="_blank" class="affiliate-button">View</a></div><div class="list-item"><div class="item-info"><span class="item-title">Descriptive English <small style="color:#888;">(Check Availability)</small></span><span class="item-author">by S.P. Bakshi</span></div><a href="https://fktr.in/eE88BmS" target="_blank" class="affiliate-button">View</a></div></div></div></div>`, author: '' } ]
             },
             "NABARD-Grade-A": {
@@ -3522,101 +3566,100 @@ document.addEventListener('DOMContentLoaded', function() {
             const searchByNameInput = document.getElementById('searchByName');
             const autocompleteList = document.getElementById('autocomplete-list');
             const detailsContainer = document.getElementById('examDetailsContainer');
+            
+            const compareExam1 = document.getElementById('compareExam1');
+            const compareExam2 = document.getElementById('compareExam2');
+            const compareBtn = document.getElementById('compareBtn');
 
-            // 1. Populate Dropdown from the examData object
             const examKeys = Object.keys(examData);
-            // Sort the exam keys alphabetically based on the exam name
             examKeys.sort((a, b) => examData[a].name.localeCompare(examData[b].name));
             
             examKeys.forEach(key => {
-                const option = document.createElement('option');
-                option.value = key;
-                option.textContent = examData[key].name;
-                examDropdown.appendChild(option);
+                const option1 = document.createElement('option');
+                option1.value = key;
+                option1.textContent = examData[key].name;
+                const option2 = option1.cloneNode(true);
+                const option3 = option1.cloneNode(true);
+                examDropdown.appendChild(option1);
+                compareExam1.appendChild(option2);
+                compareExam2.appendChild(option3);
             });
 
-            // 2. Main function to display details of the selected exam
+            // CORRECTED: This is the full 16-point display function
             function displayExamDetails(examKey) {
+                compareExam1.value = '';
+                compareExam2.value = '';
                 const data = examData[examKey];
                 if (!data) {
                     detailsContainer.innerHTML = '<p>Please select a valid exam.</p>';
                     return;
                 }
-
-                // Build the HTML for the recommended books section
-                let booksHtml = '<h3>Best Books for Preparation</h3>';
-                if (data.books && data.books.length > 0) {
-                    // The book data now contains pre-formatted HTML, so we just append it
-                    booksHtml += data.books.map(book => book.title).join('');
-                } else {
-                    booksHtml += '<ul><li>No specific book recommendations available.</li></ul>';
-                }
-
-                // Build the HTML for the hiring organizations list
+                const booksHtml = (data.books && data.books.length > 0) 
+                    ? data.books.map(book => book.title).join('') 
+                    : '<ul><li>No specific book recommendations available.</li></ul>';
                 const hiringOrgsHtml = data.hiringOrgs.map(org => `<li style="background-color: white;">${org}</li>`).join('');
 
-                // Populate the main details container with all the information
-                // Note: `data.syllabus` is now directly inserted as it contains HTML table formatting.
                 detailsContainer.innerHTML = `
                     <h2 style="background-color: aquamarine;">${data.name}</h2>
-                    
                     <h2 style="background-color: aquamarine;">1. Complete Syllabus Details</h2>
-                    <div style="background-color: white; padding: 10px; border-radius: 5px;">${data.syllabus.trim()}</div>
-                    
-                    <h2 style="background-color: aquamarine;">2. Months of Exam Conduct</h2>
-                    <p>${data.months}</p>
-                    
-                    <h2 style="background-color: aquamarine;">3. Eligibility for the Exam</h2>
-                    <p>${data.eligibility}</p>
-                    
-                    <h2 style="background-color: aquamarine;">4. Age Limit</h2>
-                    <p>${data.ageLimit}</p>
-                    
-                    <h2 style="background-color: aquamarine;">5. Facilities</h2>
-                    <p>${data.facilities}</p>
-                    
-                    <h2 style="background-color: aquamarine;">6. Selection Process</h2>
-                    <pre style="background-color: white;">${data.selectionProcess}</pre>
-                    
-                    <h2 style="background-color: aquamarine;">7. Exam Pattern</h2>
-                    <pre style="background-color: white;">${data.examPattern}</pre>
-                    
-                    <h2 style="background-color: aquamarine;">8. Duration of the Exam</h2>
-                    <p>${data.duration}</p>
-                    
-                    <h2 style="background-color: aquamarine;">9. Time of Results</h2>
-                    <p>${data.resultsTime}</p>
-                    
-                    <h2 style="background-color: aquamarine;">10. Scope of Exam</h2>
-                    <p>${data.scope}</p>
-                    
-                    <h2 style="background-color: aquamarine;">11. Starting Salary (Indicative)</h2>
-                    <p>${data.startingSalary} <br><em>(Note: Salary is indicative and subject to change.)</em></p>
-                    
-                    <h2 style="background-color: aquamarine;">12. Starting Post</h2>
-                    <p>${data.startingPost}</p>
-                    
-                    <h2 style="background-color: aquamarine;">13. Fees for the Exam (Indicative)</h2>
-                    <p>${data.fees} <br><em>(Note: Fees are subject to change. Refer to official notification.)</em></p>
-                    
-                    <h2 style="background-color: aquamarine;">14. Top Potential Hiring Organisations</h2>
-                    <ul style="background-color: white;">${hiringOrgsHtml}</ul>
-                    
-                    <h2 style="background-color: aquamarine;">15. Website</h2>
-                    <p><a href="${data.website}" target="_blank">${data.website}</a></p>
-                    
-                    <h2 style="background-color: aquamarine;">16. Best Books for Preparation</h2>
-                    ${booksHtml}
+                    <pre>${data.syllabus.trim()}</pre>
+                    <h2 style="background-color: aquamarine;">2. Months of Exam Conduct</h2><p>${data.months}</p>
+                    <h2 style="background-color: aquamarine;">3. Eligibility for the Exam</h2><p>${data.eligibility}</p>
+                    <h2 style="background-color: aquamarine;">4. Age Limit</h2><p>${data.ageLimit}</p>
+                    <h2 style="background-color: aquamarine;">5. Facilities</h2><p>${data.facilities}</p>
+                    <h2 style="background-color: aquamarine;">6. Selection Process</h2><pre>${data.selectionProcess}</pre>
+                    <h2 style="background-color: aquamarine;">7. Exam Pattern</h2><pre>${data.examPattern}</pre>
+                    <h2 style="background-color: aquamarine;">8. Duration of the Exam</h2><p>${data.duration}</p>
+                    <h2 style="background-color: aquamarine;">9. Time of Results</h2><p>${data.resultsTime}</p>
+                    <h2 style="background-color: aquamarine;">10. Scope of Exam</h2><p>${data.scope}</p>
+                    <h2 style="background-color: aquamarine;">11. Starting Salary (Indicative)</h2><p>${data.startingSalary}</p>
+                    <h2 style="background-color: aquamarine;">12. Starting Post</h2><p>${data.startingPost}</p>
+                    <h2 style="background-color: aquamarine;">13. Fees for the Exam (Indicative)</h2><p>${data.fees}</p>
+                    <h2 style="background-color: aquamarine;">14. Top Potential Hiring Organisations</h2><ul>${hiringOrgsHtml}</ul>
+                    <h2 style="background-color: aquamarine;">15. Website</h2><p><a href="${data.website}" target="_blank">${data.website}</a></p>
+                    <h2 style="background-color: aquamarine;">16. Best Books for Preparation</h2>${booksHtml}
                 `;
-                
-                // Clear other inputs when a selection is made
+            }
+            
+            function displayComparison(key1, key2) {
+                examDropdown.value = '';
                 searchByNameInput.value = '';
-                autocompleteList.innerHTML = '';
+                const data1 = examData[key1];
+                const data2 = examData[key2];
+                const fields = [
+                    { label: "Name of the Exam", key: "name" },
+                    { label: "Eligibility", key: "eligibility" },
+                    { label: "Age Limit", key: "ageLimit" },
+                    { label: "Start Salary", key: "startingSalary" },
+                    { label: "Starting Post", key: "startingPost" },
+                    { label: "Fees", key: "fees" },
+                    { label: "Facilities", key: "facilities" }
+                ];
+                let tableHtml = `
+                    <h2 style="text-align:center;">Exam Comparison</h2>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>${data1.name}</th>
+                                <th>${data2.name}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                fields.forEach(field => {
+                    tableHtml += `
+                        <tr>
+                            <td>${field.label}</td>
+                            <td>${data1[field.key]}</td>
+                            <td>${data2[field.key]}</td>
+                        </tr>
+                    `;
+                });
+                tableHtml += `</tbody></table>`;
+                detailsContainer.innerHTML = tableHtml;
             }
 
-            // 3. Event Listeners for user interaction
-            
-            // Listener for the dropdown menu
             examDropdown.addEventListener('change', function() {
                 if (this.value) {
                     displayExamDetails(this.value);
@@ -3625,11 +3668,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            // Listener for the search-by-name input field (autocomplete)
             searchByNameInput.addEventListener('keyup', function() {
                 const input = this.value.toLowerCase();
                 autocompleteList.innerHTML = '';
-                if (input.length < 2) return; // Start searching after 2 characters
+                if (input.length < 2) return;
 
                 const filteredKeys = examKeys.filter(key => 
                     examData[key].name.toLowerCase().includes(input)
@@ -3640,18 +3682,47 @@ document.addEventListener('DOMContentLoaded', function() {
                     item.textContent = examData[key].name;
                     item.addEventListener('click', () => {
                         searchByNameInput.value = examData[key].name;
-                        autocompleteList.innerHTML = ''; // Hide suggestions
-                        examDropdown.value = key; // Sync dropdown
-                        displayExamDetails(key); // Display details
+                        autocompleteList.innerHTML = '';
+                        examDropdown.value = key;
+                        displayExamDetails(key);
                     });
                     autocompleteList.appendChild(item);
                 });
             });
 
-          });
-
-           
+            compareBtn.addEventListener('click', function() {
+                const key1 = compareExam1.value;
+                const key2 = compareExam2.value;
+                if (!key1 || !key2) {
+                    alert('Please select two exams to compare.');
+                    return;
+                }
+                if (key1 === key2) {
+                    alert('Please select two different exams for comparison.');
+                    return;
+                }
+                displayComparison(key1, key2);
+            });
+        });
     </script>
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-workbox.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
 <div class="home-button-container">
   <a href="/mainnow.html" title="Go to Home">
     <img src="images/home-icon.png" alt="Home">
