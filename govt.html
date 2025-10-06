@@ -244,6 +244,8 @@
         background-color: #f9f9f9;
         width: 25%;
     }
+.compare-button { background-color: #008080; color: white; font-weight: bold; cursor: pointer; border: 1px solid black; transition: background-color 0.3s, padding: 15px;      
+  font-size: 1.1em;  transform 0.2s; } .compare-button:hover { background-color: #006666; transform: translateY(-2px); }
     </style>
 </head>
 <body>
@@ -279,9 +281,9 @@
                         <option value="">-- Select Exam 2 --</option>
                     </select>
                 </div>
-                <div class="input-group">
-                    <button id="compareBtn">Compare</button>
-                </div>
+               <div class="input-group" style="text-align: center;">
+    <button id="compareBtn" class="compare-button">Compare</button>
+</div>
             </div>            
           
         </div>
