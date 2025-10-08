@@ -353,51 +353,78 @@
 
 <script>
     const courseData = {
-        ai_ml_specialist: {
-            colleges: [
-                { name: "IIT Bombay", location: "Mumbai", website: "https://www.iitb.ac.in/" }, { name: "IIT Madras", location: "Chennai", website: "https://www.iitm.ac.in/" },
-                { name: "IIT Delhi", location: "Delhi", website: "https://home.iitd.ac.in/" }, { name: "IISc Bangalore", location: "Bangalore", website: "https://iisc.ac.in/" },
-                { name: "IIIT Hyderabad", location: "Hyderabad", website: "https://www.iiit.ac.in/" }, { name: "IIT Kharagpur", location: "Kharagpur", website: "https://www.iitkgp.ac.in/" },
-                { name: "IIT Kanpur", location: "Kanpur", website: "https://www.iitk.ac.in/" }, { name: "BITS Pilani (All campuses)", location: "Pilani, Goa, Hyderabad", website: "https://www.bits-pilani.ac.in/" },
-                { name: "NIT Trichy", location: "Tiruchirappalli", website: "https://www.nitt.edu/" }, { name: "NIT Warangal", location: "Warangal", website: "https://www.nitw.ac.in/" },
-                { name: "VIT Vellore", location: "Vellore", website: "https://vit.ac.in/" }, { name: "Jadavpur University", location: "Kolkata", website: "http://www.jaduniv.edu.in/" },
-                { name: "IIIT Bangalore", location: "Bangalore", website: "https://www.iiitb.ac.in/" }, { name: "Manipal Institute of Technology", location: "Manipal", website: "https://manipal.edu/mit.html" },
-                { name: "Amrita Vishwa Vidyapeetham", location: "Coimbatore", website: "https://www.amrita.edu/" }, { name: "DA-IICT", location: "Gandhinagar", website: "https://www.daiict.ac.in/" },
-                { name: "Thapar Institute of Engineering & Technology", location: "Patiala", website: "https://www.thapar.edu/" }, { name: "College of Engineering, Pune (COEP)", location: "Pune", website: "https://www.coep.org.in/" },
-                { name: "SRM Institute of Science and Technology", location: "Chennai", website: "https://www.srmist.edu.in/" }, { name: "PES University", location: "Bangalore", website: "https://www.pes.edu/" }
-            ],
-            onlinePlatforms: [
-                { name: "Coursera", type: "Courses from Stanford, DeepLearning.AI", website: "https://www.coursera.org/browse/data-science/machine-learning" },
-                { name: "edX", type: "Courses from MITx, HarvardX", website: "https://www.edx.org/learn/artificial-intelligence" },
-                { name: "Udacity", type: "Nanodegree in AI/ML Engineering", website: "https://www.udacity.com/school/ai" },
-                { name: "fast.ai", type: "Practical Deep Learning for Coders", website: "https://www.fast.ai/" },
-                { name: "Kaggle Learn", type: "Micro-courses and Competitions", website: "https://www.kaggle.com/learn" },
-                { name: "UpGrad", type: "Masters in ML & AI with IIIT-B", website: "https://www.upgrad.com/" },
-                { name: "Great Learning", type: "PG Programs in AI & ML", website: "https://www.mygreatlearning.com/artificial-intelligence-courses" },
-                { name: "NPTEL", type: "Free courses from IITs", website: "https://nptel.ac.in/course.html" },
-                { name: "Google AI Education", type: "Learn with Google AI", website: "https://ai.google/education/" },
-                { name: "TensorFlow Developer Certificate", type: "Official Developer Certification", website: "https://www.tensorflow.org/certificate" }
-            ],
-            duration: "4 Years (B.Tech) or 2 Years (M.Tech/M.Sc.)",
-            fees: "₹ 2,00,000 - ₹ 8,00,000",
-            salary: "₹ 15,00,000 - ₹ 50,00,000+",
-            companies: {
-                mncs: [
-                    { name: "Google", location: "Global", website: "https://ai.google/" }, { name: "Microsoft", location: "Global", website: "https://www.microsoft.com/en-us/ai" },
-                    { name: "Amazon (AWS)", location: "Global", website: "https://aws.amazon.com/machine-learning/" }, { name: "Nvidia", location: "Global", website: "https://www.nvidia.com/" },
-                    { name: "IBM", location: "Global", website: "https://www.ibm.com/in-en/analytics" }, { name: "Intel", location: "Global", website: "https://www.intel.com/" },
-                    { name: "Samsung Research", location: "Global", website: "https://research.samsung.com/" }, { name: "Oracle", location: "Global", website: "https://www.oracle.com/in/artificial-intelligence/" },
-                    { name: "Adobe", location: "Global", website: "https://www.adobe.com/" }, { name: "Qualcomm", location: "Global", website: "https://www.qualcomm.com/" }
-                ],
-                domestic: [
-                    { name: "Fractal Analytics", location: "Mumbai", website: "https://fractal.ai/" }, { name: "Mu Sigma", location: "Bangalore", website: "https://www.mu-sigma.com/" },
-                    { name: "Reliance Jio", location: "Mumbai", website: "https://www.jio.com/" }, { name: "Tata Elxsi", location: "Bangalore", website: "https://www.tataelxsi.com/" },
-                    { name: "Infosys (Nia)", location: "Multiple", website: "https://www.infosys.com/" }, { name: "Wipro (HOLMES)", location: "Multiple", website: "https://www.wipro.com/" },
-                    { name: "Flipkart", location: "Bangalore", website: "https://www.flipkart.com/" }, { name: "Ola Electric", location: "Bangalore", website: "https://olaelectric.com/" },
-                    { name: "Haptik", location: "Mumbai", website: "https://haptik.ai/" }, { name: "L&T Technology Services", location: "Vadodara", website: "https://www.ltts.com/" }
-                ]
-            }
-        },
+       ai_ml_specialist: {
+ 
+    colleges: [
+        { name: "IIT Bombay", location: "Mumbai", website: "https://www.iitb.ac.in/" }, { name: "IIT Madras", location: "Chennai", website: "https://www.iitm.ac.in/" },
+        { name: "IIT Delhi", location: "Delhi", website: "https://home.iitd.ac.in/" }, { name: "IISc Bangalore", location: "Bangalore", website: "https://iisc.ac.in/" },
+        { name: "IIIT Hyderabad", location: "Hyderabad", website: "https://www.iiit.ac.in/" }, { name: "IIT Kharagpur", location: "Kharagpur", website: "https://www.iitkgp.ac.in/" },
+        { name: "IIT Kanpur", location: "Kanpur", website: "https://www.iitk.ac.in/" }, { name: "BITS Pilani (All campuses)", location: "Pilani, Goa, Hyderabad", website: "https://www.bits-pilani.ac.in/" },
+        { name: "NIT Trichy", location: "Tiruchirappalli", website: "https://www.nitt.edu/" }, { name: "NIT Warangal", location: "Warangal", website: "https://www.nitw.ac.in/" },
+        { name: "VIT Vellore", location: "Vellore", website: "https://vit.ac.in/" }, { name: "Jadavpur University", location: "Kolkata", website: "http://www.jaduniv.edu.in/" },
+        { name: "IIIT Bangalore", location: "Bangalore", website: "https://www.iiitb.ac.in/" }, { name: "Manipal Institute of Technology", location: "Manipal", website: "https://manipal.edu/mit.html" },
+        { name: "Amrita Vishwa Vidyapeetham", location: "Coimbatore", website: "https://www.amrita.edu/" }, { name: "DA-IICT", location: "Gandhinagar", website: "https://www.daiict.ac.in/" },
+        { name: "Thapar Institute of Engineering & Technology", location: "Patiala", website: "https://www.thapar.edu/" }, { name: "College of Engineering, Pune (COEP)", location: "Pune", website: "https://www.coep.org.in/" },
+        { name: "SRM Institute of Science and Technology", location: "Chennai", website: "https://www.srmist.edu.in/" }, { name: "PES University", location: "Bangalore", website: "https://www.pes.edu/" }
+    ],
+    onlinePlatforms: [
+{
+    name: "⭐ Get Certified in AI & Machine Learning (Recommended)",
+    type: "Hands-on certification for a high-growth career. Master the most in-demand tech skills.",
+    website: "https://clnk.in/xqEV"
+},
+   {
+    name: "⭐ Master of Science in AI & Machine Learning (Recommended)",
+    type: "Courses from Liverpool john moores university along with IIIT-Bangalore. Master the most in-demand tech skills.",
+    website: "https://clnk.in/xqLq"
+},
+    {
+    name: "⭐ Executive diploma in AI & ML. Master the basics",
+    type: "Courses from IIITB. Conquer the world with the most in-demand tech skills.",
+    website: "https://clnk.in/xqLw"
+},
+   {
+    name: "⭐ AI programming with Python",
+    type: "Its a Python Nanodegree program which offers a beginner-friendly exploration into Python AI programming",
+    website: "https://clnk.in/xqLC "
+},
+
+       {
+    name: "⭐ Fundamentals of AI and ML",
+    type: "Its a course by AWS teaching the fundamentals of AI and ML",
+    website: "https://clnk.in/xqMG "
+},
+   
+     
+        { name: "fast.ai", type: "Practical Deep Learning for Coders", website: "https://www.fast.ai/" },
+        { name: "Kaggle Learn", type: "Micro-courses and Competitions", website: "https://www.kaggle.com/learn" },
+
+        { name: "Great Learning", type: "PG Programs in AI & ML", website: "https://www.mygreatlearning.com/artificial-intelligence-courses" },
+        { name: "NPTEL", type: "Free courses from IITs", website: "https://nptel.ac.in/course.html" },
+        { name: "Google AI Education", type: "Learn with Google AI", website: "https://ai.google/education/" },
+        { name: "TensorFlow Developer Certificate", type: "Official Developer Certification", website: "https://www.tensorflow.org/certificate" }
+    ],
+    duration: "4 Years (B.Tech) or 2 Years (M.Tech/M.Sc.)",
+    fees: "₹ 2,00,000 - ₹ 8,00,000",
+    salary: "₹ 15,00,000 - ₹ 50,00,000+",
+    companies: {
+        mncs: [
+            { name: "Google", location: "Global", website: "https://ai.google/" }, { name: "Microsoft", location: "Global", website: "https://www.microsoft.com/en-us/ai" },
+            { name: "Amazon (AWS)", location: "Global", website: "https://aws.amazon.com/machine-learning/" }, { name: "Nvidia", location: "Global", website: "https://www.nvidia.com/" },
+            { name: "IBM", location: "Global", website: "https://www.ibm.com/in-en/analytics" }, { name: "Intel", location: "Global", website: "https://www.intel.com/" },
+            { name: "Samsung Research", location: "Global", website: "https://research.samsung.com/" }, { name: "Oracle", location: "Global", website: "https://www.oracle.com/in/artificial-intelligence/" },
+            { name: "Adobe", location: "Global", website: "https://www.adobe.com/" }, { name: "Qualcomm", location: "Global", website: "https://www.qualcomm.com/" }
+        ],
+        domestic: [
+            { name: "Fractal Analytics", location: "Mumbai", website: "https://fractal.ai/" }, { name: "Mu Sigma", location: "Bangalore", website: "https://www.mu-sigma.com/" },
+            { name: "Reliance Jio", location: "Mumbai", website: "https://www.jio.com/" }, { name: "Tata Elxsi", location: "Bangalore", website: "https://www.tataelxsi.com/" },
+            { name: "Infosys (Nia)", location: "Multiple", website: "https://www.infosys.com/" }, { name: "Wipro (HOLMES)", location: "Multiple", website: "https://www.wipro.com/" },
+            { name: "Flipkart", location: "Bangalore", website: "https://www.flipkart.com/" }, { name: "Ola Electric", location: "Bangalore", website: "https://olaelectric.com/" },
+            { name: "Haptik", location: "Mumbai", website: "https://haptik.ai/" }, { name: "L&T Technology Services", location: "Vadodara", website: "https://www.ltts.com/" }
+        ]
+    }
+},
+        
         data_scientist: {
             colleges: [
                 { name: "Indian Statistical Institute (ISI)", location: "Kolkata", website: "https://www.isical.ac.in/" }, { name: "IIT Madras (BS in Data Science)", location: "Online", website: "https://study.iitm.ac.in/ds/" },
@@ -412,6 +439,11 @@
                 { name: "Praxis Business School", location: "Kolkata", website: "https://praxis.ac.in/" }, { name: "BITS Pilani", location: "Pilani", website: "https://www.bits-pilani.ac.in/" }
             ],
             onlinePlatforms: [
+{
+    name: "⭐ Become a Certified Data Scientist (Top In-Demand Career)",
+    type: "Hands-on certification for a high-growth career. Master the most in-demand tech skills.",
+    website: "https://clnk.in/xqFd"
+},
                 { name: "Coursera", type: "IBM Data Science Professional Certificate", website: "https://www.coursera.org/professional-certificates/ibm-data-science" },
                 { name: "edX", type: "HarvardX's Data Science Professional Certificate", website: "https://www.edx.org/professional-certificate/harvardx-data-science" },
                 { name: "DataCamp", type: "Career Tracks in Python/R", website: "https://www.datacamp.com/" },
@@ -455,6 +487,7 @@
                 { name: "IIIT Hyderabad", location: "Hyderabad", website: "https://www.iiit.ac.in/" }
             ],
             onlinePlatforms: [
+{ name: "⭐ Become a Certified Robotics Engineer (Build the Future of Automation)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqGU" },
                 { name: "Coursera", type: "Robotics Specialization (University of Pennsylvania)", website: "https://www.coursera.org/specializations/robotics" },
                 { name: "edX", type: "Robotics MicroMasters (Columbia University)", website: "https://www.edx.org/micromasters/columbiax-robotics" },
                 { name: "Udacity", type: "Robotics Software Engineer Nanodegree", website: "https://www.udacity.com/course/robotics-software-engineer--nd209" },
@@ -511,6 +544,7 @@ cybersecurity_analyst: {
         { name: "Chandigarh University", location: "Mohali", website: "https://www.cuchd.in/" }
     ],
     onlinePlatforms: [
+ { name: "⭐ Become a Certified Cybersecurity Analyst (Protect Our Digital World)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqGT" },
         { name: "Coursera", type: "IBM Cybersecurity Analyst Professional Certificate", website: "https://www.coursera.org/professional-certificates/ibm-cybersecurity-analyst" },
         { name: "EC-Council", type: "Certified Ethical Hacker (CEH)", website: "https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/" },
         { name: "Offensive Security", type: "OSCP Certification (Advanced)", website: "https://www.offensive-security.com/pwk-oscp/" },
@@ -576,6 +610,7 @@ blockchain_developer: {
         { name: "KIIT University", location: "Bhubaneswar", website: "https://kiit.ac.in/" }
     ],
     onlinePlatforms: [
+ { name: "⭐ Become a Certified Blockchain Developer (Power the Next Web)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqGS" },
         { name: "Coursera", type: "Blockchain Specialization by University at Buffalo", website: "https://www.coursera.org/specializations/blockchain" },
         { name: "edX", type: "Professional Certificate in Blockchain Fundamentals (Berkeley)", website: "https://www.edx.org/professional-certificate/berkeleyx-blockchain-fundamentals" },
         { name: "Udacity", type: "Blockchain Developer Nanodegree", website: "https://www.udacity.com/course/blockchain-developer-nanodegree--nd1309" },
@@ -641,6 +676,7 @@ biotechnology_researcher: {
         { name: "Rajiv Gandhi Centre for Biotechnology", location: "Thiruvananthapuram", website: "https://rgcb.res.in/" }
     ],
     onlinePlatforms: [
+ { name: "⭐ Advance Your Career in Biotechnology (Innovate in Life Sciences)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqG1" },
         { name: "Coursera", type: "Genomic Data Science Specialization (Johns Hopkins)", website: "https://www.coursera.org/specializations/genomic-data-science" },
         { name: "edX", type: "Principles of Synthetic Biology (MITx)", website: "https://www.edx.org/course/principles-of-synthetic-biology" },
         { name: "NPTEL", type: "Courses from IITs on Immunology, Genetics, etc.", website: "https://nptel.ac.in/courses/102103013" },
@@ -706,6 +742,7 @@ cloud_solutions_architect: {
         { name: "Amrita Vishwa Vidyapeetham", location: "Coimbatore", website: "https://www.amrita.edu/" }
     ],
     onlinePlatforms: [
+  { name: "⭐ Become a Certified Cloud Architect (Master the Cloud)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqGR" },
         { name: "AWS Certified Solutions Architect", type: "Associate & Professional Certifications", website: "https://aws.amazon.com/certification/certified-solutions-architect-associate/" },
         { name: "Microsoft Certified: Azure Solutions Architect Expert", type: "Expert Level Certification", website: "https://learn.microsoft.com/en-us/certifications/azure-solutions-architect/" },
         { name: "Google Cloud Certified: Professional Cloud Architect", type: "Professional Certification", website: "https://cloud.google.com/certification/cloud-architect" },
@@ -771,6 +808,7 @@ ar_vr_developer: {
         { name: "Symbiosis Institute of Design", location: "Pune", website: "https://sid.edu.in/" }
     ],
     onlinePlatforms: [
+ { name: "⭐ Become a Certified AR/VR Developer (Create Immersive Realities)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqGW" },
         { name: "Coursera", type: "Virtual Reality Specialization by University of London", website: "https://www.coursera.org/specializations/virtual-reality" },
         { name: "Udacity", type: "VR Developer Nanodegree", website: "https://www.udacity.com/course/vr-developer-nanodegree--nd017" },
         { name: "Unity Learn", type: "Official XR Development Pathways", website: "https://learn.unity.com/xr" },
@@ -836,6 +874,7 @@ renewable_energy_engineer: {
         { name: "School of Planning and Architecture (SPA)", location: "Delhi", website: "https://spa.ac.in/" }
     ],
     onlinePlatforms: [
+{ name: "⭐ Become a Certified Renewable Energy Engineer (Power a Greener Tomorrow)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqGQ" },
         { name: "Coursera", type: "Renewable Energy Specialization (University of Pennsylvania)", website: "https://www.coursera.org/specializations/renewable-energy" },
         { name: "edX", type: "Sustainable Energy MicroMasters (The University of Queensland)", website: "https://www.edx.org/micromasters/uqx-sustainable-energy" },
         { name: "NPTEL", type: "Courses on Energy Resources & Technology by IITs", website: "https://nptel.ac.in/courses/108108078" },
@@ -901,6 +940,7 @@ digital_marketing_strategist: {
         { name: "UpGrad (Online in partnership with Universities)", location: "Online", website: "https://www.upgrad.com/" }
     ],
     onlinePlatforms: [
+{ name: "⭐ Become a Certified Digital Marketing Strategist (Drive Business Growth)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqGK" },
         { name: "Google Digital Marketing & E-commerce Certificate", type: "Professional Certificate on Coursera", website: "https://www.coursera.org/professional-certificates/google-digital-marketing-ecommerce" },
         { name: "HubSpot Academy", type: "Inbound Marketing & Content Marketing Certifications", website: "https://academy.hubspot.com/" },
         { name: "Meta Blueprint", type: "Digital Marketing Associate & Professional Certs", website: "https://www.facebook.com/business/learn/certification" },
@@ -966,6 +1006,7 @@ product_manager: {
         { name: "BITS Pilani (B.E./M.E. degrees are highly valued)", location: "Pilani", website: "https://www.bits-pilani.ac.in/" }
     ],
     onlinePlatforms: [
+ { name: "⭐ Become a Certified Product Manager (Build Products People Love)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqGv" },
         { name: "Coursera", type: "Google Product Management Professional Certificate", website: "https://www.coursera.org/professional-certificates/google-product-management" },
         { name: "Reforge", type: "Advanced Growth and Product Programs (for experienced PMs)", website: "https://www.reforge.com/" },
         { name: "Pragmatic Institute", type: "Industry Standard Product Management Certifications", website: "https://www.pragmaticinstitute.com/" },
@@ -1031,6 +1072,7 @@ full_stack_developer: {
         { name: "Veermata Jijabai Technological Institute (VJTI)", location: "Mumbai", website: "https://vjti.ac.in/" }
     ],
     onlinePlatforms: [
+ { name: "⭐ Become a Certified Full Stack Developer (Build Web Apps End-to-End)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqGu" },
         { name: "Masai School", type: "Full Stack Web Development Bootcamp (Pay after placement)", website: "https://www.masaischool.com/" },
         { name: "Newton School", type: "Full Stack Development & AI Courses (Pay after placement)", website: "https://www.newtonschool.co/" },
         { name: "Udemy", type: "The Web Developer Bootcamp by Colt Steele", website: "https://www.udemy.com/course/the-web-developer-bootcamp/" },
@@ -1088,6 +1130,7 @@ UI_UX_designer: {
         { name: "NIFT (National Institute of Fashion Technology)", location: "Multiple Locations", website: "https://nift.ac.in/" }
     ],
     onlinePlatforms: [
+  { name: "⭐ Become a Certified UI/UX Designer (Design User-Friendly Experiences)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqGc" },
         { name: "Interaction Design Foundation (IDF)", type: "Online UX Design Courses & Bootcamps", website: "https://www.interaction-design.org/" },
         { name: "Coursera", type: "Google UX Design Professional Certificate", website: "https://www.coursera.org/professional-certificates/google-ux-design" },
         { name: "Udemy", type: "Various UX/UI Design Courses", website: "https://www.udemy.com/" },
@@ -1143,6 +1186,7 @@ genetic_counselor: {
 
     ],
     onlinePlatforms: [
+  { name: "⭐ Train as a Genetic Counselor (A High-Impact Health Career)", type: "Explore related courses and programs.", website: "https://clnk.in/xqG7" },
         { name: "Coursera", type: "Genetics and Genomics Courses", website: "https://www.coursera.org/" },
         { name: "edX", type: "Genetics and Genomics Courses", website: "https://www.edx.org/" },
         { name: "FutureLearn", type: "Genetics and Genomics Courses", website: "https://www.futurelearn.com/" },
@@ -1178,6 +1222,7 @@ sustainability_specialist: {
         { name: "Indian Institute of Forest Management (IIFM)", location: "Bhopal", website: "https://www.iifm.ac.in/" }
     ],
     onlinePlatforms: [
+  { name: "⭐ Become a Certified Sustainability Specialist (Drive Green Initiatives)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqG6" },
         { name: "Coursera", type: "Sustainability Courses & Specializations", website: "https://www.coursera.org/" },
         { name: "edX", type: "Sustainability Courses & Programs", website: "https://www.edx.org/" },
         { name: "UN CC:Learn", type: "Free Online Courses on Climate Change", website: "https://unccelearn.org/" },
@@ -1214,7 +1259,7 @@ sustainability_specialist: {
         ]
     }
 },
-eSports_manager: {
+esports_manager: {
     colleges: [
         { name: "Arena Animation", location: "Multiple Locations", website: "https://www.arena-multimedia.com/ (Check for specific game design, animation, or management courses relevant to Esports)" },
         { name: "Seamedu School of Pro-Expressionism", location: "Pune, Multiple Locations", website: "https://www.seamedu.com/ (Check for Game Design and Development courses)" },
@@ -1223,6 +1268,8 @@ eSports_manager: {
 	    { name: "Manipal Academy of Higher Education (MAHE)", location: "Manipal", website: "https://manipal.edu/ (Check for sports management courses)" }
     ],
     onlinePlatforms: [
+ { name: "⭐ Become an eSports Manager (Lead in Competitive Gaming)", type: "Explore related business and management courses.", website: "https://clnk.in/xqGV" },
+
         { name: "Esports Business Academy", type: "Online Courses in Esports Business", website: "https://esportsbusinessacademy.com/" },
         { name: "Learn2Esport", type: "Esports Coaching and Management Courses", website: "https://learn2esport.com/" },
         { name: "Coursera", type: "Various Business and Management Courses (Useful for Esports Management)", website: "https://www.coursera.org/" },
@@ -1272,6 +1319,7 @@ mental_health_therapist_digital: {
         { name: "Jadavpur University", location: "Kolkata", website: "http://www.jaduniv.edu.in/" }
     ],
     onlinePlatforms: [
+  { name: "⭐ Train in Digital Mental Health (Support Modern Wellness)", type: "Explore related psychology courses.", website: "https://clnk.in/xqF7" },
         { name: "Coursera", type: "Mental Health and Psychology Courses", website: "https://www.coursera.org/" },
         { name: "edX", type: "Psychology and Mental Health Courses", website: "https://www.edx.org/" },
         { name: "FutureLearn", type: "Mental Health Courses", website: "https://www.futurelearn.com/" },
@@ -1328,6 +1376,7 @@ IOT_specialist: {
         { name: "Amity University", location: "Multiple Locations", website: "https://www.amity.edu/" }
     ],
     onlinePlatforms: [
+ { name: "⭐ Become a Certified IoT Specialist (Connect the Digital & Physical Worlds)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqF6" },
         { name: "Coursera", type: "IoT Courses and Specializations", website: "https://www.coursera.org/" },
         { name: "edX", type: "IoT Courses and Programs", website: "https://www.edx.org/" },
         { name: "Udacity", type: "IoT Nanodegree Programs", website: "https://www.udacity.com/" },
@@ -1384,6 +1433,7 @@ financial_technologist_fintech: {
         { name: "SP Jain Institute of Management and Research (SPJIMR)", location: "Mumbai", website: "https://www.spjimr.org/" }
     ],
     onlinePlatforms: [
+ { name: "⭐ Become a Certified FinTech Professional (Innovate in Finance & Tech)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqF5" },
         { name: "Coursera", type: "FinTech Specializations and Courses", website: "https://www.coursera.org/" },
         { name: "edX", type: "FinTech Courses and Programs", website: "https://www.edx.org/" },
         { name: "Udacity", type: "AI for Trading Nanodegree program", website: "https://www.udacity.com/" },
@@ -1422,7 +1472,7 @@ financial_technologist_fintech: {
         ]
     }
 },
-drone_operator_technician: {
+drone_operator: {
     colleges: [
         { name: "Indira Gandhi Rashtriya Uran Akademi (IGRUA)", location: "Rae Bareli", website: "https://igrua.gov.in/" },
         { name: "Bombay Flying Club", location: "Mumbai", website: "http://www.thebombayflyingclub.com/" },
@@ -1431,6 +1481,7 @@ drone_operator_technician: {
         { name: "Aeronautical Engineering Colleges (various IITs and private colleges)", location: "Multiple Locations", website: "N/A (search for specific aeronautical engineering colleges)"}
     ],
     onlinePlatforms: [
+{ name: "⭐ Become a Certified Drone Operator (Master the Skies with Technology)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqG2" },
         { name: "Drone U", type: "Online Drone Training Courses", website: "https://www.thedroneu.com/" },
         { name: "Pilotinstitute", type: "Drone Pilot Ground School", website: "https://pilotinstitute.com/" },
         { name: "Drone Launch Academy", type: "Online Drone Pilot Training", website: "https://dronelaunchacademy.com/" },
@@ -1473,6 +1524,8 @@ supply_chain_analyst: {
         { name: "Indian Institute of Foreign Trade (IIFT)", location: "Delhi, Kolkata", website: "https://www.iift.ac.in/" }
     ],
     onlinePlatforms: [
+{ name: "⭐ Become a Certified Supply Chain Analyst (Optimize Global Logistics)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqF4" },
+
         { name: "Coursera", type: "Supply Chain Management Specializations", website: "https://www.coursera.org/" },
         { name: "edX", type: "Supply Chain and Logistics Courses", website: "https://www.edx.org/" },
         { name: "LinkedIn Learning", type: "Supply Chain Courses", website: "https://www.linkedin.com/learning/" },
@@ -1524,6 +1577,7 @@ genomic_data_scientist: {
         { name: "SRM Institute of Science and Technology", location: "Chennai", website: "https://www.srmist.edu.in/" }
     ],
     onlinePlatforms: [
+ { name: "⭐ Become a Genomic Data Scientist (Unlock Insights from DNA Data)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqF3" },
         { name: "Coursera", type: "Genomic Data Science Specialization", website: "https://www.coursera.org/" },
         { name: "edX", type: "Bioinformatics and Genomics Courses", website: "https://www.edx.org/" },
         { name: "DataCamp", type: "Data Science and Bioinformatics Courses", website: "https://www.datacamp.com/" },
@@ -1575,6 +1629,7 @@ occupational_therapist: {
         { name: "NIMS University", location: "Jaipur", website: "https://nimsuniversity.org/" }
     ],
     onlinePlatforms: [
+{ name: "⭐ Train as an Occupational Therapist (Empower Daily Living)", type: "Explore related healthcare courses.", website: "https://clnk.in/xqG3" },
         { name: "MedBridge Education", type: "Continuing Education for Occupational Therapists", website: "https://www.medbridgeeducation.com/" },
         { name: "OccupationalTherapy.com", type: "Continuing Education and Resources", website: "https://www.occupationaltherapy.com/" },
         { name: "Sensory Integration Education", type: "Sensory Integration Training", website: "https://www.sensoryintegrationeducation.com/" },
@@ -1614,6 +1669,7 @@ user_experience_researcher: {
 	    { name: "IIIT Delhi", location: "Delhi", website: "https://www.iiitd.ac.in/" }
     ],
     onlinePlatforms: [
+  { name: "⭐ Become a Certified UX Researcher (Understand Your Users Deeply)", type: "Explore top-rated certification courses.", website: "https://clnk.in/xqF2" },
         { name: "Interaction Design Foundation (IDF)", type: "Online UX Research Courses & Bootcamps", website: "https://www.interaction-design.org/" },
         { name: "Coursera", type: "Google UX Design Professional Certificate (covers research aspects)", website: "https://www.coursera.org/professional-certificates/google-ux-design" },
         { name: "Udemy", type: "Various UX Research Courses", website: "https://www.udemy.com/" },
@@ -1685,6 +1741,9 @@ user_experience_researcher: {
                 onlinePlatformList.appendChild(li);
             });
         }
+
+
+
 
         document.getElementById('duration').innerHTML = `<span class="highlight">${data.duration}</span>`;
         document.getElementById('course-fee').innerHTML = `<span class="highlight">${data.fees}</span>`;
