@@ -1,8 +1,8 @@
 {
   "name": "Campus India",
   "short_name": "campusindia",
-  "start_url": "mainnow.html?utm_source=pwa",
-  "id": "/main.html?v=7",
+  "start_url": "index.html",
+  "id": "/index.html?v=7",
   "display": "standalone",
   "background_color": "#7FFFD4",
   "theme_color": "#000000",
