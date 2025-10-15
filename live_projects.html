@@ -30,40 +30,38 @@
     </div>
 </div>
 
-<script>
-    // Our JavaScript will go here
-const searchInput = document.getElementById('search-box');
+
+    <script>
+    const searchInput = document.getElementById('search-box');
     const searchButton = document.getElementById('search-button');
     const resultsContainer = document.getElementById('results-container');
     
-    // ✅ IMPORTANT: PASTE YOUR RAPIDAPI KEY HERE
-    const apiKey = '4d77880947mshfba562934f7f319p16c3fdjsn0d9c236a6a91'; 
+    // ✅ IMPORTANT: PASTE YOUR ADZUNA KEYS HERE
+    const adzunaAppId = '8cd22dc4';
+    const adzunaAppKey = '5f59c4709a07dbbd781fead08e9c716d';
 
     async function searchProjects(query) {
         resultsContainer.innerHTML = '<p>Searching...</p>';
         
-        const url = `https://jsearch.p.rapidapi.com/search?query=${encodeURIComponent(query)} in India&num_pages=1`;
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': apiKey,
-                'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
-            }
-        };
+        // This is the correct API URL for Adzuna, for searches in India (in)
+        const url = `https://api.adzuna.com/v1/api/jobs/in/search/1?app_id=${adzunaAppId}&app_key=${adzunaAppKey}&results_per_page=20&what=${encodeURIComponent(query)}`;
 
         try {
-            const response = await fetch(url, options);
+            const response = await fetch(url);
             const result = await response.json();
-            displayResults(result.data);
+            
+            // Adzuna nests the results in a 'results' array
+            displayResults(result.results);
+
         } catch (error) {
-            console.error(error);
+            console.error("Adzuna API Error:", error);
             resultsContainer.innerHTML = '<p>Error fetching projects. Please try again later.</p>';
         }
     }
 
     function displayResults(projects) {
         if (!projects || projects.length === 0) {
-            resultsContainer.innerHTML = '<p>No projects found for this search. Try a different keyword.</p>';
+            resultsContainer.innerHTML = '<p>No projects or internships found for this search. Please try a different keyword.</p>';
             return;
         }
 
@@ -73,21 +71,23 @@ const searchInput = document.getElementById('search-box');
             const card = document.createElement('div');
             card.className = 'project-card';
 
-            const title = project.job_title || 'N/A';
-            const company = project.employer_name || 'N/A';
-            const location = project.job_city || project.job_country || 'Remote';
-            const applyLink = project.job_apply_link || `https://www.google.com/search?q=${encodeURIComponent(title + ' at ' + company)}`;
+            const title = project.title;
+            const company = project.company.display_name;
+            const location = project.location.display_name;
+            const description = project.description;
+            const applyLink = project.redirect_url; // Adzuna provides a direct application link
 
             card.innerHTML = `
                 <div class="project-title">${title}</div>
                 <div class="company-name">${company} - ${location}</div>
-                <a href="${applyLink}" class="apply-link" target="_blank">Apply Now</a>
+                <p>${description}</p>
+                <a href="${applyLink}" class="apply-link" target="_blank">View & Apply</a>
             `;
             resultsContainer.appendChild(card);
         });
     }
 
-    // Event Listeners
+    // Event Listeners (no changes needed here)
     searchButton.addEventListener('click', () => {
         const query = searchInput.value;
         if (query) {
@@ -97,8 +97,9 @@ const searchInput = document.getElementById('search-box');
 
     // Initial search when the page loads
     window.addEventListener('load', () => {
-        searchProjects('internship for students India');
+        searchProjects('internship'); // A simple, broad search for internships to start
     });
+
 </script>
 
 </body>
