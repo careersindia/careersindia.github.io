@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Internships & Projects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Add some basic styling for the results */
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f4f9; }
+        .container { max-width: 800px; margin: auto; }
+        #search-container { margin-bottom: 20px; }
+        #search-box { width: 70%; padding: 10px; font-size: 1rem; }
+        #search-button { padding: 10px; font-size: 1rem; }
+        .project-card { background: white; border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 15px; }
+        .project-title { font-size: 1.2rem; font-weight: bold; }
+        .company-name { color: #555; }
+        .apply-link { display: inline-block; margin-top: 10px; padding: 8px 12px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Find Live Internships & Projects in India</h1>
+    <div id="search-container">
+        <input type="text" id="search-box" placeholder="e.g., 'Web Development Intern' or 'Marketing Project'">
+        <button id="search-button">Search</button>
+    </div>
+    <div id="results-container">
+        <p>Loading projects...</p>
+    </div>
+</div>
+
+<script>
+    // Our JavaScript will go here
+const searchInput = document.getElementById('search-box');
+    const searchButton = document.getElementById('search-button');
+    const resultsContainer = document.getElementById('results-container');
+    
+    // ✅ IMPORTANT: PASTE YOUR RAPIDAPI KEY HERE
+    const apiKey = '4d77880947mshfba562934f7f319p16c3fdjsn0d9c236a6a91'; 
+
+    async function searchProjects(query) {
+        resultsContainer.innerHTML = '<p>Searching...</p>';
+        
+        const url = `https://jsearch.p.rapidapi.com/search?query=${encodeURIComponent(query)}&country=IN&employment_types=INTERN,CONTRACTOR&num_pages=1`;
+
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': apiKey,
+                'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
+            }
+        };
+
+        try {
+            const response = await fetch(url, options);
+            const result = await response.json();
+            displayResults(result.data);
+        } catch (error) {
+            console.error(error);
+            resultsContainer.innerHTML = '<p>Error fetching projects. Please try again later.</p>';
+        }
+    }
+
+    function displayResults(projects) {
+        if (!projects || projects.length === 0) {
+            resultsContainer.innerHTML = '<p>No projects found for this search. Try a different keyword.</p>';
+            return;
+        }
+
+        resultsContainer.innerHTML = ''; // Clear the "Searching..." message
+
+        projects.forEach(project => {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+
+            const title = project.job_title || 'N/A';
+            const company = project.employer_name || 'N/A';
+            const location = project.job_city || project.job_country || 'Remote';
+            const applyLink = project.job_apply_link || `https://www.google.com/search?q=${encodeURIComponent(title + ' at ' + company)}`;
+
+            card.innerHTML = `
+                <div class="project-title">${title}</div>
+                <div class="company-name">${company} - ${location}</div>
+                <a href="${applyLink}" class="apply-link" target="_blank">Apply Now</a>
+            `;
+            resultsContainer.appendChild(card);
+        });
+    }
+
+    // Event Listeners
+    searchButton.addEventListener('click', () => {
+        const query = searchInput.value;
+        if (query) {
+            searchProjects(query);
+        }
+    });
+
+    // Initial search when the page loads
+    window.addEventListener('load', () => {
+        searchProjects('internship for students India');
+    });
+</script>
+
+</body>
+</html>
