@@ -42,8 +42,7 @@ const searchInput = document.getElementById('search-box');
     async function searchProjects(query) {
         resultsContainer.innerHTML = '<p>Searching...</p>';
         
-        const url = `https://jsearch.p.rapidapi.com/search?query=${encodeURIComponent(query)}&country=IN&employment_types=INTERN,CONTRACTOR&num_pages=1`;
-
+        const url = `https://jsearch.p.rapidapi.com/search?query=${encodeURIComponent(query)} in India&num_pages=1`;
         const options = {
             method: 'GET',
             headers: {
