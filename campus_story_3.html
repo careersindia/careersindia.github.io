@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Explorer: IIM, IIT & IISc In-Depth</title>
+<meta name="description" content="Compare India's top IITs and IIMs side-by-side. Get detailed insights on NIRF rankings, placement records, average salaries, admission cutoffs (JEE Advanced & CAT), and top recruiters to make an informed career decision.">
+    <link rel="manifest" href="/manifest_7.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+    :root { 
+        --aquamarine: #7FFFD4; 
+        --aquamarine-dark: #45b39d; 
+        --white: #ffffff; 
+        --light-gray: #f4f7f9; 
+        --text-color: #212529; 
+        --border-gray: #e0e0e0;
+        --danger-red: #e74c3c;
+        --success-green: #2ecc71;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body, html { margin: 0; padding: 0; }
+    body { font-family: 'Poppins', sans-serif; background-color: var(--light-gray); color: var(--text-color); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+    .header { text-align: center; margin-bottom: 20px; }
+    .title-box { display: inline-block; background-color: var(--aquamarine); padding: 20px 40px; border-radius: 15px; box-shadow: 0 8px 0 var(--aquamarine-dark); }
+    .header h1 { font-family: 'Russo One', sans-serif; font-size: 2.8rem; color: var(--white); text-transform: uppercase; text-shadow: 2px 2px 0px var(--aquamarine-dark); margin:0; }
+    .main-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .column { display: flex; flex-direction: column; gap: 20px; }
+    .section-title { font-size: 2.2rem; font-weight: 600; text-align: center; color: var(--text-color); padding-bottom: 10px; border-bottom: 2px solid var(--aquamarine); margin-bottom: 10px; }
+    .disclaimer { text-align: center; margin: -15px auto 25px auto; color: #666; font-size: 0.9rem; padding: 10px 15px; background: #fff; border-left: 4px solid var(--aquamarine-dark); max-width: 800px; border-radius: 4px; }
+    
+    .campus-card { display: flex; flex-direction: column; background-color: var(--white); border-radius: 10px; box-shadow: 0 5px 0 var(--aquamarine-dark); border: 1px solid var(--border-gray); padding: 15px; transition: all 0.15s ease-out; }
+    .campus-card:hover { transform: translateY(-3px); box-shadow: 0 8px 0 var(--aquamarine-dark); }
+    .card-main-content { display: flex; align-items: center; width: 100%; }
+    .card-select-checkbox { margin-right: 15px; transform: scale(1.4); cursor: pointer; flex-shrink: 0; }
+    .card-text { flex-grow: 1; }
+    .card-text h3 { font-size: 1.3rem; margin: 0 0 5px 0; }
+    .card-text p { font-size: 0.9rem; color: #666; margin: 0; }
+    .card-actions { display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid var(--border-gray); padding-top: 15px; }
+    .card-button { flex: 1; text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background-color 0.2s; cursor: pointer; }
+    .btn-details { background-color: var(--aquamarine); color: var(--text-color); border: 1px solid var(--aquamarine-dark); }
+    .btn-details:hover { background-color: var(--aquamarine-dark); color: var(--white); }
+    .btn-youtube { display: flex; align-items: center; justify-content: center; gap: 8px; background-color: #FF0000; color: white; border: 1px solid #c00; }
+    .btn-youtube:hover { background-color: #c00; }
+
+    .comparison-container { text-align: center; margin: 20px 0; }
+    #compare-btn { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 600; padding: 15px 30px; border-radius: 10px; border: none; background-color: var(--success-green); color: white; cursor: pointer; box-shadow: 0 5px 0 #27ae60; transition: all 0.2s; }
+    #compare-btn:disabled { background-color: #95a5a6; box-shadow: 0 5px 0 #7f8c8d; cursor: not-allowed; }
+    #compare-btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 7px 0 #27ae60; }
+    #compare-btn:not(:disabled):active { transform: translateY(1px); box-shadow: 0 2px 0 #27ae60; }
+
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center; }
+    .modal-content { background-color: #fefefe; margin: auto; padding: 30px; border: 1px solid #888; width: 90%; max-width: 800px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); position: relative; animation: fadeIn 0.3s; }
+    .modal-close { color: #aaa; float: right; font-size: 28px; font-weight: bold; position: absolute; top: 10px; right: 25px; }
+    .modal-close:hover, .modal-close:focus { color: black; text-decoration: none; cursor: pointer; }
+    .modal-title { font-family: 'Russo One', sans-serif; font-size: 2rem; margin-top: 0; color: var(--aquamarine-dark); }
+    .modal-section { margin-bottom: 20px; }
+    .modal-section h4 { border-bottom: 2px solid var(--aquamarine); padding-bottom: 5px; margin-bottom: 10px; font-size: 1.3rem; }
+    .modal-section p, .modal-section li { line-height: 1.6; }
+    .modal-section strong { color: var(--text-color); }
+    .ratings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+    .rating-item { background: var(--light-gray); padding: 10px; border-radius: 8px; text-align: center; }
+    .rating-item span { display: block; font-size: 1.5rem; font-weight: 700; color: var(--aquamarine-dark); }
+    
+    #comparison-modal-content { max-width: 1000px; }
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .comparison-col h3 { text-align: center; font-size: 1.5rem; color: var(--text-color); }
+
+    .home-button-container { position: fixed; top: 20px; right: 25px; z-index: 1001; }
+    .home-button-container a img { width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: transform 0.2s; border-radius: 50%; }
+    .home-button-container a:hover img { transform: scale(1.1); }
+    
+    @keyframes fadeIn { from {opacity: 0; transform: scale(0.95);} to {opacity: 1; transform: scale(1);} }
+    @media (max-width: 992px) { .main-layout { grid-template-columns: 1fr; } .header h1 { font-size: 2.2rem; } .comparison-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+    <div class="home-button-container"><a href="/mainnow.html" title="Go to Home"><img src="images/home-icon.png" alt="Home"></a></div>
+
+    <div class="container">
+        <header class="header"><div class="title-box"><h1>Campus Explorer</h1></div></header>
+        
+        <div class="comparison-container">
+            <button id="compare-btn" disabled>Compare Any  2</button>
+        </div>
+        
+        <p class="disclaimer"><strong>Data Guide:</strong> Placements/Salaries are for the 2024 graduating batch (latest available). Rankings are from NIRF 2025 (latest official release). Fees and cutoffs are estimates for the latest admission cycle. All data is for reference and subject to change.</p>
+
+        <div class="main-layout">
+            <div class="column">
+                <h2 class="section-title">IIMs, IISc & ISI</h2>
+                
+                <!--DATA FOR ALL 46 INSTITUTES UPDATED BELOW-->
+                <div class="campus-card" data-name="IIM Calcutta" data-youtube="https://youtu.be/2zk4ojcXypE" data-nirf-rank="4 (Mgmt) [2025]" data-campus-rating="4.6 / 5" data-library-rating="4.8 / 5" data-placement-rating="4.8 / 5" data-avg-salary="₹ 35.07 LPA (2025)" data-hostel-fees="~ ₹2 Lakhs/year" data-top-companies="Accenture, Amazon, BCG, Goldman Sachs, Microsoft" data-achievements="First IIM (1961), 'Finance Campus of India'. Triple Crown accreditation." data-admission="CAT score, WAT & PI. Profile based calls." data-cutoff="Qualifying CAT: 85 percentile (Gen). Final calls much higher (99+).">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Calcutta</h3><p>The first IIM, renowned for its finance programs.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/2zk4ojcXypE" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Ahmedabad" data-youtube="https://youtu.be/rZh0hGJt9xg" data-nirf-rank="1 (Mgmt) [2025]" data-campus-rating="4.8 / 5" data-library-rating="4.9 / 5" data-placement-rating="4.9 / 5" data-avg-salary="₹ 34.36 LPA (2025)" data-hostel-fees="~ ₹2 Lakhs/year" data-top-companies="McKinsey, BCG, Bain & Co., Goldman Sachs, Amazon" data-achievements="Famous for case-study pedagogy. EQUIS accreditation." data-admission="CAT Score, AWT & PI. Academic diversity focus." data-cutoff="Qualifying CAT: 80 percentile (Gen). Final calls require 99+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Ahmedabad</h3><p>The pioneer of management education in India.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/rZh0hGJt9xg" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Bangalore" data-youtube="https://youtu.be/rSldFScDxZk" data-nirf-rank="2 (Mgmt) [2025]" data-campus-rating="4.7 / 5" data-library-rating="4.8 / 5" data-placement-rating="4.9 / 5" data-avg-salary="₹ 35.31 LPA (2025)" data-hostel-fees="~ ₹2.1 Lakhs/year" data-top-companies="Accenture Strategy, Amazon, BCG, Kearney, Bain & Co" data-achievements="Technology and entrepreneurship focus. Home to NSRCEL startup hub." data-admission="CAT Score, WAT & PI. Weightage on work experience." data-cutoff="Qualifying CAT: 85 percentile (Gen). Final calls require 99+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Bangalore</h3><p>A hub for innovation in the Silicon Valley of India.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/rSldFScDxZk" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Lucknow" data-youtube="https://youtu.be/KEyQSNquXQ0" data-nirf-rank="6 (Mgmt) [2025]" data-campus-rating="4.5 / 5" data-library-rating="4.6 / 5" data-placement-rating="4.7 / 5" data-avg-salary="₹ 30 LPA (2025)" data-hostel-fees="~ ₹1.2 Lakhs/year" data-top-companies="Deloitte, PwC, EY, KPMG, Amazon, Flipkart" data-achievements="Fourth IIM (1984). Satellite campus in Noida." data-admission="CAT Score, WAT & PI. Strong weightage on CAT score." data-cutoff="Qualifying CAT: 90 percentile (Gen). Final calls at 97-98+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Lucknow</h3><p>Known for its academic rigor and corporate engagement.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/KEyQSNquXQ0" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Kozhikode" data-youtube="https://youtu.be/KRn1XeivpdM" data-nirf-rank="3 (Mgmt) [2025]" data-campus-rating="4.6 / 5" data-library-rating="4.5 / 5" data-placement-rating="4.7 / 5" data-avg-salary="₹ 28.05 LPA (2025)" data-hostel-fees="~ ₹1.5 Lakhs/year" data-top-companies="Microsoft, Bain & Co, Deloitte, Goldman Sachs, JP Morgan" data-achievements="Pioneer in gender diversity. Beautiful hilltop campus." data-admission="CAT Score, WAT & PI. Considers resume score." data-cutoff="Qualifying CAT: 85 percentile (Gen). Final calls at 97-98+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Kozhikode</h3><p>A scenic campus with a focus on holistic development.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/KRn1XeivpdM" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Indore" data-youtube="https://youtu.be/YhhZLIPgwQA" data-nirf-rank="8 (Mgmt) [2025]" data-campus-rating="4.5 / 5" data-library-rating="4.4 / 5" data-placement-rating="4.6 / 5" data-avg-salary="₹ 25.68 LPA (2025)" data-hostel-fees="~ ₹1.4 Lakhs/year" data-top-companies="BCG, Deloitte, EY, Goldman Sachs, HDFC Bank, Amazon" data-achievements="Offers a 5-year Integrated Program in Management (IPM)." data-admission="CAT Score, WAT & PI. Separate IPM-AT for integrated course." data-cutoff="Qualifying CAT: 90 percentile (Gen). Final calls at 97-98+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Indore</h3><p>Known for its sprawling campus and unique IPM program.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/YhhZLIPgwQA" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Shillong" data-youtube="https://youtu.be/KsoecH-2kWg" data-nirf-rank="26 (Mgmt) [2025]" data-campus-rating="4.4 / 5" data-library-rating="4.2 / 5" data-placement-rating="4.5 / 5" data-avg-salary="₹ 26.1 LPA (2025)" data-hostel-fees="~ ₹1 Lakh/year" data-top-companies="Deloitte, Bain & Co, Capgemini, JP Morgan, Tata Steel" data-achievements="Known for its focus on sustainable development and business ethics." data-admission="CAT Score, Group Discussion (GD) & PI. Emphasis on versatile profiles." data-cutoff="Qualifying CAT: 75 percentile (Gen). Final calls at 94+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Shillong</h3><p>Nestled in the hills, focusing on sustainable leadership.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/KsoecH-2kWg" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Rohtak" data-youtube="https://youtu.be/-mGGYV_QRuc" data-nirf-rank="12 (Mgmt) [2025]" data-campus-rating="4.1 / 5" data-library-rating="4.0 / 5" data-placement-rating="4.3 / 5" data-avg-salary="₹ 19.27 LPA (2025)" data-hostel-fees="~ ₹80,000/year" data-top-companies="Accenture, Capgemini, Barclays, Tata Steel, Cognizant" data-achievements="First IIM in North India. Strong focus on research." data-admission="CAT Score & PI. Shortlisting based on CAT score." data-cutoff="Qualifying CAT: 95 percentile (Gen). Final calls at 95+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Rohtak</h3><p>Strategic location with strong industry connections.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/-mGGYV_QRuc" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Ranchi" data-youtube="https://youtu.be/9hbmLd8ryRg" data-nirf-rank="24 (Mgmt) [2025]" data-campus-rating="4.0 / 5" data-library-rating="3.9 / 5" data-placement-rating="4.2 / 5" data-avg-salary="₹ 18.69 LPA (2025)" data-hostel-fees="~ ₹90,000/year" data-top-companies="Deloitte, ICICI, Cognizant, Infosys, Wipro" data-achievements="Offers a specialized PGDHRM program." data-admission="CAT Score, WAT & PI. Profile-based shortlisting." data-cutoff="Qualifying CAT: 92 percentile (Gen). Final calls at 94+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Ranchi</h3><p>Nurturing socially responsible business leaders.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/9hbmLd8ryRg" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Raipur" data-youtube="https://youtu.be/Ji_o3HEktds" data-nirf-rank="11 (Mgmt) [2025]" data-campus-rating="4.2 / 5" data-library-rating="4.1 / 5" data-placement-rating="4.4 / 5" data-avg-salary="₹ 21.04 LPA (2025)" data-hostel-fees="~ ₹1 Lakh/year" data-top-companies="Deloitte, Accenture, Cognizant, HDFC Bank, E&Y" data-achievements="Promotes an entrepreneurial culture. Modern campus infrastructure." data-admission="CAT Score, WAT & PI. Weightage on academic and gender diversity." data-cutoff="Qualifying CAT: 92 percentile (Gen). Final calls at 94+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Raipur</h3><p>A fast-growing IIM in Central India.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/Ji_o3HEktds" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Tiruchirappalli" data-youtube="https://youtu.be/jO6SPHIqdPI" data-nirf-rank="22 (Mgmt) [2025]" data-campus-rating="4.3 / 5" data-library-rating="4.2 / 5" data-placement-rating="4.4 / 5" data-avg-salary="₹ 19.43 LPA (2025)" data-hostel-fees="~ ₹1.2 Lakhs/year" data-top-companies="JP Morgan, McKinsey, Samsung, Microsoft, Accenture" data-achievements="Known for its state-of-the-art 'L-shaped' academic block." data-admission="CAT Score, WAT & PI. Emphasis on work experience." data-cutoff="Qualifying CAT: 92 percentile (Gen). Final calls at 94+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Tiruchirappalli</h3><p>Strong focus on analytics and finance.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/jO6SPHIqdPI" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Udaipur" data-youtube="https://youtu.be/MjnPLR2WT_4" data-nirf-rank="16 (Mgmt) [2025]" data-campus-rating="4.4 / 5" data-library-rating="4.3 / 5" data-placement-rating="4.5 / 5" data-avg-salary="₹ 18.53 LPA (2025)" data-hostel-fees="~ ₹1.1 Lakhs/year" data-top-companies="Goldman Sachs, Bain & Co, JP Morgan, Accenture, Amazon" data-achievements="AACSB Accredited. Ranked in QS & FT Global Rankings for its programs." data-admission="CAT Score & PI. Profile (academics, work-ex) has high weightage." data-cutoff="Qualifying CAT: 92 percentile (Gen). Final calls at 95+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Udaipur</h3><p>A globally ranked, research-focused IIM.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/MjnPLR2WT_4" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Kashipur" data-youtube="https://youtu.be/g_MsLf4-Wkk" data-nirf-rank="19 (Mgmt) [2025]" data-campus-rating="4.1 / 5" data-library-rating="4.0 / 5" data-placement-rating="4.2 / 5" data-avg-salary="₹ 18.11 LPA (2025)" data-hostel-fees="~ ₹85,000/year" data-top-companies="ICICI Bank, Infosys, Capgemini, Wipro, HDFC Bank" data-achievements="Focus on Analytics. Has a specialized MBA in Analytics program." data-admission="CAT Score, WAT & PI. Strong sectional scores are important." data-cutoff="Qualifying CAT: 92 percentile (Gen). Final calls at 94+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Kashipur</h3><p>Developing leaders with a strong analytical mindset.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/g_MsLf4-Wkk" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Nagpur" data-youtube="https://youtu.be/6XfkmsJFpOo" data-nirf-rank="43 (Mgmt) [2025]" data-campus-rating="4.0 / 5" data-library-rating="3.8 / 5" data-placement-rating="4.1 / 5" data-avg-salary="₹ 16.74 LPA (2025)" data-hostel-fees="~ ₹90,000/year" data-top-companies="Microsoft, Adani, BNY Mellon, Deloitte, IBM, Amazon" data-achievements="Mentored by IIM Ahmedabad. New permanent campus is operational." data-admission="CAT Score & PI. Shortlisting via CAP process." data-cutoff="Qualifying CAT: 85 percentile (Gen). Final calls via CAP at 92+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Nagpur</h3><p>Mentored by IIM-A, located in a key logistics hub.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/6XfkmsJFpOo" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Visakhapatnam" data-youtube="https://youtu.be/_0Rjm1AVo5k" data-nirf-rank="29 (Mgmt) [2025]" data-campus-rating="3.9 / 5" data-library-rating="3.7 / 5" data-placement-rating="4.1 / 5" data-avg-salary="₹ 16.61 LPA (2025)" data-hostel-fees="~ ₹1 Lakh/year" data-top-companies="Deloitte, EY, Amazon, Cognizant, Infosys" data-achievements="Mentored by IIM Bangalore. Growing presence in the industrial port city." data-admission="CAT Score & PI. Shortlisting via CAP process." data-cutoff="Qualifying CAT: 80 percentile (Gen). Final calls via CAP at 92+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Visakhapatnam</h3><p>A 'sunrise' IIM mentored by IIM-B.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/_0Rjm1AVo5k" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Bodh Gaya" data-youtube="https://youtu.be/yS2c3mThGjw" data-nirf-rank="53 (Mgmt) [2025]" data-campus-rating="3.8 / 5" data-library-rating="3.6 / 5" data-placement-rating="4.0 / 5" data-avg-salary="₹ 16 LPA (2025)" data-hostel-fees="~ ₹75,000/year" data-top-companies="ICICI Bank, Wipro, Infosys, HDFC Bank, BNY Mellon" data-achievements="Focus on mindful leadership. New permanent campus." data-admission="CAT Score & PI. Shortlisting via CAP process." data-cutoff="Qualifying CAT: 80 percentile (Gen). Final calls via CAP at 92+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Bodh Gaya</h3><p>Promoting mindful and socially responsible business.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/yS2c3mThGjw" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Amritsar" data-youtube="https://youtu.be/TXjI2TIumd8" data-nirf-rank="51 (Mgmt) [2025]" data-campus-rating="3.9 / 5" data-library-rating="3.7 / 5" data-placement-rating="4.0 / 5" data-avg-salary="₹ 16.51 LPA (2025)" data-hostel-fees="~ ₹95,000/year" data-top-companies="Accenture, Cipla, Deloitte, EY, KPMG, Microsoft" data-achievements="Mentored by IIM Kozhikode. Growing rapidly in placements." data-admission="CAT Score & PI. Shortlisting via CAP process." data-cutoff="Qualifying CAT: 85 percentile (Gen). Final calls via CAP at 92+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Amritsar</h3><p>A fast-growing institution mentored by IIM-K.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/TXjI2TIumd8" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Sambalpur" data-youtube="https://youtu.be/d-gPEdaWisU" data-nirf-rank="58 (Mgmt) [2025]" data-campus-rating="3.7 / 5" data-library-rating="3.5 / 5" data-placement-rating="3.9 / 5" data-avg-salary="₹ 16.64 LPA (2025)" data-hostel-fees="~ ₹80,000/year" data-top-companies="Deloitte, Microsoft, Vedanta, Amul, EY" data-achievements="Pioneer in using 'flipped classroom' pedagogy." data-admission="CAT Score & PI. Shortlisting via CAP process." data-cutoff="Qualifying CAT: 80 percentile (Gen). Final calls via CAP at 92+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Sambalpur</h3><p>Innovation in learning with a 'flipped classroom' model.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/d-gPEdaWisU" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Sirmaur" data-youtube="https://youtu.be/6rWHG0YgxVk" data-nirf-rank="98 (Mgmt) [2025]" data-campus-rating="3.6 / 5" data-library-rating="3.4 / 5" data-placement-rating="3.8 / 5" data-avg-salary="₹ 14.45 LPA (2025)" data-hostel-fees="~ ₹70,000/year" data-top-companies="ICICI Bank, EY, HDFC Bank, Tech Mahindra, DCM Shriram" data-achievements="Mentored by IIM Lucknow. Located in the serene Himalayan foothills." data-admission="CAT Score & PI. Shortlisting via CAP process." data-cutoff="Qualifying CAT: 80 percentile (Gen). Final calls via CAP at 92+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Sirmaur</h3><p>The Himalayan IIM, mentored by IIM-L.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/6rWHG0YgxVk" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Jammu" data-youtube="https://youtu.be/-DWpH_mIzqE" data-nirf-rank="41 (Mgmt) [2025]" data-campus-rating="3.8 / 5" data-library-rating="3.6 / 5" data-placement-rating="3.9 / 5" data-avg-salary="₹ 16.5 LPA (2025)" data-hostel-fees="~ ₹85,000/year" data-top-companies="Microsoft, Deloitte, ICICI Bank, Capgemini, Cognizant" data-achievements="Mentored by IIM Lucknow. Focus on entrepreneurship." data-admission="CAT Score & PI. Shortlisting via CAP process." data-cutoff="Qualifying CAT: 80 percentile (Gen). Final calls via CAP at 92+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Jammu</h3><p>A center for excellence in the northernmost region.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/-DWpH_mIzqE" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Mumbai (NITIE)" data-youtube="https://youtu.be/OIVvp_FETBU" data-nirf-rank="7 (Mgmt) [2025]" data-campus-rating="4.6 / 5" data-library-rating="4.5 / 5" data-placement-rating="4.8 / 5" data-avg-salary="₹ 27.57 LPA (as NITIE 2025)" data-hostel-fees="~ ₹1.5 Lakhs/year" data-top-companies="P&G, Amazon, Deloitte, Microsoft, HUL, McKinsey" data-achievements="Converted from NITIE to IIM in 2023. 'Mecca of Supply Chain'." data-admission="CAT Score & PI. First batch as IIM admits through CAT 2023." data-cutoff="Qualifying CAT: 85 percentile (Gen). High sectional cutoffs expected (95+ calls).">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Mumbai (NITIE)</h3><p>India's premier institute for Supply Chain Management.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/OIVvp_FETBU" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IISc Bangalore" data-youtube="https://youtu.be/aGupetKvRug" data-nirf-rank="1 (Univ) [2025]" data-campus-rating="4.9 / 5" data-library-rating="5 / 5" data-placement-rating="4.7 / 5" data-avg-salary="~ ₹28 LPA (M.Tech 2025)" data-hostel-fees="~ ₹60,000/year" data-top-companies="Google, Microsoft, Intel, ISRO, DRDO, Texas Instruments" data-achievements="India's premier institution for scientific research and higher education." data-admission="JEE Advanced (B.S.), GATE (M.Tech), JAM (M.Sc.). Very competitive." data-cutoff="Top ranks in national exams required (e.g., GATE AIR < 100 for CS).">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IISc Bangalore</h3><p>India's leading institution for scientific research.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/aGupetKvRug" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="ISI Kolkata" data-youtube="https://youtu.be/NnCzAk6aXfM" data-nirf-rank="Not Ranked (Specialized)" data-campus-rating="4.5 / 5" data-library-rating="4.9 / 5" data-placement-rating="4.9 / 5" data-avg-salary="~ ₹29.6 LPA (M.Stat 2025)" data-hostel-fees="~ ₹40,000/year" data-top-companies="Goldman Sachs, JP Morgan, Google, Microsoft, Capital One" data-achievements="Premier global institution for Statistics. An 'Institute of National Importance'." data-admission="ISI Admission Test (highly competitive entrance exam)." data-cutoff="Based on ISI Admission Test performance. Very tough to crack.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>ISI Kolkata</h3><p>The mecca for statistics and data science aspirants.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/NnCzAk6aXfM" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+            </div>
+
+
+
+
+
+
+<div class="column">
+                <h2 class="section-title">IITs</h2>
+
+                <!-- All your provided cards are now correctly placed inside the second column -->
+
+                
+
+            
+
+             
+
+                <div class="campus-card" data-name="IIT Bombay" data-youtube="https://youtu.be/9yamW06vfLg" data-nirf-rank="3 (Overall) [2025]" data-campus-rating="4.9 / 5" data-library-rating="4.9 / 5" data-placement-rating="4.9 / 5" data-avg-salary="₹ 42.7 LPA (2025)" data-hostel-fees="~ ₹1.5 Lakhs/year" data-top-companies="Google, Microsoft, Amazon, TCS Research, Goldman Sachs" data-achievements="Flagship IIT, world-class engineering & technology programs." data-admission="JEE Advanced / GATE / IIT JAM / IIT PG." data-cutoff="Top rankers in JEE Advanced or GATE; extremely competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Bombay</h3><p>Top-tier engineering & research institute.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/9yamW06vfLg" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a>
+</div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Delhi" data-youtube="https://youtu.be//i4mtophXkLo" data-nirf-rank="2 (Overall) [2025]" data-campus-rating="4.8 / 5" data-library-rating="4.8 / 5" data-placement-rating="4.9 / 5" data-avg-salary="₹ 41.3 LPA (2025)" data-hostel-fees="~ ₹1.4 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Excellence in engineering, research & entrepreneurship." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top rankers in entrance exams. Highly competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Delhi</h3><p>World-renowned for engineering & innovation.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be//i4mtophXkLo" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+               
+                <div class="campus-card" data-name="IIT Kharagpur" data-youtube="https://youtu.be/h51HHw2hnP4" data-nirf-rank="6 (Overall) [2025]" data-campus-rating="4.5 / 5" data-library-rating="4.7 / 5" data-placement-rating="4.8 / 5" data-avg-salary="₹ 22.5 LPA (2025)" data-hostel-fees="~ ₹1.2 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Excellence in engineering, research & entrepreneurship." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top rankers in entrance exams. Highly competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Kharagpur</h3><p>World-renowned for engineering & innovation.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/h51HHw2hnP4" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Madras" data-youtube="https://youtu.be/fh9P8CKWNeM" data-nirf-rank="1 (Overall) [2025]" data-campus-rating="4.9 / 5" data-library-rating="4.9 / 5" data-placement-rating="5 / 5" data-avg-salary="₹ 45 LPA (2025)" data-hostel-fees="~ ₹1.5 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Excellence in engineering, research & entrepreneurship." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top rankers in entrance exams. Highly competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Madras</h3><p>World-renowned for engineering & innovation.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/fh9P8CKWNeM" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Kanpur" data-youtube="https://youtu.be/ndlT3R-rKbs" data-nirf-rank="5 (Overall) [2025]" data-campus-rating="4.7 / 5" data-library-rating="4.8 / 5" data-placement-rating="4.9 / 5" data-avg-salary="₹ 35 LPA (2025)" data-hostel-fees="~ ₹1.3 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Excellence in engineering, research & entrepreneurship." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top rankers in entrance exams. Highly competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Kanpur</h3><p>World-renowned for engineering & innovation.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/ndlT3R-rKbs" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Guwahati" data-youtube="https://youtu.be/XG0d15o8oO0" data-nirf-rank="7 (Overall) [2025]" data-campus-rating="4.6 / 5" data-library-rating="4.6 / 5" data-placement-rating="4.7 / 5" data-avg-salary="₹ 24 LPA (2025)" data-hostel-fees="~ ₹1.1 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Notable research & engineering excellence." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top rankers in entrance exams. Highly competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Guwahati</h3><p>Strong focus on research and innovation.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/XG0d15o8oO0" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Roorkee" data-youtube="https://youtu.be/M1uE5vQJ_Lk" data-nirf-rank="8 (Overall) [2025]" data-campus-rating="4.5 / 5" data-library-rating="4.6 / 5" data-placement-rating="4.7 / 5" data-avg-salary="₹ 28 LPA (2025)" data-hostel-fees="~ ₹1.2 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Heritage institute with strong engineering & research." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top rankers in entrance exams. Highly competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Roorkee</h3><p>One of the oldest IITs with excellent placements.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/M1uE5vQJ_Lk" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Ropar" data-youtube="https://youtu.be/nLXDWnU8N-0" data-nirf-rank="20 (Overall) [2025]" data-campus-rating="4.3 / 5" data-library-rating="4.4 / 5" data-placement-rating="4.5 / 5" data-avg-salary="₹ 20 LPA (2025)" data-hostel-fees="~ ₹1 Lakh/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Growing institute with emerging research reputation." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Good ranks in JEE Advanced required.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Ropar</h3><p>Focused on modern research and technology.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/nLXDWnU8N-0" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Bhubaneswar" data-youtube="https://youtu.be/xJewC-MsxAU" data-nirf-rank="18 (Overall) [2025]" data-campus-rating="4.2 / 5" data-library-rating="4.3 / 5" data-placement-rating="4.4 / 5" data-avg-salary="₹ 18 LPA (2025)" data-hostel-fees="~ ₹1 Lakh/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Emerging IIT with research opportunities." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Good ranks in JEE Advanced required.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Bhubaneswar</h3><p>New IIT with growing reputation in technology and research.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/xJewC-MsxAU" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Gandhinagar" data-youtube="https://youtu.be/fK9y8wiHUsk" data-nirf-rank="16 (Overall) [2025]" data-campus-rating="4.3 / 5" data-library-rating="4.3 / 5" data-placement-rating="4.4 / 5" data-avg-salary="₹ 19 LPA (2025)" data-hostel-fees="~ ₹1 Lakh/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Focus on liberal education & innovation." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Good ranks in JEE Advanced required.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Gandhinagar</h3><p>Innovative teaching and research environment.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/fK9y8wiHUsk" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Jodhpur" data-youtube="https://youtu.be/5DUzpFXyK8U" data-nirf-rank="15 (Overall) [2025]" data-campus-rating="4.2 / 5" data-library-rating="4.3 / 5" data-placement-rating="4.4 / 5" data-avg-salary="₹ 18 LPA (2025)" data-hostel-fees="~ ₹1 Lakh/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Focused on cutting-edge research." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Good ranks in JEE Advanced required.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Jodhpur</h3><p>Emerging IIT with strong research focus.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/5DUzpFXyK8U" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Hyderabad" data-youtube="https://youtu.be/8uLDy0zSQM4" data-nirf-rank="11 (Overall) [2025]" data-campus-rating="4.6 / 5" data-library-rating="4.6 / 5" data-placement-rating="4.7 / 5" data-avg-salary="₹ 25 LPA (2025)" data-hostel-fees="~ ₹1.1 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Strong tech and research culture." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top ranks in JEE Advanced required.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Hyderabad</h3><p>Focus on technology innovation and research.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/8uLDy0zSQM4" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                
+                <div class="campus-card" data-name="IIT Patna" data-youtube="https://youtu.be/Fk4I1FAPQfY" data-nirf-rank="24 (Overall) [2025]" data-campus-rating="4.1 / 5" data-library-rating="4.2 / 5" data-placement-rating="4.3 / 5" data-avg-salary="₹ 17 LPA (2025)" data-hostel-fees="~ ₹90,000/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Growing institute with focus on research & innovation." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Good JEE ranks required.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Patna</h3><p>Emerging IIT with strong focus on research and innovation.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/Fk4I1FAPQfY" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Indore" data-youtube="https://youtu.be/0-IT_s3zSHU" data-nirf-rank="14 (Overall) [2025]" data-campus-rating="4.3 / 5" data-library-rating="4.4 / 5" data-placement-rating="4.5 / 5" data-avg-salary="₹ 20 LPA (2025)" data-hostel-fees="~ ₹1 Lakh/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Strong research and academic focus." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top JEE ranks required.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Indore</h3><p>Research-oriented IIT with good placements.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/0-IT_s3zSHU" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Mandi" data-youtube="https://youtu.be/KrbgH0a7g5c" data-nirf-rank="30 (Overall) [2025]" data-campus-rating="4.0 / 5" data-library-rating="4.1 / 5" data-placement-rating="4.2 / 5" data-avg-salary="₹ 16 LPA (2025)" data-hostel-fees="~ ₹90,000/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Focus on small-scale innovation and research." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Good JEE ranks required.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Mandi</h3><p>Small IIT with excellent learning and research environment.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/KrbgH0a7g5c" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Varanasi (BHU)" data-youtube="https://youtu.be/a4AzqfHJv2s" data-nirf-rank="10 (Overall) [2025]" data-campus-rating="4.5 / 5" data-library-rating="4.6 / 5" data-placement-rating="4.7 / 5" data-avg-salary="₹ 28 LPA (2025)" data-hostel-fees="~ ₹1.2 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Historic IIT with excellence in academics & placements." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top JEE ranks required. Highly competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Varanasi (BHU)</h3><p>Prestigious IIT with strong academic and placement records.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/a4AzqfHJv2s" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Palakkad" data-youtube="https://youtu.be/6JVEJhOqZTo" data-nirf-rank="27 (Overall) [2025]" data-campus-rating="4.0 / 5" data-library-rating="4.1 / 5" data-placement-rating="4.2 / 5" data-avg-salary="₹ 15 LPA (2025)" data-hostel-fees="~ ₹90,000/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="New IIT focusing on technology & research." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Good JEE ranks required.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Palakkad</h3><p>Emerging IIT with focus on research and innovation.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/6JVEJhOqZTo" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Tirupati" data-youtube="https://youtu.be/32GeyCGMeQY" data-nirf-rank="28 (Overall) [2025]" data-campus-rating="4.0 / 5" data-library-rating="4.1 / 5" data-placement-rating="4.2 / 5" data-avg-salary="₹ 15 LPA (2025)" data-hostel-fees="~ ₹90,000/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="New IIT focusing on innovation and technology." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Good JEE ranks required.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Tirupati</h3><p>Emerging IIT with focus on research & technical education.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/32GeyCGMeQY" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Dhanbad (ISM)" data-youtube="https://youtu.be/9n_tKi5b3fE" data-nirf-rank="13 (Overall) [2025]" data-campus-rating="4.4 / 5" data-library-rating="4.5 / 5" data-placement-rating="4.6 / 5" data-avg-salary="₹ 25 LPA (2025)" data-hostel-fees="~ ₹1.1 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Mining & technology excellence." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top JEE ranks required.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Dhanbad (ISM)</h3><p>Historic institute focusing on mining, petroleum & tech.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/9n_tKi5b3fE" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+               <div class="campus-card" 
+     data-name="IIT Bhilai" 
+     data-youtube="https://youtu.be/25hhbQJ_NRw" 
+     data-nirf-rank="81 (Engineering) [2025]" 
+     data-campus-rating="4.2 / 5" 
+     data-library-rating="4.3 / 5" 
+     data-placement-rating="4.1 / 5" 
+     data-avg-salary="₹ 12.4 LPA (2025)" 
+     data-hostel-fees="~ ₹1.0 Lakh/year" 
+     data-top-companies="TCS, Infosys, L&T, Amazon, ZS Associates" 
+     data-achievements="New-generation IIT with focus on interdisciplinary innovation and digital learning." 
+     data-admission="JEE Advanced / GATE / IIT PG." 
+     data-cutoff="Moderate to high JEE Advanced ranks required.">
+
+    <div class="card-main-content">
+        <input type="checkbox" class="card-select-checkbox">
+        <div class="card-text">
+            <h3>IIT Bhilai</h3>
+            <p>Emerging IIT emphasizing innovation, coding, and modern engineering education.</p>
+        </div>
+    </div>
+
+    <div class="card-actions">
+        <button class="card-button btn-details">Details</button>
+        <a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a>
+        <a href="https://youtu.be/25hhbQJ_NRw" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a>
+    </div>
+</div>
+
+
+                <div class="campus-card" data-name="IIT Goa" data-youtube="https://youtu.be/O2gV5EpK9lg" data-nirf-rank="32 (Overall) [2025]" data-campus-rating="4.0 / 5" data-library-rating="4.1 / 5" data-placement-rating="4.2 / 5" data-avg-salary="₹ 15 LPA (2025)" data-hostel-fees="~ ₹90,000/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="New IIT with focus on innovation." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Good JEE ranks required.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Goa</h3><p>Emerging IIT with a focus on modern research.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/O2gV5EpK9lg" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Jammu" data-youtube="https://youtu.be/FCOoEBxWdeM" data-nirf-rank="33 (Overall) [2025]" data-campus-rating="4.0 / 5" data-library-rating="4.0 / 5" data-placement-rating="4.1 / 5" data-avg-salary="₹ 14 LPA (2025)" data-hostel-fees="~ ₹85,000/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="New IIT with emerging reputation." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Good JEE ranks required.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Jammu</h3><p>Emerging IIT in northern India with research focus.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/FCOoEBxWdeM" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+
+                <div class="campus-card" data-name="IIT Dharwad" data-youtube="https://youtu.be/gPA85GPmEwk" data-nirf-rank="34 (Overall) [2025]" data-campus-rating="4.0 / 5" data-library-rating="4.1 / 5" data-placement-rating="4.2 / 5" data-avg-salary="₹ 15 LPA (2025)" data-hostel-fees="~ ₹90,000/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="New IIT with focus on technology & innovation." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Good JEE ranks required.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Dharwad</h3><p>Emerging IIT with strong academic and research culture.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/gPA85GPmEwk" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+            </div>
+
+
+
+<!-- Details Modal -->
+    <div id="details-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="details-modal-close">&times;</span>
+            <h2 id="modal-title" class="modal-title">Institute Details</h2>
+            <div class="modal-section">
+                <h4><i class="fas fa-star"></i> Ratings & Rankings</h4>
+                <div class="ratings-grid">
+                    <div class="rating-item">NIRF Rank <span id="modal-nirf-rank"></span></div>
+                    <div class="rating-item">Campus Rating <span id="modal-campus-rating"></span></div>
+                    <div class="rating-item">Library Rating <span id="modal-library-rating"></span></div>
+                    <div class="rating-item">Placement Rating <span id="modal-placement-rating"></span></div>
+                </div>
+            </div>
+            <div class="modal-section">
+                <h4><i class="fas fa-briefcase"></i> Placements & Career</h4>
+                <p><strong>Average Salary (Latest):</strong> <span id="modal-avg-salary"></span></p>
+                <p><strong>Hostel Fees (Approx. p.a.):</strong> <span id="modal-hostel-fees"></span></p>
+                <p><strong>Top Hiring Companies:</strong> <span id="modal-top-companies"></span></p>
+            </div>
+            <div class="modal-section">
+                <h4><i class="fas fa-trophy"></i> Key Achievements</h4>
+                <p id="modal-achievements"></p>
+            </div>
+            <div class="modal-section">
+                <h4><i class="fas fa-tasks"></i> Admission Process</h4>
+                <p><strong>Process Overview:</strong> <span id="modal-admission"></span></p>
+                <p><strong>Typical Cutoff:</strong> <span id="modal-cutoff"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comparison Modal -->
+    <div id="comparison-modal" class="modal">
+        <div id="comparison-modal-content" class="modal-content">
+            <span class="modal-close" id="comparison-modal-close">&times;</span>
+            <h2 class="modal-title">Side-by-Side Comparison</h2>
+            <div class="comparison-grid">
+                <div class="comparison-col" id="compare-col-1"></div>
+                <div class="comparison-col" id="compare-col-2"></div>
+            </div>
+        </div>
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Element Selection ---
+    const detailsModal = document.getElementById('details-modal');
+    const comparisonModal = document.getElementById('comparison-modal');
+    const closeDetailsModal = document.getElementById('details-modal-close');
+    const closeComparisonModal = document.getElementById('comparison-modal-close');
+    const compareBtn = document.getElementById('compare-btn');
+
+    const checkboxes = document.querySelectorAll('.card-select-checkbox');
+    const detailButtons = document.querySelectorAll('.btn-details');
+
+    // --- Details Modal Logic ---
+
+    // Add a click listener to every "Details" button
+    detailButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            // Find the parent '.campus-card' of the button that was clicked
+            const card = e.target.closest('.campus-card');
+            // Populate the modal with data from that card
+            populateDetailsModal(card);
+            // Show the modal
+            detailsModal.style.display = 'flex';
+        });
+    });
+
+    /**
+     * Fills the details modal with data from a specific campus card.
+     * @param {HTMLElement} card - The campus card element containing the data attributes.
+     */
+    function populateDetailsModal(card) {
+        // Helper function to safely get data attributes, providing a fallback text
+        const getData = (attr) => card.dataset[attr] || 'Data not available';
+
+        // Populate all the fields in the modal
+        document.getElementById('modal-title').textContent = getData('name');
+        document.getElementById('modal-nirf-rank').textContent = getData('nirfRank');
+        document.getElementById('modal-campus-rating').textContent = getData('campusRating');
+        document.getElementById('modal-library-rating').textContent = getData('libraryRating');
+        document.getElementById('modal-placement-rating').textContent = getData('placementRating');
+        document.getElementById('modal-avg-salary').textContent = getData('avgSalary');
+        document.getElementById('modal-hostel-fees').textContent = getData('hostelFees');
+        document.getElementById('modal-top-companies').textContent = getData('topCompanies');
+        document.getElementById('modal-achievements').textContent = getData('achievements');
+        document.getElementById('modal-admission').textContent = getData('admission');
+        document.getElementById('modal-cutoff').textContent = getData('cutoff');
+    }
+
+    // --- Comparison Logic ---
+
+    // Add a change listener to every checkbox
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const selected = document.querySelectorAll('.card-select-checkbox:checked');
+            
+            // Prevent selecting more than 2 institutes
+            if (selected.length > 2) {
+                checkbox.checked = false; // Uncheck the last one clicked
+                alert('You can only select two institutes for comparison.');
+            }
+
+            // Enable the compare button only when exactly 2 are selected
+            compareBtn.disabled = selected.length !== 2;
+        });
+    });
+
+    // Add a click listener to the main "Compare" button
+    compareBtn.addEventListener('click', () => {
+        const selected = document.querySelectorAll('.card-select-checkbox:checked');
+        if (selected.length === 2) {
+            const card1 = selected[0].closest('.campus-card');
+            const card2 = selected[1].closest('.campus-card');
+            // Populate the comparison modal with data from the two selected cards
+            populateComparisonModal(card1, card2);
+            // Show the modal
+            comparisonModal.style.display = 'flex';
+        }
+    });
+
+    /**
+     * Fills the comparison modal with data from the two selected cards.
+     * @param {HTMLElement} card1 - The first selected card.
+     * @param {HTMLElement} card2 - The second selected card.
+     */
+    function populateComparisonModal(card1, card2) {
+        document.getElementById('compare-col-1').innerHTML = generateCompareHTML(card1);
+        document.getElementById('compare-col-2').innerHTML = generateCompareHTML(card2);
+    }
+    
+    /**
+     * Generates the HTML content for one column in the comparison view.
+     * @param {HTMLElement} card - The card to get data from.
+     * @returns {string} The HTML string for the column.
+     */
+    function generateCompareHTML(card) {
+        const getData = (attr) => card.dataset[attr] || 'N/A';
+        return `
+            <h3>${getData('name')}</h3>
+            <div class="modal-section">
+                <h4>Ratings</h4>
+                <p><strong>NIRF Rank:</strong> ${getData('nirfRank')}</p>
+                <p><strong>Placement Rating:</strong> ${getData('placementRating')}</p>
+            </div>
+            <div class="modal-section">
+                <h4>Placements</h4>
+                <p><strong>Avg Salary:</strong> ${getData('avgSalary')}</p>
+                <p><strong>Top Companies:</strong> ${getData('topCompanies').substring(0, 50)}...</p>
+            </div>
+            <div class="modal-section">
+                <h4>Admissions</h4>
+                <p><strong>Process:</strong> ${getData('admission').substring(0, 50)}...</p>
+                <p><strong>Cutoff:</strong> ${getData('cutoff')}</p>
+            </div>`;
+    }
+
+    // --- Universal Modal Closing Logic ---
+
+    /**
+     * Hides a given modal.
+     * @param {HTMLElement} modal - The modal element to close.
+     */
+    function closeModal(modal) { 
+        modal.style.display = 'none'; 
+    }
+
+    // Close modals when their respective 'x' button is clicked
+    closeDetailsModal.onclick = () => closeModal(detailsModal);
+    closeComparisonModal.onclick = () => closeModal(comparisonModal);
+
+    // Close the modal if the user clicks on the dark background overlay
+    window.onclick = (event) => {
+        if (event.target == detailsModal) {
+            closeModal(detailsModal);
+        }
+        if (event.target == comparisonModal) {
+            closeModal(comparisonModal);
+        }
+    };
+});
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-workbox.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+</body>
+</html>
+
