@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Explorer: IIM, IIT & NIT In-Depth</title>
+    <meta name="description" content="Compare India's top IITs, IIMs, and NITs side-by-side. Get detailed insights on NIRF rankings, placement records, average salaries, admission cutoffs (JEE & CAT), and top recruiters.">
+    <link rel="manifest" href="/manifest_7.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+    :root { 
+        --aquamarine: #7FFFD4; 
+        --aquamarine-dark: #45b39d; 
+        --white: #ffffff; 
+        --light-gray: #f4f7f9; 
+        --text-color: #212529; 
+        --border-gray: #e0e0e0;
+        --danger-red: #e74c3c;
+        --success-green: #2ecc71;
+        --gallery-purple: #8e44ad;
+        --gallery-purple-dark: #7d3c98;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body, html { margin: 0; padding: 0; }
+    body { font-family: 'Poppins', sans-serif; background-color: var(--light-gray); color: var(--text-color); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+    .header { text-align: center; margin-bottom: 20px; }
+    .title-box { display: inline-block; background-color: var(--aquamarine); padding: 20px 40px; border-radius: 15px; box-shadow: 0 8px 0 var(--aquamarine-dark); }
+    .header h1 { font-family: 'Russo One', sans-serif; font-size: 2.8rem; color: var(--white); text-transform: uppercase; text-shadow: 2px 2px 0px var(--aquamarine-dark); margin:0; }
+    .main-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .column { display: flex; flex-direction: column; gap: 20px; }
+    .section-title { font-size: 2.2rem; font-weight: 600; text-align: center; color: var(--text-color); padding-bottom: 10px; border-bottom: 2px solid var(--aquamarine); margin-bottom: 10px; }
+    .disclaimer { text-align: center; margin: -15px auto 25px auto; color: #666; font-size: 0.9rem; padding: 10px 15px; background: #fff; border-left: 4px solid var(--aquamarine-dark); max-width: 800px; border-radius: 4px; }
+    
+    .campus-card { display: flex; flex-direction: column; background-color: var(--white); border-radius: 10px; box-shadow: 0 5px 0 var(--aquamarine-dark); border: 1px solid var(--border-gray); padding: 15px; transition: all 0.15s ease-out; }
+    .campus-card:hover { transform: translateY(-3px); box-shadow: 0 8px 0 var(--aquamarine-dark); }
+    .card-main-content { display: flex; align-items: center; width: 100%; }
+    .card-select-checkbox { margin-right: 15px; transform: scale(1.4); cursor: pointer; flex-shrink: 0; }
+    .card-text { flex-grow: 1; }
+    .card-text h3 { font-size: 1.3rem; margin: 0 0 5px 0; }
+    .card-text p { font-size: 0.9rem; color: #666; margin: 0; }
+    .card-actions { display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid var(--border-gray); padding-top: 15px; }
+    .card-button { flex: 1; text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background-color 0.2s; cursor: pointer; }
+    .btn-details { background-color: var(--aquamarine); color: var(--text-color); border: 1px solid var(--aquamarine-dark); }
+    .btn-details:hover { background-color: var(--aquamarine-dark); color: var(--white); }
+    .btn-youtube { display: flex; align-items: center; justify-content: center; gap: 8px; background-color: #FF0000; color: white; border: 1px solid #c00; }
+    .btn-youtube:hover { background-color: #c00; }
+    .btn-gallery { display: flex; align-items: center; justify-content: center; gap: 8px; background-color: var(--gallery-purple); color: var(--white); border: 1px solid var(--gallery-purple-dark); }
+    .btn-gallery:hover { background-color: var(--gallery-purple-dark); }
+
+
+    .comparison-container { text-align: center; margin: 20px 0; }
+    #compare-btn { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 600; padding: 15px 30px; border-radius: 10px; border: none; background-color: var(--success-green); color: white; cursor: pointer; box-shadow: 0 5px 0 #27ae60; transition: all 0.2s; }
+    #compare-btn:disabled { background-color: #95a5a6; box-shadow: 0 5px 0 #7f8c8d; cursor: not-allowed; }
+    #compare-btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 7px 0 #27ae60; }
+    #compare-btn:not(:disabled):active { transform: translateY(1px); box-shadow: 0 2px 0 #27ae60; }
+
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center; }
+    .modal-content { background-color: #fefefe; margin: auto; padding: 30px; border: 1px solid #888; width: 90%; max-width: 800px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); position: relative; animation: fadeIn 0.3s; }
+    .modal-close { color: #aaa; float: right; font-size: 28px; font-weight: bold; position: absolute; top: 10px; right: 25px; }
+    .modal-close:hover, .modal-close:focus { color: black; text-decoration: none; cursor: pointer; }
+    .modal-title { font-family: 'Russo One', sans-serif; font-size: 2rem; margin-top: 0; color: var(--aquamarine-dark); }
+    .modal-section { margin-bottom: 20px; }
+    .modal-section h4 { border-bottom: 2px solid var(--aquamarine); padding-bottom: 5px; margin-bottom: 10px; font-size: 1.3rem; }
+    .modal-section p, .modal-section li { line-height: 1.6; }
+    .modal-section strong { color: var(--text-color); }
+    .ratings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+    .rating-item { background: var(--light-gray); padding: 10px; border-radius: 8px; text-align: center; }
+    .rating-item span { display: block; font-size: 1.5rem; font-weight: 700; color: var(--aquamarine-dark); }
+    
+    #comparison-modal-content { max-width: 1000px; }
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .comparison-col h3 { text-align: center; font-size: 1.5rem; color: var(--text-color); }
+    
+    .gallery-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 20px; max-height: 70vh; overflow-y: auto; }
+    .gallery-grid-container img { width: 100%; height: auto; border-radius: 8px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+    .gallery-grid-container img:hover { transform: scale(1.05); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+
+    .home-button-container { position: fixed; top: 20px; right: 25px; z-index: 1001; }
+    .home-button-container a img { width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: transform 0.2s; border-radius: 50%; }
+    .home-button-container a:hover img { transform: scale(1.1); }
+    
+    @keyframes fadeIn { from {opacity: 0; transform: scale(0.95);} to {opacity: 1; transform: scale(1);} }
+    @media (max-width: 992px) { .main-layout { grid-template-columns: 1fr; } .header h1 { font-size: 2.2rem; } .comparison-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+    <div class="home-button-container"><a href="/mainnow.html" title="Go to Home"><img src="images/home-icon.png" alt="Home"></a></div>
+
+    <div class="container">
+        <header class="header"><div class="title-box"><h1>Campus Explorer</h1></div></header>
+        
+        <div class="comparison-container">
+            <button id="compare-btn" disabled>Compare Any  2</button>
+        </div>
+        
+  <p class="disclaimer"><strong>Data Guide:</strong> Placements/Salaries are for the 2024 graduating batch (latest available). Rankings are from NIRF 2025 (latest official release). Fees and cutoffs are estimates for the latest admission cycle. All data is for reference and subject to change. **Note:** Campus videos and images are sourced from the official platforms of the respective institutes.</p>
+
+        <!-- IIM & IIT SECTION -->
+        <div class="main-layout">
+            <div class="column">
+                <h2 class="section-title">IIMs, IISc & ISI</h2>
+                
+                <div class="campus-card" data-name="IIM Calcutta" data-youtube="https://youtu.be/2zk4ojcXypE" data-nirf-rank="4 (Mgmt) [2025]" data-campus-rating="4.6 / 5" data-library-rating="4.8 / 5" data-placement-rating="4.8 / 5" data-avg-salary="₹ 35.07 LPA (2025)" data-hostel-fees="~ ₹2 Lakhs/year" data-top-companies="Accenture, Amazon, BCG, Goldman Sachs, Microsoft" data-achievements="First IIM (1961), 'Finance Campus of India'. Triple Crown accreditation." data-admission="CAT score, WAT & PI. Profile based calls." data-cutoff="Qualifying CAT: 85 percentile (Gen). Final calls much higher (99+).">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Calcutta</h3><p>The first IIM, renowned for its finance programs.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/2zk4ojcXypE" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Ahmedabad" data-youtube="https://youtu.be/rZh0hGJt9xg" data-nirf-rank="1 (Mgmt) [2025]" data-campus-rating="4.8 / 5" data-library-rating="4.9 / 5" data-placement-rating="4.9 / 5" data-avg-salary="₹ 34.36 LPA (2025)" data-hostel-fees="~ ₹2 Lakhs/year" data-top-companies="McKinsey, BCG, Bain & Co., Goldman Sachs, Amazon" data-achievements="Famous for case-study pedagogy. EQUIS accreditation." data-admission="CAT Score, AWT & PI. Academic diversity focus." data-cutoff="Qualifying CAT: 80 percentile (Gen). Final calls require 99+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Ahmedabad</h3><p>The pioneer of management education in India.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/rZh0hGJt9xg" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Bangalore" data-youtube="https://youtu.be/rSldFScDxZk" data-nirf-rank="2 (Mgmt) [2025]" data-campus-rating="4.7 / 5" data-library-rating="4.8 / 5" data-placement-rating="4.9 / 5" data-avg-salary="₹ 35.31 LPA (2025)" data-hostel-fees="~ ₹2.1 Lakhs/year" data-top-companies="Accenture Strategy, Amazon, BCG, Kearney, Bain & Co" data-achievements="Technology and entrepreneurship focus. Home to NSRCEL startup hub." data-admission="CAT Score, WAT & PI. Weightage on work experience." data-cutoff="Qualifying CAT: 85 percentile (Gen). Final calls require 99+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Bangalore</h3><p>A hub for innovation in the Silicon Valley of India.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/rSldFScDxZk" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Lucknow" data-youtube="https://youtu.be/KEyQSNquXQ0" data-nirf-rank="6 (Mgmt) [2025]" data-campus-rating="4.5 / 5" data-library-rating="4.6 / 5" data-placement-rating="4.7 / 5" data-avg-salary="₹ 30 LPA (2025)" data-hostel-fees="~ ₹1.2 Lakhs/year" data-top-companies="Deloitte, PwC, EY, KPMG, Amazon, Flipkart" data-achievements="Fourth IIM (1984). Satellite campus in Noida." data-admission="CAT Score, WAT & PI. Strong weightage on CAT score." data-cutoff="Qualifying CAT: 90 percentile (Gen). Final calls at 97-98+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Lucknow</h3><p>Known for its academic rigor and corporate engagement.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/KEyQSNquXQ0" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Kozhikode" data-youtube="https://youtu.be/KRn1XeivpdM" data-nirf-rank="3 (Mgmt) [2025]" data-campus-rating="4.6 / 5" data-library-rating="4.5 / 5" data-placement-rating="4.7 / 5" data-avg-salary="₹ 28.05 LPA (2025)" data-hostel-fees="~ ₹1.5 Lakhs/year" data-top-companies="Microsoft, Bain & Co, Deloitte, Goldman Sachs, JP Morgan" data-achievements="Pioneer in gender diversity. Beautiful hilltop campus." data-admission="CAT Score, WAT & PI. Considers resume score." data-cutoff="Qualifying CAT: 85 percentile (Gen). Final calls at 97-98+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Kozhikode</h3><p>A scenic campus with a focus on holistic development.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/KRn1XeivpdM" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Indore" data-youtube="https://youtu.be/YhhZLIPgwQA" data-nirf-rank="8 (Mgmt) [2025]" data-campus-rating="4.5 / 5" data-library-rating="4.4 / 5" data-placement-rating="4.6 / 5" data-avg-salary="₹ 25.68 LPA (2025)" data-hostel-fees="~ ₹1.4 Lakhs/year" data-top-companies="BCG, Deloitte, EY, Goldman Sachs, HDFC Bank, Amazon" data-achievements="Offers a 5-year Integrated Program in Management (IPM)." data-admission="CAT Score, WAT & PI. Separate IPM-AT for integrated course." data-cutoff="Qualifying CAT: 90 percentile (Gen). Final calls at 97-98+ percentile.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Indore</h3><p>Known for its sprawling campus and unique IPM program.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/YhhZLIPgwQA" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIM Mumbai (NITIE)" data-youtube="https://youtu.be/OIVvp_FETBU" data-nirf-rank="7 (Mgmt) [2025]" data-campus-rating="4.6 / 5" data-library-rating="4.5 / 5" data-placement-rating="4.8 / 5" data-avg-salary="₹ 27.57 LPA (as NITIE 2025)" data-hostel-fees="~ ₹1.5 Lakhs/year" data-top-companies="P&G, Amazon, Deloitte, Microsoft, HUL, McKinsey" data-achievements="Converted from NITIE to IIM in 2023. 'Mecca of Supply Chain'." data-admission="CAT Score & PI. First batch as IIM admits through CAT 2023." data-cutoff="Qualifying CAT: 85 percentile (Gen). High sectional cutoffs expected (95+ calls).">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIM Mumbai (NITIE)</h3><p>India's premier institute for Supply Chain Management.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/OIVvp_FETBU" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IISc Bangalore" data-youtube="https://youtu.be/aGupetKvRug" data-nirf-rank="1 (Univ) [2025]" data-campus-rating="4.9 / 5" data-library-rating="5 / 5" data-placement-rating="4.7 / 5" data-avg-salary="~ ₹28 LPA (M.Tech 2025)" data-hostel-fees="~ ₹60,000/year" data-top-companies="Google, Microsoft, Intel, ISRO, DRDO, Texas Instruments" data-achievements="India's premier institution for scientific research and higher education." data-admission="JEE Advanced (B.S.), GATE (M.Tech), JAM (M.Sc.). Very competitive." data-cutoff="Top ranks in national exams required (e.g., GATE AIR < 100 for CS).">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IISc Bangalore</h3><p>India's leading institution for scientific research.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/aGupetKvRug" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="ISI Kolkata" data-youtube="https://youtu.be/NnCzAk6aXfM" data-nirf-rank="Not Ranked (Specialized)" data-campus-rating="4.5 / 5" data-library-rating="4.9 / 5" data-placement-rating="4.9 / 5" data-avg-salary="~ ₹29.6 LPA (M.Stat 2025)" data-hostel-fees="~ ₹40,000/year" data-top-companies="Goldman Sachs, JP Morgan, Google, Microsoft, Capital One" data-achievements="Premier global institution for Statistics. An 'Institute of National Importance'." data-admission="ISI Admission Test (highly competitive entrance exam)." data-cutoff="Based on ISI Admission Test performance. Very tough to crack.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>ISI Kolkata</h3><p>The mecca for statistics and data science aspirants.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://youtu.be/NnCzAk6aXfM" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+            </div>
+
+            <div class="column">
+                <h2 class="section-title">IITs</h2>
+                
+                <div class="campus-card" data-name="IIT Bombay" data-youtube="https://youtu.be/9yamW06vfLg" data-nirf-rank="3 (Overall) [2025]" data-campus-rating="4.9 / 5" data-library-rating="4.9 / 5" data-placement-rating="4.9 / 5" data-avg-salary="₹ 42.7 LPA (2025)" data-hostel-fees="~ ₹1.5 Lakhs/year" data-top-companies="Google, Microsoft, Amazon, TCS Research, Goldman Sachs" data-achievements="Flagship IIT, world-class engineering & technology programs." data-admission="JEE Advanced / GATE / IIT JAM / IIT PG." data-cutoff="Top rankers in JEE Advanced or GATE; extremely competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Bombay</h3><p>Top-tier engineering & research institute.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/9yamW06vfLg" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIT Delhi" data-youtube="https://youtu.be//i4mtophXkLo" data-nirf-rank="2 (Overall) [2025]" data-campus-rating="4.8 / 5" data-library-rating="4.8 / 5" data-placement-rating="4.9 / 5" data-avg-salary="₹ 41.3 LPA (2025)" data-hostel-fees="~ ₹1.4 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Excellence in engineering, research & entrepreneurship." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top rankers in entrance exams. Highly competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Delhi</h3><p>World-renowned for engineering & innovation.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be//i4mtophXkLo" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIT Madras" data-youtube="https://youtu.be/fh9P8CKWNeM" data-nirf-rank="1 (Overall) [2025]" data-campus-rating="4.9 / 5" data-library-rating="4.9 / 5" data-placement-rating="5 / 5" data-avg-salary="₹ 45 LPA (2025)" data-hostel-fees="~ ₹1.5 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Excellence in engineering, research & entrepreneurship." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top rankers in entrance exams. Highly competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Madras</h3><p>World-renowned for engineering & innovation.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/fh9P8CKWNeM" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIT Kanpur" data-youtube="https://youtu.be/ndlT3R-rKbs" data-nirf-rank="5 (Overall) [2025]" data-campus-rating="4.7 / 5" data-library-rating="4.8 / 5" data-placement-rating="4.9 / 5" data-avg-salary="₹ 35 LPA (2025)" data-hostel-fees="~ ₹1.3 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Excellence in engineering, research & entrepreneurship." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top rankers in entrance exams. Highly competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Kanpur</h3><p>World-renowned for engineering & innovation.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/ndlT3R-rKbs" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIT Kharagpur" data-youtube="https://youtu.be/h51HHw2hnP4" data-nirf-rank="6 (Overall) [2025]" data-campus-rating="4.5 / 5" data-library-rating="4.7 / 5" data-placement-rating="4.8 / 5" data-avg-salary="₹ 22.5 LPA (2025)" data-hostel-fees="~ ₹1.2 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Excellence in engineering, research & entrepreneurship." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top rankers in entrance exams. Highly competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Kharagpur</h3><p>World-renowned for engineering & innovation.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/h51HHw2hnP4" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIT Roorkee" data-youtube="https://youtu.be/M1uE5vQJ_Lk" data-nirf-rank="8 (Overall) [2025]" data-campus-rating="4.5 / 5" data-library-rating="4.6 / 5" data-placement-rating="4.7 / 5" data-avg-salary="₹ 28 LPA (2025)" data-hostel-fees="~ ₹1.2 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Heritage institute with strong engineering & research." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top rankers in entrance exams. Highly competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Roorkee</h3><p>One of the oldest IITs with excellent placements.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/M1uE5vQJ_Lk" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIT Guwahati" data-youtube="https://youtu.be/XG0d15o8oO0" data-nirf-rank="7 (Overall) [2025]" data-campus-rating="4.6 / 5" data-library-rating="4.6 / 5" data-placement-rating="4.7 / 5" data-avg-salary="₹ 24 LPA (2025)" data-hostel-fees="~ ₹1.1 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Notable research & engineering excellence." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top rankers in entrance exams. Highly competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Guwahati</h3><p>Strong focus on research and innovation.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/XG0d15o8oO0" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIT Hyderabad" data-youtube="https://youtu.be/8uLDy0zSQM4" data-nirf-rank="11 (Overall) [2025]" data-campus-rating="4.6 / 5" data-library-rating="4.6 / 5" data-placement-rating="4.7 / 5" data-avg-salary="₹ 25 LPA (2025)" data-hostel-fees="~ ₹1.1 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Strong tech and research culture." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top ranks in JEE Advanced required.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Hyderabad</h3><p>Focus on technology innovation and research.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/8uLDy0zSQM4" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+                <div class="campus-card" data-name="IIT Varanasi (BHU)" data-youtube="https://youtu.be/a4AzqfHJv2s" data-nirf-rank="10 (Overall) [2025]" data-campus-rating="4.5 / 5" data-library-rating="4.6 / 5" data-placement-rating="4.7 / 5" data-avg-salary="₹ 28 LPA (2025)" data-hostel-fees="~ ₹1.2 Lakhs/year" data-top-companies="Microsoft, Amazon, Google, Qualcomm, BCG" data-achievements="Historic IIT with excellence in academics & placements." data-admission="JEE Advanced / GATE / IIT PG." data-cutoff="Top JEE ranks required. Highly competitive.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>IIT Varanasi (BHU)</h3><p>Prestigious IIT with strong academic and placement records.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><a href="https://youtu.be/a4AzqfHJv2s" target="_blank" class="card-button btn-youtube"><i class="fab fa-youtube"></i> Tour</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NIT SECTION -->
+        <h2 class="section-title" style="margin-top: 40px;">National Institutes of Technology (NITs)</h2>
+        <div class="main-layout">
+            <div class="column">
+                
+                <div class="campus-card" data-name="NIT Tiruchirappalli" data-images="images/nit-trichy/1.jpg,images/nit-trichy/2.jpg,images/nit-trichy/3.jpg,images/nit-trichy/4.jpg,images/nit-trichy/5.jpg,images/nit-trichy/6.jpg,images/nit-trichy/7.jpg,images/nit-trichy/8.jpg,images/nit-trichy/9.jpg,images/nit-trichy/10.jpg,images/nit-trichy/11.jpg,images/nit-trichy/12.jpg,images/nit-trichy/13.jpg,images/nit-trichy/14.jpg,images/nit-trichy/15.jpg,images/nit-trichy/16.jpg,images/nit-trichy/17.jpg,images/nit-trichy/18.jpg,images/nit-trichy/19.jpg,images/nit-trichy/20.jpg,images/nit-trichy/21.jpg,images/nit-trichy/22.jpg,images/nit-trichy/23.jpg,images/nit-trichy/24.jpg,images/nit-trichy/25.jpg" data-nirf-rank="9 (Engg) [2025]" data-campus-rating="4.7 / 5" data-library-rating="4.6 / 5" data-placement-rating="4.7 / 5" data-avg-salary="₹ 17.5 LPA (2025)" data-hostel-fees="~ ₹95,000/year" data-top-companies="Google, Amazon, Deloitte, PwC, Accenture" data-achievements="Top-ranked NIT in India; global collaborations." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 5k–10k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Tiruchirappalli</h3><p>Top NIT known for excellence in engineering and management.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Surathkal" data-images="images/nit-surathkal/1.jpg,images/nit-surathkal/2.jpg,images/nit-surathkal/3.jpg,images/nit-surathkal/4.jpg,images/nit-surathkal/5.jpg,images/nit-surathkal/6.jpg,images/nit-surathkal/7.jpg,images/nit-surathkal/8.jpg,images/nit-surathkal/9.jpg,images/nit-surathkal/10.jpg,images/nit-surathkal/11.jpg,images/nit-surathkal/12.jpg,images/nit-surathkal/13.jpg,images/nit-surathkal/14.jpg,images/nit-surathkal/15.jpg,images/nit-surathkal/16.jpg,images/nit-surathkal/17.jpg,images/nit-surathkal/18.jpg,images/nit-surathkal/19.jpg,images/nit-surathkal/20.jpg,images/nit-surathkal/21.jpg,images/nit-surathkal/22.jpg,images/nit-surathkal/23.jpg,images/nit-surathkal/24.jpg,images/nit-surathkal/25.jpg,images/nit-surathkal/26.jpg,images/nit-surathkal/27.jpg" data-nirf-rank="10 (Engg) [2025]" data-campus-rating="4.6 / 5" data-library-rating="4.5 / 5" data-placement-rating="4.7 / 5" data-avg-salary="₹ 16.3 LPA (2025)" data-hostel-fees="~ ₹90,000/year" data-top-companies="Microsoft, Amazon, Adobe, Flipkart, Infosys" data-achievements="Beautiful beachside campus; strong placement record." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 5k–11k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Surathkal</h3><p>Beachside institute known for innovation & top placements.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Warangal" data-images="images/nit-warangal/1.jpg,images/nit-warangal/2.jpg,images/nit-warangal/3.jpg,images/nit-warangal/4.jpg,images/nit-warangal/5.jpg,images/nit-warangal/6.jpg,images/nit-warangal/7.jpg,images/nit-warangal/8.jpg,images/nit-warangal/9.jpg,images/nit-warangal/10.jpg,images/nit-warangal/11.png,images/nit-warangal/12.jpg" data-nirf-rank="21 (Engg) [2025]" data-campus-rating="4.5 / 5" data-library-rating="4.4 / 5" data-placement-rating="4.6 / 5" data-avg-salary="₹ 15.8 LPA (2025)" data-hostel-fees="~ ₹90,000/year" data-top-companies="Amazon, Microsoft, Infosys, Deloitte, TCS" data-achievements="One of India’s oldest NITs; strong research & coding culture." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 8k–12k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Warangal</h3><p>Leading NIT with strong academic and research legacy.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Rourkela" data-images="images/nit-rourkela/1.jpg,images/nit-rourkela/2.jpg,images/nit-rourkela/3.jpg,images/nit-rourkela/4.jpg,images/nit-rourkela/5.jpg,images/nit-rourkela/6.jpg" data-nirf-rank="15 (Engg) [2025]" data-campus-rating="4.5 / 5" data-library-rating="4.4 / 5" data-placement-rating="4.5 / 5" data-avg-salary="₹ 14.6 LPA (2025)" data-hostel-fees="~ ₹90,000/year" data-top-companies="TCS, Wipro, JSW, Deloitte, Oracle" data-achievements="Top-tier NIT with strong industrial collaboration." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 9k–14k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Rourkela</h3><p>Premier eastern India NIT with strong alumni base.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Calicut" data-images="images/nit-calicut/1.jpg,images/nit-calicut/2.jpg,images/nit-calicut/3.jpg,images/nit-calicut/4.jpg,images/nit-calicut/5.jpg,images/nit-calicut/6.jpg,images/nit-calicut/7.jpg,images/nit-calicut/8.jpg,images/nit-calicut/9.jpg,images/nit-calicut/10.jpg,images/nit-calicut/11.jpg,images/nit-calicut/12.jpg,images/nit-calicut/13.jpg,images/nit-calicut/14.jpg,images/nit-calicut/15.jpg,images/nit-calicut/16.jpg,images/nit-calicut/17.jpg,images/nit-calicut/18.jpg,images/nit-calicut/19.jpg,images/nit-calicut/20.jpg" data-nirf-rank="26 (Engg) [2025]" data-campus-rating="4.4 / 5" data-library-rating="4.4 / 5" data-placement-rating="4.3 / 5" data-avg-salary="₹ 13.9 LPA (2025)" data-hostel-fees="~ ₹85,000/year" data-top-companies="IBM, Oracle, Accenture, Deloitte" data-achievements="Lush green campus; strong architecture and CS programs." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 10k–16k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Calicut</h3><p>Beautiful Kerala campus with balanced academic excellence.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="MNNIT Allahabad" data-images="images/mnnit-allahabad/1.jpg,images/mnnit-allahabad/2.jpg,images/mnnit-allahabad/3.jpg,images/mnnit-allahabad/4.jpg" data-nirf-rank="42 (Engg) [2025]" data-campus-rating="4.3 / 5" data-library-rating="4.2 / 5" data-placement-rating="4.4 / 5" data-avg-salary="₹ 12.8 LPA (2025)" data-hostel-fees="~ ₹85,000/year" data-top-companies="TCS, Infosys, Amazon, IBM" data-achievements="Known for CS, IT and electrical branches." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 10k–15k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>MNNIT Allahabad</h3><p>Prestigious institute in north India with strong CS programs.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="MNIT Jaipur" data-images="images/mnit-jaipur/1.jpg,images/mnit-jaipur/2.jpg,images/mnit-jaipur/3.jpg,images/mnit-jaipur/4.jpg,images/mnit-jaipur/5.jpg,images/mnit-jaipur/6.jpg,images/mnit-jaipur/7.jpg,images/mnit-jaipur/8.jpg,images/mnit-jaipur/9.jpg,images/mnit-jaipur/10.jpg,images/mnit-jaipur/11.jpg,images/mnit-jaipur/12.jpg,images/mnit-jaipur/13.jpg,images/mnit-jaipur/14.jpg,images/mnit-jaipur/15.jpg" data-nirf-rank="37 (Engg) [2025]" data-campus-rating="4.3 / 5" data-library-rating="4.2 / 5" data-placement-rating="4.4 / 5" data-avg-salary="₹ 13.5 LPA (2025)" data-hostel-fees="~ ₹90,000/year" data-top-companies="Adobe, TCS, ZS Associates, Flipkart" data-achievements="Cultural capital’s NIT; great architecture & CS programs." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 10k–16k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>MNIT Jaipur</h3><p>Vibrant Rajasthan campus with strong placement record.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="VNIT Nagpur" data-images="images/vnit-nagpur/1.jpg,images/vnit-nagpur/2.jpg,images/vnit-nagpur/3.jpg,images/vnit-nagpur/4.jpg,images/vnit-nagpur/5.jpg,images/vnit-nagpur/6.jpg,images/vnit-nagpur/7.jpg,images/vnit-nagpur/8.jpg,images/vnit-nagpur/9.jpg,images/vnit-nagpur/10.jpg,images/vnit-nagpur/11.jpg,images/vnit-nagpur/12.jpg,images/vnit-nagpur/13.jpg,images/vnit-nagpur/14.jpg,images/vnit-nagpur/15.jpg,images/vnit-nagpur/16.jpg,images/vnit-nagpur/17.jpg" data-nirf-rank="42 (Engg) [2025]" data-campus-rating="4.2 / 5" data-library-rating="4.1 / 5" data-placement-rating="4.0 / 5" data-avg-salary="₹14.5 LPA" data-hostel-fees="~ ₹35,000/year" data-top-companies="TCS, Infosys, L&T, Deloitte" data-achievements="Strong focus on core engineering and research." data-admission="JEE Main + JoSAA" data-cutoff="CSE Closing Rank (Gen): ~8500 (2024)">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>VNIT Nagpur</h3><p>Well-established NIT with strong placements and research culture.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Kurukshetra" data-images="images/nit-kurukshetra/1.jpg,images/nit-kurukshetra/2.jpg,images/nit-kurukshetra/3.jpg,images/nit-kurukshetra/4.jpg,images/nit-kurukshetra/5.jpg,images/nit-kurukshetra/6.jpg,images/nit-kurukshetra/7.jpg,images/nit-kurukshetra/8.jpg" data-nirf-rank="44 (Engg) [2025]" data-campus-rating="4.2 / 5" data-library-rating="4.1 / 5" data-placement-rating="4.3 / 5" data-avg-salary="₹ 12.6 LPA (2025)" data-hostel-fees="~ ₹80,000/year" data-top-companies="TCS, Infosys, Tech Mahindra, HCL" data-achievements="Known for strong alumni network and placements." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 12k–18k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Kurukshetra</h3><p>Reputed northern India NIT with solid academic culture.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="MANIT Bhopal" data-images="images/manit-bhopal/1.jpg,images/manit-bhopal/2.jpg,images/manit-bhopal/3.jpg,images/manit-bhopal/4.jpg,images/manit-bhopal/5.jpg,images/manit-bhopal/6.jpg,images/manit-bhopal/7.jpg,images/manit-bhopal/8.jpg" data-nirf-rank="34 (Engg) [2025]" data-campus-rating="4.2 / 5" data-library-rating="4.1 / 5" data-placement-rating="4.2 / 5" data-avg-salary="₹ 11.9 LPA (2025)" data-hostel-fees="~ ₹85,000/year" data-top-companies="TCS, Infosys, L&T, Amazon" data-achievements="Strong core engineering programs and research labs." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 12k–18k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>MANIT Bhopal</h3><p>Established institute with strong engineering and research focus.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Durgapur" data-images="images/nit-durgapur/1.jpg,images/nit-durgapur/2.jpg,images/nit-durgapur/3.jpg,images/nit-durgapur/4.jpg,images/nit-durgapur/5.jpg,images/nit-durgapur/6.jpg,images/nit-durgapur/7.jpg,images/nit-durgapur/8.jpg,images/nit-durgapur/9.jpg,images/nit-durgapur/10.jpg,images/nit-durgapur/11.jpg,images/nit-durgapur/12.jpg,images/nit-durgapur/13.jpg,images/nit-durgapur/14.jpg,images/nit-durgapur/15.jpg,images/nit-durgapur/16.jpg,images/nit-durgapur/17.jpg,images/nit-durgapur/18.jpg,images/nit-durgapur/19.jpg,images/nit-durgapur/20.jpg,images/nit-durgapur/21.jpg,images/nit-durgapur/22.jpg,images/nit-durgapur/23.jpg,images/nit-durgapur/24.jpg,images/nit-durgapur/25.jpg,images/nit-durgapur/26.jpg" data-nirf-rank="43 (Engg) [2025]" data-campus-rating="4.1 / 5" data-library-rating="4.2 / 5" data-placement-rating="4.1 / 5" data-avg-salary="₹ 11.8 LPA (2025)" data-hostel-fees="~ ₹85,000/year" data-top-companies="Cognizant, Infosys, Wipro, Capgemini" data-achievements="Strong coding culture and technical fests." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 15k–20k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Durgapur</h3><p>Well-known eastern NIT for IT and core branches.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Jalandhar" data-images="images/nit-jalandhar/1.jpg,images/nit-jalandhar/2.jpg,images/nit-jalandhar/3.jpg,images/nit-jalandhar/4.jpg,images/nit-jalandhar/5.jpg,images/nit-jalandhar/6.jpg,images/nit-jalandhar/7.jpg,images/nit-jalandhar/8.jpg" data-nirf-rank="55 (Engg) [2025]" data-campus-rating="4.1 / 5" data-library-rating="4.0 / 5" data-placement-rating="3.9 / 5" data-avg-salary="₹13 LPA" data-hostel-fees="~ ₹33,000/year" data-top-companies="Wipro, Infosys, TCS, Tech Mahindra" data-achievements="Good placement record and growing research initiatives." data-admission="JEE Main + JoSAA" data-cutoff="CSE Closing Rank (Gen): ~11000 (2024)">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Jalandhar</h3><p>North Indian NIT with strong academic programs and industry tie-ups.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Silchar" data-images="images/nit-silchar/1.jpg,images/nit-silchar/2.jpg,images/nit-silchar/3.jpg,images/nit-silchar/4.jpg,images/nit-silchar/5.jpg,images/nit-silchar/6.jpg" data-nirf-rank="38 (Engg) [2025]" data-campus-rating="4.3 / 5" data-library-rating="4.2 / 5" data-placement-rating="4.2 / 5" data-avg-salary="₹ 11.2 LPA (2025)" data-hostel-fees="~ ₹80,000/year" data-top-companies="TCS, Wipro, Amazon, IBM" data-achievements="Top northeastern NIT; great student diversity." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 16k–21k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Silchar</h3><p>Beautiful Assam campus with active student community.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Jamshedpur" data-images="images/nit-jamshedpur/1.jpg,images/nit-jamshedpur/2.jpg,images/nit-jamshedpur/3.jpg,images/nit-jamshedpur/4.jpg" data-nirf-rank="45 (Engg) [2025]" data-campus-rating="4.0 / 5" data-library-rating="4.0 / 5" data-placement-rating="4.1 / 5" data-avg-salary="₹ 10.8 LPA (2025)" data-hostel-fees="~ ₹80,000/year" data-top-companies="TCS, Tata Steel, Capgemini, Wipro" data-achievements="Strong industry ties with heavy engineering & metallurgy clusters." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 14k–20k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Jamshedpur</h3><p>Known for strong engineering curriculum and corporate connections.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+
+            </div>
+            <div class="column">
+                
+                <div class="campus-card" data-name="NIT Surat" data-images="images/nit-surat/1.jpg,images/nit-surat/2.jpg,images/nit-surat/3.jpg,images/nit-surat/4.jpg,images/nit-surat/5.jpg,images/nit-surat/6.jpg,images/nit-surat/7.jpg,images/nit-surat/8.jpg" data-nirf-rank="60 (Engg) [2025]" data-campus-rating="4.0 / 5" data-library-rating="3.9 / 5" data-placement-rating="3.8 / 5" data-avg-salary="₹12.5 LPA" data-hostel-fees="~ ₹32,000/year" data-top-companies="Infosys, Cognizant, Capgemini, TCS" data-achievements="Growing NIT with modern facilities." data-admission="JEE Main + JoSAA" data-cutoff="CSE Closing Rank (Gen): ~12000 (2024)">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Surat</h3><p>Emerging campus with focus on engineering and entrepreneurship.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Raipur" data-images="images/nit-raipur/1.jpg,images/nit-raipur/2.jpg,images/nit-raipur/3.jpg,images/nit-raipur/4.jpg,images/nit-raipur/5.jpg,images/nit-raipur/6.jpg,images/nit-raipur/7.jpg,images/nit-raipur/8.jpg" data-nirf-rank="52 (Engg) [2025]" data-campus-rating="4.0 / 5" data-library-rating="3.9 / 5" data-placement-rating="4.0 / 5" data-avg-salary="₹ 9.8 LPA (2025)" data-hostel-fees="~ ₹75,000/year" data-top-companies="Infosys, TCS, Tech Mahindra" data-achievements="Expanding research output and industry projects." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 20k–28k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Raipur</h3><p>Growing NIT with emphasis on applied research and placements.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Patna" data-images="images/nit-patna/1.jpg,images/nit-patna/2.jpg,images/nit-patna/3.jpg,images/nit-patna/4.jpg,images/nit-patna/5.jpg" data-nirf-rank="53 (Engg) [2025]" data-campus-rating="3.9 / 5" data-library-rating="4.0 / 5" data-placement-rating="4.0 / 5" data-avg-salary="₹ 9.6 LPA (2025)" data-hostel-fees="~ ₹75,000/year" data-top-companies="TCS, Infosys, Amazon" data-achievements="Historic legacy institute upgraded to NIT; strong regional presence." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 18k–25k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Patna</h3><p>Regional NIT with steady improvements in academics and placements.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Srinagar" data-images="images/nit-srinagar/1.jpg,images/nit-srinagar/2.jpg,images/nit-srinagar/3.jpg,images/nit-srinagar/4.jpg,images/nit-srinagar/5.jpg" data-nirf-rank="58 (Engg) [2025]" data-campus-rating="3.9 / 5" data-library-rating="3.8 / 5" data-placement-rating="3.9 / 5" data-avg-salary="₹ 9.2 LPA (2025)" data-hostel-fees="~ ₹72,000/year" data-top-companies="TCS, Infosys, Amazon" data-achievements="Beautiful valley campus with focused academic programs." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 20k–28k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Srinagar</h3><p>Scenic campus with growing research and student activities.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Puducherry" data-images="images/nit-puducherry/1.jpg,images/nit-puducherry/2.jpg,images/nit-puducherry/3.jpg,images/nit-puducherry/4.jpg,images/nit-puducherry/5.jpg,images/nit-puducherry/6.jpg" data-nirf-rank="90 (Engg) [2025]" data-campus-rating="4.0 / 5" data-library-rating="3.9 / 5" data-placement-rating="3.8 / 5" data-avg-salary="₹8.9 LPA (2025)" data-hostel-fees="~ ₹33,000/year" data-top-companies="Zoho, TCS, Infosys" data-achievements="Compact yet academically strong campus in Karaikal." data-admission="JEE Main + JoSAA" data-cutoff="JEE Main Closing Rank (CSE, Gen): 25000 (2024)">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Puducherry</h3><p>Known for innovative projects and coding culture.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Uttarakhand" data-images="images/nit-uttarakhand/1.jpg,images/nit-uttarakhand/2.jpg,images/nit-uttarakhand/3.jpg" data-nirf-rank="87 (Engg) [2025]" data-campus-rating="4.0 / 5" data-library-rating="3.9 / 5" data-placement-rating="3.8 / 5" data-avg-salary="₹8.3 LPA (2025)" data-hostel-fees="~ ₹35,000/year" data-top-companies="Infosys, TCS, Cognizant" data-achievements="Strong placement growth and academic reforms." data-admission="JEE Main + JoSAA" data-cutoff="JEE Main Closing Rank (CSE, Gen): 27000 (2024)">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Uttarakhand</h3><p>Scenic temporary campus with vibrant tech clubs.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Hamirpur" data-images="images/nit-hamirpur/1.jpg,images/nit-hamirpur/2.jpg" data-nirf-rank="60 (Engg) [2025]" data-campus-rating="3.8 / 5" data-library-rating="3.8 / 5" data-placement-rating="3.9 / 5" data-avg-salary="₹ 8.9 LPA (2025)" data-hostel-fees="~ ₹70,000/year" data-top-companies="Wipro, HCL, TCS" data-achievements="Strong focus on innovation and startups in the region." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 22k–30k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Hamirpur</h3><p>Hilly campus with focused engineering programs and decent placements.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Agartala" data-images="images/nit-agartala/1.jpg,images/nit-agartala/2.jpg,images/nit-agartala/3.jpg,images/nit-agartala/4.jpg,images/nit-agartala/5.jpg" data-nirf-rank="64 (Engg) [2025]" data-campus-rating="3.8 / 5" data-library-rating="3.7 / 5" data-placement-rating="3.8 / 5" data-avg-salary="₹ 8.5 LPA (2025)" data-hostel-fees="~ ₹70,000/year" data-top-companies="TCS, Wipro, Cognizant" data-achievements="Key institute in Northeast with regional development focus." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 24k–32k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Agartala</h3><p>Leading institute in Northeast India with inclusive campus culture.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Meghalaya" data-images="images/nit-meghalaya/1.jpg,images/nit-meghalaya/2.jpg" data-nirf-rank="85 (Engg) [2025]" data-campus-rating="3.6 / 5" data-library-rating="3.6 / 5" data-placement-rating="3.7 / 5" data-avg-salary="₹ 7.8 LPA (2025)" data-hostel-fees="~ ₹68,000/year" data-top-companies="Infosys, TCS, Capgemini" data-achievements="Young NIT with a growing emphasis on research & regional uplift." data-admission="JEE Main + JoSAA Counselling" data-cutoff="Top 30k–40k ranks in JEE Main.">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Meghalaya</h3><p>Emerging Northeast NIT with focus on community & research.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Sikkim" data-images="images/nit-sikkim/1.jpg,images/nit-sikkim/2.jpg,images/nit-sikkim/3.jpg" data-nirf-rank="102 (Engg) [2025]" data-campus-rating="3.9 / 5" data-library-rating="3.7 / 5" data-placement-rating="3.6 / 5" data-avg-salary="₹7.4 LPA (2025)" data-hostel-fees="~ ₹32,000/year" data-top-companies="Infosys, Capgemini, Wipro" data-achievements="Picturesque campus with growing academic reputation." data-admission="JEE Main via JoSAA" data-cutoff="JEE Main Closing Rank (CSE, Gen): 34000 (2024)">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Sikkim</h3><p>One of the youngest NITs with steady growth.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Manipur" data-images="images/nit-manipur/1.jpg,images/nit-manipur/2.jpg" data-nirf-rank="108 (Engg) [2025]" data-campus-rating="3.8 / 5" data-library-rating="3.6 / 5" data-placement-rating="3.5 / 5" data-avg-salary="₹6.9 LPA (2025)" data-hostel-fees="~ ₹31,000/year" data-top-companies="TCS, Infosys, Tech Mahindra" data-achievements="Well-structured academic curriculum and labs." data-admission="JEE Main via JoSAA" data-cutoff="JEE Main Closing Rank (CSE, Gen): 35000 (2024)">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Manipur</h3><p>Focused on research in emerging technologies.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Mizoram" data-images="images/nit-mizoram/1.jpg,images/nit-mizoram/2.jpg,images/nit-mizoram/3.jpg" data-nirf-rank="104 (Engg) [2025]" data-campus-rating="3.8 / 5" data-library-rating="3.7 / 5" data-placement-rating="3.5 / 5" data-avg-salary="₹6.5 LPA (2025)" data-hostel-fees="~ ₹31,000/year" data-top-companies="Infosys, Tech Mahindra, TCS" data-achievements="Peaceful environment with rising placement numbers." data-admission="JEE Main Rank via JoSAA" data-cutoff="JEE Main Closing Rank (CSE, Gen): 36000 (2024)">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Mizoram</h3><p>Expanding campus with strong focus on practical learning.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Nagaland" data-images="images/nit-nagaland/1.jpg" data-nirf-rank="107 (Engg) [2025]" data-campus-rating="3.7 / 5" data-library-rating="3.6 / 5" data-placement-rating="3.4 / 5" data-avg-salary="₹6.8 LPA (2025)" data-hostel-fees="~ ₹30,000/year" data-top-companies="TCS, Cognizant, Wipro" data-achievements="Rapid infrastructure growth and faculty recruitment." data-admission="JEE Main + JoSAA" data-cutoff="JEE Main Closing Rank (CSE, Gen): 37000 (2024)">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Nagaland</h3><p>Developing institute in Dimapur with steady growth.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+                <div class="campus-card" data-name="NIT Arunachal Pradesh" data-images="images/nit-arunachal-pradesh/1.jpg,images/nit-arunachal-pradesh/2.jpg,images/nit-arunachal-pradesh/3.jpg,images/nit-arunachal-pradesh/4.jpg" data-nirf-rank="95 (Engg) [2025]" data-campus-rating="3.9 / 5" data-library-rating="3.8 / 5" data-placement-rating="3.6 / 5" data-avg-salary="₹7.2 LPA (2025)" data-hostel-fees="~ ₹32,000/year" data-top-companies="TCS, Infosys, Wipro" data-achievements="Rapidly developing campus with growing infrastructure." data-admission="JEE Main + JoSAA Counselling" data-cutoff="JEE Main Closing Rank (CSE, Gen): 33000 (2024)">
+                    <div class="card-main-content"><input type="checkbox" class="card-select-checkbox"><div class="card-text"><h3>NIT Arunachal Pradesh</h3><p>Emerging institute in the North-East with modern labs.</p></div></div><div class="card-actions"><button class="card-button btn-details">Details</button><a href="https://josaa.admissions.nic.in/Applicant/seatallotmentresult/currentorcr.aspx" target="_blank" class="card-button" style="background-color: #007bff; color: white; text-decoration: none;">Cutoffs</a><button class="card-button btn-gallery"><i class="fas fa-images"></i> Gallery</button></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Details Modal -->
+    <div id="details-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="details-modal-close">&times;</span>
+            <h2 id="modal-title" class="modal-title">Institute Details</h2>
+            <div class="modal-section">
+                <h4><i class="fas fa-star"></i> Ratings & Rankings</h4>
+                <div class="ratings-grid">
+                    <div class="rating-item">NIRF Rank <span id="modal-nirf-rank"></span></div>
+                    <div class="rating-item">Campus Rating <span id="modal-campus-rating"></span></div>
+                    <div class="rating-item">Library Rating <span id="modal-library-rating"></span></div>
+                    <div class="rating-item">Placement Rating <span id="modal-placement-rating"></span></div>
+                </div>
+            </div>
+            <div class="modal-section">
+                <h4><i class="fas fa-briefcase"></i> Placements & Career</h4>
+                <p><strong>Average Salary (Latest):</strong> <span id="modal-avg-salary"></span></p>
+                <p><strong>Hostel Fees (Approx. p.a.):</strong> <span id="modal-hostel-fees"></span></p>
+                <p><strong>Top Hiring Companies:</strong> <span id="modal-top-companies"></span></p>
+            </div>
+            <div class="modal-section">
+                <h4><i class="fas fa-trophy"></i> Key Achievements</h4>
+                <p id="modal-achievements"></p>
+            </div>
+            <div class="modal-section">
+                <h4><i class="fas fa-tasks"></i> Admission Process</h4>
+                <p><strong>Process Overview:</strong> <span id="modal-admission"></span></p>
+                <p><strong>Typical Cutoff:</strong> <span id="modal-cutoff"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comparison Modal -->
+    <div id="comparison-modal" class="modal">
+        <div id="comparison-modal-content" class="modal-content">
+            <span class="modal-close" id="comparison-modal-close">&times;</span>
+            <h2 class="modal-title">Side-by-Side Comparison</h2>
+            <div class="comparison-grid">
+                <div class="comparison-col" id="compare-col-1"></div>
+                <div class="comparison-col" id="compare-col-2"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Image Gallery Modal -->
+    <div id="gallery-modal" class="modal">
+        <div class="modal-content" id="gallery-modal-content">
+            <span class="modal-close" id="gallery-modal-close">&times;</span>
+            <h2 id="gallery-modal-title" class="modal-title">Campus Gallery</h2>
+            <div id="gallery-grid" class="gallery-grid-container">
+                <!-- Images will be injected here by JS -->
+            </div>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Element Selection ---
+    const detailsModal = document.getElementById('details-modal');
+    const comparisonModal = document.getElementById('comparison-modal');
+    const galleryModal = document.getElementById('gallery-modal');
+    const closeDetailsModal = document.getElementById('details-modal-close');
+    const closeComparisonModal = document.getElementById('comparison-modal-close');
+    const closeGalleryModal = document.getElementById('gallery-modal-close');
+    const compareBtn = document.getElementById('compare-btn');
+
+    const checkboxes = document.querySelectorAll('.card-select-checkbox');
+    const detailButtons = document.querySelectorAll('.btn-details');
+    const galleryButtons = document.querySelectorAll('.btn-gallery');
+
+    // --- Details Modal Logic ---
+    detailButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const card = e.target.closest('.campus-card');
+            populateDetailsModal(card);
+            detailsModal.style.display = 'flex';
+        });
+    });
+
+    function populateDetailsModal(card) {
+        const getData = (attr) => card.dataset[attr] || 'Data not available';
+        document.getElementById('modal-title').textContent = getData('name');
+        document.getElementById('modal-nirf-rank').textContent = getData('nirfRank');
+        document.getElementById('modal-campus-rating').textContent = getData('campusRating');
+        document.getElementById('modal-library-rating').textContent = getData('libraryRating');
+        document.getElementById('modal-placement-rating').textContent = getData('placementRating');
+        document.getElementById('modal-avg-salary').textContent = getData('avgSalary');
+        document.getElementById('modal-hostel-fees').textContent = getData('hostelFees');
+        document.getElementById('modal-top-companies').textContent = getData('topCompanies');
+        document.getElementById('modal-achievements').textContent = getData('achievements');
+        document.getElementById('modal-admission').textContent = getData('admission');
+        document.getElementById('modal-cutoff').textContent = getData('cutoff');
+    }
+
+    // --- Comparison Logic ---
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const selected = document.querySelectorAll('.card-select-checkbox:checked');
+            if (selected.length > 2) {
+                checkbox.checked = false;
+                alert('You can only select two institutes for comparison.');
+            }
+            compareBtn.disabled = selected.length !== 2;
+        });
+    });
+
+    compareBtn.addEventListener('click', () => {
+        const selected = document.querySelectorAll('.card-select-checkbox:checked');
+        if (selected.length === 2) {
+            const card1 = selected[0].closest('.campus-card');
+            const card2 = selected[1].closest('.campus-card');
+            populateComparisonModal(card1, card2);
+            comparisonModal.style.display = 'flex';
+        }
+    });
+
+    function populateComparisonModal(card1, card2) {
+        document.getElementById('compare-col-1').innerHTML = generateCompareHTML(card1);
+        document.getElementById('compare-col-2').innerHTML = generateCompareHTML(card2);
+    }
+    
+    function generateCompareHTML(card) {
+        const getData = (attr) => card.dataset[attr] || 'N/A';
+        return `
+            <h3>${getData('name')}</h3>
+            <div class="modal-section">
+                <h4>Ratings</h4>
+                <p><strong>NIRF Rank:</strong> ${getData('nirfRank')}</p>
+                <p><strong>Placement Rating:</strong> ${getData('placementRating')}</p>
+            </div>
+            <div class="modal-section">
+                <h4>Placements</h4>
+                <p><strong>Avg Salary:</strong> ${getData('avgSalary')}</p>
+                <p><strong>Top Companies:</strong> ${getData('topCompanies').substring(0, 50)}...</p>
+            </div>
+            <div class="modal-section">
+                <h4>Admissions</h4>
+                <p><strong>Process:</strong> ${getData('admission').substring(0, 50)}...</p>
+                <p><strong>Cutoff:</strong> ${getData('cutoff')}</p>
+            </div>`;
+    }
+
+    // --- Gallery Modal Logic ---
+    galleryButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const card = e.target.closest('.campus-card');
+            populateGalleryModal(card);
+            galleryModal.style.display = 'flex';
+        });
+    });
+
+    function populateGalleryModal(card) {
+        const name = card.dataset.name || 'Campus Gallery';
+        const images = card.dataset.images || '';
+        const imageArray = images.split(',').filter(img => img.trim() !== '');
+
+        document.getElementById('gallery-modal-title').textContent = `${name} - Gallery`;
+        const galleryGrid = document.getElementById('gallery-grid');
+        galleryGrid.innerHTML = ''; // Clear previous images
+
+        if (imageArray.length > 0) {
+            imageArray.forEach(imgSrc => {
+                const img = document.createElement('img');
+                img.src = imgSrc.trim();
+                img.alt = name;
+                galleryGrid.appendChild(img);
+            });
+        } else {
+            galleryGrid.innerHTML = '<p>No images available for this campus.</p>';
+        }
+    }
+
+    // --- Universal Modal Closing Logic ---
+    function closeModal(modal) { 
+        modal.style.display = 'none'; 
+    }
+
+    closeDetailsModal.onclick = () => closeModal(detailsModal);
+    closeComparisonModal.onclick = () => closeModal(comparisonModal);
+    closeGalleryModal.onclick = () => closeModal(galleryModal);
+
+    window.onclick = (event) => {
+        if (event.target == detailsModal) closeModal(detailsModal);
+        if (event.target == comparisonModal) closeModal(comparisonModal);
+        if (event.target == galleryModal) closeModal(galleryModal);
+    };
+});
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-workbox.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+</body>
+</html>
