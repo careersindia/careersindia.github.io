@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Analysis: Ph.D., Medical Specializations & Fellowships | Campus India</title>
+<link rel="manifest" href="/manifest_7.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔬</text></svg>">
+
+<style>
+    :root {
+        --primary-color: #0056b3;
+        --secondary-color: #4A90E2;
+        --text-dark: #333;
+        --text-light: #666;
+        --bg-light: #f4f7f9;
+        --bg-white: #ffffff;
+        --border-color: #e0e0e0;
+        --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; margin: 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+    .header { text-align: center; margin-bottom: 40px; }
+    .header h1 { font-size: 2.2rem; font-weight: 700; color: var(--primary-color); margin-bottom: 10px; }
+    
+    /* PREVENTS PAGE JUMPING - Locks dashboard height */
+    .dashboard-wrapper { min-height: 1800px; display: flex; flex-direction: column; gap: 30px; }
+
+    /* EXCEL-STYLE SLICERS (VISIBLE BUTTON LISTS) */
+    .slicer-container { 
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 20px; 
+        background: #fff; 
+        padding: 20px; 
+        border-radius: 12px; 
+        border: 1px solid var(--border-color);
+        box-shadow: var(--shadow);
+    }
+    .slicer-box { flex: 1; min-width: 250px; }
+    .slicer-box label { font-weight: 700; color: var(--primary-color); display: block; margin-bottom: 10px; font-size: 0.85rem; text-transform: uppercase; }
+    
+    .slicer-list { 
+        height: 160px; 
+        overflow-y: auto; 
+        border: 1px solid #ddd; 
+        border-radius: 6px; 
+        background: #fdfdfd; 
+    }
+    .slicer-item { 
+        padding: 8px 12px; 
+        cursor: pointer; 
+        border-bottom: 1px solid #eee; 
+        font-size: 0.85rem; 
+        transition: all 0.2s;
+        color: #555;
+    }
+    .slicer-item:hover { background: #f0f7ff; }
+    .slicer-item.active { background: var(--primary-color); color: #fff; font-weight: 600; }
+
+    /* VIEW LIMIT SELECTOR */
+    .limit-box { background: #eef5ff; padding: 15px; border-radius: 8px; display: flex; flex-direction: column; gap: 8px; border: 1px solid #cce0ff; }
+    .limit-box select { padding: 8px; border-radius: 4px; border: 1px solid var(--primary-color); font-family: 'Poppins'; cursor: pointer; }
+
+    /* CHART BOXES */
+    .chart-box { 
+        background: #fff; 
+        padding: 20px; 
+        border-radius: 12px; 
+        box-shadow: var(--shadow); 
+        border: 1px solid #eee; 
+        height: 500px; /* Locked height prevents jumping */
+    }
+
+    .footer { text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid var(--border-color); color: var(--text-light); }
+    .home-button-container { position: fixed; top: 20px; right: 25px; z-index: 1000; }
+    .home-button-container a img { width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: transform 0.2s; }
+    .home-button-container a:hover img { transform: scale(1.1); }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+           <h1>Advanced Degree Salary Analysis (Ph.D. & Medical)</h1>
+            <p>Interactive dashboard comparing Doctorate levels, Super-Specialties, and Post-Doc Fellowships.</p>
+        </header>
+
+        <main class="dashboard-wrapper">
+            <!-- SLICER PANEL -->
+            <div class="slicer-container">
+                <div class="slicer-box">
+                    <label>Degree Category</label>
+                    <div id="catList" class="slicer-list"></div>
+                </div>
+                <div class="slicer-box">
+                    <label>Duration (Years)</label>
+                    <div id="durList" class="slicer-list"></div>
+                </div>
+                <div class="slicer-box" style="max-width: 250px;">
+                    <label>Display Limit</label>
+                    <div class="limit-box">
+                        <span>Show Records:</span>
+                        <select id="limitSlicer" onchange="drawCharts()">
+                            <option value="5">Top 5</option>
+                            <option value="10">Top 10</option>
+                            <option value="20">Top 20</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VISUALIZATIONS -->
+            <div class="chart-box">
+                <div id="bar_chart_div" style="width: 100%; height: 100%;"></div>
+            </div>
+            <div class="chart-box">
+                <div id="line_chart_div" style="width: 100%; height: 100%;"></div>
+            </div>
+            <div class="chart-box">
+                <div id="horiz_chart_div" style="width: 100%; height: 100%;"></div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; 2024 Career Pathways India. Data based on global and national academic salary standards.</p>
+        </footer>
+    </div>
+
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+
+<!-- GOOGLE CHARTS ENGINE -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(() => { initDashboard(); });
+
+    // --- PASTE YOUR JSON DATASET HERE ---
+ const dataset = [
+    // PH.D. - ARTS, HUMANITIES & SOCIAL SCIENCES
+    {name: 'Ph.D. in Literature', cat: 'Ph.D.', min: 7.0, max: 12.0, dur: 4, demand: 5, type: 'General'},
+    {name: 'Ph.D. in History', cat: 'Ph.D.', min: 7.0, max: 12.0, dur: 4, demand: 5, type: 'General'},
+    {name: 'Ph.D. in Philosophy', cat: 'Ph.D.', min: 7.0, max: 11.0, dur: 4, demand: 4, type: 'General'},
+    {name: 'Ph.D. in Sociology', cat: 'Ph.D.', min: 8.0, max: 14.0, dur: 4, demand: 6, type: 'General'},
+    {name: 'Ph.D. in Economics', cat: 'Ph.D.', min: 10.0, max: 25.0, dur: 4, demand: 9, type: 'High Demand'},
+    {name: 'Ph.D. in Political Science', cat: 'Ph.D.', min: 8.0, max: 15.0, dur: 4, demand: 7, type: 'General'},
+    {name: 'Ph.D. in Psychology', cat: 'Ph.D.', min: 8.0, max: 16.0, dur: 4, demand: 8, type: 'High Demand'},
+    {name: 'Ph.D. in Anthropology', cat: 'Ph.D.', min: 7.0, max: 13.0, dur: 4, demand: 5, type: 'General'},
+    {name: 'Ph.D. in Journalism', cat: 'Ph.D.', min: 8.0, max: 15.0, dur: 4, demand: 6, type: 'General'},
+    {name: 'Ph.D. in Mass Communication', cat: 'Ph.D.', min: 8.0, max: 15.0, dur: 4, demand: 6, type: 'General'},
+    {name: 'Ph.D. in Library Science', cat: 'Ph.D.', min: 7.0, max: 12.0, dur: 4, demand: 5, type: 'General'},
+    {name: 'Ph.D. in Education', cat: 'Ph.D.', min: 8.0, max: 14.0, dur: 4, demand: 7, type: 'General'},
+    {name: 'Ph.D. in Linguistics', cat: 'Ph.D.', min: 8.0, max: 15.0, dur: 4, demand: 6, type: 'General'},
+    {name: 'Ph.D. in Theatre Arts', cat: 'Ph.D.', min: 7.0, max: 11.0, dur: 4, demand: 4, type: 'General'},
+
+    // PH.D. - SCIENCE & TECHNOLOGY
+    {name: 'Ph.D. in Physics', cat: 'Ph.D.', min: 9.0, max: 20.0, dur: 4, demand: 8, type: 'High Demand'},
+    {name: 'Ph.D. in Chemistry', cat: 'Ph.D.', min: 9.0, max: 20.0, dur: 4, demand: 8, type: 'High Demand'},
+    {name: 'Ph.D. in Mathematics', cat: 'Ph.D.', min: 10.0, max: 22.0, dur: 4, demand: 9, type: 'High Demand'},
+    {name: 'Ph.D. in Biology', cat: 'Ph.D.', min: 9.0, max: 18.0, dur: 4, demand: 8, type: 'General'},
+    {name: 'Ph.D. in Biotechnology', cat: 'Ph.D.', min: 10.0, max: 25.0, dur: 4, demand: 9, type: 'High Demand'},
+    {name: 'Ph.D. in Computer Science', cat: 'Ph.D.', min: 15.0, max: 40.0, dur: 4, demand: 10, type: 'Top Paid'},
+    {name: 'Ph.D. in Environmental Science', cat: 'Ph.D.', min: 9.0, max: 16.0, dur: 4, demand: 7, type: 'General'},
+    {name: 'Ph.D. in Forensic Science', cat: 'Ph.D.', min: 8.0, max: 15.0, dur: 4, demand: 7, type: 'General'},
+    {name: 'Ph.D. in Geology', cat: 'Ph.D.', min: 9.0, max: 18.0, dur: 4, demand: 8, type: 'General'},
+    {name: 'Ph.D. in Statistics', cat: 'Ph.D.', min: 10.0, max: 25.0, dur: 4, demand: 9, type: 'High Demand'},
+    {name: 'Ph.D. in Astronomy', cat: 'Ph.D.', min: 10.0, max: 20.0, dur: 4, demand: 7, type: 'General'},
+    {name: 'Ph.D. in Biomedical Science', cat: 'Ph.D.', min: 9.0, max: 18.0, dur: 4, demand: 8, type: 'General'},
+    {name: 'Ph.D. in Nanoscience', cat: 'Ph.D.', min: 12.0, max: 25.0, dur: 4, demand: 8, type: 'High Demand'},
+    {name: 'Ph.D. in Neuroscience', cat: 'Ph.D.', min: 10.0, max: 22.0, dur: 4, demand: 8, type: 'General'},
+
+    // PH.D. - ENGINEERING & DESIGN
+    {name: 'Ph.D. in Mechanical Engineering', cat: 'Ph.D.', min: 10.0, max: 22.0, dur: 4, demand: 8, type: 'General'},
+    {name: 'Ph.D. in Electrical Engineering', cat: 'Ph.D.', min: 12.0, max: 25.0, dur: 4, demand: 9, type: 'High Demand'},
+    {name: 'Ph.D. in Civil Engineering', cat: 'Ph.D.', min: 9.0, max: 18.0, dur: 4, demand: 8, type: 'General'},
+    {name: 'Ph.D. in Information Tech', cat: 'Ph.D.', min: 14.0, max: 35.0, dur: 4, demand: 10, type: 'Top Paid'},
+    {name: 'Ph.D. in Robotics', cat: 'Ph.D.', min: 15.0, max: 35.0, dur: 4, demand: 9, type: 'Top Paid'},
+    {name: 'Ph.D. in Artificial Intelligence', cat: 'Ph.D.', min: 18.0, max: 50.0, dur: 4, demand: 10, type: 'Top Paid'},
+    {name: 'Ph.D. in Machine Learning', cat: 'Ph.D.', min: 18.0, max: 50.0, dur: 4, demand: 10, type: 'Top Paid'},
+    {name: 'Ph.D. in Product Design', cat: 'Ph.D.', min: 10.0, max: 20.0, dur: 4, demand: 8, type: 'General'},
+
+    // MEDICAL SPECIALIZATIONS (MD / MS / MDS)
+    {name: 'MD in General Medicine', cat: 'Medical Specialized', min: 25.0, max: 50.0, dur: 3, demand: 10, type: 'Top Paid'},
+    {name: 'MD in Pediatrics', cat: 'Medical Specialized', min: 25.0, max: 50.0, dur: 3, demand: 10, type: 'Top Paid'},
+    {name: 'MD in Dermatology', cat: 'Medical Specialized', min: 30.0, max: 70.0, dur: 3, demand: 10, type: 'Top Paid'},
+    {name: 'MD in Anesthesiology', cat: 'Medical Specialized', min: 20.0, max: 40.0, dur: 3, demand: 9, type: 'High Demand'},
+    {name: 'MD in Radiology', cat: 'Medical Specialized', min: 40.0, max: 80.0, dur: 3, demand: 10, type: 'Top Paid'},
+    {name: 'MD (Ayurveda)', cat: 'Medical Specialized', min: 8.0, max: 18.0, dur: 3, demand: 6, type: 'General'},
+    {name: 'MS in General Surgery', cat: 'Medical Specialized', min: 25.0, max: 50.0, dur: 3, demand: 9, type: 'High Demand'},
+    {name: 'MS in Orthopaedics', cat: 'Medical Specialized', min: 30.0, max: 60.0, dur: 3, demand: 10, type: 'Top Paid'},
+    {name: 'MS in Obstetrics & Gynae', cat: 'Medical Specialized', min: 30.0, max: 60.0, dur: 3, demand: 10, type: 'Top Paid'},
+    {name: 'MDS in Oral Surgery', cat: 'Medical Specialized', min: 15.0, max: 30.0, dur: 3, demand: 9, type: 'High Demand'},
+    {name: 'MDS in Periodontics', cat: 'Medical Specialized', min: 10.0, max: 20.0, dur: 3, demand: 7, type: 'General'},
+    {name: 'DM (Super Speciality)', cat: 'Medical Specialized', min: 40.0, max: 100.0, dur: 3, demand: 10, type: 'Top Paid'},
+    {name: 'M.Ch (Super Speciality)', cat: 'Medical Specialized', min: 40.0, max: 100.0, dur: 3, demand: 10, type: 'Top Paid'},
+
+    // PH.D. - PHARMACY & LAW
+    {name: 'Ph.D. in Pharmaceutics', cat: 'Ph.D.', min: 10.0, max: 20.0, dur: 4, demand: 8, type: 'General'},
+    {name: 'Ph.D. in Constitutional Law', cat: 'Ph.D.', min: 9.0, max: 18.0, dur: 4, demand: 7, type: 'General'},
+    {name: 'Ph.D. in Corporate Law', cat: 'Ph.D.', min: 12.0, max: 25.0, dur: 4, demand: 8, type: 'High Demand'},
+    {name: 'Ph.D. in Intellectual Property Law', cat: 'Ph.D.', min: 12.0, max: 25.0, dur: 4, demand: 8, type: 'High Demand'},
+
+    // POST-DOCTORAL FELLOWSHIPS
+    {name: 'SERB National Post-Doc (N-PDF)', cat: 'Post-Doc Fellowship', min: 12.0, max: 25.0, dur: 2.5, demand: 8, type: 'General'},
+    {name: 'CSIR Research Associateship', cat: 'Post-Doc Fellowship', min: 12.0, max: 25.0, dur: 2.5, demand: 8, type: 'General'},
+    {name: 'DBT Research Associateship', cat: 'Post-Doc Fellowship', min: 12.0, max: 25.0, dur: 2.5, demand: 8, type: 'General'},
+    {name: 'ICMR Postdoctoral Fellowship', cat: 'Post-Doc Fellowship', min: 12.0, max: 25.0, dur: 2.5, demand: 8, type: 'General'},
+    {name: 'Ramanujan Fellowship', cat: 'Post-Doc Fellowship', min: 15.0, max: 30.0, dur: 4, demand: 9, type: 'Top Paid'},
+    {name: 'Tata Innovation Fellowship', cat: 'Post-Doc Fellowship', min: 15.0, max: 30.0, dur: 4, demand: 8, type: 'High Demand'},
+    {name: 'Industry-Sponsored Research', cat: 'Post-Doc Fellowship', min: 15.0, max: 35.0, dur: 2.5, demand: 9, type: 'Top Paid'}
+];
+
+    let selectedCat = "Ph.D.";
+    let selectedDur = 4;
+
+    function initDashboard() {
+        if(dataset.length === 0) {
+            document.querySelectorAll('.chart-box').forEach(el => el.innerHTML = "<p style='padding:20px; color:red;'>JSON Data Missing: Please paste the dataset into the script.</p>");
+            return;
+        }
+        createSlicer('catList', 'cat', (v) => { selectedCat = v; drawCharts(); });
+        createSlicer('durList', 'dur', (v) => { selectedDur = parseFloat(v); drawCharts(); });
+        drawCharts();
+    }
+
+    function createSlicer(elementId, key, callback) {
+        const container = document.getElementById(elementId);
+        const uniqueValues = [...new Set(dataset.map(d => d[key]))].sort((a,b) => (typeof a === 'number' ? b-a : a.localeCompare(b)));
+
+        uniqueValues.forEach(val => {
+            const item = document.createElement('div');
+            item.className = 'slicer-item' + (val == (key === 'cat' ? selectedCat : selectedDur) ? ' active' : '');
+            item.innerText = (key === 'dur') ? val + " Year(s)" : val;
+            item.onclick = function() {
+                Array.from(container.children).forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                callback(val);
+            };
+            container.appendChild(item);
+        });
+    }
+
+    function drawCharts() {
+        const limit = parseInt(document.getElementById('limitSlicer').value);
+
+        // Chart 1: Vertical Column (Category vs Salary)
+        const d1 = new google.visualization.DataTable();
+        d1.addColumn('string', 'Course'); d1.addColumn('number', 'Min Salary'); d1.addColumn('number', 'Max Salary');
+        dataset.filter(x => x.cat === selectedCat).slice(0, limit).forEach(x => d1.addRow([x.name, x.min, x.max]));
+        new google.visualization.ColumnChart(document.getElementById('bar_chart_div')).draw(d1, {
+            title: `Salary Potential: ${selectedCat} (Top ${limit})`, colors: ['#4A90E2', '#0056b3'], legend: 'top', animation: {startup: true, duration: 500}
+        });
+
+        // Chart 2: Line Chart (Category vs Demand)
+        const d2 = new google.visualization.DataTable();
+        d2.addColumn('string', 'Course'); d2.addColumn('number', 'Demand Index');
+        dataset.filter(x => x.cat === selectedCat).slice(0, limit).forEach(x => d2.addRow([x.name, x.demand]));
+        new google.visualization.LineChart(document.getElementById('line_chart_div')).draw(d2, {
+            title: `Market Demand (1-10): ${selectedCat}`, colors: ['#FF9900'], pointsVisible: true, curveType: 'function'
+        });
+
+        // Chart 3: Horizontal Bar (Duration Filter)
+        const d3 = new google.visualization.DataTable();
+        d3.addColumn('string', 'Course'); d3.addColumn('number', 'Max Salary');
+        dataset.filter(x => x.dur === selectedDur).slice(0, limit).forEach(x => d3.addRow([x.name, x.max]));
+        new google.visualization.BarChart(document.getElementById('horiz_chart_div')).draw(d3, {
+            title: `Courses with ${selectedDur} Year Duration (Top ${limit})`, colors: ['#28a745'], legend: 'none'
+        });
+    }
+
+    window.onresize = drawCharts;
+</script>
+    <footer class="footer">
+            <p>&copy; 2024 Career Pathways India. All data is for representational purposes.</p>
+        </footer>
+    </div>
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-workbox.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+</body>
+</html>

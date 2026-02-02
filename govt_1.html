@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Analysis: Government Exams & Public Sector Jobs | Campus India</title>
+<link rel="manifest" href="/manifest_7.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏛️</text></svg>">
+
+<style>
+    :root {
+        --primary-color: #0056b3;
+        --secondary-color: #4A90E2;
+        --text-dark: #333;
+        --text-light: #666;
+        --bg-light: #f4f7f9;
+        --bg-white: #ffffff;
+        --border-color: #e0e0e0;
+        --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; margin: 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+    .header { text-align: center; margin-bottom: 40px; }
+    .header h1 { font-size: 2.2rem; font-weight: 700; color: var(--primary-color); margin-bottom: 10px; }
+    
+    /* PREVENTS PAGE JUMPING */
+    .dashboard-wrapper { min-height: 1800px; display: flex; flex-direction: column; gap: 30px; }
+
+    /* VISIBLE BUTTON LIST SLICERS */
+    .slicer-container { 
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 20px; 
+        background: #fff; 
+        padding: 20px; 
+        border-radius: 12px; 
+        border: 1px solid var(--border-color);
+        box-shadow: var(--shadow);
+    }
+    .slicer-box { flex: 1; min-width: 260px; }
+    .slicer-box label { font-weight: 700; color: var(--primary-color); display: block; margin-bottom: 10px; font-size: 0.85rem; text-transform: uppercase; }
+    
+    .slicer-list { 
+        height: 160px; 
+        overflow-y: auto; 
+        border: 1px solid #ddd; 
+        border-radius: 6px; 
+        background: #fdfdfd; 
+    }
+    .slicer-item { 
+        padding: 8px 12px; 
+        cursor: pointer; 
+        border-bottom: 1px solid #eee; 
+        font-size: 0.85rem; 
+        transition: all 0.2s;
+    }
+    .slicer-item:hover { background: #f0f7ff; }
+    .slicer-item.active { background: var(--primary-color); color: #fff; font-weight: 600; }
+
+    /* VIEW LIMIT SLICER */
+    .limit-box { background: #eef5ff; padding: 15px; border-radius: 8px; display: flex; flex-direction: column; gap: 8px; border: 1px solid #cce0ff; }
+    .limit-box select { padding: 8px; border-radius: 4px; border: 1px solid var(--primary-color); font-family: 'Poppins'; cursor: pointer; }
+
+    /* CHART BOXES */
+    .chart-box { 
+        background: #fff; 
+        padding: 20px; 
+        border-radius: 12px; 
+        box-shadow: var(--shadow); 
+        border: 1px solid #eee; 
+        height: 500px; /* Locks height to prevent jumping */
+    }
+
+    .footer { text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid var(--border-color); color: var(--text-light); }
+    .home-button-container { position: fixed; top: 20px; right: 25px; z-index: 1000; }
+    .home-button-container a img { width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: transform 0.2s; }
+    .home-button-container a:hover img { transform: scale(1.1); }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+           <h1>Government Job Salary Analysis</h1>
+            <p>Compare UPSC, SSC, Banking, and Railway examinations based on pay scale and qualifications.</p>
+        </header>
+
+        <main class="dashboard-wrapper">
+            <!-- INTERACTIVE SLICERS -->
+            <div class="slicer-container">
+                <div class="slicer-box">
+                    <label>Exam Board / Category</label>
+                    <div id="catList" class="slicer-list"></div>
+                </div>
+                <div class="slicer-box">
+                    <label>Min Qualification (Years post-10th)</label>
+                    <div id="qualList" class="slicer-list"></div>
+                </div>
+                <div class="slicer-box" style="max-width: 220px;">
+                    <label>Display Preferences</label>
+                    <div class="limit-box">
+                        <span>Show Records:</span>
+                        <select id="limitSlicer" onchange="drawCharts()">
+                            <option value="5">Top 5</option>
+                            <option value="10">Top 10</option>
+                            <option value="20">Full List</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VISUALIZATIONS -->
+            <div class="chart-box">
+                <div id="bar_chart_div" style="width: 100%; height: 100%;"></div>
+            </div>
+            <div class="chart-box">
+                <div id="horiz_chart_div" style="width: 100%; height: 100%;"></div>
+            </div>
+            <div class="chart-box">
+                <div id="line_chart_div" style="width: 100%; height: 100%;"></div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; 2024 Career Pathways India. Salary data includes basic pay + DA/HRA estimates.</p>
+        </footer>
+    </div>
+
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(() => { initDashboard(); });
+
+    // --- PASTE YOUR JSON DATASET HERE ---
+  const dataset = [
+    // UPSC EXAMS
+    {name: 'UPSC Civil Services (IAS/IPS)', cat: 'UPSC', min: 9.5, max: 12.0, dur: 5, demand: 10},
+    {name: 'UPSC Indian Forest Service', cat: 'UPSC', min: 9.5, max: 12.0, dur: 5, demand: 8},
+    {name: 'UPSC Engineering Services (IES)', cat: 'UPSC', min: 9.5, max: 12.0, dur: 5, demand: 9},
+    {name: 'UPSC Combined Defence Services', cat: 'UPSC', min: 7.5, max: 9.5, dur: 5, demand: 8},
+    {name: 'UPSC National Defence Academy', cat: 'UPSC', min: 6.0, max: 12.0, dur: 2, demand: 8},
+    {name: 'UPSC Combined Medical Services', cat: 'UPSC', min: 9.0, max: 11.0, dur: 7, demand: 8},
+    {name: 'UPSC Indian Economic Service', cat: 'UPSC', min: 9.5, max: 12.0, dur: 7, demand: 7},
+    {name: 'UPSC Indian Statistical Service', cat: 'UPSC', min: 9.5, max: 12.0, dur: 5, demand: 7},
+    {name: 'UPSC Central Armed Police Forces', cat: 'UPSC', min: 8.5, max: 10.5, dur: 5, demand: 8},
+    {name: 'UPSC Geologist Examination', cat: 'UPSC', min: 9.5, max: 12.0, dur: 7, demand: 7},
+
+    // SSC EXAMS
+    {name: 'SSC Combined Graduate Level', cat: 'SSC', min: 4.8, max: 10.2, dur: 5, demand: 10},
+    {name: 'SSC CHSL (10+2)', cat: 'SSC', min: 3.6, max: 6.0, dur: 2, demand: 9},
+    {name: 'SSC Multi-Tasking Staff (MTS)', cat: 'SSC', min: 3.3, max: 4.2, dur: 0, demand: 9},
+    {name: 'SSC Stenographer (Grade C & D)', cat: 'SSC', min: 4.8, max: 7.8, dur: 2, demand: 7},
+    {name: 'SSC Constable (GD)', cat: 'SSC', min: 4.2, max: 5.0, dur: 0, demand: 9},
+    {name: 'SSC CPO (Central Police Org)', cat: 'SSC', min: 6.6, max: 7.8, dur: 5, demand: 9},
+    {name: 'SSC Junior Engineer (JE)', cat: 'SSC', min: 6.6, max: 7.8, dur: 3, demand: 8},
+
+    // RAILWAY EXAMS
+    {name: 'RRB NTPC (Non-Technical)', cat: 'Railways', min: 3.6, max: 7.8, dur: 5, demand: 10},
+    {name: 'RRB Assistant Loco Pilot', cat: 'Railways', min: 4.5, max: 6.0, dur: 1, demand: 9},
+    {name: 'RRB Junior Engineer', cat: 'Railways', min: 6.6, max: 7.8, dur: 3, demand: 8},
+    {name: 'RRB Group D', cat: 'Railways', min: 3.3, max: 4.2, dur: 0, demand: 9},
+    {name: 'RRB Paramedical Categories', cat: 'Railways', min: 4.8, max: 9.0, dur: 5, demand: 7},
+    {name: 'RPF Constable', cat: 'Railways', min: 4.2, max: 5.0, dur: 0, demand: 8},
+    {name: 'RPF Sub-Inspector', cat: 'Railways', min: 6.6, max: 7.8, dur: 5, demand: 8},
+
+    // BANKING EXAMS
+    {name: 'IBPS PO (Probationary Officer)', cat: 'Banking', min: 6.6, max: 7.8, dur: 5, demand: 10},
+    {name: 'IBPS Clerk', cat: 'Banking', min: 3.6, max: 4.2, dur: 5, demand: 9},
+    {name: 'IBPS SO (Specialist Officer)', cat: 'Banking', min: 6.6, max: 7.8, dur: 5, demand: 8},
+    {name: 'IBPS RRB Officer Scale-I', cat: 'Banking', min: 6.0, max: 7.2, dur: 5, demand: 9},
+    {name: 'IBPS RRB Office Assistant', cat: 'Banking', min: 3.3, max: 3.9, dur: 5, demand: 8},
+    {name: 'SBI PO (Probationary Officer)', cat: 'Banking', min: 7.8, max: 9.0, dur: 5, demand: 10},
+    {name: 'SBI Clerk (Junior Associate)', cat: 'Banking', min: 3.8, max: 4.5, dur: 5, demand: 9},
+    {name: 'SBI SO (Specialist Cadre)', cat: 'Banking', min: 8.5, max: 13.0, dur: 5, demand: 8},
+    {name: 'RBI Grade B Officer', cat: 'Banking', min: 13.0, max: 15.0, dur: 5, demand: 10},
+    {name: 'RBI Assistant', cat: 'Banking', min: 5.4, max: 6.0, dur: 5, demand: 9},
+    {name: 'NABARD Grade A (Asst Manager)', cat: 'Banking', min: 10.8, max: 12.0, dur: 5, demand: 9},
+    {name: 'NABARD Grade B (Manager)', cat: 'Banking', min: 14.4, max: 16.8, dur: 7, demand: 8},
+
+    // STATE PSC & TEACHING
+    {name: 'State Civil Services (PCS)', cat: 'State PSC', min: 8.0, max: 10.0, dur: 5, demand: 8},
+    {name: 'State Judicial Services (PCS-J)', cat: 'State PSC', min: 9.0, max: 11.0, dur: 5, demand: 8},
+    {name: 'State Forest Service (ACF)', cat: 'State PSC', min: 7.0, max: 9.0, dur: 5, demand: 7},
+    {name: 'State Teacher Exams (PGT/TGT)', cat: 'State PSC', min: 3.5, max: 8.0, dur: 6, demand: 8},
+    {name: 'Teacher Eligibility Test (TET)', cat: 'Teaching', min: 5.5, max: 8.5, dur: 6, demand: 8},
+    {name: 'National Eligibility Test (NET)', cat: 'Teaching', min: 8.0, max: 12.0, dur: 7, demand: 8},
+
+    // DEFENCE & PARAMILITARY
+    {name: 'Indian Army Agniveer', cat: 'Defence', min: 3.6, max: 4.8, dur: 0, demand: 9},
+    {name: 'Indian Navy Agniveer', cat: 'Defence', min: 3.6, max: 4.8, dur: 0, demand: 8},
+    {name: 'Indian Air Force Agniveer', cat: 'Defence', min: 3.6, max: 4.8, dur: 2, demand: 8},
+    {name: 'Territorial Army Officer', cat: 'Defence', min: 6.0, max: 10.0, dur: 5, demand: 6},
+    {name: 'Paramilitary Forces Recruitment', cat: 'Defence', min: 4.2, max: 6.6, dur: 0, demand: 7},
+
+    // OTHER GOVT & INSURANCE
+    {name: 'IB ACIO (Intelligence Bureau)', cat: 'Other Govt', min: 8.0, max: 10.0, dur: 5, demand: 9},
+    {name: 'IB Security Assistant', cat: 'Other Govt', min: 4.5, max: 5.5, dur: 0, demand: 8},
+    {name: 'FCI Manager', cat: 'Other Govt', min: 8.0, max: 10.5, dur: 5, demand: 8},
+    {name: 'Gramin Dak Sevak (GDS)', cat: 'Other Govt', min: 1.2, max: 1.7, dur: 0, demand: 7},
+    {name: 'India Post Postman', cat: 'Other Govt', min: 4.2, max: 5.0, dur: 0, demand: 7},
+    {name: 'CAG Recruitment (CGL/CHSL)', cat: 'Other Govt', min: 4.8, max: 10.2, dur: 2, demand: 9},
+    {name: 'Narcotics Control Bureau (NCB)', cat: 'Other Govt', min: 5.5, max: 8.5, dur: 5, demand: 8},
+    {name: 'LIC AAO (Asst Admin Officer)', cat: 'Insurance', min: 10.8, max: 12.0, dur: 5, demand: 9},
+    {name: 'LIC ADO (Apprentice)', cat: 'Insurance', min: 6.7, max: 7.2, dur: 5, demand: 8},
+    {name: 'ISRO Scientist/Engineer', cat: 'Other Govt', min: 9.5, max: 12.0, dur: 5, demand: 9},
+    {name: 'DRDO Scientist', cat: 'Other Govt', min: 9.5, max: 12.0, dur: 7, demand: 9},
+    {name: 'PSU Graduate Trainee (GATE)', cat: 'Other Govt', min: 8.0, max: 15.0, dur: 5, demand: 9}
+];
+
+    let selectedCat = "UPSC";
+    let selectedQual = 5; // Qualification (Graduate level)
+
+    function initDashboard() {
+        if(dataset.length === 0) {
+            document.querySelectorAll('.chart-box').forEach(el => el.innerHTML = "<p style='padding:20px; color:red;'>JSON Data Missing: Please paste the dataset into the script block.</p>");
+            return;
+        }
+        createSlicer('catList', 'cat', (v) => { selectedCat = v; drawCharts(); });
+        createSlicer('qualList', 'dur', (v) => { selectedQual = parseFloat(v); drawCharts(); });
+        drawCharts();
+    }
+
+    function createSlicer(elementId, key, callback) {
+        const container = document.getElementById(elementId);
+        const uniqueValues = [...new Set(dataset.map(d => d[key]))].sort((a,b) => (typeof a === 'number' ? a-b : a.localeCompare(b)));
+
+        uniqueValues.forEach(val => {
+            const item = document.createElement('div');
+            item.className = 'slicer-item' + (val == (key === 'cat' ? selectedCat : selectedQual) ? ' active' : '');
+            
+            // Friendly labels for qualification levels
+            let label = val;
+            if (key === 'dur') {
+                if (val === 0) label = "10th Pass";
+                else if (val === 2) label = "12th Pass";
+                else if (val === 3) label = "Diploma";
+                else if (val === 5) label = "Graduate";
+                else if (val > 5) label = "PG / Specialist";
+            }
+            
+            item.innerText = label;
+            item.onclick = function() {
+                Array.from(container.children).forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                callback(val);
+            };
+            container.appendChild(item);
+        });
+    }
+
+    function drawCharts() {
+        const limit = parseInt(document.getElementById('limitSlicer').value);
+
+        // Chart 1: Vertical Bar (Category vs Salary)
+        const d1 = new google.visualization.DataTable();
+        d1.addColumn('string', 'Exam Name'); d1.addColumn('number', 'Min Salary'); d1.addColumn('number', 'Max Salary');
+        dataset.filter(x => x.cat === selectedCat).slice(0, limit).forEach(x => d1.addRow([x.name, x.min, x.max]));
+        new google.visualization.ColumnChart(document.getElementById('bar_chart_div')).draw(d1, {
+            title: `Salary Range: ${selectedCat} Exams (Top ${limit})`, colors: ['#4A90E2', '#0056b3'], legend: 'top', animation: {startup: true, duration: 500}
+        });
+
+        // Chart 2: Horizontal Bar (Qualification level filter)
+        const d2 = new google.visualization.DataTable();
+        d2.addColumn('string', 'Exam Name'); d2.addColumn('number', 'Max Salary');
+        dataset.filter(x => x.dur === selectedQual).slice(0, limit).forEach(x => d2.addRow([x.name, x.max]));
+        new google.visualization.BarChart(document.getElementById('horiz_chart_div')).draw(d2, {
+            title: `Market Value by Qualification Level (Top ${limit})`, colors: ['#28a745'], legend: 'none'
+        });
+
+        // Chart 3: Line Chart (Category vs Demand)
+        const d3 = new google.visualization.DataTable();
+        d3.addColumn('string', 'Exam Name'); d3.addColumn('number', 'Demand');
+        dataset.filter(x => x.cat === selectedCat).slice(0, limit).forEach(x => d3.addRow([x.name, x.demand]));
+        new google.visualization.LineChart(document.getElementById('line_chart_div')).draw(d3, {
+            title: `Popularity/Demand Index: ${selectedCat}`, colors: ['#FF9900'], pointsVisible: true, curveType: 'function', vAxis: {minValue: 0, maxValue: 10}
+        });
+    }
+
+    window.onresize = drawCharts;
+</script>
+    <footer class="footer">
+            <p>&copy; 2024 Career Pathways India. All data is for representational purposes.</p>
+        </footer>
+    </div>
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-workbox.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+</body>
+</html>

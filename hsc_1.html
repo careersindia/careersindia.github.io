@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary After 12th (HSC): Graduation level Courses Salary Chart | Careers India</title>
+<link rel="manifest" href="/manifest_7.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+
+<style>
+    :root {
+        --primary-color: #0056b3;
+        --secondary-color: #4A90E2;
+        --text-dark: #333;
+        --text-light: #666;
+        --bg-light: #f4f7f9;
+        --bg-white: #ffffff;
+        --border-color: #e0e0e0;
+        --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; margin: 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+    .header { text-align: center; margin-bottom: 40px; }
+    .header h1 { font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 10px; }
+    
+    /* DASHBOARD STABILITY - PREVENTS PAGE JUMPING */
+    .dashboard-wrapper { min-height: 1800px; display: flex; flex-direction: column; gap: 30px; }
+
+    /* EXCEL-STYLE SLICERS (VISIBLE BUTTON LISTS) */
+    .slicer-container { 
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 20px; 
+        background: #fff; 
+        padding: 20px; 
+        border-radius: 12px; 
+        border: 1px solid var(--border-color);
+        box-shadow: var(--shadow);
+    }
+    .slicer-box { flex: 1; min-width: 240px; }
+    .slicer-box label { font-weight: 700; color: var(--primary-color); display: block; margin-bottom: 10px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .slicer-list { 
+        height: 160px; 
+        overflow-y: auto; 
+        border: 1px solid #ddd; 
+        border-radius: 6px; 
+        background: #fdfdfd; 
+    }
+    .slicer-item { 
+        padding: 8px 12px; 
+        cursor: pointer; 
+        border-bottom: 1px solid #eee; 
+        font-size: 0.85rem; 
+        transition: all 0.2s;
+        color: #555;
+    }
+    .slicer-item:hover { background: #f0f7ff; }
+    .slicer-item.active { background: var(--primary-color); color: #fff; font-weight: 600; }
+
+    /* VIEW LIMIT SLICER (DROPDOWN IS OK HERE FOR JUST 3 NUMBERS) */
+    .limit-box { background: #f0f7ff; padding: 10px; border-radius: 8px; border: 1px solid #d0e3ff; display: flex; align-items: center; gap: 10px; }
+    .limit-box select { padding: 5px; border-radius: 4px; border: 1px solid #0056b3; }
+
+    /* CHART BOXES */
+    .chart-box { 
+        background: #fff; 
+        padding: 20px; 
+        border-radius: 12px; 
+        box-shadow: var(--shadow); 
+        border: 1px solid #eee; 
+        height: 500px; /* Locked height prevents jump */
+    }
+
+    .footer { text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid var(--border-color); color: var(--text-light); }
+    .home-button-container { position: fixed; top: 20px; right: 25px; z-index: 1000; }
+    .home-button-container a img { width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: transform 0.2s; }
+    .home-button-container a:hover img { transform: scale(1.1); }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+           <h1>Salary Analysis for Courses After 10th (SSC)</h1>
+            <p>Select from the slicers below to compare starting salaries, demand, and course durations.</p>
+        </header>
+
+        <main class="dashboard-wrapper">
+            <!-- SLICER PANEL -->
+            <div class="slicer-container">
+                <div class="slicer-box">
+                    <label>Category Slicer</label>
+                    <div id="catList" class="slicer-list"></div>
+                </div>
+                <div class="slicer-box">
+                    <label>Duration Slicer</label>
+                    <div id="durList" class="slicer-list"></div>
+                </div>
+                <div class="slicer-box">
+                    <label>Display Options</label>
+                    <div class="limit-box">
+                        <span>Show Top:</span>
+                        <select id="limitSlicer" onchange="drawCharts()">
+                            <option value="5">5 Records</option>
+                            <option value="10">10 Records</option>
+                            <option value="20">20 Records</option>
+                        </select>
+                    </div>
+                    <p style="font-size: 0.75rem; color: #777; margin-top: 15px;">* Note: Horizontal bar chart reflects market value based on duration selection.</p>
+                </div>
+            </div>
+
+            <!-- CHART GRID -->
+            <div class="chart-box">
+                <div id="bar_chart_div" style="width: 100%; height: 100%;"></div>
+            </div>
+            <div class="chart-box">
+                <div id="line_chart_div" style="width: 100%; height: 100%;"></div>
+            </div>
+            <div class="chart-box">
+                <div id="horiz_chart_div" style="width: 100%; height: 100%;"></div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; 2024 Career Pathways India. All data is for representational purposes.</p>
+        </footer>
+    </div>
+
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+
+<!-- GOOGLE CHARTS LOGIC -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(() => { initializeDashboard(); });
+
+    // --- PASTE YOUR JSON DATASET HERE ---
+  const dataset = [
+    // MEDICAL & HEALTH
+    {name: 'Bachelor of Medicine (MBBS)', cat: 'Medical & Health', min: 7.2, max: 12.0, dur: 5.5, demand: 10, type: 'Top Paid'},
+    {name: 'Bachelor of Dental Surgery (BDS)', cat: 'Medical & Health', min: 3.0, max: 6.0, dur: 5, demand: 8, type: 'High Demand'},
+    {name: 'Bachelor of Ayurvedic Med (BAMS)', cat: 'Medical & Health', min: 3.0, max: 7.2, dur: 5.5, demand: 7, type: 'General'},
+    {name: 'Bachelor of Homeopathic Med (BHMS)', cat: 'Medical & Health', min: 2.4, max: 6.0, dur: 5.5, demand: 6, type: 'General'},
+    {name: 'Bachelor of Unani Medicine (BUMS)', cat: 'Medical & Health', min: 2.4, max: 6.0, dur: 5.5, demand: 6, type: 'General'},
+    {name: 'Bachelor of Veterinary Science', cat: 'Medical & Health', min: 3.6, max: 8.4, dur: 5.5, demand: 8, type: 'Top Paid'},
+    {name: 'Bachelor of Physiotherapy (BPT)', cat: 'Medical & Health', min: 2.4, max: 4.8, dur: 4.5, demand: 8, type: 'High Demand'},
+    {name: 'Bachelor of Occupational Therapy', cat: 'Medical & Health', min: 2.4, max: 4.8, dur: 4.5, demand: 7, type: 'General'},
+    {name: 'B.Sc. in Dietetics and Nutrition', cat: 'Medical & Health', min: 2.2, max: 4.2, dur: 3, demand: 7, type: 'General'},
+    {name: 'B.Sc. in Medical Lab Tech (MLT)', cat: 'Medical & Health', min: 1.8, max: 3.0, dur: 4, demand: 8, type: 'General'},
+    {name: 'B.Sc. in Nursing', cat: 'Medical & Health', min: 2.2, max: 3.6, dur: 4, demand: 9, type: 'High Demand'},
+    {name: 'B.Sc. in Optometry', cat: 'Medical & Health', min: 2.4, max: 4.8, dur: 4, demand: 8, type: 'General'},
+    {name: 'B.Sc. in Perfusion Technology', cat: 'Medical & Health', min: 3.6, max: 7.2, dur: 4, demand: 9, type: 'High Demand'},
+    {name: 'B.Sc. in Radiography and Imaging', cat: 'Medical & Health', min: 2.2, max: 3.6, dur: 4, demand: 8, type: 'General'},
+    {name: 'Bachelor of Pharmacy (B.Pharm)', cat: 'Medical & Health', min: 2.5, max: 5.0, dur: 4, demand: 8, type: 'General'},
+
+    // ENGINEERING
+    {name: 'B.Sc. in Electronics', cat: 'Engineering', min: 1.8, max: 3.6, dur: 3, demand: 6, type: 'General'},
+    {name: 'B.Sc. in Nautical Science', cat: 'Engineering', min: 18.0, max: 48.0, dur: 4, demand: 8, type: 'Top Paid'},
+    {name: 'B.Tech/B.E. in Aeronautical Eng', cat: 'Engineering', min: 3.6, max: 7.2, dur: 4, demand: 7, type: 'General'},
+    {name: 'B.Tech/B.E. in Agricultural Eng', cat: 'Engineering', min: 3.0, max: 6.0, dur: 4, demand: 7, type: 'General'},
+    {name: 'B.Tech/B.E. in AI & ML', cat: 'Engineering', min: 5.0, max: 12.0, dur: 4, demand: 10, type: 'Top Paid'},
+    {name: 'B.Tech/B.E. in Automobile Eng', cat: 'Engineering', min: 3.5, max: 7.0, dur: 4, demand: 8, type: 'High Demand'},
+    {name: 'B.Tech/B.E. in Biomedical Eng', cat: 'Engineering', min: 3.0, max: 6.0, dur: 4, demand: 7, type: 'General'},
+    {name: 'B.Tech/B.E. in Biotechnology Eng', cat: 'Engineering', min: 3.0, max: 6.0, dur: 4, demand: 7, type: 'General'},
+    {name: 'B.Tech/B.E. in Ceramic Eng', cat: 'Engineering', min: 3.0, max: 6.0, dur: 4, demand: 5, type: 'General'},
+    {name: 'B.Tech/B.E. in Chemical Eng', cat: 'Engineering', min: 4.5, max: 8.0, dur: 4, demand: 8, type: 'High Demand'},
+    {name: 'B.Tech/B.E. in Civil Eng', cat: 'Engineering', min: 3.0, max: 6.0, dur: 4, demand: 8, type: 'General'},
+    {name: 'B.Tech/B.E. in Computer Eng', cat: 'Engineering', min: 4.0, max: 10.0, dur: 4, demand: 10, type: 'Top Paid'},
+    {name: 'B.Tech/B.E. in CSE', cat: 'Engineering', min: 4.0, max: 15.0, dur: 4, demand: 10, type: 'Top Paid'},
+    {name: 'B.Tech/B.E. in Cyber Security', cat: 'Engineering', min: 4.5, max: 10.0, dur: 4, demand: 10, type: 'Top Paid'},
+    {name: 'B.Tech/B.E. in EEE', cat: 'Engineering', min: 4.5, max: 8.0, dur: 4, demand: 8, type: 'General'},
+    {name: 'B.Tech/B.E. in ECE', cat: 'Engineering', min: 3.5, max: 8.0, dur: 4, demand: 9, type: 'High Demand'},
+    {name: 'B.Tech/B.E. in Electronics Eng', cat: 'Engineering', min: 3.5, max: 7.0, dur: 4, demand: 8, type: 'General'},
+    {name: 'B.Tech/B.E. in Environmental Eng', cat: 'Engineering', min: 3.0, max: 6.0, dur: 4, demand: 7, type: 'General'},
+    {name: 'B.Tech/B.E. in Food Technology', cat: 'Engineering', min: 3.5, max: 7.0, dur: 4, demand: 8, type: 'General'},
+    {name: 'B.Tech/B.E. in Genetic Eng', cat: 'Engineering', min: 4.0, max: 8.0, dur: 4, demand: 7, type: 'General'},
+    {name: 'B.Tech/B.E. in Industrial Eng', cat: 'Engineering', min: 4.0, max: 8.0, dur: 4, demand: 8, type: 'High Demand'},
+    {name: 'B.Tech/B.E. in Instrumentation Eng', cat: 'Engineering', min: 3.5, max: 7.0, dur: 4, demand: 8, type: 'General'},
+    {name: 'B.Tech/B.E. in Marine Eng', cat: 'Engineering', min: 14.4, max: 42.0, dur: 5, demand: 8, type: 'Top Paid'},
+    {name: 'B.Tech/B.E. in Materials Science', cat: 'Engineering', min: 3.5, max: 7.0, dur: 4, demand: 7, type: 'General'},
+    {name: 'B.Tech/B.E. in Mechanical Eng', cat: 'Engineering', min: 4.0, max: 8.0, dur: 4, demand: 9, type: 'High Demand'},
+    {name: 'B.Tech/B.E. in Mechatronics Eng', cat: 'Engineering', min: 4.0, max: 8.0, dur: 4, demand: 9, type: 'High Demand'},
+    {name: 'B.Tech/B.E. in Metallurgical Eng', cat: 'Engineering', min: 4.0, max: 7.0, dur: 4, demand: 7, type: 'General'},
+    {name: 'B.Tech/B.E. in Mining Eng', cat: 'Engineering', min: 5.0, max: 10.0, dur: 4, demand: 8, type: 'Top Paid'},
+    {name: 'B.Tech/B.E. in Nanotechnology', cat: 'Engineering', min: 4.0, max: 8.0, dur: 4, demand: 6, type: 'General'},
+    {name: 'B.Tech/B.E. in Nuclear Eng', cat: 'Engineering', min: 7.0, max: 12.0, dur: 4, demand: 7, type: 'Top Paid'},
+    {name: 'B.Tech/B.E. in Petroleum Eng', cat: 'Engineering', min: 6.0, max: 15.0, dur: 4, demand: 8, type: 'Top Paid'},
+    {name: 'B.Tech/B.E. in Plastic Engineering', cat: 'Engineering', min: 3.0, max: 6.0, dur: 4, demand: 6, type: 'General'},
+    {name: 'B.Tech/B.E. in Polymer Engineering', cat: 'Engineering', min: 3.5, max: 7.0, dur: 4, demand: 7, type: 'General'},
+    {name: 'B.Tech/B.E. in Production Eng', cat: 'Engineering', min: 3.5, max: 7.0, dur: 4, demand: 8, type: 'General'},
+    {name: 'B.Tech/B.E. in Robotics Eng', cat: 'Engineering', min: 4.5, max: 10.0, dur: 4, demand: 9, type: 'Top Paid'},
+    {name: 'B.Tech/B.E. in Software Eng', cat: 'Engineering', min: 4.0, max: 15.0, dur: 4, demand: 10, type: 'Top Paid'},
+    {name: 'Bachelor of Fashion Tech', cat: 'Engineering', min: 3.0, max: 6.0, dur: 4, demand: 8, type: 'General'},
+    {name: 'Integrated B.Tech + M.Tech', cat: 'Engineering', min: 8.0, max: 20.0, dur: 5, demand: 9, type: 'Top Paid'},
+
+    // IT & COMPUTER
+    {name: 'B.Sc. in Computer Science', cat: 'IT & Computer', min: 2.5, max: 5.0, dur: 3, demand: 8, type: 'General'},
+    {name: 'B.Sc. in Data Science', cat: 'IT & Computer', min: 3.5, max: 7.0, dur: 3, demand: 9, type: 'High Demand'},
+    {name: 'B.Sc. in Information Tech (IT)', cat: 'IT & Computer', min: 2.2, max: 4.5, dur: 3, demand: 8, type: 'General'},
+    {name: 'B.Tech/B.E. in Info Science', cat: 'IT & Computer', min: 4.0, max: 12.0, dur: 4, demand: 10, type: 'Top Paid'},
+    {name: 'B.Tech/B.E. in IT', cat: 'IT & Computer', min: 3.5, max: 10.0, dur: 4, demand: 10, type: 'Top Paid'},
+    {name: 'Bachelor of Computer App (BCA)', cat: 'IT & Computer', min: 2.5, max: 5.0, dur: 3, demand: 8, type: 'General'},
+    {name: 'Bachelor of Information Mgmt (BIM)', cat: 'IT & Computer', min: 3.0, max: 6.0, dur: 3.5, demand: 8, type: 'General'},
+
+    // SCIENCE
+    {name: 'B.Sc. in Biochemistry', cat: 'Science', min: 2.2, max: 3.6, dur: 3, demand: 6, type: 'General'},
+    {name: 'B.Sc. in Biology', cat: 'Science', min: 1.8, max: 3.0, dur: 3, demand: 5, type: 'General'},
+    {name: 'B.Sc. in Biotechnology', cat: 'Science', min: 2.2, max: 3.6, dur: 3, demand: 7, type: 'General'},
+    {name: 'B.Sc. in Botany', cat: 'Science', min: 1.8, max: 3.0, dur: 3, demand: 5, type: 'General'},
+    {name: 'B.Sc. in Chemistry', cat: 'Science', min: 2.2, max: 3.6, dur: 3, demand: 7, type: 'General'},
+    {name: 'B.Sc. in Environmental Science', cat: 'Science', min: 2.4, max: 4.2, dur: 3, demand: 7, type: 'General'},
+    {name: 'B.Sc. in Food Technology', cat: 'Science', min: 2.2, max: 3.6, dur: 3, demand: 7, type: 'General'},
+    {name: 'B.Sc. in Forensic Science', cat: 'Science', min: 2.2, max: 3.6, dur: 3, demand: 7, type: 'General'},
+    {name: 'B.Sc. in Geology', cat: 'Science', min: 3.0, max: 5.4, dur: 3, demand: 7, type: 'General'},
+    {name: 'B.Sc. in Mathematics', cat: 'Science', min: 3.0, max: 4.8, dur: 3, demand: 7, type: 'General'},
+    {name: 'B.Sc. in Microbiology', cat: 'Science', min: 2.2, max: 3.6, dur: 3, demand: 7, type: 'General'},
+    {name: 'B.Sc. in Physics', cat: 'Science', min: 2.2, max: 3.6, dur: 3, demand: 6, type: 'General'},
+    {name: 'B.Sc. in Statistics', cat: 'Science', min: 3.0, max: 5.4, dur: 3, demand: 8, type: 'General'},
+    {name: 'B.Sc. in Zoology', cat: 'Science', min: 1.8, max: 3.0, dur: 3, demand: 5, type: 'General'},
+    {name: 'Integrated M.Sc.', cat: 'Science', min: 5.0, max: 9.0, dur: 5, demand: 8, type: 'Top Paid'},
+
+    // AGRICULTURE & ALLIED
+    {name: 'B.Sc. in Agriculture', cat: 'Agriculture & Allied', min: 2.4, max: 4.8, dur: 4, demand: 8, type: 'General'},
+    {name: 'B.Sc. in Horticulture', cat: 'Agriculture & Allied', min: 2.4, max: 4.2, dur: 4, demand: 7, type: 'General'},
+
+    // ARTS, HUMANITIES & LAW
+    {name: 'BA in English', cat: 'Arts, Humanities & Law', min: 2.0, max: 4.5, dur: 3, demand: 6, type: 'General'},
+    {name: 'BA in History', cat: 'Arts, Humanities & Law', min: 2.0, max: 4.0, dur: 3, demand: 5, type: 'General'},
+    {name: 'BA in Journalism and Mass Comm', cat: 'Arts, Humanities & Law', min: 2.5, max: 5.0, dur: 3, demand: 7, type: 'General'},
+    {name: 'BA in Political Science', cat: 'Arts, Humanities & Law', min: 2.5, max: 5.0, dur: 3, demand: 6, type: 'General'},
+    {name: 'BA in Psychology', cat: 'Arts, Humanities & Law', min: 2.0, max: 4.0, dur: 3, demand: 7, type: 'General'},
+    {name: 'BA in Sociology', cat: 'Arts, Humanities & Law', min: 2.0, max: 4.5, dur: 3, demand: 5, type: 'General'},
+    {name: 'Bachelor of Law (LLB)', cat: 'Arts, Humanities & Law', min: 3.0, max: 8.0, dur: 3, demand: 8, type: 'General'},
+    {name: 'Integrated BA LLB', cat: 'Arts, Humanities & Law', min: 6.0, max: 18.0, dur: 5, demand: 9, type: 'Top Paid'},
+    {name: 'Integrated B.Sc. LLB', cat: 'Arts, Humanities & Law', min: 7.0, max: 20.0, dur: 5, demand: 9, type: 'Top Paid'},
+    {name: 'Integrated B.Com LLB', cat: 'Arts, Humanities & Law', min: 8.0, max: 20.0, dur: 5, demand: 9, type: 'Top Paid'},
+    {name: 'Bachelor of Journalism (BJMC)', cat: 'Arts, Humanities & Law', min: 2.5, max: 5.0, dur: 3, demand: 7, type: 'General'},
+    {name: 'Bachelor of Legis Law (BLS LLB)', cat: 'Arts, Humanities & Law', min: 6.0, max: 18.0, dur: 5, demand: 9, type: 'Top Paid'},
+    {name: 'Integrated BBA + LLB', cat: 'Arts, Humanities & Law', min: 12.0, max: 22.0, dur: 5, demand: 10, type: 'Top Paid'},
+
+    // COMMERCE & MANAGEMENT
+    {name: 'BA in Economics', cat: 'Commerce & Management', min: 2.5, max: 5.0, dur: 3, demand: 7, type: 'General'},
+    {name: 'Bachelor of Business Admin (BBA)', cat: 'Commerce & Management', min: 2.5, max: 5.0, dur: 3, demand: 8, type: 'High Demand'},
+    {name: 'Bachelor of Commerce (B.Com)', cat: 'Commerce & Management', min: 2.0, max: 4.5, dur: 3, demand: 8, type: 'General'},
+    {name: 'Bachelor of Business Economics', cat: 'Commerce & Management', min: 3.5, max: 7.0, dur: 3, demand: 8, type: 'General'},
+    {name: 'Bachelor of Public Relations', cat: 'Commerce & Management', min: 2.5, max: 5.0, dur: 3, demand: 7, type: 'General'},
+    {name: 'Bachelor of Sports Mgmt', cat: 'Commerce & Management', min: 2.5, max: 5.0, dur: 3, demand: 6, type: 'General'},
+    {name: 'Integrated MBA', cat: 'Commerce & Management', min: 8.0, max: 20.0, dur: 5, demand: 9, type: 'Top Paid'},
+
+    // ARTS & DESIGN
+    {name: 'Bachelor of Architecture (B.Arch)', cat: 'Arts & Design', min: 2.5, max: 5.0, dur: 5, demand: 7, type: 'General'},
+    {name: 'Bachelor of Fine Arts (BFA)', cat: 'Arts & Design', min: 2.0, max: 4.5, dur: 3.5, demand: 4, type: 'General'},
+    {name: 'Bachelor of Design (B.Des)', cat: 'Arts & Design', min: 3.0, max: 7.0, dur: 4, demand: 8, type: 'General'},
+    {name: 'Bachelor of Interior Design', cat: 'Arts & Design', min: 2.5, max: 5.0, dur: 3.5, demand: 7, type: 'General'},
+    {name: 'Bachelor of Performing Arts (BPA)', cat: 'Arts & Design', min: 1.8, max: 3.5, dur: 3, demand: 4, type: 'General'},
+    {name: 'Bachelor of Film and Television', cat: 'Arts & Design', min: 1.8, max: 4.0, dur: 3, demand: 6, type: 'General'},
+    {name: 'Bachelor of Multimedia (BMM)', cat: 'Arts & Design', min: 2.5, max: 5.0, dur: 3, demand: 8, type: 'General'},
+    {name: 'Bachelor of Visual Arts (BVA)', cat: 'Arts & Design', min: 2.5, max: 5.0, dur: 3.5, demand: 5, type: 'General'},
+
+    // HOSPITALITY & TOURISM
+    {name: 'Bachelor of Hotel Mgmt (BHM)', cat: 'Hospitality & Tourism', min: 2.5, max: 4.5, dur: 3.5, demand: 7, type: 'General'},
+    {name: 'B.Sc. Aviation (Ground Staff)', cat: 'Hospitality & Tourism', min: 2.5, max: 5.0, dur: 3, demand: 7, type: 'General'},
+    {name: 'Bachelor of Event Mgmt (BEM)', cat: 'Hospitality & Tourism', min: 2.0, max: 4.5, dur: 3, demand: 7, type: 'General'},
+    {name: 'Bachelor of Hospitality Mgmt (BHTM)', cat: 'Hospitality & Tourism', min: 2.5, max: 5.0, dur: 3.5, demand: 7, type: 'General'},
+    {name: 'Bachelor of Travel and Tourism', cat: 'Hospitality & Tourism', min: 2.0, max: 4.5, dur: 3, demand: 7, type: 'General'},
+
+    // EDUCATION & OTHERS
+    {name: 'Bachelor of Education (B.Ed)', cat: 'Education & Others', min: 2.4, max: 4.8, dur: 2, demand: 7, type: 'General'},
+    {name: 'Diploma in Elem Education (D.El.Ed)', cat: 'Education & Others', min: 1.8, max: 3.6, dur: 2, demand: 7, type: 'General'},
+    {name: 'Bachelor of Social Work (BSW)', cat: 'Education & Others', min: 1.8, max: 3.5, dur: 3, demand: 6, type: 'General'},
+    {name: 'Bachelor of Rural Studies (BRS)', cat: 'Education & Others', min: 2.0, max: 4.0, dur: 3, demand: 6, type: 'General'},
+    {name: 'Bachelor of Library Science', cat: 'Education & Others', min: 2.0, max: 4.5, dur: 1, demand: 6, type: 'General'},
+    {name: 'Bachelor of Physical Ed (B.P.Ed)', cat: 'Education & Others', min: 2.5, max: 5.0, dur: 2, demand: 7, type: 'General'},
+    {name: 'Integrated B.Ed + M.Ed', cat: 'Education & Others', min: 4.5, max: 8.0, dur: 3, demand: 7, type: 'General'},
+    {name: 'Integrated BA + B.Ed', cat: 'Education & Others', min: 2.4, max: 4.8, dur: 4, demand: 7, type: 'General'},
+    {name: 'Integrated B.Sc + B.Ed', cat: 'Education & Others', min: 3.0, max: 5.4, dur: 4, demand: 8, type: 'General'},
+
+    // VOCATIONAL
+    {name: 'Bachelor of Voc Studies (B.Voc)', cat: 'Vocational & Skill-Based', min: 1.8, max: 4.5, dur: 3, demand: 7, type: 'General'}
+];
+
+    let selectedCat = "Engineering";
+    let selectedDur = 3;
+
+    function initializeDashboard() {
+        if(dataset.length === 0) {
+            document.querySelectorAll('.chart-box').forEach(el => el.innerHTML = "<p style='padding:20px; color:red;'>Data Missing: Please paste the JSON dataset into the script.</p>");
+            return;
+        }
+        createSlicer('catList', 'cat', (val) => { selectedCat = val; drawCharts(); });
+        createSlicer('durList', 'dur', (val) => { selectedDur = parseFloat(val); drawCharts(); });
+        drawCharts();
+    }
+
+    function createSlicer(elementId, key, callback) {
+        const container = document.getElementById(elementId);
+        const uniqueValues = [...new Set(dataset.map(item => item[key]))].sort((a, b) => {
+            return (typeof a === 'number') ? b - a : a.localeCompare(b);
+        });
+
+        uniqueValues.forEach(val => {
+            const item = document.createElement('div');
+            item.className = 'slicer-item' + (val == (key === 'cat' ? selectedCat : selectedDur) ? ' active' : '');
+            item.innerText = (key === 'dur') ? val + " Year(s)" : val;
+            
+            item.onclick = function() {
+                Array.from(container.children).forEach(child => child.classList.remove('active'));
+                this.classList.add('active');
+                callback(val);
+            };
+            container.appendChild(item);
+        });
+    }
+
+    function drawCharts() {
+        const limit = parseInt(document.getElementById('limitSlicer').value);
+
+        // CHART 1: VERTICAL BAR (Category Salary)
+        const d1 = new google.visualization.DataTable();
+        d1.addColumn('string', 'Course');
+        d1.addColumn('number', 'Min Salary');
+        d1.addColumn('number', 'Max Salary');
+        dataset.filter(d => d.cat === selectedCat).slice(0, limit).forEach(d => d1.addRow([d.name, d.min, d.max]));
+        
+        new google.visualization.ColumnChart(document.getElementById('bar_chart_div')).draw(d1, {
+            title: `Salary Range: ${selectedCat} (Top ${limit})`,
+            colors: ['#4A90E2', '#0056b3'],
+            legend: { position: 'top' },
+            animation: { startup: true, duration: 500, easing: 'out' },
+            vAxis: { title: 'LPA (INR)' }
+        });
+
+        // CHART 2: LINE CHART (Demand)
+        const d2 = new google.visualization.DataTable();
+        d2.addColumn('string', 'Course');
+        d2.addColumn('number', 'Demand');
+        dataset.filter(d => d.cat === selectedCat).slice(0, limit).forEach(d => d2.addRow([d.name, d.demand]));
+        
+        new google.visualization.LineChart(document.getElementById('line_chart_div')).draw(d2, {
+            title: `Demand Trend: ${selectedCat} (Top ${limit})`,
+            colors: ['#FF9900'],
+            pointsVisible: true,
+            curveType: 'function',
+            vAxis: { title: 'Demand (1-10)', minValue: 0, maxValue: 10 }
+        });
+
+        // CHART 3: HORIZONTAL BAR (Duration Market Value)
+        const d3 = new google.visualization.DataTable();
+        d3.addColumn('string', 'Course');
+        d3.addColumn('number', 'Max Salary');
+        dataset.filter(d => d.dur === selectedDur).slice(0, limit).forEach(d => d3.addRow([d.name, d.max]));
+        
+        new google.visualization.BarChart(document.getElementById('horiz_chart_div')).draw(d3, {
+            title: `Market Value: ${selectedDur} Year Courses (Top ${limit})`,
+            colors: ['#28a745'],
+            legend: { position: 'none' },
+            hAxis: { title: 'Max Salary LPA' }
+        });
+    }
+
+    window.onresize = drawCharts;
+</script>
+       <footer class="footer">
+            <p>&copy; 2024 Career Pathways India. All data is for representational purposes.</p>
+        </footer>
+    </div>
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-workbox.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+</body>
+</html>

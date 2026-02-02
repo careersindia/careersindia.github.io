@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Analysis: Post-Graduation & Professional Courses | Campus India</title>
+<link rel="manifest" href="/manifest_7.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+
+<style>
+    :root {
+        --primary-color: #0056b3;
+        --secondary-color: #4A90E2;
+        --text-dark: #333;
+        --text-light: #666;
+        --bg-light: #f4f7f9;
+        --bg-white: #ffffff;
+        --border-color: #e0e0e0;
+        --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; margin: 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+    .header { text-align: center; margin-bottom: 40px; }
+    .header h1 { font-size: 2.2rem; font-weight: 700; color: var(--primary-color); margin-bottom: 10px; }
+    
+    /* PREVENTS PAGE JUMPING */
+    .dashboard-wrapper { min-height: 1800px; display: flex; flex-direction: column; gap: 30px; }
+
+    /* SLICER BUTTON LISTS */
+    .slicer-container { 
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 20px; 
+        background: #fff; 
+        padding: 20px; 
+        border-radius: 12px; 
+        border: 1px solid var(--border-color);
+        box-shadow: var(--shadow);
+    }
+    .slicer-box { flex: 1; min-width: 250px; }
+    .slicer-box label { font-weight: 700; color: var(--primary-color); display: block; margin-bottom: 10px; font-size: 0.85rem; text-transform: uppercase; }
+    
+    .slicer-list { 
+        height: 160px; 
+        overflow-y: auto; 
+        border: 1px solid #ddd; 
+        border-radius: 6px; 
+        background: #fdfdfd; 
+    }
+    .slicer-item { 
+        padding: 8px 12px; 
+        cursor: pointer; 
+        border-bottom: 1px solid #eee; 
+        font-size: 0.85rem; 
+        transition: all 0.2s;
+    }
+    .slicer-item:hover { background: #f0f7ff; }
+    .slicer-item.active { background: var(--primary-color); color: #fff; font-weight: 600; }
+
+    .limit-box { background: #eef5ff; padding: 15px; border-radius: 8px; display: flex; flex-direction: column; gap: 8px; border: 1px solid #cce0ff; }
+    .limit-box select { padding: 8px; border-radius: 4px; border: 1px solid var(--primary-color); font-family: 'Poppins'; }
+
+    /* CHART BOXES */
+    .chart-box { 
+        background: #fff; 
+        padding: 20px; 
+        border-radius: 12px; 
+        box-shadow: var(--shadow); 
+        border: 1px solid #eee; 
+        height: 500px; 
+    }
+
+    .footer { text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid var(--border-color); color: var(--text-light); }
+    .home-button-container { position: fixed; top: 20px; right: 25px; z-index: 1000; }
+    .home-button-container a img { width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: transform 0.2s; }
+    .home-button-container a:hover img { transform: scale(1.1); }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+           <h1>Advanced Salary Analysis: Masters & Professional Courses</h1>
+            <p>Compare Master's degrees, M.Tech specializations, PG Diplomas, and Global Certifications.</p>
+        </header>
+
+        <main class="dashboard-wrapper">
+            <!-- INTERACTIVE SLICERS -->
+            <div class="slicer-container">
+                <div class="slicer-box">
+                    <label>Industry Category</label>
+                    <div id="catList" class="slicer-list"></div>
+                </div>
+                <div class="slicer-box">
+                    <label>Duration Filter</label>
+                    <div id="durList" class="slicer-list"></div>
+                </div>
+                <div class="slicer-box" style="max-width: 250px;">
+                    <label>Viewing Preferences</label>
+                    <div class="limit-box">
+                        <span>Show Records:</span>
+                        <select id="limitSlicer" onchange="drawCharts()">
+                            <option value="5">Show Top 5</option>
+                            <option value="10">Show Top 10</option>
+                            <option value="20">Show Top 20</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- THREE VISUALIZATIONS -->
+            <div class="chart-box"><div id="bar_chart_div" style="width: 100%; height: 100%;"></div></div>
+            <div class="chart-box"><div id="line_chart_div" style="width: 100%; height: 100%;"></div></div>
+            <div class="chart-box"><div id="horiz_chart_div" style="width: 100%; height: 100%;"></div></div>
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; 2024 Career Pathways India. All data is representational based on industry averages.</p>
+        </footer>
+    </div>
+
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(() => { initDashboard(); });
+
+ const dataset = [
+    // MANAGEMENT & COMMERCE (MASTERS)
+    {name: 'MBA - General', cat: 'Management & Commerce', min: 7.0, max: 25.0, dur: 2, demand: 9, type: 'Top Paid'},
+    {name: 'MBA in Finance', cat: 'Management & Commerce', min: 8.0, max: 30.0, dur: 2, demand: 9, type: 'Top Paid'},
+    {name: 'MBA in Marketing', cat: 'Management & Commerce', min: 7.0, max: 28.0, dur: 2, demand: 9, type: 'Top Paid'},
+    {name: 'MBA in HRM', cat: 'Management & Commerce', min: 6.0, max: 20.0, dur: 2, demand: 8, type: 'High Demand'},
+    {name: 'MBA in Operations', cat: 'Management & Commerce', min: 8.0, max: 25.0, dur: 2, demand: 9, type: 'Top Paid'},
+    {name: 'MBA in Business Analytics', cat: 'Management & Commerce', min: 9.0, max: 35.0, dur: 2, demand: 10, type: 'Top Paid'},
+    {name: 'MBA in Data Analytics', cat: 'Management & Commerce', min: 9.0, max: 35.0, dur: 2, demand: 10, type: 'Top Paid'},
+    {name: 'MBA in IT Management', cat: 'Management & Commerce', min: 7.0, max: 22.0, dur: 2, demand: 8, type: 'High Demand'},
+    {name: 'M.Com - General', cat: 'Management & Commerce', min: 3.0, max: 6.0, dur: 2, demand: 6, type: 'General'},
+    {name: 'M.Com - Accounting', cat: 'Management & Commerce', min: 3.5, max: 7.0, dur: 2, demand: 7, type: 'General'},
+    {name: 'M.Com - Finance', cat: 'Management & Commerce', min: 4.0, max: 8.0, dur: 2, demand: 7, type: 'General'},
+    {name: 'M.Com - Banking & Insurance', cat: 'Management & Commerce', min: 3.5, max: 7.0, dur: 2, demand: 7, type: 'General'},
+    {name: 'M.Com - Business Economics', cat: 'Management & Commerce', min: 3.5, max: 6.5, dur: 2, demand: 6, type: 'General'},
+    {name: 'M.Com - Financial Management', cat: 'Management & Commerce', min: 4.0, max: 8.0, dur: 2, demand: 7, type: 'General'},
+    {name: 'M.Com - International Business', cat: 'Management & Commerce', min: 4.0, max: 7.5, dur: 2, demand: 7, type: 'General'},
+    {name: 'M.Com - Taxation', cat: 'Management & Commerce', min: 4.0, max: 8.0, dur: 2, demand: 7, type: 'General'},
+    {name: 'Master of Financial Mgmt (MFM)', cat: 'Management & Commerce', min: 5.0, max: 12.0, dur: 2, demand: 8, type: 'High Demand'},
+    {name: 'Master of Intl Business (MIB)', cat: 'Management & Commerce', min: 6.0, max: 15.0, dur: 2, demand: 8, type: 'Top Paid'},
+    {name: 'Master of Mgmt Studies (MMS)', cat: 'Management & Commerce', min: 6.0, max: 18.0, dur: 2, demand: 8, type: 'Top Paid'},
+    {name: 'Master of Hospital Admin (MHA)', cat: 'Management & Commerce', min: 5.0, max: 12.0, dur: 2, demand: 8, type: 'High Demand'},
+
+    // SCIENCE (M.Sc.)
+    {name: 'M.Sc. - Agriculture', cat: 'Science', min: 4.0, max: 8.0, dur: 2, demand: 8, type: 'High Demand'},
+    {name: 'M.Sc. - Analytical Chemistry', cat: 'Science', min: 4.0, max: 7.0, dur: 2, demand: 7, type: 'General'},
+    {name: 'M.Sc. - Applied Geology', cat: 'Science', min: 5.0, max: 10.0, dur: 2, demand: 8, type: 'High Demand'},
+    {name: 'M.Sc. - Applied Mathematics', cat: 'Science', min: 4.5, max: 9.0, dur: 2, demand: 8, type: 'High Demand'},
+    {name: 'M.Sc. - Biochemistry', cat: 'Science', min: 4.0, max: 8.0, dur: 2, demand: 7, type: 'General'},
+    {name: 'M.Sc. - Bioinformatics', cat: 'Science', min: 4.5, max: 9.0, dur: 2, demand: 8, type: 'High Demand'},
+    {name: 'M.Sc. - Biotechnology', cat: 'Science', min: 4.5, max: 9.0, dur: 2, demand: 8, type: 'High Demand'},
+    {name: 'M.Sc. - Chemistry', cat: 'Science', min: 4.0, max: 8.0, dur: 2, demand: 8, type: 'General'},
+    {name: 'M.Sc. - Computer Science', cat: 'Science', min: 5.0, max: 12.0, dur: 2, demand: 9, type: 'Top Paid'},
+    {name: 'M.Sc. - Data Science', cat: 'Science', min: 7.0, max: 18.0, dur: 2, demand: 10, type: 'Top Paid'},
+    {name: 'M.Sc. - Food Science & Tech', cat: 'Science', min: 4.5, max: 9.0, dur: 2, demand: 8, type: 'High Demand'},
+    {name: 'M.Sc. - Information Technology', cat: 'Science', min: 5.0, max: 12.0, dur: 2, demand: 9, type: 'Top Paid'},
+    {name: 'M.Sc. - Nanoscience', cat: 'Science', min: 5.5, max: 12.0, dur: 2, demand: 7, type: 'Top Paid'},
+    {name: 'M.Sc. - Physics', cat: 'Science', min: 4.0, max: 8.0, dur: 2, demand: 7, type: 'General'},
+    {name: 'M.Sc. - Statistics', cat: 'Science', min: 5.0, max: 12.0, dur: 2, demand: 9, type: 'Top Paid'},
+    {name: 'M.Sc. - Quantum Computing', cat: 'Science', min: 8.0, max: 20.0, dur: 2, demand: 7, type: 'Top Paid'},
+
+    // ENGINEERING (M.TECH)
+    {name: 'M.Tech. - Aerospace Eng', cat: 'Engineering', min: 7.0, max: 18.0, dur: 2, demand: 8, type: 'Top Paid'},
+    {name: 'M.Tech. - AI & ML', cat: 'Engineering', min: 10.0, max: 30.0, dur: 2, demand: 10, type: 'Top Paid'},
+    {name: 'M.Tech. - Biotechnology Eng', cat: 'Engineering', min: 6.5, max: 14.0, dur: 2, demand: 8, type: 'High Demand'},
+    {name: 'M.Tech. - Chemical Eng', cat: 'Engineering', min: 7.0, max: 16.0, dur: 2, demand: 8, type: 'Top Paid'},
+    {name: 'M.Tech. - Communication Eng', cat: 'Engineering', min: 7.0, max: 18.0, dur: 2, demand: 9, type: 'Top Paid'},
+    {name: 'M.Tech. - CSE', cat: 'Engineering', min: 8.0, max: 30.0, dur: 2, demand: 10, type: 'Top Paid'},
+    {name: 'M.Tech. - Cyber Security', cat: 'Engineering', min: 9.0, max: 25.0, dur: 2, demand: 10, type: 'Top Paid'},
+    {name: 'M.Tech. - Data Science', cat: 'Engineering', min: 10.0, max: 35.0, dur: 2, demand: 10, type: 'Top Paid'},
+    {name: 'M.Tech. - ECE', cat: 'Engineering', min: 7.0, max: 18.0, dur: 2, demand: 9, type: 'Top Paid'},
+    {name: 'M.Tech. - IT', cat: 'Engineering', min: 8.0, max: 25.0, dur: 2, demand: 9, type: 'Top Paid'},
+    {name: 'M.Tech. - Mechanical Eng', cat: 'Engineering', min: 6.5, max: 15.0, dur: 2, demand: 9, type: 'Top Paid'},
+    {name: 'M.Tech. - Robotics & Automation', cat: 'Engineering', min: 8.5, max: 22.0, dur: 2, demand: 9, type: 'Top Paid'},
+    {name: 'M.Tech. - Software Engineering', cat: 'Engineering', min: 8.0, max: 28.0, dur: 2, demand: 10, type: 'Top Paid'},
+    {name: 'M.Tech. - VLSI Design', cat: 'Engineering', min: 10.0, max: 40.0, dur: 2, demand: 10, type: 'Top Paid'},
+
+    // ARTS, HUMANITIES & LAW
+    {name: 'M.A. - Economics', cat: 'Arts, Humanities & Law', min: 5.0, max: 15.0, dur: 2, demand: 9, type: 'Top Paid'},
+    {name: 'M.A. - Psychology', cat: 'Arts, Humanities & Law', min: 4.0, max: 8.0, dur: 2, demand: 8, type: 'High Demand'},
+    {name: 'M.A. - Public Policy', cat: 'Arts, Humanities & Law', min: 6.0, max: 15.0, dur: 2, demand: 8, type: 'Top Paid'},
+    {name: 'M.A. - International Relations', cat: 'Arts, Humanities & Law', min: 5.0, max: 12.0, dur: 2, demand: 8, type: 'High Demand'},
+    {name: 'LL.M. - Corporate Law', cat: 'Arts, Humanities & Law', min: 7.0, max: 18.0, dur: 1.5, demand: 9, type: 'Top Paid'},
+    {name: 'LL.M. - Intellectual Property', cat: 'Arts, Humanities & Law', min: 7.0, max: 18.0, dur: 1.5, demand: 9, type: 'Top Paid'},
+    {name: 'Master of Social Work (MSW)', cat: 'Arts, Humanities & Law', min: 4.0, max: 8.0, dur: 2, demand: 7, type: 'General'},
+
+    // PG DIPLOMA (PGDM / PGD)
+    {name: 'PGDM - Business Analytics', cat: 'PG Diploma', min: 8.0, max: 25.0, dur: 1.5, demand: 10, type: 'Top Paid'},
+    {name: 'PGDM - Data Science', cat: 'PG Diploma', min: 9.0, max: 28.0, dur: 1.5, demand: 10, type: 'Top Paid'},
+    {name: 'PGDM - Investment Banking', cat: 'PG Diploma', min: 8.0, max: 20.0, dur: 1, demand: 9, type: 'Top Paid'},
+    {name: 'PG Diploma - Cyber Security', cat: 'PG Diploma', min: 5.0, max: 12.0, dur: 1, demand: 10, type: 'High Demand'},
+    {name: 'PG Diploma - AI & ML', cat: 'PG Diploma', min: 7.0, max: 18.0, dur: 1, demand: 10, type: 'Top Paid'},
+    {name: 'PG Diploma - Cloud Computing', cat: 'PG Diploma', min: 5.5, max: 14.0, dur: 1, demand: 9, type: 'Top Paid'},
+
+    // PROFESSIONAL CERTIFICATIONS
+    {name: 'Chartered Accountancy (CA)', cat: 'Professional Certification', min: 8.0, max: 20.0, dur: 3, demand: 10, type: 'Top Paid'},
+    {name: 'Financial Risk Manager (FRM)', cat: 'Professional Certification', min: 9.0, max: 25.0, dur: 1.5, demand: 9, type: 'Top Paid'},
+    {name: 'Chartered Financial Analyst (CFA)', cat: 'Professional Certification', min: 8.0, max: 25.0, dur: 3, demand: 9, type: 'Top Paid'},
+    {name: 'SAP FICO Certification', cat: 'Professional Certification', min: 6.0, max: 15.0, dur: 0.5, demand: 9, type: 'High Demand'},
+    {name: 'Supply Chain Management (Adv)', cat: 'Professional Certification', min: 5.0, max: 12.0, dur: 1, demand: 9, type: 'High Demand'}
+];
+
+    let selectedCat = "Management & Commerce";
+    let selectedDur = 2;
+
+    function initDashboard() {
+        createSlicer('catList', 'cat', (v) => { selectedCat = v; drawCharts(); });
+        createSlicer('durList', 'dur', (v) => { selectedDur = parseFloat(v); drawCharts(); });
+        drawCharts();
+    }
+
+    function createSlicer(elementId, key, callback) {
+        const container = document.getElementById(elementId);
+        const uniqueValues = [...new Set(dataset.map(d => d[key]))].sort((a,b) => (typeof a === 'number' ? b-a : a.localeCompare(b)));
+
+        uniqueValues.forEach(val => {
+            const item = document.createElement('div');
+            item.className = 'slicer-item' + (val == (key === 'cat' ? selectedCat : selectedDur) ? ' active' : '');
+            item.innerText = (key === 'dur') ? val + " Year(s)" : val;
+            item.onclick = function() {
+                Array.from(container.children).forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                callback(val);
+            };
+            container.appendChild(item);
+        });
+    }
+
+    function drawCharts() {
+        const limit = parseInt(document.getElementById('limitSlicer').value);
+
+        // Chart 1: Vertical Bar
+        const d1 = new google.visualization.DataTable();
+        d1.addColumn('string', 'Course'); d1.addColumn('number', 'Min Salary'); d1.addColumn('number', 'Max Salary');
+        dataset.filter(x => x.cat === selectedCat).slice(0, limit).forEach(x => d1.addRow([x.name, x.min, x.max]));
+        new google.visualization.ColumnChart(document.getElementById('bar_chart_div')).draw(d1, {
+            title: `Salary Range (LPA): ${selectedCat}`, colors: ['#4A90E2', '#0056b3'], legend: 'top', animation: {startup: true, duration: 500}
+        });
+
+        // Chart 2: Line Chart
+        const d2 = new google.visualization.DataTable();
+        d2.addColumn('string', 'Course'); d2.addColumn('number', 'Demand');
+        dataset.filter(x => x.cat === selectedCat).slice(0, limit).forEach(x => d2.addRow([x.name, x.demand]));
+        new google.visualization.LineChart(document.getElementById('line_chart_div')).draw(d2, {
+            title: `Demand Index (1-10): ${selectedCat}`, colors: ['#FF9900'], pointsVisible: true, curveType: 'function'
+        });
+
+        // Chart 3: Horizontal Bar
+        const d3 = new google.visualization.DataTable();
+        d3.addColumn('string', 'Course'); d3.addColumn('number', 'Max Salary');
+        dataset.filter(x => x.dur === selectedDur).slice(0, limit).forEach(x => d3.addRow([x.name, x.max]));
+        new google.visualization.BarChart(document.getElementById('horiz_chart_div')).draw(d3, {
+            title: `Courses with ${selectedDur} Year Duration`, colors: ['#28a745'], legend: 'none'
+        });
+    }
+
+    window.onresize = drawCharts;
+</script>
+
+    <footer class="footer">
+            <p>&copy; 2024 Career Pathways India. All data is for representational purposes.</p>
+        </footer>
+    </div>
+<div class="home-button-container">
+  <a href="/mainnow.html" title="Go to Home">
+    <img src="images/home-icon.png" alt="Home">
+  </a>
+</div>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-workbox.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully:', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+</body>
+</html>
