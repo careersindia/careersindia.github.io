@@ -880,10 +880,9 @@ body:has(.nav-menu.active) {
         if (!userInput) return;
         
         display.innerHTML = "<em>Consulting Campus India AI Counselor...</em>";
-        display.style.backgroundColor = '#e0fff4';
         btn.disabled = true;
 
-        // Using the stable v1 Gemini 1.5 Flash endpoint
+        // Use the stable v1 endpoint (as seen in your Google Console logs)
         const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
         
         try {
@@ -891,42 +890,33 @@ body:has(.nav-menu.active) {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    contents: [{ 
-                        parts: [{ 
-                            text: "You are an Indian Career Expert. Provide specific advice for Indian students regarding: " + userInput 
-                        }] 
-                    }]
+                    contents: [{ parts: [{ text: "Indian Career Expert: " + userInput }] }]
                 })
             });
 
             const data = await response.json();
 
-            if (response.ok && data.candidates && data.candidates[0].content) {
+            if (response.ok) {
                 let aiText = data.candidates[0].content.parts[0].text;
-                
-                // Simple formatting to make Markdown (**bold**) look nice in HTML
-                aiText = aiText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                aiText = aiText.replace(/\n/g, '<br>');
-                
+                // Format bold text and line breaks
+                aiText = aiText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
                 display.innerHTML = aiText;
                 display.style.backgroundColor = '#f4f4f4';
             } else {
-                throw new Error(data.error?.message || "Invalid response structure");
+                // This will tell you EXACTLY why Google is blocking the key
+                console.error("Google API Error:", data);
+                display.innerHTML = `<strong>Error from Google:</strong> ${data.error.message}<br><small>Status: ${data.error.status}</small>`;
+                display.style.backgroundColor = '#f8d7da';
             }
         } catch (error) {
-            console.error("AI Error:", error);
-            display.innerHTML = "<strong>System Calibration Required:</strong> The AI is currently busy. Please try asking your question again in a moment.";
-            display.style.backgroundColor = '#f8d7da';
+            display.innerHTML = "Connection Error. Please check your internet.";
         } finally {
             btn.disabled = false;
         }
     }
 
-    // Event Listeners
     document.getElementById('aiCounselorButton').addEventListener('click', getAiResponse);
-    document.getElementById('aiUserInput').addEventListener('keydown', (e) => { 
-        if (e.key === 'Enter') getAiResponse(); 
-    });
+    document.getElementById('aiUserInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') getAiResponse(); });
 </script>
     <script>
         // --- SCRIPT 5: COLLEGE APPLICATION TRACKER ---
