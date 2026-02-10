@@ -930,30 +930,107 @@ body:has(.nav-menu.active) {
 </script>
     <script>
         // --- SCRIPT 5: COLLEGE APPLICATION TRACKER ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const addBtn = document.getElementById('addAppBtn');
-            const appTableBody = document.getElementById('appTableBody');
-            const collegeNameInput = document.getElementById('collegeName');
-            const deadlineDateInput = document.getElementById('deadlineDate');
-            let applications = JSON.parse(localStorage.getItem('applications')) || [];
-            const saveApplications = () => { localStorage.setItem('applications', JSON.stringify(applications)); };
-            const renderApplications = () => {
-                if (!appTableBody) return;
-                appTableBody.innerHTML = '';
-                if (applications.length === 0) {
-                    appTableBody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No applications added yet.</td></tr>';
-                    return;
-                }
-                applications.forEach((app, index) => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `<td>${app.name}</td><td>${app.deadline}</td><td>...</td><td>...</td><td><button class="delete-btn" data-index="${index}"><i class="fas fa-trash-alt"></i></button></td>`;
-                    appTableBody.appendChild(row);
-                });
-            };
-            if(addBtn){ addBtn.addEventListener('click', () => { const name = collegeNameInput.value.trim(); const deadline = deadlineDateInput.value; if (name === '' || deadline === '') return; applications.push({ name: name, deadline: deadline, docs: {}, status: 'Not Started' }); saveApplications(); renderApplications(); collegeNameInput.value = ''; deadlineDateInput.value = ''; }); }
-            if(appTableBody){ appTableBody.addEventListener('click', (e) => { if (e.target.closest('.delete-btn')) { const index = e.target.closest('.delete-btn').dataset.index; if (confirm(`Delete ${applications[index].name}?`)) { applications.splice(index, 1); saveApplications(); renderApplications(); } } }); }
-            renderApplications();
+      // --- UPDATED SCRIPT 5: FUNCTIONAL COLLEGE APPLICATION TRACKER ---
+document.addEventListener('DOMContentLoaded', () => {
+    const addBtn = document.getElementById('addAppBtn');
+    const appTableBody = document.getElementById('appTableBody');
+    const collegeNameInput = document.getElementById('collegeName');
+    const deadlineDateInput = document.getElementById('deadlineDate');
+
+    // Load data
+    let applications = JSON.parse(localStorage.getItem('applications')) || [];
+
+    const saveApplications = () => { 
+        localStorage.setItem('applications', JSON.stringify(applications)); 
+    };
+
+    // Render the table
+    window.renderApplications = () => {
+        if (!appTableBody) return;
+        appTableBody.innerHTML = '';
+
+        if (applications.length === 0) {
+            appTableBody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No applications added yet.</td></tr>';
+            return;
+        }
+
+        applications.forEach((app, index) => {
+            const row = document.createElement('tr');
+            
+            // Create Status Dropdown
+            const statusOptions = ['Pending', 'In Progress', 'Applied', 'Accepted', 'Rejected', 'Waitlisted'];
+            let statusHtml = `<select onchange="updateApp(${index}, 'status', this.value)" style="padding:5px; border-radius:4px;">`;
+            statusOptions.forEach(opt => {
+                statusHtml += `<option value="${opt}" ${app.status === opt ? 'selected' : ''}>${opt}</option>`;
+            });
+            statusHtml += `</select>`;
+
+            row.innerHTML = `
+                <td><strong>${app.name}</strong></td>
+                <td>${app.deadline}</td>
+                <td>
+                    <button onclick="manageDocs(${index})" style="font-size:11px; padding:2px 8px; cursor:pointer;">
+                        <i class="fas fa-list-check"></i> Edit Checklist
+                    </button>
+                </td>
+                <td>${statusHtml}</td>
+                <td>
+                    <button class="delete-btn" onclick="deleteApp(${index})" style="color:red; background:none; border:none; cursor:pointer;">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            `;
+            appTableBody.appendChild(row);
         });
+    };
+
+    // Logic to Add
+    if(addBtn){ 
+        addBtn.addEventListener('click', () => { 
+            const name = collegeNameInput.value.trim(); 
+            const deadline = deadlineDateInput.value; 
+            if (name === '' || deadline === '') {
+                alert("Please enter both name and deadline");
+                return;
+            }
+            applications.push({ 
+                name: name, 
+                deadline: deadline, 
+                docs: "SOP, LOR, Transcript", // Default checklist
+                status: 'Pending' 
+            }); 
+            saveApplications(); 
+            renderApplications(); 
+            collegeNameInput.value = ''; 
+            deadlineDateInput.value = ''; 
+        }); 
+    }
+
+    // Global Functions for buttons
+    window.updateApp = (index, key, value) => {
+        applications[index][key] = value;
+        saveApplications();
+    };
+
+    window.deleteApp = (index) => {
+        if (confirm(`Remove ${applications[index].name}?`)) {
+            applications.splice(index, 1);
+            saveApplications();
+            renderApplications();
+        }
+    };
+
+    window.manageDocs = (index) => {
+        const currentDocs = applications[index].docs;
+        const newDocs = prompt("Update your Document Checklist (comma separated):", currentDocs);
+        if (newDocs !== null) {
+            updateApp(index, 'docs', newDocs);
+            alert("Checklist updated!");
+        }
+    };
+
+    renderApplications();
+});
     </script>
  <script type="text/javascript" src="https://s.skimresources.com/js/291720X1778810.skimlinks.js"></script>    
 
