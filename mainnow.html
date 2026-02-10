@@ -866,7 +866,7 @@ body:has(.nav-menu.active) {
     </script>
     
 <script>
-    // Correctly reconstructs your new API Key
+    // Reconstructing your API Key
     const p_1 = "AIza";
     const p_2 = "SyAo7zy3AlC0";
     const p_3 = "2W-PJwo2FuG5flo1VzC0zKA";
@@ -879,44 +879,54 @@ body:has(.nav-menu.active) {
         
         if (!userInput) return;
         
-        display.innerHTML = "<em>Consulting Campus India AI Counselor...</em>";
+        display.innerHTML = "<em>Consulting Campus India AI Counselor (Gemini 2.5)...</em>";
+        display.style.backgroundColor = '#e0fff4';
         btn.disabled = true;
 
-        // Use the stable v1 endpoint (as seen in your Google Console logs)
-        const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+        // UPDATED: Using v1beta and gemini-2.5-flash as per your project logs
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
         
         try {
             const response = await fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    contents: [{ parts: [{ text: "Indian Career Expert: " + userInput }] }]
+                    contents: [{ 
+                        parts: [{ 
+                            text: "You are an Indian Career Expert. Provide specific advice for Indian students regarding: " + userInput 
+                        }] 
+                    }]
                 })
             });
 
             const data = await response.json();
 
-            if (response.ok) {
+            if (response.ok && data.candidates && data.candidates[0].content) {
                 let aiText = data.candidates[0].content.parts[0].text;
-                // Format bold text and line breaks
-                aiText = aiText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+                
+                // Formatting Markdown to HTML
+                aiText = aiText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                aiText = aiText.replace(/\n/g, '<br>');
+                
                 display.innerHTML = aiText;
                 display.style.backgroundColor = '#f4f4f4';
             } else {
-                // This will tell you EXACTLY why Google is blocking the key
-                console.error("Google API Error:", data);
-                display.innerHTML = `<strong>Error from Google:</strong> ${data.error.message}<br><small>Status: ${data.error.status}</small>`;
-                display.style.backgroundColor = '#f8d7da';
+                // If it fails, show the specific error from your console
+                throw new Error(data.error?.message || "Check API Key Permissions");
             }
         } catch (error) {
-            display.innerHTML = "Connection Error. Please check your internet.";
+            console.error("AI Error:", error);
+            display.innerHTML = `<strong>Status:</strong> ${error.message}<br><small>Please ensure the 'Generative Language API' is enabled in your GCP Console.</small>`;
+            display.style.backgroundColor = '#f8d7da';
         } finally {
             btn.disabled = false;
         }
     }
 
     document.getElementById('aiCounselorButton').addEventListener('click', getAiResponse);
-    document.getElementById('aiUserInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') getAiResponse(); });
+    document.getElementById('aiUserInput').addEventListener('keydown', (e) => { 
+        if (e.key === 'Enter') getAiResponse(); 
+    });
 </script>
     <script>
         // --- SCRIPT 5: COLLEGE APPLICATION TRACKER ---
