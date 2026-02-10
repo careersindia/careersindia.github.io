@@ -1387,9 +1387,13 @@ function calculateNewStudentQuizResults(studentName) {
             winningZone = zone;
         }
     }
-
-    const recommendations = courseMappings.student[winningZone];
-    displayResults(studentName, winningZone, recommendations, true, scores, 'student'); // Pass scores and level for the popup
+// Sort all categories by score (Highest to Lowest)
+    const rankedZones = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
+    
+    // Pick the top item from each of the top 5 scoring categories
+    const recommendations = rankedZones.slice(0, 5).map(zone => courseMappings.student[zone][0]);
+    
+    displayResults(studentName, rankedZones[0], recommendations, scores, 'student');
 }
 
 
@@ -1434,34 +1438,59 @@ function calculateStandardQuizResults(studentName, educationLevel) {
         }
     }
     
-    let recommendedCourses = courseMappings[winningZone][educationLevel]
-                                .sort(() => 0.5 - Math.random())
-                                .slice(0, 5); 
+  // Sort all categories by score (Highest to Lowest)
+    const rankedZones = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
     
-    displayResults(studentName, winningZone, recommendedCourses, false, scores, educationLevel); // false for isStudent
+    // Pick the top item from each of the top 5 scoring categories for this specific level
+    const recommendations = rankedZones.slice(0, 5).map(zone => courseMappings[zone][educationLevel][0]);
+    
+    displayResults(studentName, rankedZones[0], recommendations, scores, educationLevel);
 }
 
 
 
 
-
-function displayResults(name, zone, recommendations, scores, educationLevel) {
+function displayResults(name, topZone, recommendations, scores, educationLevel) {
     document.getElementById('result-name').textContent = name;
     
-    let zoneDisplayName = zone.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    let zoneDisplayName = topZone.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     document.getElementById('result-zone').textContent = zoneDisplayName;
     
     const resultHeader = document.getElementById('result-header');
-    resultHeader.textContent = "Based on your profile, here are 5 recommended paths:";
+    resultHeader.textContent = "Your Personalized Career Roadmap:";
 
     const courseList = document.getElementById('course-list');
     courseList.innerHTML = '';
-    recommendations.forEach(item => {
+    
+    // 1. DISPLAY THE PRIMARY CATEGORY ITEM
+    if (recommendations.length > 0) {
+        const primaryLi = document.createElement('li');
+        primaryLi.style.borderLeft = "8px solid var(--neon-light)"; // Highlight the main one
+        primaryLi.style.backgroundColor = "rgba(57, 255, 20, 0.1)";
+        primaryLi.innerHTML = `<small style="color:var(--neon-light); display:block; font-size:0.6em;">PRIMARY FOCUS</small>${recommendations[0]}`;
+        courseList.appendChild(primaryLi);
+    }
+
+    // 2. INSERT THE NEW SUB-HEADING FOR OTHER INTERESTS
+    const otherHeading = document.createElement('div');
+    otherHeading.style.margin = "30px 0 15px 0";
+    otherHeading.style.color = "var(--turquoise-light)";
+    otherHeading.style.fontSize = "1.2em";
+    otherHeading.style.textAlign = "left";
+    otherHeading.style.textDecoration = "underline";
+    otherHeading.textContent = "OTHER CATEGORIES AS PER YOUR ANSWERS:";
+    courseList.appendChild(otherHeading);
+
+    // 3. DISPLAY THE REMAINING 4 CATEGORIES
+    recommendations.slice(1).forEach((item, index) => {
         const li = document.createElement('li');
-        li.textContent = item;
+        li.style.textAlign = "left";
+        li.style.fontSize = "0.9em"; // Slightly smaller to keep focus on primary
+        li.textContent = `${index + 1}. ${item}`;
         courseList.appendChild(li);
     });
 
+    // --- (Rest of the function logic for links and popup stays the same) ---
     const courseLink = document.getElementById('course-list-link');
     if (pageLinks[educationLevel]) {
         courseLink.href = pageLinks[educationLevel];
@@ -1473,28 +1502,21 @@ function displayResults(name, zone, recommendations, scores, educationLevel) {
     document.getElementById('quizForm').style.display = 'none';
     document.getElementById('results').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
 
     if (scores) {
-        const questions = quizData[educationLevel];
-        const maxScores = { realistic: 0, investigative: 0, artistic: 0, social: 0, enterprising: 0, conventional: 0 };
-        questions.forEach(q => {
-             if (q.category in maxScores) maxScores[q.category] += 5;
-        });
-
         const popupScoresDiv = document.getElementById('popup-scores');
         popupScoresDiv.innerHTML = ''; 
-        for (const category in scores) {
-            const percentage = maxScores[category] > 0 ? Math.round((scores[category] / maxScores[category]) * 100) : 0;
-            const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+        const questions = quizData[educationLevel];
+        const catCounts = {};
+        questions.forEach(q => catCounts[q.category] = (catCounts[q.category] || 0) + 5);
+        Object.keys(scores).sort((a, b) => scores[b] - scores[a]).forEach(category => {
+            const percentage = Math.round((scores[category] / catCounts[category]) * 100);
+            const categoryName = category.replace(/_/g, ' ').toUpperCase();
             popupScoresDiv.innerHTML += `<div>${categoryName}: <span>${percentage}%</span></div>`;
-        }
-
+        });
         document.getElementById('popup-overlay').style.display = 'flex';
     }
 }
-
-
 // --- SCRIPT FOR CLOSING POP-UP ---
 document.addEventListener('DOMContentLoaded', () => {
     const popupOverlay = document.getElementById('popup-overlay');
