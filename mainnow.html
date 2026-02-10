@@ -874,7 +874,8 @@ const part2 = "C02W-PJwo2FuG5flo1VzC0zKA";
 // Combine them only when the app runs
 const API_KEY = part1 + part2; 
 
-        const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+        / USE v1beta ENDPOINT - This is the only one that works for the standard "flash" name
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
         const aiUserInput = document.getElementById('aiUserInput');
         const aiCounselorButton = document.getElementById('aiCounselorButton');
         const aiResponseDiv = document.getElementById('aiResponse');
