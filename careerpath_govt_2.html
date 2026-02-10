@@ -280,7 +280,7 @@
                 
                 <div class="form-group">
                     <label for="interests"><i class="fas fa-flag-checkered"></i> Job Interests</label>
-                    <textarea id="interests" rows="4" placeholder="e.g., banking, railway, police, ssc, officer, defence..." required></textarea>
+                    <textarea id="interests" rows="4" placeholder="e.g., I like Banking.." required></textarea>
                 </div>
                 
                 <button type="button" id="generateBtn" class="generate-btn">
@@ -2204,68 +2204,98 @@ const govtExams = [
             }
         }
 
-        function generateJobPaths() {
-            // 1. Get user inputs
-            const qualificationLevel = document.getElementById('qualificationLevel').value;
-            const ageInput = document.getElementById('age');
-            const interestsInput = document.getElementById('interests');
+      function generateJobPaths() {
+    // 1. Get user inputs
+    const qualificationLevel = document.getElementById('qualificationLevel').value;
+    const ageInput = document.getElementById('age');
+    const interestsInput = document.getElementById('interests');
 
-            const userAge = parseInt(ageInput.value, 10);
-            const interests = interestsInput.value.toLowerCase().trim();
-            
-            // 2. Validation
-            if (isNaN(userAge) || interests === '') {
-                alert('Please fill in all the fields with valid information.');
-                return;
-            }
+    const userAge = parseInt(ageInput.value, 10);
+    const rawInterests = interestsInput.value.toLowerCase().trim();
+    
+    // 2. Validation
+    if (isNaN(userAge) || rawInterests === '') {
+        alert('Please fill in your age and interests.');
+        return;
+    }
 
-            // Check if govtExams object exists
-            if (typeof govtExams === 'undefined' || !Array.isArray(govtExams)) {
-                resultsContainer.innerHTML = `
-                <div id="message-box">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <h2>Data Object Missing</h2>
-                    <p>The <strong>'govtExams'</strong> JavaScript array could not be found. Please ensure it is correctly pasted into the script tag.</p>
-                </div>`;
-                paginationContainer.innerHTML = '';
-                courseTitleContainer.innerHTML = '';
-                return;
-            }
+    // 3. THE BLOCKER: Prevent entering specific exam names or codes
+    const forbidden = ['upsc', 'ssc', 'rrb', 'ibps', 'ias', 'ips', 'ifs', 'cgl', 'chsl', 'ntpc', 'clerk', 'exam'];
+    if (forbidden.some(word => rawInterests.includes(word))) {
+        alert("⚠️ DONT ENTER THE NAME OF THE EXAM. PLEASE ENTER YOUR INTERESTS (e.g., 'police force', 'district administration', 'banking', 'forest protection')");
+        return;
+    }
 
-            // 3. Filter the data
-            const stopWords = new Set(['and', 'or', 'in', 'for', 'a', 'an', 'the', 'my', 'is', 'are', 'of']);
-            const interestKeywords = interests.split(/[\s,]+/)
-                                              .map(k => k.trim())
-                                              .filter(k => k && !stopWords.has(k));
+    // 4. THE TRANSLATOR: Maps common interests to technical keywords in the Govt database
+    const hobbyMap = {
+        // --- ADMINISTRATION & POLICY ---
+        "collector": "ias", "administration": "administrative", "governance": "civil services", 
+        "officer": "officer", "government": "government", "policy": "policy",
 
-            if (interestKeywords.length === 0) {
-                alert('Please enter more specific job interests.');
-                return;
-            }
+        // --- DEFENCE & POLICE ---
+        "soldier": "agniveer", "army": "army", "navy": "navy", "airforce": "air force",
+        "pilot": "vayu", "ship": "naval", "defence": "defence", "police": "police", 
+        "uniform": "police", "inspector": "inspector", "crime": "investigation", 
+        "detective": "intelligence", "security": "security",
 
-            const filtered = govtExams.filter(exam => {
-                const ageRange = parseAge(exam.eligibility);
-                const meetsAge = userAge >= ageRange.min && userAge <= ageRange.max;
+        // --- FINANCE & COMMERCE ---
+        "money": "economics", "tax": "taxation", "gst": "gst", "income": "income tax",
+        "audit": "audit", "accounts": "accounting", "banking": "banking", "bank": "banking",
+        "loan": "banking", "stock": "stock", "wealth": "wealth",
 
-                const meetsQualification = checkQualification(exam.eligibility, qualificationLevel);
+        // --- TECHNICAL & SCIENCE ---
+     "rocket": "isro", "rockets": "isro", "space": "isro", "galaxy": "isro", 
+        "satellite": "isro", "satellites": "isro", "moon": "isro", "mars": "isro",
+        "scientist": "scientist", "scientists": "scientist", "research": "research",
+        "drdo": "drdo", "missile": "drdo", "missiles": "drdo", "weapon": "drdo",
 
-                const meetsInterests = interestKeywords.some(userKeyword => 
-                    exam.keywords.some(examKeyword => 
-                        examKeyword.toLowerCase().includes(userKeyword)
-                    )
-                );
-                return meetsAge && meetsQualification && meetsInterests;
+        // --- SOCIAL & OTHERS ---
+        "teaching": "teaching", "teacher": "teacher", "professor": "professor",
+        "forest": "forest", "wildlife": "wildlife", "nature": "conservation",
+        "lawyer": "judicial", "judge": "judicial", "court": "judicial",
+        "food": "fci", "postal": "post office", "train": "railway", "railway": "railway"
+    };
+
+    const fluff = ['i', 'like', 'love', 'enjoy', 'want', 'to', 'be', 'am', 'interested', 'and', 'the', 'a', 'job', 'naukri'];
+    let userWords = rawInterests.split(/[\s,]+/).filter(w => w.length > 2 && !fluff.includes(w));
+
+    // 5. FILTERING LOGIC
+    const filtered = govtExams.filter(exam => {
+        // Age Check
+        const ageRange = parseAge(exam.eligibility);
+        const meetsAge = userAge >= ageRange.min && userAge <= ageRange.max;
+        if (!meetsAge) return false;
+
+        // Qualification Check
+        const meetsQualification = checkQualification(exam.eligibility, qualificationLevel);
+        if (!meetsQualification) return false;
+
+        // Interest Check (Noun-Priority)
+        const examName = exam.name.toLowerCase();
+        const examKeys = exam.keywords.join(" ").toLowerCase();
+        const userNouns = userWords.filter(w => hobbyMap[w]);
+
+        if (userNouns.length > 0) {
+            // STRICTOR RULE: Result MUST match the specific domain mapped from the hobby
+            return userNouns.some(noun => {
+                const target = hobbyMap[noun];
+                return examName.includes(target) || examKeys.includes(target);
             });
-            
-            allFilteredExams = filtered.sort((a, b) => b.avgStartingSalary - a.avgStartingSalary);
-            currentIndex = 0;
-            
-            if (allFilteredExams.length > 0) {
-                displayExam(currentIndex);
-            } else {
-                displayNoResults();
-            }
+        } else {
+            // FALLBACK: Search by all meaningful words typed
+            return userWords.some(word => examName.includes(word) || examKeys.includes(word));
         }
+    });
+    
+    allFilteredExams = filtered.sort((a, b) => b.avgStartingSalary - a.avgStartingSalary);
+    currentIndex = 0;
+    
+    if (allFilteredExams.length > 0) {
+        displayExam(currentIndex);
+    } else {
+        displayNoResults();
+    }
+}
 
         function displayNoResults() {
              resultsContainer.innerHTML = `

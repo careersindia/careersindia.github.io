@@ -271,7 +271,7 @@
                 
                 <div class="form-group">
                     <label for="interests"><i class="fas fa-lightbulb"></i> Interests for Specialization</label>
-                    <textarea id="interests" rows="4" placeholder="e.g., MBA, data science, engineering, finance, law, design..." required></textarea>
+                    <textarea id="interests" rows="4" placeholder="e.g., I am interested in Law.." required></textarea>
                 </div>
                 
                 <button type="button" id="generateBtn" class="generate-btn">
@@ -8345,64 +8345,145 @@ const graduationCourses = [
         
         generateBtn.addEventListener('click', generateCareerPaths);
         
-        function generateCareerPaths() {
-            const percentageInput = document.getElementById('percentage');
-            const budgetInput = document.getElementById('budget');
-            const interestsInput = document.getElementById('interests');
+      function generateCareerPaths() {
+    const percentageInput = document.getElementById('percentage');
+    const budgetInput = document.getElementById('budget');
+    const interestsInput = document.getElementById('interests');
 
-            const userPercent = parseFloat(percentageInput.value);
-            const userBudget = parseFloat(budgetInput.value);
-            const interests = interestsInput.value.toLowerCase().trim();
-            
-            if (isNaN(userPercent) || isNaN(userBudget) || interests === '') {
-                alert('Please fill in all the fields with valid numbers and interests.');
-                return;
-            }
+    const userPercent = parseFloat(percentageInput.value);
+    const userBudget = parseFloat(budgetInput.value);
+    const rawInterests = interestsInput.value.toLowerCase().trim();
 
-            // Check if graduationCourses object exists
-            if (typeof graduationCourses === 'undefined' || !Array.isArray(graduationCourses)) {
-                resultsContainer.innerHTML = `
-                <div id="message-box">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <h2>Data Object Missing</h2>
-                    <p>The <strong>'graduationCourses'</strong> JavaScript array could not be found. Please ensure it is correctly pasted into the script tag.</p>
-                </div>`;
-                paginationContainer.innerHTML = '';
-                courseTitleContainer.innerHTML = '';
-                return;
-            }
+    if (isNaN(userPercent) || isNaN(userBudget) || rawInterests === '') {
+        alert('Please fill in all fields with valid numbers and interests.');
+        return;
+    }
 
-            const stopWords = new Set(['and', 'or', 'in', 'for', 'a', 'an', 'the', 'my', 'is', 'are', 'of']);
-            const interestKeywords = interests.split(/[\s,]+/)
-                                              .map(k => k.trim())
-                                              .filter(k => k && !stopWords.has(k));
+    // 1. THE BLOCKER: Prevent entering specific degree names or professional titles
+    const forbidden = ['mba', 'mtech', 'msc', 'ma', 'llm', 'pgdm', 'mcom', 'mca', 'phd', 'doctorate', 'chartered', 'master', 'post graduate'];
+    if (forbidden.some(word => rawInterests.includes(word))) {
+        alert("⚠️ DONT ENTER THE NAME OF THE COURSE. PLEASE ENTER YOUR SPECIALIZATION INTERESTS (e.g., 'analyzing data', 'corporate law', 'factory management', 'stock trading')");
+        return;
+    }
 
-            if (interestKeywords.length === 0) {
-                alert('Please enter more specific career interests.');
-                return;
-            }
+    // 2. THE TRANSLATOR: Maps common graduation-level interests to technical keywords in your database
+ const hobbyMap = {
+        // --- MANAGEMENT, STRATEGY & STARTUPS ---
+        "business": "management", "leading": "management", "leadership": "management", "startup": "entrepreneurship",
+        "managing": "management", "marketing": "marketing", "brand": "marketing", "sales": "marketing", 
+        "advertising": "marketing", "ads": "marketing", "branding": "marketing", "retail": "retail", 
+        "mall": "retail", "shop": "retail", "consumer": "marketing", "strategy": "management", 
+        "consulting": "management", "entrepreneur": "entrepreneurship", "owner": "entrepreneurship", 
+        "human": "hr", "people": "hr", "hiring": "hr", "recruitment": "hr", "training": "learning", 
+        "development": "learning", "logistics": "logistics", "supply": "supply", "chain": "supply", 
+        "warehouse": "logistics", "operations": "operations", "factory": "operations", "process": "operations",
+        "hospitality": "hotel", "hotel": "hotel", "resort": "hotel", "tourism": "tourism", "travel": "tourism",
 
-            const filtered = graduationCourses.filter(course => {
-                const meetsPercentage = userPercent >= course.minPercentage;
-                const meetsBudget = course.avgYearlyFees <= userBudget;
-                const meetsInterests = interestKeywords.some(userKeyword => 
-                    course.keywords.some(courseKeyword => 
-                        courseKeyword.toLowerCase().includes(userKeyword)
-                    )
-                );
-                return meetsPercentage && meetsBudget && meetsInterests;
+        // --- FINANCE, BANKING & COMMERCE ---
+        "money": "finance", "finance": "finance", "stocks": "stock", "shares": "stock", "trading": "stock",
+        "investment": "investment", "accounting": "accounting", "accounts": "accounting", "audit": "audit",
+        "tax": "taxation", "taxes": "taxation", "gst": "taxation", "income": "taxation", "banking": "banking", 
+        "bank": "banking", "loans": "banking", "credit": "banking", "wealth": "wealth", "portfolio": "portfolio",
+        "equity": "equity", "valuation": "valuation", "m&a": "investment", "budget": "financial", 
+        "insurance": "insurance", "lic": "insurance", "risk": "risk", "tally": "accounting", "ca": "chartered",
+
+        // --- DATA SCIENCE, AI & TECHNOLOGY ---
+        "coding": "software", "programming": "software", "developer": "software", "software": "software",
+        "data": "data science", "analytics": "analytics", "analyzing": "analytics", "stats": "statistics",
+        "numbers": "statistics", "mathematics": "mathematics", "math": "mathematics", "logic": "mathematics",
+        "ai": "artificial", "intelligence": "artificial", "robots": "robotics", "automation": "automation", 
+        "cyber": "cyber", "security": "security", "hacking": "cyber", "blockchain": "blockchain", 
+        "crypto": "blockchain", "cloud": "cloud", "aws": "cloud", "azure": "cloud", "pc": "computer", 
+        "web": "web", "website": "web", "app": "software", "application": "software", "python": "data science",
+        "java": "software", "fullstack": "web", "database": "it", "sql": "it", "server": "it",
+
+        // --- CORE ENGINEERING & R&D ---
+        "aeroplane": "aerospace", "planes": "aerospace", "aviation": "aerospace", "rocket": "aerospace",
+        "isro": "aerospace", "nasa": "aerospace", "flight": "aerospace", "machine": "mechanical", 
+        "machines": "mechanical", "engines": "mechanical", "factory": "manufacturing", "manufacturing": "manufacturing",
+        "chip": "vlsi", "chips": "vlsi", "circuits": "circuits", "electronics": "electronics", "hardware": "electronics",
+        "semiconductor": "vlsi", "chemical": "chemical", "energy": "energy", "solar": "energy", "wind": "energy", 
+        "power": "power", "grid": "power", "structures": "structural", "construction": "civil", "building": "civil",
+        "bridges": "civil", "roads": "civil", "environmental": "environmental", "pollution": "environmental",
+        "nanotech": "nanotechnology", "atoms": "physics", "quantum": "physics", "materials": "materials",
+
+        // --- MEDICAL, PHARMA & LIFE SCIENCES ---
+        "medicines": "pharmacy", "drugs": "pharmacy", "hospital": "hospital", "pharma": "pharmacy",
+        "clinical": "clinical", "trials": "clinical", "research": "research", "scientist": "research", 
+        "lab": "laboratory", "testing": "laboratory", "blood": "laboratory", "pathology": "laboratory",
+        "public": "public health", "health": "health", "anatomy": "anatomy", "body": "anatomy", 
+        "biochem": "biochemistry", "biology": "biology", "microbes": "microbiology", "bacteria": "microbiology",
+        "virus": "microbiology", "genetics": "genetics", "dna": "genetics", "biotech": "biotechnology",
+        "botany": "botany", "plants": "botany", "zoology": "zoology", "animals": "zoology", "pets": "veterinary",
+        "heart": "perfusion", "cardiac": "perfusion", "kidney": "dialysis", "eyes": "optometry", "vision": "optometry",
+
+        // --- LAW, CRIME & JUSTICE ---
+        "lawyer": "law", "legal": "law", "court": "law", "judge": "law", "corporate": "corporate law",
+        "justice": "law", "advocate": "law", "crime": "criminology", "criminal": "criminal law", 
+        "investigation": "forensic", "detective": "forensic", "police": "criminology", "prison": "criminology",
+        "human": "human rights", "rights": "human rights", "international": "international law",
+
+        // --- SOCIAL SCIENCES, ARTS & MEDIA ---
+        "helping": "social work", "ngo": "social work", "charity": "social work", "society": "sociology", 
+        "culture": "anthropology", "past": "history", "ancient": "archaeology", "digging": "archaeology",
+        "mind": "psychology", "behavior": "psychology", "mental": "psychology", "teaching": "education", 
+        "professor": "education", "school": "education", "literary": "literature", "books": "literature",
+        "english": "english", "writing": "journalism", "news": "journalism", "reporting": "journalism", 
+        "media": "mass", "masscom": "mass", "anchoring": "mass", "pr": "public relations", 
+        "camera": "photography", "photo": "photography", "video": "film", "movie": "film", "cinema": "film",
+        "editing": "editing", "acting": "performing", "drama": "theatre", "theatre": "theatre", 
+        "dance": "dance", "music": "music", "designing": "design", "creative": "design", 
+        "fashion": "fashion", "interiors": "interior", "ui": "design", "ux": "design",
+
+        // --- NATURE, AGRICULTURE & ENVIRONMENT ---
+        "farming": "agriculture", "farmer": "agriculture", "crops": "agriculture", "soil": "soil",
+        "forest": "forestry", "trees": "forestry", "wildlife": "wildlife", "ocean": "marine", 
+        "sea": "marine", "fish": "aquaculture", "shrimp": "aquaculture", "water": "water", 
+        "weather": "environmental", "earth": "geology", "rocks": "geology",
+
+        // --- MISCELLANEOUS & VOCATIONAL ---
+        "sports": "physical", "gym": "physical", "workout": "physical", "athlete": "physical", 
+        "yoga": "yoga", "meditation": "yoga", "fitness": "physical", "library": "library", 
+        "aviation": "aviation", "flight": "aviation", "steward": "aviation", "merchant": "nautical",
+        "ship": "nautical", "sailing": "nautical", "surveying": "surveying"
+    };
+
+    const fluff = ['i', 'like', 'love', 'enjoy', 'want', 'to', 'be', 'am', 'interested', 'and', 'the', 'a', 'related', 'doing'];
+    let userWords = rawInterests.split(/[\s,]+/).filter(w => w.length > 2 && !fluff.includes(w));
+
+    // 3. STRICT FILTERING LOGIC
+    const filtered = graduationCourses.filter(course => {
+        const meetsPercentage = userPercent >= course.minPercentage;
+        const meetsBudget = course.avgYearlyFees <= userBudget;
+        if (!meetsPercentage || !meetsBudget) return false;
+
+        const courseName = course.name.toLowerCase();
+        const courseKeys = course.keywords.join(" ").toLowerCase();
+
+        // Check if user provided a specific "Object" from the map
+        const userNouns = userWords.filter(w => hobbyMap[w]);
+
+        if (userNouns.length > 0) {
+            // STRICTOR RULE: If a Noun (e.g., "Stocks") is present, the result MUST match that specific field (e.g., "Stock")
+            return userNouns.some(noun => {
+                const target = hobbyMap[noun];
+                return courseName.includes(target) || courseKeys.includes(target);
             });
-            
-            allFilteredCourses = filtered.sort((a, b) => b.avgStartingSalary - a.avgStartingSalary);
-            currentIndex = 0;
-            
-            if (allFilteredCourses.length > 0) {
-                displayCourse(currentIndex);
-            } else {
-                displayNoResults();
-            }
+        } else {
+            // FALLBACK: If no specific noun found in map, search by all words typed
+            return userWords.some(word => courseName.includes(word) || courseKeys.includes(word));
         }
+    });
 
+    allFilteredCourses = filtered.sort((a, b) => b.avgStartingSalary - a.avgStartingSalary);
+    currentIndex = 0;
+
+    if (allFilteredCourses.length > 0) {
+        displayCourse(currentIndex);
+    } else {
+        displayNoResults();
+    }
+}
         function displayNoResults() {
              resultsContainer.innerHTML = `
                 <div id="message-box">

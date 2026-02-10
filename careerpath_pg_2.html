@@ -275,7 +275,7 @@
                 
                 <div class="form-group">
                     <label for="interests"><i class="fas fa-lightbulb"></i> Research Interests / Specialization</label>
-                    <textarea id="interests" rows="4" placeholder="e.g., computer science, marketing, physics, surgery, fellowship..." required></textarea>
+                    <textarea id="interests" rows="4" placeholder="e.g., I am interested in History..." required></textarea>
                 </div>
                 
                 <button type="button" id="generateBtn" class="generate-btn">
@@ -3115,51 +3115,91 @@
             });
         }
         
-        function generateCareerPaths() {
-            const percentageInput = document.getElementById('percentage');
-            const budgetInput = document.getElementById('budget');
-            const interestsInput = document.getElementById('interests');
+     function generateCareerPaths() {
+    const percentageInput = document.getElementById('percentage');
+    const budgetInput = document.getElementById('budget');
+    const interestsInput = document.getElementById('interests');
 
-            const userPercent = parseFloat(percentageInput.value);
-            const userBudget = parseFloat(budgetInput.value);
-            const interests = interestsInput.value.toLowerCase().trim();
-            
-            if (isNaN(userPercent) || isNaN(userBudget) || interests === '') {
-                alert('Please fill in all the fields with valid numbers and interests.');
-                return;
-            }
+    const userPercent = parseFloat(percentageInput.value);
+    const userBudget = parseFloat(budgetInput.value);
+    const rawInterests = interestsInput.value.toLowerCase().trim();
 
-            const stopWords = new Set(['and', 'or', 'in', 'for', 'a', 'an', 'the', 'my', 'is', 'are', 'of']);
-            const interestKeywords = interests.split(/[\s,]+/)
-                                              .map(k => k.trim())
-                                              .filter(k => k && !stopWords.has(k));
+    if (isNaN(userPercent) || isNaN(userBudget) || rawInterests === '') {
+        alert('Please fill in all fields with valid numbers and interests.');
+        return;
+    }
 
-            if (interestKeywords.length === 0) {
-                alert('Please enter more specific career interests.');
-                return;
-            }
+    // 1. THE BLOCKER: Prevent entering specific degree names or research titles
+    const forbidden = ['phd', 'doctorate', 'doctoral', 'md', 'ms', 'mds', 'dm', 'mch', 'fellowship', 'post doc', 'master'];
+    if (forbidden.some(word => rawInterests.includes(word))) {
+        alert("⚠️ DONT ENTER THE NAME OF THE DEGREE. PLEASE ENTER YOUR RESEARCH OR SPECIALIZATION INTERESTS (e.g., 'heart surgery', 'ancient history', 'deep learning', 'quantum physics')");
+        return;
+    }
 
-            const filtered = pgCourses.filter(course => {
-                const meetsPercentage = userPercent >= course.minPercentage;
-                const meetsBudget = course.avgYearlyFees <= userBudget;
-                const meetsInterests = interestKeywords.some(userKeyword => 
-                    course.keywords.some(courseKeyword => 
-                        courseKeyword.toLowerCase().includes(userKeyword)
-                    )
-                );
-                return meetsPercentage && meetsBudget && meetsInterests;
+    // 2. THE TRANSLATOR: Maps research/specialization interests to technical keywords
+    const hobbyMap = {
+        // --- MEDICAL SUPER-SPECIALTIES ---
+        "heart": "cardiology", "brain": "neurology", "skin": "dermatology", "cancer": "oncology",
+        "kidney": "nephrology", "children": "pediatrics", "bones": "orthopaedics", "surgery": "surgery",
+        "stomach": "gastroenterology", "mental": "psychology", "mind": "psychiatry", "eyes": "ophthalmology",
+
+        // --- SCIENCE & TECH RESEARCH ---
+        "atoms": "physics", "quantum": "physics", "space": "astronomy", "stars": "astronomy",
+        "dna": "genetics", "genes": "genetics", "bacteria": "microbiology", "virus": "microbiology",
+        "chemicals": "chemistry", "environment": "environmental", "nature": "biology", "plants": "botany",
+        "ai": "artificial", "robots": "robotics", "automation": "automation", "security": "cybersecurity",
+
+        // --- HUMANITIES & SOCIAL RESEARCH ---
+        "past": "history", "ancient": "archaeology", "digging": "archaeology", "culture": "anthropology",
+        "society": "sociology", "politics": "political", "government": "public", "teaching": "education",
+        "literature": "literature", "books": "literature", "language": "linguistics", "theatre": "theatre",
+
+        // --- BUSINESS & LEGAL RESEARCH ---
+        "money": "finance", "stocks": "finance", "strategy": "management", "leadership": "management",
+        "hiring": "hrm", "labor": "labour", "legal": "law", "constitution": "constitutional",
+        "patents": "intellectual", "crime": "criminal", "taxes": "tax", "global": "international"
+    };
+
+    const fluff = ['i', 'like', 'love', 'enjoy', 'want', 'to', 'be', 'am', 'interested', 'and', 'the', 'a', 'research', 'studying'];
+    let userWords = rawInterests.split(/[\s,]+/).filter(w => w.length > 2 && !fluff.includes(w));
+
+    // 3. STRICT FILTERING LOGIC
+    const filtered = pgCourses.filter(course => {
+        const meetsPercentage = userPercent >= course.minPercentage;
+        
+        // Handling stipend-based courses where fees are 0
+        const courseFee = course.avgYearlyFees;
+        const meetsBudget = courseFee === 0 ? true : courseFee <= userBudget;
+        
+        if (!meetsPercentage || !meetsBudget) return false;
+
+        const courseName = course.name.toLowerCase();
+        const courseKeys = course.keywords.join(" ").toLowerCase();
+
+        // Check if user provided a specific "Object" from the map
+        const userNouns = userWords.filter(w => hobbyMap[w]);
+
+        if (userNouns.length > 0) {
+            // STRICTOR RULE: Result MUST match the specific research field mapped from the noun
+            return userNouns.some(noun => {
+                const target = hobbyMap[noun];
+                return courseName.includes(target) || courseKeys.includes(target);
             });
-            
-            allFilteredCourses = filtered.sort((a, b) => b.avgStartingSalary - a.avgStartingSalary);
-            currentIndex = 0;
-            
-            if (allFilteredCourses.length > 0) {
-                displayCourse(currentIndex);
-            } else {
-                displayNoResults();
-            }
+        } else {
+            // FALLBACK: If no specific noun found in map, search by all words typed
+            return userWords.some(word => courseName.includes(word) || courseKeys.includes(word));
         }
+    });
 
+    allFilteredCourses = filtered.sort((a, b) => b.avgStartingSalary - a.avgStartingSalary);
+    currentIndex = 0;
+
+    if (allFilteredCourses.length > 0) {
+        displayCourse(currentIndex);
+    } else {
+        displayNoResults();
+    }
+}
         function displayNoResults() {
              resultsContainer.innerHTML = `
                 <div id="message-box">

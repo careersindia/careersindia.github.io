@@ -277,7 +277,7 @@
                 
                 <div class="form-group">
                     <label for="interests"><i class="fas fa-lightbulb"></i> Career Interests / Hobbies</label>
-                    <textarea id="interests" rows="4" placeholder="e.g., engineering, medical, computer, design, law..." required></textarea>
+                    <textarea id="interests" rows="4" placeholder="e.g., I am interested in machines.." required></textarea>
                 </div>
                 
                 <button type="button" id="generateBtn" class="generate-btn">
@@ -4281,63 +4281,162 @@
             });
         }
         
-        function generateCareerPaths() {
-            // 1. Get user inputs
-            const percentageInput = document.getElementById('percentage');
-            const budgetInput = document.getElementById('budget');
-            const interestsInput = document.getElementById('interests');
+       function generateCareerPaths() {
+    const percentageInput = document.getElementById('percentage');
+    const budgetInput = document.getElementById('budget');
+    const interestsInput = document.getElementById('interests');
 
-            const userPercent = parseFloat(percentageInput.value);
-            const userBudget = parseFloat(budgetInput.value);
-            const interests = interestsInput.value.toLowerCase().trim();
-            
-            // Basic validation
-            if (isNaN(userPercent) || isNaN(userBudget) || interests === '') {
-                alert('Please fill in all the fields with valid numbers and interests.');
-                return;
-            }
+    const userPercent = parseFloat(percentageInput.value);
+    const userBudget = parseFloat(budgetInput.value);
+    const rawInterests = interestsInput.value.toLowerCase().trim();
 
-            const stopWords = new Set(['and', 'or', 'in', 'for', 'a', 'an', 'the', 'my', 'is', 'are', 'of']);
-            const interestKeywords = interests.split(/[\s,]+/)
-                                              .map(k => k.trim())
-                                              .filter(k => k && !stopWords.has(k));
+    if (isNaN(userPercent) || isNaN(userBudget) || rawInterests === '') {
+        alert('Please fill in all fields.');
+        return;
+    }
 
-            if (interestKeywords.length === 0) {
-                alert('Please enter more specific career interests.');
-                return;
-            }
+    // 1. THE BLOCKER: Prevent entering specific course names or generic degree terms
+    const forbidden = ['engineering', 'btech', 'mbbs', 'bds', 'degree', 'bachelor', 'course', 'nursing', 'pharmacy', 'law', 'llb', 'bsc', 'bcom', 'bba'];
+    if (forbidden.some(word => rawInterests.includes(word))) {
+        alert("⚠️ DONT ENTER THE NAME OF THE COURSE. PLEASE ENTER YOUR HOBBY/INTERESTS (e.g., 'treating people', 'designing buildings', 'coding', 'solving math')");
+        return;
+    }
 
-            // 3. Filter courses with the CORRECT "less than or equal to" logic
-            const filtered = hscCourses.filter(course => {
-                // Condition 1: Percentage check (Corrected)
-                // The user's percentage must be greater than or equal to the minimum required.
-                const meetsPercentage = userPercent >= course.minPercentage;
+    // 2. THE TRANSLATOR: Maps common 12th-grade hobbies to technical keywords
+  const hobbyMap = {
+        // --- MEDICAL & HEALTH SCIENCES ---
+        "treating": "medical", "healing": "medical", "patients": "medical", "hospital": "medical", "clinic": "medical",
+        "surgery": "surgery", "operation": "surgery", "surgeon": "surgery", "curing": "medical", "doctors": "medical",
+        "firstaid": "medical", "anatomy": "medical", "physiology": "medical", "meds": "pharmacy", "pills": "pharmacy",
+        "teeth": "dental", "tooth": "dental", "denture": "dental", "braces": "dental", "gum": "dental", "oral": "dental",
+        "ayurveda": "ayurvedic", "herbal": "ayurvedic", "panchakarma": "ayurvedic", "vayu": "ayurvedic", "yoga": "ayurvedic",
+        "homeopathy": "homeopathic", "dilution": "homeopathic", "natural": "homeopathic", "unani": "unani", "hakim": "unani",
+        "bones": "physiotherapy", "muscles": "physiotherapy", "exercise": "physiotherapy", "rehab": "physiotherapy",
+        "physio": "physiotherapy", "massage": "physiotherapy", "injury": "physiotherapy", "pain": "physiotherapy",
+        "nurse": "nursing", "caring": "nursing", "bedside": "nursing", "ward": "nursing", "midwifery": "nursing",
+        "eyes": "optometry", "vision": "optometry", "sight": "optometry", "glasses": "optometry", "lens": "optometry",
+        "spectacles": "optometry", "eye": "ophthalmic", "cataract": "ophthalmic", "blood": "laboratory", "testing": "laboratory",
+        "pathology": "laboratory", "urine": "laboratory", "microbes": "laboratory", "scanning": "radiography", "xray": "radiography",
+        "mri": "radiography", "ctscan": "radiography", "imaging": "radiography", "radiation": "radiography", "heart": "perfusion",
+        "bloodflow": "perfusion", "cardiac": "perfusion", "dialysis": "dialysis", "kidney": "dialysis", "diet": "dietetics",
+        "nutrition": "dietetics", "foodie": "dietetics", "calories": "dietetics", "weight": "dietetics", "obesity": "dietetics",
 
-                // Condition 2: Budget check (Corrected)
-                // The course fee must be less than or equal to the user's budget.
-                const meetsBudget = course.avgYearlyFees <= userBudget;
-                
-                // Condition 3: Interest keyword check.
-                const meetsInterests = interestKeywords.some(userKeyword => 
-                    course.keywords.some(courseKeyword => 
-                        courseKeyword.toLowerCase() === userKeyword || courseKeyword.toLowerCase().startsWith(userKeyword)
-                    )
-                );
-                
-                // A course is included only if ALL three conditions are true.
-                return meetsPercentage && meetsBudget && meetsInterests;
+        // --- ENGINEERING & CORE TECHNOLOGY ---
+       "aeroplane": "aeronautical", 
+"aeroplanes": "aeronautical", 
+"planes": "aeronautical", 
+"flight": "aeronautical", 
+"aviation": "aeronautical",
+"pilot": "aviation",
+        "jet": "aeronautical", "space": "aeronautical", "rocket": "aeronautical", "flying": "aeronautical", 
+        "satellite": "aeronautical", "nasa": "aeronautical", "isro": "aeronautical", "avionics": "aeronautical",
+        "machine": "mechanical", "machines": "mechanical", "engines": "mechanical", "manufacturing": "mechanical",
+        "production": "production", "factory": "production", "tools": "mechanical", "gears": "mechanical", "lathe": "mechanical",
+        "car": "automobile", "cars": "automobile", "bike": "automobile", "bikes": "automobile", "scooters": "automobile",
+        "engine": "automobile", "driving": "automobile", "vehicle": "automobile", "vehicles": "automobile", "ev": "automobile",
+        "electricity": "electrical", "wiring": "electrical", "power": "electrical", "grid": "electrical", "shocks": "electrical",
+        "transformers": "electrical", "voltage": "electrical", "current": "electrical", "circuits": "electronics",
+        "gadgets": "electronics", "chips": "electronics", "semiconductor": "electronics", "chips": "vlsi", "silicon": "vlsi",
+        "mobile": "communication", "telecom": "communication", "networks": "communication", "radio": "communication", "signal": "signal",
+        "antenna": "communication", "wifi": "communication", "automation": "instrumentation", "sensors": "instrumentation",
+        "control": "instrumentation", "measurement": "instrumentation", "robots": "robotics", "robot": "robotics",
+        "bot": "robotics", "drones": "robotics", "mechatronics": "mechatronics", "building": "civil", "construction": "civil",
+        "architecture": "architecture", "blueprints": "architecture", "maps": "civil", "roads": "civil", "bridges": "civil",
+        "dams": "civil", "infrastructure": "civil", "cement": "civil", "concrete": "civil", "soil": "geology",
+        "rocks": "geology", "earth": "geology", "mining": "mining", "coal": "mining", "minerals": "mining", "digging": "mining",
+        "petroleum": "petroleum", "oil": "petroleum", "gas": "petroleum", "refinery": "petroleum", "drilling": "petroleum",
+        "chemical": "chemical", "chemicals": "chemical", "reactions": "chemical", "formulas": "chemical", "nuclear": "nuclear",
+        "atomic": "nuclear", "energy": "nuclear", "reactors": "nuclear", "waste": "environmental", "pollution": "environmental",
+        "recycling": "environmental", "nature": "environmental", "sustainability": "environmental", "climate": "environmental",
+
+        // --- COMPUTER SCIENCE & IT ---
+        "coding": "computer", "programming": "computer", "code": "computer", "software": "software", "apps": "software",
+        "web": "web", "website": "web", "websites": "web", "internet": "it", "hacking": "cyber", "security": "cyber",
+        "encryption": "cyber", "firewall": "cyber", "privacy": "cyber", "data": "data science", "analytics": "data science",
+        "bigdata": "data science", "statistics": "statistics", "maths": "mathematics", "logic": "mathematics", "numbers": "mathematics",
+        "ai": "artificial", "ml": "machine", "intelligence": "artificial", "chatbots": "artificial", "cloud": "information",
+        "pc": "computer", "hardware": "computer", "networking": "computer", "os": "computer", "linux": "computer",
+
+        // --- PURE SCIENCES & BIOTECH ---
+        "biology": "biology", "zoology": "zoology", "botany": "botany", "microbiology": "microbiology", "bacteria": "microbiology",
+        "virus": "microbiology", "dna": "biotechnology", "genes": "biotechnology", "cloning": "biotechnology", "cells": "biotechnology",
+        "genetics": "genetic", "biotech": "biotechnology", "forensic": "forensic", "crime": "forensic", "investigation": "forensic",
+        "detective": "forensic", "dna": "forensic", "fingerprints": "forensic", "nanotech": "nanotechnology", "physics": "physics",
+        "astronomy": "physics", "quantum": "physics", "atoms": "physics", "chemistry": "chemistry", "molecules": "chemistry",
+        "farming": "agriculture", "plants": "agriculture", "crops": "agriculture", "seeds": "agriculture", "fertilizers": "agriculture",
+        "agri": "agriculture", "garden": "horticulture", "gardening": "horticulture", "flowers": "horticulture", "nursery": "horticulture",
+        "animals": "veterinary", "pets": "veterinary", "dogs": "veterinary", "cats": "veterinary", "cattle": "veterinary", "wildlife": "zoology",
+
+        // --- COMMERCE, BUSINESS & FINANCE ---
+        "money": "commerce", "finance": "finance", "business": "management", "corporate": "management", "office": "management",
+        "accounts": "commerce", "accounting": "commerce", "audit": "commerce", "tax": "commerce", "gst": "commerce",
+        "banking": "banking", "banks": "banking", "loans": "banking", "stock": "stock", "shares": "stock", "investment": "finance",
+        "trading": "stock", "marketing": "marketing", "sales": "management", "advertising": "marketing", "ads": "marketing",
+        "branding": "marketing", "retail": "commerce", "selling": "management", "startup": "entrepreneurship", "startup": "management",
+        "hr": "management", "human": "management", "economics": "economics", "economy": "economics", "budget": "economics",
+        "insurance": "banking", "logistics": "commerce", "supply": "commerce",
+
+        // --- ARTS, MEDIA & DESIGN ---
+        "drawing": "fine arts", "sketching": "fine arts", "painting": "fine arts", "artist": "fine arts", "canvas": "fine arts",
+        "sculpture": "fine arts", "visual": "fine arts", "designing": "design", "creative": "design", "interiors": "interior",
+        "decor": "interior", "decoration": "interior", "homes": "interior", "fashion": "fashion", "clothes": "fashion",
+        "textiles": "fashion", "styling": "fashion", "garments": "fashion", "photography": "photography", "camera": "photography",
+        "photo": "photography", "photos": "photography", "video": "film", "film": "film", "movies": "film", "cinema": "film",
+        "acting": "performing", "drama": "performing", "theatre": "performing", "stage": "performing", "dance": "performing",
+        "music": "performing", "editing": "editing", "vfx": "multimedia", "animation": "animation", "graphics": "graphic",
+        "writing": "journalism", "news": "journalism", "reporting": "journalism", "anchor": "journalism", "articles": "journalism",
+        "media": "mass", "masscom": "mass", "psychology": "psychology", "mind": "psychology", "behavior": "psychology",
+        "mental": "psychology", "sociology": "sociology", "society": "sociology", "culture": "sociology", "history": "history",
+        "past": "history", "museums": "history", "politics": "political", "government": "political", "civics": "political",
+        "administration": "political", "law": "law", "legal": "law", "court": "law", "judge": "law", "justice": "law", "advocate": "law",
+
+        // --- HOSPITALITY, SPORTS & VOCATIONAL ---
+        "cooking": "hotel", "cooking": "hotel", "chef": "hotel", "kitchen": "hotel", "hotels": "hotel", "resorts": "hotel",
+        "tourism": "travel", "travel": "travel", "traveling": "travel", "guide": "travel", "ticketing": "travel", "trips": "travel",
+        "events": "event", "weddings": "event", "parties": "event", "organizing": "event", "planning": "event", "sports": "sports",
+        "gym": "physical", "workout": "physical", "athlete": "sports", "coaching": "sports", "fit": "physical", "yoga": "physical",
+        "teaching": "education", "teacher": "education", "school": "education", "prof": "education", "socialwork": "social",
+        "helping": "social", "community": "social", "library": "library", "books": "library", "aviation": "aviation",
+        "steward": "aviation", "crew": "aviation", "sea": "nautical", "ships": "nautical", "ocean": "nautical", "merchant": "nautical",
+        "marine": "marine", "sailing": "nautical", "port": "nautical"
+    };
+
+    const fluff = ['i', 'like', 'love', 'enjoy', 'want', 'to', 'be', 'am', 'interested', 'and', 'the', 'a', 'become'];
+    let userWords = rawInterests.split(/[\s,]+/).filter(w => w.length > 2 && !fluff.includes(w));
+
+    // 3. STRICT FILTERING LOGIC
+    const filtered = hscCourses.filter(course => {
+        const meetsPercentage = userPercent >= course.minPercentage;
+        const meetsBudget = course.avgYearlyFees <= userBudget;
+        if (!meetsPercentage || !meetsBudget) return false;
+
+        const courseName = course.name.toLowerCase();
+        const courseKeys = course.keywords.join(" ").toLowerCase();
+
+        // Identify if the user provided a "Primary Object" (e.g., "Cars") from the Map
+        const userNouns = userWords.filter(w => hobbyMap[w]);
+
+        if (userNouns.length > 0) {
+            // STRICTOR RULE: If a Noun (Car) is present, the result MUST match that specific field
+            return userNouns.some(noun => {
+                const target = hobbyMap[noun];
+                return courseName.includes(target) || courseKeys.includes(target);
             });
-            
-            allFilteredCourses = filtered.sort((a, b) => b.avgStartingSalary - a.avgStartingSalary);
-            currentIndex = 0;
-            
-            if (allFilteredCourses.length > 0) {
-                displayCourse(currentIndex);
-            } else {
-                displayNoResults();
-            }
+        } else {
+            // FALLBACK: If no specific noun found in map, match any word typed
+            return userWords.some(word => courseName.includes(word) || courseKeys.includes(word));
         }
+    });
 
+    allFilteredCourses = filtered.sort((a, b) => b.avgStartingSalary - a.avgStartingSalary);
+    currentIndex = 0;
+
+    if (allFilteredCourses.length > 0) {
+        displayCourse(currentIndex);
+    } else {
+        displayNoResults();
+    }
+}
         function displayNoResults() {
              resultsContainer.innerHTML = `
                 <div id="message-box">
