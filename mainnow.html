@@ -868,7 +868,7 @@ body:has(.nav-menu.active) {
     <script>
         // --- SCRIPT 4: AI COUNSELOR ---
         const API_KEY = "AIzaSyB2ikJNjNVkLqSRW5N8_QKkuP1wq4jny1A"; 
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+        const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
         const aiUserInput = document.getElementById('aiUserInput');
         const aiCounselorButton = document.getElementById('aiCounselorButton');
         const aiResponseDiv = document.getElementById('aiResponse');
