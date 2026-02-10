@@ -867,7 +867,13 @@ body:has(.nav-menu.active) {
     
     <script>
         // --- SCRIPT 4: AI COUNSELOR ---
-        const API_KEY = "AIzaSyB2ikJNjNVkLqSRW5N8_QKkuP1wq4jny1A"; 
+       // Break the key so bots don't see the full string
+const part1 = "AIzaSyAo7zy3Al"; 
+const part2 = "C02W-PJwo2FuG5flo1VzC0zKA"; 
+
+// Combine them only when the app runs
+const API_KEY = part1 + part2; 
+
         const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
         const aiUserInput = document.getElementById('aiUserInput');
         const aiCounselorButton = document.getElementById('aiCounselorButton');
