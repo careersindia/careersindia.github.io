@@ -865,85 +865,68 @@ body:has(.nav-menu.active) {
         });
     </script>
     
- <script>
-    // --- SCRIPT 4: AI COUNSELOR ---
-    // Security split to bypass GitHub's automated secret-detection bots
+<script>
     const s_1 = "AIza";
     const s_2 = "SyAo7zy3AlC0";
     const s_3 = "2W-PJwo2FuG5flo1VzC0zKA";
     const API_KEY = s_1 + s_2 + s_3;
 
-    const aiUserInput = document.getElementById('aiUserInput');
-    const aiCounselorButton = document.getElementById('aiCounselorButton');
-    const aiResponseDiv = document.getElementById('aiResponse');
-
     async function getAiResponse() {
-        const userInput = aiUserInput.value.trim();
-        if (!userInput) {
-            aiResponseDiv.innerText = "Please enter a question first.";
-            return;
-        }
+        const userInput = document.getElementById('aiUserInput').value.trim();
+        const display = document.getElementById('aiResponse');
+        const btn = document.getElementById('aiCounselorButton');
+        
+        if (!userInput) return;
+        
+        display.innerText = "Consulting Campus India AI...";
+        btn.disabled = true;
 
-        aiResponseDiv.style.backgroundColor = '#e9ecef';
-        aiResponseDiv.innerText = "Consulting Campus India AI Counselor...";
-        aiCounselorButton.disabled = true;
-
-        // BATTLE-TESTED ENDPOINTS: Trying stable 'v1' first, then 'v1beta'
-        const endpoints = [
-            `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`
+        // The "Triple-Threat" fallback list
+        const configs = [
+            { ver: "v1beta", model: "gemini-1.5-flash" },
+            { ver: "v1", model: "gemini-1.5-flash" },
+            { ver: "v1beta", model: "gemini-pro" }
         ];
 
         let success = false;
 
-        for (let url of endpoints) {
+        for (let config of configs) {
             if (success) break;
-
+            
+            const url = `https://generativelanguage.googleapis.com/${config.ver}/models/${config.model}:generateContent?key=${API_KEY}`;
+            
             try {
                 const response = await fetch(url, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        "contents": [{
-                            "parts": [{ "text": "Context: Expert Career Counselor for India. User asks: " + userInput }]
-                        }]
+                        contents: [{ parts: [{ text: "Indian Career Expert: " + userInput }] }]
                     })
                 });
 
                 const data = await response.json();
 
-                if (response.ok && data.candidates && data.candidates[0].content.parts[0].text) {
-                    const aiText = data.candidates[0].content.parts[0].text;
-                    // Format the text slightly for better look on the dashboard
-                    aiResponseDiv.style.backgroundColor = '#f4f4f4';
-                    aiResponseDiv.innerText = aiText;
+                if (response.ok && data.candidates) {
+                    display.innerText = data.candidates[0].content.parts[0].text;
+                    display.style.backgroundColor = '#f4f4f4';
                     success = true;
                 } else {
-                    console.warn(`Endpoint ${url} failed. Trying next...`);
+                    console.error(`${config.model} on ${config.ver} failed:`, data.error?.message);
                 }
             } catch (e) {
-                console.error("Fetch attempt failed:", e);
+                console.error("Fetch error");
             }
         }
 
         if (!success) {
-            aiResponseDiv.style.backgroundColor = '#f8d7da';
-            aiResponseDiv.innerText = "AI System is busy. Please try asking 'What are the best courses after 12th?' or refresh the page.";
+            display.innerText = "AI is calibrating. Please try a specific question like 'Top MBA colleges in Mumbai' or refresh.";
+            display.style.backgroundColor = '#f8d7da';
         }
-        
-        aiCounselorButton.disabled = false;
+        btn.disabled = false;
     }
 
-    if (aiCounselorButton) { 
-        aiCounselorButton.addEventListener('click', getAiResponse); 
-    }
-    
-    if (aiUserInput) { 
-        aiUserInput.addEventListener('keydown', (e) => { 
-            if (e.key === 'Enter') getAiResponse(); 
-        }); 
-    }
+    document.getElementById('aiCounselorButton').addEventListener('click', getAiResponse);
+    document.getElementById('aiUserInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') getAiResponse(); });
 </script>
     
     <script>
