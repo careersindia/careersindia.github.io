@@ -214,50 +214,67 @@ cam<!DOCTYPE html>
   transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
-/* === MOBILE COMPLIANCE: FULL SCREEN FIX === */
+/* === MOBILE COMPLIANCE: NO OVERLAP FIX === */
 @media (max-width: 768px) {
-    /* Step 1: Unlock the body height so the phone can scroll naturally */
+    /* 1. Unlock the body so it scrolls normally */
     body {
         height: auto !important;
         overflow-y: auto !important;
-        overflow-x: hidden;
+        overflow-x: hidden !important;
     }
 
-    /* Step 2: Stack the sidebar and data on top of each other */
-    .main-container {
-        display: block !important; /* Changes from Flex to normal block */
+    /* 2. Stop the banner from floating (This prevents the title cut-off) */
+    .pro-tip-banner {
+        position: relative !important; /* It now stays at the top and pushes content down */
+        top: 0 !important;
+        padding: 15px !important;
         height: auto !important;
-        padding-top: 70px; /* Space for your pro-tip banner */
     }
 
-    /* Step 3: Make the dropdown area take full width but less height */
+    /* 3. Remove the extra padding from the container */
+    .main-container {
+        display: block !important;
+        padding-top: 0 !important; /* No longer needed because banner isn't fixed */
+        height: auto !important;
+    }
+
+    /* 4. Make the Sidebar (Dropdown area) look like a normal section */
     .sidebar {
         width: 100% !important;
+        flex: none !important;
         border-right: none !important;
         border-bottom: 2px solid var(--border-color);
-        padding: 15px !important;
-        overflow-y: visible !important; /* Fixes dropdown being cut off */
+        padding: 20px !important;
+        overflow-y: visible !important;
     }
 
-    /* Step 4: The "Rectangle" Killer - Make data fill the screen */
+    /* 5. Title adjustments for mobile */
+    .title-container {
+        margin-bottom: 20px !important;
+        padding: 15px !important;
+    }
+
+    .title-container h1 {
+        font-size: 1.3em !important;
+    }
+
+    /* 6. The Iframe: Make it fill the rest of the screen */
     .content-pane {
         width: 100% !important;
         height: auto !important;
-        display: block !important;
     }
 
     #content-frame {
         width: 100% !important;
-        height: 100vh !important; /* Makes the "rectangle" the size of the whole phone screen */
-        display: block;
+        height: 85vh !important; /* Large enough to see data, but allows scroll */
         border: none;
     }
 
-    /* Move Home Button to a safe spot so it doesn't overlap text */
+    /* Adjust Home Button position */
     .home-button-container {
-        top: auto;
-        bottom: 10px;
-        right: 10px;
+        top: auto !important;
+        bottom: 20px !important;
+        right: 20px !important;
     }
 }
 </style>
@@ -364,12 +381,14 @@ cam<!DOCTYPE html>
                     welcomeMessage.style.display = 'none'; // Hide welcome message
                     contentFrame.style.display = 'block'; // Show iframe
                     contentFrame.src = selectedPage;
-  // This ensures the data is brought to the user's eyes immediately
-                // only on mobile devices.
-                if (window.innerWidth < 768) {
-                    setTimeout(() => {
-                        contentFrame.scrollIntoView({ behavior: 'smooth' });
-                    }, 100); // Tiny delay to ensure iframe starts loading
+
+
+
+
+if (window.innerWidth < 768) {
+            setTimeout(() => {
+                contentFrame.scrollIntoView({ behavior: 'smooth' });
+            }, 150); // Tiny delay to ensure iframe starts loading
                 }
                 }
             });
