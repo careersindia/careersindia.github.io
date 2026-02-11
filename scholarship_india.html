@@ -214,57 +214,50 @@ cam<!DOCTYPE html>
   transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
-/* === MOBILE COMPLIANCE FIX === */
+/* === MOBILE COMPLIANCE: FULL SCREEN FIX === */
 @media (max-width: 768px) {
+    /* Step 1: Unlock the body height so the phone can scroll naturally */
     body {
-        overflow-y: auto; /* Allow scrolling on mobile */
-        height: auto;
+        height: auto !important;
+        overflow-y: auto !important;
+        overflow-x: hidden;
     }
 
+    /* Step 2: Stack the sidebar and data on top of each other */
     .main-container {
-        flex-direction: column; /* Stack dropdown on top of content */
-        height: auto;
-        padding-top: 80px; /* Space for the pro-tip banner */
+        display: block !important; /* Changes from Flex to normal block */
+        height: auto !important;
+        padding-top: 70px; /* Space for your pro-tip banner */
     }
 
+    /* Step 3: Make the dropdown area take full width but less height */
     .sidebar {
-        flex: none;
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-        padding: 15px;
+        width: 100% !important;
+        border-right: none !important;
+        border-bottom: 2px solid var(--border-color);
+        padding: 15px !important;
+        overflow-y: visible !important; /* Fixes dropdown being cut off */
     }
 
-    .title-container {
-        margin-bottom: 15px;
-        padding: 15px;
-    }
-
-    .title-container h1 {
-        font-size: 1.4em;
-    }
-
+    /* Step 4: The "Rectangle" Killer - Make data fill the screen */
     .content-pane {
-        width: 100%;
-        height: 80vh; /* Give the iframe a specific height on mobile */
-        min-height: 500px;
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
     }
 
     #content-frame {
-        display: block; /* Ensure it stays visible */
-        height: 100%;
+        width: 100% !important;
+        height: 100vh !important; /* Makes the "rectangle" the size of the whole phone screen */
+        display: block;
+        border: none;
     }
 
-    .welcome-message h2 {
-        font-size: 1.8em;
-        margin-top: 20px;
-    }
-
-    /* Adjust Home Button for mobile so it doesn't block the selector */
+    /* Move Home Button to a safe spot so it doesn't overlap text */
     .home-button-container {
         top: auto;
-        bottom: 20px;
-        right: 20px;
+        bottom: 10px;
+        right: 10px;
     }
 }
 </style>
@@ -371,9 +364,13 @@ cam<!DOCTYPE html>
                     welcomeMessage.style.display = 'none'; // Hide welcome message
                     contentFrame.style.display = 'block'; // Show iframe
                     contentFrame.src = selectedPage;
-if (window.innerWidth < 768) {
+  // This ensures the data is brought to the user's eyes immediately
+                // only on mobile devices.
+                if (window.innerWidth < 768) {
+                    setTimeout(() => {
                         contentFrame.scrollIntoView({ behavior: 'smooth' });
-                    }
+                    }, 100); // Tiny delay to ensure iframe starts loading
+                }
                 }
             });
         });
