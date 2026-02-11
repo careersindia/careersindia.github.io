@@ -14,7 +14,7 @@
 
   gtag('config', 'G-BRTKGRSH5P');
 </script>
-
+<script src="paper_data.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- === SEO OPTIMIZATION START === -->
@@ -715,6 +715,47 @@ body:has(.nav-menu.active) {
             </div>
         </section>
 
+
+
+
+
+
+
+<!-- 10-YEAR EXAM ARCHIVE MODULE -->
+<div class="tracker-container" style="margin-top: 30px;">
+    <h2 style="font-size: 1.5rem; color: #000; margin-bottom: 15px;">
+        <i class="fas fa-file-pdf" style="color: #40E0D0;"></i> 10-Year Exam Resource Library
+    </h2>
+    <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
+        Instant indexing of 5,000+ past papers and resources from official repositories.
+    </p>
+    
+    <div class="search-box-wrapper" style="margin-bottom: 20px;">
+        <input type="text" id="examSearchInput" 
+               placeholder="Search by Board, Subject or Year (e.g., CBSE 12th Physics)..." 
+               onkeyup="orchestrateSearch()"
+               style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #dee2e6; font-size: 1rem; outline: none;">
+    </div>
+
+    <!-- Results Display Grid -->
+    <div id="examResultsArea" class="button-grid" style="max-height: 400px; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+        <p style="color: #888; text-align: center; grid-column: 1/-1;">Type to start searching the database...</p>
+    </div>
+    
+    <p style="font-size: 0.7rem; color: #aaa; margin-top: 15px; text-align: center;">
+        Note: This system provides curated indexing. All copyrights remain with the respective Boards. 
+    </p>
+</div>
+
+
+
+
+
+
+
+
+
+
         <div class="tracker-container">
             <h2>My College Application Tracker</h2>
             <p class="tracker-notice"><i class="fas fa-info-circle"></i> Your data is saved privately in this browser. It won't sync to other devices.</p>
@@ -1048,6 +1089,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         });
     }
+
+
+
+
+
+// --- SCRIPT 6: EXAM LIBRARY SEARCH ORCHESTRATION ---
+function orchestrateSearch() {
+    const query = document.getElementById('examSearchInput').value.toLowerCase().trim();
+    const resultsArea = document.getElementById('examResultsArea');
+    
+    // Efficiency Constraint: Don't process if query is too short
+    if (query.length < 3) {
+        resultsArea.innerHTML = '<p style="color: #888; text-align: center; grid-column: 1/-1;">Keep typing (minimum 3 characters)...</p>';
+        return;
+    }
+
+    // High-performance filter of the 5,000 item array in paper_data.js
+    const filteredResults = paperLibrary.filter(item => 
+        item.title.toLowerCase().includes(query)
+    );
+
+    // Limit to top 40 results to preserve mobile memory/performance
+    const displayItems = filteredResults.slice(0, 40);
+
+    if (displayItems.length > 0) {
+        let htmlContent = "";
+        displayItems.forEach(item => {
+            htmlContent += `
+                <a href="${item.url}" target="_blank" class="category-card" 
+                   style="padding: 15px; text-align: left; display: flex; align-items: center; gap: 10px; text-decoration: none; border-left: 4px solid #7FFFD4;">
+                    <i class="far fa-file-alt" style="color: #000;"></i>
+                    <span style="font-size: 0.85rem; font-weight: 600; color: #000;">${item.title}</span>
+                </a>`;
+        });
+        resultsArea.innerHTML = htmlContent;
+    } else {
+        resultsArea.innerHTML = '<p style="color: #e74c3c; text-align: center; grid-column: 1/-1;">No matching resources found in our 10-year index.</p>';
+    }
+}
 </script>
 
 <!-- =================================================== -->
