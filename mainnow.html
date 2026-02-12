@@ -532,10 +532,65 @@ body:has(.nav-menu.active) {
 .category-card p, .featured-card p {
     transform: translateZ(20px); /* Pushes the description 20px closer */
 }
+
+
+
+
+
+
+
+
+/* --- THE 3D BLUEPRINT GRID --- */
+.bg-grid-3d {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200vw;
+    height: 200vh;
+    /* Creating a 3D Blueprint look using your Aquamarine color */
+    background-image: 
+        linear-gradient(rgba(127, 255, 212, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(127, 255, 212, 0.2) 1px, transparent 1px);
+    background-size: 60px 60px;
+    /* This tilts the floor into 3D space */
+    transform: rotateX(65deg) skewX(-10deg) translateZ(-400px) translateY(-50%);
+    z-index: -2; /* Keeps it behind everything */
+    pointer-events: none;
+    filter: blur(0.5px);
+}
+
+/* --- THE 3D ELEVATION (OPTION II) --- */
+/* This makes the page feel like layers of glass floating over the grid */
+
+/* 1. Set the 3D perspective on the main containers */
+.category-card, .counter-item, .featured-card, .tracker-container {
+    transform-style: preserve-3d !important;
+    perspective: 1000px !important;
+    background: rgba(255, 255, 255, 0.85) !important; /* Semi-transparent glass */
+    backdrop-filter: blur(10px) !important; /* Blurs the grid behind the cards */
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
+}
+
+/* 2. Extreme Hover Effect */
+.category-card:hover, .counter-item:hover, .featured-card:hover {
+    transform: translateY(-20px) rotateX(10deg) rotateY(-5deg) scale(1.08) !important;
+    box-shadow: 
+        0 40px 100px rgba(0, 0, 0, 0.15), 
+        0 0 30px rgba(127, 255, 212, 0.5) !important; /* Your Brand Glow */
+    z-index: 10;
+}
+
+/* 3. Make the internal icons pop out toward the user */
+.category-card .icon, .counter-item .icon, .counter-number {
+    transform: translateZ(60px) !important; /* Pushes the icon 60px out of the card */
+    display: inline-block !important;
+    transition: transform 0.5s !important;
+}
 </style>
 </head>
 <body>
-
+<div class="bg-grid-3d"></div>
     <!-- ======== HEADER & NAVIGATION ======== -->
     <header class="main-header">
         <nav class="navbar container">
