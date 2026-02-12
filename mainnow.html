@@ -14,7 +14,7 @@
 
   gtag('config', 'G-BRTKGRSH5P');
 </script>
-<script src="paper_data.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- === SEO OPTIMIZATION START === -->
@@ -451,6 +451,33 @@ body:has(.nav-menu.active) {
         right: 115px !important; /* Moves it further left from the edge on mobile */
     }
 }
+
+
+/* Optimized Visual Contrast for Exam Gateway */
+.dashboard-button i { 
+    color: #7FFFD4 !important; /* Icons: Brand Aquamarine */
+}
+
+.dashboard-button strong { 
+    color: #000000 !important; /* Titles: High-Contrast Black */
+}
+
+
+/* Center-Aligning the Exam Gateway Modules */
+.dashboard-button {
+    display: flex;
+    flex-direction: column; /* Stacks Icon on Top of Text */
+    align-items: center;    /* Centers items horizontally */
+    justify-content: center; /* Centers items vertically */
+    text-align: center;      /* Centers the text lines */
+    padding: 20px !important;
+}
+
+.dashboard-button i {
+    margin-right: 0 !important; /* Removes the left-alignment gap */
+    margin-bottom: 12px;        /* Adds a professional buffer below the icon */
+    font-size: 1.5rem;          /* Slightly larger icon for the centered look */
+}
 </style>
 </head>
 <body>
@@ -721,34 +748,82 @@ body:has(.nav-menu.active) {
 
 
 
-<!-- 10-YEAR EXAM ARCHIVE MODULE -->
+<!-- OFFICIAL EXAM RESOURCE GATEWAY -->
 <div class="tracker-container" style="margin-top: 30px;">
-    <h2 style="font-size: 1.5rem; color: #000; margin-bottom: 15px;">
-        <i class="fas fa-file-pdf" style="color: #40E0D0;"></i> THE SMART EXAM ARCHIVE & PYQ VAULT
-    </h2>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
-        Instant digital access to official past papers across 60+ global categories.
-    </p>
-    
-    <div class="search-box-wrapper" style="margin-bottom: 20px;">
-        <input type="text" id="examSearchInput" 
-               placeholder="Search by Board, Subject or Year (e.g., CBSE 12th Physics)..." 
-               onkeyup="orchestrateSearch()"
-               style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #dee2e6; font-size: 1rem; outline: none;">
-    </div>
+    <h2 style="text-transform: uppercase; letter-spacing: 1px;">Official Exam Archive Gateway</h2>
+    <p class="tracker-notice">Direct access to 10-Year records from Government & International Board Repositories.</p>
 
-    <!-- Results Display Grid -->
-    <div id="examResultsArea" class="button-grid" style="max-height: 400px; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-        <p style="color: #888; text-align: center; grid-column: 1/-1;">Type to start searching the database...</p>
+    <div class="button-grid">
+        <!-- 1. NTA (JEE, NEET, CUET) -->
+        <a href="https://nta.ac.in/Downloads" target="_blank" class="dashboard-button">
+            <i class="fas fa-university"></i>
+            <div>
+                <strong>NTA Master Archive</strong>
+                <p style="font-size:0.75rem; color:#666;">JEE, NEET, CUET, UGC-NET</p>
+            </div>
+        </a>
+
+        <!-- 2. CBSE -->
+        <a href="https://www.cbse.gov.in/cbsenew/cbse.html" target="_blank" class="dashboard-button">
+            <i class="fas fa-graduation-cap"></i>
+            <div>
+                <strong>CBSE Official Archive</strong>
+                <p style="font-size:0.75rem; color:#666;">10th & 12th (2014 - 2024)</p>
+            </div>
+        </a>
+
+        <!-- 3. NCERT -->
+        <a href="https://ncert.nic.in/textbook.php" target="_blank" class="dashboard-button">
+            <i class="fas fa-book"></i>
+            <div>
+                <strong>NCERT Digital Books</strong>
+                <p style="font-size:0.75rem; color:#666;">Class 1 to 12 (All Subjects)</p>
+            </div>
+        </a>
+
+        <!-- 4. ICSE / ISC -->
+        <a href="https://cisce.org/library/" target="_blank" class="dashboard-button">
+            <i class="fas fa-scroll"></i>
+            <div>
+                <strong>CISCE Publications</strong>
+                <p style="font-size:0.75rem; color:#666;">ICSE & ISC Specimen Papers</p>
+            </div>
+        </a>
+
+        <!-- 5. IB (International Baccalaureate) -->
+        <a href="https://www.ibo.org/professional-development/free-learning/" target="_blank" class="dashboard-button">
+            <i class="fas fa-globe"></i>
+            <div>
+                <strong>IB Global Samples</strong>
+                <p style="font-size:0.75rem; color:#666;">International Diploma Papers</p>
+            </div>
+        </a>
+
+        <!-- 6. Cambridge (IGCSE/AS/A Level) -->
+        <a href="https://www.cambridgeinternational.org/programmes-and-qualifications/" target="_blank" class="dashboard-button">
+            <i class="fas fa-award"></i>
+            <div>
+                <strong>Cambridge Archive</strong>
+                <p style="font-size:0.75rem; color:#666;">IGCSE, O-Level, AS & A Level</p>
+            </div>
+        </a>
     </div>
-    
-    <p style="font-size: 0.7rem; color: #aaa; margin-top: 15px; text-align: center;">
-        Note: This system provides curated indexing. All copyrights remain with the respective Boards. Direct-link indexing technology used to ensure zero copyright liability and data sovereignty.
+<!-- STRATEGIC COMPLIANCE & IP SOVEREIGNTY FOOTER -->
+<div style="margin-top: 30px; padding: 20px; border-top: 1px solid #dee2e6; background-color: #fafafa; border-radius: 0 0 12px 12px;">
+    <h4 style="font-size: 0.85rem; color: #000; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">
+        <i class="fas fa-gavel" style="color: #7FFFD4; margin-right: 8px;"></i> Regulatory & Intellectual Property Protocol
+    </h4>
+    <p style="font-size: 0.8rem; color: #555; line-height: 1.6; text-align: justify;">
+        <strong>Navigational Architecture:</strong> Campus India operates strictly as a high-performance metadata indexing service and a strategic gateway. This module utilizes <strong>Direct-to-Source Orchestration</strong>, seamlessly redirecting users to verified official repositories (NTA, CBSE, NCERT, CISCE, and International Boards). 
+    </p>
+    <p style="font-size: 0.8rem; color: #555; line-height: 1.6; text-align: justify; margin-top: 10px;">
+        <strong>Data Sovereignty:</strong> Proprietary claim to any redirected content is expressly disclaimed. All intellectual property rights, including copyrights to examination papers, syllabi, and study materials, remain exclusively vested with the respective parent institutions and government bodies. Campus India does not host, store, modify, or commercially distribute these documents, ensuring <strong>100% Regulatory Compliance</strong> and a zero-storage technical model.
     </p>
 </div>
-
-
-
+    <p style="font-size: 0.75rem; color: #888; text-align: center; margin-top: 20px;">
+        *Note: You are being redirected to official government and board repositories for 100% verified data.
+    </p>
+</div>
 
 
 
@@ -1090,44 +1165,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
-
-
-
-// --- SCRIPT 6: EXAM LIBRARY SEARCH ORCHESTRATION ---
-function orchestrateSearch() {
-    const query = document.getElementById('examSearchInput').value.toLowerCase().trim();
-    const resultsArea = document.getElementById('examResultsArea');
-    
-    // Efficiency Constraint: Don't process if query is too short
-    if (query.length < 3) {
-        resultsArea.innerHTML = '<p style="color: #888; text-align: center; grid-column: 1/-1;">Keep typing (minimum 3 characters)...</p>';
-        return;
-    }
-
-    // High-performance filter of the 5,000 item array in paper_data.js
-    const filteredResults = paperLibrary.filter(item => 
-        item.title.toLowerCase().includes(query)
-    );
-
-    // Limit to top 40 results to preserve mobile memory/performance
-    const displayItems = filteredResults.slice(0, 40);
-
-    if (displayItems.length > 0) {
-        let htmlContent = "";
-        displayItems.forEach(item => {
-            htmlContent += `
-                <a href="${item.url}" target="_blank" class="category-card" 
-                   style="padding: 15px; text-align: left; display: flex; align-items: center; gap: 10px; text-decoration: none; border-left: 4px solid #7FFFD4;">
-                    <i class="far fa-file-alt" style="color: #000;"></i>
-                    <span style="font-size: 0.85rem; font-weight: 600; color: #000;">${item.title}</span>
-                </a>`;
-        });
-        resultsArea.innerHTML = htmlContent;
-    } else {
-        resultsArea.innerHTML = '<p style="color: #e74c3c; text-align: center; grid-column: 1/-1;">No matching resources found in our 10-year index.</p>';
-    }
-}
 </script>
 
 <!-- =================================================== -->
