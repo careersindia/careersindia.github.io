@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 
+
+
 <meta name="google-site-verification" content="lWRsIhWT1lpasOBA9nNslekCwZOiccys-ceO9gtuTTI" />
 <meta name="msvalidate.01" content="1AA8FEC2488D88644749CABBA5FE35D5" />
 
@@ -477,6 +479,58 @@ body:has(.nav-menu.active) {
     margin-right: 0 !important; /* Removes the left-alignment gap */
     margin-bottom: 12px;        /* Adds a professional buffer below the icon */
     font-size: 1.5rem;          /* Slightly larger icon for the centered look */
+}
+
+
+
+
+/* 1. Set the container to 3D mode */
+.counter-item {
+    transform-style: preserve-3d;
+    background-color: var(--bg-white);
+    transition: box-shadow 0.5s ease; /* Smooth shadow transition */
+}
+
+/* 2. The Pop-Out Layers */
+.counter-item .icon {
+    transform: translateZ(40px); /* Icon floats in the middle */
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.counter-item .counter-number {
+    display: block;
+    transform: translateZ(80px); /* The big number pops out the MOST */
+    text-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Adds a shadow UNDER the floating number */
+}
+
+.counter-item .counter-label {
+    display: block;
+    transform: translateZ(30px); /* The text label stays closer to the back */
+    font-weight: 600;
+}
+
+/* 3. Enhance the glow on hover */
+.counter-item:hover {
+    box-shadow: 0 30px 60px rgba(127, 255, 212, 0.4);
+}
+/* 1. Tell the browser the card is a 3D space */
+.category-card, .featured-card {
+    transform-style: preserve-3d;
+}
+
+/* 2. Push the icon and text forward in space */
+.category-card .icon, .featured-card .icon {
+    transform: translateZ(50px); /* Pushes the icon 50px closer to the user */
+    display: inline-block;
+}
+
+.category-card h3, .featured-card h3 {
+    transform: translateZ(30px); /* Pushes the title 30px closer */
+}
+
+.category-card p, .featured-card p {
+    transform: translateZ(20px); /* Pushes the description 20px closer */
 }
 </style>
 </head>
@@ -1165,6 +1219,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+
+
+
 </script>
 
 <!-- =================================================== -->
@@ -1243,6 +1301,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 </script>
-           
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+<script>
+    VanillaTilt.init(document.querySelectorAll(".category-card, .featured-card, .counter-item"), {
+        max: 25,           // Strong tilt
+        speed: 1000,       // Smooth movement
+        scale: 1.1,        // Card grows on hover
+        perspective: 800,  // Deep 3D perspective
+        glare: true,
+        "max-glare": 0.6,  // Nice reflection on the stats boxes
+    });
+</script>
 </body>
 </html>
